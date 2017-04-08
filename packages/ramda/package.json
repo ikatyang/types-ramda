@@ -1,0 +1,15 @@
+{
+  "name": "@ikatyang/types-ramda",
+  "version": "0.23.0",
+  "description": "TypeScript's type definitions for Ramda",
+  "repository": "https://github.com/ikatyang/types",
+  "author": "ikatyang",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn run build-curried-functions",
+    "build-curried-functions": "../../node_modules/.bin/ts-node ./scripts/curried-functions.ts"
+  },
+  "devDependencies": {
+    "ramda": "0.23.0"
+  }
+}
