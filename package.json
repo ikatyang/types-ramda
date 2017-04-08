@@ -1,0 +1,20 @@
+{
+  "name": "@ikatyang/types",
+  "private": true,
+  "version": "0.0.0-dev",
+  "description": "TypeScript's type definitions",
+  "repository": "https://github.com/ikatyang/types",
+  "author": "ikatyang",
+  "license": "MIT",
+  "scripts": {
+    "test": "node ./scripts.js test",
+    "watch": "node ./scripts.js watch"
+  },
+  "devDependencies": {
+    "@types/node": "7.0.12",
+    "lerna": "2.0.0-rc.1",
+    "nodemon": "1.11.0",
+    "ts-node": "3.0.2",
+    "typescript": "2.2.2"
+  }
+}
