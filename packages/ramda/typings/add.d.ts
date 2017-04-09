@@ -3,8 +3,6 @@
 declare namespace R {
 
   /**
-   * `(a: number, b: numer): number`
-   * 
    * Adds two values.
    */
   function add(a: number, b: number): number;
