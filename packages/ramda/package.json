@@ -6,8 +6,7 @@
   "author": "ikatyang",
   "license": "MIT",
   "scripts": {
-    "build": "yarn run build-curried-functions",
-    "build-curried-functions": "../../node_modules/.bin/ts-node ./scripts/curried-functions.ts"
+    "build": "../../node_modules/.bin/ts-node -P ./tsconfig.json ./src/build.ts ./templates ./typings"
   },
   "devDependencies": {
     "ramda": "0.23.0"
