@@ -14,12 +14,16 @@ Build declarations from `./templates/` to `./typings/`
 yarn run build
 ```
 
-#### Test & Lint
-
-Use tslint's `--type-check` for testing `./test.ts`
+#### Lint
 
 ```sh
 yarn run lint
+```
+
+#### Test
+
+```sh
+yarn run test
 ```
 
 ## Progress
