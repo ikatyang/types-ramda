@@ -1,19 +1,18 @@
 {
-  "name": "@ikatyang/types",
-  "private": true,
-  "version": "0.0.0-dev",
-  "description": "TypeScript's type definitions",
-  "repository": "https://github.com/ikatyang/types",
+  "name": "@ikatyang/types-ramda",
+  "version": "0.23.0",
+  "description": "TypeScript's type definitions for Ramda",
+  "repository": "https://github.com/ikatyang/types-ramda",
   "author": "ikatyang",
   "license": "MIT",
   "scripts": {
-    "test": "node ./scripts.js test",
-    "watch": "node ./scripts.js watch"
+    "build": "ts-node -P ./tsconfig.json ./scripts/build.ts ./templates ./typings",
+    "lint": "tslint --project ./tsconfig.json --type-check",
+    "test": "ts-node -P ./tsconfig.json ./test.ts"
   },
   "devDependencies": {
     "@types/node": "7.0.12",
-    "lerna": "2.0.0-rc.1",
-    "nodemon": "1.11.0",
+    "ramda": "0.23.0",
     "ts-node": "3.0.2",
     "tslint": "5.0.0",
     "tslint-config-standard": "5.0.2",

@@ -1,8 +1,12 @@
+.vscode/
 node_modules/
 scripts/
 src/
 templates/
+.gitattributes
+.gitignore
 .npmignore
 test.ts
 tsconfig.json
 tslint.json
+yarn.lock
