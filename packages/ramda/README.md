@@ -8,7 +8,7 @@ source version: v0.23.0
 
 - [x] __
 - [x] add
-- [ ] addIndex
+- [x] addIndex
 - [ ] adjust
 - [ ] all
 - [ ] allPass
