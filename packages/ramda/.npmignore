@@ -1,4 +1,8 @@
 node_modules/
 scripts/
+src/
+templates/
 .npmignore
 test.ts
+tsconfig.json
+tslint.json
