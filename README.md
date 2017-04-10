@@ -1,5 +1,7 @@
 # @ikatyang/types-ramda
 
+[![build](https://travis-ci.org/ikatyang/types-ramda.svg)](https://travis-ci.org/ikatyang/types-ramda)
+
 TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 
 ## Development
@@ -7,8 +9,6 @@ TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 Use Yarn as package manager
 
 #### Build
-
-Build declarations from `./templates/` to `./typings/`
 
 ```sh
 yarn run build
