@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "../../node_modules/.bin/ts-node -P ./tsconfig.json ./scripts/build.ts ./templates ./typings",
-    "lint": "../../node_modules/.bin/tslint --project ./tsconfig.json --type-check"
+    "lint": "../../node_modules/.bin/tslint --project ./tsconfig.json --type-check",
+    "test": "../../node_modules/.bin/ts-node -P ./tsconfig.json ./test.ts"
   },
   "devDependencies": {
     "ramda": "0.23.0"

@@ -1,14 +1,18 @@
 /// <reference path="./index.d.ts" />
 
 import * as R from 'ramda';
+import checker from './src/checker';
 
-// tslint:disable no-unused-expression
+checker(module, (check) => {
 
-declare const number: number;
+  // http://ramdajs.com/docs/#__
+  // TODO: R.__
 
-// TODO: R.__
+  // http://ramdajs.com/docs/#add
+  check('add', R.add(2, 3), 5);
+  check('add', R.add(7)(10), 17);
 
-(): number => R.add(number, number);
-(): number => R.add(number)(number);
+  // http://ramdajs.com/docs/#addIndex
+  // TODO: R.addIndex
 
-// TODO: R.addIndex
+});
