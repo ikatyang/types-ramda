@@ -6,7 +6,8 @@
   "author": "ikatyang",
   "license": "MIT",
   "scripts": {
-    "build": "../../node_modules/.bin/ts-node -P ./tsconfig.json ./src/build.ts ./templates ./typings"
+    "ts-node": "../../node_modules/.bin/ts-node -P ./tsconfig.json",
+    "build": "yarn run ts-node -- ./scripts/build.ts ./templates ./typings"
   },
   "devDependencies": {
     "ramda": "0.23.0"

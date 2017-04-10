@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { Declaration } from './components/declaration';
+import { Declaration } from '../src/components/declaration';
 
 const cwd = process.cwd();
 
