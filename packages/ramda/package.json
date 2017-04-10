@@ -6,8 +6,8 @@
   "author": "ikatyang",
   "license": "MIT",
   "scripts": {
-    "ts-node": "../../node_modules/.bin/ts-node -P ./tsconfig.json",
-    "build": "yarn run ts-node -- ./scripts/build.ts ./templates ./typings"
+    "build": "../../node_modules/.bin/ts-node -P ./tsconfig.json ./scripts/build.ts ./templates ./typings",
+    "lint": "../../node_modules/.bin/tslint --project ./tsconfig.json --type-check"
   },
   "devDependencies": {
     "ramda": "0.23.0"

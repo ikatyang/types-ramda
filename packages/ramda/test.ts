@@ -2,10 +2,13 @@
 
 import * as R from 'ramda';
 
-// R.__
+// tslint:disable no-unused-expression
 
-R.add(1, 2);
-R.add(1)(2);
-R.add(R.__, 1)(R.__)(2);
+declare const number: number;
 
-// R.addIndex
+// TODO: R.__
+
+(): number => R.add(number, number);
+(): number => R.add(number)(number);
+
+// TODO: R.addIndex

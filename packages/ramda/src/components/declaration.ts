@@ -15,7 +15,7 @@ export class Declaration extends Component {
     const namespace = this.namespace ? this.namespace.toString() : '';
     const reference = this.references.join('\n');
     const breakline = (namespace && reference) ? '\n\n' : '';
-    return `${reference}${breakline}${namespace}\n`;
+    return (`${reference}${breakline}${namespace}\n`).replace(/ +$/mg, '');
   }
 
 }

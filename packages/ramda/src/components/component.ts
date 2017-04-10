@@ -1,6 +1,5 @@
 import { Typing } from '../typings/typing';
 
-
 export interface ComponentIndentOptions {
   separatorBreaklines: number;
   tabCount: number;
