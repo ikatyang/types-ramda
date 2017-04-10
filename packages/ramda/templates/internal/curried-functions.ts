@@ -18,7 +18,7 @@ for (let i = 0; i < maxCurryLevel; i++) {
   generics.push(typeName);
   args.push([`${valuePrefix}${i + start}`, typeName]);
 
-  const _interface = new S.Interface(`${S.curriedName}${i + 1}`, [...generics, returnType])
+  const _interface = new S.Interface(S.tCurriedFunction(i + 1), [...generics, returnType])
     .append(...S.createCurriedTypings({
       name: '',
       generics: [],
@@ -30,5 +30,5 @@ for (let i = 0; i < maxCurryLevel; i++) {
 }
 
 export default new S.Declaration(references, namespace
-  .append(new S.Type(S.placeholderAbbr, [], S.placeholderName))
+  .append(new S.Type(S.tPlaceholderAbbr, [], S.tPlaceholder))
   .append(...interfaces));

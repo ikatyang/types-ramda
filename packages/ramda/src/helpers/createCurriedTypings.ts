@@ -14,7 +14,7 @@ const createCurriedTyping = (options: ICreateCurriedOptions, curryLevel: number,
   const args: [string, string][] = [];
   const returnTypes: string[] = [];
 
-  const placeholder = options.usePlaceholderAbbr ? configs.placeholderAbbr : configs.placeholderName;
+  const placeholder = options.usePlaceholderAbbr ? configs.tPlaceholderAbbr : configs.tPlaceholder;
 
   isPlaceholders.forEach((isPlaceholder, index) => {
     const arg = options.args[index];
@@ -38,7 +38,7 @@ const createCurriedTyping = (options: ICreateCurriedOptions, curryLevel: number,
   } else {
     const returnCurryLevel = returnTypes.length;
     returnTypes.push(options.returnType);
-    return new FunctionTyping(options.name, options.generics, args, `${configs.curriedName}${returnCurryLevel}<${returnTypes.join(', ')}>`);
+    return new FunctionTyping(options.name, options.generics, args, `${configs.tCurriedFunction(returnCurryLevel)}<${returnTypes.join(', ')}>`);
   }
 };
 
