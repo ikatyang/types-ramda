@@ -2,6 +2,26 @@
 
 TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 
+## Development
+
+Use Yarn as package manager
+
+#### Build
+
+Build declarations from `./templates/` to `./typings/`
+
+```sh
+yarn run build
+```
+
+#### Test & Lint
+
+Use tslint's `--type-check` for testing `./test.ts`
+
+```sh
+yarn run lint
+```
+
 ## Progress
 
 source version: v0.23.0
