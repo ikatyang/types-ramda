@@ -12,6 +12,13 @@ checker(module, (check) => {
 
   // TODO: R.addIndex
 
+  {
+    const double = (x: number) => x * 2;
+    check('map', R.map(double, [1, 2, 3]), [2, 4, 6]);
+    check('map', R.map(double, { x: 1, y: 2, z: 3 }), { x: 2, y: 4, z: 6 });
+    // TODO: R.map for functor
+  }
+
   check('replace', R.replace('foo', 'bar', 'foo foo foo'), 'bar foo foo');
   check('replace', R.replace(/foo/, 'bar', 'foo foo foo'), 'bar foo foo');
   check('replace', R.replace(/foo/g, 'bar', 'foo foo foo'), 'bar bar bar');
