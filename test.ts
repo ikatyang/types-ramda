@@ -10,7 +10,10 @@ checker(module, (check) => {
   check('add', R.add(2, 3), 5);
   check('add', R.add(7)(10), 17);
 
-  // TODO: R.addIndex
+  {
+    const mapIndexed = R.addIndex(R.map);
+    check('addIndex', mapIndexed((val, idx) => idx + '-' + val, ['f', 'o', 'o', 'b', 'a', 'r']), ['0-f', '1-o', '2-o', '3-b', '4-a', '5-r']);
+  }
 
   {
     const double = (x: number) => x * 2;
