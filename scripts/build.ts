@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { Declaration } from '../src/components/declaration';
+import { Definition } from '../src/components/definition';
 
 const cwd = process.cwd();
 
@@ -22,8 +22,8 @@ const generateTypings = (currentTemplateDir: string, currentOutputDir: string) =
     const templateStat = fs.statSync(templatePath);
     if (templateStat.isFile() && path.extname(filename) === '.ts') {
       const templateModule = require(templatePath).default;
-      if (!(templateModule instanceof Declaration)) {
-        throw new Error(`Module '${templatePath}' should be an instance of Declaration`);
+      if (!(templateModule instanceof Definition)) {
+        throw new Error(`Module '${templatePath}' should be an instance of Definition`);
       }
       const outputFilePath = outputPath.replace(/\.ts$/, '.d.ts');
       fs.writeFileSync(outputFilePath, templateModule.toString());

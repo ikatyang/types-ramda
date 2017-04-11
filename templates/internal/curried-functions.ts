@@ -29,6 +29,6 @@ for (let i = 0; i < maxCurryLevel; i++) {
   interfaces.push(_interface);
 }
 
-export default new S.Declaration(references, namespace
+export default new S.Definition(references, namespace
   .append(new S.Type(S.tPlaceholderAbbr, [], S.tPlaceholder))
   .append(...interfaces));

@@ -7,4 +7,4 @@ const references = readdirSync(dirname(module.filename))
   .filter(x => (extname(x) === '.ts' && basename(x, '.ts') !== 'index'))
   .map(x => new S.Reference('path', `./${x.slice(0, -3)}`));
 
-export default new S.Declaration(references);
+export default new S.Definition(references);

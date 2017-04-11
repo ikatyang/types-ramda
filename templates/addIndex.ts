@@ -7,7 +7,7 @@ const typings = S.createCurriedTypings({
   returnType: 'U[]',
 });
 
-export default new S.Declaration([
+export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),
   new S.Reference('path', './internal/generals'),
 ], new S.Namespace(S.namespace)

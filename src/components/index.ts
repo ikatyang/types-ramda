@@ -1,5 +1,5 @@
 export { Component } from './component';
-export { Declaration } from './declaration';
+export { Definition } from './definition';
 export { Group } from './group';
 export { Interface } from './interface';
 export { Namespace } from './namespace';

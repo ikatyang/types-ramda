@@ -2,7 +2,7 @@ import { Component } from './component';
 import { Namespace } from './namespace';
 import { Reference } from './reference';
 
-export class Declaration extends Component {
+export class Definition extends Component {
 
   public allowTypes = false;
   public allowComponents = false;
