@@ -3,7 +3,7 @@ import * as S from '../src/index';
 const typings = S.createCurriedTypings({
   name: 'function addIndex',
   generics: ['T', 'U'],
-  args: [['mapper', `${S.tMapper}<T, U>`], ['transformer', `${S.tIndexedTransformer}<T, U>`], ['list', `${S.tList}<T>`]],
+  args: [['mapper', `${S.tListMapper}<T, U>`], ['fn', `${S.tIndexedMorphism}<T, U>`], ['list', `${S.tList}<T>`]],
   returnType: 'U[]',
 });
 
