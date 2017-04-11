@@ -206,7 +206,7 @@ source version: v0.23.0
 - [ ] reject
 - [ ] remove
 - [ ] repeat
-- [ ] replace
+- [x] replace
 - [ ] reverse
 - [ ] scan
 - [ ] sequence

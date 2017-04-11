@@ -12,4 +12,7 @@ checker(module, (check) => {
 
   // TODO: R.addIndex
 
+  check('replace', R.replace('foo', 'bar', 'foo foo foo'), 'bar foo foo');
+  check('replace', R.replace(/foo/, 'bar', 'foo foo foo'), 'bar foo foo');
+  check('replace', R.replace(/foo/g, 'bar', 'foo foo foo'), 'bar bar bar');
 });
