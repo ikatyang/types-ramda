@@ -15,11 +15,13 @@ export default (_module: NodeModule, tester: (check: <T>(name: string, a: T, b: 
     try {
       deepEqual(a, b);
       passedCount++;
-    } catch (error) {
+    } catch (_error) {
       failedCount++;
-      const stack = (error as Error).stack as string;
+      const error = _error as Error;
+      const stack = error.stack as string;
       const linenum = (stack.match(stackRegex) as string[])[1];
       console.log(`ERROR: at L${linenum} => Test(${name}): Case(${caseIndex})`);
+      console.log(`> ${error.message}`);
     }
   });
 
