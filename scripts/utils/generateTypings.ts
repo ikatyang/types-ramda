@@ -28,7 +28,6 @@ export default (templateFiles: string[], logger: Logger) => {
       console.log((error as Error).message);
       return;
     }
-    delete require.cache[require.resolve(templateTsFile)];
     if (!(templateModule instanceof Definition)) {
       console.log(`WARN: Module '${templateTsFile}' should be an instance of Definition`);
       return;
