@@ -5,7 +5,10 @@ import checker from './src/checker';
 
 checker(module, (check) => {
 
-  check('__', R.replace('{name}', R.__, 'Hello, {name}!')('Alice'), 'Hello, Alice!');
+  {
+    const greet = R.replace('{name}', R.__, 'Hello, {name}!');
+    check('__', greet('Alice'), 'Hello, Alice!');
+  }
 
   check('add', R.add(2, 3), 5);
   check('add', R.add(7)(10), 17);
