@@ -21,7 +21,13 @@ export default (templateFiles: string[], logger: Logger) => {
   const templateTsFiles = Array.from(new Set(templateFiles.map(
     file => extRegex.test(file) ? file.replace(extRegex, '.ts') : file)));
   templateTsFiles.forEach(templateTsFile => {
-    const templateModule = require(templateTsFile).default;
+    let templateModule;
+    try {
+      templateModule = require(templateTsFile).default;
+    } catch (error) {
+      console.log((error as Error).message);
+      return;
+    }
     delete require.cache[require.resolve(templateTsFile)];
     if (!(templateModule instanceof Definition)) {
       console.log(`WARN: Module '${templateTsFile}' should be an instance of Definition`);
