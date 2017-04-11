@@ -6,12 +6,16 @@
   "author": "ikatyang",
   "license": "MIT",
   "scripts": {
-    "build": "ts-node -P ./tsconfig.json ./scripts/build.ts ./templates ./typings",
-    "lint": "tslint --project ./tsconfig.json --type-check",
-    "test": "ts-node -P ./tsconfig.json ./test.ts"
+    "ts-node": "ts-node -P ./tsconfig.json",
+    "build": "yarn run ts-node -- ./scripts/build.ts",
+    "build-watch": "yarn run ts-node -- ./scripts/build-watch.ts",
+    "test": "yarn run ts-node -- ./test.ts",
+    "test-watch": "nodemon test.ts --watch ./typings --watch test.ts --exec 'yarn run ts-node --'",
+    "lint": "tslint --project ./tsconfig.json --type-check"
   },
   "devDependencies": {
     "@types/node": "7.0.12",
+    "nodemon": "1.11.0",
     "ramda": "0.23.0",
     "ts-node": "3.0.2",
     "tslint": "5.0.0",
