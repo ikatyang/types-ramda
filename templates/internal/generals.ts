@@ -2,7 +2,8 @@ import * as S from '../../src/index';
 
 export default new S.Definition([], new S.Namespace(S.namespace)
   .append(new S.Group()
-    .append(new S.Type(S.tProperty, [], 'string | number | symbol')))
+    .append(new S.Type(S.tProperty, [], 'string | number | symbol'))
+    .append(new S.Type(S.tOrdered, [], 'string | number | Date')))
   .append(new S.Group()
     .append(new S.Type(S.tMorphism, ['T', 'U'], `(${S.vValue}: T) => U`))
     .append(new S.Type(S.tIndexedMorphism, ['T', 'U'], `(${S.vValue}: T, ${S.vIndex}: ${S.tIndex}, ${S.vList}: ${S.tList}<T>) => U`))

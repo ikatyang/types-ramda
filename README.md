@@ -140,7 +140,7 @@ source version: v0.23.0
 - [ ] lensProp
 - [ ] lift
 - [ ] liftN
-- [ ] lt
+- [x] lt
 - [ ] lte
 - [x] map
 - [ ] mapAccum

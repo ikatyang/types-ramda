@@ -80,6 +80,14 @@ checker(module, (check) => {
     // TODO: R.filter for filterable
   }
 
+  { // lt
+    check('lt', R.lt(2, 1), false);
+    check('lt', R.lt(2, 2), false);
+    check('lt', R.lt(2, 3), true);
+    check('lt', R.lt('a', 'z'), true);
+    check('lt', R.lt('z', 'a'), false);
+  }
+
   { // map
     const double = (x: number) => x * 2;
     check('map', R.map(double, [1, 2, 3]), [2, 4, 6]);

@@ -1,6 +1,7 @@
 declare namespace R {
 
   type Property = string | number | symbol;
+  type Ordered = string | number | Date;
 
   type Morphism<T, U> = (value: T) => U;
   type IndexedMorphism<T, U> = (value: T, index: number, list: List<T>) => U;

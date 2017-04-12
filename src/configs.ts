@@ -25,4 +25,5 @@ export const tKey = 'string';
 export const vKey = 'key';
 export const tProperty = 'Property';
 export const vProperty = 'property';
+export const tOrdered = 'Ordered';
 export const vValue = 'value';
