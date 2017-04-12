@@ -56,8 +56,8 @@ export const createCurriedTypings = (options: ICreateCurriedOptions): FunctionTy
   const typings: FunctionTyping[] = [];
 
   const curryLevel = options.args.length;
-  for (let i = 0; i < curryLevel; i++) {
-    recursivePushTypings(typings, options, curryLevel, i + 1, []);
+  for (let i = 0; i <= curryLevel; i++) {
+    recursivePushTypings(typings, options, curryLevel, i, []);
   }
 
   return typings.reverse();

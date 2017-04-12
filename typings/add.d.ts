@@ -11,5 +11,6 @@ declare namespace R {
   function add(_a: Placeholder, _b: Placeholder): CurriedFunction2<number, number, number>;
   function add(a: number): CurriedFunction1<number, number>;
   function add(_a: Placeholder): CurriedFunction2<number, number, number>;
+  function add(): CurriedFunction2<number, number, number>;
 
 }

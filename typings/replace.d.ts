@@ -19,5 +19,6 @@ declare namespace R {
   function replace(_pattern: Placeholder, _replacement: Placeholder): CurriedFunction3<string | RegExp, string, string, string>;
   function replace(pattern: string | RegExp): CurriedFunction2<string, string, string>;
   function replace(_pattern: Placeholder): CurriedFunction3<string | RegExp, string, string, string>;
+  function replace(): CurriedFunction3<string | RegExp, string, string, string>;
 
 }

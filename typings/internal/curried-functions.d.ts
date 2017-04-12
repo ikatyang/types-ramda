@@ -7,6 +7,7 @@ declare namespace R {
   interface CurriedFunction1<T1, R> {
     (v1: T1): R;
     (_1: PH): CurriedFunction1<T1, R>;
+    (): CurriedFunction1<T1, R>;
   }
 
   interface CurriedFunction2<T1, T2, R> {
@@ -16,6 +17,7 @@ declare namespace R {
     (_1: PH, _2: PH): CurriedFunction2<T1, T2, R>;
     (v1: T1): CurriedFunction1<T2, R>;
     (_1: PH): CurriedFunction2<T1, T2, R>;
+    (): CurriedFunction2<T1, T2, R>;
   }
 
   interface CurriedFunction3<T1, T2, T3, R> {
@@ -33,6 +35,7 @@ declare namespace R {
     (_1: PH, _2: PH): CurriedFunction3<T1, T2, T3, R>;
     (v1: T1): CurriedFunction2<T2, T3, R>;
     (_1: PH): CurriedFunction3<T1, T2, T3, R>;
+    (): CurriedFunction3<T1, T2, T3, R>;
   }
 
   interface CurriedFunction4<T1, T2, T3, T4, R> {
@@ -66,6 +69,7 @@ declare namespace R {
     (_1: PH, _2: PH): CurriedFunction4<T1, T2, T3, T4, R>;
     (v1: T1): CurriedFunction3<T2, T3, T4, R>;
     (_1: PH): CurriedFunction4<T1, T2, T3, T4, R>;
+    (): CurriedFunction4<T1, T2, T3, T4, R>;
   }
 
   interface CurriedFunction5<T1, T2, T3, T4, T5, R> {
@@ -131,6 +135,7 @@ declare namespace R {
     (_1: PH, _2: PH): CurriedFunction5<T1, T2, T3, T4, T5, R>;
     (v1: T1): CurriedFunction4<T2, T3, T4, T5, R>;
     (_1: PH): CurriedFunction5<T1, T2, T3, T4, T5, R>;
+    (): CurriedFunction5<T1, T2, T3, T4, T5, R>;
   }
 
   interface CurriedFunction6<T1, T2, T3, T4, T5, T6, R> {
@@ -260,6 +265,7 @@ declare namespace R {
     (_1: PH, _2: PH): CurriedFunction6<T1, T2, T3, T4, T5, T6, R>;
     (v1: T1): CurriedFunction5<T2, T3, T4, T5, T6, R>;
     (_1: PH): CurriedFunction6<T1, T2, T3, T4, T5, T6, R>;
+    (): CurriedFunction6<T1, T2, T3, T4, T5, T6, R>;
   }
 
 }
