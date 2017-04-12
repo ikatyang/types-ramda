@@ -11,3 +11,4 @@ export const tDictionaryMapper = 'DictionaryMapper';
 export const tList = 'List';
 export const tFunctor = 'Functor';
 export const tDictionary = 'Dictionary';
+export const tPredicate = 'Predicate';

@@ -36,6 +36,23 @@ checker(module, (check) => {
     check('adjust', R.adjust(R.add(10))(1)([1, 2, 3]), [1, 12, 3]);
   }
 
+  { // all
+    const equals3 = R.equals(3);
+    check('all', R.all(equals3)([3, 3, 3, 3]), true);
+    check('all', R.all(equals3)([3, 3, 1, 3]), false);
+  }
+
+  { // equals
+    check('equals', R.equals(1, 1), true);
+    check('equals', R.equals(1, '1'), false);
+    check('equals', R.equals([1, 2, 3], [1, 2, 3]), true);
+
+    type V = { v?: any };
+    const a: V = {}; a.v = a;
+    const b: V = {}; b.v = b;
+    check('equals', R.equals(a, b), true);
+  }
+
   { // map
     const double = (x: number) => x * 2;
     check('map', R.map(double, [1, 2, 3]), [2, 4, 6]);
