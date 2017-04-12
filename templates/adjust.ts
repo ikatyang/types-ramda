@@ -3,7 +3,7 @@ import * as S from '../src/index';
 const typings = S.createCurriedTypings({
   name: 'function adjust',
   generics: ['T', 'U'],
-  args: [['fn', `${S.tMorphism}<T, U>`], ['index', 'number'], ['list', `${S.tList}<T>`]],
+  args: [[S.vMorphism, `${S.tMorphism}<T, U>`], ['index', 'number'], [S.vList, `${S.tList}<T>`]],
   returnType: `(T | U)[]`,
 });
 

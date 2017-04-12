@@ -3,7 +3,7 @@ import * as S from '../src/index';
 const typings = S.createCurriedTypings({
   name: 'function all',
   generics: ['T'],
-  args: [['fn', `${S.tPredicate}<T>`], ['list', `${S.tList}<T>`]],
+  args: [[S.vPreficate, `${S.tPredicate}<T>`], [S.vList, `${S.tList}<T>`]],
   returnType: 'boolean',
 });
 

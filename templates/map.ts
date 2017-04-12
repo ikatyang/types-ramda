@@ -3,21 +3,21 @@ import * as S from '../src/index';
 const typingsForList = S.createCurriedTypings({
   name: 'function map',
   generics: ['T', 'U'],
-  args: [['fn', `${S.tMorphism}<T, U>`], ['list', `${S.tList}<T>`]],
+  args: [[S.vMorphism, `${S.tMorphism}<T, U>`], [S.vList, `${S.tList}<T>`]],
   returnType: 'U[]',
 });
 
 const typingsForDictionary = S.createCurriedTypings({
   name: 'function map',
   generics: ['T', 'U'],
-  args: [['fn', `${S.tMorphism}<T, U>`], ['dictionary', `${S.tDictionary}<T>`]],
+  args: [[S.vMorphism, `${S.tMorphism}<T, U>`], [S.vDictionary, `${S.tDictionary}<T>`]],
   returnType: `${S.tDictionary}<U>`,
 });
 
 const typingsForMappable = S.createCurriedTypings({
   name: 'function map',
   generics: ['T', 'U'],
-  args: [['fn', `${S.tMorphism}<T, U>`], ['mappable', `${S.tMappable}<T>`]],
+  args: [[S.vMorphism, `${S.tMorphism}<T, U>`], [S.vMappable, `${S.tMappable}<T>`]],
   returnType: `${S.tMappable}<U>`,
 });
 
