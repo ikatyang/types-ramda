@@ -31,6 +31,11 @@ checker(module, (check) => {
     }
   }
 
+  { // adjust
+    check('adjust', R.adjust(R.add(10), 1, [1, 2, 3]), [1, 12, 3]);
+    check('adjust', R.adjust(R.add(10))(1)([1, 2, 3]), [1, 12, 3]);
+  }
+
   { // map
     const double = (x: number) => x * 2;
     check('map', R.map(double, [1, 2, 3]), [2, 4, 6]);
