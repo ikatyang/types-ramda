@@ -4,5 +4,7 @@
 /// <reference path="./adjust.d.ts" />
 /// <reference path="./all.d.ts" />
 /// <reference path="./equals.d.ts" />
+/// <reference path="./filter.d.ts" />
 /// <reference path="./map.d.ts" />
+/// <reference path="./propEq.d.ts" />
 /// <reference path="./replace.d.ts" />

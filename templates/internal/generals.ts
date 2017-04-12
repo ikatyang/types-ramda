@@ -2,8 +2,10 @@ import * as S from '../../src/index';
 
 export default new S.Definition([], new S.Namespace(S.namespace)
   .append(new S.Group()
-    .append(new S.Type(S.tMorphism, ['T', 'U'], '(value: T) => U'))
-    .append(new S.Type(S.tIndexedMorphism, ['T', 'U'], `(value: T, index: number, ${S.vList}: ${S.tList}<T>) => U`))
+    .append(new S.Type(S.tProperty, [], 'string | number | symbol')))
+  .append(new S.Group()
+    .append(new S.Type(S.tMorphism, ['T', 'U'], `(${S.vValue}: T) => U`))
+    .append(new S.Type(S.tIndexedMorphism, ['T', 'U'], `(${S.vValue}: T, ${S.vIndex}: ${S.tIndex}, ${S.vList}: ${S.tList}<T>) => U`))
     .append(new S.Type(S.tPredicate, ['T'], `${S.tMorphism}<T, boolean>`)))
   .append(new S.Group()
     .append(new S.Type(S.tMapper, ['T', 'U'], `(${S.vMorphism}: ${S.tMorphism}<T, U>, ${S.vMappable}: ${S.tMappable}<T>) => ${S.tMappable}<U>`))
@@ -17,6 +19,6 @@ export default new S.Definition([], new S.Namespace(S.namespace)
   .append(new S.Group()
     .append(new S.Interface(S.tList, ['T'])
       .append(new S.PlainTyping('readonly length: number'))
-      .append(new S.PlainTyping('readonly [index: number]: T')))
+      .append(new S.PlainTyping(`readonly [${S.vIndex}: ${S.tIndex}]: T`)))
     .append(new S.Interface(S.tDictionary, ['T'])
-      .append(new S.PlainTyping('[key: string]: T')))));
+      .append(new S.PlainTyping(`[${S.vKey}: ${S.tKey}]: T`)))));

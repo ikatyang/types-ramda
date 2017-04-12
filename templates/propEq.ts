@@ -1,10 +1,10 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedTypings({
-  name: 'function adjust',
-  generics: ['T', 'U'],
-  args: [[S.vMorphism, `${S.tMorphism}<T, U>`], [S.vIndex, S.tIndex], [S.vList, `${S.tList}<T>`]],
-  returnType: `(T | U)[]`,
+  name: 'function propEq',
+  generics: [],
+  args: [[S.vProperty, S.tProperty], [S.vValue, 'any'], ['container', 'any']],
+  returnType: 'boolean',
 });
 
 export default new S.Definition([

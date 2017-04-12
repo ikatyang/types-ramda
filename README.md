@@ -90,7 +90,7 @@ source version: v0.23.0
 - [x] equals
 - [ ] evolve
 - [ ] F
-- [ ] filter
+- [x] filter
 - [ ] find
 - [ ] findIndex
 - [ ] findLast
@@ -192,7 +192,7 @@ source version: v0.23.0
 - [ ] product
 - [ ] project
 - [ ] prop
-- [ ] propEq
+- [x] propEq
 - [ ] propIs
 - [ ] propOr
 - [ ] props

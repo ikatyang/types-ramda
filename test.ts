@@ -67,6 +67,16 @@ checker(module, (check) => {
     // TODO: R.map for mappable
   }
 
+  { // propEq
+    const abby = { name: 'Abby', age: 7, hair: 'blond' };
+    const fred = { name: 'Fred', age: 12, hair: 'brown' };
+    const rusty = { name: 'Rusty', age: 10, hair: 'brown' };
+    const alois = { name: 'Alois', age: 15, disposition: 'surly' };
+    const kids = [abby, fred, rusty, alois];
+    const hasBrownHair = R.propEq('hair', 'brown');
+    check('propEq', R.filter(hasBrownHair, kids), [fred, rusty]);
+  }
+
   { // replace
     check('replace', R.replace('foo', 'bar', 'foo foo foo'), 'bar foo foo');
     check('replace', R.replace(/foo/, 'bar', 'foo foo foo'), 'bar foo foo');
