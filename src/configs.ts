@@ -17,3 +17,5 @@ export const tPredicate = 'Predicate';
 export const vPreficate = 'fn';
 export const tMappable = 'Mappable';
 export const vMappable = 'mappable';
+export const tFilterable = 'Filterable';
+export const vFilterable = 'filterable';

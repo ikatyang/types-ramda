@@ -53,11 +53,18 @@ checker(module, (check) => {
     check('equals', R.equals(a, b), true);
   }
 
+  { // filter
+    const isEven = (n: number) => n % 2 === 0;
+    check('filter', R.filter(isEven, [1, 2, 3, 4]), [2, 4]);
+    check('filter', R.filter(isEven, { a: 1, b: 2, c: 3, d: 4 }), { b: 2, d: 4 });
+    // TODO: R.filter for filterable
+  }
+
   { // map
     const double = (x: number) => x * 2;
     check('map', R.map(double, [1, 2, 3]), [2, 4, 6]);
     check('map', R.map(double, { x: 1, y: 2, z: 3 }), { x: 2, y: 4, z: 6 });
-    // TODO: R.map for functor
+    // TODO: R.map for mappable
   }
 
   { // replace
