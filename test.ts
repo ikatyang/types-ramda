@@ -50,6 +50,11 @@ checker(module, (check) => {
     check('allPass', isQueenOfSpades({ rank: 'Q', suit: '♠︎' }), true);
   }
 
+  { // always
+    const t = R.always('Tee');
+    check('always', t(), 'Tee');
+  }
+
   { // equals
     check('equals', R.equals(1, 1), true);
     check('equals', R.equals(1, '1'), false);
