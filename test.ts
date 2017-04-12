@@ -42,6 +42,14 @@ checker(module, (check) => {
     check('all', R.all(equals3)([3, 3, 1, 3]), false);
   }
 
+  { // allPass
+    const isQueen = R.propEq('rank', 'Q');
+    const isSpade = R.propEq('suit', '♠︎');
+    const isQueenOfSpades = R.allPass([isQueen, isSpade]);
+    check('allPass', isQueenOfSpades({ rank: 'Q', suit: '♣︎' }), false);
+    check('allPass', isQueenOfSpades({ rank: 'Q', suit: '♠︎' }), true);
+  }
+
   { // equals
     check('equals', R.equals(1, 1), true);
     check('equals', R.equals(1, '1'), false);
