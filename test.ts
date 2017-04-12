@@ -55,6 +55,13 @@ checker(module, (check) => {
     check('always', t(), 'Tee');
   }
 
+  { // and
+    check('and', R.and(true, true), true);
+    check('and', R.and(true, false), false);
+    check('and', R.and(false, true), false);
+    check('and', R.and(false, false), false);
+  }
+
   { // equals
     check('equals', R.equals(1, 1), true);
     check('equals', R.equals(1, '1'), false);

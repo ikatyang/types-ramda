@@ -1,0 +1,1 @@
+Returns `true` if both arguments are `true`; `false` otherwise.
