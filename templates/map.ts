@@ -14,11 +14,11 @@ const typingsForDictionary = S.createCurriedTypings({
   returnType: `${S.tDictionary}<U>`,
 });
 
-const typingsForFunctor = S.createCurriedTypings({
+const typingsForMappable = S.createCurriedTypings({
   name: 'function map',
   generics: ['T', 'U'],
-  args: [['fn', `${S.tMorphism}<T, U>`], ['functor', `${S.tFunctor}<T>`]],
-  returnType: `${S.tFunctor}<U>`,
+  args: [['fn', `${S.tMorphism}<T, U>`], ['mappable', `${S.tMappable}<T>`]],
+  returnType: `${S.tMappable}<U>`,
 });
 
 export default new S.Definition([
@@ -27,4 +27,4 @@ export default new S.Definition([
 ], new S.Namespace(S.namespace)
   .append(new S.Group().append(...typingsForList).setComment(S.readComment(module)))
   .append(new S.Group().append(...typingsForDictionary))
-  .append(new S.Group().append(...typingsForFunctor)));
+  .append(new S.Group().append(...typingsForMappable)));
