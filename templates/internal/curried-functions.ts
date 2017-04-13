@@ -8,24 +8,19 @@ const generics: string[] = [];
 const args: [string, string][] = [];
 
 const start = 1;
-const maxCurryLevel = 6;
-const returnType = 'R';
-const valuePrefix = 'v';
-const argPrefix = 'T';
-
-for (let i = 0; i < maxCurryLevel; i++) {
-  const typeName = `${argPrefix}${i + start}`;
+for (let i = 0; i < S.maxCurryLevel; i++) {
+  const typeName = S.gNumber(i + start);
   generics.push(typeName);
-  args.push([`${valuePrefix}${i + start}`, typeName]);
+  args.push([S.vNumber(i + start), typeName]);
 
-  const _interface = new S.Interface(S.tCurriedFunction(i + 1), [...generics, returnType])
+  const _interface = new S.Interface(S.tCurriedFunction(i + 1), [...generics, S.gReturn])
     .append(...S.createCurriedTypings({
       name: '',
       generics: [],
       args,
-      returnType,
+      returnType: S.gReturn,
       usePlaceholderAbbr: true,
-      holdHandler: x => x.replace(valuePrefix, '_') }));
+      holdHandler: x => x.replace(S.vNumberPrefix, S.vPlaceholderPrefix) }));
   interfaces.push(_interface);
 }
 
