@@ -26,4 +26,6 @@ export default new S.Definition([], new S.Namespace(S.namespace)
       .append(new S.PlainTyping('readonly length: number'))
       .append(new S.PlainTyping(`readonly [${S.vIndex}: ${S.tIndex}]: T`)))
     .append(new S.Interface(S.tDictionary, ['T'])
-      .append(new S.PlainTyping(`[${S.vKey}: ${S.tKey}]: T`)))));
+      .append(new S.PlainTyping(`[${S.vKey}: ${S.tKey}]: T`)))
+    .append(new S.Interface(S.tNestedDictionary, ['T'])
+      .append(new S.PlainTyping(`[${S.vKey}: ${S.tKey}]: T | ${S.tNestedDictionary}<T>`)))));

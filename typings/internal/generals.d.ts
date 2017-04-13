@@ -31,5 +31,8 @@ declare namespace R {
   interface Dictionary<T> {
     [key: string]: T;
   }
+  interface NestedDictionary<T> {
+    [key: string]: T | NestedDictionary<T>;
+  }
 
 }

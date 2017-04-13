@@ -100,6 +100,40 @@ checker(module, (check) => {
     check('apply', R.apply(Math.max, nums), 42);
   }
 
+  { // applySpec
+    { // non-generic will cause arguments length to be 1
+      const getMetrics = R.applySpec({
+        sum: R.add(2),
+        nested: { mul: R.multiply(2) },
+      });
+      check('applySpec', getMetrics(4), { sum: 6, nested: { mul: 8 } });
+    }
+
+    { // specify arguments length, types are considered any
+      const getMetrics = R.applySpec<2>({
+        sum: R.add,
+        nested: { mul: R.multiply },
+      });
+      check('applySpec', getMetrics(2, 4), { sum: 6, nested: { mul: 8 } });
+    }
+
+    { // specify arguments length and its type
+      const getMetrics = R.applySpec<2, number, number>({
+        sum: R.add,
+        nested: { mul: R.multiply },
+      });
+      check('applySpec', getMetrics(2, 4), { sum: 6, nested: { mul: 8 } });
+    }
+
+    { // specify everything even return-type
+      const getMetrics = R.applySpec<2, number, number, number>({
+        sum: R.add,
+        nested: { mul: R.multiply },
+      });
+      check('applySpec', getMetrics(2, 4), { sum: 6, nested: { mul: 8 } });
+    }
+  }
+
   { // concat
     check('concat', R.concat('ABC', 'DEF'), 'ABCDEF');
     check('concat', R.concat([4, 5, 6], [1, 2, 3]), [4, 5, 6, 1, 2, 3]);

@@ -12,6 +12,7 @@
 /// <reference path="./aperture.d.ts" />
 /// <reference path="./append.d.ts" />
 /// <reference path="./apply.d.ts" />
+/// <reference path="./applySpec.d.ts" />
 /// <reference path="./concat.d.ts" />
 /// <reference path="./equals.d.ts" />
 /// <reference path="./filter.d.ts" />

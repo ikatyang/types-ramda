@@ -1,0 +1,1 @@
+Given a spec object recursively mapping properties to functions, creates afunction producing an object of the same structure, by mapping each property to the result of calling its associated function with the supplied arguments.

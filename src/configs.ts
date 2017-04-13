@@ -16,6 +16,7 @@ export const tList = 'List';
 export const vList = 'list';
 export const tDictionary = 'Dictionary';
 export const vDictionary = 'dictionary';
+export const tNestedDictionary = 'NestedDictionary';
 export const tPredicate = 'Predicate';
 export const vPreficate = 'fn';
 export const tMappable = 'Mappable';
