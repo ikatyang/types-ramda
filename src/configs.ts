@@ -37,6 +37,7 @@ export const vValue = 'value';
 export const vString = 'str';
 export const tOjbect = '{}';
 export const vObject = 'obj';
+export const vArray = 'array';
 export const gReturn = 'R';
 export const gNumberPrefix = 'T';
 export const gNumber = (n: number) => gNumberPrefix + n;

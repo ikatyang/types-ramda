@@ -3,14 +3,14 @@ import * as S from '../src/index';
 const typingsForList = S.createCurriedTypings({
   name: 'function ap',
   generics: ['T', 'U'],
-  args: [[`${S.vMorphism}s`, `${S.tMorphism}<T, U>[]`], [S.vList, `${S.tList}<T>`]],
+  args: [[`${S.vMorphism}s`, `${S.tList}<${S.tMorphism}<T, U>>`], [S.vList, `${S.tList}<T>`]],
   returnType: `${S.tList}<U>`,
 });
 
 const typingsForAppable = S.createCurriedTypings({
   name: 'function ap',
   generics: ['T', 'U'],
-  args: [[`${S.vMorphism}s`, `${S.tMorphism}<T, U>[]`], [S.vAppable, `${S.tAppable}<T>`]],
+  args: [[`${S.vMorphism}s`, `${S.tList}<${S.tMorphism}<T, U>>`], [S.vAppable, `${S.tAppable}<T>`]],
   returnType: `${S.tAppable}<U>`,
 });
 

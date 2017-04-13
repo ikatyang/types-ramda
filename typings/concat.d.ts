@@ -15,10 +15,10 @@ declare namespace R {
   function concat(str1: string): CurriedFunction1<string, string>;
   function concat(str1: string, str2: string): string;
 
-  function concat<T, U>(list1: T[], list2: U[]): (T | U)[];
-  function concat<T, U>(_list1: Placeholder, list2: U[]): CurriedFunction1<T[], (T | U)[]>;
-  function concat<T, U>(list1: T[]): CurriedFunction1<U[], (T | U)[]>;
-  function concat<T, U>(list1: T[], list2: U[]): (T | U)[];
+  function concat<T, U>(array1: T[], array2: U[]): (T | U)[];
+  function concat<T, U>(_array1: Placeholder, array2: U[]): CurriedFunction1<T[], (T | U)[]>;
+  function concat<T, U>(array1: T[]): CurriedFunction1<U[], (T | U)[]>;
+  function concat<T, U>(array1: T[], array2: U[]): (T | U)[];
 
   function concat<T>(concatable: Concatable<T>, value: T): Concatable<T>;
   function concat<T>(_concatable: Placeholder, value: T): CurriedFunction1<Concatable<T>, Concatable<T>>;

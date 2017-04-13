@@ -10,7 +10,7 @@ const typingsForString = S.createCurriedTypings({
 const typingsForList = S.createCurriedTypings({
   name: 'function concat',
   generics: ['T', 'U'],
-  args: [[`${S.vList}1`, `T[]`], [`${S.vList}2`, `U[]`]],
+  args: [[`${S.vArray}1`, `T[]`], [`${S.vArray}2`, `U[]`]],
   returnType: '(T | U)[]',
 });
 
