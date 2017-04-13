@@ -8,6 +8,7 @@
 /// <reference path="./and.d.ts" />
 /// <reference path="./equals.d.ts" />
 /// <reference path="./filter.d.ts" />
+/// <reference path="./flip.d.ts" />
 /// <reference path="./lt.d.ts" />
 /// <reference path="./map.d.ts" />
 /// <reference path="./propEq.d.ts" />

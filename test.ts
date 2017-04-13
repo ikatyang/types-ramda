@@ -80,6 +80,12 @@ checker(module, (check) => {
     // TODO: R.filter for filterable
   }
 
+  { // flip
+    const mergeThree = (a: 1, b: 2, c: 3): number[] => [a, b, c];
+    check('flip', mergeThree(1, 2, 3), [1, 2, 3]);
+    check('flip', R.flip(mergeThree)(2, 1, 3), [1, 2, 3]);
+  }
+
   { // lt
     check('lt', R.lt(2, 1), false);
     check('lt', R.lt(2, 2), false);
