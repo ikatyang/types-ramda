@@ -14,5 +14,6 @@ declare namespace R {
   function equals<T, U>(a: T): CurriedFunction1<U, boolean>;
   function equals<T, U>(_a: Placeholder): CurriedFunction2<T, U, boolean>;
   function equals<T, U>(): CurriedFunction2<T, U, boolean>;
+  function equals<T, U>(a: T, b: U): boolean;
 
 }

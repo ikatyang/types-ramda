@@ -13,5 +13,6 @@ declare namespace R {
   function lt(a: Ordered): CurriedFunction1<Ordered, boolean>;
   function lt(_a: Placeholder): CurriedFunction2<Ordered, Ordered, boolean>;
   function lt(): CurriedFunction2<Ordered, Ordered, boolean>;
+  function lt(a: Ordered, b: Ordered): boolean;
 
 }

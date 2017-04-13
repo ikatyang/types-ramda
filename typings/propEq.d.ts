@@ -21,5 +21,6 @@ declare namespace R {
   function propEq(property: Property): CurriedFunction2<any, any, boolean>;
   function propEq(_property: Placeholder): CurriedFunction3<Property, any, any, boolean>;
   function propEq(): CurriedFunction3<Property, any, any, boolean>;
+  function propEq(property: Property, value: any, container: any): boolean;
 
 }

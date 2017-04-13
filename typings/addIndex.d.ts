@@ -11,5 +11,6 @@ declare namespace R {
   function addIndex<T, U>(fn: ListMapper<T, U>): CurriedFunction2<IndexedMorphism<T, U>, List<T>, U[]>;
   function addIndex<T, U>(_fn: Placeholder): CurriedFunction1<ListMapper<T, U>, CurriedFunction2<IndexedMorphism<T, U>, List<T>, U[]>>;
   function addIndex<T, U>(): CurriedFunction1<ListMapper<T, U>, CurriedFunction2<IndexedMorphism<T, U>, List<T>, U[]>>;
+  function addIndex<T, U>(fn: ListMapper<T, U>): CurriedFunction2<IndexedMorphism<T, U>, List<T>, U[]>;
 
 }

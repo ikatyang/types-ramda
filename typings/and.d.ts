@@ -12,5 +12,6 @@ declare namespace R {
   function and(a: boolean): CurriedFunction1<boolean, boolean>;
   function and(_a: Placeholder): CurriedFunction2<boolean, boolean, boolean>;
   function and(): CurriedFunction2<boolean, boolean, boolean>;
+  function and(a: boolean, b: boolean): boolean;
 
 }

@@ -17,5 +17,6 @@ declare namespace R {
   function all<T>(fn: Predicate<T>): CurriedFunction1<List<T>, boolean>;
   function all<T>(_fn: Placeholder): CurriedFunction2<Predicate<T>, List<T>, boolean>;
   function all<T>(): CurriedFunction2<Predicate<T>, List<T>, boolean>;
+  function all<T>(fn: Predicate<T>, list: List<T>): boolean;
 
 }

@@ -10,5 +10,6 @@ declare namespace R {
   function always<T>(value: T): () => T;
   function always<T>(_value: Placeholder): CurriedFunction1<T, () => T>;
   function always<T>(): CurriedFunction1<T, () => T>;
+  function always<T>(value: T): () => T;
 
 }

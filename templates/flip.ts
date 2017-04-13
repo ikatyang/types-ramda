@@ -1,6 +1,6 @@
 import * as S from '../src/index';
 
-const typings: S.Typing[] = [];
+const groups: S.Group[] = [];
 
 const generics: string[] = [
   S.gNumber(1),
@@ -21,12 +21,12 @@ const getFuncSignature = (_args: [string, string][]) => {
 
 for (let i = 2; i <= S.maxCurryLevel; i++) {
 
-  typings.push(...S.createCurriedTypings({
+  groups.push(new S.Group().append(...S.createCurriedTypings({
     name: 'function flip',
     generics: [...generics, S.gReturn],
     args: [['fn', getFuncSignature(args)]],
-    returnType: getFuncSignature(returnArgs),
-  }));
+    returnType: `${S.tCurriedFunction(returnArgs.length)}<${returnArgs.map(([, g]) => g).join(', ')}, ${S.gReturn}>`,
+  })));
 
   const typeName = S.gNumber(i + 1);
   generics.push(typeName);
@@ -36,8 +36,10 @@ for (let i = 2; i <= S.maxCurryLevel; i++) {
   returnArgs.push(arg);
 }
 
+groups[0].setComment(S.readComment(module));
+
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),
   new S.Reference('path', './internal/generals'),
 ], new S.Namespace(S.namespace)
-  .append(new S.Group().append(...typings).setComment(S.readComment(module))));
+  .append(...groups));

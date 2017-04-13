@@ -60,5 +60,7 @@ export const createCurriedTypings = (options: ICreateCurriedOptions): FunctionTy
     recursivePushTypings(typings, options, curryLevel, i, []);
   }
 
+  typings.unshift(typings[typings.length - 1]);
+
   return typings.reverse();
 };

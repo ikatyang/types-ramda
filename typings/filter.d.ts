@@ -17,6 +17,7 @@ declare namespace R {
   function filter<T>(fn: Predicate<T>): CurriedFunction1<List<T>, T[]>;
   function filter<T>(_fn: Placeholder): CurriedFunction2<Predicate<T>, List<T>, T[]>;
   function filter<T>(): CurriedFunction2<Predicate<T>, List<T>, T[]>;
+  function filter<T>(fn: Predicate<T>, list: List<T>): T[];
 
   function filter<T>(fn: Predicate<T>, dictionary: Dictionary<T>): Dictionary<T>;
   function filter<T>(fn: Predicate<T>, _dictionary: Placeholder): CurriedFunction1<Dictionary<T>, Dictionary<T>>;
@@ -25,6 +26,7 @@ declare namespace R {
   function filter<T>(fn: Predicate<T>): CurriedFunction1<Dictionary<T>, Dictionary<T>>;
   function filter<T>(_fn: Placeholder): CurriedFunction2<Predicate<T>, Dictionary<T>, Dictionary<T>>;
   function filter<T>(): CurriedFunction2<Predicate<T>, Dictionary<T>, Dictionary<T>>;
+  function filter<T>(fn: Predicate<T>, dictionary: Dictionary<T>): Dictionary<T>;
 
   function filter<T>(fn: Predicate<T>, filterable: Filterable<T>): Filterable<T>;
   function filter<T>(fn: Predicate<T>, _filterable: Placeholder): CurriedFunction1<Filterable<T>, Filterable<T>>;
@@ -33,5 +35,6 @@ declare namespace R {
   function filter<T>(fn: Predicate<T>): CurriedFunction1<Filterable<T>, Filterable<T>>;
   function filter<T>(_fn: Placeholder): CurriedFunction2<Predicate<T>, Filterable<T>, Filterable<T>>;
   function filter<T>(): CurriedFunction2<Predicate<T>, Filterable<T>, Filterable<T>>;
+  function filter<T>(fn: Predicate<T>, filterable: Filterable<T>): Filterable<T>;
 
 }

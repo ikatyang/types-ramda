@@ -21,6 +21,7 @@ declare namespace R {
   function map<T, U>(fn: Morphism<T, U>): CurriedFunction1<List<T>, U[]>;
   function map<T, U>(_fn: Placeholder): CurriedFunction2<Morphism<T, U>, List<T>, U[]>;
   function map<T, U>(): CurriedFunction2<Morphism<T, U>, List<T>, U[]>;
+  function map<T, U>(fn: Morphism<T, U>, list: List<T>): U[];
 
   function map<T, U>(fn: Morphism<T, U>, dictionary: Dictionary<T>): Dictionary<U>;
   function map<T, U>(fn: Morphism<T, U>, _dictionary: Placeholder): CurriedFunction1<Dictionary<T>, Dictionary<U>>;
@@ -29,6 +30,7 @@ declare namespace R {
   function map<T, U>(fn: Morphism<T, U>): CurriedFunction1<Dictionary<T>, Dictionary<U>>;
   function map<T, U>(_fn: Placeholder): CurriedFunction2<Morphism<T, U>, Dictionary<T>, Dictionary<U>>;
   function map<T, U>(): CurriedFunction2<Morphism<T, U>, Dictionary<T>, Dictionary<U>>;
+  function map<T, U>(fn: Morphism<T, U>, dictionary: Dictionary<T>): Dictionary<U>;
 
   function map<T, U>(fn: Morphism<T, U>, mappable: Mappable<T>): Mappable<U>;
   function map<T, U>(fn: Morphism<T, U>, _mappable: Placeholder): CurriedFunction1<Mappable<T>, Mappable<U>>;
@@ -37,5 +39,6 @@ declare namespace R {
   function map<T, U>(fn: Morphism<T, U>): CurriedFunction1<Mappable<T>, Mappable<U>>;
   function map<T, U>(_fn: Placeholder): CurriedFunction2<Morphism<T, U>, Mappable<T>, Mappable<U>>;
   function map<T, U>(): CurriedFunction2<Morphism<T, U>, Mappable<T>, Mappable<U>>;
+  function map<T, U>(fn: Morphism<T, U>, mappable: Mappable<T>): Mappable<U>;
 
 }

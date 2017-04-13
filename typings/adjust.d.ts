@@ -21,5 +21,6 @@ declare namespace R {
   function adjust<T, U>(fn: Morphism<T, U>): CurriedFunction2<number, List<T>, (T | U)[]>;
   function adjust<T, U>(_fn: Placeholder): CurriedFunction3<Morphism<T, U>, number, List<T>, (T | U)[]>;
   function adjust<T, U>(): CurriedFunction3<Morphism<T, U>, number, List<T>, (T | U)[]>;
+  function adjust<T, U>(fn: Morphism<T, U>, index: number, list: List<T>): (T | U)[];
 
 }
