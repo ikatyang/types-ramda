@@ -9,6 +9,7 @@
 /// <reference path="./any.d.ts" />
 /// <reference path="./anyPass.d.ts" />
 /// <reference path="./ap.d.ts" />
+/// <reference path="./aperture.d.ts" />
 /// <reference path="./concat.d.ts" />
 /// <reference path="./equals.d.ts" />
 /// <reference path="./filter.d.ts" />

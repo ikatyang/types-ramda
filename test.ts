@@ -83,6 +83,12 @@ checker(module, (check) => {
     check('ap', R.ap([R.concat('tasty '), R.toUpper], ['pizza', 'salad']), ['tasty pizza', 'tasty salad', 'PIZZA', 'SALAD']);
   }
 
+  { // aperture
+    check('aperture', R.aperture(2, [1, 2, 3, 4, 5]), [[1, 2], [2, 3], [3, 4], [4, 5]]);
+    check('aperture', R.aperture(3, [1, 2, 3, 4, 5]), [[1, 2, 3], [2, 3, 4], [3, 4, 5]]);
+    check('aperture', R.aperture(7, [1, 2, 3, 4, 5]), []);
+  }
+
   { // concat
     check('concat', R.concat('ABC', 'DEF'), 'ABCDEF');
     check('concat', R.concat([4, 5, 6], [1, 2, 3]), [4, 5, 6, 1, 2, 3]);
