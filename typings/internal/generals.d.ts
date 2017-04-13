@@ -20,6 +20,9 @@ declare namespace R {
   interface Appable<T> {
     ap<U>(fn: Morphism<T, U>): Appable<U>;
   }
+  interface Concatable<T> {
+    concat(value: T): Concatable<T>;
+  }
 
   interface List<T> {
     readonly length: number;

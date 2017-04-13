@@ -60,7 +60,7 @@ source version: v0.23.0
 - [ ] compose
 - [ ] composeK
 - [ ] composeP
-- [ ] concat
+- [x] concat
 - [ ] cond
 - [ ] construct
 - [ ] constructN
