@@ -17,6 +17,9 @@ declare namespace R {
   interface Filterable<T> {
     filter(fn: Predicate<T>): Filterable<T>;
   }
+  interface Appable<T> {
+    ap<U>(fn: Morphism<T, U>): Appable<U>;
+  }
 
   interface List<T> {
     readonly length: number;

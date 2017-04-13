@@ -8,6 +8,7 @@
 /// <reference path="./and.d.ts" />
 /// <reference path="./any.d.ts" />
 /// <reference path="./anyPass.d.ts" />
+/// <reference path="./ap.d.ts" />
 /// <reference path="./equals.d.ts" />
 /// <reference path="./filter.d.ts" />
 /// <reference path="./flip.d.ts" />

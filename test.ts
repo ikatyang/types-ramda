@@ -78,6 +78,11 @@ checker(module, (check) => {
     check('anyPass', isBlackCard({rank: 'Q', suit: '♦'}), false);
   }
 
+  { // TODO: ap
+    check('ap', R.ap([R.multiply(2), R.add(3)], [1,2,3]), [2, 4, 6, 4, 5, 6]);
+    // check('ap', R.ap([R.concat('tasty '), R.toUpper], ['pizza', 'salad']), ['tasty pizza', 'tasty salad', 'PIZZA', 'SALAD']);
+  }
+
   { // equals
     check('equals', R.equals(1, 1), true);
     check('equals', R.equals(1, '1'), false);
