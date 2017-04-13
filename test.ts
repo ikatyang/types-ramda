@@ -89,6 +89,12 @@ checker(module, (check) => {
     check('aperture', R.aperture(7, [1, 2, 3, 4, 5]), []);
   }
 
+  { // append
+    check('append', R.append('tests', ['write', 'more']), ['write', 'more', 'tests']);
+    check('append', R.append('tests', []), ['tests']);
+    check('append', R.append(['tests'], ['write', 'more']), ['write', 'more', ['tests']]);
+  }
+
   { // concat
     check('concat', R.concat('ABC', 'DEF'), 'ABCDEF');
     check('concat', R.concat([4, 5, 6], [1, 2, 3]), [4, 5, 6, 1, 2, 3]);
