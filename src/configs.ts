@@ -35,6 +35,8 @@ export const vProperty = 'property';
 export const tOrdered = 'Ordered';
 export const vValue = 'value';
 export const vString = 'str';
+export const tOjbect = '{}';
+export const vObject = 'obj';
 export const gReturn = 'R';
 export const gNumberPrefix = 'T';
 export const gNumber = (n: number) => gNumberPrefix + n;
