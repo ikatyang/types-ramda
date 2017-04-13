@@ -6,6 +6,7 @@ templates/
 .gitattributes
 .gitignore
 .npmignore
+.travis.yml
 test.ts
 tsconfig.json
 tslint.json
