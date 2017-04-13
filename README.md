@@ -44,7 +44,7 @@ source version: v0.23.0
 - [x] aperture
 - [x] append
 - [x] apply
-- [ ] applySpec
+- [x] applySpec
 - [ ] ascend
 - [ ] assoc
 - [ ] assocPath
