@@ -95,6 +95,11 @@ checker(module, (check) => {
     check('append', R.append(['tests'], ['write', 'more']), ['write', 'more', ['tests']]);
   }
 
+  { // apply
+    const nums = [1, 2, 3, -99, 42, 6, 7];
+    check('apply', R.apply(Math.max, nums), 42);
+  }
+
   { // concat
     check('concat', R.concat('ABC', 'DEF'), 'ABCDEF');
     check('concat', R.concat([4, 5, 6], [1, 2, 3]), [4, 5, 6, 1, 2, 3]);
