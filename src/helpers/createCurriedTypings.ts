@@ -44,7 +44,9 @@ const createCurriedTyping = (options: ICreateCurriedOptions, curryLevel: number,
 
 const recursivePushTypings = (typings: FunctionTyping[], options: ICreateCurriedOptions, curryLevel: number, argumentCount: number, isPlaceholders: boolean[]): void => {
   if (isPlaceholders.length === argumentCount) {
-    typings.push(createCurriedTyping(options, curryLevel, isPlaceholders));
+    if (isPlaceholders[isPlaceholders.length - 1] === false) {
+      typings.push(createCurriedTyping(options, curryLevel, isPlaceholders));
+    }
     return;
   }
   recursivePushTypings(typings, options, curryLevel, argumentCount, [...isPlaceholders, true]);
@@ -60,7 +62,9 @@ export const createCurriedTypings = (options: ICreateCurriedOptions): FunctionTy
     recursivePushTypings(typings, options, curryLevel, i, []);
   }
 
-  typings.unshift(typings[typings.length - 1]);
+  if (typings.length > 1) {
+    typings.unshift(typings[typings.length - 1]);
+  }
 
   return typings.reverse();
 };

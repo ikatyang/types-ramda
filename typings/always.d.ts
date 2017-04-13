@@ -8,8 +8,5 @@ declare namespace R {
    * This function is known as `const`, `constant`, or `K` (for K combinator) in other languages and libraries.
    */
   function always<T>(value: T): () => T;
-  function always<T>(_value: Placeholder): CurriedFunction1<T, () => T>;
-  function always<T>(): CurriedFunction1<T, () => T>;
-  function always<T>(value: T): () => T;
 
 }

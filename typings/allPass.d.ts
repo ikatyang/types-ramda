@@ -9,8 +9,5 @@ declare namespace R {
    * The function returned is a curried function whose arity matches that of the highest-arity predicate.
    */
   function allPass<T>(fns: Predicate<T>[]): CurriedFunction1<T, boolean>;
-  function allPass<T>(_fns: Placeholder): CurriedFunction1<Predicate<T>[], CurriedFunction1<T, boolean>>;
-  function allPass<T>(): CurriedFunction1<Predicate<T>[], CurriedFunction1<T, boolean>>;
-  function allPass<T>(fns: Predicate<T>[]): CurriedFunction1<T, boolean>;
 
 }
