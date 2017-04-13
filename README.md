@@ -160,7 +160,7 @@ source version: v0.23.0
 - [ ] min
 - [ ] minBy
 - [ ] modulo
-- [ ] multiply
+- [x] multiply
 - [ ] nAry
 - [ ] negate
 - [ ] none

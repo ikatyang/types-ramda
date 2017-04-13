@@ -117,6 +117,14 @@ checker(module, (check) => {
     // TODO: R.map for mappable
   }
 
+  { // multiply
+    const double = R.multiply(2);
+    const triple = R.multiply(3);
+    check('multiply', double(3), 6);
+    check('multiply', triple(4), 12);
+    check('multiply', R.multiply(2, 5), 10);
+  }
+
   { // propEq
     const abby = { name: 'Abby', age: 7, hair: 'blond' };
     const fred = { name: 'Fred', age: 12, hair: 'brown' };

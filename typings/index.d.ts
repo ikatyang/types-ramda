@@ -13,5 +13,6 @@
 /// <reference path="./flip.d.ts" />
 /// <reference path="./lt.d.ts" />
 /// <reference path="./map.d.ts" />
+/// <reference path="./multiply.d.ts" />
 /// <reference path="./propEq.d.ts" />
 /// <reference path="./replace.d.ts" />
