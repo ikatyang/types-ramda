@@ -16,7 +16,7 @@ checker(module, (check) => {
   }
 
   { // addIndex
-    { // cause every generic types to be any ( {} ), since TS cannot inferred types across function calls
+    { // cause every generic types to be any, since TS cannot inferred types across function calls
       const mapIndexed = R.addIndex(R.map);
       check('addIndex', mapIndexed((val, idx) => idx + '-' + val, ['f', 'o', 'o', 'b', 'a', 'r']), ['0-f', '1-o', '2-o', '3-b', '4-a', '5-r']);
     }
@@ -60,6 +60,22 @@ checker(module, (check) => {
     check('and', R.and(true, false), false);
     check('and', R.and(false, true), false);
     check('and', R.and(false, false), false);
+  }
+
+  { // any
+    const lessThan0 = R.flip(R.lt)(0);
+    const lessThan2 = R.flip(R.lt)(2);
+    check('any', R.any(lessThan0)([1, 2]), false);
+    check('any', R.any(lessThan2)([1, 2]), true);
+  }
+
+  { // anyPass
+    const isClub = R.propEq('suit', '♣');
+    const isSpade = R.propEq('suit', '♠');
+    const isBlackCard = R.anyPass([isClub, isSpade]);
+    check('anyPass', isBlackCard({rank: '10', suit: '♣'}), true);
+    check('anyPass', isBlackCard({rank: 'Q', suit: '♠'}), true);
+    check('anyPass', isBlackCard({rank: 'Q', suit: '♦'}), false);
   }
 
   { // equals

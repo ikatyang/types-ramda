@@ -38,8 +38,8 @@ source version: v0.23.0
 - [x] allPass
 - [x] always
 - [x] and
-- [ ] any
-- [ ] anyPass
+- [x] any
+- [x] anyPass
 - [ ] ap
 - [ ] aperture
 - [ ] append
