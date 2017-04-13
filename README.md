@@ -4,6 +4,8 @@
 
 TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 
+require `typescript >= 2.3.0` since this project has used [`generic parameter defaults`](https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#generic-parameter-defaults)
+
 ## Development
 
 Use Yarn as package manager
