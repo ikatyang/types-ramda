@@ -16,3 +16,4 @@
 /// <reference path="./multiply.d.ts" />
 /// <reference path="./propEq.d.ts" />
 /// <reference path="./replace.d.ts" />
+/// <reference path="./toUpper.d.ts" />

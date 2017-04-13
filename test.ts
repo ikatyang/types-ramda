@@ -141,4 +141,8 @@ checker(module, (check) => {
     check('replace', R.replace(/foo/g, 'bar', 'foo foo foo'), 'bar bar bar');
   }
 
+  { // toUpper
+    check('toUpper', R.toUpper('abc'), 'ABC');
+  }
+
 });

@@ -1,0 +1,1 @@
+The upper case version of a string.

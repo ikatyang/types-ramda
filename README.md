@@ -236,7 +236,7 @@ source version: v0.23.0
 - [ ] toPairs
 - [ ] toPairsIn
 - [ ] toString
-- [ ] toUpper
+- [x] toUpper
 - [ ] transduce
 - [ ] transpose
 - [ ] traverse

@@ -1,9 +1,9 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedTypings({
-  name: 'function replace',
+  name: 'function toUpper',
   generics: [],
-  args: [['pattern', 'string | RegExp'], ['replacement', 'string'], [S.vString, 'string']],
+  args: [[S.vString, 'string']],
   returnType: 'string',
 });
 
