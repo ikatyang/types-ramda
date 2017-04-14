@@ -149,6 +149,10 @@ checker(module, (check) => {
     check('sort', R.sort(byAge, people), sortedPeople);
   }
 
+  { // assoc
+    check('assoc', R.assoc('c', 3, { a: 1, b: 2 }), { a: 1, b: 2, c: 3 });
+  }
+
   { // concat
     check('concat', R.concat('ABC', 'DEF'), 'ABCDEF');
     check('concat', R.concat([4, 5, 6], [1, 2, 3]), [4, 5, 6, 1, 2, 3]);
