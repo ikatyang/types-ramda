@@ -192,6 +192,11 @@ checker(module, (check) => {
     check('multiply', R.multiply(2, 5), 10);
   }
 
+  { // prop
+    check('prop', R.prop('x', { x: 100 }), 100);
+    check('prop', R.prop('x', {}), undefined);
+  }
+
   { // propEq
     const abby = { name: 'Abby', age: 7, hair: 'blond' };
     const fred = { name: 'Fred', age: 12, hair: 'brown' };
