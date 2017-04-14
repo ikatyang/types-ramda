@@ -134,6 +134,10 @@ checker(module, (check) => {
     }
   }
 
+  { // ascend
+    // TODO
+  }
+
   { // concat
     check('concat', R.concat('ABC', 'DEF'), 'ABCDEF');
     check('concat', R.concat([4, 5, 6], [1, 2, 3]), [4, 5, 6, 1, 2, 3]);

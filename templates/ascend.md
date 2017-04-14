@@ -1,0 +1,1 @@
+Makes an ascending comparator function out of a function that returns a value that can be compared with `<` and `>`.
