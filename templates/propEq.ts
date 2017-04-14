@@ -3,7 +3,7 @@ import * as S from '../src/index';
 const typings = S.createCurriedTypings({
   name: 'function propEq',
   generics: [],
-  args: [[S.vProperty, S.tProperty], [S.vValue, 'any'], [S.vObject, S.tOjbect]],
+  args: [[S.vProperty, S.tProperty], [S.vValue, 'any'], [S.vObject, S.tObject]],
   returnType: 'boolean',
 });
 
