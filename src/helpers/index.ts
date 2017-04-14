@@ -1,2 +1,2 @@
-export { readComment } from './readComment';
-export { createCurriedTypings } from './createCurriedTypings';
+export { readComment } from './read-comment';
+export { createCurriedTypings } from './create-curried-typings';
