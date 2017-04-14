@@ -6,6 +6,7 @@ declare namespace R {
   type Morphism<T, U> = (value: T) => U;
   type IndexedMorphism<T, U> = (value: T, index: number, list: List<T>) => U;
   type Predicate<T> = Morphism<T, boolean>;
+  type Comparator<T> = (a: T, b: T) => number;
 
   type Mapper<T, U> = (fn: Morphism<T, U>, mappable: Mappable<T>) => Mappable<U>;
   type ListMapper<T, U> = (fn: Morphism<T, U>, list: List<T>) => U[];

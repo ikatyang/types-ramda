@@ -213,6 +213,11 @@ checker(module, (check) => {
     check('replace', R.replace(/foo/g, 'bar', 'foo foo foo'), 'bar bar bar');
   }
 
+  { // sort
+    const diff = (a: number, b: number) => a - b;
+    check('sort', R.sort(diff, [4, 2, 7, 5]), [2, 4, 5, 7]);
+  }
+
   { // toUpper
     check('toUpper', R.toUpper('abc'), 'ABC');
   }

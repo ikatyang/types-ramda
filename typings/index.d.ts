@@ -24,4 +24,5 @@
 /// <reference path="./prop.d.ts" />
 /// <reference path="./propEq.d.ts" />
 /// <reference path="./replace.d.ts" />
+/// <reference path="./sort.d.ts" />
 /// <reference path="./toUpper.d.ts" />
