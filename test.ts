@@ -135,7 +135,18 @@ checker(module, (check) => {
   }
 
   { // ascend
-    // TODO
+    const byAge = R.ascend(R.prop('age'));
+    const people = [
+      { name: 'a', age: 20 },
+      { name: 'b', age: 40 },
+      { name: 'c', age: 30 },
+    ];
+    const sortedPeople = [
+      { name: 'a', age: 20 },
+      { name: 'c', age: 30 },
+      { name: 'b', age: 40 },
+    ];
+    check('sort', R.sort(byAge, people), sortedPeople);
   }
 
   { // concat

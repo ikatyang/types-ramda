@@ -47,7 +47,7 @@ source version: v0.23.0
 - [x] append
 - [x] apply
 - [x] applySpec
-- [ ] ascend
+- [x] ascend
 - [ ] assoc
 - [ ] assocPath
 - [ ] binary
