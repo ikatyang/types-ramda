@@ -13,7 +13,9 @@ export default (_module: NodeModule, tester: (check: <T>(name: string, a: T, b: 
       : checkedCounts[name] = 1;
     const caseIndex = checkedCount;
     try {
-      deepEqual(a, b);
+      if (!Number.isNaN(a as any) && !Number.isNaN(b as any)) {
+        deepEqual(a, b);
+      }
       passedCount++;
     } catch (_error) {
       failedCount++;
