@@ -234,7 +234,7 @@ source version: v0.23.0
 - [ ] tap
 - [ ] test
 - [x] times
-- [ ] toLower
+- [x] toLower
 - [ ] toPairs
 - [ ] toPairsIn
 - [ ] toString

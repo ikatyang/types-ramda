@@ -332,6 +332,10 @@ checker(module, (check) => {
     check('times', R.times(R.identity, 5), [0, 1, 2, 3, 4]);
   }
 
+  { // toLower
+    check('toLower', R.toLower('XYZ'), 'xyz');
+  }
+
   { // toUpper
     check('toUpper', R.toUpper('abc'), 'ABC');
   }
