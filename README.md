@@ -161,7 +161,7 @@ source version: v0.23.0
 - [ ] mergeWithKey
 - [ ] min
 - [ ] minBy
-- [ ] modulo
+- [x] modulo
 - [x] multiply
 - [ ] nAry
 - [x] negate

@@ -313,6 +313,16 @@ checker(module, (check) => {
     check('mathMod', seventeenMod(10), 7);
   }
 
+  { // modulo
+    check('modulo', R.modulo(17, 3), 2);
+    check('modulo', R.modulo(-17, 3), -2);
+    check('modulo', R.modulo(17, -3), 2);
+
+    const isOdd = R.modulo(R.__, 2);
+    check('modulo', isOdd(42), 0);
+    check('modulo', isOdd(21), 1);
+  }
+
   { // multiply
     const double = R.multiply(2);
     const triple = R.multiply(3);
