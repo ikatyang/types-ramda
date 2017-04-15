@@ -295,6 +295,24 @@ checker(module, (check) => {
     // TODO: R.map for mappable
   }
 
+  { // mathMod
+    check('mathMod', R.mathMod(-17, 5), 3);
+    check('mathMod', R.mathMod(17, 5), 2);
+    check('mathMod', R.mathMod(17, -5), NaN);
+    check('mathMod', R.mathMod(17, 0), NaN);
+    check('mathMod', R.mathMod(17.2, 5), NaN);
+    check('mathMod', R.mathMod(17, 5.3), NaN);
+
+    const clock = R.mathMod(R.__, 12);
+    check('mathMod', clock(15), 3);
+    check('mathMod', clock(24), 0);
+
+    const seventeenMod = R.mathMod(17);
+    check('mathMod', seventeenMod(3), 2);
+    check('mathMod', seventeenMod(4), 1);
+    check('mathMod', seventeenMod(10), 7);
+  }
+
   { // multiply
     const double = R.multiply(2);
     const triple = R.multiply(3);

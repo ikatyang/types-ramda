@@ -149,7 +149,7 @@ source version: v0.23.0
 - [ ] mapAccumRight
 - [ ] mapObjIndexed
 - [ ] match
-- [ ] mathMod
+- [x] mathMod
 - [ ] max
 - [ ] maxBy
 - [ ] mean

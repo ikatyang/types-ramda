@@ -34,6 +34,7 @@
 /// <reference path="./lt.d.ts" />
 /// <reference path="./lte.d.ts" />
 /// <reference path="./map.d.ts" />
+/// <reference path="./mathMod.d.ts" />
 /// <reference path="./multiply.d.ts" />
 /// <reference path="./negate.d.ts" />
 /// <reference path="./pipe.d.ts" />
