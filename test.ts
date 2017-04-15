@@ -153,6 +153,12 @@ checker(module, (check) => {
     check('assoc', R.assoc('c', 3, { a: 1, b: 2 }), { a: 1, b: 2, c: 3 });
   }
 
+  { // assocPath
+    const result = { a: { b: { c: 42 }}};
+    check('assocPath', R.assocPath(['a', 'b', 'c'], 42, { a: { b: { c: 0 }}}), result);
+    check('assocPath', R.assocPath(['a', 'b', 'c'], 42, { a: 5 }), result);
+  }
+
   { // concat
     check('concat', R.concat('ABC', 'DEF'), 'ABCDEF');
     check('concat', R.concat([4, 5, 6], [1, 2, 3]), [4, 5, 6, 1, 2, 3]);

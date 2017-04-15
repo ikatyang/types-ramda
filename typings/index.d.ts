@@ -15,6 +15,7 @@
 /// <reference path="./applySpec.d.ts" />
 /// <reference path="./ascend.d.ts" />
 /// <reference path="./assoc.d.ts" />
+/// <reference path="./assocPath.d.ts" />
 /// <reference path="./concat.d.ts" />
 /// <reference path="./equals.d.ts" />
 /// <reference path="./filter.d.ts" />
