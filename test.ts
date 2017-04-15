@@ -285,6 +285,10 @@ checker(module, (check) => {
     check('multiply', R.multiply(2, 5), 10);
   }
 
+  { // negate
+    check('negate', R.negate(42), -42);
+  }
+
   { // prop
     check('prop', R.prop('x', { x: 100 }), 100);
     check('prop', R.prop('x', {}), undefined);
