@@ -21,10 +21,9 @@ const getFuncSignature = (_args: [string, string][]) => {
 
 for (let i = 2; i <= S.maxCurryLevel; i++) {
 
-  typings.push(...S.createCurriedTypings({
+  typings.push(...S.createCurriedFunctions({
     name: 'function flip',
-    generics: [...generics, S.gReturn],
-    args: [['fn', getFuncSignature(args)]],
+    arguments: [[[...generics, S.gReturn], 'fn', getFuncSignature(args)]],
     returnType: `${S.tCurriedFunction(returnArgs.length)}<${returnArgs.map(([, g]) => g).join(', ')}, ${S.gReturn}>`,
   }));
 

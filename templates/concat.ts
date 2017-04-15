@@ -1,28 +1,24 @@
 import * as S from '../src/index';
 
-const typingsForString = S.createCurriedTypings({
+const typingsForString = S.createCurriedFunctions({
   name: 'function concat',
-  generics: [],
-  args: [[`${S.vString}1`, 'string'], [`${S.vString}2`, 'string']],
+  arguments: [[[], `${S.vString}1`, 'string'], [[], `${S.vString}2`, 'string']],
   returnType: 'string',
 });
 
-const typingsForList = S.createCurriedTypings({
+const typingsForList = S.createCurriedFunctions({
   name: 'function concat',
-  generics: ['T', 'U'],
-  args: [[`${S.vArray}1`, `T[]`], [`${S.vArray}2`, `U[]`]],
+  arguments: [[['T'], `${S.vArray}1`, `T[]`], [['U'], `${S.vArray}2`, `U[]`]],
   returnType: '(T | U)[]',
 });
 
-const typingsForConcatable = S.createCurriedTypings({
+const typingsForConcatable = S.createCurriedFunctions({
   name: 'function concat',
-  generics: ['T'],
-  args: [[S.vConcatable, `${S.tConcatable}<T>`], [S.vValue, 'T']],
+  arguments: [[['T'], S.vConcatable, `${S.tConcatable}<T>`], [['T'], S.vValue, 'T']],
   returnType: `${S.tConcatable}<T>`,
 });
 
 export default new S.Definition([
-  new S.Reference('path', './internal/curried-functions'),
   new S.Reference('path', './internal/generals'),
 ], new S.Namespace(S.namespace)
   .append(new S.Group().append(...typingsForString).setComment(S.readComment(module)))

@@ -1,22 +1,19 @@
 import * as S from '../src/index';
 
-const typings = S.createCurriedTypings({
+const typingsForString = S.createCurriedFunctions({
   name: 'function assoc',
-  generics: ['P extends string', 'V', `T extends ${S.tObject}`],
-  args: [[S.vProperty, 'P'], [`${S.vValue}`, 'V'], [S.vObject, 'T']],
+  arguments: [[['P extends string'], S.vProperty, 'P'], [['V'], `${S.vValue}`, 'V'], [[`T extends ${S.tObject}`], S.vObject, 'T']],
   returnType: 'T & { [K in P]: V }',
 });
 
-const typingsForProperty = S.createCurriedTypings({
+const typingsForProperty = S.createCurriedFunctions({
   name: 'function assoc',
-  generics: [`T extends ${S.tObject}`],
-  args: [[S.vProperty, S.tProperty], [`${S.vValue}`, 'any'], [S.vObject, 'T']],
+  arguments: [[[], S.vProperty, S.tProperty], [[], `${S.vValue}`, 'any'], [[`T extends ${S.tObject}`], S.vObject, 'T']],
   returnType: 'T',
 });
 
 export default new S.Definition([
-  new S.Reference('path', './internal/curried-functions'),
   new S.Reference('path', './internal/generals'),
 ], new S.Namespace(S.namespace)
-  .append(new S.Group().append(...typings).setComment(S.readComment(module)))
+  .append(new S.Group().append(...typingsForString).setComment(S.readComment(module)))
   .append(new S.Group().append(...typingsForProperty)));

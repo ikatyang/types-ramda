@@ -1,5 +1,3 @@
-/// <reference path="./internal/curried-functions.d.ts" />
-
 declare namespace R {
 
   /**

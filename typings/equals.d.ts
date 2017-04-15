@@ -1,5 +1,3 @@
-/// <reference path="./internal/curried-functions.d.ts" />
-
 declare namespace R {
 
   /**
@@ -8,8 +6,12 @@ declare namespace R {
    * Dispatches symmetrically to the `equals` methods of both arguments, if present.
    */
   function equals<T, U>(a: T, b: U): boolean;
-  function equals<T, U>(_a: Placeholder, b: U): CurriedFunction1<T, boolean>;
-  function equals<T, U>(a: T): CurriedFunction1<U, boolean>;
+  function equals<U>(_a: PH, b: U): {
+    <T>(a: T): boolean;
+  };
+  function equals<T>(a: T): {
+    <U>(b: U): boolean;
+  };
   function equals<T, U>(a: T, b: U): boolean;
 
 }

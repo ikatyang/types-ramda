@@ -1,9 +1,8 @@
 import * as S from '../src/index';
 
-const typings = S.createCurriedTypings({
+const typings = S.createCurriedFunctions({
   name: 'function allPass',
-  generics: ['T'],
-  args: [[`${S.vPreficate}s`, `${S.tPredicate}<T>[]`]],
+  arguments: [[['T'], `${S.vPreficate}s`, `${S.tPredicate}<T>[]`]],
   returnType: `${S.tCurriedFunction(1)}<T, boolean>`,
 });
 

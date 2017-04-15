@@ -1,4 +1,3 @@
-/// <reference path="./internal/curried-functions.d.ts" />
 /// <reference path="./internal/generals.d.ts" />
 
 declare namespace R {
@@ -11,18 +10,30 @@ declare namespace R {
    * Acts as a transducer if a transformer is given in list position.
    */
   function filter<T>(fn: Predicate<T>, list: List<T>): T[];
-  function filter<T>(_fn: Placeholder, list: List<T>): CurriedFunction1<Predicate<T>, T[]>;
-  function filter<T>(fn: Predicate<T>): CurriedFunction1<List<T>, T[]>;
+  function filter<T>(_fn: PH, list: List<T>): {
+    (fn: Predicate<T>): T[];
+  };
+  function filter<T>(fn: Predicate<T>): {
+    (list: List<T>): T[];
+  };
   function filter<T>(fn: Predicate<T>, list: List<T>): T[];
 
   function filter<T>(fn: Predicate<T>, dictionary: Dictionary<T>): Dictionary<T>;
-  function filter<T>(_fn: Placeholder, dictionary: Dictionary<T>): CurriedFunction1<Predicate<T>, Dictionary<T>>;
-  function filter<T>(fn: Predicate<T>): CurriedFunction1<Dictionary<T>, Dictionary<T>>;
+  function filter<T>(_fn: PH, dictionary: Dictionary<T>): {
+    (fn: Predicate<T>): Dictionary<T>;
+  };
+  function filter<T>(fn: Predicate<T>): {
+    (dictionary: Dictionary<T>): Dictionary<T>;
+  };
   function filter<T>(fn: Predicate<T>, dictionary: Dictionary<T>): Dictionary<T>;
 
   function filter<T>(fn: Predicate<T>, filterable: Filterable<T>): Filterable<T>;
-  function filter<T>(_fn: Placeholder, filterable: Filterable<T>): CurriedFunction1<Predicate<T>, Filterable<T>>;
-  function filter<T>(fn: Predicate<T>): CurriedFunction1<Filterable<T>, Filterable<T>>;
+  function filter<T>(_fn: PH, filterable: Filterable<T>): {
+    (fn: Predicate<T>): Filterable<T>;
+  };
+  function filter<T>(fn: Predicate<T>): {
+    (filterable: Filterable<T>): Filterable<T>;
+  };
   function filter<T>(fn: Predicate<T>, filterable: Filterable<T>): Filterable<T>;
 
 }

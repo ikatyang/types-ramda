@@ -1,4 +1,3 @@
-/// <reference path="./internal/curried-functions.d.ts" />
 /// <reference path="./internal/generals.d.ts" />
 
 declare namespace R {
@@ -11,8 +10,12 @@ declare namespace R {
    * Acts as a transducer if a transformer is given in list position.
    */
   function any<T>(fn: Predicate<T>, list: List<T>): boolean;
-  function any<T>(_fn: Placeholder, list: List<T>): CurriedFunction1<Predicate<T>, boolean>;
-  function any<T>(fn: Predicate<T>): CurriedFunction1<List<T>, boolean>;
+  function any<T>(_fn: PH, list: List<T>): {
+    (fn: Predicate<T>): boolean;
+  };
+  function any<T>(fn: Predicate<T>): {
+    (list: List<T>): boolean;
+  };
   function any<T>(fn: Predicate<T>, list: List<T>): boolean;
 
 }
