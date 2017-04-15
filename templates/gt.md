@@ -1,0 +1,1 @@
+Returns `true` if the first argument is greater than the second; `false` otherwise.

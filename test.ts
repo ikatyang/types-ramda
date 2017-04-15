@@ -207,6 +207,14 @@ checker(module, (check) => {
     check('flip', R.flip(mergeThree)(2, 1, 3), [1, 2, 3]);
   }
 
+  { // gt
+    check('gt', R.gt(2, 1), true);
+    check('gt', R.gt(2, 2), false);
+    check('gt', R.gt(2, 3), false);
+    check('gt', R.gt('a', 'z'), false);
+    check('gt', R.gt('z', 'a'), true);
+  }
+
   { // lt
     check('lt', R.lt(2, 1), false);
     check('lt', R.lt(2, 2), false);

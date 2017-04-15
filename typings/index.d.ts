@@ -22,6 +22,7 @@
 /// <reference path="./equals.d.ts" />
 /// <reference path="./filter.d.ts" />
 /// <reference path="./flip.d.ts" />
+/// <reference path="./gt.d.ts" />
 /// <reference path="./lt.d.ts" />
 /// <reference path="./lte.d.ts" />
 /// <reference path="./map.d.ts" />

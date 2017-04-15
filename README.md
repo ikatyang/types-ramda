@@ -104,7 +104,7 @@ source version: v0.23.0
 - [ ] fromPairs
 - [ ] groupBy
 - [ ] groupWith
-- [ ] gt
+- [x] gt
 - [ ] gte
 - [ ] has
 - [ ] hasIn
