@@ -31,6 +31,7 @@
 /// <reference path="./identity.d.ts" />
 /// <reference path="./inc.d.ts" />
 /// <reference path="./join.d.ts" />
+/// <reference path="./length.d.ts" />
 /// <reference path="./lt.d.ts" />
 /// <reference path="./lte.d.ts" />
 /// <reference path="./map.d.ts" />

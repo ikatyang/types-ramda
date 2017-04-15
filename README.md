@@ -135,7 +135,7 @@ source version: v0.23.0
 - [ ] keysIn
 - [ ] last
 - [ ] lastIndexOf
-- [ ] length
+- [x] length
 - [ ] lens
 - [ ] lensIndex
 - [ ] lensPath

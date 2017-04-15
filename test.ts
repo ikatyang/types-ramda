@@ -272,6 +272,11 @@ checker(module, (check) => {
     check('join', R.join('|', [1, 2, 3]), '1|2|3');
   }
 
+  { // length
+    check('length', R.length([]), 0);
+    check('length', R.length([1, 2, 3]), 3);
+  }
+
   { // lt
     check('lt', R.lt(2, 1), false);
     check('lt', R.lt(2, 2), false);
