@@ -3,7 +3,7 @@ import * as S from '../src/index';
 const typings = S.createCurriedFunctions({
   name: 'function times',
   arguments: [[['R'], S.vMorphism, `${S.tMorphism}<number, R>`], [[], 'n', 'number']],
-  returnType: 'R',
+  returnType: 'R[]',
 });
 
 export default new S.Definition([

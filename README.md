@@ -233,7 +233,7 @@ source version: v0.23.0
 - [ ] takeWhile
 - [ ] tap
 - [ ] test
-- [ ] times
+- [x] times
 - [ ] toLower
 - [ ] toPairs
 - [ ] toPairsIn

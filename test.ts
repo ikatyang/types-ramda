@@ -311,8 +311,8 @@ checker(module, (check) => {
     check('sort', R.sort(diff, [4, 2, 7, 5]), [2, 4, 5, 7]);
   }
 
-  { // TODO: times
-    // check('times', R.times(R.identity, 5), [0, 1, 2, 3, 4]);
+  { // times
+    check('times', R.times(R.identity, 5), [0, 1, 2, 3, 4]);
   }
 
   { // toUpper
