@@ -34,24 +34,32 @@ const initCurriedElements = (elements: ICreateCurriedFunctionElement[], restArgs
     if (args[args.length - 1][2] !== configs.tPlaceholderAbbr) {
       const children: ICreateCurriedFunctionElement[] = [];
       elements.push({ arguments: args, children });
-      initCurriedElements(children, restArgs.filter(arg => args.indexOf(arg) === -1));
+      const currentGenerics = args.reduce((_generics: string[], [argGenerics]) => {
+        return _generics.concat(argGenerics);
+      }, []);
+      const newRestArgs = restArgs
+        .filter(arg => args.indexOf(arg) === -1)
+        .map(([generics, variable, typing]): [string[], string, string] => {
+          return [generics.filter(generic => currentGenerics.indexOf(generic) === -1), variable, typing];
+        });
+      initCurriedElements(children, newRestArgs);
     }
   });
 };
 
+const getGenerics = (args: ICreateCurriedFunctionArgument[]): string[] => {
+  return Array.from(new Set(args.reduce((target: string[], [generics]) => {
+    return target.concat(generics);
+  }, [])));
+};
+
 const createCurriedFunction = (name: string, element: ICreateCurriedFunctionElement, returnType: string): FunctionTyping => {
   if (element.children.length === 0) {
-    return new FunctionTyping(name,
-      element.arguments.reduce((target: string[], [generics]) => {
-        return target.concat(generics);
-      }, []),
-      element.arguments.map(([_, variable, typing]) => ([variable, typing] as [string, string])), returnType);
+    return new FunctionTyping(name, getGenerics(element.arguments),
+      element.arguments.map(([_, variable, typing]): [string, string] => ([variable, typing])), returnType);
   } else {
-    return new FunctionTyping(name,
-      element.arguments.reduce((target: string[], [generics]) => {
-        return target.concat(generics);
-      }, []),
-      element.arguments.map(([_, variable, typing]) => ([variable, typing] as [string, string])),
+    return new FunctionTyping(name, getGenerics(element.arguments),
+      element.arguments.map(([_, variable, typing]): [string, string] => ([variable, typing])),
       new InterfaceTyping(element.children.map(child => createCurriedFunction('', child, returnType))));
   }
 };
