@@ -2,7 +2,7 @@ import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
   name: 'function lt',
-  arguments: [[[], 'a', S.tOrdered], [[], 'b', S.tOrdered]],
+  arguments: [[[`T extends ${S.tOrdered}`], 'a', 'T'], [[`T extends ${S.tOrdered}`], 'b', 'T']],
   returnType: 'boolean',
 });
 
