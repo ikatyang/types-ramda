@@ -67,5 +67,10 @@ const createCurriedFunction = (name: string, element: ICreateCurriedFunctionElem
 export const createCurriedFunctions = (options: ICreateCurriedFunctionOptions): FunctionTyping[] => {
   const elements: ICreateCurriedFunctionElement[] = [];
   initCurriedElements(elements, options.arguments);
+
+  if (elements.length > 1) {
+    elements.push(elements[0]);
+  }
+
   return elements.map(element => createCurriedFunction(options.name, element, options.returnType));
 };
