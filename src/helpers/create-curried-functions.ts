@@ -2,9 +2,19 @@ import * as configs from '../configs';
 import { FunctionTyping } from '../typings/function';
 import { InterfaceTyping } from '../typings/interface';
 
-export type ICreateCurriedFunctionArgument = [string[], string, string];
+type ICreateCurriedFunctionGenerics = string[];
+type ICreateCurriedFunctionVariable = string;
+type ICreateCurriedFunctionTyping = string;
+
+export type ICreateCurriedFunctionArgument = [
+  ICreateCurriedFunctionGenerics,
+  ICreateCurriedFunctionVariable,
+  ICreateCurriedFunctionTyping
+];
+
 export interface ICreateCurriedFunctionOptions {
   name: string;
+  generics?: string[];
   arguments: ICreateCurriedFunctionArgument[];
   returnType: string;
 }
@@ -72,5 +82,9 @@ export const createCurriedFunctions = (options: ICreateCurriedFunctionOptions): 
     elements.push(elements[0]);
   }
 
-  return elements.map(element => createCurriedFunction(options.name, element, options.returnType));
+  return elements.map(element => {
+    const typing = createCurriedFunction(options.name, element, options.returnType);
+    typing.generics.unshift(...(options.generics || []));
+    return typing;
+  });
 };
