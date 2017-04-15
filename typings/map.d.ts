@@ -20,25 +20,17 @@ declare namespace R {
   };
   function map<T, U>(fn: Morphism<T, U>): {
     (list: List<T>): U[];
+    (dictionary: Dictionary<T>): Dictionary<U>;
+    (mappable: Mappable<T>): Mappable<U>;
   };
-  function map<T, U>(fn: Morphism<T, U>, list: List<T>): U[];
-
   function map<T, U>(fn: Morphism<T, U>, dictionary: Dictionary<T>): Dictionary<U>;
   function map<T>(_fn: PH, dictionary: Dictionary<T>): {
     <U>(fn: Morphism<T, U>): Dictionary<U>;
   };
-  function map<T, U>(fn: Morphism<T, U>): {
-    (dictionary: Dictionary<T>): Dictionary<U>;
-  };
-  function map<T, U>(fn: Morphism<T, U>, dictionary: Dictionary<T>): Dictionary<U>;
-
   function map<T, U>(fn: Morphism<T, U>, mappable: Mappable<T>): Mappable<U>;
   function map<T>(_fn: PH, mappable: Mappable<T>): {
     <U>(fn: Morphism<T, U>): Mappable<U>;
   };
-  function map<T, U>(fn: Morphism<T, U>): {
-    (mappable: Mappable<T>): Mappable<U>;
-  };
-  function map<T, U>(fn: Morphism<T, U>, mappable: Mappable<T>): Mappable<U>;
+  function map<T, U>(fn: Morphism<T, U>, list: List<T>): U[];
 
 }

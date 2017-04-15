@@ -14,16 +14,12 @@ declare namespace R {
   };
   function ap<T, U>(fns: List<Morphism<T, U>>): {
     (list: List<T>): List<U>;
+    (appable: Appable<T>): Appable<U>;
   };
-  function ap<T, U>(fns: List<Morphism<T, U>>, list: List<T>): List<U>;
-
   function ap<T, U>(fns: List<Morphism<T, U>>, appable: Appable<T>): Appable<U>;
   function ap<T>(_fns: PH, appable: Appable<T>): {
     <U>(fns: List<Morphism<T, U>>): Appable<U>;
   };
-  function ap<T, U>(fns: List<Morphism<T, U>>): {
-    (appable: Appable<T>): Appable<U>;
-  };
-  function ap<T, U>(fns: List<Morphism<T, U>>, appable: Appable<T>): Appable<U>;
+  function ap<T, U>(fns: List<Morphism<T, U>>, list: List<T>): List<U>;
 
 }
