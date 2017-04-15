@@ -169,6 +169,13 @@ checker(module, (check) => {
     check('binary', takesTwoArgs(1, 2), [1, 2, undefined]);
   }
 
+  { // bind
+    const func = function (this: any): number { return this.result; };
+    const context = { result: 123 };
+    const getResult = R.bind(func, context);
+    check('bind', getResult(), 123);
+  }
+
   { // concat
     check('concat', R.concat('ABC', 'DEF'), 'ABCDEF');
     check('concat', R.concat([4, 5, 6], [1, 2, 3]), [4, 5, 6, 1, 2, 3]);
