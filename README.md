@@ -71,7 +71,7 @@ source version: v0.23.0
 - [ ] countBy
 - [ ] curry
 - [ ] curryN
-- [ ] dec
+- [x] dec
 - [ ] defaultTo
 - [ ] descend
 - [ ] difference

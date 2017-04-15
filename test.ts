@@ -202,6 +202,10 @@ checker(module, (check) => {
     // check('call', format({indent: 2, value: 'foo\nbar\nbaz\n'}), '  foo\n  bar\n  baz\n');
   }
 
+  { // dec
+    check('dec', R.dec(42), 41);
+  }
+
   { // equals
     check('equals', R.equals(1, 1), true);
     check('equals', R.equals(1, '1'), false);
