@@ -112,7 +112,7 @@ source version: v0.23.0
 - [ ] identical
 - [x] identity
 - [ ] ifElse
-- [ ] inc
+- [x] inc
 - [ ] indexBy
 - [ ] indexOf
 - [ ] init

@@ -248,6 +248,10 @@ checker(module, (check) => {
     check('identity', R.identity(obj) === obj, true);
   }
 
+  { // inc
+    check('inc', R.inc(42), 43);
+  }
+
   { // join
     const spacer = R.join(' ');
     check('join', spacer(['a', 2, 3.4]), 'a 2 3.4');

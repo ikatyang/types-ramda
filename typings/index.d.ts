@@ -27,6 +27,7 @@
 /// <reference path="./gt.d.ts" />
 /// <reference path="./gte.d.ts" />
 /// <reference path="./identity.d.ts" />
+/// <reference path="./inc.d.ts" />
 /// <reference path="./join.d.ts" />
 /// <reference path="./lt.d.ts" />
 /// <reference path="./lte.d.ts" />
