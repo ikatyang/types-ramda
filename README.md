@@ -221,7 +221,7 @@ source version: v0.23.0
 - [ ] splitAt
 - [ ] splitEvery
 - [ ] splitWhen
-- [ ] subtract
+- [x] subtract
 - [ ] sum
 - [ ] symmetricDifference
 - [ ] symmetricDifferenceWith

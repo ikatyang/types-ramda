@@ -1,0 +1,1 @@
+Subtracts its second argument from its first argument.

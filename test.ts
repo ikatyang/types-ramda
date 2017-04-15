@@ -328,6 +328,17 @@ checker(module, (check) => {
     check('sort', R.sort(diff, [4, 2, 7, 5]), [2, 4, 5, 7]);
   }
 
+  { // subtract
+    check('substract', R.subtract(10, 8), 2);
+
+    const minus5 = R.subtract(R.__, 5);
+    check('substract', minus5(17), 12);
+
+    const complementaryAngle = R.subtract(90);
+    check('substract', complementaryAngle(30), 60);
+    check('substract', complementaryAngle(72), 18);
+  }
+
   { // times
     check('times', R.times(R.identity, 5), [0, 1, 2, 3, 4]);
   }
