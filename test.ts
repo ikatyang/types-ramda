@@ -191,6 +191,17 @@ checker(module, (check) => {
     // TODO: R.concat for concatable
   }
 
+  { // call
+    check('call', R.call(R.add, 1, 2), 3);
+    // TODO:
+    // const indentN = R.pipe(R.times(R.always(' ')), R.join(''), R.replace(/^(?!$)/gm));
+    // const format = R.converge(R.call, [
+    //   R.pipe(R.prop('indent'), indentN),
+    //   R.prop('value'),
+    // ]);
+    // check('call', format({indent: 2, value: 'foo\nbar\nbaz\n'}), '  foo\n  bar\n  baz\n');
+  }
+
   { // equals
     check('equals', R.equals(1, 1), true);
     check('equals', R.equals(1, '1'), false);

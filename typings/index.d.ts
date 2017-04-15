@@ -19,6 +19,7 @@
 /// <reference path="./binary.d.ts" />
 /// <reference path="./bind.d.ts" />
 /// <reference path="./both.d.ts" />
+/// <reference path="./call.d.ts" />
 /// <reference path="./concat.d.ts" />
 /// <reference path="./equals.d.ts" />
 /// <reference path="./filter.d.ts" />
