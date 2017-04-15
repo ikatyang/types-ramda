@@ -242,6 +242,12 @@ checker(module, (check) => {
     check('gte', R.gte('z', 'a'), true);
   }
 
+  { // identity
+    check('identity', R.identity(1), 1);
+    const obj = {};
+    check('identity', R.identity(obj) === obj, true);
+  }
+
   { // join
     const spacer = R.join(' ');
     check('join', spacer(['a', 2, 3.4]), 'a 2 3.4');

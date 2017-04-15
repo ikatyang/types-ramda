@@ -110,7 +110,7 @@ source version: v0.23.0
 - [ ] hasIn
 - [ ] head
 - [ ] identical
-- [ ] identity
+- [x] identity
 - [ ] ifElse
 - [ ] inc
 - [ ] indexBy
