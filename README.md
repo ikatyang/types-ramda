@@ -129,7 +129,7 @@ source version: v0.23.0
 - [ ] isArrayLike
 - [ ] isEmpty
 - [ ] isNil
-- [ ] join
+- [x] join
 - [ ] juxt
 - [ ] keys
 - [ ] keysIn

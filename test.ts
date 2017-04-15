@@ -242,6 +242,12 @@ checker(module, (check) => {
     check('gte', R.gte('z', 'a'), true);
   }
 
+  { // join
+    const spacer = R.join(' ');
+    check('join', spacer(['a', 2, 3.4]), 'a 2 3.4');
+    check('join', R.join('|', [1, 2, 3]), '1|2|3');
+  }
+
   { // lt
     check('lt', R.lt(2, 1), false);
     check('lt', R.lt(2, 2), false);

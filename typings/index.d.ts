@@ -26,6 +26,7 @@
 /// <reference path="./flip.d.ts" />
 /// <reference path="./gt.d.ts" />
 /// <reference path="./gte.d.ts" />
+/// <reference path="./join.d.ts" />
 /// <reference path="./lt.d.ts" />
 /// <reference path="./lte.d.ts" />
 /// <reference path="./map.d.ts" />
