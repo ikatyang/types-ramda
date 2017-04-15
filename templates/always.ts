@@ -6,5 +6,7 @@ const typings = S.createCurriedFunctions({
   returnType: '() => T',
 });
 
-export default new S.Definition([], new S.Namespace(S.namespace)
+export default new S.Definition([
+  new S.Reference('path', './internal/curried-functions'),
+], new S.Namespace(S.namespace)
   .append(new S.Group().append(...typings).setComment(S.readComment(module))));
