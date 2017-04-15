@@ -215,6 +215,14 @@ checker(module, (check) => {
     check('gt', R.gt('z', 'a'), true);
   }
 
+  { // gte
+    check('gte', R.gte(2, 1), true);
+    check('gte', R.gte(2, 2), true);
+    check('gte', R.gte(2, 3), false);
+    check('gte', R.gte('a', 'z'), false);
+    check('gte', R.gte('z', 'a'), true);
+  }
+
   { // lt
     check('lt', R.lt(2, 1), false);
     check('lt', R.lt(2, 2), false);

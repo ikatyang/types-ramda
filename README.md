@@ -105,7 +105,7 @@ source version: v0.23.0
 - [ ] groupBy
 - [ ] groupWith
 - [x] gt
-- [ ] gte
+- [x] gte
 - [ ] has
 - [ ] hasIn
 - [ ] head
