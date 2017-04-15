@@ -297,6 +297,11 @@ checker(module, (check) => {
     check('negate', R.negate(42), -42);
   }
 
+  { // pipe
+    const f = R.pipe(Math.pow, R.negate, R.inc);
+    check('pipe', f(3, 4), -(3 ** 4) + 1);
+  }
+
   { // prop
     check('prop', R.prop('x', { x: 100 }), 100);
     check('prop', R.prop('x', {}), undefined);

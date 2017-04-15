@@ -186,7 +186,7 @@ source version: v0.23.0
 - [ ] pick
 - [ ] pickAll
 - [ ] pickBy
-- [ ] pipe
+- [x] pipe
 - [ ] pipeK
 - [ ] pipeP
 - [ ] pluck
