@@ -176,6 +176,14 @@ checker(module, (check) => {
     check('bind', getResult(), 123);
   }
 
+  { // both
+    const gt10 = R.gt<number>(R.__, 10);
+    const lt20 = R.lt<number>(R.__, 20);
+    const f = R.both(gt10, lt20);
+    check('both', f(15), true);
+    check('both', f(30), false);
+  }
+
   { // concat
     check('concat', R.concat('ABC', 'DEF'), 'ABCDEF');
     check('concat', R.concat([4, 5, 6], [1, 2, 3]), [4, 5, 6, 1, 2, 3]);
