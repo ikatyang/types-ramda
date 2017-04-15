@@ -159,6 +159,16 @@ checker(module, (check) => {
     check('assocPath', R.assocPath(['a', 'b', 'c'], 42, { a: 5 }), result);
   }
 
+  { // binary
+    const takesThreeArgs = (a: any, b: any, c: any) => [a, b, c];
+    check('binary', takesThreeArgs(1, 2, 3), [1, 2, 3]);
+
+    const takesTwoArgs = R.binary(takesThreeArgs);
+    check('binary', takesTwoArgs.length, 2);
+
+    check('binary', takesTwoArgs(1, 2), [1, 2, undefined]);
+  }
+
   { // concat
     check('concat', R.concat('ABC', 'DEF'), 'ABCDEF');
     check('concat', R.concat([4, 5, 6], [1, 2, 3]), [4, 5, 6, 1, 2, 3]);
