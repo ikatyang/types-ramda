@@ -35,4 +35,5 @@
 /// <reference path="./propEq.d.ts" />
 /// <reference path="./replace.d.ts" />
 /// <reference path="./sort.d.ts" />
+/// <reference path="./times.d.ts" />
 /// <reference path="./toUpper.d.ts" />
