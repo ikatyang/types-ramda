@@ -2,7 +2,7 @@ import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
   name: 'function anyPass',
-  arguments: [[['T'], `${S.vPreficate}s`, `${S.tPredicate}<T>[]`]],
+  arguments: [[['T'], `${S.vPreficates}`, `${S.tPredicate}<T>[]`]],
   returnType: `${S.tCurriedFunction(1)}<T, boolean>`,
 });
 
