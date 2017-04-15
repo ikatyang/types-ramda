@@ -78,7 +78,7 @@ source version: v0.23.0
 - [ ] differenceWith
 - [ ] dissoc
 - [ ] dissocPath
-- [ ] divide
+- [x] divide
 - [ ] drop
 - [ ] dropLast
 - [ ] dropLastWhile

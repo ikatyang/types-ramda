@@ -206,6 +206,16 @@ checker(module, (check) => {
     check('dec', R.dec(42), 41);
   }
 
+  { // divide
+    check('divide', R.divide(71, 100), 0.71);
+
+    const half = R.divide(R.__, 2);
+    check('divide', half(42), 21);
+
+    const reciprocal = R.divide(1);
+    check('divide', reciprocal(4), 0.25);
+  }
+
   { // equals
     check('equals', R.equals(1, 1), true);
     check('equals', R.equals(1, '1'), false);
