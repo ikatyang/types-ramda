@@ -377,6 +377,10 @@ checker(module, (check) => {
     check('substract', complementaryAngle(72), 18);
   }
 
+  { // sum
+    check('sum', R.sum([2, 4, 6, 8, 100, 1]), 121);
+  }
+
   { // times
     check('times', R.times(R.identity, 5), [0, 1, 2, 3, 4]);
   }

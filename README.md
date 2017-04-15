@@ -222,7 +222,7 @@ source version: v0.23.0
 - [ ] splitEvery
 - [ ] splitWhen
 - [x] subtract
-- [ ] sum
+- [x] sum
 - [ ] symmetricDifference
 - [ ] symmetricDifferenceWith
 - [ ] T
