@@ -74,17 +74,61 @@ const createCurriedFunction = (name: string, element: ICreateCurriedFunctionElem
   }
 };
 
-export const createCurriedFunctions = (options: ICreateCurriedFunctionOptions): FunctionTyping[] => {
-  const elements: ICreateCurriedFunctionElement[] = [];
-  initCurriedElements(elements, options.arguments);
+const isSameTyping = (a: FunctionTyping, b: FunctionTyping) => {
+  return JSON.stringify(a.generics) === JSON.stringify(b.generics)
+    && JSON.stringify(a.args) === JSON.stringify(b.args);
+};
 
-  if (elements.length > 1) {
-    elements.push(elements[0]);
+const mergeTypings = (mainTypings: FunctionTyping[], ...otherTypingss: FunctionTyping[][]) => {
+  for (const otherTypings of otherTypingss) {
+    for (const otherTyping of otherTypings) {
+      let hasSame = false;
+
+      for (const mainTyping of mainTypings) {
+        if (isSameTyping(mainTyping, otherTyping)) {
+
+          const mainReturnTypings = (mainTyping.returnType as InterfaceTyping).typings as FunctionTyping[];
+          const otherReturnTypings = (otherTyping.returnType as InterfaceTyping).typings as FunctionTyping[];
+
+          mergeTypings(mainReturnTypings, otherReturnTypings);
+
+          hasSame = true;
+          break;
+        }
+      }
+
+      if (!hasSame) {
+        mainTypings.push(otherTyping);
+      }
+    }
   }
+};
 
+const elementsToTypings = (elements: ICreateCurriedFunctionElement[], options: ICreateCurriedFunctionOptions) => {
   return elements.map(element => {
     const typing = createCurriedFunction(options.name, element, options.returnType);
     typing.generics.unshift(...(options.generics || []));
     return typing;
   });
+};
+
+export const createCurriedFunctions = (mainOptions: ICreateCurriedFunctionOptions, ...otherOptionss: ICreateCurriedFunctionOptions[]): FunctionTyping[] => {
+  const mainElements: ICreateCurriedFunctionElement[] = [];
+  initCurriedElements(mainElements, mainOptions.arguments);
+  const mainTypings = elementsToTypings(mainElements, mainOptions);
+
+  const othertypingss: FunctionTyping[][] = [];
+  otherOptionss.forEach((otherOptions) => {
+    const otherElements: ICreateCurriedFunctionElement[] = [];
+    initCurriedElements(otherElements, otherOptions.arguments);
+    othertypingss.push(elementsToTypings(otherElements, otherOptions));
+  });
+
+  mergeTypings(mainTypings, ...othertypingss);
+
+  if (mainTypings.length > 1) {
+    mainTypings.push(mainTypings[0]);
+  }
+
+  return mainTypings;
 };
