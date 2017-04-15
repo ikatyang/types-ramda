@@ -143,7 +143,7 @@ source version: v0.23.0
 - [ ] lift
 - [ ] liftN
 - [x] lt
-- [ ] lte
+- [x] lte
 - [x] map
 - [ ] mapAccum
 - [ ] mapAccumRight

@@ -215,6 +215,14 @@ checker(module, (check) => {
     check('lt', R.lt('z', 'a'), false);
   }
 
+  { // lte
+    check('lte', R.lte(2, 1), false);
+    check('lte', R.lte(2, 2), true);
+    check('lte', R.lte(2, 3), true);
+    check('lte', R.lte('a', 'z'), true);
+    check('lte', R.lte('z', 'a'), false);
+  }
+
   { // map
     const double = (x: number) => x * 2;
     check('map', R.map(double, [1, 2, 3]), [2, 4, 6]);
