@@ -24,6 +24,15 @@ declare namespace R {
   interface Concatable<T> {
     concat(value: T): Concatable<T>;
   }
+  interface AllAble<T> {
+    all(fn: Predicate<T>): boolean;
+  }
+  interface AnyAble<T> {
+    any(fn: Predicate<T>): boolean;
+  }
+  interface NoneAble<T> {
+    none(fn: Predicate<T>): boolean;
+  }
 
   interface List<T> {
     readonly length: number;

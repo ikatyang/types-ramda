@@ -16,6 +16,11 @@ declare namespace R {
   };
   function any<T>(fn: Predicate<T>): {
     (list: List<T>): boolean;
+    (anyAble: AnyAble<T>): boolean;
+  };
+  function any<T>(fn: Predicate<T>, anyAble: AnyAble<T>): boolean;
+  function any<T>(_fn: PH, anyAble: AnyAble<T>): {
+    (fn: Predicate<T>): boolean;
   };
   function any<T>(fn: Predicate<T>, list: List<T>): boolean;
 

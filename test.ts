@@ -40,6 +40,7 @@ checker(module, (check) => {
     const equals3 = R.equals(3);
     check('all', R.all(equals3)([3, 3, 3, 3]), true);
     check('all', R.all(equals3)([3, 3, 1, 3]), false);
+    // TODO: R.all for allAble
   }
 
   { // allPass
@@ -67,6 +68,7 @@ checker(module, (check) => {
     const lessThan2 = R.flip(R.lt)(2);
     check('any', R.any(lessThan0)([1, 2]), false);
     check('any', R.any(lessThan2)([1, 2]), true);
+    // TODO: R.any for anyAble
   }
 
   { // anyPass
@@ -359,6 +361,7 @@ checker(module, (check) => {
     const isEven = (n: number) => n % 2 === 0;
     check('none', R.none(isEven, [1, 3, 5, 7, 9, 11]), true);
     check('none', R.none(isEven, [1, 3, 5, 7, 8, 11]), false);
+    // TODO: R.none for noneAble
   }
 
   { // not
