@@ -23,6 +23,7 @@ for (let i = 2; i <= S.maxCurryLevel; i++) {
 
   typings.push(...S.createCurriedFunctions({
     name: 'flip',
+    typeAlias: i.toString(),
     arguments: [[[...generics, S.gReturn], 'fn', getFuncSignature(args)]],
     returnType: `${S.tCurriedFunction(returnArgs.length)}<${returnArgs.map(([, g]) => g).join(', ')}, ${S.gReturn}>`,
   }));
@@ -34,6 +35,13 @@ for (let i = 2; i <= S.maxCurryLevel; i++) {
   args.push(arg);
   returnArgs.push(arg);
 }
+
+typings.push(...S.createCurriedFunctions({
+  name: 'flip',
+  typeAlias: 'N',
+  arguments: [[[S.gReturn], 'fn', `(...args: any[]) => ${S.gReturn}`]],
+  returnType: 'any',
+}));
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),
