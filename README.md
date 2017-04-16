@@ -205,7 +205,7 @@ source version: v0.23.0
 - [ ] reduced
 - [ ] reduceRight
 - [ ] reduceWhile
-- [ ] reject
+- [x] reject
 - [ ] remove
 - [ ] repeat
 - [x] replace

@@ -48,6 +48,7 @@
 /// <reference path="./product.d.ts" />
 /// <reference path="./prop.d.ts" />
 /// <reference path="./propEq.d.ts" />
+/// <reference path="./reject.d.ts" />
 /// <reference path="./replace.d.ts" />
 /// <reference path="./sort.d.ts" />
 /// <reference path="./subtract.d.ts" />
