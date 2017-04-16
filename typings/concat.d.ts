@@ -17,6 +17,20 @@ declare namespace R {
   function concat<T>(array1: T[]): {
     <U>(array2: U[]): (T | U)[];
   };
+  function concat(str1: string, str2: string): string;
+  function concat(_str1: PH, str2: string): {
+    (str1: string): string;
+  };
+  function concat(str1: string): {
+    (str2: string): string;
+  };
+  function concat<T>(concatable: Concatable<T>, value: T): Concatable<T>;
+  function concat<T>(_concatable: PH, value: T): {
+    (concatable: Concatable<T>): Concatable<T>;
+  };
+  function concat<T>(concatable: Concatable<T>): {
+    (value: T): Concatable<T>;
+  };
   function concat<T, U>(array1: T[], array2: U[]): (T | U)[];
 
 }

@@ -4,6 +4,10 @@ const typings = S.createCurriedFunctions({
   name: 'function assoc',
   arguments: [[['P extends string'], S.vProperty, 'P'], [['V'], `${S.vValue}`, 'V'], [[`T extends ${S.tObject}`], S.vObject, 'T']],
   returnType: 'T & { [K in P]: V }',
+}, {
+  name: 'function assoc',
+  arguments: [[[], S.vProperty, S.tProperty], [[], `${S.vValue}`, 'any'], [[`T extends ${S.tObject}`], S.vObject, 'T']],
+  returnType: 'T',
 });
 
 export default new S.Definition([

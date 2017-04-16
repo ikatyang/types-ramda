@@ -4,6 +4,14 @@ const typings = S.createCurriedFunctions({
   name: 'function map',
   arguments: [[['T', 'U'], S.vMorphism, `${S.tMorphism}<T, U>`], [['T'], S.vList, `${S.tList}<T>`]],
   returnType: 'U[]',
+}, {
+  name: 'function map',
+  arguments: [[['T', 'U'], S.vMorphism, `${S.tMorphism}<T, U>`], [['T'], S.vDictionary, `${S.tDictionary}<T>`]],
+  returnType: `${S.tDictionary}<U>`,
+}, {
+  name: 'function map',
+  arguments: [[['T', 'U'], S.vMorphism, `${S.tMorphism}<T, U>`], [['T'], S.vMappable, `${S.tMappable}<T>`]],
+  returnType: `${S.tMappable}<U>`,
 });
 
 export default new S.Definition([

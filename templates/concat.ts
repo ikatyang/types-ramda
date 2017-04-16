@@ -4,6 +4,14 @@ const typings = S.createCurriedFunctions({
   name: 'function concat',
   arguments: [[['T'], `${S.vArray}1`, `T[]`], [['U'], `${S.vArray}2`, `U[]`]],
   returnType: '(T | U)[]',
+}, {
+  name: 'function concat',
+  arguments: [[[], `${S.vString}1`, 'string'], [[], `${S.vString}2`, 'string']],
+  returnType: 'string',
+}, {
+  name: 'function concat',
+  arguments: [[['T'], S.vConcatable, `${S.tConcatable}<T>`], [['T'], S.vValue, 'T']],
+  returnType: `${S.tConcatable}<T>`,
 });
 
 export default new S.Definition([

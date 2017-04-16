@@ -14,6 +14,16 @@ declare namespace R {
   };
   function reject<T>(fn: Predicate<T>): {
     (list: List<T>): T[];
+    (dictionary: Dictionary<T>): Dictionary<T>;
+    (filterable: Filterable<T>): Filterable<T>;
+  };
+  function reject<T>(fn: Predicate<T>, dictionary: Dictionary<T>): Dictionary<T>;
+  function reject<T>(_fn: PH, dictionary: Dictionary<T>): {
+    (fn: Predicate<T>): Dictionary<T>;
+  };
+  function reject<T>(fn: Predicate<T>, filterable: Filterable<T>): Filterable<T>;
+  function reject<T>(_fn: PH, filterable: Filterable<T>): {
+    (fn: Predicate<T>): Filterable<T>;
   };
   function reject<T>(fn: Predicate<T>, list: List<T>): T[];
 

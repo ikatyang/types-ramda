@@ -1,4 +1,6 @@
-import * as R from './lib/index';
+/// <reference path="./index.d.ts" />
+
+import * as R from 'ramda';
 import checker from './src/checker';
 
 checker(module, (check) => {
@@ -38,7 +40,7 @@ checker(module, (check) => {
     const equals3 = R.equals(3);
     check('all', R.all(equals3)([3, 3, 3, 3]), true);
     check('all', R.all(equals3)([3, 3, 1, 3]), false);
-    // TODO: R.allSelf for allAble
+    // TODO: R.all for allAble
   }
 
   { // allPass
@@ -66,7 +68,7 @@ checker(module, (check) => {
     const lessThan2 = R.flip(R.lt)(2);
     check('any', R.any(lessThan0)([1, 2]), false);
     check('any', R.any(lessThan2)([1, 2]), true);
-    // TODO: R.anySelf for anyAble
+    // TODO: R.any for anyAble
   }
 
   { // anyPass
@@ -80,8 +82,7 @@ checker(module, (check) => {
 
   { // ap
     check('ap', R.ap([R.multiply(2), R.add(3)], [1,2,3]), [2, 4, 6, 4, 5, 6]);
-    check('ap', R.ap([R.concatString('tasty '), R.toUpper], ['pizza', 'salad']), ['tasty pizza', 'tasty salad', 'PIZZA', 'SALAD']);
-    // TODO: R.apSelf for appable
+    check('ap', R.ap([R.concat('tasty '), R.toUpper], ['pizza', 'salad']), ['tasty pizza', 'tasty salad', 'PIZZA', 'SALAD']);
   }
 
   { // aperture
@@ -152,7 +153,6 @@ checker(module, (check) => {
 
   { // assoc
     check('assoc', R.assoc('c', 3, { a: 1, b: 2 }), { a: 1, b: 2, c: 3 });
-    // TODO: R.assocSoft for Property
   }
 
   { // assocPath
@@ -187,10 +187,10 @@ checker(module, (check) => {
   }
 
   { // concat
-    check('concat', R.concatString('ABC', 'DEF'), 'ABCDEF');
+    check('concat', R.concat('ABC', 'DEF'), 'ABCDEF');
     check('concat', R.concat([4, 5, 6], [1, 2, 3]), [4, 5, 6, 1, 2, 3]);
     check('concat', R.concat([], []), []);
-    // TODO: R.concatSelf for concatable
+    // TODO: R.concat for concatable
   }
 
   { // call
@@ -247,8 +247,8 @@ checker(module, (check) => {
   { // filter
     const isEven = (n: number) => n % 2 === 0;
     check('filter', R.filter(isEven, [1, 2, 3, 4]), [2, 4]);
-    check('filter', R.filterDictionary(isEven, { a: 1, b: 2, c: 3, d: 4 }), { b: 2, d: 4 });
-    // TODO: R.filterSelf for filterable
+    check('filter', R.filter(isEven, { a: 1, b: 2, c: 3, d: 4 }), { b: 2, d: 4 });
+    // TODO: R.filter for filterable
   }
 
   { // flip
@@ -313,8 +313,8 @@ checker(module, (check) => {
   { // map
     const double = (x: number) => x * 2;
     check('map', R.map(double, [1, 2, 3]), [2, 4, 6]);
-    check('map', R.mapDictionary(double, { x: 1, y: 2, z: 3 }), { x: 2, y: 4, z: 6 });
-    // TODO: R.mapSelf for mappable
+    check('map', R.map(double, { x: 1, y: 2, z: 3 }), { x: 2, y: 4, z: 6 });
+    // TODO: R.map for mappable
   }
 
   { // mathMod
@@ -361,7 +361,7 @@ checker(module, (check) => {
     const isEven = (n: number) => n % 2 === 0;
     check('none', R.none(isEven, [1, 3, 5, 7, 9, 11]), true);
     check('none', R.none(isEven, [1, 3, 5, 7, 8, 11]), false);
-    // TODO: R.noneSelf for noneAble
+    // TODO: R.none for noneAble
   }
 
   { // not
@@ -409,8 +409,7 @@ checker(module, (check) => {
   { // reject
     const isOdd = (n: number) => n % 2 === 1;
     check('reject', R.reject(isOdd, [1, 2, 3, 4]), [2, 4]);
-    check('reject', R.rejectDictionary(isOdd, { a: 1, b: 2, c: 3, d: 4 }), { b: 2, d: 4 });
-    // TODO: R.rejectSelf for filterable
+    check('reject', R.reject(isOdd, { a: 1, b: 2, c: 3, d: 4 }), { b: 2, d: 4 });
   }
 
   { // replace

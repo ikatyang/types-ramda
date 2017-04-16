@@ -1,10 +1,10 @@
-# ts-ramda
+# @ikatyang/types-ramda
 
-[![build](https://travis-ci.org/ikatyang/ts-ramda.svg)](https://travis-ci.org/ikatyang/ts-ramda)
+[![build](https://travis-ci.org/ikatyang/types-ramda.svg)](https://travis-ci.org/ikatyang/types-ramda)
 
-TypeScript Wrapper for [Ramda](https://github.com/ramda/ramda)
+TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 
-require `typescript >= 2.3.0`
+require `typescript >= 2.3.0` since this project has used [`generic parameter defaults`](https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#generic-parameter-defaults)
 
 ## Development
 
@@ -28,7 +28,7 @@ yarn run lint
 yarn run test
 ```
 
-## API
+## Progress
 
 source version: v0.23.0
 
@@ -40,21 +40,15 @@ source version: v0.23.0
 - [x] allPass
 - [x] always
 - [x] and
-- any
-  - [x] any for ArrayLike
-  - [x] anySelf for `#any()`
+- [x] any
 - [x] anyPass
-- ap
-  - [x] ap for ArrayLike
-  - [x] apSelf for `#ap()`
+- [x] ap
 - [x] aperture
 - [x] append
 - [x] apply
 - [x] applySpec
 - [x] ascend
-- assoc
-  - [x] assoc for intersection type with string key
-  - [x] assocSoft for same type with Property key
+- [x] assoc
 - [x] assocPath
 - [x] binary
 - [x] bind
@@ -68,10 +62,7 @@ source version: v0.23.0
 - [ ] compose
 - [ ] composeK
 - [ ] composeP
-- concat
-  - [x] concat for Array
-  - [x] concatSelf for `#concat()`
-  - [x] concatString for string
+- [x] concat
 - [ ] cond
 - [ ] construct
 - [ ] constructN
@@ -101,23 +92,13 @@ source version: v0.23.0
 - [x] equals
 - [ ] evolve
 - [ ] F
-- filter
-  - [x] filter for ArrayLike
-  - [x] filterSelf for `#filter()`
-  - [x] filterDictionary for Object
+- [x] filter
 - [ ] find
 - [ ] findIndex
 - [ ] findLast
 - [ ] findLastIndex
 - [ ] flatten
-- flip
-  - [x] flip for any args
-  - [x] flip2 for 2 args
-  - [x] flip3 for 3 args
-  - [x] flip4 for 4 args
-  - [x] flip5 for 5 args
-  - [x] flip6 for 6 args
-  - [x] flipN for more args
+- [x] flip
 - [ ] forEach
 - [ ] forEachObjIndexed
 - [ ] fromPairs
@@ -163,10 +144,7 @@ source version: v0.23.0
 - [ ] liftN
 - [x] lt
 - [x] lte
-- map
-  - [x] map for ArrayLike
-  - [x] mapSelf for `#map()`
-  - [x] mapDictionary for Object
+- [x] map
 - [ ] mapAccum
 - [ ] mapAccumRight
 - [ ] mapObjIndexed
@@ -227,10 +205,7 @@ source version: v0.23.0
 - [ ] reduced
 - [ ] reduceRight
 - [ ] reduceWhile
-- reject
-  - [x] reject for ArrayLike
-  - [x] rejectSelf for `#filter()`
-  - [x] rejectDictionary for Object
+- [x] reject
 - [ ] remove
 - [ ] repeat
 - [x] replace

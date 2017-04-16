@@ -1,3 +1,5 @@
 /// <reference path="./typings/index.d.ts" />
 
-export = R;
+declare module "ramda" {
+  export = R;
+}

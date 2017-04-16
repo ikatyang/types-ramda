@@ -1,4 +1,4 @@
 {
   "templateDir": "./templates",
-  "outputDir": "./lib/typings"
+  "outputDir": "./typings"
 }
