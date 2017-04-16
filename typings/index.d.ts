@@ -22,6 +22,7 @@
 /// <reference path="./call.d.ts" />
 /// <reference path="./concat.d.ts" />
 /// <reference path="./dec.d.ts" />
+/// <reference path="./descend.d.ts" />
 /// <reference path="./divide.d.ts" />
 /// <reference path="./equals.d.ts" />
 /// <reference path="./filter.d.ts" />

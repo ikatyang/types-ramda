@@ -73,7 +73,7 @@ source version: v0.23.0
 - [ ] curryN
 - [x] dec
 - [ ] defaultTo
-- [ ] descend
+- [x] descend
 - [ ] difference
 - [ ] differenceWith
 - [ ] dissoc

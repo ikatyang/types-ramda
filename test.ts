@@ -206,6 +206,21 @@ checker(module, (check) => {
     check('dec', R.dec(42), 41);
   }
 
+  { // descend
+    const byAge = R.descend(R.prop('age'));
+    const people = [
+      { name: 'a', age: 20 },
+      { name: 'b', age: 40 },
+      { name: 'c', age: 30 },
+    ];
+    const sortedPeople = [
+      { name: 'b', age: 40 },
+      { name: 'c', age: 30 },
+      { name: 'a', age: 20 },
+    ];
+    check('sort', R.sort(byAge, people), sortedPeople);
+  }
+
   { // divide
     check('divide', R.divide(71, 100), 0.71);
 
