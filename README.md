@@ -190,7 +190,7 @@ source version: v0.23.0
 - [ ] pipeK
 - [ ] pipeP
 - [ ] pluck
-- [ ] prepend
+- [x] prepend
 - [ ] product
 - [ ] project
 - [x] prop

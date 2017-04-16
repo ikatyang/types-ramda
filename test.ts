@@ -383,6 +383,10 @@ checker(module, (check) => {
     check('pipe', f(3, 4), -(3 ** 4) + 1);
   }
 
+  { // prepend
+    check('prepend', R.prepend('fee', ['fi', 'fo', 'fum']), ['fee', 'fi', 'fo', 'fum']);
+  }
+
   { // prop
     check('prop', R.prop('x', { x: 100 }), 100);
     check('prop', R.prop('x', {}), undefined);
