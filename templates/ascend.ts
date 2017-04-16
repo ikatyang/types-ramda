@@ -1,10 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createCurriedFunctions({
-  name: 'function ascend',
-  arguments: [[['T'], 'fn', `${S.tMorphism}<T, ${S.tOrdered}>`], [['T'], 'a', 'T'], [['T'], 'b', 'T']],
-  returnType: '0 | 1 | -1',
-});
+const typings = S.createComparatorTypings('function ascend');
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),
