@@ -6,5 +6,6 @@ export { createCurriedFunctions } from './create-curried-functions';
 export { createListBooleanTypings } from './create-list-boolean-typings';
 export { createListPendTypings } from './create-list-pend-typings';
 export { createLogicTypings } from './create-logic-typings';
+export { createMathReduceTypings } from './create-math-reduce-typings';
 export { createMathTypings } from './create-math-typings';
 export { createMixedPredicateTypings } from './create-mixed-predicate-typings';

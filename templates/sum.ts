@@ -1,10 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createCurriedFunctions({
-  name: 'function sum',
-  arguments: [[[], S.vValues, 'number[]']],
-  returnType: 'number',
-});
+const typings = S.createMathReduceTypings('function sum');
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),
