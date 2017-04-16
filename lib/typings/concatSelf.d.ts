@@ -10,13 +10,13 @@ declare namespace R {
    *
    * Dispatches to the `concat` method of the first argument, if present.
    */
-  function concat<T, U>(array1: T[], array2: U[]): (T | U)[];
-  function concat<U>(_array1: PH, array2: U[]): {
-    <T>(array1: T[]): (T | U)[];
+  function concatSelf<T>(concatable: Concatable<T>, value: T): Concatable<T>;
+  function concatSelf<T>(_concatable: PH, value: T): {
+    (concatable: Concatable<T>): Concatable<T>;
   };
-  function concat<T>(array1: T[]): {
-    <U>(array2: U[]): (T | U)[];
+  function concatSelf<T>(concatable: Concatable<T>): {
+    (value: T): Concatable<T>;
   };
-  function concat<T, U>(array1: T[], array2: U[]): (T | U)[];
+  function concatSelf<T>(concatable: Concatable<T>, value: T): Concatable<T>;
 
 }

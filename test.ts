@@ -80,7 +80,7 @@ checker(module, (check) => {
 
   { // ap
     check('ap', R.ap([R.multiply(2), R.add(3)], [1,2,3]), [2, 4, 6, 4, 5, 6]);
-    check('ap', R.ap([R.concat('tasty '), R.toUpper], ['pizza', 'salad']), ['tasty pizza', 'tasty salad', 'PIZZA', 'SALAD']);
+    check('ap', R.ap([R.concatString('tasty '), R.toUpper], ['pizza', 'salad']), ['tasty pizza', 'tasty salad', 'PIZZA', 'SALAD']);
     // TODO: R.apSelf for appable
   }
 
@@ -187,10 +187,10 @@ checker(module, (check) => {
   }
 
   { // concat
-    check('concat', R.concat('ABC', 'DEF'), 'ABCDEF');
+    check('concat', R.concatString('ABC', 'DEF'), 'ABCDEF');
     check('concat', R.concat([4, 5, 6], [1, 2, 3]), [4, 5, 6, 1, 2, 3]);
     check('concat', R.concat([], []), []);
-    // TODO: R.concat for concatable
+    // TODO: R.concatSelf for concatable
   }
 
   { // call

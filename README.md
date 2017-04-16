@@ -68,7 +68,10 @@ source version: v0.23.0
 - [ ] compose
 - [ ] composeK
 - [ ] composeP
-- [x] concat
+- concat
+  - [x] concat for Array
+  - [x] concatSelf for `#concat()`
+  - [x] concatString for string
 - [ ] cond
 - [ ] construct
 - [ ] constructN
