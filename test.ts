@@ -177,6 +177,13 @@ checker(module, (check) => {
     // TODO: R.concat for concatable
   }
 
+  { // converge
+    const average = R.converge(R.divide, [R.sum, R.length]);
+    check('converge', average([1, 2, 3, 4, 5, 6, 7]), 4);
+    const strangeConcat = R.converge(R.concat as R.ConcatString, [R.toUpper, R.toLower]);
+    check('converge', strangeConcat('Yodel'), 'YODELyodel');
+  }
+
   { // call
     check('call', R.call(R.add, 1, 2), 3);
     // TODO:

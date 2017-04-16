@@ -67,7 +67,7 @@ source version: v0.23.0
 - [ ] construct
 - [ ] constructN
 - [ ] contains
-- [ ] converge
+- [x] converge
 - [ ] countBy
 - [ ] curry
 - [ ] curryN

@@ -21,6 +21,7 @@
 /// <reference path="./both.d.ts" />
 /// <reference path="./call.d.ts" />
 /// <reference path="./concat.d.ts" />
+/// <reference path="./converge.d.ts" />
 /// <reference path="./dec.d.ts" />
 /// <reference path="./descend.d.ts" />
 /// <reference path="./divide.d.ts" />
