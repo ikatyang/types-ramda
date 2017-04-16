@@ -355,6 +355,13 @@ checker(module, (check) => {
     check('negate', R.negate(42), -42);
   }
 
+  { // or
+    check('or', R.or(true, true), true);
+    check('or', R.or(true, false), true);
+    check('or', R.or(false, true), true);
+    check('or', R.or(false, false), false);
+  }
+
   { // pipe
     const f = R.pipe(Math.pow, R.negate, R.inc);
     check('pipe', f(3, 4), -(3 ** 4) + 1);
