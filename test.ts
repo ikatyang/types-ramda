@@ -355,6 +355,13 @@ checker(module, (check) => {
     check('negate', R.negate(42), -42);
   }
 
+  { // not
+    check('not', R.not(true), false);
+    check('not', R.not(false), true);
+    check('not', R.not(0), true);
+    check('not', R.not(1), false);
+  }
+
   { // or
     check('or', R.or(true, true), true);
     check('or', R.or(true, false), true);

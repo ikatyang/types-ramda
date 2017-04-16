@@ -40,6 +40,7 @@
 /// <reference path="./modulo.d.ts" />
 /// <reference path="./multiply.d.ts" />
 /// <reference path="./negate.d.ts" />
+/// <reference path="./not.d.ts" />
 /// <reference path="./or.d.ts" />
 /// <reference path="./pipe.d.ts" />
 /// <reference path="./prop.d.ts" />

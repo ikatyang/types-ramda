@@ -166,7 +166,7 @@ source version: v0.23.0
 - [ ] nAry
 - [x] negate
 - [ ] none
-- [ ] not
+- [x] not
 - [ ] nth
 - [ ] nthArg
 - [ ] objOf
