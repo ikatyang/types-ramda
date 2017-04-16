@@ -1,10 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createCurriedFunctions({
-  name: 'function append',
-  arguments: [[['T'], S.vValue, 'T'], [['U'], S.vList, `${S.tList}<U>`]],
-  returnType: `(T | U)[]`,
-});
+const typings = S.createListPendTypings('function append');
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),
