@@ -1,6 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createMixedPredicateTypings('function allPass');
+const typings = S.createMixedPredicateTypings('allPass');
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),

@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function always',
+  name: 'always',
   arguments: [[['T'], S.vValue, 'T']],
   returnType: '() => T',
 });

@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function propEq',
+  name: 'propEq',
   arguments: [[[], S.vProperty, S.tProperty], [[], S.vValue, 'any'], [[], S.vObject, S.tObject]],
   returnType: 'boolean',
 });

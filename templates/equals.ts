@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function equals',
+  name: 'equals',
   arguments: [[['T'], 'a', 'T'], [['U'], 'b', 'U']],
   returnType: 'boolean',
 });

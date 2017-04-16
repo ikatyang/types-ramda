@@ -1,6 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createMathReduceTypings('function product');
+const typings = S.createMathReduceTypings('product');
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),

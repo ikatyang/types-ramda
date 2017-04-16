@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function join',
+  name: 'join',
   arguments: [[[], 'separator', 'string'], [[], S.vArray, 'any[]']],
   returnType: 'string',
 });

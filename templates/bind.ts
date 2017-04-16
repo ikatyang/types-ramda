@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function bind',
+  name: 'bind',
   arguments: [[['T extends Function'], 'fn', 'T'], [[], 'context', 'any']],
   returnType: 'T',
 });

@@ -1,11 +1,11 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function ap',
+  name: 'ap',
   arguments: [[['T', 'U'], `${S.vMorphisms}`, `${S.tList}<${S.tMorphism}<T, U>>`], [['T'], S.vList, `${S.tList}<T>`]],
   returnType: `${S.tList}<U>`,
 }, {
-  name: 'function ap',
+  name: 'ap',
   arguments: [[['T', 'U'], `${S.vMorphisms}`, `${S.tList}<${S.tMorphism}<T, U>>`], [['T'], S.vAppable, `${S.tAppable}<T>`]],
   returnType: `${S.tAppable}<U>`,
 });

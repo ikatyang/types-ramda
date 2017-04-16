@@ -1,6 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createListPendTypings('function append');
+const typings = S.createListPendTypings('append');
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),

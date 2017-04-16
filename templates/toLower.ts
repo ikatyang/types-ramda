@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function toLower',
+  name: 'toLower',
   arguments: [[[], S.vString, 'string']],
   returnType: 'string',
 });

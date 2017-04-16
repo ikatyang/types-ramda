@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function sort',
+  name: 'sort',
   arguments: [[['T'], S.vComparator, `${S.tComparator}<T>`], [['T'], S.vList, `${S.tList}<T>`]],
   returnType: 'T[]',
 });

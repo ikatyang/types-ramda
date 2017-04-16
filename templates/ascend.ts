@@ -1,6 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createComparatorTypings('function ascend');
+const typings = S.createComparatorTypings('ascend');
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),

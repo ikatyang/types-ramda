@@ -1,6 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createCompareTypings('function lt');
+const typings = S.createCompareTypings('lt');
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),

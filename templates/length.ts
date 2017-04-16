@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function length',
+  name: 'length',
   arguments: [[[], S.vList, `${S.tList}<any>`]],
   returnType: 'number',
 });

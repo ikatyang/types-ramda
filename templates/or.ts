@@ -1,6 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createLogicTypings('function or', 2);
+const typings = S.createLogicTypings('or', 2);
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),

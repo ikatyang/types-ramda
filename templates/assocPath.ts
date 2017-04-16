@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function assocPath',
+  name: 'assocPath',
   generics: [`R extends ${S.tObject}`],
   arguments: [[[], `${S.vProperties}`, `${S.tProperty}[]`], [[], `${S.vValue}`, 'any'], [[], S.vObject, S.tObject]],
   returnType: 'R',

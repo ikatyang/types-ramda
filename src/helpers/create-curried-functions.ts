@@ -14,6 +14,7 @@ export type ICreateCurriedFunctionArgument = [
 
 export interface ICreateCurriedFunctionOptions {
   name: string;
+  typeAlias?: string;
   generics?: string[];
   arguments: ICreateCurriedFunctionArgument[];
   returnType: string;
@@ -106,7 +107,7 @@ const mergeTypings = (mainTypings: FunctionTyping[], ...otherTypingss: FunctionT
 
 const elementsToTypings = (elements: ICreateCurriedFunctionElement[], options: ICreateCurriedFunctionOptions) => {
   return elements.map(element => {
-    const typing = createCurriedFunction(options.name, element, options.returnType);
+    const typing = createCurriedFunction(`function ${options.name}`, element, options.returnType);
     typing.generics.unshift(...(options.generics || []));
     return typing;
   });

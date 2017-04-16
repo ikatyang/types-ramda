@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function aperture',
+  name: 'aperture',
   arguments: [[[], 'n', 'number'], [['T'], S.vList, `${S.tList}<T>`]],
   returnType: 'T[][]',
 });

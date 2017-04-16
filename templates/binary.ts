@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function binary',
+  name: 'binary',
   arguments: [[['T', 'U', 'R'], 'fn', '(a: T, b: U, ...args: any[]) => R']],
   returnType: '(a: T, b: U) => R',
 });

@@ -1,6 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createMathTypings('function mathMod', 2);
+const typings = S.createMathTypings('mathMod', 2);
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),

@@ -12,7 +12,7 @@ for (let i = 1; i <= S.maxCurryLevel; i++) {
   generics.push(`${S.gNumber(i)} = any`);
 
   typings.push(...S.createCurriedFunctions({
-    name: 'function applySpec',
+    name: 'applySpec',
     generics: [`N extends ${i}`, 'R = any', ...generics],
     arguments: [[[], 'fns', `${S.tNestedDictionary}<(${args.join(', ')}) => R>`]],
     returnType: `${S.tCurriedFunction(i)}<${argTypes.join(', ')}, ${S.tNestedDictionary}<R>>`,

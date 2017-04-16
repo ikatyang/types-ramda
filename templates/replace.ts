@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function replace',
+  name: 'replace',
   arguments: [[[], 'pattern', 'string | RegExp'], [[], 'replacement', 'string'], [[], S.vString, 'string']],
   returnType: 'string',
 });

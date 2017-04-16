@@ -1,7 +1,7 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function adjust',
+  name: 'adjust',
   arguments: [[['T', 'U'], S.vMorphism, `${S.tMorphism}<T, U>`], [[], S.vIndex, S.tIndex], [['T'], S.vList, `${S.tList}<T>`]],
   returnType: '(T | U)[]',
 });

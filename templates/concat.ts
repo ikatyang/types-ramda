@@ -1,15 +1,15 @@
 import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
-  name: 'function concat',
+  name: 'concat',
   arguments: [[['T'], `${S.vArray}1`, `T[]`], [['U'], `${S.vArray}2`, `U[]`]],
   returnType: '(T | U)[]',
 }, {
-  name: 'function concat',
+  name: 'concat',
   arguments: [[[], `${S.vString}1`, 'string'], [[], `${S.vString}2`, 'string']],
   returnType: 'string',
 }, {
-  name: 'function concat',
+  name: 'concat',
   arguments: [[['T'], S.vConcatable, `${S.tConcatable}<T>`], [['T'], S.vValue, 'T']],
   returnType: `${S.tConcatable}<T>`,
 });
