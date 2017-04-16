@@ -14,13 +14,13 @@ declare namespace R {
    *
    * Also treats functions as functors and will compose them together.
    */
-  function map<T, U>(fn: Morphism<T, U>, list: List<T>): U[];
-  function map<T>(_fn: PH, list: List<T>): {
-    <U>(fn: Morphism<T, U>): U[];
+  function mapDictionary<T, U>(fn: Morphism<T, U>, dictionary: Dictionary<T>): Dictionary<U>;
+  function mapDictionary<T>(_fn: PH, dictionary: Dictionary<T>): {
+    <U>(fn: Morphism<T, U>): Dictionary<U>;
   };
-  function map<T, U>(fn: Morphism<T, U>): {
-    (list: List<T>): U[];
+  function mapDictionary<T, U>(fn: Morphism<T, U>): {
+    (dictionary: Dictionary<T>): Dictionary<U>;
   };
-  function map<T, U>(fn: Morphism<T, U>, list: List<T>): U[];
+  function mapDictionary<T, U>(fn: Morphism<T, U>, dictionary: Dictionary<T>): Dictionary<U>;
 
 }

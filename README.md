@@ -156,7 +156,10 @@ source version: v0.23.0
 - [ ] liftN
 - [x] lt
 - [x] lte
-- [x] map
+- map
+  - [x] map for ArrayLike
+  - [x] mapSelf for `#map()`
+  - [x] mapDictionary for Object
 - [ ] mapAccum
 - [ ] mapAccumRight
 - [ ] mapObjIndexed

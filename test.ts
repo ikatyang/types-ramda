@@ -313,8 +313,8 @@ checker(module, (check) => {
   { // map
     const double = (x: number) => x * 2;
     check('map', R.map(double, [1, 2, 3]), [2, 4, 6]);
-    check('map', R.map(double, { x: 1, y: 2, z: 3 }), { x: 2, y: 4, z: 6 });
-    // TODO: R.map for mappable
+    check('map', R.mapDictionary(double, { x: 1, y: 2, z: 3 }), { x: 2, y: 4, z: 6 });
+    // TODO: R.mapSelf for mappable
   }
 
   { // mathMod
