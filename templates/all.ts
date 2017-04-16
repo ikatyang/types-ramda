@@ -1,6 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createListBooleanTypings('function all', S.tAllAble, S.vAllAble);
+const typings = S.createListBooleanTypings('function all');
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),

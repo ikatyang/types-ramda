@@ -40,7 +40,9 @@ source version: v0.23.0
 - [x] allPass
 - [x] always
 - [x] and
-- [x] any
+- any
+  - [x] any for ArrayLike
+  - [x] anySelf for `#any()`
 - [x] anyPass
 - [x] ap
 - [x] aperture

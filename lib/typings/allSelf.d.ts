@@ -10,13 +10,13 @@ declare namespace R {
    *
    * Acts as a transducer if a transformer is given in list position.
    */
-  function all<T>(fn: Predicate<T>, list: List<T>): boolean;
-  function all<T>(_fn: PH, list: List<T>): {
+  function allSelf<T>(fn: Predicate<T>, allAble: AllAble<T>): boolean;
+  function allSelf<T>(_fn: PH, allAble: AllAble<T>): {
     (fn: Predicate<T>): boolean;
   };
-  function all<T>(fn: Predicate<T>): {
-    (list: List<T>): boolean;
+  function allSelf<T>(fn: Predicate<T>): {
+    (allAble: AllAble<T>): boolean;
   };
-  function all<T>(fn: Predicate<T>, list: List<T>): boolean;
+  function allSelf<T>(fn: Predicate<T>, allAble: AllAble<T>): boolean;
 
 }

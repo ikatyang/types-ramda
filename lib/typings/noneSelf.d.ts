@@ -8,13 +8,13 @@ declare namespace R {
    *
    * Dispatches to the `any` method of the second argument, if present.
    */
-  function none<T>(fn: Predicate<T>, list: List<T>): boolean;
-  function none<T>(_fn: PH, list: List<T>): {
+  function noneSelf<T>(fn: Predicate<T>, noneAble: NoneAble<T>): boolean;
+  function noneSelf<T>(_fn: PH, noneAble: NoneAble<T>): {
     (fn: Predicate<T>): boolean;
   };
-  function none<T>(fn: Predicate<T>): {
-    (list: List<T>): boolean;
+  function noneSelf<T>(fn: Predicate<T>): {
+    (noneAble: NoneAble<T>): boolean;
   };
-  function none<T>(fn: Predicate<T>, list: List<T>): boolean;
+  function noneSelf<T>(fn: Predicate<T>, noneAble: NoneAble<T>): boolean;
 
 }
