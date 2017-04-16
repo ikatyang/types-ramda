@@ -11,6 +11,7 @@
 /// <reference path="./anyPass.d.ts" />
 /// <reference path="./anySelf.d.ts" />
 /// <reference path="./ap.d.ts" />
+/// <reference path="./apSelf.d.ts" />
 /// <reference path="./aperture.d.ts" />
 /// <reference path="./append.d.ts" />
 /// <reference path="./apply.d.ts" />

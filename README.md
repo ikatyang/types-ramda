@@ -44,7 +44,9 @@ source version: v0.23.0
   - [x] any for ArrayLike
   - [x] anySelf for `#any()`
 - [x] anyPass
-- [x] ap
+- ap
+  - [x] ap for ArrayLike
+  - [x] apSelf for `#ap()`
 - [x] aperture
 - [x] append
 - [x] apply

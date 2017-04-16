@@ -8,18 +8,13 @@ declare namespace R {
    *
    * Dispatches to the `ap` method of the second argument, if present. Also treats curried functions as applicatives.
    */
-  function ap<T, U>(fns: List<Morphism<T, U>>, list: List<T>): List<U>;
+  function ap<T, U>(fns: List<Morphism<T, U>>, list: List<T>): U[];
   function ap<T>(_fns: PH, list: List<T>): {
-    <U>(fns: List<Morphism<T, U>>): List<U>;
+    <U>(fns: List<Morphism<T, U>>): U[];
   };
   function ap<T, U>(fns: List<Morphism<T, U>>): {
-    (list: List<T>): List<U>;
-    (appable: Appable<T>): Appable<U>;
+    (list: List<T>): U[];
   };
-  function ap<T, U>(fns: List<Morphism<T, U>>, appable: Appable<T>): Appable<U>;
-  function ap<T>(_fns: PH, appable: Appable<T>): {
-    <U>(fns: List<Morphism<T, U>>): Appable<U>;
-  };
-  function ap<T, U>(fns: List<Morphism<T, U>>, list: List<T>): List<U>;
+  function ap<T, U>(fns: List<Morphism<T, U>>, list: List<T>): U[];
 
 }
