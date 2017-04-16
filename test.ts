@@ -355,6 +355,12 @@ checker(module, (check) => {
     check('negate', R.negate(42), -42);
   }
 
+  { // none
+    const isEven = (n: number) => n % 2 === 0;
+    check('none', R.none(isEven, [1, 3, 5, 7, 9, 11]), true);
+    check('none', R.none(isEven, [1, 3, 5, 7, 8, 11]), false);
+  }
+
   { // not
     check('not', R.not(true), false);
     check('not', R.not(false), true);
