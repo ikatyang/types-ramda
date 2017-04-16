@@ -19,6 +19,7 @@
 /// <reference path="./ascend.d.ts" />
 /// <reference path="./assoc.d.ts" />
 /// <reference path="./assocPath.d.ts" />
+/// <reference path="./assocSoft.d.ts" />
 /// <reference path="./binary.d.ts" />
 /// <reference path="./bind.d.ts" />
 /// <reference path="./both.d.ts" />

@@ -52,7 +52,9 @@ source version: v0.23.0
 - [x] apply
 - [x] applySpec
 - [x] ascend
-- [x] assoc
+- assoc
+  - [x] assoc for intersection type with string key
+  - [x] assocSoft for same type with Property key
 - [x] assocPath
 - [x] binary
 - [x] bind

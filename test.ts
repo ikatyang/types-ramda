@@ -152,6 +152,7 @@ checker(module, (check) => {
 
   { // assoc
     check('assoc', R.assoc('c', 3, { a: 1, b: 2 }), { a: 1, b: 2, c: 3 });
+    // TODO: R.assocSoft for Property
   }
 
   { // assocPath

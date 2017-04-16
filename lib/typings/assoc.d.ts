@@ -21,13 +21,6 @@ declare namespace R {
     <P extends string>(property: P): {
       <V>(value: V): T & { [K in P]: V };
     };
-    (property: Property, value: any): T;
-    (_property: PH, value: any): {
-      (property: Property): T;
-    };
-    (property: Property): {
-      (value: any): T;
-    };
   };
   function assoc<P extends string, T extends {}>(property: P, obj: T): {
     <V>(value: V): T & { [K in P]: V };
@@ -39,13 +32,6 @@ declare namespace R {
     };
     <P extends string>(property: P): {
       <V>(value: V): T & { [K in P]: V };
-    };
-    (property: Property, value: any): T;
-    (_property: PH, value: any): {
-      (property: Property): T;
-    };
-    (property: Property): {
-      (value: any): T;
     };
   };
   function assoc<P extends string, V>(property: P, value: V): {
@@ -67,37 +53,6 @@ declare namespace R {
     };
     <V>(value: V): {
       <T extends {}>(obj: T): T & { [K in P]: V };
-    };
-  };
-  function assoc<T extends {}>(property: Property, value: any, obj: T): T;
-  function assoc<T extends {}>(_property: PH, value: any, obj: T): {
-    (property: Property): T;
-  };
-  function assoc<T extends {}>(property: Property, _value: PH, obj: T): {
-    (value: any): T;
-  };
-  function assoc<T extends {}>(property: Property, obj: T): {
-    (value: any): T;
-  };
-  function assoc(property: Property, value: any): {
-    <T extends {}>(obj: T): T;
-  };
-  function assoc(_property: PH, value: any): {
-    <T extends {}>(property: Property, obj: T): T;
-    <T extends {}>(_property: PH, obj: T): {
-      (property: Property): T;
-    };
-    (property: Property): {
-      <T extends {}>(obj: T): T;
-    };
-  };
-  function assoc(property: Property): {
-    <T extends {}>(value: any, obj: T): T;
-    <T extends {}>(_value: PH, obj: T): {
-      (value: any): T;
-    };
-    (value: any): {
-      <T extends {}>(obj: T): T;
     };
   };
   function assoc<P extends string, V, T extends {}>(property: P, value: V, obj: T): T & { [K in P]: V };
