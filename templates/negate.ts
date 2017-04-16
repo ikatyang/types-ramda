@@ -1,10 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createCurriedFunctions({
-  name: 'function negate',
-  arguments: [[[], S.vValue, 'number']],
-  returnType: 'number',
-});
+const typings = S.createMathTypings('function negate', 1);
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),

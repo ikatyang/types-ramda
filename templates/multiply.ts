@@ -1,10 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createCurriedFunctions({
-  name: 'function multiply',
-  arguments: [[[], 'a', 'number'], [[], 'b', 'number']],
-  returnType: 'number',
-});
+const typings = S.createMathTypings('function multiply', 2);
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),
