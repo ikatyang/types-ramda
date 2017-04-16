@@ -110,7 +110,14 @@ source version: v0.23.0
 - [ ] findLast
 - [ ] findLastIndex
 - [ ] flatten
-- [x] flip
+- flip
+  - [x] flip for any args
+  - [x] flip2 for 2 args
+  - [x] flip3 for 3 args
+  - [x] flip4 for 4 args
+  - [x] flip5 for 5 args
+  - [x] flip6 for 6 args
+  - [x] flipN for more args
 - [ ] forEach
 - [ ] forEachObjIndexed
 - [ ] fromPairs
