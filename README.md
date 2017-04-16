@@ -1,10 +1,10 @@
-# @ikatyang/types-ramda
+# ts-ramda
 
-[![build](https://travis-ci.org/ikatyang/types-ramda.svg)](https://travis-ci.org/ikatyang/types-ramda)
+[![build](https://travis-ci.org/ikatyang/ts-ramda.svg)](https://travis-ci.org/ikatyang/ts-ramda)
 
-TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
+TypeScript Wrapper for [Ramda](https://github.com/ramda/ramda)
 
-require `typescript >= 2.3.0` since this project has used [`generic parameter defaults`](https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#generic-parameter-defaults)
+require `typescript >= 2.3.0`
 
 ## Development
 
@@ -28,7 +28,7 @@ yarn run lint
 yarn run test
 ```
 
-## Progress
+## API
 
 source version: v0.23.0
 

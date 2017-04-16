@@ -1,10 +1,12 @@
 {
-  "name": "@ikatyang/types-ramda",
+  "name": "ts-ramda",
   "version": "0.23.0",
-  "description": "TypeScript's type definitions for Ramda",
-  "repository": "https://github.com/ikatyang/types-ramda",
+  "description": "TypeScript wrapper for Ramda",
+  "repository": "https://github.com/ikatyang/ts-ramda",
   "author": "ikatyang",
   "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "ts-node": "ts-node -P ./tsconfig.json",
     "build": "yarn run ts-node -- ./scripts/build.ts",
@@ -13,10 +15,12 @@
     "test-watch": "nodemon test.ts --watch ./typings --watch test.ts --exec 'yarn run ts-node --'",
     "lint": "tslint --project ./tsconfig.json --type-check"
   },
+  "dependencies": {
+    "ramda": "~0.23.0"
+  },
   "devDependencies": {
     "@types/node": "7.0.12",
     "nodemon": "1.11.0",
-    "ramda": "0.23.0",
     "ts-node": "3.0.2",
     "tslint": "5.1.0",
     "tslint-config-standard": "5.0.2",

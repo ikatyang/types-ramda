@@ -1,6 +1,4 @@
-/// <reference path="./index.d.ts" />
-
-import * as R from 'ramda';
+import * as R from './lib/index';
 import checker from './src/checker';
 
 checker(module, (check) => {
