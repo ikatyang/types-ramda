@@ -22,6 +22,7 @@ declare namespace R {
     <R>(fn: (...args: any[]) => R): {
       <T1>(fns: ((v1: T1) => any)[]): CurriedFunction1<T1, R>;
     };
+    <R, T1>(fn: (...args: any[]) => R, fns: ((v1: T1) => any)[]): CurriedFunction1<T1, R>;
   };
   function converge<R, T1, T2>(fn: (...args: any[]) => R, fns: ((v1: T1, v2: T2) => any)[]): CurriedFunction2<T1, T2, R>;
   function converge<T1, T2>(_fn: PH, fns: ((v1: T1, v2: T2) => any)[]): {
@@ -39,6 +40,7 @@ declare namespace R {
     <R>(fn: (...args: any[]) => R): {
       <T1, T2>(fns: ((v1: T1, v2: T2) => any)[]): CurriedFunction2<T1, T2, R>;
     };
+    <R, T1, T2>(fn: (...args: any[]) => R, fns: ((v1: T1, v2: T2) => any)[]): CurriedFunction2<T1, T2, R>;
   };
   function converge<R, T1, T2, T3>(fn: (...args: any[]) => R, fns: ((v1: T1, v2: T2, v3: T3) => any)[]): CurriedFunction3<T1, T2, T3, R>;
   function converge<T1, T2, T3>(_fn: PH, fns: ((v1: T1, v2: T2, v3: T3) => any)[]): {
@@ -56,6 +58,7 @@ declare namespace R {
     <R>(fn: (...args: any[]) => R): {
       <T1, T2, T3>(fns: ((v1: T1, v2: T2, v3: T3) => any)[]): CurriedFunction3<T1, T2, T3, R>;
     };
+    <R, T1, T2, T3>(fn: (...args: any[]) => R, fns: ((v1: T1, v2: T2, v3: T3) => any)[]): CurriedFunction3<T1, T2, T3, R>;
   };
   function converge<R, T1, T2, T3, T4>(fn: (...args: any[]) => R, fns: ((v1: T1, v2: T2, v3: T3, v4: T4) => any)[]): CurriedFunction4<T1, T2, T3, T4, R>;
   function converge<T1, T2, T3, T4>(_fn: PH, fns: ((v1: T1, v2: T2, v3: T3, v4: T4) => any)[]): {
@@ -73,6 +76,7 @@ declare namespace R {
     <R>(fn: (...args: any[]) => R): {
       <T1, T2, T3, T4>(fns: ((v1: T1, v2: T2, v3: T3, v4: T4) => any)[]): CurriedFunction4<T1, T2, T3, T4, R>;
     };
+    <R, T1, T2, T3, T4>(fn: (...args: any[]) => R, fns: ((v1: T1, v2: T2, v3: T3, v4: T4) => any)[]): CurriedFunction4<T1, T2, T3, T4, R>;
   };
   function converge<R, T1, T2, T3, T4, T5>(fn: (...args: any[]) => R, fns: ((v1: T1, v2: T2, v3: T3, v4: T4, v5: T5) => any)[]): CurriedFunction5<T1, T2, T3, T4, T5, R>;
   function converge<T1, T2, T3, T4, T5>(_fn: PH, fns: ((v1: T1, v2: T2, v3: T3, v4: T4, v5: T5) => any)[]): {
@@ -90,6 +94,7 @@ declare namespace R {
     <R>(fn: (...args: any[]) => R): {
       <T1, T2, T3, T4, T5>(fns: ((v1: T1, v2: T2, v3: T3, v4: T4, v5: T5) => any)[]): CurriedFunction5<T1, T2, T3, T4, T5, R>;
     };
+    <R, T1, T2, T3, T4, T5>(fn: (...args: any[]) => R, fns: ((v1: T1, v2: T2, v3: T3, v4: T4, v5: T5) => any)[]): CurriedFunction5<T1, T2, T3, T4, T5, R>;
   };
   function converge<R, T1, T2, T3, T4, T5, T6>(fn: (...args: any[]) => R, fns: ((v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, v6: T6) => any)[]): CurriedFunction6<T1, T2, T3, T4, T5, T6, R>;
   function converge<T1, T2, T3, T4, T5, T6>(_fn: PH, fns: ((v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, v6: T6) => any)[]): {
@@ -107,6 +112,7 @@ declare namespace R {
     <R>(fn: (...args: any[]) => R): {
       <T1, T2, T3, T4, T5, T6>(fns: ((v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, v6: T6) => any)[]): CurriedFunction6<T1, T2, T3, T4, T5, T6, R>;
     };
+    <R, T1, T2, T3, T4, T5, T6>(fn: (...args: any[]) => R, fns: ((v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, v6: T6) => any)[]): CurriedFunction6<T1, T2, T3, T4, T5, T6, R>;
   };
 
 }

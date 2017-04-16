@@ -22,6 +22,7 @@ declare namespace R {
     (list: List<T>): U[];
     (dictionary: Dictionary<T>): Dictionary<U>;
     (mappable: Mappable<T>): Mappable<U>;
+    (list: List<T>): U[];
   };
   function map<T, U>(fn: Morphism<T, U>, dictionary: Dictionary<T>): Dictionary<U>;
   function map<T>(_fn: PH, dictionary: Dictionary<T>): {
@@ -40,6 +41,7 @@ declare namespace R {
     <T, U>(fn: Morphism<T, U>): {
       (list: List<T>): U[];
     };
+    <T, U>(fn: Morphism<T, U>, list: List<T>): U[];
   };
   type MapDictionary = {
     <T, U>(fn: Morphism<T, U>, dictionary: Dictionary<T>): Dictionary<U>;
@@ -49,6 +51,7 @@ declare namespace R {
     <T, U>(fn: Morphism<T, U>): {
       (dictionary: Dictionary<T>): Dictionary<U>;
     };
+    <T, U>(fn: Morphism<T, U>, dictionary: Dictionary<T>): Dictionary<U>;
   };
   type MapSelf = {
     <T, U>(fn: Morphism<T, U>, mappable: Mappable<T>): Mappable<U>;
@@ -58,6 +61,7 @@ declare namespace R {
     <T, U>(fn: Morphism<T, U>): {
       (mappable: Mappable<T>): Mappable<U>;
     };
+    <T, U>(fn: Morphism<T, U>, mappable: Mappable<T>): Mappable<U>;
   };
 
 }

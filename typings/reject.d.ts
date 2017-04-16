@@ -16,6 +16,7 @@ declare namespace R {
     (list: List<T>): T[];
     (dictionary: Dictionary<T>): Dictionary<T>;
     (filterable: Filterable<T>): Filterable<T>;
+    (list: List<T>): T[];
   };
   function reject<T>(fn: Predicate<T>, dictionary: Dictionary<T>): Dictionary<T>;
   function reject<T>(_fn: PH, dictionary: Dictionary<T>): {
@@ -34,6 +35,7 @@ declare namespace R {
     <T>(fn: Predicate<T>): {
       (list: List<T>): T[];
     };
+    <T>(fn: Predicate<T>, list: List<T>): T[];
   };
   type RejectDictionary = {
     <T>(fn: Predicate<T>, dictionary: Dictionary<T>): Dictionary<T>;
@@ -43,6 +45,7 @@ declare namespace R {
     <T>(fn: Predicate<T>): {
       (dictionary: Dictionary<T>): Dictionary<T>;
     };
+    <T>(fn: Predicate<T>, dictionary: Dictionary<T>): Dictionary<T>;
   };
   type RejectSelf = {
     <T>(fn: Predicate<T>, filterable: Filterable<T>): Filterable<T>;
@@ -52,6 +55,7 @@ declare namespace R {
     <T>(fn: Predicate<T>): {
       (filterable: Filterable<T>): Filterable<T>;
     };
+    <T>(fn: Predicate<T>, filterable: Filterable<T>): Filterable<T>;
   };
 
 }

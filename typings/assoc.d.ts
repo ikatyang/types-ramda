@@ -28,6 +28,7 @@ declare namespace R {
     (property: Property): {
       (value: any): T;
     };
+    <P extends string, V>(property: P, value: V): T & { [K in P]: V };
   };
   function assoc<P extends string, T extends {}>(property: P, obj: T): {
     <V>(value: V): T & { [K in P]: V };
@@ -47,6 +48,7 @@ declare namespace R {
     (property: Property): {
       (value: any): T;
     };
+    <P extends string, V>(property: P, value: V): T & { [K in P]: V };
   };
   function assoc<P extends string, V>(property: P, value: V): {
     <T extends {}>(obj: T): T & { [K in P]: V };
@@ -59,6 +61,7 @@ declare namespace R {
     <P extends string>(property: P): {
       <T extends {}>(obj: T): T & { [K in P]: V };
     };
+    <P extends string, T extends {}>(property: P, obj: T): T & { [K in P]: V };
   };
   function assoc<P extends string>(property: P): {
     <V, T extends {}>(value: V, obj: T): T & { [K in P]: V };
@@ -68,6 +71,7 @@ declare namespace R {
     <V>(value: V): {
       <T extends {}>(obj: T): T & { [K in P]: V };
     };
+    <V, T extends {}>(value: V, obj: T): T & { [K in P]: V };
   };
   function assoc<T extends {}>(property: Property, value: any, obj: T): T;
   function assoc<T extends {}>(_property: PH, value: any, obj: T): {
@@ -90,6 +94,7 @@ declare namespace R {
     (property: Property): {
       <T extends {}>(obj: T): T;
     };
+    <T extends {}>(property: Property, obj: T): T;
   };
   function assoc(property: Property): {
     <T extends {}>(value: any, obj: T): T;
@@ -99,6 +104,7 @@ declare namespace R {
     (value: any): {
       <T extends {}>(obj: T): T;
     };
+    <T extends {}>(value: any, obj: T): T;
   };
   function assoc<P extends string, V, T extends {}>(property: P, value: V, obj: T): T & { [K in P]: V };
   type AssocStrict = {
@@ -117,6 +123,7 @@ declare namespace R {
       <P extends string>(property: P): {
         <V>(value: V): T & { [K in P]: V };
       };
+      <P extends string, V>(property: P, value: V): T & { [K in P]: V };
     };
     <P extends string, T extends {}>(property: P, obj: T): {
       <V>(value: V): T & { [K in P]: V };
@@ -129,6 +136,7 @@ declare namespace R {
       <P extends string>(property: P): {
         <V>(value: V): T & { [K in P]: V };
       };
+      <P extends string, V>(property: P, value: V): T & { [K in P]: V };
     };
     <P extends string, V>(property: P, value: V): {
       <T extends {}>(obj: T): T & { [K in P]: V };
@@ -141,6 +149,7 @@ declare namespace R {
       <P extends string>(property: P): {
         <T extends {}>(obj: T): T & { [K in P]: V };
       };
+      <P extends string, T extends {}>(property: P, obj: T): T & { [K in P]: V };
     };
     <P extends string>(property: P): {
       <V, T extends {}>(value: V, obj: T): T & { [K in P]: V };
@@ -150,7 +159,9 @@ declare namespace R {
       <V>(value: V): {
         <T extends {}>(obj: T): T & { [K in P]: V };
       };
+      <V, T extends {}>(value: V, obj: T): T & { [K in P]: V };
     };
+    <P extends string, V, T extends {}>(property: P, value: V, obj: T): T & { [K in P]: V };
   };
   type AssocLoose = {
     <T extends {}>(property: Property, value: any, obj: T): T;
@@ -168,6 +179,7 @@ declare namespace R {
       (property: Property): {
         (value: any): T;
       };
+      (property: Property, value: any): T;
     };
     <T extends {}>(property: Property, obj: T): {
       (value: any): T;
@@ -180,6 +192,7 @@ declare namespace R {
       (property: Property): {
         (value: any): T;
       };
+      (property: Property, value: any): T;
     };
     (property: Property, value: any): {
       <T extends {}>(obj: T): T;
@@ -192,6 +205,7 @@ declare namespace R {
       (property: Property): {
         <T extends {}>(obj: T): T;
       };
+      <T extends {}>(property: Property, obj: T): T;
     };
     (property: Property): {
       <T extends {}>(value: any, obj: T): T;
@@ -201,7 +215,9 @@ declare namespace R {
       (value: any): {
         <T extends {}>(obj: T): T;
       };
+      <T extends {}>(value: any, obj: T): T;
     };
+    <T extends {}>(property: Property, value: any, obj: T): T;
   };
 
 }

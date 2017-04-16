@@ -40,6 +40,7 @@ declare namespace R {
     <T>(array1: T[]): {
       <U>(array2: U[]): (T | U)[];
     };
+    <T, U>(array1: T[], array2: U[]): (T | U)[];
   };
   type ConcatString = {
     (str1: string, str2: string): string;
@@ -49,6 +50,7 @@ declare namespace R {
     (str1: string): {
       (str2: string): string;
     };
+    (str1: string, str2: string): string;
   };
   type ConcatSelf = {
     <T>(concatable: Concatable<T>, value: T): Concatable<T>;
@@ -58,6 +60,7 @@ declare namespace R {
     <T>(concatable: Concatable<T>): {
       (value: T): Concatable<T>;
     };
+    <T>(concatable: Concatable<T>, value: T): Concatable<T>;
   };
 
 }

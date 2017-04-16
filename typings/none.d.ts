@@ -15,6 +15,7 @@ declare namespace R {
   function none<T>(fn: Predicate<T>): {
     (list: List<T>): boolean;
     (noneAble: NoneAble<T>): boolean;
+    (list: List<T>): boolean;
   };
   function none<T>(fn: Predicate<T>, noneAble: NoneAble<T>): boolean;
   function none<T>(_fn: PH, noneAble: NoneAble<T>): {
@@ -29,6 +30,7 @@ declare namespace R {
     <T>(fn: Predicate<T>): {
       (list: List<T>): boolean;
     };
+    <T>(fn: Predicate<T>, list: List<T>): boolean;
   };
   type NoneSelf = {
     <T>(fn: Predicate<T>, noneAble: NoneAble<T>): boolean;
@@ -38,6 +40,7 @@ declare namespace R {
     <T>(fn: Predicate<T>): {
       (noneAble: NoneAble<T>): boolean;
     };
+    <T>(fn: Predicate<T>, noneAble: NoneAble<T>): boolean;
   };
 
 }

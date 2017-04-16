@@ -17,6 +17,7 @@ declare namespace R {
   function all<T>(fn: Predicate<T>): {
     (list: List<T>): boolean;
     (allAble: AllAble<T>): boolean;
+    (list: List<T>): boolean;
   };
   function all<T>(fn: Predicate<T>, allAble: AllAble<T>): boolean;
   function all<T>(_fn: PH, allAble: AllAble<T>): {
@@ -31,6 +32,7 @@ declare namespace R {
     <T>(fn: Predicate<T>): {
       (list: List<T>): boolean;
     };
+    <T>(fn: Predicate<T>, list: List<T>): boolean;
   };
   type AllSelf = {
     <T>(fn: Predicate<T>, allAble: AllAble<T>): boolean;
@@ -40,6 +42,7 @@ declare namespace R {
     <T>(fn: Predicate<T>): {
       (allAble: AllAble<T>): boolean;
     };
+    <T>(fn: Predicate<T>, allAble: AllAble<T>): boolean;
   };
 
 }

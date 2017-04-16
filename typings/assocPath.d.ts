@@ -21,6 +21,7 @@ declare namespace R {
     (properties: Property[]): {
       (value: any): R;
     };
+    (properties: Property[], value: any): R;
   };
   function assocPath<R extends {}>(properties: Property[], obj: {}): {
     (value: any): R;
@@ -33,6 +34,7 @@ declare namespace R {
     (properties: Property[]): {
       (value: any): R;
     };
+    (properties: Property[], value: any): R;
   };
   function assocPath<R extends {}>(properties: Property[], value: any): {
     (obj: {}): R;
@@ -45,6 +47,7 @@ declare namespace R {
     (properties: Property[]): {
       (obj: {}): R;
     };
+    (properties: Property[], obj: {}): R;
   };
   function assocPath<R extends {}>(properties: Property[]): {
     (value: any, obj: {}): R;
@@ -54,6 +57,7 @@ declare namespace R {
     (value: any): {
       (obj: {}): R;
     };
+    (value: any, obj: {}): R;
   };
   function assocPath<R extends {}>(properties: Property[], value: any, obj: {}): R;
 

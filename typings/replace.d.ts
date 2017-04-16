@@ -20,6 +20,7 @@ declare namespace R {
     (pattern: string | RegExp): {
       (replacement: string): string;
     };
+    (pattern: string | RegExp, replacement: string): string;
   };
   function replace(pattern: string | RegExp, str: string): {
     (replacement: string): string;
@@ -32,6 +33,7 @@ declare namespace R {
     (pattern: string | RegExp): {
       (replacement: string): string;
     };
+    (pattern: string | RegExp, replacement: string): string;
   };
   function replace(pattern: string | RegExp, replacement: string): {
     (str: string): string;
@@ -44,6 +46,7 @@ declare namespace R {
     (pattern: string | RegExp): {
       (str: string): string;
     };
+    (pattern: string | RegExp, str: string): string;
   };
   function replace(pattern: string | RegExp): {
     (replacement: string, str: string): string;
@@ -53,6 +56,7 @@ declare namespace R {
     (replacement: string): {
       (str: string): string;
     };
+    (replacement: string, str: string): string;
   };
   function replace(pattern: string | RegExp, replacement: string, str: string): string;
 

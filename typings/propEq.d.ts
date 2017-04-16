@@ -21,6 +21,7 @@ declare namespace R {
     (property: Property): {
       (value: any): boolean;
     };
+    (property: Property, value: any): boolean;
   };
   function propEq(property: Property, obj: {}): {
     (value: any): boolean;
@@ -33,6 +34,7 @@ declare namespace R {
     (property: Property): {
       (value: any): boolean;
     };
+    (property: Property, value: any): boolean;
   };
   function propEq(property: Property, value: any): {
     (obj: {}): boolean;
@@ -45,6 +47,7 @@ declare namespace R {
     (property: Property): {
       (obj: {}): boolean;
     };
+    (property: Property, obj: {}): boolean;
   };
   function propEq(property: Property): {
     (value: any, obj: {}): boolean;
@@ -54,6 +57,7 @@ declare namespace R {
     (value: any): {
       (obj: {}): boolean;
     };
+    (value: any, obj: {}): boolean;
   };
   function propEq(property: Property, value: any, obj: {}): boolean;
 

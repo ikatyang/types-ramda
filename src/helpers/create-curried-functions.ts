@@ -89,10 +89,16 @@ const mergeTypings = (mainTypings: FunctionTyping[], ...otherTypingss: FunctionT
       let hasSame = false;
 
       for (const mainTyping of mainTypings) {
+
+        if (!(otherTyping.returnType instanceof InterfaceTyping)
+          || !(mainTyping.returnType instanceof InterfaceTyping)) {
+          continue;
+        }
+
         if (isSameTyping(mainTyping, otherTyping)) {
 
-          const mainReturnTypings = (mainTyping.returnType as InterfaceTyping).typings as FunctionTyping[];
-          const otherReturnTypings = (otherTyping.returnType as InterfaceTyping).typings as FunctionTyping[];
+          const mainReturnTypings = mainTyping.returnType.typings as FunctionTyping[];
+          const otherReturnTypings = otherTyping.returnType.typings as FunctionTyping[];
 
           mergeTypings(mainReturnTypings, otherReturnTypings);
 
@@ -109,11 +115,11 @@ const mergeTypings = (mainTypings: FunctionTyping[], ...otherTypingss: FunctionT
 };
 
 const elementsToTypings = (elements: ICreateCurriedFunctionElement[], options: ICreateCurriedFunctionOptions) => {
-  return elements.map(element => {
+  return repeatFirstTyping(elements.map(element => {
     const typing = createCurriedFunction('', element, options.returnType);
     typing.generics.unshift(...(options.generics || []));
     return typing;
-  });
+  }));
 };
 
 const getAliasName = (options: ICreateCurriedFunctionOptions) => {
@@ -128,22 +134,35 @@ const createAliasTyping = (typings: FunctionTyping[], options: ICreateCurriedFun
   return new PlainTyping(`type ${getAliasName(options)} = {\n${content}\n}`);
 };
 
+const repeatFirstTyping = (typings: FunctionTyping[]): FunctionTyping[] => {
+  const newTypings = Array.from(new Set(typings)).map((_typing) => {
+    if (_typing.returnType instanceof InterfaceTyping) {
+      _typing.returnType.typings = repeatFirstTyping(_typing.returnType.typings as FunctionTyping[]);
+    }
+    return _typing;
+  });
+  if (newTypings.length > 1) {
+    newTypings.push(newTypings[0]);
+  }
+  return newTypings;
+};
+
 export const createCurriedFunctions = (mainOptions: ICreateCurriedFunctionOptions, ...otherOptionss: ICreateCurriedFunctionOptions[]): Typing[] => {
   const mainElements: ICreateCurriedFunctionElement[] = [];
   initCurriedElements(mainElements, mainOptions.arguments);
   const mainTypings = elementsToTypings(mainElements, mainOptions);
 
-  const othertypingss: FunctionTyping[][] = [];
+  const otherTypingss: FunctionTyping[][] = [];
   otherOptionss.forEach((otherOptions) => {
     const otherElements: ICreateCurriedFunctionElement[] = [];
     initCurriedElements(otherElements, otherOptions.arguments);
-    othertypingss.push(elementsToTypings(otherElements, otherOptions));
+    otherTypingss.push(elementsToTypings(otherElements, otherOptions));
   });
 
   const aliasTypings: PlainTyping[] = [];
   if (mainOptions.typeAlias || otherOptionss.length > 0) {
     aliasTypings.push(createAliasTyping(mainTypings, mainOptions));
-    othertypingss.forEach((othertypings, index) => {
+    otherTypingss.forEach((othertypings, index) => {
       aliasTypings.push(createAliasTyping(othertypings, otherOptionss[index]));
     });
   }
@@ -151,17 +170,12 @@ export const createCurriedFunctions = (mainOptions: ICreateCurriedFunctionOption
   mainTypings.forEach((mainTyping) => {
     mainTyping.name = `function ${mainOptions.name}`;
   });
-  othertypingss.forEach((othertypings, index) => {
+  otherTypingss.forEach((othertypings, index) => {
     othertypings.forEach((othertyping) => {
       othertyping.name = `function ${otherOptionss[index].name}`;
     });
   });
 
-  mergeTypings(mainTypings, ...othertypingss);
-
-  if (mainTypings.length > 1) {
-    mainTypings.push(mainTypings[0]);
-  }
-
-  return [...mainTypings, ...aliasTypings];
+  mergeTypings(mainTypings, ...otherTypingss);
+  return [...repeatFirstTyping(mainTypings), ...aliasTypings];
 };

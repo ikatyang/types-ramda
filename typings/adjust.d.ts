@@ -21,6 +21,7 @@ declare namespace R {
     <U>(fn: Morphism<T, U>): {
       (index: number): (T | U)[];
     };
+    <U>(fn: Morphism<T, U>, index: number): (T | U)[];
   };
   function adjust<T, U>(fn: Morphism<T, U>, list: List<T>): {
     (index: number): (T | U)[];
@@ -33,6 +34,7 @@ declare namespace R {
     <U>(fn: Morphism<T, U>): {
       (index: number): (T | U)[];
     };
+    <U>(fn: Morphism<T, U>, index: number): (T | U)[];
   };
   function adjust<T, U>(fn: Morphism<T, U>, index: number): {
     (list: List<T>): (T | U)[];
@@ -45,6 +47,7 @@ declare namespace R {
     <T, U>(fn: Morphism<T, U>): {
       (list: List<T>): (T | U)[];
     };
+    <T, U>(fn: Morphism<T, U>, list: List<T>): (T | U)[];
   };
   function adjust<T, U>(fn: Morphism<T, U>): {
     (index: number, list: List<T>): (T | U)[];
@@ -54,6 +57,7 @@ declare namespace R {
     (index: number): {
       (list: List<T>): (T | U)[];
     };
+    (index: number, list: List<T>): (T | U)[];
   };
   function adjust<T, U>(fn: Morphism<T, U>, index: number, list: List<T>): (T | U)[];
 

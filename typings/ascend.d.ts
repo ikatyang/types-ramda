@@ -21,6 +21,7 @@ declare namespace R {
     (fn: Morphism<T, Ordered>): {
       (a: T): 0 | 1 | -1;
     };
+    (fn: Morphism<T, Ordered>, a: T): 0 | 1 | -1;
   };
   function ascend<T>(fn: Morphism<T, Ordered>, b: T): {
     (a: T): 0 | 1 | -1;
@@ -33,6 +34,7 @@ declare namespace R {
     (fn: Morphism<T, Ordered>): {
       (a: T): 0 | 1 | -1;
     };
+    (fn: Morphism<T, Ordered>, a: T): 0 | 1 | -1;
   };
   function ascend<T>(fn: Morphism<T, Ordered>, a: T): {
     (b: T): 0 | 1 | -1;
@@ -45,6 +47,7 @@ declare namespace R {
     (fn: Morphism<T, Ordered>): {
       (b: T): 0 | 1 | -1;
     };
+    (fn: Morphism<T, Ordered>, b: T): 0 | 1 | -1;
   };
   function ascend<T>(fn: Morphism<T, Ordered>): {
     (a: T, b: T): 0 | 1 | -1;
@@ -54,6 +57,7 @@ declare namespace R {
     (a: T): {
       (b: T): 0 | 1 | -1;
     };
+    (a: T, b: T): 0 | 1 | -1;
   };
   function ascend<T>(fn: Morphism<T, Ordered>, a: T, b: T): 0 | 1 | -1;
 
