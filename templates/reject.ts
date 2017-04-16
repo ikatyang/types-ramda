@@ -1,6 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createFilterTypings('function reject');
+const typings = S.createFilterListTypings('function reject');
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),

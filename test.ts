@@ -245,8 +245,8 @@ checker(module, (check) => {
   { // filter
     const isEven = (n: number) => n % 2 === 0;
     check('filter', R.filter(isEven, [1, 2, 3, 4]), [2, 4]);
-    check('filter', R.filter(isEven, { a: 1, b: 2, c: 3, d: 4 }), { b: 2, d: 4 });
-    // TODO: R.filter for filterable
+    check('filter', R.filterDictionary(isEven, { a: 1, b: 2, c: 3, d: 4 }), { b: 2, d: 4 });
+    // TODO: R.filterSelf for filterable
   }
 
   { // flip
@@ -407,7 +407,8 @@ checker(module, (check) => {
   { // reject
     const isOdd = (n: number) => n % 2 === 1;
     check('reject', R.reject(isOdd, [1, 2, 3, 4]), [2, 4]);
-    check('reject', R.reject(isOdd, { a: 1, b: 2, c: 3, d: 4 }), { b: 2, d: 4 });
+    check('reject', R.rejectDictionary(isOdd, { a: 1, b: 2, c: 3, d: 4 }), { b: 2, d: 4 });
+    // TODO: R.rejectSelf for filterable
   }
 
   { // replace

@@ -92,7 +92,10 @@ source version: v0.23.0
 - [x] equals
 - [ ] evolve
 - [ ] F
-- [x] filter
+- filter
+  - [x] filter for ArrayLike
+  - [x] filterSelf for `#filter()`
+  - [x] filterDictionary for Object
 - [ ] find
 - [ ] findIndex
 - [ ] findLast
@@ -205,7 +208,10 @@ source version: v0.23.0
 - [ ] reduced
 - [ ] reduceRight
 - [ ] reduceWhile
-- [x] reject
+- reject
+  - [x] reject for ArrayLike
+  - [x] rejectSelf for `#filter()`
+  - [x] rejectDictionary for Object
 - [ ] remove
 - [ ] repeat
 - [x] replace
