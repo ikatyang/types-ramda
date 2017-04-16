@@ -191,7 +191,7 @@ source version: v0.23.0
 - [ ] pipeP
 - [ ] pluck
 - [x] prepend
-- [ ] product
+- [x] product
 - [ ] project
 - [x] prop
 - [x] propEq

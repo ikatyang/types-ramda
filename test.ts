@@ -387,6 +387,10 @@ checker(module, (check) => {
     check('prepend', R.prepend('fee', ['fi', 'fo', 'fum']), ['fee', 'fi', 'fo', 'fum']);
   }
 
+  { // product
+    check('product', R.product([2, 4, 6, 8, 100, 1]), 38400);
+  }
+
   { // prop
     check('prop', R.prop('x', { x: 100 }), 100);
     check('prop', R.prop('x', {}), undefined);

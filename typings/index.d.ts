@@ -45,6 +45,7 @@
 /// <reference path="./or.d.ts" />
 /// <reference path="./pipe.d.ts" />
 /// <reference path="./prepend.d.ts" />
+/// <reference path="./product.d.ts" />
 /// <reference path="./prop.d.ts" />
 /// <reference path="./propEq.d.ts" />
 /// <reference path="./replace.d.ts" />
