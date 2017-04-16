@@ -21,5 +21,23 @@ declare namespace R {
     <U>(fns: List<Morphism<T, U>>): Appable<U>;
   };
   function ap<T, U>(fns: List<Morphism<T, U>>, list: List<T>): List<U>;
+  type ApList = {
+    <T, U>(fns: List<Morphism<T, U>>, list: List<T>): List<U>;
+    <T>(_fns: PH, list: List<T>): {
+      <U>(fns: List<Morphism<T, U>>): List<U>;
+    };
+    <T, U>(fns: List<Morphism<T, U>>): {
+      (list: List<T>): List<U>;
+    };
+  };
+  type ApSelf = {
+    <T, U>(fns: List<Morphism<T, U>>, appable: Appable<T>): Appable<U>;
+    <T>(_fns: PH, appable: Appable<T>): {
+      <U>(fns: List<Morphism<T, U>>): Appable<U>;
+    };
+    <T, U>(fns: List<Morphism<T, U>>): {
+      (appable: Appable<T>): Appable<U>;
+    };
+  };
 
 }

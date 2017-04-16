@@ -1,4 +1,7 @@
 import * as configs from '../configs';
+import { Group } from '../components/group';
+import { Typing } from '../typings/typing';
+import { PlainTyping } from '../typings/plain';
 import { FunctionTyping } from '../typings/function';
 import { InterfaceTyping } from '../typings/interface';
 
@@ -107,13 +110,25 @@ const mergeTypings = (mainTypings: FunctionTyping[], ...otherTypingss: FunctionT
 
 const elementsToTypings = (elements: ICreateCurriedFunctionElement[], options: ICreateCurriedFunctionOptions) => {
   return elements.map(element => {
-    const typing = createCurriedFunction(`function ${options.name}`, element, options.returnType);
+    const typing = createCurriedFunction('', element, options.returnType);
     typing.generics.unshift(...(options.generics || []));
     return typing;
   });
 };
 
-export const createCurriedFunctions = (mainOptions: ICreateCurriedFunctionOptions, ...otherOptionss: ICreateCurriedFunctionOptions[]): FunctionTyping[] => {
+const getAliasName = (options: ICreateCurriedFunctionOptions) => {
+  if (!options.typeAlias) {
+    throw new Error(`Branched typings '${options.name}' should have a typeAlias`);
+  }
+  return options.name[0].toUpperCase() + options.name.slice(1) + options.typeAlias;
+};
+
+const createAliasTyping = (typings: FunctionTyping[], options: ICreateCurriedFunctionOptions) => {
+  const content = new Group().append(...typings).toString().split('\n').map(x => `  ${x}`).join('\n');
+  return new PlainTyping(`type ${getAliasName(options)} = {\n${content}\n}`);
+};
+
+export const createCurriedFunctions = (mainOptions: ICreateCurriedFunctionOptions, ...otherOptionss: ICreateCurriedFunctionOptions[]): Typing[] => {
   const mainElements: ICreateCurriedFunctionElement[] = [];
   initCurriedElements(mainElements, mainOptions.arguments);
   const mainTypings = elementsToTypings(mainElements, mainOptions);
@@ -125,11 +140,28 @@ export const createCurriedFunctions = (mainOptions: ICreateCurriedFunctionOption
     othertypingss.push(elementsToTypings(otherElements, otherOptions));
   });
 
+  const aliasTypings: PlainTyping[] = [];
+  if (mainOptions.typeAlias || otherOptionss.length > 0) {
+    aliasTypings.push(createAliasTyping(mainTypings, mainOptions));
+    othertypingss.forEach((othertypings, index) => {
+      aliasTypings.push(createAliasTyping(othertypings, otherOptionss[index]));
+    });
+  }
+
+  mainTypings.forEach((mainTyping) => {
+    mainTyping.name = `function ${mainOptions.name}`;
+  });
+  othertypingss.forEach((othertypings, index) => {
+    othertypings.forEach((othertyping) => {
+      othertyping.name = `function ${otherOptionss[index].name}`;
+    });
+  });
+
   mergeTypings(mainTypings, ...othertypingss);
 
   if (mainTypings.length > 1) {
     mainTypings.push(mainTypings[0]);
   }
 
-  return mainTypings;
+  return [...mainTypings, ...aliasTypings];
 };

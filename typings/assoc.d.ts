@@ -101,5 +101,107 @@ declare namespace R {
     };
   };
   function assoc<P extends string, V, T extends {}>(property: P, value: V, obj: T): T & { [K in P]: V };
+  type AssocStrict = {
+    <P extends string, V, T extends {}>(property: P, value: V, obj: T): T & { [K in P]: V };
+    <V, T extends {}>(_property: PH, value: V, obj: T): {
+      <P extends string>(property: P): T & { [K in P]: V };
+    };
+    <P extends string, T extends {}>(property: P, _value: PH, obj: T): {
+      <V>(value: V): T & { [K in P]: V };
+    };
+    <T extends {}>(_property: PH, _value: PH, obj: T): {
+      <P extends string, V>(property: P, value: V): T & { [K in P]: V };
+      <V>(_property: PH, value: V): {
+        <P extends string>(property: P): T & { [K in P]: V };
+      };
+      <P extends string>(property: P): {
+        <V>(value: V): T & { [K in P]: V };
+      };
+    };
+    <P extends string, T extends {}>(property: P, obj: T): {
+      <V>(value: V): T & { [K in P]: V };
+    };
+    <T extends {}>(_property: PH, obj: T): {
+      <P extends string, V>(property: P, value: V): T & { [K in P]: V };
+      <V>(_property: PH, value: V): {
+        <P extends string>(property: P): T & { [K in P]: V };
+      };
+      <P extends string>(property: P): {
+        <V>(value: V): T & { [K in P]: V };
+      };
+    };
+    <P extends string, V>(property: P, value: V): {
+      <T extends {}>(obj: T): T & { [K in P]: V };
+    };
+    <V>(_property: PH, value: V): {
+      <P extends string, T extends {}>(property: P, obj: T): T & { [K in P]: V };
+      <T extends {}>(_property: PH, obj: T): {
+        <P extends string>(property: P): T & { [K in P]: V };
+      };
+      <P extends string>(property: P): {
+        <T extends {}>(obj: T): T & { [K in P]: V };
+      };
+    };
+    <P extends string>(property: P): {
+      <V, T extends {}>(value: V, obj: T): T & { [K in P]: V };
+      <T extends {}>(_value: PH, obj: T): {
+        <V>(value: V): T & { [K in P]: V };
+      };
+      <V>(value: V): {
+        <T extends {}>(obj: T): T & { [K in P]: V };
+      };
+    };
+  };
+  type AssocLoose = {
+    <T extends {}>(property: Property, value: any, obj: T): T;
+    <T extends {}>(_property: PH, value: any, obj: T): {
+      (property: Property): T;
+    };
+    <T extends {}>(property: Property, _value: PH, obj: T): {
+      (value: any): T;
+    };
+    <T extends {}>(_property: PH, _value: PH, obj: T): {
+      (property: Property, value: any): T;
+      (_property: PH, value: any): {
+        (property: Property): T;
+      };
+      (property: Property): {
+        (value: any): T;
+      };
+    };
+    <T extends {}>(property: Property, obj: T): {
+      (value: any): T;
+    };
+    <T extends {}>(_property: PH, obj: T): {
+      (property: Property, value: any): T;
+      (_property: PH, value: any): {
+        (property: Property): T;
+      };
+      (property: Property): {
+        (value: any): T;
+      };
+    };
+    (property: Property, value: any): {
+      <T extends {}>(obj: T): T;
+    };
+    (_property: PH, value: any): {
+      <T extends {}>(property: Property, obj: T): T;
+      <T extends {}>(_property: PH, obj: T): {
+        (property: Property): T;
+      };
+      (property: Property): {
+        <T extends {}>(obj: T): T;
+      };
+    };
+    (property: Property): {
+      <T extends {}>(value: any, obj: T): T;
+      <T extends {}>(_value: PH, obj: T): {
+        (value: any): T;
+      };
+      (value: any): {
+        <T extends {}>(obj: T): T;
+      };
+    };
+  };
 
 }

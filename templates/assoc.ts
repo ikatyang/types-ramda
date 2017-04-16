@@ -2,10 +2,12 @@ import * as S from '../src/index';
 
 const typings = S.createCurriedFunctions({
   name: 'assoc',
+  typeAlias: 'Strict',
   arguments: [[['P extends string'], S.vProperty, 'P'], [['V'], `${S.vValue}`, 'V'], [[`T extends ${S.tObject}`], S.vObject, 'T']],
   returnType: 'T & { [K in P]: V }',
 }, {
   name: 'assoc',
+  typeAlias: 'Loose',
   arguments: [[[], S.vProperty, S.tProperty], [[], `${S.vValue}`, 'any'], [[`T extends ${S.tObject}`], S.vObject, 'T']],
   returnType: 'T',
 });

@@ -32,5 +32,32 @@ declare namespace R {
     (value: T): Concatable<T>;
   };
   function concat<T, U>(array1: T[], array2: U[]): (T | U)[];
+  type ConcatArray = {
+    <T, U>(array1: T[], array2: U[]): (T | U)[];
+    <U>(_array1: PH, array2: U[]): {
+      <T>(array1: T[]): (T | U)[];
+    };
+    <T>(array1: T[]): {
+      <U>(array2: U[]): (T | U)[];
+    };
+  };
+  type ConcatString = {
+    (str1: string, str2: string): string;
+    (_str1: PH, str2: string): {
+      (str1: string): string;
+    };
+    (str1: string): {
+      (str2: string): string;
+    };
+  };
+  type ConcatSelf = {
+    <T>(concatable: Concatable<T>, value: T): Concatable<T>;
+    <T>(_concatable: PH, value: T): {
+      (concatable: Concatable<T>): Concatable<T>;
+    };
+    <T>(concatable: Concatable<T>): {
+      (value: T): Concatable<T>;
+    };
+  };
 
 }
