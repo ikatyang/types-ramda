@@ -1,10 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createCurriedFunctions({
-  name: 'function and',
-  arguments: [[[], 'a', 'boolean'], [[], 'b', 'boolean']],
-  returnType: 'boolean',
-});
+const typings = S.createLogicTypings('function and', 2);
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),

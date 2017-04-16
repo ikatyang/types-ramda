@@ -5,13 +5,13 @@ declare namespace R {
   /**
    * Returns `true` if both arguments are `true`; `false` otherwise.
    */
-  function and(a: boolean, b: boolean): boolean;
-  function and(_a: PH, b: boolean): {
-    (a: boolean): boolean;
+  function and<T, U>(a: T, b: U): T | U;
+  function and<U>(_a: PH, b: U): {
+    <T>(a: T): T | U;
   };
-  function and(a: boolean): {
-    (b: boolean): boolean;
+  function and<T>(a: T): {
+    <U>(b: U): T | U;
   };
-  function and(a: boolean, b: boolean): boolean;
+  function and<T, U>(a: T, b: U): T | U;
 
 }
