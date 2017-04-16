@@ -9,11 +9,12 @@ const generics: string[] = [];
 for (let i = 1; i <= S.maxCurryLevel; i++) {
   args.push(`${S.vNumber(i)}: ${S.gNumber(i)}`);
   argTypes.push(S.gNumber(i));
-  generics.push(`${S.gNumber(i)} = any`);
+  generics.push(`${S.gNumber(i)}`);
 
   typings.push(...S.createCurriedFunctions({
     name: 'applySpec',
-    generics: [`N extends ${i}`, 'R = any', ...generics],
+    typeAlias: i.toString(),
+    generics: ['R', ...generics],
     arguments: [[[], 'fns', `${S.tNestedDictionary}<(${args.join(', ')}) => R>`]],
     returnType: `${S.tCurriedFunction(i)}<${argTypes.join(', ')}, ${S.tNestedDictionary}<R>>`,
   }));

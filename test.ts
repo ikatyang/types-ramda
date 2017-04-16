@@ -103,7 +103,7 @@ checker(module, (check) => {
   }
 
   { // applySpec
-    { // non-generic will cause arguments length to be 1
+    {
       const getMetrics = R.applySpec({
         sum: R.add(2),
         nested: { mul: R.multiply(2) },
@@ -111,24 +111,8 @@ checker(module, (check) => {
       check('applySpec', getMetrics(4), { sum: 6, nested: { mul: 8 } });
     }
 
-    { // specify arguments length, types are considered any
-      const getMetrics = R.applySpec<2>({
-        sum: R.add,
-        nested: { mul: R.multiply },
-      });
-      check('applySpec', getMetrics(2, 4), { sum: 6, nested: { mul: 8 } });
-    }
-
-    { // specify arguments length and its type
-      const getMetrics = R.applySpec<2, number, number>({
-        sum: R.add,
-        nested: { mul: R.multiply },
-      });
-      check('applySpec', getMetrics(2, 4), { sum: 6, nested: { mul: 8 } });
-    }
-
-    { // specify everything even return-type
-      const getMetrics = R.applySpec<2, number, number, number>({
+    {
+      const getMetrics = R.applySpec({
         sum: R.add,
         nested: { mul: R.multiply },
       });
