@@ -1,10 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createCurriedFunctions({
-  name: 'function all',
-  arguments: [[['T'], S.vPreficate, `${S.tPredicate}<T>`], [['T'], S.vList, `${S.tList}<T>`]],
-  returnType: 'boolean',
-});
+const typings = S.createListBooleanTypings('function all');
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),
