@@ -1,10 +1,6 @@
 import * as S from '../src/index';
 
-const typings = S.createCurriedFunctions({
-  name: 'function gte',
-  arguments: [[[`T extends ${S.tOrdered}`], 'a', 'T'], [[`T extends ${S.tOrdered}`], 'b', 'T']],
-  returnType: 'boolean',
-});
+const typings = S.createCompareTypings('function gte');
 
 export default new S.Definition([
   new S.Reference('path', './internal/curried-functions'),
