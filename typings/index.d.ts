@@ -57,3 +57,4 @@
 /// <reference path="./times.d.ts" />
 /// <reference path="./toLower.d.ts" />
 /// <reference path="./toUpper.d.ts" />
+/// <reference path="./unary.d.ts" />

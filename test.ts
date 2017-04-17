@@ -441,4 +441,14 @@ checker(module, (check) => {
     check('toUpper', R.toUpper('abc'), 'ABC');
   }
 
+  { // unary
+    const takesTwoArgs = (a: any, b: any) => [a, b];
+    check('unary', takesTwoArgs.length, 2);
+    check('unary', takesTwoArgs(1, 2), [1, 2]);
+
+    const takesOneArg = R.unary(takesTwoArgs);
+    check('unary', takesOneArg.length, 1);
+    check('unary', takesOneArg(1), [1, undefined]);
+  }
+
 });

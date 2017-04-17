@@ -246,7 +246,7 @@ source version: v0.23.0
 - [ ] tryCatch
 - [ ] type
 - [ ] unapply
-- [ ] unary
+- [x] unary
 - [ ] uncurryN
 - [ ] unfold
 - [ ] union
