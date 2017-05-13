@@ -1,1 +1,0 @@
-Divides two numbers. Equivalent to `a / b`.

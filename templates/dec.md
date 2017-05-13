@@ -1,1 +1,0 @@
-Decrements its argument.

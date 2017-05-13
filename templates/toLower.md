@@ -1,1 +1,0 @@
-The lower case version of a string.

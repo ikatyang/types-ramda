@@ -1,1 +1,0 @@
-Returns a string made by inserting the `separator` between each element and concatenating all the elements into a single string.

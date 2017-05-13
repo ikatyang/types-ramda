@@ -1,1 +1,0 @@
-Returns a new function much like the supplied one, except that the first two arguments' order is reversed.

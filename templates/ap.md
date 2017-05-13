@@ -1,3 +1,0 @@
-ap applies a list of functions to a list of values.
-
-Dispatches to the `ap` method of the second argument, if present. Also treats curried functions as applicatives.

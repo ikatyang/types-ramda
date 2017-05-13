@@ -1,1 +1,0 @@
-Increments its argument.

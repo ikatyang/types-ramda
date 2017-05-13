@@ -1,1 +1,0 @@
-Returns `true` if the first argument is less than the second; `false` otherwise.

@@ -1,1 +1,0 @@
-Adds together all the elements of a list.

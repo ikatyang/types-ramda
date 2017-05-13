@@ -1,1 +1,0 @@
-Multiplies two numbers. Equivalent to `a * b` but curried.

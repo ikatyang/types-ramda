@@ -1,1 +1,0 @@
-Returns `true` if one or both of its arguments are `true`. Returns `false` if both arguments are `false`.

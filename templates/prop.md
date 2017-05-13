@@ -1,1 +1,0 @@
-Returns a function that when supplied an object returns the indicated property of that object, if it exists.
