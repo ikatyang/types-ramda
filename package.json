@@ -12,13 +12,14 @@
   "author": "ikatyang",
   "license": "MIT",
   "scripts": {
-    "prepublish": "yarn run link && yarn run lint && yarn run build-release && yarn run test -- --verbose",
+    "prepublish": "yarn run link && yarn run lint && yarn run build-release",
     "lint": "tslint --type-check --project ./tsconfig.json",
     "test": "jest --config ./jest.json",
     "build": "gulp build",
     "build-watch": "gulp build-watch",
     "build-release": "gulp build-release",
-    "link": "ln -sf $PWD/ramda $PWD/node_modules/@types"
+    "link": "ln -sf $PWD/ramda $PWD/node_modules/@types",
+    "release": "yarn run test && yarn publish"
   },
   "devDependencies": {
     "@types/del": "2.2.32",

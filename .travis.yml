@@ -4,7 +4,7 @@ node_js:
   - "stable"
 
 script:
-  - echo "done" # just a placeholder, since tests are in the prepublish hook
+  - yarn run test -- --verbose
 
 cache:
   yarn: true
