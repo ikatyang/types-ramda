@@ -4,6 +4,8 @@ node_js:
   - "stable"
 
 script:
+  - yarn run lint
+  - yarn run build-release
   - yarn run test -- --verbose
 
 cache:
