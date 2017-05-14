@@ -1,4 +1,4 @@
-# @ikatyang/types-ramda
+# types-ramda
 
 [![build](https://travis-ci.org/ikatyang/types-ramda.svg)](https://travis-ci.org/ikatyang/types-ramda)
 
