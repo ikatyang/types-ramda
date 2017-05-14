@@ -1,12 +1,8 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "noEmit": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": true,
-    "strictNullChecks": true
-  }
+    "strict": true,
+    "module": "commonjs"
+  },
+  "include": ["src/**/*.ts"]
 }

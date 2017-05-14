@@ -1,9 +1,6 @@
 {
-  "extends": "tslint-config-standard",
+  "extends": "tslint-config-ikatyang",
   "rules": {
-    "semicolon": [true, "always"],
-    "trailing-comma": [true, { "multiline": "always", "singleline": "never" }],
-    "space-before-function-paren": [true, { "anonymous": "always", "named": "never", "asyncArrow": "always", "method": "never", "constructor": "never" }],
-    "unified-signatures": false
+    "no-default-export": false
   }
 }

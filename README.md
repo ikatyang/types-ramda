@@ -4,55 +4,33 @@
 
 TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 
-require `typescript >= 2.3.0` since this project has used [`generic parameter defaults`](https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#generic-parameter-defaults)
-
-## Development
-
-Use Yarn as package manager
-
-#### Build
-
-```sh
-yarn run build
-```
-
-#### Lint
-
-```sh
-yarn run lint
-```
-
-#### Test
-
-```sh
-yarn run test
-```
+developing ...
 
 ## Progress
 
 source version: v0.23.0
 
-- [x] __
-- [x] add
-- [x] addIndex
-- [x] adjust
-- [x] all
-- [x] allPass
-- [x] always
-- [x] and
-- [x] any
-- [x] anyPass
-- [x] ap
-- [x] aperture
-- [x] append
-- [x] apply
-- [x] applySpec
-- [x] ascend
-- [x] assoc
-- [x] assocPath
-- [x] binary
-- [x] bind
-- [x] both
+- [ ] __
+- [ ] add
+- [ ] addIndex
+- [ ] adjust
+- [ ] all
+- [ ] allPass
+- [ ] always
+- [ ] and
+- [ ] any
+- [ ] anyPass
+- [ ] ap
+- [ ] aperture
+- [ ] append
+- [ ] apply
+- [ ] applySpec
+- [ ] ascend
+- [ ] assoc
+- [ ] assocPath
+- [ ] binary
+- [ ] bind
+- [ ] both
 - [ ] call
 - [ ] chain
 - [ ] clamp
@@ -62,23 +40,23 @@ source version: v0.23.0
 - [ ] compose
 - [ ] composeK
 - [ ] composeP
-- [x] concat
+- [ ] concat
 - [ ] cond
 - [ ] construct
 - [ ] constructN
 - [ ] contains
-- [x] converge
+- [ ] converge
 - [ ] countBy
 - [ ] curry
 - [ ] curryN
-- [x] dec
+- [ ] dec
 - [ ] defaultTo
-- [x] descend
+- [ ] descend
 - [ ] difference
 - [ ] differenceWith
 - [ ] dissoc
 - [ ] dissocPath
-- [x] divide
+- [ ] divide
 - [ ] drop
 - [ ] dropLast
 - [ ] dropLastWhile
@@ -89,30 +67,30 @@ source version: v0.23.0
 - [ ] empty
 - [ ] eqBy
 - [ ] eqProps
-- [x] equals
+- [ ] equals
 - [ ] evolve
 - [ ] F
-- [x] filter
+- [ ] filter
 - [ ] find
 - [ ] findIndex
 - [ ] findLast
 - [ ] findLastIndex
 - [ ] flatten
-- [x] flip
+- [ ] flip
 - [ ] forEach
 - [ ] forEachObjIndexed
 - [ ] fromPairs
 - [ ] groupBy
 - [ ] groupWith
-- [x] gt
-- [x] gte
+- [ ] gt
+- [ ] gte
 - [ ] has
 - [ ] hasIn
 - [ ] head
 - [ ] identical
-- [x] identity
+- [ ] identity
 - [ ] ifElse
-- [x] inc
+- [ ] inc
 - [ ] indexBy
 - [ ] indexOf
 - [ ] init
@@ -129,27 +107,27 @@ source version: v0.23.0
 - [ ] isArrayLike
 - [ ] isEmpty
 - [ ] isNil
-- [x] join
+- [ ] join
 - [ ] juxt
 - [ ] keys
 - [ ] keysIn
 - [ ] last
 - [ ] lastIndexOf
-- [x] length
+- [ ] length
 - [ ] lens
 - [ ] lensIndex
 - [ ] lensPath
 - [ ] lensProp
 - [ ] lift
 - [ ] liftN
-- [x] lt
-- [x] lte
-- [x] map
+- [ ] lt
+- [ ] lte
+- [ ] map
 - [ ] mapAccum
 - [ ] mapAccumRight
 - [ ] mapObjIndexed
 - [ ] match
-- [x] mathMod
+- [ ] mathMod
 - [ ] max
 - [ ] maxBy
 - [ ] mean
@@ -161,19 +139,19 @@ source version: v0.23.0
 - [ ] mergeWithKey
 - [ ] min
 - [ ] minBy
-- [x] modulo
-- [x] multiply
+- [ ] modulo
+- [ ] multiply
 - [ ] nAry
-- [x] negate
-- [x] none
-- [x] not
+- [ ] negate
+- [ ] none
+- [ ] not
 - [ ] nth
 - [ ] nthArg
 - [ ] objOf
 - [ ] of
 - [ ] omit
 - [ ] once
-- [x] or
+- [ ] or
 - [ ] over
 - [ ] pair
 - [ ] partial
@@ -186,15 +164,15 @@ source version: v0.23.0
 - [ ] pick
 - [ ] pickAll
 - [ ] pickBy
-- [x] pipe
+- [ ] pipe
 - [ ] pipeK
 - [ ] pipeP
 - [ ] pluck
-- [x] prepend
-- [x] product
+- [ ] prepend
+- [ ] product
 - [ ] project
-- [x] prop
-- [x] propEq
+- [ ] prop
+- [ ] propEq
 - [ ] propIs
 - [ ] propOr
 - [ ] props
@@ -205,24 +183,24 @@ source version: v0.23.0
 - [ ] reduced
 - [ ] reduceRight
 - [ ] reduceWhile
-- [x] reject
+- [ ] reject
 - [ ] remove
 - [ ] repeat
-- [x] replace
+- [ ] replace
 - [ ] reverse
 - [ ] scan
 - [ ] sequence
 - [ ] set
 - [ ] slice
-- [x] sort
+- [ ] sort
 - [ ] sortBy
 - [ ] sortWith
 - [ ] split
 - [ ] splitAt
 - [ ] splitEvery
 - [ ] splitWhen
-- [x] subtract
-- [x] sum
+- [ ] subtract
+- [ ] sum
 - [ ] symmetricDifference
 - [ ] symmetricDifferenceWith
 - [ ] T
@@ -233,12 +211,12 @@ source version: v0.23.0
 - [ ] takeWhile
 - [ ] tap
 - [ ] test
-- [x] times
-- [x] toLower
+- [ ] times
+- [ ] toLower
 - [ ] toPairs
 - [ ] toPairsIn
 - [ ] toString
-- [x] toUpper
+- [ ] toUpper
 - [ ] transduce
 - [ ] transpose
 - [ ] traverse
@@ -246,7 +224,7 @@ source version: v0.23.0
 - [ ] tryCatch
 - [ ] type
 - [ ] unapply
-- [x] unary
+- [ ] unary
 - [ ] uncurryN
 - [ ] unfold
 - [ ] union
