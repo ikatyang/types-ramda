@@ -95,7 +95,7 @@ gulp.task('build-index', () =>
 gulp.task('build', ['clean'], (callback: (error?: any) => void) =>
   gulp_run(['build-files', 'build-index'], callback));
 
-gulp.task('build-release', ['clean'], () =>
+gulp.task('build-release', () =>
   gulp.src(glob_index)
     .pipe(gulp_generate(generate_bundle_content))
     .pipe(gulp_rename({extname: output_extname}))
