@@ -26,6 +26,7 @@ const export_as_namespace_ramda = new dts.ExportAsNamespace({name: namespace_ram
 const require_declarations = (filename: string): dts.Declaration[] => {
   // tslint:disable-next-line:no-require-imports
   const required: any = require(filename);
+  delete require.cache[require.resolve(filename)];
   const {default: declarations} = required;
   if (!(declarations instanceof Array) || !declarations.every(declaration => declaration instanceof dts.Declaration)) {
     throw new Error('Template should export an array of Declarations');
@@ -37,7 +38,17 @@ const emit_declarations = (elements: (dts.Declaration | dts.ImportExport)[]) =>
   `${new dts.Document({children: elements}).emit()}\n`;
 
 const generate_file_content = (filename: string) =>
-  emit_declarations(require_declarations(filename).map(clone_as_export_declaration));
+  emit_declarations([
+    new dts.ImportNamed({
+      members: [
+        new dts.ImportMember({
+          owned: new dts.VariableDeclaration({name: 'PH'}),
+        }),
+      ],
+      from: './__',
+    }),
+    ...require_declarations(filename).map(clone_as_export_declaration),
+  ]);
 
 const generate_index_content = () => emit_declarations([
   export_as_namespace_ramda,

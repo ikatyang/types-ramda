@@ -5,7 +5,7 @@ node_js:
 
 script:
   - yarn run lint
-  - yarn run build-release
+  - yarn run build
   - yarn run test -- --verbose
 
 cache:

@@ -10,7 +10,7 @@ developing ...
 
 source version: v0.23.0
 
-- [ ] __
+- [x] __
 - [ ] add
 - [ ] addIndex
 - [ ] adjust
@@ -186,7 +186,7 @@ source version: v0.23.0
 - [ ] reject
 - [ ] remove
 - [ ] repeat
-- [ ] replace
+- [x] replace
 - [ ] reverse
 - [ ] scan
 - [ ] sequence
