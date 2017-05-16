@@ -11,7 +11,7 @@ developing ...
 source version: v0.23.0
 
 - [x] __
-- [ ] add
+- [x] add
 - [ ] addIndex
 - [ ] adjust
 - [ ] all
