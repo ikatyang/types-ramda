@@ -19,6 +19,7 @@ const glob_index = `${input_relative_dirname}/index.ts`;
 const glob_utils = `${input_relative_dirname}/utils/**/*`;
 
 const output_relative_dirname = 'ramda';
+const output_release_relative_dirname = '.';
 const output_extname = '.d.ts';
 
 const export_as_namespace_ramda = new dts.ExportAsNamespace({name: namespace_ramda});
@@ -98,7 +99,7 @@ gulp.task('build-release', ['clean'], () =>
   gulp.src(glob_index)
     .pipe(gulp_generate(generate_bundle_content))
     .pipe(gulp_rename({extname: output_extname}))
-    .pipe(gulp.dest(output_relative_dirname)),
+    .pipe(gulp.dest(output_release_relative_dirname)),
 );
 
 gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {

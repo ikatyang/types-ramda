@@ -49,6 +49,6 @@
     "typescript": "2.3.2"
   },
   "files": [
-    "ramda/index.d.ts"
+    "index.d.ts"
   ]
 }
