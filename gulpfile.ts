@@ -12,69 +12,15 @@ import * as through from 'through2';
 
 const namespace_ramda = 'R';
 
-const input_relative_dirname = 'src';
+const input_relative_dirname = 'src/templates';
 const glob_templates = `${input_relative_dirname}/*.ts`;
 const glob_markdowns = `${input_relative_dirname}/*.md`;
 const glob_index = `${input_relative_dirname}/index.ts`;
-const glob_utils = `${input_relative_dirname}/utils/**/*`;
+const glob_utils = `{src/utils/**/*,src/constants.ts}`;
 
 const output_relative_dirname = 'ramda';
 const output_release_relative_dirname = '.';
 const output_extname = '.d.ts';
-
-const export_as_namespace_ramda = new dts.ExportAsNamespace({name: namespace_ramda});
-
-const require_declarations = (filename: string): dts.Declaration[] => {
-  // tslint:disable-next-line:no-require-imports
-  const required: any = require(filename);
-  delete require.cache[require.resolve(filename)];
-  const {default: declarations} = required;
-  if (!(declarations instanceof Array) || !declarations.every(declaration => declaration instanceof dts.Declaration)) {
-    throw new Error('Template should export an array of Declarations');
-  }
-  return declarations;
-};
-const clone_as_export_declaration = (declaration: dts.Declaration) => declaration.clone().set({export: true});
-const emit_declarations = (elements: (dts.Declaration | dts.ImportExport)[]) =>
-  `${new dts.Document({children: elements}).emit()}\n`;
-
-const generate_file_content = (filename: string) =>
-  emit_declarations([
-    new dts.ImportNamed({
-      members: [
-        new dts.ImportMember({
-          owned: new dts.VariableDeclaration({name: 'PH'}),
-        }),
-      ],
-      from: './__',
-    }),
-    ...require_declarations(filename).map(clone_as_export_declaration),
-  ]);
-
-const generate_index_content = () => emit_declarations([
-  export_as_namespace_ramda,
-  ...glob.sync(glob_templates)
-    .filter(filename => !filename.endsWith('index.ts'))
-    .map(filename => new dts.ExportAll({
-      from: `./${gulp_util.replaceExtension(path.relative(input_relative_dirname, filename), '')}`,
-    })),
-]);
-
-const generate_bundle_content = () => emit_declarations([
-  export_as_namespace_ramda,
-  ...glob.sync(glob_templates, {realpath: true, ignore: glob_index})
-    .reduce((declarations: dts.Declaration[], filename) => [...declarations, ...require_declarations(filename)], [])
-    .map(clone_as_export_declaration),
-]);
-
-const gulp_generate = (fn: (filename: string) => string) => through.obj((file: gulp_util.File, encoding, callback) => {
-  if (file.isBuffer()) {
-    file.contents = new Buffer(fn(file.path));
-    callback(null, file);
-  } else {
-    callback(new Error('Support buffer only.'));
-  }
-});
 
 gulp.task('clean', async () => del(output_relative_dirname));
 
@@ -147,3 +93,76 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
     }
   });
 });
+
+const export_namespace = dts.create_export_namespace({name: namespace_ramda});
+
+function require_declarations(filename: string): dts.IModuleMember[] {
+  // tslint:disable-next-line:no-require-imports
+  const required: any = require(filename);
+  delete require.cache[require.resolve(filename)];
+
+  const declarations = required.default;
+
+  if (!(declarations instanceof Array)) {
+    throw new Error('Template should default-export a generator of declarations');
+  }
+
+  return declarations.map(declaration => ({...declaration, export: true}));
+}
+
+function emit_declarations(elements: dts.ITopLevelMember[]) {
+  return dts.emit(
+    dts.create_top_level_element({members: elements}),
+  );
+}
+
+function generate_file_content(filename: string) {
+  return emit_declarations([
+    dts.create_triple_slash_reference({path: './index.d.ts'}),
+    // dts.create_import_named({
+    //   from: './__',
+    //   members: [dts.create_import_member({name: 'PH'})],
+    // }),
+    dts.create_namespace_declaration({
+      name: namespace_ramda,
+      members: require_declarations(filename),
+    }),
+  ]);
+}
+
+function generate_index_content() {
+  return emit_declarations([
+    // export_namespace,
+    ...glob.sync(glob_templates)
+      .filter(filename => !filename.endsWith('index.ts'))
+      // .map(filename => dts.create_export_named({
+      //   from: `./${gulp_util.replaceExtension(path.relative(input_relative_dirname, filename), '')}`,
+      // })),
+      .map(filename => dts.create_triple_slash_reference({
+        path: `./${gulp_util.replaceExtension(path.relative(input_relative_dirname, filename), '')}${output_extname}`,
+      })),
+    dts.create_export_equal({value: namespace_ramda}),
+  ]);
+}
+
+function generate_bundle_content() {
+  return emit_declarations([
+    export_namespace,
+    ...glob.sync(glob_templates, {realpath: true, ignore: glob_index}).reduce(
+      (declarations: dts.ITopLevelMember[], filename) =>
+        [...declarations, ...require_declarations(filename)],
+      [],
+    ),
+  ]);
+}
+
+function gulp_generate(fn: (filename: string) => string) {
+  return through.obj((file: gulp_util.File, encoding, callback) => {
+    if (file.isBuffer()) {
+      file.contents = new Buffer(fn(file.path));
+      callback(null, file);
+    } else {
+      callback(new Error('Support buffer only.'));
+    }
+  });
+}

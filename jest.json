@@ -1,15 +1,14 @@
 {
   "transform": {
     "/tests/.+\\.ts$": "dts-jest",
-    "/utils/.+\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    "/snapshot-formatter\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   },
   "testRegex": "/tests/.+\\.ts$",
-  "testPathIgnorePatterns": ["/dts-jest/"],
   "moduleFileExtensions": ["ts", "js"],
   "globals": {
     "_dts_jest_": {
       "type_detail": true,
-      "snapshot_formatter": "utils/snapshot-formatter.ts"
+      "snapshot_formatter": "src/utils/snapshot-formatter.ts"
     }
   }
 }

@@ -1,15 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R.replace('foo')('bar')('foo foo foo') 1`] = `"string"`;
+exports[`R.replace('foo')('bar') 1`] = `"R.replace_110"`;
 
-exports[`R.replace('foo', 'bar')('foo foo foo') 1`] = `"string"`;
-
-exports[`R.replace('foo', 'bar', 'foo foo foo') 1`] = `"string"`;
+exports[`R.replace('foo', 'bar') 1`] = `"R.replace_110"`;
 
 exports[`R.replace(/foo/, 'bar', 'foo foo foo') 1`] = `"string"`;
 
-exports[`R.replace(/foo/g)('bar')('foo foo foo') 1`] = `"string"`;
-
-exports[`R.replace(/foo/g, 'bar')('foo foo foo') 1`] = `"string"`;
-
-exports[`R.replace(/foo/g, 'bar', 'foo foo foo') 1`] = `"string"`;
+exports[`R.replace(R.__, 'bar') 1`] = `"R.replace_010"`;

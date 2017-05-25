@@ -1,6 +1,9 @@
 {
   "extends": "tslint-config-ikatyang",
   "rules": {
-    "no-default-export": false
+    "no-default-export": false,
+    "interface-name": [false],
+    "no-non-null-assertion": false,
+    "no-magic-numbers": [true, -1, 0, 1, 2]
   }
 }
