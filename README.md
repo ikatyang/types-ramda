@@ -34,7 +34,7 @@ source version: v0.23.0
 
 - [x] __
 - [x] add
-- [ ] addIndex
+- [x] addIndex
 - [x] adjust
 - [ ] all
 - [ ] allPass

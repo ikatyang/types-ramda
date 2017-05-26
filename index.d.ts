@@ -22,6 +22,9 @@ export interface Placeholder {
 }
 export type PH = Placeholder;
 export type Morphism<T, U> = (value: T) => U;
+export type IndexedMorphism<T, U> = (value: T, index: number, list: List<T>) => U;
+export type ListMapper<T, U> = (fn: Morphism<T, U>, list: List<T>) => U[];
+export type DictionaryMapper<T, U> = (fn: Morphism<T, U>, dictionary: Dictionary<T>) => Dictionary<U>;
 export interface List<T> {
     length: number;
     [index: number]: T;
@@ -194,6 +197,39 @@ export type add_01 = {
     (a: number): add_11;
 };
 export type add_11 = number;
+/**
+ * Creates a new list iteration function from an existing one by adding two new
+ * parameters to its callback function: the current index, and the entire list.
+ *
+ * This would turn, for instance, Ramda's simple `map` function into one that
+ * more closely resembles `Array.prototype.map`. Note that this will only work
+ * for functions in which the iteration callback function is the first
+ * parameter, and where the list is the last parameter. (This latter might be
+ * unimportant if the list parameter is not used.)
+ *
+ * @func
+ * @memberOf R
+ * @since v0.15.0
+ * @category Function
+ * @category List
+ * @sig ((a ... -> b) ... -> [a] -> *) -> (a ..., Int, [a] -> b) ... -> [a] -> *)
+ * @param {Function} fn A list iteration function that does not pass index or list to its callback
+ * @return {Function} An altered list iteration function that passes (item, index, list) to its callback
+ * @example
+ *
+ *      var mapIndexed = R.addIndex(R.map);
+ *      mapIndexed((val, idx) => idx + '-' + val, ['f', 'o', 'o', 'b', 'a', 'r']);
+ *      //=> ['0-f', '1-o', '2-o', '3-b', '4-a', '5-r']
+ */
+export declare const addIndex: addIndex_0;
+export type addIndex_0 = {
+    <T, U>(fn: ListMapper<T, U>): addIndex_array_1<T, U>;
+    <X extends "1", K extends "array">(): <T, U>(fn: ListMapper<T, U>) => addIndex_array_1<T, U>;
+    <X extends "1", K extends "object">(): <T, U>(fn: DictionaryMapper<T, U>) => addIndex_object_1<T, U>;
+    <T, U>(fn: DictionaryMapper<T, U>): addIndex_object_1<T, U>;
+};
+export type addIndex_array_1<T, U> = CurriedFunction2<IndexedMorphism<T, U>, List<T>, U[]>;
+export type addIndex_object_1<T, U> = CurriedFunction2<IndexedMorphism<T, U>, Dictionary<T>, Dictionary<U>>;
 /**
  * Applies a function to the value at the given index of an array, returning a
  * new copy of the array with the element at the given index replaced with the
