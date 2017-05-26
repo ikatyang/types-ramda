@@ -21,6 +21,7 @@ export interface Placeholder {
     "@@functional/placeholder": true;
 }
 export type PH = Placeholder;
+export type Morphism<T, U> = (value: T) => U;
 export interface List<T> {
     length: number;
     [index: number]: T;
@@ -220,20 +221,20 @@ export type add_11 = number;
  */
 export declare const adjust: adjust_000;
 export type adjust_000 = {
-    <T, U>(fn: (v: T) => U, _index: PH, list: List<T>): adjust_101<T, U>;
+    <T, U>(fn: Morphism<T, U>, _index: PH, list: List<T>): adjust_101<T, U>;
     <T>(_fn: PH, index: number, list: List<T>): adjust_011<T>;
     <T>(_fn: PH, _index: PH, list: List<T>): adjust_001<T>;
-    <T, U>(fn: (v: T) => U, index: number, list: List<T>): adjust_111<T, U>;
+    <T, U>(fn: Morphism<T, U>, index: number, list: List<T>): adjust_111<T, U>;
     (_fn: PH, index: number): adjust_010;
-    <T, U>(fn: (v: T) => U, index: number): adjust_110<T, U>;
-    <X extends "111">(): <T, U>(fn: (v: T) => U, index: number, list: List<T>) => adjust_111<T, U>;
-    <X extends "11">(): <T, U>(fn: (v: T) => U, index: number) => adjust_110<T, U>;
-    <X extends "101">(): <T, U>(fn: (v: T) => U, _index: PH, list: List<T>) => adjust_101<T, U>;
-    <X extends "1">(): <T, U>(fn: (v: T) => U) => adjust_100<T, U>;
+    <T, U>(fn: Morphism<T, U>, index: number): adjust_110<T, U>;
+    <X extends "111">(): <T, U>(fn: Morphism<T, U>, index: number, list: List<T>) => adjust_111<T, U>;
+    <X extends "11">(): <T, U>(fn: Morphism<T, U>, index: number) => adjust_110<T, U>;
+    <X extends "101">(): <T, U>(fn: Morphism<T, U>, _index: PH, list: List<T>) => adjust_101<T, U>;
+    <X extends "1">(): <T, U>(fn: Morphism<T, U>) => adjust_100<T, U>;
     <X extends "011">(): <T>(_fn: PH, index: number, list: List<T>) => adjust_011<T>;
     <X extends "01">(): (_fn: PH, index: number) => adjust_010;
     <X extends "001">(): <T>(_fn: PH, _index: PH, list: List<T>) => adjust_001<T>;
-    <T, U>(fn: (v: T) => U): adjust_100<T, U>;
+    <T, U>(fn: Morphism<T, U>): adjust_100<T, U>;
 };
 export type adjust_100<T, U> = {
     (_index: PH, list: List<T>): adjust_101<T, U>;
@@ -245,28 +246,28 @@ export type adjust_100<T, U> = {
 };
 export type adjust_010 = {
     <T>(_fn: PH, list: List<T>): adjust_011<T>;
-    <T, U>(fn: (v: T) => U, list: List<T>): adjust_111<T, U>;
-    <X extends "11">(): <T, U>(fn: (v: T) => U, list: List<T>) => adjust_111<T, U>;
-    <X extends "1">(): <T, U>(fn: (v: T) => U) => adjust_110<T, U>;
+    <T, U>(fn: Morphism<T, U>, list: List<T>): adjust_111<T, U>;
+    <X extends "11">(): <T, U>(fn: Morphism<T, U>, list: List<T>) => adjust_111<T, U>;
+    <X extends "1">(): <T, U>(fn: Morphism<T, U>) => adjust_110<T, U>;
     <X extends "01">(): <T>(_fn: PH, list: List<T>) => adjust_011<T>;
-    <T, U>(fn: (v: T) => U): adjust_110<T, U>;
+    <T, U>(fn: Morphism<T, U>): adjust_110<T, U>;
 };
 export type adjust_110<T, U> = {
     (list: List<T>): adjust_111<T, U>;
 };
 export type adjust_001<T> = {
     (_fn: PH, index: number): adjust_011<T>;
-    <U>(fn: (v: T) => U, index: number): adjust_111<T, U>;
-    <X extends "11">(): <U>(fn: (v: T) => U, index: number) => adjust_111<T, U>;
-    <X extends "1">(): <U>(fn: (v: T) => U) => adjust_101<T, U>;
+    <U>(fn: Morphism<T, U>, index: number): adjust_111<T, U>;
+    <X extends "11">(): <U>(fn: Morphism<T, U>, index: number) => adjust_111<T, U>;
+    <X extends "1">(): <U>(fn: Morphism<T, U>) => adjust_101<T, U>;
     <X extends "01">(): (_fn: PH, index: number) => adjust_011<T>;
-    <U>(fn: (v: T) => U): adjust_101<T, U>;
+    <U>(fn: Morphism<T, U>): adjust_101<T, U>;
 };
 export type adjust_101<T, U> = {
     (index: number): adjust_111<T, U>;
 };
 export type adjust_011<T> = {
-    <U>(fn: (v: T) => U): adjust_111<T, U>;
+    <U>(fn: Morphism<T, U>): adjust_111<T, U>;
 };
 export type adjust_111<T, U> = (T | U)[];
 /**
@@ -308,14 +309,14 @@ export declare const map: map_00;
 export type map_00 = {
     <T>(_fn: PH, list: List<T>): map_array_01<T>;
     <T>(_fn: PH, dictionary: Dictionary<T>): map_object_01<T>;
-    <T, U>(fn: (v: T) => U, list: List<T>): map_array_11<T, U>;
-    <T, U>(fn: (v: T) => U, dictionary: Dictionary<T>): map_object_11<T, U>;
-    <X extends "11", K extends "array">(): <T, U>(fn: (v: T) => U, list: List<T>) => map_array_11<T, U>;
+    <T, U>(fn: Morphism<T, U>, list: List<T>): map_array_11<T, U>;
+    <T, U>(fn: Morphism<T, U>, dictionary: Dictionary<T>): map_object_11<T, U>;
+    <X extends "11", K extends "array">(): <T, U>(fn: Morphism<T, U>, list: List<T>) => map_array_11<T, U>;
     <X extends "01", K extends "array">(): <T>(_fn: PH, list: List<T>) => map_array_01<T>;
-    <X extends "11", K extends "object">(): <T, U>(fn: (v: T) => U, dictionary: Dictionary<T>) => map_object_11<T, U>;
+    <X extends "11", K extends "object">(): <T, U>(fn: Morphism<T, U>, dictionary: Dictionary<T>) => map_object_11<T, U>;
     <X extends "01", K extends "object">(): <T>(_fn: PH, dictionary: Dictionary<T>) => map_object_01<T>;
-    <X extends "1">(): <T, U>(fn: (v: T) => U) => map_10<T, U>;
-    <T, U>(fn: (v: T) => U): map_10<T, U>;
+    <X extends "1">(): <T, U>(fn: Morphism<T, U>) => map_10<T, U>;
+    <T, U>(fn: Morphism<T, U>): map_10<T, U>;
 };
 export type map_10<T, U> = {
     (list: List<T>): map_array_11<T, U>;
@@ -324,10 +325,10 @@ export type map_10<T, U> = {
     (dictionary: Dictionary<T>): map_object_11<T, U>;
 };
 export type map_array_01<T> = {
-    <U>(fn: (v: T) => U): map_array_11<T, U>;
+    <U>(fn: Morphism<T, U>): map_array_11<T, U>;
 };
 export type map_object_01<T> = {
-    <U>(fn: (v: T) => U): map_object_11<T, U>;
+    <U>(fn: Morphism<T, U>): map_object_11<T, U>;
 };
 export type map_array_11<T, U> = U[];
 export type map_object_11<T, U> = Dictionary<U>;

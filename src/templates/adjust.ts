@@ -3,5 +3,5 @@ import {parse_type} from '../utils/parse-type';
 
 export default create_curried_declarations(
   module,
-  parse_type('<T, U>(fn: (v: T) => U, index: number, list: List<T>) => (T | U)[]'),
+  parse_type('<T, U>(fn: Morphism<T, U>, index: number, list: List<T>) => (T | U)[]'),
 );
