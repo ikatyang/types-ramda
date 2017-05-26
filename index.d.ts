@@ -161,6 +161,39 @@ export interface CurriedFunction6<T1, T2, T3, T4, T5, T6, R> {
     (v1: T1): CurriedFunction5<T2, T3, T4, T5, T6, R>;
 }
 /**
+ * Adds two values.
+ *
+ * @func
+ * @memberOf R
+ * @since v0.1.0
+ * @category Math
+ * @sig Number -> Number -> Number
+ * @param {Number} a
+ * @param {Number} b
+ * @return {Number}
+ * @see R.subtract
+ * @example
+ *
+ *      R.add(2, 3);       //=>  5
+ *      R.add(7)(10);      //=> 17
+ */
+export declare const add: add_00;
+export type add_00 = {
+    (_a: PH, b: number): add_01;
+    (a: number, b: number): add_11;
+    <X extends "11">(): (a: number, b: number) => add_11;
+    <X extends "1">(): (a: number) => add_10;
+    <X extends "01">(): (_a: PH, b: number) => add_01;
+    (a: number): add_10;
+};
+export type add_10 = {
+    (b: number): add_11;
+};
+export type add_01 = {
+    (a: number): add_11;
+};
+export type add_11 = number;
+/**
  * Applies a function to the value at the given index of an array, returning a
  * new copy of the array with the element at the given index replaced with the
  * result of the function application.
