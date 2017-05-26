@@ -6,6 +6,22 @@ TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 
 developing ...
 
+## Development
+
+```sh
+yarn run lint # linting
+
+yarn run build # build for test (./ramda/*.d.ts)
+
+yarn run build-watch # build for test with watching mode
+
+yarn run build-release # build for release (./index.d.ts)
+
+yarn run test # snapshot test
+
+yarn run test -- --watch # snapshot test with watching mode
+```
+
 ## Progress
 
 source version: v0.23.0
