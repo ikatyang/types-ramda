@@ -13,7 +13,7 @@ source version: v0.23.0
 - [x] __
 - [x] add
 - [ ] addIndex
-- [ ] adjust
+- [x] adjust
 - [ ] all
 - [ ] allPass
 - [ ] always
