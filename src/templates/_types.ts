@@ -5,8 +5,11 @@ export default [
   ...dts.parse(`
     type Morphism<T, U> = (value: T) => U;
     type IndexedMorphism<T, U> = (value: T, index: number, list: List<T>) => U;
+    type Predicate<T> = Morphism<T, boolean>;
+
     type ListMapper<T, U> = (fn: Morphism<T, U>, list: List<T>) => U[];
     type DictionaryMapper<T, U> = (fn: Morphism<T, U>, dictionary: Dictionary<T>) => Dictionary<U>;
+
     interface List<T> {
       length: number;
       [index: number]: T;

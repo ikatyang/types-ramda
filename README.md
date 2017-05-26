@@ -36,7 +36,7 @@ source version: v0.23.0
 - [x] add
 - [x] addIndex
 - [x] adjust
-- [ ] all
+- [x] all
 - [ ] allPass
 - [ ] always
 - [ ] and
@@ -89,7 +89,7 @@ source version: v0.23.0
 - [ ] empty
 - [ ] eqBy
 - [ ] eqProps
-- [ ] equals
+- [x] equals
 - [ ] evolve
 - [ ] F
 - [ ] filter

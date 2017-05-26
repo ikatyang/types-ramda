@@ -23,6 +23,7 @@ export interface Placeholder {
 export type PH = Placeholder;
 export type Morphism<T, U> = (value: T) => U;
 export type IndexedMorphism<T, U> = (value: T, index: number, list: List<T>) => U;
+export type Predicate<T> = Morphism<T, boolean>;
 export type ListMapper<T, U> = (fn: Morphism<T, U>, list: List<T>) => U[];
 export type DictionaryMapper<T, U> = (fn: Morphism<T, U>, dictionary: Dictionary<T>) => Dictionary<U>;
 export interface List<T> {
@@ -306,6 +307,87 @@ export type adjust_011<T> = {
     <U>(fn: Morphism<T, U>): adjust_111<T, U>;
 };
 export type adjust_111<T, U> = (T | U)[];
+/**
+ * Returns `true` if all elements of the list match the predicate, `false` if
+ * there are any that don't.
+ *
+ * Dispatches to the `all` method of the second argument, if present.
+ *
+ * Acts as a transducer if a transformer is given in list position.
+ *
+ * @func
+ * @memberOf R
+ * @since v0.1.0
+ * @category List
+ * @sig (a -> Boolean) -> [a] -> Boolean
+ * @param {Function} fn The predicate function.
+ * @param {Array} list The array to consider.
+ * @return {Boolean} `true` if the predicate is satisfied by every element, `false`
+ *         otherwise.
+ * @see R.any, R.none, R.transduce
+ * @example
+ *
+ *      var equals3 = R.equals(3);
+ *      R.all(equals3)([3, 3, 3, 3]); //=> true
+ *      R.all(equals3)([3, 3, 1, 3]); //=> false
+ */
+export declare const all: all_00;
+export type all_00 = {
+    <T>(_fn: PH, list: List<T>): all_01<T>;
+    <T>(fn: Predicate<T>, list: List<T>): all_11<T>;
+    <X extends "11">(): <T>(fn: Predicate<T>, list: List<T>) => all_11<T>;
+    <X extends "1">(): <T>(fn: Predicate<T>) => all_10<T>;
+    <X extends "01">(): <T>(_fn: PH, list: List<T>) => all_01<T>;
+    <T>(fn: Predicate<T>): all_10<T>;
+};
+export type all_10<T> = {
+    (list: List<T>): all_11<T>;
+};
+export type all_01<T> = {
+    (fn: Predicate<T>): all_11<T>;
+};
+export type all_11<T> = boolean;
+/**
+ * Returns `true` if its arguments are equivalent, `false` otherwise. Handles
+ * cyclical data structures.
+ *
+ * Dispatches symmetrically to the `equals` methods of both arguments, if
+ * present.
+ *
+ * @func
+ * @memberOf R
+ * @since v0.15.0
+ * @category Relation
+ * @sig a -> b -> Boolean
+ * @param {*} a
+ * @param {*} b
+ * @return {Boolean}
+ * @example
+ *
+ *      R.equals(1, 1); //=> true
+ *      R.equals(1, '1'); //=> false
+ *      R.equals([1, 2, 3], [1, 2, 3]); //=> true
+ *
+ *      var a = {}; a.v = a;
+ *      var b = {}; b.v = b;
+ *      R.equals(a, b); //=> true
+ */
+export declare const equals: equals_00;
+export type equals_00 = {
+    <T>(_a: PH, b: T): equals_01<T>;
+    <T>(a: T, b: T): equals_11<T>;
+    <X extends "11">(): <T>(a: T, b: T) => equals_11<T>;
+    <X extends "1">(): <T>(a: T) => equals_10<T>;
+    <X extends "01">(): <T>(_a: PH, b: T) => equals_01<T>;
+    <T>(a: T): equals_10<T>;
+};
+export type equals_10<T> = {
+    (b: T): equals_11<T>;
+};
+export type equals_01<T> = {
+    (a: T): equals_11<T>;
+};
+export type equals_11<T> = boolean;
 /**
  * Takes a function and
  * a [functor](https://github.com/fantasyland/fantasy-land#functor),
