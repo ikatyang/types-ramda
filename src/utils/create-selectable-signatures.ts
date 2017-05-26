@@ -24,6 +24,10 @@ export const create_selectable_signatures = (signatures: dts.IObjectMember[], gr
         type: dts.create_function_type({
           parameters: [],
           generics: [
+            dts.create_generic_declaration({
+              name: get_curried_function_selectable_name(),
+              extends: dts.create_literal_type({value: selectable_type}),
+            }),
             ...(
               (group === undefined)
                 ? []
@@ -34,10 +38,6 @@ export const create_selectable_signatures = (signatures: dts.IObjectMember[], gr
                   }),
                 ]
             ),
-            dts.create_generic_declaration({
-              name: get_curried_function_selectable_name(),
-              extends: dts.create_literal_type({value: selectable_type}),
-            }),
           ],
           return: function_type,
         }),

@@ -277,17 +277,17 @@ export type map_00 = {
     <T>(_fn: PH, dictionary: Dictionary<T>): map_object_01<T>;
     <T, U>(fn: (v: T) => U, list: List<T>): map_array_11<T, U>;
     <T, U>(fn: (v: T) => U, dictionary: Dictionary<T>): map_object_11<T, U>;
-    <K extends "array", X extends "11">(): <T, U>(fn: (v: T) => U, list: List<T>) => map_array_11<T, U>;
-    <K extends "array", X extends "01">(): <T>(_fn: PH, list: List<T>) => map_array_01<T>;
-    <K extends "object", X extends "11">(): <T, U>(fn: (v: T) => U, dictionary: Dictionary<T>) => map_object_11<T, U>;
-    <K extends "object", X extends "01">(): <T>(_fn: PH, dictionary: Dictionary<T>) => map_object_01<T>;
+    <X extends "11", K extends "array">(): <T, U>(fn: (v: T) => U, list: List<T>) => map_array_11<T, U>;
+    <X extends "01", K extends "array">(): <T>(_fn: PH, list: List<T>) => map_array_01<T>;
+    <X extends "11", K extends "object">(): <T, U>(fn: (v: T) => U, dictionary: Dictionary<T>) => map_object_11<T, U>;
+    <X extends "01", K extends "object">(): <T>(_fn: PH, dictionary: Dictionary<T>) => map_object_01<T>;
     <X extends "1">(): <T, U>(fn: (v: T) => U) => map_10<T, U>;
     <T, U>(fn: (v: T) => U): map_10<T, U>;
 };
 export type map_10<T, U> = {
     (list: List<T>): map_array_11<T, U>;
-    <K extends "array", X extends "1">(): (list: List<T>) => map_array_11<T, U>;
-    <K extends "object", X extends "1">(): (dictionary: Dictionary<T>) => map_object_11<T, U>;
+    <X extends "1", K extends "array">(): (list: List<T>) => map_array_11<T, U>;
+    <X extends "1", K extends "object">(): (dictionary: Dictionary<T>) => map_object_11<T, U>;
     (dictionary: Dictionary<T>): map_object_11<T, U>;
 };
 export type map_array_01<T> = {
