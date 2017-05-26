@@ -1,15 +1,12 @@
 import * as dts from 'dts-element';
 import {
   get_curried_function_parameter_placeholder_name,
-  get_curried_function_selectable_name,
-  get_curried_function_selectable_type,
   get_curried_function_type_name,
   placeholder_name_abbr,
 } from '../constants';
 import {create_masks} from './create-masks';
 import {create_selectable_signatures} from './create-selectable-signatures';
 import {has} from './has';
-import {left_pad} from './left-pad';
 import {push_signatures} from './push-signatures';
 
 const is_type_predicate = (element?: dts.IElement<any>): element is dts.ITypePredicate =>
@@ -60,7 +57,7 @@ export const create_curried_types = (name: string, type: dts.IFunctionType, sele
       .reduce(
         // tslint:disable-next-line:ter-indent
         (current_type_generics, filtered_parameter_generics) =>
-          [...new Set(current_type_generics.concat(filtered_parameter_generics))],
+          [...new Set<dts.IGenericDeclaration>(current_type_generics.concat(filtered_parameter_generics))],
         [],
       )
       .sort((a, b) => generics.indexOf(a) - generics.indexOf(b));

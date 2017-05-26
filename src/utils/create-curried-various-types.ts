@@ -28,10 +28,6 @@ export const create_various_curried_types = (name: string, types: {[kind: string
   );
 
   const masks = create_masks(parameters_length);
-  const reverse_masks = masks.reduce<{[mask: string]: number}>(
-    (current_reverse_masks, mask, index) => ({...current_reverse_masks, [mask]: index}),
-    {},
-  );
 
   const types_parameters = keys.reduce<dts.IParameterDeclaration[][]>(
     (reduced, key) => [...reduced, types[key].parameters!],

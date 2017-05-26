@@ -1,5 +1,3 @@
-import {left_pad} from './utils/left-pad';
-
 export const max_curry_level = 6;
 export const placeholder_name = 'Placeholder';
 export const placeholder_name_abbr = 'PH';
