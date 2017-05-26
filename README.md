@@ -9,17 +9,23 @@ developing ...
 ## Development
 
 ```sh
-yarn run lint # linting
+# linting
+yarn run lint
 
-yarn run build # build for test (./ramda/*.d.ts)
+# build for test (./ramda/*.d.ts)
+yarn run build
 
-yarn run build-watch # build for test with watching mode
+# build for test with watching mode
+yarn run build-watch
 
-yarn run build-release # build for release (./index.d.ts)
+# build for release (./index.d.ts)
+yarn run build-release
 
-yarn run test # snapshot test
+# snapshot test
+yarn run test
 
-yarn run test -- --watch # snapshot test with watching mode
+# snapshot test with watching mode
+yarn run test -- --watch
 ```
 
 ## Progress
