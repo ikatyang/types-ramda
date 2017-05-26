@@ -681,15 +681,9 @@ doctrine@^0.7.2:
     esutils "^1.1.6"
     isarray "0.0.1"
 
-dts-element@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/dts-element/-/dts-element-2.0.1.tgz#a0ab1cedc92f62f81be087092b4666e3990bc335"
-  dependencies:
-    typescript "^2.4.0-dev.20170524"
-
-dts-element@ikatyang/dts-element:
-  version "2.0.1"
-  resolved "https://codeload.github.com/ikatyang/dts-element/tar.gz/90b5991d59ae675720491748a03c99057aaffd5a"
+dts-element@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/dts-element/-/dts-element-2.0.2.tgz#9461b5a4e9e90a90a1ffbcfe0e8dcd0de329ee07"
   dependencies:
     typescript "^2.4.0-dev.20170524"
 

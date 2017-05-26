@@ -33,7 +33,7 @@
     "@types/through2": "2.0.33",
     "balanced-match": "0.4.2",
     "del": "2.2.2",
-    "dts-element": "ikatyang/dts-element",
+    "dts-element": "2.0.2",
     "dts-jest": "20.0.2",
     "glob": "7.1.2",
     "gulp": "3.9.1",
