@@ -122,7 +122,7 @@ source version: v0.23.0
 - [ ] liftN
 - [ ] lt
 - [ ] lte
-- [ ] map
+- [x] map
 - [ ] mapAccum
 - [ ] mapAccumRight
 - [ ] mapObjIndexed

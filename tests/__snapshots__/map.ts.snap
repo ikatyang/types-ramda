@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.map(double)([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`R.map(double)({x: 1, y: 2, z: 3}) 1`] = `"R.Dictionary<number>"`;
+
+exports[`R.map(double, [1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`R.map(double, {x: 1, y: 2, z: 3}) 1`] = `"R.Dictionary<number>"`;
