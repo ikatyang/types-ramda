@@ -1,14 +1,7 @@
 {
-  "transform": {
-    "/tests/.+\\.ts$": "dts-jest",
-    "/snapshot-formatter\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-  },
+  "testEnvironment": "node",
+  "moduleFileExtensions": ["ts", "js", "json"],
   "testRegex": "/tests/.+\\.ts$",
-  "moduleFileExtensions": ["ts", "js"],
-  "globals": {
-    "_dts_jest_": {
-      "type_detail": true,
-      "snapshot_formatter": "src/utils/snapshot-formatter.ts"
-    }
-  }
+  "transform": {"/tests/.+\\.ts$": "dts-jest/transform"},
+  "reporters": ["default", "dts-jest/reporter"]
 }

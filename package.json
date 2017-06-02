@@ -14,7 +14,7 @@
   "scripts": {
     "prepublish": "yarn run link",
     "lint": "tslint --type-check --project ./tsconfig.json",
-    "test": "jest --config ./jest.json",
+    "test": "dts-jest -c ./jest.json & jest -c ./jest.json",
     "build": "gulp build",
     "build-watch": "gulp build-watch",
     "build-release": "gulp build-release",
@@ -34,7 +34,7 @@
     "balanced-match": "0.4.2",
     "del": "2.2.2",
     "dts-element": "2.0.2",
-    "dts-jest": "20.0.2",
+    "dts-jest": "20.0.3",
     "glob": "7.1.2",
     "gulp": "3.9.1",
     "gulp-rename": "1.2.2",
