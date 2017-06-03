@@ -572,6 +572,43 @@ export type gt_01<T extends Ordered> = {
 };
 export type gt_11<T extends Ordered> = boolean;
 /**
+ * Returns `true` if the first argument is greater than or equal to the second;
+ * `false` otherwise.
+ *
+ * @func
+ * @memberOf R
+ * @since v0.1.0
+ * @category Relation
+ * @sig Ord a => a -> a -> Boolean
+ * @param {Number} a
+ * @param {Number} b
+ * @return {Boolean}
+ * @see R.lte
+ * @example
+ *
+ *      R.gte(2, 1); //=> true
+ *      R.gte(2, 2); //=> true
+ *      R.gte(2, 3); //=> false
+ *      R.gte('a', 'z'); //=> false
+ *      R.gte('z', 'a'); //=> true
+ */
+export declare const gte: gte_00;
+export type gte_00 = {
+    <T extends Ordered>(_a: PH, b: T): gte_01<T>;
+    <T extends Ordered>(a: T, b: T): gte_11<T>;
+    <X extends "11">(): <T extends Ordered>(a: T, b: T) => gte_11<T>;
+    <X extends "1">(): <T extends Ordered>(a: T) => gte_10<T>;
+    <X extends "01">(): <T extends Ordered>(_a: PH, b: T) => gte_01<T>;
+    <T extends Ordered>(a: T): gte_10<T>;
+};
+export type gte_10<T extends Ordered> = {
+    (b: T): gte_11<T>;
+};
+export type gte_01<T extends Ordered> = {
+    (a: T): gte_11<T>;
+};
+export type gte_11<T extends Ordered> = boolean;
+/**
  * Returns `true` if the first argument is less than the second; `false`
  * otherwise.
  *
