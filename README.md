@@ -39,7 +39,7 @@ source version: v0.23.0
 - [x] all
 - [x] allPass
 - [x] always
-- [ ] and
+- [x] and
 - [ ] any
 - [ ] anyPass
 - [ ] ap
