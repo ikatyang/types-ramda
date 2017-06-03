@@ -6,6 +6,9 @@ import {create_curried_interfaces} from '../utils/create-curried-interfaces';
 
 export default [
   ...dts.parse(`
+    type ${_.Property()} = number | string | symbol;
+    type ${_.Object()} = {};
+
     type ${_.Morphism('T', 'U')} = (${_.value}: T) => U;
     type ${_.IndexedMorphism('T', 'U')} = (${_.value}: T, ${_.index}: number, ${_.list}: ${_.List('T')}) => U;
     type ${_.Predicate('T')} = ${_.Morphism('T', 'boolean')};

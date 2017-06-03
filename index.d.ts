@@ -21,6 +21,8 @@ export interface Placeholder {
     "@@functional/placeholder": true;
 }
 export type PH = Placeholder;
+export type Property = number | string | symbol;
+export type Obj = {};
 export type Morphism<T, U> = (value: T) => U;
 export type IndexedMorphism<T, U> = (value: T, index: number, list: List<T>) => U;
 export type Predicate<T> = Morphism<T, boolean>;
@@ -504,6 +506,81 @@ export type map_object_01<T> = {
 };
 export type map_array_11<T, U> = U[];
 export type map_object_11<T, U> = Dictionary<U>;
+/**
+ * Returns `true` if the specified object property is equal, in
+ * [`R.equals`](#equals) terms, to the given value; `false` otherwise.
+ *
+ * @func
+ * @memberOf R
+ * @since v0.1.0
+ * @category Relation
+ * @sig String -> a -> Object -> Boolean
+ * @param {String} name
+ * @param {*} val
+ * @param {*} obj
+ * @return {Boolean}
+ * @see R.equals, R.propSatisfies
+ * @example
+ *
+ *      var abby = {name: 'Abby', age: 7, hair: 'blond'};
+ *      var fred = {name: 'Fred', age: 12, hair: 'brown'};
+ *      var rusty = {name: 'Rusty', age: 10, hair: 'brown'};
+ *      var alois = {name: 'Alois', age: 15, disposition: 'surly'};
+ *      var kids = [abby, fred, rusty, alois];
+ *      var hasBrownHair = R.propEq('hair', 'brown');
+ *      R.filter(hasBrownHair, kids); //=> [fred, rusty]
+ */
+export declare const propEq: propEq_000;
+export type propEq_000 = {
+    (property: Property, _value: PH, obj: Obj): propEq_101;
+    (_property: PH, value: any, obj: Obj): propEq_011;
+    (_property: PH, _value: PH, obj: Obj): propEq_001;
+    (property: Property, value: any, obj: Obj): propEq_111;
+    (_property: PH, value: any): propEq_010;
+    (property: Property, value: any): propEq_110;
+    <X extends "111">(): (property: Property, value: any, obj: Obj) => propEq_111;
+    <X extends "11">(): (property: Property, value: any) => propEq_110;
+    <X extends "101">(): (property: Property, _value: PH, obj: Obj) => propEq_101;
+    <X extends "1">(): (property: Property) => propEq_100;
+    <X extends "011">(): (_property: PH, value: any, obj: Obj) => propEq_011;
+    <X extends "01">(): (_property: PH, value: any) => propEq_010;
+    <X extends "001">(): (_property: PH, _value: PH, obj: Obj) => propEq_001;
+    (property: Property): propEq_100;
+};
+export type propEq_100 = {
+    (_value: PH, obj: Obj): propEq_101;
+    (value: any, obj: Obj): propEq_111;
+    <X extends "11">(): (value: any, obj: Obj) => propEq_111;
+    <X extends "1">(): (value: any) => propEq_110;
+    <X extends "01">(): (_value: PH, obj: Obj) => propEq_101;
+    (value: any): propEq_110;
+};
+export type propEq_010 = {
+    (_property: PH, obj: Obj): propEq_011;
+    (property: Property, obj: Obj): propEq_111;
+    <X extends "11">(): (property: Property, obj: Obj) => propEq_111;
+    <X extends "1">(): (property: Property) => propEq_110;
+    <X extends "01">(): (_property: PH, obj: Obj) => propEq_011;
+    (property: Property): propEq_110;
+};
+export type propEq_110 = {
+    (obj: Obj): propEq_111;
+};
+export type propEq_001 = {
+    (_property: PH, value: any): propEq_011;
+    (property: Property, value: any): propEq_111;
+    <X extends "11">(): (property: Property, value: any) => propEq_111;
+    <X extends "1">(): (property: Property) => propEq_101;
+    <X extends "01">(): (_property: PH, value: any) => propEq_011;
+    (property: Property): propEq_101;
+};
+export type propEq_101 = {
+    (value: any): propEq_111;
+};
+export type propEq_011 = {
+    (property: Property): propEq_111;
+};
+export type propEq_111 = boolean;
 /**
  * Replace a substring or regex match in a string with a replacement.
  *

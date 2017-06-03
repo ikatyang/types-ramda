@@ -194,7 +194,7 @@ source version: v0.23.0
 - [ ] product
 - [ ] project
 - [ ] prop
-- [ ] propEq
+- [x] propEq
 - [ ] propIs
 - [ ] propOr
 - [ ] props

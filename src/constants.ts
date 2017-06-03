@@ -26,6 +26,11 @@ export const key = 'key';
 export const index = 'index';
 export const value = 'value';
 
+export const property = 'property';
+export const Property = () => 'Property';
+export const object = 'obj';
+export const Object = () => 'Obj';
+
 export const morphosm = 'fn';
 export const Morphism = (from: string, to: string) => `Morphism<${from}, ${to}>`;
 export const indexedMorphism = 'fn';
