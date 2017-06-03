@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
-// @dts-jest:show
+// @dts-jest
 R.always('Tee');
 
-// @dts-jest:show
+// @dts-jest
 R.always('Tee')();
