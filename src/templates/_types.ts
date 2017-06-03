@@ -14,8 +14,8 @@ export default [
     type ${_.IndexedMorphism('T', 'U')} = (${_.value}: T, ${_.index}: number, ${_.list}: ${_.List('T')}) => U;
     type ${_.Predicate('T')} = ${_.Morphism('T', 'boolean')};
 
-    type ${_.ListMapper('T', 'U')} = (${_.morphosm}: ${_.Morphism('T', 'U')}, ${_.list}: ${_.List('T')}) => U[];
-    type ${_.DictionaryMapper('T', 'U')} = (${_.morphosm}: ${_.Morphism('T', 'U')}, ${_.dictionary}: ${_.Dictionary('T')}) => ${_.Dictionary('U')};
+    type ${_.ListMapper('T', 'U')} = (${_.morphism}: ${_.Morphism('T', 'U')}, ${_.list}: ${_.List('T')}) => U[];
+    type ${_.DictionaryMapper('T', 'U')} = (${_.morphism}: ${_.Morphism('T', 'U')}, ${_.dictionary}: ${_.Dictionary('T')}) => ${_.Dictionary('U')};
 
     interface ${_.List('T')} {
       length: number;

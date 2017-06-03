@@ -5,6 +5,6 @@ import {parse_type} from '../utils/parse-type';
 export default create_curried_declarations(
   module,
   parse_type(
-    `<T, U>(${_.morphosm}: ${_.Morphism('T', 'U')}, ${_.index}: number, ${_.list}: ${_.List('T')}) => (T | U)[]`,
+    `<T, U>(${_.morphism}: ${_.Morphism('T', 'U')}, ${_.index}: number, ${_.list}: ${_.List('T')}) => (T | U)[]`,
   ),
 );

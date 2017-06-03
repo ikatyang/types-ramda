@@ -6,10 +6,10 @@ export default create_curried_declarations(
   module,
   {
     array: parse_type(
-      `<T, U>(${_.morphosm}: ${_.Morphism('T', 'U')}, ${_.list}: ${_.List('T')}) => U[]`,
+      `<T, U>(${_.morphism}: ${_.Morphism('T', 'U')}, ${_.list}: ${_.List('T')}) => U[]`,
     ),
     object: parse_type(
-      `<T, U>(${_.morphosm}: ${_.Morphism('T', 'U')}, ${_.dictionary}: ${_.Dictionary('T')}) => ${_.Dictionary('U')}`,
+      `<T, U>(${_.morphism}: ${_.Morphism('T', 'U')}, ${_.dictionary}: ${_.Dictionary('T')}) => ${_.Dictionary('U')}`,
     ),
   },
 );

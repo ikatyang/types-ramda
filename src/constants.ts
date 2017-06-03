@@ -33,7 +33,7 @@ export const object = 'obj';
 export const Object = () => 'Obj';
 export const Ordered = () => 'Ordered';
 
-export const morphosm = 'fn';
+export const morphism = 'fn';
 export const Morphism = (from: string, to: string) => `Morphism<${from}, ${to}>`;
 export const indexedMorphism = 'fn';
 export const IndexedMorphism = (from: string, to: string) => `IndexedMorphism<${from}, ${to}>`;
