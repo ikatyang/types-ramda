@@ -19,9 +19,9 @@ export const get_curried_function_type_name = (name: string, mask: string) => `$
 // types
 // tslint:disable:variable-name max-line-length
 
-const CurriedFunction = (curry: number, ...types: string[]) => `CurriedFunction${curry}<${types.join(', ')}>`;
-export const CurriedFunction1 = (type1: string, return_type: string) => CurriedFunction(1, type1, return_type);
-export const CurriedFunction2 = (type1: string, type2: string, return_type: string) => CurriedFunction(2, type1, type2, return_type);
+export const CurriedFunctionN = (curry: number, ...types: string[]) => `CurriedFunction${curry}<${types.join(', ')}>`;
+export const CurriedFunction1 = (type1: string, return_type: string) => CurriedFunctionN(1, type1, return_type);
+export const CurriedFunction2 = (type1: string, type2: string, return_type: string) => CurriedFunctionN(2, type1, type2, return_type);
 
 export const key = 'key';
 export const index = 'index';
