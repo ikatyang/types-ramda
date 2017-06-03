@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`isQueenOfSpades({rank: 'Q', suit: '♠︎'}) 1`] = `"boolean"`;
+
+exports[`isQueenOfSpades({rank: 'Q', suit: '♣︎'}) 1`] = `"boolean"`;

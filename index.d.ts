@@ -350,6 +350,36 @@ export type all_01<T> = {
 };
 export type all_11<T> = boolean;
 /**
+ * Takes a list of predicates and returns a predicate that returns true for a
+ * given list of arguments if every one of the provided predicates is satisfied
+ * by those arguments.
+ *
+ * The function returned is a curried function whose arity matches that of the
+ * highest-arity predicate.
+ *
+ * @func
+ * @memberOf R
+ * @since v0.9.0
+ * @category Logic
+ * @sig [(*... -> Boolean)] -> (*... -> Boolean)
+ * @param {Array} predicates An array of predicates to check
+ * @return {Function} The combined predicate
+ * @see R.anyPass
+ * @example
+ *
+ *      var isQueen = R.propEq('rank', 'Q');
+ *      var isSpade = R.propEq('suit', '♠︎');
+ *      var isQueenOfSpades = R.allPass([isQueen, isSpade]);
+ *
+ *      isQueenOfSpades({rank: 'Q', suit: '♣︎'}); //=> false
+ *      isQueenOfSpades({rank: 'Q', suit: '♠︎'}); //=> true
+ */
+export declare const allPass: allPass_0;
+export type allPass_0 = {
+    <T>(fns: Predicate<T>[]): allPass_1<T>;
+};
+export type allPass_1<T> = CurriedFunction1<T, boolean>;
+/**
  * Returns `true` if its arguments are equivalent, `false` otherwise. Handles
  * cyclical data structures.
  *
