@@ -18,7 +18,8 @@
     "build": "gulp build",
     "build-watch": "gulp build-watch",
     "build-release": "gulp build-release",
-    "link": "ln -sf $PWD/ramda $PWD/node_modules/@types"
+    "link": "ln -sf $PWD/ramda $PWD/node_modules/@types",
+    "unlink": "unlink $PWD/node_modules/@types/ramda"
   },
   "devDependencies": {
     "@types/del": "2.2.32",
