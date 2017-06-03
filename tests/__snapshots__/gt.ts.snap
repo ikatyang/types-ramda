@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.gt('a', 'z') 1`] = `"boolean"`;
+
+exports[`R.gt('z', 'a') 1`] = `"boolean"`;
+
+exports[`R.gt(2, 1) 1`] = `"boolean"`;
+
+exports[`R.gt(2, 2) 1`] = `"boolean"`;
+
+exports[`R.gt(2, 3) 1`] = `"boolean"`;
