@@ -572,6 +572,43 @@ export type lt_01<T extends Ordered> = {
 };
 export type lt_11<T extends Ordered> = boolean;
 /**
+ * Returns `true` if the first argument is less than or equal to the second;
+ * `false` otherwise.
+ *
+ * @func
+ * @memberOf R
+ * @since v0.1.0
+ * @category Relation
+ * @sig Ord a => a -> a -> Boolean
+ * @param {Number} a
+ * @param {Number} b
+ * @return {Boolean}
+ * @see R.gte
+ * @example
+ *
+ *      R.lte(2, 1); //=> false
+ *      R.lte(2, 2); //=> true
+ *      R.lte(2, 3); //=> true
+ *      R.lte('a', 'z'); //=> true
+ *      R.lte('z', 'a'); //=> false
+ */
+export declare const lte: lte_00;
+export type lte_00 = {
+    <T extends Ordered>(_a: PH, b: T): lte_01<T>;
+    <T extends Ordered>(a: T, b: T): lte_11<T>;
+    <X extends "11">(): <T extends Ordered>(a: T, b: T) => lte_11<T>;
+    <X extends "1">(): <T extends Ordered>(a: T) => lte_10<T>;
+    <X extends "01">(): <T extends Ordered>(_a: PH, b: T) => lte_01<T>;
+    <T extends Ordered>(a: T): lte_10<T>;
+};
+export type lte_10<T extends Ordered> = {
+    (b: T): lte_11<T>;
+};
+export type lte_01<T extends Ordered> = {
+    (a: T): lte_11<T>;
+};
+export type lte_11<T extends Ordered> = boolean;
+/**
  * Takes a function and
  * a [functor](https://github.com/fantasyland/fantasy-land#functor),
  * applies the function to each of the functor's values, and returns
