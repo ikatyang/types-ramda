@@ -38,7 +38,7 @@ source version: v0.23.0
 - [x] adjust
 - [x] all
 - [x] allPass
-- [ ] always
+- [x] always
 - [ ] and
 - [ ] any
 - [ ] anyPass
