@@ -31,6 +31,7 @@ export const property = 'property';
 export const Property = () => 'Property';
 export const object = 'obj';
 export const Object = () => 'Obj';
+export const Ordered = () => 'Ordered';
 
 export const morphosm = 'fn';
 export const Morphism = (from: string, to: string) => `Morphism<${from}, ${to}>`;

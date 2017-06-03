@@ -8,6 +8,7 @@ export default [
   ...dts.parse(`
     type ${_.Property()} = number | string | symbol;
     type ${_.Object()} = {};
+    type ${_.Ordered()} = number | string;
 
     type ${_.Morphism('T', 'U')} = (${_.value}: T) => U;
     type ${_.IndexedMorphism('T', 'U')} = (${_.value}: T, ${_.index}: number, ${_.list}: ${_.List('T')}) => U;

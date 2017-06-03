@@ -23,6 +23,7 @@ export interface Placeholder {
 export type PH = Placeholder;
 export type Property = number | string | symbol;
 export type Obj = {};
+export type Ordered = number | string;
 export type Morphism<T, U> = (value: T) => U;
 export type IndexedMorphism<T, U> = (value: T, index: number, list: List<T>) => U;
 export type Predicate<T> = Morphism<T, boolean>;
@@ -533,6 +534,43 @@ export type filter_object_01<T> = {
 };
 export type filter_array_11<T> = T[];
 export type filter_object_11<T> = Dictionary<T>;
+/**
+ * Returns `true` if the first argument is less than the second; `false`
+ * otherwise.
+ *
+ * @func
+ * @memberOf R
+ * @since v0.1.0
+ * @category Relation
+ * @sig Ord a => a -> a -> Boolean
+ * @param {*} a
+ * @param {*} b
+ * @return {Boolean}
+ * @see R.gt
+ * @example
+ *
+ *      R.lt(2, 1); //=> false
+ *      R.lt(2, 2); //=> false
+ *      R.lt(2, 3); //=> true
+ *      R.lt('a', 'z'); //=> true
+ *      R.lt('z', 'a'); //=> false
+ */
+export declare const lt: lt_00;
+export type lt_00 = {
+    <T extends Ordered>(_a: PH, b: T): lt_01<T>;
+    <T extends Ordered>(a: T, b: T): lt_11<T>;
+    <X extends "11">(): <T extends Ordered>(a: T, b: T) => lt_11<T>;
+    <X extends "1">(): <T extends Ordered>(a: T) => lt_10<T>;
+    <X extends "01">(): <T extends Ordered>(_a: PH, b: T) => lt_01<T>;
+    <T extends Ordered>(a: T): lt_10<T>;
+};
+export type lt_10<T extends Ordered> = {
+    (b: T): lt_11<T>;
+};
+export type lt_01<T extends Ordered> = {
+    (a: T): lt_11<T>;
+};
+export type lt_11<T extends Ordered> = boolean;
 /**
  * Takes a function and
  * a [functor](https://github.com/fantasyland/fantasy-land#functor),
