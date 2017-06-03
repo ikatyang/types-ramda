@@ -30,7 +30,7 @@ yarn run test -- --watch
 
 ## Progress
 
-source version: v0.23.0
+source version: v0.24.0
 
 - [x] __
 - [x] add
@@ -87,6 +87,7 @@ source version: v0.23.0
 - [ ] dropWhile
 - [ ] either
 - [ ] empty
+- [ ] endsWith
 - [ ] eqBy
 - [ ] eqProps
 - [x] equals
@@ -116,6 +117,7 @@ source version: v0.23.0
 - [ ] indexBy
 - [ ] indexOf
 - [ ] init
+- [ ] innerJoin
 - [ ] insert
 - [ ] insertAll
 - [ ] intersection
@@ -126,7 +128,6 @@ source version: v0.23.0
 - [ ] invertObj
 - [ ] invoker
 - [ ] is
-- [ ] isArrayLike
 - [ ] isEmpty
 - [ ] isNil
 - [ ] join
@@ -155,8 +156,13 @@ source version: v0.23.0
 - [ ] mean
 - [ ] median
 - [ ] memoize
+- [ ] memoizeWith
 - [ ] merge
 - [ ] mergeAll
+- [ ] mergeDeepLeft
+- [ ] mergeDeepRight
+- [ ] mergeDeepWith
+- [ ] mergeDeepWithKey
 - [ ] mergeWith
 - [ ] mergeWithKey
 - [ ] min
@@ -169,6 +175,7 @@ source version: v0.23.0
 - [ ] not
 - [ ] nth
 - [ ] nthArg
+- [ ] o
 - [ ] objOf
 - [ ] of
 - [ ] omit
@@ -221,6 +228,7 @@ source version: v0.23.0
 - [ ] splitAt
 - [ ] splitEvery
 - [ ] splitWhen
+- [ ] startsWith
 - [ ] subtract
 - [ ] sum
 - [ ] symmetricDifference
