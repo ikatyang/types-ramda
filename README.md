@@ -173,7 +173,7 @@ source version: v0.23.0
 - [ ] of
 - [ ] omit
 - [ ] once
-- [ ] or
+- [x] or
 - [ ] over
 - [ ] pair
 - [ ] partial

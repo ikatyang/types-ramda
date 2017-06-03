@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.or(false, false) 1`] = `"false"`;
+
+exports[`R.or(false, true) 1`] = `"boolean"`;
+
+exports[`R.or(true, false) 1`] = `"boolean"`;
+
+exports[`R.or(true, true) 1`] = `"true"`;
