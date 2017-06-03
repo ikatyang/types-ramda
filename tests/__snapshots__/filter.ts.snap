@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.filter(isEven, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}) 1`] = `"R.Dictionary<number>"`;

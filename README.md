@@ -92,7 +92,7 @@ source version: v0.23.0
 - [x] equals
 - [ ] evolve
 - [ ] F
-- [ ] filter
+- [x] filter
 - [ ] find
 - [ ] findIndex
 - [ ] findLast
