@@ -1,21 +1,24 @@
 import * as dts from 'dts-element';
+import * as _ from '../constants';
 import {create_curried_interfaces} from '../utils/create-curried-interfaces';
+
+// tslint:disable:max-line-length
 
 export default [
   ...dts.parse(`
-    type Morphism<T, U> = (value: T) => U;
-    type IndexedMorphism<T, U> = (value: T, index: number, list: List<T>) => U;
-    type Predicate<T> = Morphism<T, boolean>;
+    type ${_.Morphism('T', 'U')} = (${_.value}: T) => U;
+    type ${_.IndexedMorphism('T', 'U')} = (${_.value}: T, ${_.index}: number, ${_.list}: ${_.List('T')}) => U;
+    type ${_.Predicate('T')} = ${_.Morphism('T', 'boolean')};
 
-    type ListMapper<T, U> = (fn: Morphism<T, U>, list: List<T>) => U[];
-    type DictionaryMapper<T, U> = (fn: Morphism<T, U>, dictionary: Dictionary<T>) => Dictionary<U>;
+    type ${_.ListMapper('T', 'U')} = (${_.morphosm}: ${_.Morphism('T', 'U')}, ${_.list}: ${_.List('T')}) => U[];
+    type ${_.DictionaryMapper('T', 'U')} = (${_.morphosm}: ${_.Morphism('T', 'U')}, ${_.dictionary}: ${_.Dictionary('T')}) => ${_.Dictionary('U')};
 
-    interface List<T> {
+    interface ${_.List('T')} {
       length: number;
-      [index: number]: T;
+      [${_.index}: number]: T;
     }
-    interface Dictionary<T> {
-      [key: string]: T;
+    interface ${_.Dictionary('T')} {
+      [${_.key}: string]: T;
     }
   `).members,
   ...create_curried_interfaces(),
