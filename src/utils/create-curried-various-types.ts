@@ -49,8 +49,9 @@ export const create_various_curried_types = (name: string, types: {[kind: string
   const non_conflict_declarations_selectables: dts.IObjectMember[][] = [];
 
   curried_types_declarations[0].forEach((curried_type_declaration, index) => {
+    const is_return_signature = (index === curried_types_declarations[0].length - 1);
     const mask = masks[index];
-    if (mask.split('').every((bit, bit_index) => bit === '0' || non_conflicts[bit_index])) {
+    if (!is_return_signature && (mask.split('').every((bit, bit_index) => bit === '0' || non_conflicts[bit_index]))) {
       const rebase_name = `${name}_${mask}`;
       non_conflict_declarations.push(dts.create_type_declaration({
         name: rebase_name,

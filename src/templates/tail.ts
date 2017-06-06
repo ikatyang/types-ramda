@@ -4,5 +4,5 @@ import {parse_type} from '../utils/parse-type';
 
 export default create_curried_declarations(
   module,
-  parse_type('<T exetnds List<any>>(list: T) => T'),
+  parse_type('<T extends List<any>>(list: T) => T'),
 );

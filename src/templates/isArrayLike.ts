@@ -4,5 +4,7 @@ import {parse_type} from '../utils/parse-type';
 
 export default create_curried_declarations(
   module,
-  parse_type('(val: any) => val in List<any>'),
+  // TODO: TypePredicate
+  parse_type('(val: any) => boolean'),
+  // parse_type('(val: any) => val is List<any>'),
 );

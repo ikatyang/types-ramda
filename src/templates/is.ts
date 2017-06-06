@@ -4,5 +4,7 @@ import {parse_type} from '../utils/parse-type';
 
 export default create_curried_declarations(
   module,
-  parse_type('<T>(ctor: Type<T>, val: any) => val is T'),
+  // TODO: TypePredicate
+  parse_type('<T>(ctor: Type<T>, val: any) => boolean'),
+  // parse_type('<T>(ctor: Type<T>, val: any) => val is T'),
 );
