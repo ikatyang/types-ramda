@@ -4,5 +4,5 @@ import {parse_type} from '../utils/parse-type';
 
 export default create_curried_declarations(
   module,
-  parse_type('<T, U, V>(fn: (value: T, acc: U) => [TResult, U], acc: U, list: List<T>) => [TResult[], U]'),
+  parse_type('<T, U, V extends List<T>>(fn: (val: T, key: number, list: V) => U, list: V) => U[]'),
 );

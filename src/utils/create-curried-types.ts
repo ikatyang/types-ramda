@@ -30,14 +30,46 @@ export const create_curried_types = (name: string, type: dts.IFunctionType, sele
     }),
   );
 
+  const generics_dependencies = generics.map((generic, index) =>
+    [
+      generic,
+      ...generics.filter(current_generic => has(generic, {
+        kind: dts.ElementKind.GeneralType,
+        name: current_generic.name,
+      })),
+    ],
+  );
+
+  const unique = <T>(array: T[]) => [...new Set(array)];
+
+  const sort_generics = (the_generics: dts.IGenericDeclaration[]) =>
+    the_generics.slice().sort((a, b) => generics.indexOf(a) - generics.indexOf(b));
+
+  const add_generic_dependencies = (the_generics: dts.IGenericDeclaration[]) => {
+    const added: dts.IGenericDeclaration[] = [];
+
+    the_generics.forEach(generic => {
+      added.push(...generics_dependencies[generics.indexOf(generic)]);
+    });
+
+    return sort_generics(unique(added));
+  };
+
   const parameters_generics = parameters.map(parameter =>
-    generics.filter(
+    add_generic_dependencies(generics.filter(
       generic => has(parameter, {
         kind: dts.ElementKind.GeneralType,
         name: generic.name,
       }),
-    ),
+    )),
   );
+
+  const return_generics = add_generic_dependencies(generics.filter(
+    generic => has(return_type, {
+      kind: dts.ElementKind.GeneralType,
+      name: generic.name,
+    }),
+  ));
 
   const target_types = [...new Array(2 ** parameters.length)].map((_, index, array) =>
     (index === array.length - 1)
@@ -52,15 +84,19 @@ export const create_curried_types = (name: string, type: dts.IFunctionType, sele
   );
 
   const type_declarations = target_types.map((target_type, index) => {
-    const type_generics = parameters_generics
-      .filter((_, generics_index) => masks[index][generics_index] === '1')
-      .reduce(
-        // tslint:disable-next-line:ter-indent
-        (current_type_generics, filtered_parameter_generics) =>
-          [...new Set<dts.IGenericDeclaration>(current_type_generics.concat(filtered_parameter_generics))],
-        [],
-      )
-      .sort((a, b) => generics.indexOf(a) - generics.indexOf(b));
+    const type_generics = sort_generics(
+      parameters_generics
+        .filter((_, generics_index) => masks[index][generics_index] === '1')
+        .reduce(
+          // tslint:disable-next-line:ter-indent
+          (current_type_generics, filtered_parameter_generics) =>
+            unique(current_type_generics.concat(filtered_parameter_generics)),
+          // tslint:disable-next-line:ter-indent
+          (index === target_types.length - 1)
+            ? return_generics
+            : [],
+        ),
+      );
     return dts.create_type_declaration({
       name: get_curried_function_type_name(name, masks[index]),
       generics: type_generics,

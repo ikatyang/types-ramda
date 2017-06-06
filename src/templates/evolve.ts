@@ -6,6 +6,6 @@ export default create_curried_declarations(
   module,
   {
     "base": parse_type('<V>(transformations: NestedObj<(v: any) => any>, obj: V) => V'),
-    "no_inference": parse_type('(transformations: Obj<Function>, obj: any) => T'),
+    "no_inference": parse_type('<T>(transformations: Obj<Function>, obj: any) => T'),
   },
 );

@@ -4,5 +4,5 @@ import {parse_type} from '../utils/parse-type';
 
 export default create_curried_declarations(
   module,
-  parse_type('<T>(fn: (a: T) => prop, list: List<T>) => Obj<T[]>'),
+  parse_type('<T>(fn: (a: T) => Prop, list: List<T>) => Obj<T[]>'),
 );

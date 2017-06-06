@@ -524,9 +524,9 @@ export type apply_11<TResult> = TResult;
  */
 export declare const applySpec: applySpec_0;
 export type applySpec_0 = {
-    (obj: any): applySpec_1;
+    <T>(obj: any): applySpec_1<T>;
 };
-export type applySpec_1 = Variadic<T>;
+export type applySpec_1<T> = Variadic<T>;
 /**
  * TODO
  */
@@ -542,13 +542,13 @@ export type ascend_000 = {
     <T>(prop: Prop, val: any, obj: T): ascend_any_object_as_long_as_the_type_remains_unchanged_111<T>;
     <T>(_prop: PH, val: T): ascend_base_010<T>;
     (_prop: PH, val: any): ascend_any_object_as_long_as_the_type_remains_unchanged_010;
-    <T, K extends keyof U>(prop: K, val: T): ascend_base_110<T, K>;
+    <T, U extends Struct<any>, K extends keyof U>(prop: K, val: T): ascend_base_110<T, U, K>;
     (prop: Prop, val: any): ascend_any_object_as_long_as_the_type_remains_unchanged_110;
     (prop: Prop): ascend_any_object_as_long_as_the_type_remains_unchanged_100;
     <$SEL extends "111", $KIND extends "base">(): <T, U extends Struct<any>, K extends keyof U>(prop: K, val: T, obj: U) => ascend_base_111<T, U, K>;
-    <$SEL extends "11", $KIND extends "base">(): <T, K extends keyof U>(prop: K, val: T) => ascend_base_110<T, K>;
+    <$SEL extends "11", $KIND extends "base">(): <T, U extends Struct<any>, K extends keyof U>(prop: K, val: T) => ascend_base_110<T, U, K>;
     <$SEL extends "101", $KIND extends "base">(): <U extends Struct<any>, K extends keyof U>(prop: K, _val: PH, obj: U) => ascend_base_101<U, K>;
-    <$SEL extends "1", $KIND extends "base">(): <K extends keyof U>(prop: K) => ascend_base_100<K>;
+    <$SEL extends "1", $KIND extends "base">(): <U extends Struct<any>, K extends keyof U>(prop: K) => ascend_base_100<U, K>;
     <$SEL extends "011", $KIND extends "base">(): <T, U extends Struct<any>>(_prop: PH, val: T, obj: U) => ascend_base_011<T, U>;
     <$SEL extends "01", $KIND extends "base">(): <T>(_prop: PH, val: T) => ascend_base_010<T>;
     <$SEL extends "001", $KIND extends "base">(): <U extends Struct<any>>(_prop: PH, _val: PH, obj: U) => ascend_base_001<U>;
@@ -559,15 +559,15 @@ export type ascend_000 = {
     <$SEL extends "011", $KIND extends "any_object_as_long_as_the_type_remains_unchanged">(): <T>(_prop: PH, val: any, obj: T) => ascend_any_object_as_long_as_the_type_remains_unchanged_011<T>;
     <$SEL extends "01", $KIND extends "any_object_as_long_as_the_type_remains_unchanged">(): (_prop: PH, val: any) => ascend_any_object_as_long_as_the_type_remains_unchanged_010;
     <$SEL extends "001", $KIND extends "any_object_as_long_as_the_type_remains_unchanged">(): <T>(_prop: PH, _val: PH, obj: T) => ascend_any_object_as_long_as_the_type_remains_unchanged_001<T>;
-    <K extends keyof U>(prop: K): ascend_base_100<K>;
+    <U extends Struct<any>, K extends keyof U>(prop: K): ascend_base_100<U, K>;
 };
-export type ascend_base_100<K extends keyof U> = {
-    <U extends Struct<any>>(_val: PH, obj: U): ascend_base_101<U, K>;
-    <T, U extends Struct<any>>(val: T, obj: U): ascend_base_111<T, U, K>;
-    <$SEL extends "11">(): <T, U extends Struct<any>>(val: T, obj: U) => ascend_base_111<T, U, K>;
-    <$SEL extends "1">(): <T>(val: T) => ascend_base_110<T, K>;
-    <$SEL extends "01">(): <U extends Struct<any>>(_val: PH, obj: U) => ascend_base_101<U, K>;
-    <T>(val: T): ascend_base_110<T, K>;
+export type ascend_base_100<U extends Struct<any>, K extends keyof U> = {
+    (_val: PH, obj: U): ascend_base_101<U, K>;
+    <T>(val: T, obj: U): ascend_base_111<T, U, K>;
+    <$SEL extends "11">(): <T>(val: T, obj: U) => ascend_base_111<T, U, K>;
+    <$SEL extends "1">(): <T>(val: T) => ascend_base_110<T, U, K>;
+    <$SEL extends "01">(): (_val: PH, obj: U) => ascend_base_101<U, K>;
+    <T>(val: T): ascend_base_110<T, U, K>;
 };
 export type ascend_any_object_as_long_as_the_type_remains_unchanged_100 = {
     <T>(_val: PH, obj: T): ascend_any_object_as_long_as_the_type_remains_unchanged_101<T>;
@@ -581,9 +581,9 @@ export type ascend_base_010<T> = {
     <U extends Struct<any>>(_prop: PH, obj: U): ascend_base_011<T, U>;
     <U extends Struct<any>, K extends keyof U>(prop: K, obj: U): ascend_base_111<T, U, K>;
     <$SEL extends "11">(): <U extends Struct<any>, K extends keyof U>(prop: K, obj: U) => ascend_base_111<T, U, K>;
-    <$SEL extends "1">(): <K extends keyof U>(prop: K) => ascend_base_110<T, K>;
+    <$SEL extends "1">(): <U extends Struct<any>, K extends keyof U>(prop: K) => ascend_base_110<T, U, K>;
     <$SEL extends "01">(): <U extends Struct<any>>(_prop: PH, obj: U) => ascend_base_011<T, U>;
-    <K extends keyof U>(prop: K): ascend_base_110<T, K>;
+    <U extends Struct<any>, K extends keyof U>(prop: K): ascend_base_110<T, U, K>;
 };
 export type ascend_any_object_as_long_as_the_type_remains_unchanged_010 = {
     <T>(_prop: PH, obj: T): ascend_any_object_as_long_as_the_type_remains_unchanged_011<T>;
@@ -593,8 +593,8 @@ export type ascend_any_object_as_long_as_the_type_remains_unchanged_010 = {
     <$SEL extends "01">(): <T>(_prop: PH, obj: T) => ascend_any_object_as_long_as_the_type_remains_unchanged_011<T>;
     (prop: Prop): ascend_any_object_as_long_as_the_type_remains_unchanged_110;
 };
-export type ascend_base_110<T, K extends keyof U> = {
-    <U extends Struct<any>>(obj: U): ascend_base_111<T, U, K>;
+export type ascend_base_110<T, U extends Struct<any>, K extends keyof U> = {
+    (obj: U): ascend_base_111<T, U, K>;
 };
 export type ascend_any_object_as_long_as_the_type_remains_unchanged_110 = {
     <T>(obj: T): ascend_any_object_as_long_as_the_type_remains_unchanged_111<T>;
@@ -794,12 +794,12 @@ export type assocPath_111<T, U> = U;
  */
 export declare const binary: binary_0;
 export type binary_0 = {
-    <T, A>(fn: (a: A, b: T, ...args: any[]) => T): binary_base_1<T, A>;
-    <$SEL extends "1", $KIND extends "base">(): <T, A>(fn: (a: A, b: T, ...args: any[]) => T) => binary_base_1<T, A>;
+    <T, A, B>(fn: (a: A, b: T, ...args: any[]) => T): binary_base_1<T, A, B>;
+    <$SEL extends "1", $KIND extends "base">(): <T, A, B>(fn: (a: A, b: T, ...args: any[]) => T) => binary_base_1<T, A, B>;
     <$SEL extends "1", $KIND extends "non_generics_for_return_func">(): <T>(fn: Variadic<T>) => binary_non_generics_for_return_func_1<T>;
     <T>(fn: Variadic<T>): binary_non_generics_for_return_func_1<T>;
 };
-export type binary_base_1<T, A> = (a: A, b: B) => T;
+export type binary_base_1<T, A, B> = (a: A, b: B) => T;
 export type binary_non_generics_for_return_func_1<T> = (a: any, b: any) => T;
 /**
  * TODO
@@ -1045,7 +1045,7 @@ export type constructN_11 = Function;
 export declare const contains: contains_00;
 export type contains_00 = {
     (_a: PH, list: string): contains_base_01;
-    <R extends List<T>>(_a: PH, list: R): contains_generics_01<R>;
+    <T, R extends List<T>>(_a: PH, list: R): contains_generics_01<T, R>;
     (a: string, list: string): contains_base_11;
     <T, R extends List<T>>(a: T, list: R): contains_generics_11<T, R>;
     (a: string): contains_base_10;
@@ -1054,7 +1054,7 @@ export type contains_00 = {
     <$SEL extends "01", $KIND extends "base">(): (_a: PH, list: string) => contains_base_01;
     <$SEL extends "11", $KIND extends "generics">(): <T, R extends List<T>>(a: T, list: R) => contains_generics_11<T, R>;
     <$SEL extends "1", $KIND extends "generics">(): <T>(a: T) => contains_generics_10<T>;
-    <$SEL extends "01", $KIND extends "generics">(): <R extends List<T>>(_a: PH, list: R) => contains_generics_01<R>;
+    <$SEL extends "01", $KIND extends "generics">(): <T, R extends List<T>>(_a: PH, list: R) => contains_generics_01<T, R>;
     <T>(a: T): contains_generics_10<T>;
 };
 export type contains_base_10 = {
@@ -1066,8 +1066,8 @@ export type contains_generics_10<T> = {
 export type contains_base_01 = {
     (a: string): contains_base_11;
 };
-export type contains_generics_01<R extends List<T>> = {
-    <T>(a: T): contains_generics_11<T, R>;
+export type contains_generics_01<T, R extends List<T>> = {
+    (a: T): contains_generics_11<T, R>;
 };
 export type contains_base_11 = boolean;
 export type contains_generics_11<T, R extends List<T>> = boolean;
@@ -1290,12 +1290,12 @@ export type dissoc_00 = {
     <T>(_prop: PH, obj: T): dissoc_accurate_01<T>;
     (_prop: PH, obj: Struct<any>): dissoc_easier_01;
     <T>(prop: keyof T, obj: T): dissoc_accurate_11<T>;
-    (prop: Prop, obj: Struct<any>): dissoc_easier_11;
+    <T>(prop: Prop, obj: Struct<any>): dissoc_easier_11<T>;
     <T>(prop: keyof T): dissoc_accurate_10<T>;
     <$SEL extends "11", $KIND extends "accurate">(): <T>(prop: keyof T, obj: T) => dissoc_accurate_11<T>;
     <$SEL extends "1", $KIND extends "accurate">(): <T>(prop: keyof T) => dissoc_accurate_10<T>;
     <$SEL extends "01", $KIND extends "accurate">(): <T>(_prop: PH, obj: T) => dissoc_accurate_01<T>;
-    <$SEL extends "11", $KIND extends "easier">(): (prop: Prop, obj: Struct<any>) => dissoc_easier_11;
+    <$SEL extends "11", $KIND extends "easier">(): <T>(prop: Prop, obj: Struct<any>) => dissoc_easier_11<T>;
     <$SEL extends "1", $KIND extends "easier">(): (prop: Prop) => dissoc_easier_10;
     <$SEL extends "01", $KIND extends "easier">(): (_prop: PH, obj: Struct<any>) => dissoc_easier_01;
     (prop: Prop): dissoc_easier_10;
@@ -1304,35 +1304,35 @@ export type dissoc_accurate_10<T> = {
     (obj: T): dissoc_accurate_11<T>;
 };
 export type dissoc_easier_10 = {
-    (obj: Struct<any>): dissoc_easier_11;
+    <T>(obj: Struct<any>): dissoc_easier_11<T>;
 };
 export type dissoc_accurate_01<T> = {
     (prop: keyof T): dissoc_accurate_11<T>;
 };
 export type dissoc_easier_01 = {
-    (prop: Prop): dissoc_easier_11;
+    <T>(prop: Prop): dissoc_easier_11<T>;
 };
 export type dissoc_accurate_11<T> = T;
-export type dissoc_easier_11 = T;
+export type dissoc_easier_11<T> = T;
 /**
  * TODO
  */
 export declare const dissocPath: dissocPath_00;
 export type dissocPath_00 = {
     (_path: PH, obj: Struct<any>): dissocPath_01;
-    (path: Path, obj: Struct<any>): dissocPath_11;
-    <$SEL extends "11">(): (path: Path, obj: Struct<any>) => dissocPath_11;
+    <T>(path: Path, obj: Struct<any>): dissocPath_11<T>;
+    <$SEL extends "11">(): <T>(path: Path, obj: Struct<any>) => dissocPath_11<T>;
     <$SEL extends "1">(): (path: Path) => dissocPath_10;
     <$SEL extends "01">(): (_path: PH, obj: Struct<any>) => dissocPath_01;
     (path: Path): dissocPath_10;
 };
 export type dissocPath_10 = {
-    (obj: Struct<any>): dissocPath_11;
+    <T>(obj: Struct<any>): dissocPath_11<T>;
 };
 export type dissocPath_01 = {
-    (path: Path): dissocPath_11;
+    <T>(path: Path): dissocPath_11<T>;
 };
-export type dissocPath_11 = T;
+export type dissocPath_11<T> = T;
 /**
  * TODO
  */
@@ -1395,18 +1395,18 @@ export type dropLast_11<T extends List<any>> = T;
  */
 export declare const dropLastWhile: dropLastWhile_00;
 export type dropLastWhile_00 = {
-    <R extends List<T>>(_pred: PH, list: R): dropLastWhile_01<R>;
+    <T, R extends List<T>>(_pred: PH, list: R): dropLastWhile_01<T, R>;
     <T, R extends List<T>>(pred: Pred<T>, list: R): dropLastWhile_11<T, R>;
     <$SEL extends "11">(): <T, R extends List<T>>(pred: Pred<T>, list: R) => dropLastWhile_11<T, R>;
     <$SEL extends "1">(): <T>(pred: Pred<T>) => dropLastWhile_10<T>;
-    <$SEL extends "01">(): <R extends List<T>>(_pred: PH, list: R) => dropLastWhile_01<R>;
+    <$SEL extends "01">(): <T, R extends List<T>>(_pred: PH, list: R) => dropLastWhile_01<T, R>;
     <T>(pred: Pred<T>): dropLastWhile_10<T>;
 };
 export type dropLastWhile_10<T> = {
     <R extends List<T>>(list: R): dropLastWhile_11<T, R>;
 };
-export type dropLastWhile_01<R extends List<T>> = {
-    <T>(pred: Pred<T>): dropLastWhile_11<T, R>;
+export type dropLastWhile_01<T, R extends List<T>> = {
+    (pred: Pred<T>): dropLastWhile_11<T, R>;
 };
 export type dropLastWhile_11<T, R extends List<T>> = T[];
 /**
@@ -1414,18 +1414,18 @@ export type dropLastWhile_11<T, R extends List<T>> = T[];
  */
 export declare const dropWhile: dropWhile_00;
 export type dropWhile_00 = {
-    <R extends List<T>>(_pred: PH, list: R): dropWhile_01<R>;
+    <T, R extends List<T>>(_pred: PH, list: R): dropWhile_01<T, R>;
     <T, R extends List<T>>(pred: Pred<T>, list: R): dropWhile_11<T, R>;
     <$SEL extends "11">(): <T, R extends List<T>>(pred: Pred<T>, list: R) => dropWhile_11<T, R>;
     <$SEL extends "1">(): <T>(pred: Pred<T>) => dropWhile_10<T>;
-    <$SEL extends "01">(): <R extends List<T>>(_pred: PH, list: R) => dropWhile_01<R>;
+    <$SEL extends "01">(): <T, R extends List<T>>(_pred: PH, list: R) => dropWhile_01<T, R>;
     <T>(pred: Pred<T>): dropWhile_10<T>;
 };
 export type dropWhile_10<T> = {
     <R extends List<T>>(list: R): dropWhile_11<T, R>;
 };
-export type dropWhile_01<R extends List<T>> = {
-    <T>(pred: Pred<T>): dropWhile_11<T, R>;
+export type dropWhile_01<T, R extends List<T>> = {
+    (pred: Pred<T>): dropWhile_11<T, R>;
 };
 export type dropWhile_11<T, R extends List<T>> = T[];
 /**
@@ -1634,12 +1634,12 @@ export type evolve_00 = {
     <V>(_transformations: PH, obj: V): evolve_base_01<V>;
     (_transformations: PH, obj: any): evolve_no_inference_01;
     <V>(transformations: NestedObj<((v: any) => any)>, obj: V): evolve_base_11<V>;
-    (transformations: Obj<Function>, obj: any): evolve_no_inference_11;
+    <T>(transformations: Obj<Function>, obj: any): evolve_no_inference_11<T>;
     (transformations: NestedObj<((v: any) => any)>): evolve_base_10;
     <$SEL extends "11", $KIND extends "base">(): <V>(transformations: NestedObj<((v: any) => any)>, obj: V) => evolve_base_11<V>;
     <$SEL extends "1", $KIND extends "base">(): (transformations: NestedObj<((v: any) => any)>) => evolve_base_10;
     <$SEL extends "01", $KIND extends "base">(): <V>(_transformations: PH, obj: V) => evolve_base_01<V>;
-    <$SEL extends "11", $KIND extends "no_inference">(): (transformations: Obj<Function>, obj: any) => evolve_no_inference_11;
+    <$SEL extends "11", $KIND extends "no_inference">(): <T>(transformations: Obj<Function>, obj: any) => evolve_no_inference_11<T>;
     <$SEL extends "1", $KIND extends "no_inference">(): (transformations: Obj<Function>) => evolve_no_inference_10;
     <$SEL extends "01", $KIND extends "no_inference">(): (_transformations: PH, obj: any) => evolve_no_inference_01;
     (transformations: Obj<Function>): evolve_no_inference_10;
@@ -1648,16 +1648,16 @@ export type evolve_base_10 = {
     <V>(obj: V): evolve_base_11<V>;
 };
 export type evolve_no_inference_10 = {
-    (obj: any): evolve_no_inference_11;
+    <T>(obj: any): evolve_no_inference_11<T>;
 };
 export type evolve_base_01<V> = {
     (transformations: NestedObj<((v: any) => any)>): evolve_base_11<V>;
 };
 export type evolve_no_inference_01 = {
-    (transformations: Obj<Function>): evolve_no_inference_11;
+    <T>(transformations: Obj<Function>): evolve_no_inference_11<T>;
 };
 export type evolve_base_11<V> = V;
-export type evolve_no_inference_11 = T;
+export type evolve_no_inference_11<T> = T;
 /**
  * TODO
  */
@@ -1666,7 +1666,7 @@ export type filter_00 = {
     <T>(_pred: PH, list: List<T>): filter_base_01<T>;
     <T>(_pred: PH, list: Functor<T>): filter_functor_to_functor_01<T>;
     <T>(_pred: PH, list: Functor<T>): filter_functor_to_array_01<T>;
-    <U extends Obj<T>>(_pred: PH, obj: U): filter_object_01<U>;
+    <T, U extends Obj<T>>(_pred: PH, obj: U): filter_object_01<T, U>;
     <T>(pred: Pred<T>, list: List<T>): filter_base_11<T>;
     <T>(pred: Pred<T>, list: Functor<T>): filter_functor_to_functor_11<T>;
     <T>(pred: Pred<T>, list: Functor<T>): filter_functor_to_array_11<T>;
@@ -1678,7 +1678,7 @@ export type filter_00 = {
     <$SEL extends "11", $KIND extends "functor_to_array">(): <T>(pred: Pred<T>, list: Functor<T>) => filter_functor_to_array_11<T>;
     <$SEL extends "01", $KIND extends "functor_to_array">(): <T>(_pred: PH, list: Functor<T>) => filter_functor_to_array_01<T>;
     <$SEL extends "11", $KIND extends "object">(): <T, U extends Obj<T>>(pred: Pred<T>, obj: U) => filter_object_11<T, U>;
-    <$SEL extends "01", $KIND extends "object">(): <U extends Obj<T>>(_pred: PH, obj: U) => filter_object_01<U>;
+    <$SEL extends "01", $KIND extends "object">(): <T, U extends Obj<T>>(_pred: PH, obj: U) => filter_object_01<T, U>;
     <$SEL extends "1">(): <T>(pred: Pred<T>) => filter_10<T>;
     <T>(pred: Pred<T>): filter_10<T>;
 };
@@ -1701,11 +1701,11 @@ export type filter_functor_to_functor_01<T> = {
 export type filter_functor_to_array_01<T> = {
     (pred: Pred<T>): filter_functor_to_array_11<T>;
 };
-export type filter_object_01<U extends Obj<T>> = {
-    <T>(pred: Pred<T>): filter_object_11<T, U>;
+export type filter_object_01<T, U extends Obj<T>> = {
+    (pred: Pred<T>): filter_object_11<T, U>;
 };
 export type filter_base_11<T> = T[];
-export type filter_functor_to_functor_11<T> = Functor[];
+export type filter_functor_to_functor_11<T> = Functor<T>[];
 export type filter_functor_to_array_11<T> = T[];
 export type filter_object_11<T, U extends Obj<T>> = Partial<U>;
 /**
@@ -1828,18 +1828,18 @@ export type forEach_11<T> = T[];
  */
 export declare const forEachObjIndexed: forEachObjIndexed_00;
 export type forEachObjIndexed_00 = {
-    <Inp extends Struct<T>>(_fn: PH, o: Inp): forEachObjIndexed_01<Inp>;
+    <T, Inp extends Struct<T>>(_fn: PH, o: Inp): forEachObjIndexed_01<T, Inp>;
     <T, Inp extends Struct<T>>(fn: (val: T, key: string, obj?: Inp) => void, o: Inp): forEachObjIndexed_11<T, Inp>;
     <$SEL extends "11">(): <T, Inp extends Struct<T>>(fn: (val: T, key: string, obj?: Inp) => void, o: Inp) => forEachObjIndexed_11<T, Inp>;
     <$SEL extends "1">(): <T, Inp extends Struct<T>>(fn: (val: T, key: string, obj?: Inp) => void) => forEachObjIndexed_10<T, Inp>;
-    <$SEL extends "01">(): <Inp extends Struct<T>>(_fn: PH, o: Inp) => forEachObjIndexed_01<Inp>;
+    <$SEL extends "01">(): <T, Inp extends Struct<T>>(_fn: PH, o: Inp) => forEachObjIndexed_01<T, Inp>;
     <T, Inp extends Struct<T>>(fn: (val: T, key: string, obj?: Inp) => void): forEachObjIndexed_10<T, Inp>;
 };
 export type forEachObjIndexed_10<T, Inp extends Struct<T>> = {
     (o: Inp): forEachObjIndexed_11<T, Inp>;
 };
-export type forEachObjIndexed_01<Inp extends Struct<T>> = {
-    <T>(fn: (val: T, key: string, obj?: Inp) => void): forEachObjIndexed_11<T, Inp>;
+export type forEachObjIndexed_01<T, Inp extends Struct<T>> = {
+    (fn: (val: T, key: string, obj?: Inp) => void): forEachObjIndexed_11<T, Inp>;
 };
 export type forEachObjIndexed_11<T, Inp extends Struct<T>> = Inp;
 /**
@@ -1856,17 +1856,17 @@ export type fromPairs_1<V> = Obj<V>;
 export declare const groupBy: groupBy_00;
 export type groupBy_00 = {
     <T>(_fn: PH, list: List<T>): groupBy_01<T>;
-    <T>(fn: (a: T) => prop, list: List<T>): groupBy_11<T>;
-    <$SEL extends "11">(): <T>(fn: (a: T) => prop, list: List<T>) => groupBy_11<T>;
-    <$SEL extends "1">(): <T>(fn: (a: T) => prop) => groupBy_10<T>;
+    <T>(fn: (a: T) => Prop, list: List<T>): groupBy_11<T>;
+    <$SEL extends "11">(): <T>(fn: (a: T) => Prop, list: List<T>) => groupBy_11<T>;
+    <$SEL extends "1">(): <T>(fn: (a: T) => Prop) => groupBy_10<T>;
     <$SEL extends "01">(): <T>(_fn: PH, list: List<T>) => groupBy_01<T>;
-    <T>(fn: (a: T) => prop): groupBy_10<T>;
+    <T>(fn: (a: T) => Prop): groupBy_10<T>;
 };
 export type groupBy_10<T> = {
     (list: List<T>): groupBy_11<T>;
 };
 export type groupBy_01<T> = {
-    (fn: (a: T) => prop): groupBy_11<T>;
+    (fn: (a: T) => Prop): groupBy_11<T>;
 };
 export type groupBy_11<T> = Obj<T[]>;
 /**
@@ -2322,7 +2322,7 @@ export type intersperse_11<T> = T[];
  */
 export declare const into: into_000;
 export type into_000 = {
-    <T, V extends AccOpts<T, U>>(acc: V, _xf: PH, list: List<T>): into_101<T, V>;
+    <T, U, V extends AccOpts<T, U>>(acc: V, _xf: PH, list: List<T>): into_101<T, U, V>;
     <T, U>(_acc: PH, xf: (list: List<T>) => U, list: List<T>): into_011<T, U>;
     <T>(_acc: PH, _xf: PH, list: List<T>): into_001<T>;
     <T, U, V extends AccOpts<T, U>>(acc: V, xf: (list: List<T>) => U, list: List<T>): into_111<T, U, V>;
@@ -2330,20 +2330,20 @@ export type into_000 = {
     <T, U, V extends AccOpts<T, U>>(acc: V, xf: (list: List<T>) => U): into_110<T, U, V>;
     <$SEL extends "111">(): <T, U, V extends AccOpts<T, U>>(acc: V, xf: (list: List<T>) => U, list: List<T>) => into_111<T, U, V>;
     <$SEL extends "11">(): <T, U, V extends AccOpts<T, U>>(acc: V, xf: (list: List<T>) => U) => into_110<T, U, V>;
-    <$SEL extends "101">(): <T, V extends AccOpts<T, U>>(acc: V, _xf: PH, list: List<T>) => into_101<T, V>;
-    <$SEL extends "1">(): <V extends AccOpts<T, U>>(acc: V) => into_100<V>;
+    <$SEL extends "101">(): <T, U, V extends AccOpts<T, U>>(acc: V, _xf: PH, list: List<T>) => into_101<T, U, V>;
+    <$SEL extends "1">(): <T, U, V extends AccOpts<T, U>>(acc: V) => into_100<T, U, V>;
     <$SEL extends "011">(): <T, U>(_acc: PH, xf: (list: List<T>) => U, list: List<T>) => into_011<T, U>;
     <$SEL extends "01">(): <T, U>(_acc: PH, xf: (list: List<T>) => U) => into_010<T, U>;
     <$SEL extends "001">(): <T>(_acc: PH, _xf: PH, list: List<T>) => into_001<T>;
-    <V extends AccOpts<T, U>>(acc: V): into_100<V>;
+    <T, U, V extends AccOpts<T, U>>(acc: V): into_100<T, U, V>;
 };
-export type into_100<V extends AccOpts<T, U>> = {
-    <T>(_xf: PH, list: List<T>): into_101<T, V>;
-    <T, U>(xf: (list: List<T>) => U, list: List<T>): into_111<T, U, V>;
-    <$SEL extends "11">(): <T, U>(xf: (list: List<T>) => U, list: List<T>) => into_111<T, U, V>;
-    <$SEL extends "1">(): <T, U>(xf: (list: List<T>) => U) => into_110<T, U, V>;
-    <$SEL extends "01">(): <T>(_xf: PH, list: List<T>) => into_101<T, V>;
-    <T, U>(xf: (list: List<T>) => U): into_110<T, U, V>;
+export type into_100<T, U, V extends AccOpts<T, U>> = {
+    (_xf: PH, list: List<T>): into_101<T, U, V>;
+    (xf: (list: List<T>) => U, list: List<T>): into_111<T, U, V>;
+    <$SEL extends "11">(): (xf: (list: List<T>) => U, list: List<T>) => into_111<T, U, V>;
+    <$SEL extends "1">(): (xf: (list: List<T>) => U) => into_110<T, U, V>;
+    <$SEL extends "01">(): (_xf: PH, list: List<T>) => into_101<T, U, V>;
+    (xf: (list: List<T>) => U): into_110<T, U, V>;
 };
 export type into_010<T, U> = {
     (_acc: PH, list: List<T>): into_011<T, U>;
@@ -2360,12 +2360,12 @@ export type into_001<T> = {
     <U>(_acc: PH, xf: (list: List<T>) => U): into_011<T, U>;
     <U, V extends AccOpts<T, U>>(acc: V, xf: (list: List<T>) => U): into_111<T, U, V>;
     <$SEL extends "11">(): <U, V extends AccOpts<T, U>>(acc: V, xf: (list: List<T>) => U) => into_111<T, U, V>;
-    <$SEL extends "1">(): <V extends AccOpts<T, U>>(acc: V) => into_101<T, V>;
+    <$SEL extends "1">(): <U, V extends AccOpts<T, U>>(acc: V) => into_101<T, U, V>;
     <$SEL extends "01">(): <U>(_acc: PH, xf: (list: List<T>) => U) => into_011<T, U>;
-    <V extends AccOpts<T, U>>(acc: V): into_101<T, V>;
+    <U, V extends AccOpts<T, U>>(acc: V): into_101<T, U, V>;
 };
-export type into_101<T, V extends AccOpts<T, U>> = {
-    <U>(xf: (list: List<T>) => U): into_111<T, U, V>;
+export type into_101<T, U, V extends AccOpts<T, U>> = {
+    (xf: (list: List<T>) => U): into_111<T, U, V>;
 };
 export type into_011<T, U> = {
     <V extends AccOpts<T, U>>(acc: V): into_111<T, U, V>;
@@ -2395,10 +2395,10 @@ export type invoker_000 = {
     <T>(len: number, _name: PH, obj: T): invoker_101<T>;
     <T>(_len: PH, name: Prop, obj: T): invoker_011<T>;
     <T>(_len: PH, _name: PH, obj: T): invoker_001<T>;
-    <T>(len: number, name: Prop, obj: T): invoker_111<T>;
+    <T, R>(len: number, name: Prop, obj: T): invoker_111<T, R>;
     (_len: PH, name: Prop): invoker_010;
     (len: number, name: Prop): invoker_110;
-    <$SEL extends "111">(): <T>(len: number, name: Prop, obj: T) => invoker_111<T>;
+    <$SEL extends "111">(): <T, R>(len: number, name: Prop, obj: T) => invoker_111<T, R>;
     <$SEL extends "11">(): (len: number, name: Prop) => invoker_110;
     <$SEL extends "101">(): <T>(len: number, _name: PH, obj: T) => invoker_101<T>;
     <$SEL extends "1">(): (len: number) => invoker_100;
@@ -2409,38 +2409,38 @@ export type invoker_000 = {
 };
 export type invoker_100 = {
     <T>(_name: PH, obj: T): invoker_101<T>;
-    <T>(name: Prop, obj: T): invoker_111<T>;
-    <$SEL extends "11">(): <T>(name: Prop, obj: T) => invoker_111<T>;
+    <T, R>(name: Prop, obj: T): invoker_111<T, R>;
+    <$SEL extends "11">(): <T, R>(name: Prop, obj: T) => invoker_111<T, R>;
     <$SEL extends "1">(): (name: Prop) => invoker_110;
     <$SEL extends "01">(): <T>(_name: PH, obj: T) => invoker_101<T>;
     (name: Prop): invoker_110;
 };
 export type invoker_010 = {
     <T>(_len: PH, obj: T): invoker_011<T>;
-    <T>(len: number, obj: T): invoker_111<T>;
-    <$SEL extends "11">(): <T>(len: number, obj: T) => invoker_111<T>;
+    <T, R>(len: number, obj: T): invoker_111<T, R>;
+    <$SEL extends "11">(): <T, R>(len: number, obj: T) => invoker_111<T, R>;
     <$SEL extends "1">(): (len: number) => invoker_110;
     <$SEL extends "01">(): <T>(_len: PH, obj: T) => invoker_011<T>;
     (len: number): invoker_110;
 };
 export type invoker_110 = {
-    <T>(obj: T): invoker_111<T>;
+    <T, R>(obj: T): invoker_111<T, R>;
 };
 export type invoker_001<T> = {
     (_len: PH, name: Prop): invoker_011<T>;
-    (len: number, name: Prop): invoker_111<T>;
-    <$SEL extends "11">(): (len: number, name: Prop) => invoker_111<T>;
+    <R>(len: number, name: Prop): invoker_111<T, R>;
+    <$SEL extends "11">(): <R>(len: number, name: Prop) => invoker_111<T, R>;
     <$SEL extends "1">(): (len: number) => invoker_101<T>;
     <$SEL extends "01">(): (_len: PH, name: Prop) => invoker_011<T>;
     (len: number): invoker_101<T>;
 };
 export type invoker_101<T> = {
-    (name: Prop): invoker_111<T>;
+    <R>(name: Prop): invoker_111<T, R>;
 };
 export type invoker_011<T> = {
-    (len: number): invoker_111<T>;
+    <R>(len: number): invoker_111<T, R>;
 };
-export type invoker_111<T> = R;
+export type invoker_111<T, R> = R;
 /**
  * TODO
  */
@@ -2534,9 +2534,9 @@ export type keysIn_1 = string[];
  */
 export declare const last: last_0;
 export type last_0 = {
-    <R extends List<T>>(list: R): last_1<R>;
+    <T, R extends List<T>>(list: R): last_1<T, R>;
 };
-export type last_1<R extends List<T>> = T;
+export type last_1<T, R extends List<T>> = T;
 /**
  * TODO
  */
@@ -2601,36 +2601,36 @@ export type lens_allows_setter_to_change_value_type_11<T, U, V> = Lens<T, U>;
  */
 export declare const lensIndex: lensIndex_0;
 export type lensIndex_0 = {
-    (n: number): lensIndex_generics_1;
-    <$SEL extends "1", $KIND extends "generics">(): (n: number) => lensIndex_generics_1;
+    <T>(n: number): lensIndex_generics_1<T>;
+    <$SEL extends "1", $KIND extends "generics">(): <T>(n: number) => lensIndex_generics_1<T>;
     <$SEL extends "1", $KIND extends "non_generic">(): (n: number) => lensIndex_non_generic_1;
     (n: number): lensIndex_non_generic_1;
 };
-export type lensIndex_generics_1 = ManualLens<T>;
+export type lensIndex_generics_1<T> = ManualLens<T>;
 export type lensIndex_non_generic_1 = UnknownLens;
 /**
  * TODO
  */
 export declare const lensPath: lensPath_0;
 export type lensPath_0 = {
-    (path: Path): lensPath_generics_1;
-    <$SEL extends "1", $KIND extends "generics">(): (path: Path) => lensPath_generics_1;
+    <T>(path: Path): lensPath_generics_1<T>;
+    <$SEL extends "1", $KIND extends "generics">(): <T>(path: Path) => lensPath_generics_1<T>;
     <$SEL extends "1", $KIND extends "non_generic">(): (path: Path) => lensPath_non_generic_1;
     (path: Path): lensPath_non_generic_1;
 };
-export type lensPath_generics_1 = ManualLens<T>;
+export type lensPath_generics_1<T> = ManualLens<T>;
 export type lensPath_non_generic_1 = UnknownLens;
 /**
  * TODO
  */
 export declare const lensProp: lensProp_0;
 export type lensProp_0 = {
-    (prop: Prop): lensProp_generics_1;
-    <$SEL extends "1", $KIND extends "generics">(): (prop: Prop) => lensProp_generics_1;
+    <T>(prop: Prop): lensProp_generics_1<T>;
+    <$SEL extends "1", $KIND extends "generics">(): <T>(prop: Prop) => lensProp_generics_1<T>;
     <$SEL extends "1", $KIND extends "non_generic">(): (prop: Prop) => lensProp_non_generic_1;
     (prop: Prop): lensProp_non_generic_1;
 };
-export type lensProp_generics_1 = ManualLens<T>;
+export type lensProp_generics_1<T> = ManualLens<T>;
 export type lensProp_non_generic_1 = UnknownLens;
 /**
  * TODO
@@ -2789,74 +2789,39 @@ export type mapAccumRight_111<T, U, TResult> = [TResult[], U];
 /**
  * TODO
  */
-export declare const mapIndexed: mapIndexed_000;
-export type mapIndexed_000 = {
-    <T, U>(fn: (value: T, acc: U) => [TResult, U], _acc: PH, list: List<T>): mapIndexed_101<T, U>;
-    <T, U>(_fn: PH, acc: U, list: List<T>): mapIndexed_011<T, U>;
-    <T>(_fn: PH, _acc: PH, list: List<T>): mapIndexed_001<T>;
-    <T, U>(fn: (value: T, acc: U) => [TResult, U], acc: U, list: List<T>): mapIndexed_111<T, U>;
-    <U>(_fn: PH, acc: U): mapIndexed_010<U>;
-    <T, U>(fn: (value: T, acc: U) => [TResult, U], acc: U): mapIndexed_110<T, U>;
-    <$SEL extends "111">(): <T, U>(fn: (value: T, acc: U) => [TResult, U], acc: U, list: List<T>) => mapIndexed_111<T, U>;
-    <$SEL extends "11">(): <T, U>(fn: (value: T, acc: U) => [TResult, U], acc: U) => mapIndexed_110<T, U>;
-    <$SEL extends "101">(): <T, U>(fn: (value: T, acc: U) => [TResult, U], _acc: PH, list: List<T>) => mapIndexed_101<T, U>;
-    <$SEL extends "1">(): <T, U>(fn: (value: T, acc: U) => [TResult, U]) => mapIndexed_100<T, U>;
-    <$SEL extends "011">(): <T, U>(_fn: PH, acc: U, list: List<T>) => mapIndexed_011<T, U>;
-    <$SEL extends "01">(): <U>(_fn: PH, acc: U) => mapIndexed_010<U>;
-    <$SEL extends "001">(): <T>(_fn: PH, _acc: PH, list: List<T>) => mapIndexed_001<T>;
-    <T, U>(fn: (value: T, acc: U) => [TResult, U]): mapIndexed_100<T, U>;
+export declare const mapIndexed: mapIndexed_00;
+export type mapIndexed_00 = {
+    <T, V extends List<T>>(_fn: PH, list: V): mapIndexed_01<T, V>;
+    <T, U, V extends List<T>>(fn: (val: T, key: number, list: V) => U, list: V): mapIndexed_11<T, U, V>;
+    <$SEL extends "11">(): <T, U, V extends List<T>>(fn: (val: T, key: number, list: V) => U, list: V) => mapIndexed_11<T, U, V>;
+    <$SEL extends "1">(): <T, U, V extends List<T>>(fn: (val: T, key: number, list: V) => U) => mapIndexed_10<T, U, V>;
+    <$SEL extends "01">(): <T, V extends List<T>>(_fn: PH, list: V) => mapIndexed_01<T, V>;
+    <T, U, V extends List<T>>(fn: (val: T, key: number, list: V) => U): mapIndexed_10<T, U, V>;
 };
-export type mapIndexed_100<T, U> = {
-    (_acc: PH, list: List<T>): mapIndexed_101<T, U>;
-    (acc: U, list: List<T>): mapIndexed_111<T, U>;
-    <$SEL extends "11">(): (acc: U, list: List<T>) => mapIndexed_111<T, U>;
-    <$SEL extends "1">(): (acc: U) => mapIndexed_110<T, U>;
-    <$SEL extends "01">(): (_acc: PH, list: List<T>) => mapIndexed_101<T, U>;
-    (acc: U): mapIndexed_110<T, U>;
+export type mapIndexed_10<T, U, V extends List<T>> = {
+    (list: V): mapIndexed_11<T, U, V>;
 };
-export type mapIndexed_010<U> = {
-    <T>(_fn: PH, list: List<T>): mapIndexed_011<T, U>;
-    <T>(fn: (value: T, acc: U) => [TResult, U], list: List<T>): mapIndexed_111<T, U>;
-    <$SEL extends "11">(): <T>(fn: (value: T, acc: U) => [TResult, U], list: List<T>) => mapIndexed_111<T, U>;
-    <$SEL extends "1">(): <T>(fn: (value: T, acc: U) => [TResult, U]) => mapIndexed_110<T, U>;
-    <$SEL extends "01">(): <T>(_fn: PH, list: List<T>) => mapIndexed_011<T, U>;
-    <T>(fn: (value: T, acc: U) => [TResult, U]): mapIndexed_110<T, U>;
+export type mapIndexed_01<T, V extends List<T>> = {
+    <U>(fn: (val: T, key: number, list: V) => U): mapIndexed_11<T, U, V>;
 };
-export type mapIndexed_110<T, U> = {
-    (list: List<T>): mapIndexed_111<T, U>;
-};
-export type mapIndexed_001<T> = {
-    <U>(_fn: PH, acc: U): mapIndexed_011<T, U>;
-    <U>(fn: (value: T, acc: U) => [TResult, U], acc: U): mapIndexed_111<T, U>;
-    <$SEL extends "11">(): <U>(fn: (value: T, acc: U) => [TResult, U], acc: U) => mapIndexed_111<T, U>;
-    <$SEL extends "1">(): <U>(fn: (value: T, acc: U) => [TResult, U]) => mapIndexed_101<T, U>;
-    <$SEL extends "01">(): <U>(_fn: PH, acc: U) => mapIndexed_011<T, U>;
-    <U>(fn: (value: T, acc: U) => [TResult, U]): mapIndexed_101<T, U>;
-};
-export type mapIndexed_101<T, U> = {
-    (acc: U): mapIndexed_111<T, U>;
-};
-export type mapIndexed_011<T, U> = {
-    (fn: (value: T, acc: U) => [TResult, U]): mapIndexed_111<T, U>;
-};
-export type mapIndexed_111<T, U> = [TResult[], U];
+export type mapIndexed_11<T, U, V extends List<T>> = U[];
 /**
  * TODO
  */
 export declare const mapObjIndexed: mapObjIndexed_00;
 export type mapObjIndexed_00 = {
-    <M extends Obj<T>>(_fn: PH, obj: M): mapObjIndexed_01<M>;
+    <T, M extends Obj<T>>(_fn: PH, obj: M): mapObjIndexed_01<T, M>;
     <T, V, M extends Obj<T>>(fn: (value: T, key: string, obj?: M) => V, obj: M): mapObjIndexed_11<T, V, M>;
     <$SEL extends "11">(): <T, V, M extends Obj<T>>(fn: (value: T, key: string, obj?: M) => V, obj: M) => mapObjIndexed_11<T, V, M>;
     <$SEL extends "1">(): <T, V, M extends Obj<T>>(fn: (value: T, key: string, obj?: M) => V) => mapObjIndexed_10<T, V, M>;
-    <$SEL extends "01">(): <M extends Obj<T>>(_fn: PH, obj: M) => mapObjIndexed_01<M>;
+    <$SEL extends "01">(): <T, M extends Obj<T>>(_fn: PH, obj: M) => mapObjIndexed_01<T, M>;
     <T, V, M extends Obj<T>>(fn: (value: T, key: string, obj?: M) => V): mapObjIndexed_10<T, V, M>;
 };
 export type mapObjIndexed_10<T, V, M extends Obj<T>> = {
     (obj: M): mapObjIndexed_11<T, V, M>;
 };
-export type mapObjIndexed_01<M extends Obj<T>> = {
-    <T, V>(fn: (value: T, key: string, obj?: M) => V): mapObjIndexed_11<T, V, M>;
+export type mapObjIndexed_01<T, M extends Obj<T>> = {
+    <V>(fn: (value: T, key: string, obj?: M) => V): mapObjIndexed_11<T, V, M>;
 };
 export type mapObjIndexed_11<T, V, M extends Obj<T>> = {
     [K in keyof M]: V;
@@ -3001,28 +2966,28 @@ export type memoize_1<T> = Variadic<T>;
  */
 export declare const merge: merge_00;
 export type merge_00 = {
-    <T2 extends Struct<V2>>(_a: PH, b: T2): merge_01<T2>;
-    <T1 extends Struct<V1>, T2 extends Struct<V2>>(a: T1, b: T2): merge_11<T1, T2>;
-    <$SEL extends "11">(): <T1 extends Struct<V1>, T2 extends Struct<V2>>(a: T1, b: T2) => merge_11<T1, T2>;
-    <$SEL extends "1">(): <T1 extends Struct<V1>>(a: T1) => merge_10<T1>;
-    <$SEL extends "01">(): <T2 extends Struct<V2>>(_a: PH, b: T2) => merge_01<T2>;
-    <T1 extends Struct<V1>>(a: T1): merge_10<T1>;
+    <V2, T2 extends Struct<V2>>(_a: PH, b: T2): merge_01<V2, T2>;
+    <V1, V2, T1 extends Struct<V1>, T2 extends Struct<V2>>(a: T1, b: T2): merge_11<V1, V2, T1, T2>;
+    <$SEL extends "11">(): <V1, V2, T1 extends Struct<V1>, T2 extends Struct<V2>>(a: T1, b: T2) => merge_11<V1, V2, T1, T2>;
+    <$SEL extends "1">(): <V1, T1 extends Struct<V1>>(a: T1) => merge_10<V1, T1>;
+    <$SEL extends "01">(): <V2, T2 extends Struct<V2>>(_a: PH, b: T2) => merge_01<V2, T2>;
+    <V1, T1 extends Struct<V1>>(a: T1): merge_10<V1, T1>;
 };
-export type merge_10<T1 extends Struct<V1>> = {
-    <T2 extends Struct<V2>>(b: T2): merge_11<T1, T2>;
+export type merge_10<V1, T1 extends Struct<V1>> = {
+    <V2, T2 extends Struct<V2>>(b: T2): merge_11<V1, V2, T1, T2>;
 };
-export type merge_01<T2 extends Struct<V2>> = {
-    <T1 extends Struct<V1>>(a: T1): merge_11<T1, T2>;
+export type merge_01<V2, T2 extends Struct<V2>> = {
+    <V1, T1 extends Struct<V1>>(a: T1): merge_11<V1, V2, T1, T2>;
 };
-export type merge_11<T1 extends Struct<V1>, T2 extends Struct<V2>> = T1 & T2;
+export type merge_11<V1, V2, T1 extends Struct<V1>, T2 extends Struct<V2>> = T1 & T2;
 /**
  * TODO
  */
 export declare const mergeAll: mergeAll_0;
 export type mergeAll_0 = {
-    (list: List<any>): mergeAll_1;
+    <T>(list: List<any>): mergeAll_1<T>;
 };
-export type mergeAll_1 = T;
+export type mergeAll_1<T> = T;
 /**
  * TODO
  */
@@ -3301,15 +3266,15 @@ export type not_1 = boolean;
  */
 export declare const nth: nth_00;
 export type nth_00 = {
-    <T>(_n: PH, list: list<T>): nth_01<T>;
-    <T>(n: number, list: list<T>): nth_11<T>;
-    <$SEL extends "11">(): <T>(n: number, list: list<T>) => nth_11<T>;
+    <T>(_n: PH, list: List<T>): nth_01<T>;
+    <T>(n: number, list: List<T>): nth_11<T>;
+    <$SEL extends "11">(): <T>(n: number, list: List<T>) => nth_11<T>;
     <$SEL extends "1">(): (n: number) => nth_10;
-    <$SEL extends "01">(): <T>(_n: PH, list: list<T>) => nth_01<T>;
+    <$SEL extends "01">(): <T>(_n: PH, list: List<T>) => nth_01<T>;
     (n: number): nth_10;
 };
 export type nth_10 = {
-    <T>(list: list<T>): nth_11<T>;
+    <T>(list: List<T>): nth_11<T>;
 };
 export type nth_01<T> = {
     (n: number): nth_11<T>;
@@ -3329,19 +3294,19 @@ export type nthArg_1 = <T>(...a: T[]) => T;
 export declare const objOf: objOf_00;
 export type objOf_00 = {
     <V>(_key: PH, value: V): objOf_01<V>;
-    <K extends string, V>(key: K, value: V): objOf_11<K, V>;
-    <$SEL extends "11">(): <K extends string, V>(key: K, value: V) => objOf_11<K, V>;
+    <K extends string, V, T extends Record<K, V>>(key: K, value: V): objOf_11<K, V, T>;
+    <$SEL extends "11">(): <K extends string, V, T extends Record<K, V>>(key: K, value: V) => objOf_11<K, V, T>;
     <$SEL extends "1">(): <K extends string>(key: K) => objOf_10<K>;
     <$SEL extends "01">(): <V>(_key: PH, value: V) => objOf_01<V>;
     <K extends string>(key: K): objOf_10<K>;
 };
 export type objOf_10<K extends string> = {
-    <V>(value: V): objOf_11<K, V>;
+    <V, T extends Record<K, V>>(value: V): objOf_11<K, V, T>;
 };
 export type objOf_01<V> = {
-    <K extends string>(key: K): objOf_11<K, V>;
+    <K extends string, T extends Record<K, V>>(key: K): objOf_11<K, V, T>;
 };
-export type objOf_11<K extends string, V> = T;
+export type objOf_11<K extends string, V, T extends Record<K, V>> = T;
 /**
  * TODO
  */
@@ -3390,13 +3355,13 @@ export type or_00 = {
     <T, U>(a: T, b: U): or_values_11<T, U>;
     <T extends {
             or?: (alt: U) => T | U;
-        }>(fn1: T): or_dispatch_to_some__or__method_10<T>;
+        }, U>(fn1: T): or_dispatch_to_some__or__method_10<T, U>;
     <$SEL extends "11", $KIND extends "dispatch_to_some__or__method">(): <T extends {
             or?: (alt: U) => T | U;
         }, U>(fn1: T, val2: U) => or_dispatch_to_some__or__method_11<T, U>;
     <$SEL extends "1", $KIND extends "dispatch_to_some__or__method">(): <T extends {
             or?: (alt: U) => T | U;
-        }>(fn1: T) => or_dispatch_to_some__or__method_10<T>;
+        }, U>(fn1: T) => or_dispatch_to_some__or__method_10<T, U>;
     <$SEL extends "01", $KIND extends "dispatch_to_some__or__method">(): <U>(_fn1: PH, val2: U) => or_dispatch_to_some__or__method_01<U>;
     <$SEL extends "11", $KIND extends "values">(): <T, U>(a: T, b: U) => or_values_11<T, U>;
     <$SEL extends "1", $KIND extends "values">(): <T>(a: T) => or_values_10<T>;
@@ -3405,8 +3370,8 @@ export type or_00 = {
 };
 export type or_dispatch_to_some__or__method_10<T extends {
         or?: (alt: U) => T | U;
-    }> = {
-    <U>(val2: U): or_dispatch_to_some__or__method_11<T, U>;
+    }, U> = {
+    (val2: U): or_dispatch_to_some__or__method_11<T, U>;
 };
 export type or_values_10<T> = {
     <U>(b: U): or_values_11<T, U>;
@@ -3428,88 +3393,99 @@ export type or_values_11<T, U> = T | U;
  */
 export declare const over: over_000;
 export type over_000 = {
-    <T, V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, _fn: PH, value: T): over_101<T, V>;
-    <T, V>(_lens: PH, fn: (v: V) => V, value: T): over_011<T, V>;
-    <T>(_lens: PH, _fn: PH, value: T): over_001<T>;
-    <V, T extends Functor<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V, value: T): over_Functor_version_111<V, T>;
+    <V, T extends List<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, _fn: PH, value: T): over_Functor_version_applied_to_array_101<V, T>;
+    <V, U>(lens: Lens<U, V> | ManualLens<V> | UnknownLens, _fn: PH, value: U): over_unbound_value_101<V, U>;
+    <U>(_lens: PH, _fn: PH, value: U): over_unbound_value_001<U>;
+    <V, T extends List<V>>(_lens: PH, fn: (v: V) => V, value: T): over_Functor_version_applied_to_array_011<V, T>;
+    <V, T extends List<V>>(_lens: PH, _fn: PH, value: T): over_Functor_version_applied_to_array_001<V, T>;
+    <V, U>(_lens: PH, fn: (v: V) => V, value: U): over_unbound_value_011<V, U>;
+    <V, U>(lens: Lens<U, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V, value: U): over_unbound_value_111<V, U>;
     <V, T extends List<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V, value: T): over_Functor_version_applied_to_array_111<V, T>;
-    <T, V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V, value: T): over_unbound_value_111<T, V>;
     <V>(_lens: PH, fn: (v: V) => V): over_010<V>;
-    <T, V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V): over_110<T, V>;
-    <$SEL extends "111", $KIND extends "Functor_version">(): <V, T extends Functor<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V, value: T) => over_Functor_version_111<V, T>;
+    <V, U>(lens: Lens<U, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V): over_unbound_value_110<V, U>;
+    <V, T extends List<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V): over_Functor_version_applied_to_array_110<V, T>;
+    <V, U>(lens: Lens<U, V> | ManualLens<V> | UnknownLens): over_unbound_value_100<V, U>;
     <$SEL extends "111", $KIND extends "Functor_version_applied_to_array">(): <V, T extends List<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V, value: T) => over_Functor_version_applied_to_array_111<V, T>;
-    <$SEL extends "111", $KIND extends "unbound_value">(): <T, V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V, value: T) => over_unbound_value_111<T, V>;
-    <$SEL extends "11">(): <T, V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V) => over_110<T, V>;
-    <$SEL extends "101">(): <T, V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, _fn: PH, value: T) => over_101<T, V>;
-    <$SEL extends "1">(): <T, V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens) => over_100<T, V>;
-    <$SEL extends "011">(): <T, V>(_lens: PH, fn: (v: V) => V, value: T) => over_011<T, V>;
+    <$SEL extends "11", $KIND extends "Functor_version_applied_to_array">(): <V, T extends List<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V) => over_Functor_version_applied_to_array_110<V, T>;
+    <$SEL extends "101", $KIND extends "Functor_version_applied_to_array">(): <V, T extends List<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, _fn: PH, value: T) => over_Functor_version_applied_to_array_101<V, T>;
+    <$SEL extends "1", $KIND extends "Functor_version_applied_to_array">(): <V, T extends List<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens) => over_Functor_version_applied_to_array_100<V, T>;
+    <$SEL extends "011", $KIND extends "Functor_version_applied_to_array">(): <V, T extends List<V>>(_lens: PH, fn: (v: V) => V, value: T) => over_Functor_version_applied_to_array_011<V, T>;
+    <$SEL extends "001", $KIND extends "Functor_version_applied_to_array">(): <V, T extends List<V>>(_lens: PH, _fn: PH, value: T) => over_Functor_version_applied_to_array_001<V, T>;
+    <$SEL extends "111", $KIND extends "unbound_value">(): <V, U>(lens: Lens<U, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V, value: U) => over_unbound_value_111<V, U>;
+    <$SEL extends "11", $KIND extends "unbound_value">(): <V, U>(lens: Lens<U, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V) => over_unbound_value_110<V, U>;
+    <$SEL extends "101", $KIND extends "unbound_value">(): <V, U>(lens: Lens<U, V> | ManualLens<V> | UnknownLens, _fn: PH, value: U) => over_unbound_value_101<V, U>;
+    <$SEL extends "1", $KIND extends "unbound_value">(): <V, U>(lens: Lens<U, V> | ManualLens<V> | UnknownLens) => over_unbound_value_100<V, U>;
+    <$SEL extends "011", $KIND extends "unbound_value">(): <V, U>(_lens: PH, fn: (v: V) => V, value: U) => over_unbound_value_011<V, U>;
+    <$SEL extends "001", $KIND extends "unbound_value">(): <U>(_lens: PH, _fn: PH, value: U) => over_unbound_value_001<U>;
     <$SEL extends "01">(): <V>(_lens: PH, fn: (v: V) => V) => over_010<V>;
-    <$SEL extends "001">(): <T>(_lens: PH, _fn: PH, value: T) => over_001<T>;
-    <T, V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens): over_100<T, V>;
-};
-export type over_100<V, T extends Functor<V>> = {
-    (_fn: PH, value: T): over_101<T, V>;
-    (fn: (v: V) => V, value: T): over_Functor_version_111<V, T>;
-    (fn: (v: V) => V, value: T): over_Functor_version_applied_to_array_111<V, T>;
-    (fn: (v: V) => V, value: T): over_unbound_value_111<T, V>;
-    <$SEL extends "11", $KIND extends "Functor_version">(): (fn: (v: V) => V, value: T) => over_Functor_version_111<V, T>;
-    <$SEL extends "11", $KIND extends "Functor_version_applied_to_array">(): (fn: (v: V) => V, value: T) => over_Functor_version_applied_to_array_111<V, T>;
-    <$SEL extends "11", $KIND extends "unbound_value">(): (fn: (v: V) => V, value: T) => over_unbound_value_111<T, V>;
-    <$SEL extends "1">(): (fn: (v: V) => V) => over_110<T, V>;
-    <$SEL extends "01">(): (_fn: PH, value: T) => over_101<T, V>;
-    (fn: (v: V) => V): over_110<T, V>;
+    <V, T extends List<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens): over_Functor_version_applied_to_array_100<V, T>;
 };
 export type over_010<V> = {
-    <T>(_lens: PH, value: T): over_011<T, V>;
-    <T extends Functor<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, value: T): over_Functor_version_111<V, T>;
+    <T extends List<V>>(_lens: PH, value: T): over_Functor_version_applied_to_array_011<V, T>;
+    <U>(_lens: PH, value: U): over_unbound_value_011<V, U>;
     <T extends List<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, value: T): over_Functor_version_applied_to_array_111<V, T>;
-    <T>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, value: T): over_unbound_value_111<T, V>;
-    <$SEL extends "11", $KIND extends "Functor_version">(): <T extends Functor<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, value: T) => over_Functor_version_111<V, T>;
+    <U>(lens: Lens<U, V> | ManualLens<V> | UnknownLens, value: U): over_unbound_value_111<V, U>;
+    <T extends List<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens): over_Functor_version_applied_to_array_110<V, T>;
     <$SEL extends "11", $KIND extends "Functor_version_applied_to_array">(): <T extends List<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, value: T) => over_Functor_version_applied_to_array_111<V, T>;
-    <$SEL extends "11", $KIND extends "unbound_value">(): <T>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, value: T) => over_unbound_value_111<T, V>;
-    <$SEL extends "1">(): <T>(lens: Lens<T, V> | ManualLens<V> | UnknownLens) => over_110<T, V>;
-    <$SEL extends "01">(): <T>(_lens: PH, value: T) => over_011<T, V>;
-    <T>(lens: Lens<T, V> | ManualLens<V> | UnknownLens): over_110<T, V>;
+    <$SEL extends "1", $KIND extends "Functor_version_applied_to_array">(): <T extends List<V>>(lens: Lens<T, V> | ManualLens<V> | UnknownLens) => over_Functor_version_applied_to_array_110<V, T>;
+    <$SEL extends "01", $KIND extends "Functor_version_applied_to_array">(): <T extends List<V>>(_lens: PH, value: T) => over_Functor_version_applied_to_array_011<V, T>;
+    <$SEL extends "11", $KIND extends "unbound_value">(): <U>(lens: Lens<U, V> | ManualLens<V> | UnknownLens, value: U) => over_unbound_value_111<V, U>;
+    <$SEL extends "1", $KIND extends "unbound_value">(): <U>(lens: Lens<U, V> | ManualLens<V> | UnknownLens) => over_unbound_value_110<V, U>;
+    <$SEL extends "01", $KIND extends "unbound_value">(): <U>(_lens: PH, value: U) => over_unbound_value_011<V, U>;
+    <U>(lens: Lens<U, V> | ManualLens<V> | UnknownLens): over_unbound_value_110<V, U>;
 };
-export type over_110<V, T extends Functor<V>> = {
-    (value: T): over_Functor_version_111<V, T>;
+export type over_Functor_version_applied_to_array_100<V, T extends List<V>> = {
+    (_fn: PH, value: T): over_Functor_version_applied_to_array_101<V, T>;
+    (fn: (v: V) => V, value: T): over_Functor_version_applied_to_array_111<V, T>;
+    <$SEL extends "11">(): (fn: (v: V) => V, value: T) => over_Functor_version_applied_to_array_111<V, T>;
+    <$SEL extends "1">(): (fn: (v: V) => V) => over_Functor_version_applied_to_array_110<V, T>;
+    <$SEL extends "01">(): (_fn: PH, value: T) => over_Functor_version_applied_to_array_101<V, T>;
+    (fn: (v: V) => V): over_Functor_version_applied_to_array_110<V, T>;
+};
+export type over_unbound_value_100<V, U> = {
+    (_fn: PH, value: U): over_unbound_value_101<V, U>;
+    (fn: (v: V) => V, value: U): over_unbound_value_111<V, U>;
+    <$SEL extends "11">(): (fn: (v: V) => V, value: U) => over_unbound_value_111<V, U>;
+    <$SEL extends "1">(): (fn: (v: V) => V) => over_unbound_value_110<V, U>;
+    <$SEL extends "01">(): (_fn: PH, value: U) => over_unbound_value_101<V, U>;
+    (fn: (v: V) => V): over_unbound_value_110<V, U>;
+};
+export type over_Functor_version_applied_to_array_110<V, T extends List<V>> = {
     (value: T): over_Functor_version_applied_to_array_111<V, T>;
-    <$SEL extends "1", $KIND extends "Functor_version">(): (value: T) => over_Functor_version_111<V, T>;
-    <$SEL extends "1", $KIND extends "Functor_version_applied_to_array">(): (value: T) => over_Functor_version_applied_to_array_111<V, T>;
-    <$SEL extends "1", $KIND extends "unbound_value">(): (value: T) => over_unbound_value_111<T, V>;
-    (value: T): over_unbound_value_111<T, V>;
 };
-export type over_001<T extends Functor<V>> = {
-    <V>(_lens: PH, fn: (v: V) => V): over_011<T, V>;
-    <V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V): over_Functor_version_111<V, T>;
-    <V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V): over_Functor_version_applied_to_array_111<V, T>;
-    <V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V): over_unbound_value_111<T, V>;
-    <$SEL extends "11", $KIND extends "Functor_version">(): <V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V) => over_Functor_version_111<V, T>;
-    <$SEL extends "11", $KIND extends "Functor_version_applied_to_array">(): <V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V) => over_Functor_version_applied_to_array_111<V, T>;
-    <$SEL extends "11", $KIND extends "unbound_value">(): <V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V) => over_unbound_value_111<T, V>;
-    <$SEL extends "1">(): <V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens) => over_101<T, V>;
-    <$SEL extends "01">(): <V>(_lens: PH, fn: (v: V) => V) => over_011<T, V>;
-    <V>(lens: Lens<T, V> | ManualLens<V> | UnknownLens): over_101<T, V>;
+export type over_unbound_value_110<V, U> = {
+    (value: U): over_unbound_value_111<V, U>;
 };
-export type over_101<V, T extends Functor<V>> = {
-    (fn: (v: V) => V): over_Functor_version_111<V, T>;
+export type over_Functor_version_applied_to_array_001<V, T extends List<V>> = {
+    (_lens: PH, fn: (v: V) => V): over_Functor_version_applied_to_array_011<V, T>;
+    (lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V): over_Functor_version_applied_to_array_111<V, T>;
+    <$SEL extends "11">(): (lens: Lens<T, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V) => over_Functor_version_applied_to_array_111<V, T>;
+    <$SEL extends "1">(): (lens: Lens<T, V> | ManualLens<V> | UnknownLens) => over_Functor_version_applied_to_array_101<V, T>;
+    <$SEL extends "01">(): (_lens: PH, fn: (v: V) => V) => over_Functor_version_applied_to_array_011<V, T>;
+    (lens: Lens<T, V> | ManualLens<V> | UnknownLens): over_Functor_version_applied_to_array_101<V, T>;
+};
+export type over_unbound_value_001<U> = {
+    <V>(_lens: PH, fn: (v: V) => V): over_unbound_value_011<V, U>;
+    <V>(lens: Lens<U, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V): over_unbound_value_111<V, U>;
+    <$SEL extends "11">(): <V>(lens: Lens<U, V> | ManualLens<V> | UnknownLens, fn: (v: V) => V) => over_unbound_value_111<V, U>;
+    <$SEL extends "1">(): <V>(lens: Lens<U, V> | ManualLens<V> | UnknownLens) => over_unbound_value_101<V, U>;
+    <$SEL extends "01">(): <V>(_lens: PH, fn: (v: V) => V) => over_unbound_value_011<V, U>;
+    <V>(lens: Lens<U, V> | ManualLens<V> | UnknownLens): over_unbound_value_101<V, U>;
+};
+export type over_Functor_version_applied_to_array_101<V, T extends List<V>> = {
     (fn: (v: V) => V): over_Functor_version_applied_to_array_111<V, T>;
-    <$SEL extends "1", $KIND extends "Functor_version">(): (fn: (v: V) => V) => over_Functor_version_111<V, T>;
-    <$SEL extends "1", $KIND extends "Functor_version_applied_to_array">(): (fn: (v: V) => V) => over_Functor_version_applied_to_array_111<V, T>;
-    <$SEL extends "1", $KIND extends "unbound_value">(): (fn: (v: V) => V) => over_unbound_value_111<T, V>;
-    (fn: (v: V) => V): over_unbound_value_111<T, V>;
 };
-export type over_011<V, T extends Functor<V>> = {
-    (lens: Lens<T, V> | ManualLens<V> | UnknownLens): over_Functor_version_111<V, T>;
+export type over_unbound_value_101<V, U> = {
+    (fn: (v: V) => V): over_unbound_value_111<V, U>;
+};
+export type over_Functor_version_applied_to_array_011<V, T extends List<V>> = {
     (lens: Lens<T, V> | ManualLens<V> | UnknownLens): over_Functor_version_applied_to_array_111<V, T>;
-    <$SEL extends "1", $KIND extends "Functor_version">(): (lens: Lens<T, V> | ManualLens<V> | UnknownLens) => over_Functor_version_111<V, T>;
-    <$SEL extends "1", $KIND extends "Functor_version_applied_to_array">(): (lens: Lens<T, V> | ManualLens<V> | UnknownLens) => over_Functor_version_applied_to_array_111<V, T>;
-    <$SEL extends "1", $KIND extends "unbound_value">(): (lens: Lens<T, V> | ManualLens<V> | UnknownLens) => over_unbound_value_111<T, V>;
-    (lens: Lens<T, V> | ManualLens<V> | UnknownLens): over_unbound_value_111<T, V>;
 };
-export type over_Functor_version_111<V, T extends Functor<V>> = T;
+export type over_unbound_value_011<V, U> = {
+    (lens: Lens<U, V> | ManualLens<V> | UnknownLens): over_unbound_value_111<V, U>;
+};
 export type over_Functor_version_applied_to_array_111<V, T extends List<V>> = V[];
-export type over_unbound_value_111<T, V> = T;
+export type over_unbound_value_111<V, U> = U;
 /**
  * TODO
  */
@@ -3573,8 +3549,8 @@ export type partialRight_11<T> = Variadic<T>;
 export declare const partition: partition_00;
 export type partition_00 = {
     <T>(_fn: PH, list: List<T>): partition_arrays_01<T>;
-    <T extends Obj<V>, U extends Obj<V>>(_fn: PH, obj: T & U): partition_objects_01<T, U>;
-    <U extends Obj<T>>(_fn: PH, obj: U): partition_objects__alternative_notation_01<U>;
+    <T extends Obj<V>, U extends Obj<V>, V>(_fn: PH, obj: T & U): partition_objects_01<T, U, V>;
+    <T, U extends Obj<T>>(_fn: PH, obj: U): partition_objects__alternative_notation_01<T, U>;
     <T>(fn: (a: T) => boolean, list: List<T>): partition_arrays_11<T>;
     <T extends Obj<V>, U extends Obj<V>, V>(fn: (a: V) => boolean, obj: T & U): partition_objects_11<T, U, V>;
     <T, U extends Obj<T>>(fn: (a: T) => boolean, obj: U): partition_objects__alternative_notation_11<T, U>;
@@ -3585,10 +3561,10 @@ export type partition_00 = {
     <$SEL extends "01", $KIND extends "arrays">(): <T>(_fn: PH, list: List<T>) => partition_arrays_01<T>;
     <$SEL extends "11", $KIND extends "objects">(): <T extends Obj<V>, U extends Obj<V>, V>(fn: (a: V) => boolean, obj: T & U) => partition_objects_11<T, U, V>;
     <$SEL extends "1", $KIND extends "objects">(): <V>(fn: (a: V) => boolean) => partition_objects_10<V>;
-    <$SEL extends "01", $KIND extends "objects">(): <T extends Obj<V>, U extends Obj<V>>(_fn: PH, obj: T & U) => partition_objects_01<T, U>;
+    <$SEL extends "01", $KIND extends "objects">(): <T extends Obj<V>, U extends Obj<V>, V>(_fn: PH, obj: T & U) => partition_objects_01<T, U, V>;
     <$SEL extends "11", $KIND extends "objects__alternative_notation">(): <T, U extends Obj<T>>(fn: (a: T) => boolean, obj: U) => partition_objects__alternative_notation_11<T, U>;
     <$SEL extends "1", $KIND extends "objects__alternative_notation">(): <T>(fn: (a: T) => boolean) => partition_objects__alternative_notation_10<T>;
-    <$SEL extends "01", $KIND extends "objects__alternative_notation">(): <U extends Obj<T>>(_fn: PH, obj: U) => partition_objects__alternative_notation_01<U>;
+    <$SEL extends "01", $KIND extends "objects__alternative_notation">(): <T, U extends Obj<T>>(_fn: PH, obj: U) => partition_objects__alternative_notation_01<T, U>;
     <T>(fn: (a: T) => boolean): partition_objects__alternative_notation_10<T>;
 };
 export type partition_arrays_10<T> = {
@@ -3603,11 +3579,11 @@ export type partition_objects__alternative_notation_10<T> = {
 export type partition_arrays_01<T> = {
     (fn: (a: T) => boolean): partition_arrays_11<T>;
 };
-export type partition_objects_01<T extends Obj<V>, U extends Obj<V>> = {
-    <V>(fn: (a: V) => boolean): partition_objects_11<T, U, V>;
+export type partition_objects_01<T extends Obj<V>, U extends Obj<V>, V> = {
+    (fn: (a: V) => boolean): partition_objects_11<T, U, V>;
 };
-export type partition_objects__alternative_notation_01<U extends Obj<T>> = {
-    <T>(fn: (a: T) => boolean): partition_objects__alternative_notation_11<T, U>;
+export type partition_objects__alternative_notation_01<T, U extends Obj<T>> = {
+    (fn: (a: T) => boolean): partition_objects__alternative_notation_11<T, U>;
 };
 export type partition_arrays_11<T> = [T[], T[]];
 export type partition_objects_11<T extends Obj<V>, U extends Obj<V>, V> = [T, U];
@@ -3782,9 +3758,9 @@ export type pick_00 = {
     <T>(_names: PH, obj: T): pick_01<T>;
     <T, K extends keyof T>(names: List<K>, obj: T): pick_generic_1_11<T, K>;
     <T>(names: List<Prop>, obj: T): pick_generic_2_11<T>;
-    <K extends keyof T>(names: List<K>): pick_generic_1_10<K>;
+    <T, K extends keyof T>(names: List<K>): pick_generic_1_10<T, K>;
     <$SEL extends "11", $KIND extends "generic_1">(): <T, K extends keyof T>(names: List<K>, obj: T) => pick_generic_1_11<T, K>;
-    <$SEL extends "1", $KIND extends "generic_1">(): <K extends keyof T>(names: List<K>) => pick_generic_1_10<K>;
+    <$SEL extends "1", $KIND extends "generic_1">(): <T, K extends keyof T>(names: List<K>) => pick_generic_1_10<T, K>;
     <$SEL extends "11", $KIND extends "generic_2">(): <T>(names: List<Prop>, obj: T) => pick_generic_2_11<T>;
     <$SEL extends "1", $KIND extends "generic_2">(): (names: List<Prop>) => pick_generic_2_10;
     <$SEL extends "01">(): <T>(_names: PH, obj: T) => pick_01<T>;
@@ -3796,8 +3772,8 @@ export type pick_01<T> = {
     <$SEL extends "1", $KIND extends "generic_2">(): (names: List<Prop>) => pick_generic_2_11<T>;
     (names: List<Prop>): pick_generic_2_11<T>;
 };
-export type pick_generic_1_10<K extends keyof T> = {
-    <T>(obj: T): pick_generic_1_11<T, K>;
+export type pick_generic_1_10<T, K extends keyof T> = {
+    (obj: T): pick_generic_1_11<T, K>;
 };
 export type pick_generic_2_10 = {
     <T>(obj: T): pick_generic_2_11<T>;
@@ -3850,30 +3826,30 @@ export type pluck_00 = {
     <T extends Struct<any>>(_p: PH, list: List<T>): pluck_infer_01<T>;
     (_p: PH, list: Struct<any>[]): pluck_supply_return_object_type_manually_when_unable_to_infer_it____01;
     <T extends Struct<any>, K extends keyof T>(p: K, list: List<T>): pluck_infer_11<T, K>;
-    (p: Prop, list: Struct<any>[]): pluck_supply_return_object_type_manually_when_unable_to_infer_it____11;
-    <K extends keyof T>(p: K): pluck_infer_10<K>;
+    <T>(p: Prop, list: Struct<any>[]): pluck_supply_return_object_type_manually_when_unable_to_infer_it____11<T>;
+    <T extends Struct<any>, K extends keyof T>(p: K): pluck_infer_10<T, K>;
     <$SEL extends "11", $KIND extends "infer">(): <T extends Struct<any>, K extends keyof T>(p: K, list: List<T>) => pluck_infer_11<T, K>;
-    <$SEL extends "1", $KIND extends "infer">(): <K extends keyof T>(p: K) => pluck_infer_10<K>;
+    <$SEL extends "1", $KIND extends "infer">(): <T extends Struct<any>, K extends keyof T>(p: K) => pluck_infer_10<T, K>;
     <$SEL extends "01", $KIND extends "infer">(): <T extends Struct<any>>(_p: PH, list: List<T>) => pluck_infer_01<T>;
-    <$SEL extends "11", $KIND extends "supply_return_object_type_manually_when_unable_to_infer_it___">(): (p: Prop, list: Struct<any>[]) => pluck_supply_return_object_type_manually_when_unable_to_infer_it____11;
+    <$SEL extends "11", $KIND extends "supply_return_object_type_manually_when_unable_to_infer_it___">(): <T>(p: Prop, list: Struct<any>[]) => pluck_supply_return_object_type_manually_when_unable_to_infer_it____11<T>;
     <$SEL extends "1", $KIND extends "supply_return_object_type_manually_when_unable_to_infer_it___">(): (p: Prop) => pluck_supply_return_object_type_manually_when_unable_to_infer_it____10;
     <$SEL extends "01", $KIND extends "supply_return_object_type_manually_when_unable_to_infer_it___">(): (_p: PH, list: Struct<any>[]) => pluck_supply_return_object_type_manually_when_unable_to_infer_it____01;
     (p: Prop): pluck_supply_return_object_type_manually_when_unable_to_infer_it____10;
 };
-export type pluck_infer_10<K extends keyof T> = {
-    <T extends Struct<any>>(list: List<T>): pluck_infer_11<T, K>;
+export type pluck_infer_10<T extends Struct<any>, K extends keyof T> = {
+    (list: List<T>): pluck_infer_11<T, K>;
 };
 export type pluck_supply_return_object_type_manually_when_unable_to_infer_it____10 = {
-    (list: Struct<any>[]): pluck_supply_return_object_type_manually_when_unable_to_infer_it____11;
+    <T>(list: Struct<any>[]): pluck_supply_return_object_type_manually_when_unable_to_infer_it____11<T>;
 };
 export type pluck_infer_01<T extends Struct<any>> = {
     <K extends keyof T>(p: K): pluck_infer_11<T, K>;
 };
 export type pluck_supply_return_object_type_manually_when_unable_to_infer_it____01 = {
-    (p: Prop): pluck_supply_return_object_type_manually_when_unable_to_infer_it____11;
+    <T>(p: Prop): pluck_supply_return_object_type_manually_when_unable_to_infer_it____11<T>;
 };
 export type pluck_infer_11<T extends Struct<any>, K extends keyof T> = T[K][];
-export type pluck_supply_return_object_type_manually_when_unable_to_infer_it____11 = T[];
+export type pluck_supply_return_object_type_manually_when_unable_to_infer_it____11<T> = T[];
 /**
  * TODO
  */
@@ -3908,11 +3884,11 @@ export declare const project: project_00;
 export type project_00 = {
     <T>(_props: PH, objs: List<T>): project_01<T>;
     <T, K extends keyof T>(props: List<K>, objs: List<T>): project_infer_11<T, K>;
-    <T>(props: List<Prop>, objs: List<T>): project_supply_return_object_type_manually_when_unable_to_infer_it____11<T>;
-    <K extends keyof T>(props: List<K>): project_infer_10<K>;
+    <T, U>(props: List<Prop>, objs: List<T>): project_supply_return_object_type_manually_when_unable_to_infer_it____11<T, U>;
+    <T, K extends keyof T>(props: List<K>): project_infer_10<T, K>;
     <$SEL extends "11", $KIND extends "infer">(): <T, K extends keyof T>(props: List<K>, objs: List<T>) => project_infer_11<T, K>;
-    <$SEL extends "1", $KIND extends "infer">(): <K extends keyof T>(props: List<K>) => project_infer_10<K>;
-    <$SEL extends "11", $KIND extends "supply_return_object_type_manually_when_unable_to_infer_it___">(): <T>(props: List<Prop>, objs: List<T>) => project_supply_return_object_type_manually_when_unable_to_infer_it____11<T>;
+    <$SEL extends "1", $KIND extends "infer">(): <T, K extends keyof T>(props: List<K>) => project_infer_10<T, K>;
+    <$SEL extends "11", $KIND extends "supply_return_object_type_manually_when_unable_to_infer_it___">(): <T, U>(props: List<Prop>, objs: List<T>) => project_supply_return_object_type_manually_when_unable_to_infer_it____11<T, U>;
     <$SEL extends "1", $KIND extends "supply_return_object_type_manually_when_unable_to_infer_it___">(): (props: List<Prop>) => project_supply_return_object_type_manually_when_unable_to_infer_it____10;
     <$SEL extends "01">(): <T>(_props: PH, objs: List<T>) => project_01<T>;
     (props: List<Prop>): project_supply_return_object_type_manually_when_unable_to_infer_it____10;
@@ -3920,45 +3896,49 @@ export type project_00 = {
 export type project_01<T> = {
     <K extends keyof T>(props: List<K>): project_infer_11<T, K>;
     <$SEL extends "1", $KIND extends "infer">(): <K extends keyof T>(props: List<K>) => project_infer_11<T, K>;
-    <$SEL extends "1", $KIND extends "supply_return_object_type_manually_when_unable_to_infer_it___">(): (props: List<Prop>) => project_supply_return_object_type_manually_when_unable_to_infer_it____11<T>;
-    (props: List<Prop>): project_supply_return_object_type_manually_when_unable_to_infer_it____11<T>;
+    <$SEL extends "1", $KIND extends "supply_return_object_type_manually_when_unable_to_infer_it___">(): <U>(props: List<Prop>) => project_supply_return_object_type_manually_when_unable_to_infer_it____11<T, U>;
+    <U>(props: List<Prop>): project_supply_return_object_type_manually_when_unable_to_infer_it____11<T, U>;
 };
-export type project_infer_10<K extends keyof T> = {
-    <T>(objs: List<T>): project_infer_11<T, K>;
+export type project_infer_10<T, K extends keyof T> = {
+    (objs: List<T>): project_infer_11<T, K>;
 };
 export type project_supply_return_object_type_manually_when_unable_to_infer_it____10 = {
-    <T>(objs: List<T>): project_supply_return_object_type_manually_when_unable_to_infer_it____11<T>;
+    <T, U>(objs: List<T>): project_supply_return_object_type_manually_when_unable_to_infer_it____11<T, U>;
 };
-export type project_infer_11<T, K extends keyof T> = Pick<K, T>[];
-export type project_supply_return_object_type_manually_when_unable_to_infer_it____11<T> = U[];
+export type project_infer_11<T, K extends keyof T> = Pick<T, K>[];
+export type project_supply_return_object_type_manually_when_unable_to_infer_it____11<T, U> = U[];
 /**
  * TODO
  */
 export declare const prop: prop_00;
 export type prop_00 = {
-    <T extends Record<K, V>>(_p: PH, obj: T): prop_01<T>;
-    <T, K extends keyof T>(p: K, obj: T): prop_keyof_version_11<T, K>;
-    <K extends string, T extends Record<K, V>>(p: K, obj: T): prop_Record_version__more_curry_friendly_11<K, T>;
-    <$SEL extends "11", $KIND extends "keyof_version">(): <T, K extends keyof T>(p: K, obj: T) => prop_keyof_version_11<T, K>;
-    <$SEL extends "11", $KIND extends "Record_version__more_curry_friendly">(): <K extends string, T extends Record<K, V>>(p: K, obj: T) => prop_Record_version__more_curry_friendly_11<K, T>;
-    <$SEL extends "1">(): <K extends string>(p: K) => prop_10<K>;
-    <$SEL extends "01">(): <T extends Record<K, V>>(_p: PH, obj: T) => prop_01<T>;
-    <K extends string>(p: K): prop_10<K>;
+    <J>(_p: PH, obj: J): prop_keyof_version_01<J>;
+    <N extends string, V, T extends Record<N, V>>(_p: PH, obj: T): prop_Record_version__more_curry_friendly_01<N, V, T>;
+    <J, K extends keyof J>(p: K, obj: J): prop_keyof_version_11<J, K>;
+    <N extends string, V, T extends Record<N, V>>(p: N, obj: T): prop_Record_version__more_curry_friendly_11<N, V, T>;
+    <J, K extends keyof J>(p: K): prop_keyof_version_10<J, K>;
+    <$SEL extends "11", $KIND extends "keyof_version">(): <J, K extends keyof J>(p: K, obj: J) => prop_keyof_version_11<J, K>;
+    <$SEL extends "1", $KIND extends "keyof_version">(): <J, K extends keyof J>(p: K) => prop_keyof_version_10<J, K>;
+    <$SEL extends "01", $KIND extends "keyof_version">(): <J>(_p: PH, obj: J) => prop_keyof_version_01<J>;
+    <$SEL extends "11", $KIND extends "Record_version__more_curry_friendly">(): <N extends string, V, T extends Record<N, V>>(p: N, obj: T) => prop_Record_version__more_curry_friendly_11<N, V, T>;
+    <$SEL extends "1", $KIND extends "Record_version__more_curry_friendly">(): <N extends string>(p: N) => prop_Record_version__more_curry_friendly_10<N>;
+    <$SEL extends "01", $KIND extends "Record_version__more_curry_friendly">(): <N extends string, V, T extends Record<N, V>>(_p: PH, obj: T) => prop_Record_version__more_curry_friendly_01<N, V, T>;
+    <N extends string>(p: N): prop_Record_version__more_curry_friendly_10<N>;
 };
-export type prop_10<K extends keyof T> = {
-    <T>(obj: T): prop_keyof_version_11<T, K>;
-    <$SEL extends "1", $KIND extends "keyof_version">(): <T>(obj: T) => prop_keyof_version_11<T, K>;
-    <$SEL extends "1", $KIND extends "Record_version__more_curry_friendly">(): <T extends Record<K, V>>(obj: T) => prop_Record_version__more_curry_friendly_11<K, T>;
-    <T extends Record<K, V>>(obj: T): prop_Record_version__more_curry_friendly_11<K, T>;
+export type prop_keyof_version_10<J, K extends keyof J> = {
+    (obj: J): prop_keyof_version_11<J, K>;
 };
-export type prop_01<T> = {
-    <K extends keyof T>(p: K): prop_keyof_version_11<T, K>;
-    <$SEL extends "1", $KIND extends "keyof_version">(): <K extends keyof T>(p: K) => prop_keyof_version_11<T, K>;
-    <$SEL extends "1", $KIND extends "Record_version__more_curry_friendly">(): <K extends string>(p: K) => prop_Record_version__more_curry_friendly_11<K, T>;
-    <K extends string>(p: K): prop_Record_version__more_curry_friendly_11<K, T>;
+export type prop_Record_version__more_curry_friendly_10<N extends string> = {
+    <V, T extends Record<N, V>>(obj: T): prop_Record_version__more_curry_friendly_11<N, V, T>;
 };
-export type prop_keyof_version_11<T, K extends keyof T> = T[K];
-export type prop_Record_version__more_curry_friendly_11<K extends string, T extends Record<K, V>> = V;
+export type prop_keyof_version_01<J> = {
+    <K extends keyof J>(p: K): prop_keyof_version_11<J, K>;
+};
+export type prop_Record_version__more_curry_friendly_01<N extends string, V, T extends Record<N, V>> = {
+    (p: N): prop_Record_version__more_curry_friendly_11<N, V, T>;
+};
+export type prop_keyof_version_11<J, K extends keyof J> = J[K];
+export type prop_Record_version__more_curry_friendly_11<N extends string, V, T extends Record<N, V>> = V;
 /**
  * TODO
  */
@@ -4018,26 +3998,26 @@ export type propEq_111<T extends Struct<any>> = boolean;
  */
 export declare const propIs: propIs_000;
 export type propIs_000 = {
-    <T extends Function, U extends Record<K, V>>(type: T, _name: PH, obj: U): propIs_Record_101<T, U>;
+    <T extends Function, K extends string, V, U extends Record<K, V>>(type: T, _name: PH, obj: U): propIs_Record_101<T, K, V, U>;
     (type: Function, _name: PH, obj: Struct<any>): propIs_curry_friendlier_fallback_101;
     (_type: PH, _name: PH, obj: Struct<any>): propIs_curry_friendlier_fallback_001;
     (_type: PH, name: Prop, obj: Struct<any>): propIs_curry_friendlier_fallback_011;
-    <K extends string, U extends Record<K, V>>(_type: PH, name: K, obj: U): propIs_Record_011<K, U>;
-    <U extends Record<K, V>>(_type: PH, _name: PH, obj: U): propIs_Record_001<U>;
-    <T extends Function, K extends string, U extends Record<K, V>>(type: T, name: K, obj: U): propIs_Record_111<T, K, U>;
+    <K extends string, V, U extends Record<K, V>>(_type: PH, name: K, obj: U): propIs_Record_011<K, V, U>;
+    <K extends string, V, U extends Record<K, V>>(_type: PH, _name: PH, obj: U): propIs_Record_001<K, V, U>;
+    <T extends Function, K extends string, V, U extends Record<K, V>>(type: T, name: K, obj: U): propIs_Record_111<T, K, V, U>;
     (type: Function, name: Prop, obj: Struct<any>): propIs_curry_friendlier_fallback_111;
     <K extends string>(_type: PH, name: K): propIs_Record_010<K>;
     (_type: PH, name: Prop): propIs_curry_friendlier_fallback_010;
     <T extends Function, K extends string>(type: T, name: K): propIs_Record_110<T, K>;
     (type: Function, name: Prop): propIs_curry_friendlier_fallback_110;
     (type: Function): propIs_curry_friendlier_fallback_100;
-    <$SEL extends "111", $KIND extends "Record">(): <T extends Function, K extends string, U extends Record<K, V>>(type: T, name: K, obj: U) => propIs_Record_111<T, K, U>;
+    <$SEL extends "111", $KIND extends "Record">(): <T extends Function, K extends string, V, U extends Record<K, V>>(type: T, name: K, obj: U) => propIs_Record_111<T, K, V, U>;
     <$SEL extends "11", $KIND extends "Record">(): <T extends Function, K extends string>(type: T, name: K) => propIs_Record_110<T, K>;
-    <$SEL extends "101", $KIND extends "Record">(): <T extends Function, U extends Record<K, V>>(type: T, _name: PH, obj: U) => propIs_Record_101<T, U>;
+    <$SEL extends "101", $KIND extends "Record">(): <T extends Function, K extends string, V, U extends Record<K, V>>(type: T, _name: PH, obj: U) => propIs_Record_101<T, K, V, U>;
     <$SEL extends "1", $KIND extends "Record">(): <T extends Function>(type: T) => propIs_Record_100<T>;
-    <$SEL extends "011", $KIND extends "Record">(): <K extends string, U extends Record<K, V>>(_type: PH, name: K, obj: U) => propIs_Record_011<K, U>;
+    <$SEL extends "011", $KIND extends "Record">(): <K extends string, V, U extends Record<K, V>>(_type: PH, name: K, obj: U) => propIs_Record_011<K, V, U>;
     <$SEL extends "01", $KIND extends "Record">(): <K extends string>(_type: PH, name: K) => propIs_Record_010<K>;
-    <$SEL extends "001", $KIND extends "Record">(): <U extends Record<K, V>>(_type: PH, _name: PH, obj: U) => propIs_Record_001<U>;
+    <$SEL extends "001", $KIND extends "Record">(): <K extends string, V, U extends Record<K, V>>(_type: PH, _name: PH, obj: U) => propIs_Record_001<K, V, U>;
     <$SEL extends "111", $KIND extends "curry_friendlier_fallback">(): (type: Function, name: Prop, obj: Struct<any>) => propIs_curry_friendlier_fallback_111;
     <$SEL extends "11", $KIND extends "curry_friendlier_fallback">(): (type: Function, name: Prop) => propIs_curry_friendlier_fallback_110;
     <$SEL extends "101", $KIND extends "curry_friendlier_fallback">(): (type: Function, _name: PH, obj: Struct<any>) => propIs_curry_friendlier_fallback_101;
@@ -4048,11 +4028,11 @@ export type propIs_000 = {
     <T extends Function>(type: T): propIs_Record_100<T>;
 };
 export type propIs_Record_100<T extends Function> = {
-    <U extends Record<K, V>>(_name: PH, obj: U): propIs_Record_101<T, U>;
-    <K extends string, U extends Record<K, V>>(name: K, obj: U): propIs_Record_111<T, K, U>;
-    <$SEL extends "11">(): <K extends string, U extends Record<K, V>>(name: K, obj: U) => propIs_Record_111<T, K, U>;
+    <K extends string, V, U extends Record<K, V>>(_name: PH, obj: U): propIs_Record_101<T, K, V, U>;
+    <K extends string, V, U extends Record<K, V>>(name: K, obj: U): propIs_Record_111<T, K, V, U>;
+    <$SEL extends "11">(): <K extends string, V, U extends Record<K, V>>(name: K, obj: U) => propIs_Record_111<T, K, V, U>;
     <$SEL extends "1">(): <K extends string>(name: K) => propIs_Record_110<T, K>;
-    <$SEL extends "01">(): <U extends Record<K, V>>(_name: PH, obj: U) => propIs_Record_101<T, U>;
+    <$SEL extends "01">(): <K extends string, V, U extends Record<K, V>>(_name: PH, obj: U) => propIs_Record_101<T, K, V, U>;
     <K extends string>(name: K): propIs_Record_110<T, K>;
 };
 export type propIs_curry_friendlier_fallback_100 = {
@@ -4064,11 +4044,11 @@ export type propIs_curry_friendlier_fallback_100 = {
     (name: Prop): propIs_curry_friendlier_fallback_110;
 };
 export type propIs_Record_010<K extends string> = {
-    <U extends Record<K, V>>(_type: PH, obj: U): propIs_Record_011<K, U>;
-    <T extends Function, U extends Record<K, V>>(type: T, obj: U): propIs_Record_111<T, K, U>;
-    <$SEL extends "11">(): <T extends Function, U extends Record<K, V>>(type: T, obj: U) => propIs_Record_111<T, K, U>;
+    <V, U extends Record<K, V>>(_type: PH, obj: U): propIs_Record_011<K, V, U>;
+    <T extends Function, V, U extends Record<K, V>>(type: T, obj: U): propIs_Record_111<T, K, V, U>;
+    <$SEL extends "11">(): <T extends Function, V, U extends Record<K, V>>(type: T, obj: U) => propIs_Record_111<T, K, V, U>;
     <$SEL extends "1">(): <T extends Function>(type: T) => propIs_Record_110<T, K>;
-    <$SEL extends "01">(): <U extends Record<K, V>>(_type: PH, obj: U) => propIs_Record_011<K, U>;
+    <$SEL extends "01">(): <V, U extends Record<K, V>>(_type: PH, obj: U) => propIs_Record_011<K, V, U>;
     <T extends Function>(type: T): propIs_Record_110<T, K>;
 };
 export type propIs_curry_friendlier_fallback_010 = {
@@ -4080,18 +4060,18 @@ export type propIs_curry_friendlier_fallback_010 = {
     (type: Function): propIs_curry_friendlier_fallback_110;
 };
 export type propIs_Record_110<T extends Function, K extends string> = {
-    <U extends Record<K, V>>(obj: U): propIs_Record_111<T, K, U>;
+    <V, U extends Record<K, V>>(obj: U): propIs_Record_111<T, K, V, U>;
 };
 export type propIs_curry_friendlier_fallback_110 = {
     (obj: Struct<any>): propIs_curry_friendlier_fallback_111;
 };
-export type propIs_Record_001<U extends Record<K, V>> = {
-    <K extends string>(_type: PH, name: K): propIs_Record_011<K, U>;
-    <T extends Function, K extends string>(type: T, name: K): propIs_Record_111<T, K, U>;
-    <$SEL extends "11">(): <T extends Function, K extends string>(type: T, name: K) => propIs_Record_111<T, K, U>;
-    <$SEL extends "1">(): <T extends Function>(type: T) => propIs_Record_101<T, U>;
-    <$SEL extends "01">(): <K extends string>(_type: PH, name: K) => propIs_Record_011<K, U>;
-    <T extends Function>(type: T): propIs_Record_101<T, U>;
+export type propIs_Record_001<K extends string, V, U extends Record<K, V>> = {
+    (_type: PH, name: K): propIs_Record_011<K, V, U>;
+    <T extends Function>(type: T, name: K): propIs_Record_111<T, K, V, U>;
+    <$SEL extends "11">(): <T extends Function>(type: T, name: K) => propIs_Record_111<T, K, V, U>;
+    <$SEL extends "1">(): <T extends Function>(type: T) => propIs_Record_101<T, K, V, U>;
+    <$SEL extends "01">(): (_type: PH, name: K) => propIs_Record_011<K, V, U>;
+    <T extends Function>(type: T): propIs_Record_101<T, K, V, U>;
 };
 export type propIs_curry_friendlier_fallback_001 = {
     (_type: PH, name: Prop): propIs_curry_friendlier_fallback_011;
@@ -4101,19 +4081,19 @@ export type propIs_curry_friendlier_fallback_001 = {
     <$SEL extends "01">(): (_type: PH, name: Prop) => propIs_curry_friendlier_fallback_011;
     (type: Function): propIs_curry_friendlier_fallback_101;
 };
-export type propIs_Record_101<T extends Function, U extends Record<K, V>> = {
-    <K extends string>(name: K): propIs_Record_111<T, K, U>;
+export type propIs_Record_101<T extends Function, K extends string, V, U extends Record<K, V>> = {
+    (name: K): propIs_Record_111<T, K, V, U>;
 };
 export type propIs_curry_friendlier_fallback_101 = {
     (name: Prop): propIs_curry_friendlier_fallback_111;
 };
-export type propIs_Record_011<K extends string, U extends Record<K, V>> = {
-    <T extends Function>(type: T): propIs_Record_111<T, K, U>;
+export type propIs_Record_011<K extends string, V, U extends Record<K, V>> = {
+    <T extends Function>(type: T): propIs_Record_111<T, K, V, U>;
 };
 export type propIs_curry_friendlier_fallback_011 = {
     (type: Function): propIs_curry_friendlier_fallback_111;
 };
-export type propIs_Record_111<T extends Function, K extends string, U extends Record<K, V>> = boolean;
+export type propIs_Record_111<T extends Function, K extends string, V, U extends Record<K, V>> = boolean;
 export type propIs_curry_friendlier_fallback_111 = boolean;
 /**
  * TODO
@@ -4147,197 +4127,103 @@ export type props_11<T> = T[];
  */
 export declare const propSatisfies: propSatisfies_000;
 export type propSatisfies_000 = {
-    <V, U extends Record<K, V>>(pred: Pred<V>, _name: PH, obj: U): propSatisfies_Record_101<V, U>;
-    <T, U>(pred: Pred<T>, _name: PH, obj: U): propSatisfies_keyof__info_too_late_on_currying_101<T, U>;
-    <U>(_pred: PH, _name: PH, obj: U): propSatisfies_001<U>;
-    <U>(_pred: PH, name: Pred, obj: U): propSatisfies_keyof__info_too_late_on_currying_011<U>;
-    <K extends string, U extends Record<K, V>>(_pred: PH, name: K, obj: U): propSatisfies_Record_011<K, U>;
+    <V, K extends string, U extends Record<K, V>>(pred: Pred<V>, _name: PH, obj: U): propSatisfies_Record_101<V, K, U>;
+    <T, J>(pred: Pred<T>, _name: PH, obj: J): propSatisfies_keyof__info_too_late_on_currying_101<T, J>;
+    <J>(_pred: PH, _name: PH, obj: J): propSatisfies_keyof__info_too_late_on_currying_001<J>;
+    <J>(_pred: PH, name: Prop, obj: J): propSatisfies_keyof__info_too_late_on_currying_011<J>;
+    <V, K extends string, U extends Record<K, V>>(_pred: PH, name: K, obj: U): propSatisfies_Record_011<V, K, U>;
+    <V, K extends string, U extends Record<K, V>>(_pred: PH, _name: PH, obj: U): propSatisfies_Record_001<V, K, U>;
     <V, K extends string, U extends Record<K, V>>(pred: Pred<V>, name: K, obj: U): propSatisfies_Record_111<V, K, U>;
-    <T, U>(pred: Pred<T>, name: Pred, obj: U): propSatisfies_keyof__info_too_late_on_currying_111<T, U>;
+    <T, J>(pred: Pred<T>, name: Prop, obj: J): propSatisfies_keyof__info_too_late_on_currying_111<T, J>;
     <K extends string>(_pred: PH, name: K): propSatisfies_Record_010<K>;
-    (_pred: PH, name: Pred): propSatisfies_keyof__info_too_late_on_currying_010;
+    (_pred: PH, name: Prop): propSatisfies_keyof__info_too_late_on_currying_010;
     <V, K extends string>(pred: Pred<V>, name: K): propSatisfies_Record_110<V, K>;
-    <T>(pred: Pred<T>, name: Pred): propSatisfies_keyof__info_too_late_on_currying_110<T>;
+    <T>(pred: Pred<T>, name: Prop): propSatisfies_keyof__info_too_late_on_currying_110<T>;
     <T>(pred: Pred<T>): propSatisfies_keyof__info_too_late_on_currying_100<T>;
     <$SEL extends "111", $KIND extends "Record">(): <V, K extends string, U extends Record<K, V>>(pred: Pred<V>, name: K, obj: U) => propSatisfies_Record_111<V, K, U>;
     <$SEL extends "11", $KIND extends "Record">(): <V, K extends string>(pred: Pred<V>, name: K) => propSatisfies_Record_110<V, K>;
-    <$SEL extends "101", $KIND extends "Record">(): <V, U extends Record<K, V>>(pred: Pred<V>, _name: PH, obj: U) => propSatisfies_Record_101<V, U>;
+    <$SEL extends "101", $KIND extends "Record">(): <V, K extends string, U extends Record<K, V>>(pred: Pred<V>, _name: PH, obj: U) => propSatisfies_Record_101<V, K, U>;
     <$SEL extends "1", $KIND extends "Record">(): <V>(pred: Pred<V>) => propSatisfies_Record_100<V>;
-    <$SEL extends "011", $KIND extends "Record">(): <K extends string, U extends Record<K, V>>(_pred: PH, name: K, obj: U) => propSatisfies_Record_011<K, U>;
+    <$SEL extends "011", $KIND extends "Record">(): <V, K extends string, U extends Record<K, V>>(_pred: PH, name: K, obj: U) => propSatisfies_Record_011<V, K, U>;
     <$SEL extends "01", $KIND extends "Record">(): <K extends string>(_pred: PH, name: K) => propSatisfies_Record_010<K>;
-    <$SEL extends "111", $KIND extends "keyof__info_too_late_on_currying">(): <T, U>(pred: Pred<T>, name: Pred, obj: U) => propSatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <$SEL extends "11", $KIND extends "keyof__info_too_late_on_currying">(): <T>(pred: Pred<T>, name: Pred) => propSatisfies_keyof__info_too_late_on_currying_110<T>;
-    <$SEL extends "101", $KIND extends "keyof__info_too_late_on_currying">(): <T, U>(pred: Pred<T>, _name: PH, obj: U) => propSatisfies_keyof__info_too_late_on_currying_101<T, U>;
+    <$SEL extends "001", $KIND extends "Record">(): <V, K extends string, U extends Record<K, V>>(_pred: PH, _name: PH, obj: U) => propSatisfies_Record_001<V, K, U>;
+    <$SEL extends "111", $KIND extends "keyof__info_too_late_on_currying">(): <T, J>(pred: Pred<T>, name: Prop, obj: J) => propSatisfies_keyof__info_too_late_on_currying_111<T, J>;
+    <$SEL extends "11", $KIND extends "keyof__info_too_late_on_currying">(): <T>(pred: Pred<T>, name: Prop) => propSatisfies_keyof__info_too_late_on_currying_110<T>;
+    <$SEL extends "101", $KIND extends "keyof__info_too_late_on_currying">(): <T, J>(pred: Pred<T>, _name: PH, obj: J) => propSatisfies_keyof__info_too_late_on_currying_101<T, J>;
     <$SEL extends "1", $KIND extends "keyof__info_too_late_on_currying">(): <T>(pred: Pred<T>) => propSatisfies_keyof__info_too_late_on_currying_100<T>;
-    <$SEL extends "011", $KIND extends "keyof__info_too_late_on_currying">(): <U>(_pred: PH, name: Pred, obj: U) => propSatisfies_keyof__info_too_late_on_currying_011<U>;
-    <$SEL extends "01", $KIND extends "keyof__info_too_late_on_currying">(): (_pred: PH, name: Pred) => propSatisfies_keyof__info_too_late_on_currying_010;
-    <$SEL extends "001">(): <U>(_pred: PH, _name: PH, obj: U) => propSatisfies_001<U>;
+    <$SEL extends "011", $KIND extends "keyof__info_too_late_on_currying">(): <J>(_pred: PH, name: Prop, obj: J) => propSatisfies_keyof__info_too_late_on_currying_011<J>;
+    <$SEL extends "01", $KIND extends "keyof__info_too_late_on_currying">(): (_pred: PH, name: Prop) => propSatisfies_keyof__info_too_late_on_currying_010;
+    <$SEL extends "001", $KIND extends "keyof__info_too_late_on_currying">(): <J>(_pred: PH, _name: PH, obj: J) => propSatisfies_keyof__info_too_late_on_currying_001<J>;
     <V>(pred: Pred<V>): propSatisfies_Record_100<V>;
 };
-export type propSatisfies_001<U extends Record<K, V>> = {
-    <K extends string>(_pred: PH, name: K): propSatisfies_Record_011<K, U>;
-    (_pred: PH, name: Pred): propSatisfies_keyof__info_too_late_on_currying_011<U>;
-    <V, K extends string>(pred: Pred<V>, name: K): propSatisfies_Record_111<V, K, U>;
-    <T>(pred: Pred<T>, name: Pred): propSatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <V>(pred: Pred<V>): propSatisfies_Record_101<V, U>;
-    <$SEL extends "11", $KIND extends "Record">(): <V, K extends string>(pred: Pred<V>, name: K) => propSatisfies_Record_111<V, K, U>;
-    <$SEL extends "1", $KIND extends "Record">(): <V>(pred: Pred<V>) => propSatisfies_Record_101<V, U>;
-    <$SEL extends "01", $KIND extends "Record">(): <K extends string>(_pred: PH, name: K) => propSatisfies_Record_011<K, U>;
-    <$SEL extends "11", $KIND extends "keyof__info_too_late_on_currying">(): <T>(pred: Pred<T>, name: Pred) => propSatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <$SEL extends "1", $KIND extends "keyof__info_too_late_on_currying">(): <T>(pred: Pred<T>) => propSatisfies_keyof__info_too_late_on_currying_101<T, U>;
-    <$SEL extends "01", $KIND extends "keyof__info_too_late_on_currying">(): (_pred: PH, name: Pred) => propSatisfies_keyof__info_too_late_on_currying_011<U>;
-    <T>(pred: Pred<T>): propSatisfies_keyof__info_too_late_on_currying_101<T, U>;
-};
 export type propSatisfies_Record_100<V> = {
-    <U extends Record<K, V>>(_name: PH, obj: U): propSatisfies_Record_101<V, U>;
+    <K extends string, U extends Record<K, V>>(_name: PH, obj: U): propSatisfies_Record_101<V, K, U>;
     <K extends string, U extends Record<K, V>>(name: K, obj: U): propSatisfies_Record_111<V, K, U>;
     <$SEL extends "11">(): <K extends string, U extends Record<K, V>>(name: K, obj: U) => propSatisfies_Record_111<V, K, U>;
     <$SEL extends "1">(): <K extends string>(name: K) => propSatisfies_Record_110<V, K>;
-    <$SEL extends "01">(): <U extends Record<K, V>>(_name: PH, obj: U) => propSatisfies_Record_101<V, U>;
+    <$SEL extends "01">(): <K extends string, U extends Record<K, V>>(_name: PH, obj: U) => propSatisfies_Record_101<V, K, U>;
     <K extends string>(name: K): propSatisfies_Record_110<V, K>;
 };
 export type propSatisfies_keyof__info_too_late_on_currying_100<T> = {
-    <U>(_name: PH, obj: U): propSatisfies_keyof__info_too_late_on_currying_101<T, U>;
-    <U>(name: Pred, obj: U): propSatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <$SEL extends "11">(): <U>(name: Pred, obj: U) => propSatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <$SEL extends "1">(): (name: Pred) => propSatisfies_keyof__info_too_late_on_currying_110<T>;
-    <$SEL extends "01">(): <U>(_name: PH, obj: U) => propSatisfies_keyof__info_too_late_on_currying_101<T, U>;
-    (name: Pred): propSatisfies_keyof__info_too_late_on_currying_110<T>;
+    <J>(_name: PH, obj: J): propSatisfies_keyof__info_too_late_on_currying_101<T, J>;
+    <J>(name: Prop, obj: J): propSatisfies_keyof__info_too_late_on_currying_111<T, J>;
+    <$SEL extends "11">(): <J>(name: Prop, obj: J) => propSatisfies_keyof__info_too_late_on_currying_111<T, J>;
+    <$SEL extends "1">(): (name: Prop) => propSatisfies_keyof__info_too_late_on_currying_110<T>;
+    <$SEL extends "01">(): <J>(_name: PH, obj: J) => propSatisfies_keyof__info_too_late_on_currying_101<T, J>;
+    (name: Prop): propSatisfies_keyof__info_too_late_on_currying_110<T>;
 };
 export type propSatisfies_Record_010<K extends string> = {
-    <U extends Record<K, V>>(_pred: PH, obj: U): propSatisfies_Record_011<K, U>;
+    <V, U extends Record<K, V>>(_pred: PH, obj: U): propSatisfies_Record_011<V, K, U>;
     <V, U extends Record<K, V>>(pred: Pred<V>, obj: U): propSatisfies_Record_111<V, K, U>;
     <$SEL extends "11">(): <V, U extends Record<K, V>>(pred: Pred<V>, obj: U) => propSatisfies_Record_111<V, K, U>;
     <$SEL extends "1">(): <V>(pred: Pred<V>) => propSatisfies_Record_110<V, K>;
-    <$SEL extends "01">(): <U extends Record<K, V>>(_pred: PH, obj: U) => propSatisfies_Record_011<K, U>;
+    <$SEL extends "01">(): <V, U extends Record<K, V>>(_pred: PH, obj: U) => propSatisfies_Record_011<V, K, U>;
     <V>(pred: Pred<V>): propSatisfies_Record_110<V, K>;
 };
 export type propSatisfies_keyof__info_too_late_on_currying_010 = {
-    <U>(_pred: PH, obj: U): propSatisfies_keyof__info_too_late_on_currying_011<U>;
-    <T, U>(pred: Pred<T>, obj: U): propSatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <$SEL extends "11">(): <T, U>(pred: Pred<T>, obj: U) => propSatisfies_keyof__info_too_late_on_currying_111<T, U>;
+    <J>(_pred: PH, obj: J): propSatisfies_keyof__info_too_late_on_currying_011<J>;
+    <T, J>(pred: Pred<T>, obj: J): propSatisfies_keyof__info_too_late_on_currying_111<T, J>;
+    <$SEL extends "11">(): <T, J>(pred: Pred<T>, obj: J) => propSatisfies_keyof__info_too_late_on_currying_111<T, J>;
     <$SEL extends "1">(): <T>(pred: Pred<T>) => propSatisfies_keyof__info_too_late_on_currying_110<T>;
-    <$SEL extends "01">(): <U>(_pred: PH, obj: U) => propSatisfies_keyof__info_too_late_on_currying_011<U>;
+    <$SEL extends "01">(): <J>(_pred: PH, obj: J) => propSatisfies_keyof__info_too_late_on_currying_011<J>;
     <T>(pred: Pred<T>): propSatisfies_keyof__info_too_late_on_currying_110<T>;
 };
 export type propSatisfies_Record_110<V, K extends string> = {
     <U extends Record<K, V>>(obj: U): propSatisfies_Record_111<V, K, U>;
 };
 export type propSatisfies_keyof__info_too_late_on_currying_110<T> = {
-    <U>(obj: U): propSatisfies_keyof__info_too_late_on_currying_111<T, U>;
+    <J>(obj: J): propSatisfies_keyof__info_too_late_on_currying_111<T, J>;
 };
-export type propSatisfies_Record_101<V, U extends Record<K, V>> = {
-    <K extends string>(name: K): propSatisfies_Record_111<V, K, U>;
+export type propSatisfies_Record_001<V, K extends string, U extends Record<K, V>> = {
+    (_pred: PH, name: K): propSatisfies_Record_011<V, K, U>;
+    (pred: Pred<V>, name: K): propSatisfies_Record_111<V, K, U>;
+    <$SEL extends "11">(): (pred: Pred<V>, name: K) => propSatisfies_Record_111<V, K, U>;
+    <$SEL extends "1">(): (pred: Pred<V>) => propSatisfies_Record_101<V, K, U>;
+    <$SEL extends "01">(): (_pred: PH, name: K) => propSatisfies_Record_011<V, K, U>;
+    (pred: Pred<V>): propSatisfies_Record_101<V, K, U>;
 };
-export type propSatisfies_keyof__info_too_late_on_currying_101<T, U> = {
-    (name: Pred): propSatisfies_keyof__info_too_late_on_currying_111<T, U>;
+export type propSatisfies_keyof__info_too_late_on_currying_001<J> = {
+    (_pred: PH, name: Prop): propSatisfies_keyof__info_too_late_on_currying_011<J>;
+    <T>(pred: Pred<T>, name: Prop): propSatisfies_keyof__info_too_late_on_currying_111<T, J>;
+    <$SEL extends "11">(): <T>(pred: Pred<T>, name: Prop) => propSatisfies_keyof__info_too_late_on_currying_111<T, J>;
+    <$SEL extends "1">(): <T>(pred: Pred<T>) => propSatisfies_keyof__info_too_late_on_currying_101<T, J>;
+    <$SEL extends "01">(): (_pred: PH, name: Prop) => propSatisfies_keyof__info_too_late_on_currying_011<J>;
+    <T>(pred: Pred<T>): propSatisfies_keyof__info_too_late_on_currying_101<T, J>;
 };
-export type propSatisfies_Record_011<K extends string, U extends Record<K, V>> = {
-    <V>(pred: Pred<V>): propSatisfies_Record_111<V, K, U>;
+export type propSatisfies_Record_101<V, K extends string, U extends Record<K, V>> = {
+    (name: K): propSatisfies_Record_111<V, K, U>;
 };
-export type propSatisfies_keyof__info_too_late_on_currying_011<U> = {
-    <T>(pred: Pred<T>): propSatisfies_keyof__info_too_late_on_currying_111<T, U>;
+export type propSatisfies_keyof__info_too_late_on_currying_101<T, J> = {
+    (name: Prop): propSatisfies_keyof__info_too_late_on_currying_111<T, J>;
+};
+export type propSatisfies_Record_011<V, K extends string, U extends Record<K, V>> = {
+    (pred: Pred<V>): propSatisfies_Record_111<V, K, U>;
+};
+export type propSatisfies_keyof__info_too_late_on_currying_011<J> = {
+    <T>(pred: Pred<T>): propSatisfies_keyof__info_too_late_on_currying_111<T, J>;
 };
 export type propSatisfies_Record_111<V, K extends string, U extends Record<K, V>> = boolean;
-export type propSatisfies_keyof__info_too_late_on_currying_111<T, U> = boolean;
-/**
- * TODO
- */
-export declare const propStatisfies: propStatisfies_000;
-export type propStatisfies_000 = {
-    <V, U extends Record<K, V>>(pred: Pred<V>, _name: PH, obj: U): propStatisfies_Record__curry_friendly__101<V, U>;
-    <T, U>(pred: Pred<T>, _name: PH, obj: U): propStatisfies_keyof__info_too_late_on_currying_101<T, U>;
-    <U>(_pred: PH, _name: PH, obj: U): propStatisfies_001<U>;
-    <U>(_pred: PH, name: Prop, obj: U): propStatisfies_keyof__info_too_late_on_currying_011<U>;
-    <K extends string, U extends Record<K, V>>(_pred: PH, name: K, obj: U): propStatisfies_Record__curry_friendly__011<K, U>;
-    <V, K extends string, U extends Record<K, V>>(pred: Pred<V>, name: K, obj: U): propStatisfies_Record__curry_friendly__111<V, K, U>;
-    <T, U>(pred: Pred<T>, name: Prop, obj: U): propStatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <K extends string>(_pred: PH, name: K): propStatisfies_Record__curry_friendly__010<K>;
-    (_pred: PH, name: Prop): propStatisfies_keyof__info_too_late_on_currying_010;
-    <V, K extends string>(pred: Pred<V>, name: K): propStatisfies_Record__curry_friendly__110<V, K>;
-    <T>(pred: Pred<T>, name: Prop): propStatisfies_keyof__info_too_late_on_currying_110<T>;
-    <T>(pred: Pred<T>): propStatisfies_keyof__info_too_late_on_currying_100<T>;
-    <$SEL extends "111", $KIND extends "Record__curry_friendly_">(): <V, K extends string, U extends Record<K, V>>(pred: Pred<V>, name: K, obj: U) => propStatisfies_Record__curry_friendly__111<V, K, U>;
-    <$SEL extends "11", $KIND extends "Record__curry_friendly_">(): <V, K extends string>(pred: Pred<V>, name: K) => propStatisfies_Record__curry_friendly__110<V, K>;
-    <$SEL extends "101", $KIND extends "Record__curry_friendly_">(): <V, U extends Record<K, V>>(pred: Pred<V>, _name: PH, obj: U) => propStatisfies_Record__curry_friendly__101<V, U>;
-    <$SEL extends "1", $KIND extends "Record__curry_friendly_">(): <V>(pred: Pred<V>) => propStatisfies_Record__curry_friendly__100<V>;
-    <$SEL extends "011", $KIND extends "Record__curry_friendly_">(): <K extends string, U extends Record<K, V>>(_pred: PH, name: K, obj: U) => propStatisfies_Record__curry_friendly__011<K, U>;
-    <$SEL extends "01", $KIND extends "Record__curry_friendly_">(): <K extends string>(_pred: PH, name: K) => propStatisfies_Record__curry_friendly__010<K>;
-    <$SEL extends "111", $KIND extends "keyof__info_too_late_on_currying">(): <T, U>(pred: Pred<T>, name: Prop, obj: U) => propStatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <$SEL extends "11", $KIND extends "keyof__info_too_late_on_currying">(): <T>(pred: Pred<T>, name: Prop) => propStatisfies_keyof__info_too_late_on_currying_110<T>;
-    <$SEL extends "101", $KIND extends "keyof__info_too_late_on_currying">(): <T, U>(pred: Pred<T>, _name: PH, obj: U) => propStatisfies_keyof__info_too_late_on_currying_101<T, U>;
-    <$SEL extends "1", $KIND extends "keyof__info_too_late_on_currying">(): <T>(pred: Pred<T>) => propStatisfies_keyof__info_too_late_on_currying_100<T>;
-    <$SEL extends "011", $KIND extends "keyof__info_too_late_on_currying">(): <U>(_pred: PH, name: Prop, obj: U) => propStatisfies_keyof__info_too_late_on_currying_011<U>;
-    <$SEL extends "01", $KIND extends "keyof__info_too_late_on_currying">(): (_pred: PH, name: Prop) => propStatisfies_keyof__info_too_late_on_currying_010;
-    <$SEL extends "001">(): <U>(_pred: PH, _name: PH, obj: U) => propStatisfies_001<U>;
-    <V>(pred: Pred<V>): propStatisfies_Record__curry_friendly__100<V>;
-};
-export type propStatisfies_001<U extends Record<K, V>> = {
-    <K extends string>(_pred: PH, name: K): propStatisfies_Record__curry_friendly__011<K, U>;
-    (_pred: PH, name: Prop): propStatisfies_keyof__info_too_late_on_currying_011<U>;
-    <V, K extends string>(pred: Pred<V>, name: K): propStatisfies_Record__curry_friendly__111<V, K, U>;
-    <T>(pred: Pred<T>, name: Prop): propStatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <V>(pred: Pred<V>): propStatisfies_Record__curry_friendly__101<V, U>;
-    <$SEL extends "11", $KIND extends "Record__curry_friendly_">(): <V, K extends string>(pred: Pred<V>, name: K) => propStatisfies_Record__curry_friendly__111<V, K, U>;
-    <$SEL extends "1", $KIND extends "Record__curry_friendly_">(): <V>(pred: Pred<V>) => propStatisfies_Record__curry_friendly__101<V, U>;
-    <$SEL extends "01", $KIND extends "Record__curry_friendly_">(): <K extends string>(_pred: PH, name: K) => propStatisfies_Record__curry_friendly__011<K, U>;
-    <$SEL extends "11", $KIND extends "keyof__info_too_late_on_currying">(): <T>(pred: Pred<T>, name: Prop) => propStatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <$SEL extends "1", $KIND extends "keyof__info_too_late_on_currying">(): <T>(pred: Pred<T>) => propStatisfies_keyof__info_too_late_on_currying_101<T, U>;
-    <$SEL extends "01", $KIND extends "keyof__info_too_late_on_currying">(): (_pred: PH, name: Prop) => propStatisfies_keyof__info_too_late_on_currying_011<U>;
-    <T>(pred: Pred<T>): propStatisfies_keyof__info_too_late_on_currying_101<T, U>;
-};
-export type propStatisfies_Record__curry_friendly__100<V> = {
-    <U extends Record<K, V>>(_name: PH, obj: U): propStatisfies_Record__curry_friendly__101<V, U>;
-    <K extends string, U extends Record<K, V>>(name: K, obj: U): propStatisfies_Record__curry_friendly__111<V, K, U>;
-    <$SEL extends "11">(): <K extends string, U extends Record<K, V>>(name: K, obj: U) => propStatisfies_Record__curry_friendly__111<V, K, U>;
-    <$SEL extends "1">(): <K extends string>(name: K) => propStatisfies_Record__curry_friendly__110<V, K>;
-    <$SEL extends "01">(): <U extends Record<K, V>>(_name: PH, obj: U) => propStatisfies_Record__curry_friendly__101<V, U>;
-    <K extends string>(name: K): propStatisfies_Record__curry_friendly__110<V, K>;
-};
-export type propStatisfies_keyof__info_too_late_on_currying_100<T> = {
-    <U>(_name: PH, obj: U): propStatisfies_keyof__info_too_late_on_currying_101<T, U>;
-    <U>(name: Prop, obj: U): propStatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <$SEL extends "11">(): <U>(name: Prop, obj: U) => propStatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <$SEL extends "1">(): (name: Prop) => propStatisfies_keyof__info_too_late_on_currying_110<T>;
-    <$SEL extends "01">(): <U>(_name: PH, obj: U) => propStatisfies_keyof__info_too_late_on_currying_101<T, U>;
-    (name: Prop): propStatisfies_keyof__info_too_late_on_currying_110<T>;
-};
-export type propStatisfies_Record__curry_friendly__010<K extends string> = {
-    <U extends Record<K, V>>(_pred: PH, obj: U): propStatisfies_Record__curry_friendly__011<K, U>;
-    <V, U extends Record<K, V>>(pred: Pred<V>, obj: U): propStatisfies_Record__curry_friendly__111<V, K, U>;
-    <$SEL extends "11">(): <V, U extends Record<K, V>>(pred: Pred<V>, obj: U) => propStatisfies_Record__curry_friendly__111<V, K, U>;
-    <$SEL extends "1">(): <V>(pred: Pred<V>) => propStatisfies_Record__curry_friendly__110<V, K>;
-    <$SEL extends "01">(): <U extends Record<K, V>>(_pred: PH, obj: U) => propStatisfies_Record__curry_friendly__011<K, U>;
-    <V>(pred: Pred<V>): propStatisfies_Record__curry_friendly__110<V, K>;
-};
-export type propStatisfies_keyof__info_too_late_on_currying_010 = {
-    <U>(_pred: PH, obj: U): propStatisfies_keyof__info_too_late_on_currying_011<U>;
-    <T, U>(pred: Pred<T>, obj: U): propStatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <$SEL extends "11">(): <T, U>(pred: Pred<T>, obj: U) => propStatisfies_keyof__info_too_late_on_currying_111<T, U>;
-    <$SEL extends "1">(): <T>(pred: Pred<T>) => propStatisfies_keyof__info_too_late_on_currying_110<T>;
-    <$SEL extends "01">(): <U>(_pred: PH, obj: U) => propStatisfies_keyof__info_too_late_on_currying_011<U>;
-    <T>(pred: Pred<T>): propStatisfies_keyof__info_too_late_on_currying_110<T>;
-};
-export type propStatisfies_Record__curry_friendly__110<V, K extends string> = {
-    <U extends Record<K, V>>(obj: U): propStatisfies_Record__curry_friendly__111<V, K, U>;
-};
-export type propStatisfies_keyof__info_too_late_on_currying_110<T> = {
-    <U>(obj: U): propStatisfies_keyof__info_too_late_on_currying_111<T, U>;
-};
-export type propStatisfies_Record__curry_friendly__101<V, U extends Record<K, V>> = {
-    <K extends string>(name: K): propStatisfies_Record__curry_friendly__111<V, K, U>;
-};
-export type propStatisfies_keyof__info_too_late_on_currying_101<T, U> = {
-    (name: Prop): propStatisfies_keyof__info_too_late_on_currying_111<T, U>;
-};
-export type propStatisfies_Record__curry_friendly__011<K extends string, U extends Record<K, V>> = {
-    <V>(pred: Pred<V>): propStatisfies_Record__curry_friendly__111<V, K, U>;
-};
-export type propStatisfies_keyof__info_too_late_on_currying_011<U> = {
-    <T>(pred: Pred<T>): propStatisfies_keyof__info_too_late_on_currying_111<T, U>;
-};
-export type propStatisfies_Record__curry_friendly__111<V, K extends string, U extends Record<K, V>> = boolean;
-export type propStatisfies_keyof__info_too_late_on_currying_111<T, U> = boolean;
+export type propSatisfies_keyof__info_too_late_on_currying_111<T, J> = boolean;
 /**
  * TODO
  */
@@ -4363,8 +4249,8 @@ export type range_11 = number[];
 export declare const reduce: reduce_000;
 export type reduce_000 = {
     <T, TResult, R extends List<T>>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced, _acc: PH, list: R): reduce_101<T, TResult, R>;
-    <TResult, R extends List<T>>(_fn: PH, acc: TResult, list: R): reduce_011<TResult, R>;
-    <R extends List<T>>(_fn: PH, _acc: PH, list: R): reduce_001<R>;
+    <T, TResult, R extends List<T>>(_fn: PH, acc: TResult, list: R): reduce_011<T, TResult, R>;
+    <T, R extends List<T>>(_fn: PH, _acc: PH, list: R): reduce_001<T, R>;
     <T, TResult, R extends List<T>>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced, acc: TResult, list: R): reduce_111<T, TResult, R>;
     <TResult>(_fn: PH, acc: TResult): reduce_010<TResult>;
     <T, TResult, R extends List<T>>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced, acc: TResult): reduce_110<T, TResult, R>;
@@ -4372,9 +4258,9 @@ export type reduce_000 = {
     <$SEL extends "11">(): <T, TResult, R extends List<T>>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced, acc: TResult) => reduce_110<T, TResult, R>;
     <$SEL extends "101">(): <T, TResult, R extends List<T>>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced, _acc: PH, list: R) => reduce_101<T, TResult, R>;
     <$SEL extends "1">(): <T, TResult, R extends List<T>>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced) => reduce_100<T, TResult, R>;
-    <$SEL extends "011">(): <TResult, R extends List<T>>(_fn: PH, acc: TResult, list: R) => reduce_011<TResult, R>;
+    <$SEL extends "011">(): <T, TResult, R extends List<T>>(_fn: PH, acc: TResult, list: R) => reduce_011<T, TResult, R>;
     <$SEL extends "01">(): <TResult>(_fn: PH, acc: TResult) => reduce_010<TResult>;
-    <$SEL extends "001">(): <R extends List<T>>(_fn: PH, _acc: PH, list: R) => reduce_001<R>;
+    <$SEL extends "001">(): <T, R extends List<T>>(_fn: PH, _acc: PH, list: R) => reduce_001<T, R>;
     <T, TResult, R extends List<T>>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced): reduce_100<T, TResult, R>;
 };
 export type reduce_100<T, TResult, R extends List<T>> = {
@@ -4386,29 +4272,29 @@ export type reduce_100<T, TResult, R extends List<T>> = {
     (acc: TResult): reduce_110<T, TResult, R>;
 };
 export type reduce_010<TResult> = {
-    <R extends List<T>>(_fn: PH, list: R): reduce_011<TResult, R>;
+    <T, R extends List<T>>(_fn: PH, list: R): reduce_011<T, TResult, R>;
     <T, R extends List<T>>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced, list: R): reduce_111<T, TResult, R>;
     <$SEL extends "11">(): <T, R extends List<T>>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced, list: R) => reduce_111<T, TResult, R>;
     <$SEL extends "1">(): <T, R extends List<T>>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced) => reduce_110<T, TResult, R>;
-    <$SEL extends "01">(): <R extends List<T>>(_fn: PH, list: R) => reduce_011<TResult, R>;
+    <$SEL extends "01">(): <T, R extends List<T>>(_fn: PH, list: R) => reduce_011<T, TResult, R>;
     <T, R extends List<T>>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced): reduce_110<T, TResult, R>;
 };
 export type reduce_110<T, TResult, R extends List<T>> = {
     (list: R): reduce_111<T, TResult, R>;
 };
-export type reduce_001<R extends List<T>> = {
-    <TResult>(_fn: PH, acc: TResult): reduce_011<TResult, R>;
-    <T, TResult>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced, acc: TResult): reduce_111<T, TResult, R>;
-    <$SEL extends "11">(): <T, TResult>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced, acc: TResult) => reduce_111<T, TResult, R>;
-    <$SEL extends "1">(): <T, TResult>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced) => reduce_101<T, TResult, R>;
-    <$SEL extends "01">(): <TResult>(_fn: PH, acc: TResult) => reduce_011<TResult, R>;
-    <T, TResult>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced): reduce_101<T, TResult, R>;
+export type reduce_001<T, R extends List<T>> = {
+    <TResult>(_fn: PH, acc: TResult): reduce_011<T, TResult, R>;
+    <TResult>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced, acc: TResult): reduce_111<T, TResult, R>;
+    <$SEL extends "11">(): <TResult>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced, acc: TResult) => reduce_111<T, TResult, R>;
+    <$SEL extends "1">(): <TResult>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced) => reduce_101<T, TResult, R>;
+    <$SEL extends "01">(): <TResult>(_fn: PH, acc: TResult) => reduce_011<T, TResult, R>;
+    <TResult>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced): reduce_101<T, TResult, R>;
 };
 export type reduce_101<T, TResult, R extends List<T>> = {
     (acc: TResult): reduce_111<T, TResult, R>;
 };
-export type reduce_011<TResult, R extends List<T>> = {
-    <T>(fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced): reduce_111<T, TResult, R>;
+export type reduce_011<T, TResult, R extends List<T>> = {
+    (fn: (acc: TResult, elem: T, idx: number, list: R) => TResult | Reduced): reduce_111<T, TResult, R>;
 };
 export type reduce_111<T, TResult, R extends List<T>> = TResult;
 /**
@@ -4419,9 +4305,9 @@ export type reduceBy_0000 = {
     <T, TResult, R extends List<T>>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, acc: TResult | any, _keyFn: PH, list: R): reduceBy_1101<T, TResult, R>;
     <T, TResult, R extends List<T>>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, _acc: PH, keyFn: (elem: T) => string, list: R): reduceBy_1011<T, TResult, R>;
     <T, TResult, R extends List<T>>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, _acc: PH, _keyFn: PH, list: R): reduceBy_1001<T, TResult, R>;
-    <R extends List<T>>(_valueFn: PH, _acc: PH, _keyFn: PH, list: R): reduceBy_0001<R>;
+    <T, R extends List<T>>(_valueFn: PH, _acc: PH, _keyFn: PH, list: R): reduceBy_0001<T, R>;
     <T, R extends List<T>>(_valueFn: PH, _acc: PH, keyFn: (elem: T) => string, list: R): reduceBy_0011<T, R>;
-    <TResult, R extends List<T>>(_valueFn: PH, acc: TResult | any, _keyFn: PH, list: R): reduceBy_0101<TResult, R>;
+    <T, TResult, R extends List<T>>(_valueFn: PH, acc: TResult | any, _keyFn: PH, list: R): reduceBy_0101<T, TResult, R>;
     <T, TResult, R extends List<T>>(_valueFn: PH, acc: TResult | any, keyFn: (elem: T) => string, list: R): reduceBy_0111<T, TResult, R>;
     <T, TResult, R extends List<T>>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, acc: TResult | any, keyFn: (elem: T) => string, list: R): reduceBy_1111<T, TResult, R>;
     <T, TResult, R extends List<T>>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, _acc: PH, keyFn: (elem: T) => string): reduceBy_1010<T, TResult, R>;
@@ -4440,11 +4326,11 @@ export type reduceBy_0000 = {
     <$SEL extends "1">(): <T, TResult, R extends List<T>>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult) => reduceBy_1000<T, TResult, R>;
     <$SEL extends "0111">(): <T, TResult, R extends List<T>>(_valueFn: PH, acc: TResult | any, keyFn: (elem: T) => string, list: R) => reduceBy_0111<T, TResult, R>;
     <$SEL extends "011">(): <T, TResult>(_valueFn: PH, acc: TResult | any, keyFn: (elem: T) => string) => reduceBy_0110<T, TResult>;
-    <$SEL extends "0101">(): <TResult, R extends List<T>>(_valueFn: PH, acc: TResult | any, _keyFn: PH, list: R) => reduceBy_0101<TResult, R>;
+    <$SEL extends "0101">(): <T, TResult, R extends List<T>>(_valueFn: PH, acc: TResult | any, _keyFn: PH, list: R) => reduceBy_0101<T, TResult, R>;
     <$SEL extends "01">(): <TResult>(_valueFn: PH, acc: TResult | any) => reduceBy_0100<TResult>;
     <$SEL extends "0011">(): <T, R extends List<T>>(_valueFn: PH, _acc: PH, keyFn: (elem: T) => string, list: R) => reduceBy_0011<T, R>;
     <$SEL extends "001">(): <T>(_valueFn: PH, _acc: PH, keyFn: (elem: T) => string) => reduceBy_0010<T>;
-    <$SEL extends "0001">(): <R extends List<T>>(_valueFn: PH, _acc: PH, _keyFn: PH, list: R) => reduceBy_0001<R>;
+    <$SEL extends "0001">(): <T, R extends List<T>>(_valueFn: PH, _acc: PH, _keyFn: PH, list: R) => reduceBy_0001<T, R>;
     <T, TResult, R extends List<T>>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult): reduceBy_1000<T, TResult, R>;
 };
 export type reduceBy_1000<T, TResult, R extends List<T>> = {
@@ -4466,7 +4352,7 @@ export type reduceBy_1000<T, TResult, R extends List<T>> = {
 export type reduceBy_0100<TResult> = {
     <T, R extends List<T>>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, _keyFn: PH, list: R): reduceBy_1101<T, TResult, R>;
     <T, R extends List<T>>(_valueFn: PH, keyFn: (elem: T) => string, list: R): reduceBy_0111<T, TResult, R>;
-    <R extends List<T>>(_valueFn: PH, _keyFn: PH, list: R): reduceBy_0101<TResult, R>;
+    <T, R extends List<T>>(_valueFn: PH, _keyFn: PH, list: R): reduceBy_0101<T, TResult, R>;
     <T, R extends List<T>>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, keyFn: (elem: T) => string, list: R): reduceBy_1111<T, TResult, R>;
     <T>(_valueFn: PH, keyFn: (elem: T) => string): reduceBy_0110<T, TResult>;
     <T, R extends List<T>>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, keyFn: (elem: T) => string): reduceBy_1110<T, TResult, R>;
@@ -4476,7 +4362,7 @@ export type reduceBy_0100<TResult> = {
     <$SEL extends "1">(): <T, R extends List<T>>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult) => reduceBy_1100<T, TResult, R>;
     <$SEL extends "011">(): <T, R extends List<T>>(_valueFn: PH, keyFn: (elem: T) => string, list: R) => reduceBy_0111<T, TResult, R>;
     <$SEL extends "01">(): <T>(_valueFn: PH, keyFn: (elem: T) => string) => reduceBy_0110<T, TResult>;
-    <$SEL extends "001">(): <R extends List<T>>(_valueFn: PH, _keyFn: PH, list: R) => reduceBy_0101<TResult, R>;
+    <$SEL extends "001">(): <T, R extends List<T>>(_valueFn: PH, _keyFn: PH, list: R) => reduceBy_0101<T, TResult, R>;
     <T, R extends List<T>>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult): reduceBy_1100<T, TResult, R>;
 };
 export type reduceBy_1100<T, TResult, R extends List<T>> = {
@@ -4522,21 +4408,21 @@ export type reduceBy_0110<T, TResult> = {
 export type reduceBy_1110<T, TResult, R extends List<T>> = {
     (list: R): reduceBy_1111<T, TResult, R>;
 };
-export type reduceBy_0001<R extends List<T>> = {
-    <T, TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, _acc: PH, keyFn: (elem: T) => string): reduceBy_1011<T, TResult, R>;
-    <T, TResult>(_valueFn: PH, acc: TResult | any, keyFn: (elem: T) => string): reduceBy_0111<T, TResult, R>;
-    <T>(_valueFn: PH, _acc: PH, keyFn: (elem: T) => string): reduceBy_0011<T, R>;
-    <T, TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, acc: TResult | any, keyFn: (elem: T) => string): reduceBy_1111<T, TResult, R>;
-    <TResult>(_valueFn: PH, acc: TResult | any): reduceBy_0101<TResult, R>;
-    <T, TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, acc: TResult | any): reduceBy_1101<T, TResult, R>;
-    <$SEL extends "111">(): <T, TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, acc: TResult | any, keyFn: (elem: T) => string) => reduceBy_1111<T, TResult, R>;
-    <$SEL extends "11">(): <T, TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, acc: TResult | any) => reduceBy_1101<T, TResult, R>;
-    <$SEL extends "101">(): <T, TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, _acc: PH, keyFn: (elem: T) => string) => reduceBy_1011<T, TResult, R>;
-    <$SEL extends "1">(): <T, TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult) => reduceBy_1001<T, TResult, R>;
-    <$SEL extends "011">(): <T, TResult>(_valueFn: PH, acc: TResult | any, keyFn: (elem: T) => string) => reduceBy_0111<T, TResult, R>;
-    <$SEL extends "01">(): <TResult>(_valueFn: PH, acc: TResult | any) => reduceBy_0101<TResult, R>;
-    <$SEL extends "001">(): <T>(_valueFn: PH, _acc: PH, keyFn: (elem: T) => string) => reduceBy_0011<T, R>;
-    <T, TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult): reduceBy_1001<T, TResult, R>;
+export type reduceBy_0001<T, R extends List<T>> = {
+    <TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, _acc: PH, keyFn: (elem: T) => string): reduceBy_1011<T, TResult, R>;
+    <TResult>(_valueFn: PH, acc: TResult | any, keyFn: (elem: T) => string): reduceBy_0111<T, TResult, R>;
+    (_valueFn: PH, _acc: PH, keyFn: (elem: T) => string): reduceBy_0011<T, R>;
+    <TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, acc: TResult | any, keyFn: (elem: T) => string): reduceBy_1111<T, TResult, R>;
+    <TResult>(_valueFn: PH, acc: TResult | any): reduceBy_0101<T, TResult, R>;
+    <TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, acc: TResult | any): reduceBy_1101<T, TResult, R>;
+    <$SEL extends "111">(): <TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, acc: TResult | any, keyFn: (elem: T) => string) => reduceBy_1111<T, TResult, R>;
+    <$SEL extends "11">(): <TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, acc: TResult | any) => reduceBy_1101<T, TResult, R>;
+    <$SEL extends "101">(): <TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, _acc: PH, keyFn: (elem: T) => string) => reduceBy_1011<T, TResult, R>;
+    <$SEL extends "1">(): <TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult) => reduceBy_1001<T, TResult, R>;
+    <$SEL extends "011">(): <TResult>(_valueFn: PH, acc: TResult | any, keyFn: (elem: T) => string) => reduceBy_0111<T, TResult, R>;
+    <$SEL extends "01">(): <TResult>(_valueFn: PH, acc: TResult | any) => reduceBy_0101<T, TResult, R>;
+    <$SEL extends "001">(): (_valueFn: PH, _acc: PH, keyFn: (elem: T) => string) => reduceBy_0011<T, R>;
+    <TResult>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult): reduceBy_1001<T, TResult, R>;
 };
 export type reduceBy_1001<T, TResult, R extends List<T>> = {
     (_acc: PH, keyFn: (elem: T) => string): reduceBy_1011<T, TResult, R>;
@@ -4546,13 +4432,13 @@ export type reduceBy_1001<T, TResult, R extends List<T>> = {
     <$SEL extends "01">(): (_acc: PH, keyFn: (elem: T) => string) => reduceBy_1011<T, TResult, R>;
     (acc: TResult | any): reduceBy_1101<T, TResult, R>;
 };
-export type reduceBy_0101<TResult, R extends List<T>> = {
-    <T>(_valueFn: PH, keyFn: (elem: T) => string): reduceBy_0111<T, TResult, R>;
-    <T>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, keyFn: (elem: T) => string): reduceBy_1111<T, TResult, R>;
-    <$SEL extends "11">(): <T>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, keyFn: (elem: T) => string) => reduceBy_1111<T, TResult, R>;
-    <$SEL extends "1">(): <T>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult) => reduceBy_1101<T, TResult, R>;
-    <$SEL extends "01">(): <T>(_valueFn: PH, keyFn: (elem: T) => string) => reduceBy_0111<T, TResult, R>;
-    <T>(valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult): reduceBy_1101<T, TResult, R>;
+export type reduceBy_0101<T, TResult, R extends List<T>> = {
+    (_valueFn: PH, keyFn: (elem: T) => string): reduceBy_0111<T, TResult, R>;
+    (valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, keyFn: (elem: T) => string): reduceBy_1111<T, TResult, R>;
+    <$SEL extends "11">(): (valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult, keyFn: (elem: T) => string) => reduceBy_1111<T, TResult, R>;
+    <$SEL extends "1">(): (valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult) => reduceBy_1101<T, TResult, R>;
+    <$SEL extends "01">(): (_valueFn: PH, keyFn: (elem: T) => string) => reduceBy_0111<T, TResult, R>;
+    (valueFn: (acc: TResult, elem: T, idx: number, list: R) => TResult): reduceBy_1101<T, TResult, R>;
 };
 export type reduceBy_1101<T, TResult, R extends List<T>> = {
     (keyFn: (elem: T) => string): reduceBy_1111<T, TResult, R>;
@@ -4803,7 +4689,7 @@ export type reject_00 = {
     <T>(_pred: PH, list: List<T>): reject_array_01<T>;
     <T>(_pred: PH, list: Functor<T>): reject_functor_to_functor_01<T>;
     <T>(_pred: PH, list: Functor<T>): reject_functor_to_array_01<T>;
-    <U extends Obj<T>>(_pred: PH, obj: U): reject_object_01<U>;
+    <T, U extends Obj<T>>(_pred: PH, obj: U): reject_object_01<T, U>;
     <T>(pred: Pred<T>, list: List<T>): reject_array_11<T>;
     <T>(pred: Pred<T>, list: Functor<T>): reject_functor_to_functor_11<T>;
     <T>(pred: Pred<T>, list: Functor<T>): reject_functor_to_array_11<T>;
@@ -4815,7 +4701,7 @@ export type reject_00 = {
     <$SEL extends "11", $KIND extends "functor_to_array">(): <T>(pred: Pred<T>, list: Functor<T>) => reject_functor_to_array_11<T>;
     <$SEL extends "01", $KIND extends "functor_to_array">(): <T>(_pred: PH, list: Functor<T>) => reject_functor_to_array_01<T>;
     <$SEL extends "11", $KIND extends "object">(): <T, U extends Obj<T>>(pred: Pred<T>, obj: U) => reject_object_11<T, U>;
-    <$SEL extends "01", $KIND extends "object">(): <U extends Obj<T>>(_pred: PH, obj: U) => reject_object_01<U>;
+    <$SEL extends "01", $KIND extends "object">(): <T, U extends Obj<T>>(_pred: PH, obj: U) => reject_object_01<T, U>;
     <$SEL extends "1">(): <T>(pred: Pred<T>) => reject_10<T>;
     <T>(pred: Pred<T>): reject_10<T>;
 };
@@ -4838,8 +4724,8 @@ export type reject_functor_to_functor_01<T> = {
 export type reject_functor_to_array_01<T> = {
     (pred: Pred<T>): reject_functor_to_array_11<T>;
 };
-export type reject_object_01<U extends Obj<T>> = {
-    <T>(pred: Pred<T>): reject_object_11<T, U>;
+export type reject_object_01<T, U extends Obj<T>> = {
+    (pred: Pred<T>): reject_object_11<T, U>;
 };
 export type reject_array_11<T> = T[];
 export type reject_functor_to_functor_11<T> = Functor<T>;
@@ -5327,37 +5213,37 @@ export type splitAt_array_11<T> = T[][];
  */
 export declare const splitEvery: splitEvery_00;
 export type splitEvery_00 = {
-    <R extends List<T>>(_a: PH, list: R): splitEvery_01<R>;
-    <R extends List<T>>(a: number, list: R): splitEvery_11<R>;
-    <$SEL extends "11">(): <R extends List<T>>(a: number, list: R) => splitEvery_11<R>;
+    <T, R extends List<T>>(_a: PH, list: R): splitEvery_01<T, R>;
+    <T, R extends List<T>>(a: number, list: R): splitEvery_11<T, R>;
+    <$SEL extends "11">(): <T, R extends List<T>>(a: number, list: R) => splitEvery_11<T, R>;
     <$SEL extends "1">(): (a: number) => splitEvery_10;
-    <$SEL extends "01">(): <R extends List<T>>(_a: PH, list: R) => splitEvery_01<R>;
+    <$SEL extends "01">(): <T, R extends List<T>>(_a: PH, list: R) => splitEvery_01<T, R>;
     (a: number): splitEvery_10;
 };
 export type splitEvery_10 = {
-    <R extends List<T>>(list: R): splitEvery_11<R>;
+    <T, R extends List<T>>(list: R): splitEvery_11<T, R>;
 };
-export type splitEvery_01<R extends List<T>> = {
-    (a: number): splitEvery_11<R>;
+export type splitEvery_01<T, R extends List<T>> = {
+    (a: number): splitEvery_11<T, R>;
 };
-export type splitEvery_11<R extends List<T>> = R[];
+export type splitEvery_11<T, R extends List<T>> = R[];
 /**
  * TODO
  */
 export declare const splitWhen: splitWhen_00;
 export type splitWhen_00 = {
-    <R extends List<T>>(_pred: PH, list: R): splitWhen_01<R>;
+    <T, R extends List<T>>(_pred: PH, list: R): splitWhen_01<T, R>;
     <T, R extends List<T>>(pred: Pred<T>, list: R): splitWhen_11<T, R>;
     <$SEL extends "11">(): <T, R extends List<T>>(pred: Pred<T>, list: R) => splitWhen_11<T, R>;
     <$SEL extends "1">(): <T>(pred: Pred<T>) => splitWhen_10<T>;
-    <$SEL extends "01">(): <R extends List<T>>(_pred: PH, list: R) => splitWhen_01<R>;
+    <$SEL extends "01">(): <T, R extends List<T>>(_pred: PH, list: R) => splitWhen_01<T, R>;
     <T>(pred: Pred<T>): splitWhen_10<T>;
 };
 export type splitWhen_10<T> = {
     <R extends List<T>>(list: R): splitWhen_11<T, R>;
 };
-export type splitWhen_01<R extends List<T>> = {
-    <T>(pred: Pred<T>): splitWhen_11<T, R>;
+export type splitWhen_01<T, R extends List<T>> = {
+    (pred: Pred<T>): splitWhen_11<T, R>;
 };
 export type splitWhen_11<T, R extends List<T>> = R[];
 /**
@@ -5511,18 +5397,18 @@ export type takeLast_11<T extends List<any>> = T;
  */
 export declare const takeLastWhile: takeLastWhile_00;
 export type takeLastWhile_00 = {
-    <R extends List<T>>(_pred: PH, list: R): takeLastWhile_01<R>;
+    <T, R extends List<T>>(_pred: PH, list: R): takeLastWhile_01<T, R>;
     <T, R extends List<T>>(pred: Pred<T>, list: R): takeLastWhile_11<T, R>;
     <$SEL extends "11">(): <T, R extends List<T>>(pred: Pred<T>, list: R) => takeLastWhile_11<T, R>;
     <$SEL extends "1">(): <T>(pred: Pred<T>) => takeLastWhile_10<T>;
-    <$SEL extends "01">(): <R extends List<T>>(_pred: PH, list: R) => takeLastWhile_01<R>;
+    <$SEL extends "01">(): <T, R extends List<T>>(_pred: PH, list: R) => takeLastWhile_01<T, R>;
     <T>(pred: Pred<T>): takeLastWhile_10<T>;
 };
 export type takeLastWhile_10<T> = {
     <R extends List<T>>(list: R): takeLastWhile_11<T, R>;
 };
-export type takeLastWhile_01<R extends List<T>> = {
-    <T>(pred: Pred<T>): takeLastWhile_11<T, R>;
+export type takeLastWhile_01<T, R extends List<T>> = {
+    (pred: Pred<T>): takeLastWhile_11<T, R>;
 };
 export type takeLastWhile_11<T, R extends List<T>> = R;
 /**
@@ -5530,18 +5416,18 @@ export type takeLastWhile_11<T, R extends List<T>> = R;
  */
 export declare const takeWhile: takeWhile_00;
 export type takeWhile_00 = {
-    <R extends List<T>>(_pred: PH, list: R): takeWhile_01<R>;
+    <T, R extends List<T>>(_pred: PH, list: R): takeWhile_01<T, R>;
     <T, R extends List<T>>(pred: Pred<T>, list: R): takeWhile_11<T, R>;
     <$SEL extends "11">(): <T, R extends List<T>>(pred: Pred<T>, list: R) => takeWhile_11<T, R>;
     <$SEL extends "1">(): <T>(pred: Pred<T>) => takeWhile_10<T>;
-    <$SEL extends "01">(): <R extends List<T>>(_pred: PH, list: R) => takeWhile_01<R>;
+    <$SEL extends "01">(): <T, R extends List<T>>(_pred: PH, list: R) => takeWhile_01<T, R>;
     <T>(pred: Pred<T>): takeWhile_10<T>;
 };
 export type takeWhile_10<T> = {
     <R extends List<T>>(list: R): takeWhile_11<T, R>;
 };
-export type takeWhile_01<R extends List<T>> = {
-    <T>(pred: Pred<T>): takeWhile_11<T, R>;
+export type takeWhile_01<T, R extends List<T>> = {
+    (pred: Pred<T>): takeWhile_11<T, R>;
 };
 export type takeWhile_11<T, R extends List<T>> = R;
 /**
@@ -5947,19 +5833,19 @@ export type unary_1<T, U> = (a: T) => U;
 export declare const uncurryN: uncurryN_00;
 export type uncurryN_00 = {
     (_len: PH, fn: (a: any) => any): uncurryN_01;
-    (len: number, fn: (a: any) => any): uncurryN_11;
-    <$SEL extends "11">(): (len: number, fn: (a: any) => any) => uncurryN_11;
+    <T>(len: number, fn: (a: any) => any): uncurryN_11<T>;
+    <$SEL extends "11">(): <T>(len: number, fn: (a: any) => any) => uncurryN_11<T>;
     <$SEL extends "1">(): (len: number) => uncurryN_10;
     <$SEL extends "01">(): (_len: PH, fn: (a: any) => any) => uncurryN_01;
     (len: number): uncurryN_10;
 };
 export type uncurryN_10 = {
-    (fn: (a: any) => any): uncurryN_11;
+    <T>(fn: (a: any) => any): uncurryN_11<T>;
 };
 export type uncurryN_01 = {
-    (len: number): uncurryN_11;
+    <T>(len: number): uncurryN_11<T>;
 };
-export type uncurryN_11 = Variadic<T>;
+export type uncurryN_11<T> = Variadic<T>;
 /**
  * TODO
  */
@@ -6415,25 +6301,11 @@ export type when_111<T, U> = U;
  */
 export declare const where: where_00;
 export type where_00 = {
-    <T extends Obj<any>>(_spec: PH, testObj: T): where_heterogeneous_version_01<T>;
     <T>(_spec: PH, testObj: Obj<T>): where_homogeneous_version_01<T>;
     <U>(_spec: PH, testObj: U): where_DIY__fill_in_the_type_params_yourself__version_01<U>;
-    <T extends Obj<any>>(spec: {
-            [P in keyof K]?: Pred<T[P]>;
-        }, testObj: T): where_heterogeneous_version_11<T>;
     <T>(spec: Obj<Pred<T>>, testObj: Obj<T>): where_homogeneous_version_11<T>;
     <T, U>(spec: T, testObj: U): where_DIY__fill_in_the_type_params_yourself__version_11<T, U>;
-    <T extends Obj<any>>(spec: {
-            [P in keyof K]?: Pred<T[P]>;
-        }): where_heterogeneous_version_10<T>;
     <T>(spec: Obj<Pred<T>>): where_homogeneous_version_10<T>;
-    <$SEL extends "11", $KIND extends "heterogeneous_version">(): <T extends Obj<any>>(spec: {
-            [P in keyof K]?: Pred<T[P]>;
-        }, testObj: T) => where_heterogeneous_version_11<T>;
-    <$SEL extends "1", $KIND extends "heterogeneous_version">(): <T extends Obj<any>>(spec: {
-            [P in keyof K]?: Pred<T[P]>;
-        }) => where_heterogeneous_version_10<T>;
-    <$SEL extends "01", $KIND extends "heterogeneous_version">(): <T extends Obj<any>>(_spec: PH, testObj: T) => where_heterogeneous_version_01<T>;
     <$SEL extends "11", $KIND extends "homogeneous_version">(): <T>(spec: Obj<Pred<T>>, testObj: Obj<T>) => where_homogeneous_version_11<T>;
     <$SEL extends "1", $KIND extends "homogeneous_version">(): <T>(spec: Obj<Pred<T>>) => where_homogeneous_version_10<T>;
     <$SEL extends "01", $KIND extends "homogeneous_version">(): <T>(_spec: PH, testObj: Obj<T>) => where_homogeneous_version_01<T>;
@@ -6442,19 +6314,11 @@ export type where_00 = {
     <$SEL extends "01", $KIND extends "DIY__fill_in_the_type_params_yourself__version">(): <U>(_spec: PH, testObj: U) => where_DIY__fill_in_the_type_params_yourself__version_01<U>;
     <T>(spec: T): where_DIY__fill_in_the_type_params_yourself__version_10<T>;
 };
-export type where_heterogeneous_version_10<T extends Obj<any>> = {
-    (testObj: T): where_heterogeneous_version_11<T>;
-};
 export type where_homogeneous_version_10<T> = {
     (testObj: Obj<T>): where_homogeneous_version_11<T>;
 };
 export type where_DIY__fill_in_the_type_params_yourself__version_10<T> = {
     <U>(testObj: U): where_DIY__fill_in_the_type_params_yourself__version_11<T, U>;
-};
-export type where_heterogeneous_version_01<T extends Obj<any>> = {
-    (spec: {
-            [P in keyof K]?: Pred<T[P]>;
-        }): where_heterogeneous_version_11<T>;
 };
 export type where_homogeneous_version_01<T> = {
     (spec: Obj<Pred<T>>): where_homogeneous_version_11<T>;
@@ -6462,7 +6326,6 @@ export type where_homogeneous_version_01<T> = {
 export type where_DIY__fill_in_the_type_params_yourself__version_01<U> = {
     <T>(spec: T): where_DIY__fill_in_the_type_params_yourself__version_11<T, U>;
 };
-export type where_heterogeneous_version_11<T extends Obj<any>> = boolean;
 export type where_homogeneous_version_11<T> = boolean;
 export type where_DIY__fill_in_the_type_params_yourself__version_11<T, U> = boolean;
 /**

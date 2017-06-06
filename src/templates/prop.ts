@@ -5,7 +5,7 @@ import {parse_type} from '../utils/parse-type';
 export default create_curried_declarations(
   module,
   {
-    "keyof_version": parse_type('<T, K extends keyof T>(p: K, obj: T) => T[K]'),
-    "Record_version__more_curry_friendly": parse_type('<K extends string, V, T extends Record<K, V>>(p: K, obj: T) => V'),
+    "keyof_version": parse_type('<J, K extends keyof J>(p: K, obj: J) => J[K]'),
+    "Record_version__more_curry_friendly": parse_type('<N extends string, V, T extends Record<N, V>>(p: N, obj: T) => V'),
   },
 );
