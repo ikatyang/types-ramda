@@ -2789,25 +2789,6 @@ export type mapAccumRight_111<T, U, TResult> = [TResult[], U];
 /**
  * TODO
  */
-export declare const mapIndexed: mapIndexed_00;
-export type mapIndexed_00 = {
-    <T, V extends List<T>>(_fn: PH, list: V): mapIndexed_01<T, V>;
-    <T, U, V extends List<T>>(fn: (val: T, key: number, list: V) => U, list: V): mapIndexed_11<T, U, V>;
-    <$SEL extends "11">(): <T, U, V extends List<T>>(fn: (val: T, key: number, list: V) => U, list: V) => mapIndexed_11<T, U, V>;
-    <$SEL extends "1">(): <T, U, V extends List<T>>(fn: (val: T, key: number, list: V) => U) => mapIndexed_10<T, U, V>;
-    <$SEL extends "01">(): <T, V extends List<T>>(_fn: PH, list: V) => mapIndexed_01<T, V>;
-    <T, U, V extends List<T>>(fn: (val: T, key: number, list: V) => U): mapIndexed_10<T, U, V>;
-};
-export type mapIndexed_10<T, U, V extends List<T>> = {
-    (list: V): mapIndexed_11<T, U, V>;
-};
-export type mapIndexed_01<T, V extends List<T>> = {
-    <U>(fn: (val: T, key: number, list: V) => U): mapIndexed_11<T, U, V>;
-};
-export type mapIndexed_11<T, U, V extends List<T>> = U[];
-/**
- * TODO
- */
 export declare const mapObjIndexed: mapObjIndexed_00;
 export type mapObjIndexed_00 = {
     <T, M extends Obj<T>>(_fn: PH, obj: M): mapObjIndexed_01<T, M>;
