@@ -815,9 +815,9 @@ doctrine@^0.7.2:
     esutils "^1.1.6"
     isarray "0.0.1"
 
-dts-element@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/dts-element/-/dts-element-2.0.2.tgz#9461b5a4e9e90a90a1ffbcfe0e8dcd0de329ee07"
+dts-element@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/dts-element/-/dts-element-2.0.3.tgz#561938c4f12c9cbdbe9d2e3190a41581add86e83"
   dependencies:
     typescript "^2.4.0-dev.20170524"
 
@@ -2871,6 +2871,10 @@ punycode@^1.4.1:
 qs@6.4.0, qs@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
+
+ramda@0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.23.0.tgz#ccd13fff73497a93974e3e86327bfd87bd6e8e2b"
 
 randomatic@^1.1.3:
   version "1.1.6"
