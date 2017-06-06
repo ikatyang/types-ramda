@@ -1,11 +1,10 @@
-import * as _ from '../constants';
 import {create_curried_declarations} from '../utils/create-curried-declarations';
 import {parse_type} from '../utils/parse-type';
 
 export default create_curried_declarations(
   module,
   {
-    "string": parse_type('(index: number, list: string) => string[]'),
-    "array": parse_type('<T>(index: number, list: List<T>) => T[][]'),
+    string: parse_type('(index: number, list: string) => string[]'),
+    array: parse_type('<T>(index: number, list: List<T>) => T[][]'),
   },
 );
