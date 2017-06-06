@@ -375,47 +375,20 @@ export type always_1<T> = () => T;
  */
 export declare const and: and_00;
 export type and_00 = {
-    (_fn1: PH, val2: boolean | any): and_dispatch_to_some__and__method__01;
-    (_v1: PH, v2: any): and_no_generics_01;
-    <T extends {
-            and?: Function;
-        }>(fn1: T, val2: boolean | any): and_dispatch_to_some__and__method__11<T>;
-    (v1: any, v2: any): and_no_generics_11;
-    <T extends {
-            and?: Function;
-        }>(fn1: T): and_dispatch_to_some__and__method__10<T>;
-    <$SEL extends "11", $KIND extends "dispatch_to_some__and__method_">(): <T extends {
-            and?: Function;
-        }>(fn1: T, val2: boolean | any) => and_dispatch_to_some__and__method__11<T>;
-    <$SEL extends "1", $KIND extends "dispatch_to_some__and__method_">(): <T extends {
-            and?: Function;
-        }>(fn1: T) => and_dispatch_to_some__and__method__10<T>;
-    <$SEL extends "01", $KIND extends "dispatch_to_some__and__method_">(): (_fn1: PH, val2: boolean | any) => and_dispatch_to_some__and__method__01;
-    <$SEL extends "11", $KIND extends "no_generics">(): (v1: any, v2: any) => and_no_generics_11;
-    <$SEL extends "1", $KIND extends "no_generics">(): (v1: any) => and_no_generics_10;
-    <$SEL extends "01", $KIND extends "no_generics">(): (_v1: PH, v2: any) => and_no_generics_01;
-    (v1: any): and_no_generics_10;
+    <U>(_a: PH, b: U): and_01<U>;
+    <T, U>(a: T, b: U): and_11<T, U>;
+    <$SEL extends "11">(): <T, U>(a: T, b: U) => and_11<T, U>;
+    <$SEL extends "1">(): <T>(a: T) => and_10<T>;
+    <$SEL extends "01">(): <U>(_a: PH, b: U) => and_01<U>;
+    <T>(a: T): and_10<T>;
 };
-export type and_dispatch_to_some__and__method__10<T extends {
-        and?: Function;
-    }> = {
-    (val2: boolean | any): and_dispatch_to_some__and__method__11<T>;
+export type and_10<T> = {
+    <U>(b: U): and_11<T, U>;
 };
-export type and_no_generics_10 = {
-    (v2: any): and_no_generics_11;
+export type and_01<U> = {
+    <T>(a: T): and_11<T, U>;
 };
-export type and_dispatch_to_some__and__method__01 = {
-    <T extends {
-            and?: Function;
-        }>(fn1: T): and_dispatch_to_some__and__method__11<T>;
-};
-export type and_no_generics_01 = {
-    (v1: any): and_no_generics_11;
-};
-export type and_dispatch_to_some__and__method__11<T extends {
-        and?: Function;
-    }> = boolean;
-export type and_no_generics_11 = boolean;
+export type and_11<T, U> = T | U;
 /**
  * TODO
  */
@@ -3332,47 +3305,20 @@ export type once_1<T> = Variadic<T>;
  */
 export declare const or: or_00;
 export type or_00 = {
-    <U>(_fn1: PH, val2: U): or_dispatch_to_some__or__method_01<U>;
-    <U>(_a: PH, b: U): or_values_01<U>;
-    <T extends {
-            or?: (alt: U) => T | U;
-        }, U>(fn1: T, val2: U): or_dispatch_to_some__or__method_11<T, U>;
-    <T, U>(a: T, b: U): or_values_11<T, U>;
-    <T extends {
-            or?: (alt: U) => T | U;
-        }, U>(fn1: T): or_dispatch_to_some__or__method_10<T, U>;
-    <$SEL extends "11", $KIND extends "dispatch_to_some__or__method">(): <T extends {
-            or?: (alt: U) => T | U;
-        }, U>(fn1: T, val2: U) => or_dispatch_to_some__or__method_11<T, U>;
-    <$SEL extends "1", $KIND extends "dispatch_to_some__or__method">(): <T extends {
-            or?: (alt: U) => T | U;
-        }, U>(fn1: T) => or_dispatch_to_some__or__method_10<T, U>;
-    <$SEL extends "01", $KIND extends "dispatch_to_some__or__method">(): <U>(_fn1: PH, val2: U) => or_dispatch_to_some__or__method_01<U>;
-    <$SEL extends "11", $KIND extends "values">(): <T, U>(a: T, b: U) => or_values_11<T, U>;
-    <$SEL extends "1", $KIND extends "values">(): <T>(a: T) => or_values_10<T>;
-    <$SEL extends "01", $KIND extends "values">(): <U>(_a: PH, b: U) => or_values_01<U>;
-    <T>(a: T): or_values_10<T>;
+    <U>(_a: PH, b: U): or_01<U>;
+    <T, U>(a: T, b: U): or_11<T, U>;
+    <$SEL extends "11">(): <T, U>(a: T, b: U) => or_11<T, U>;
+    <$SEL extends "1">(): <T>(a: T) => or_10<T>;
+    <$SEL extends "01">(): <U>(_a: PH, b: U) => or_01<U>;
+    <T>(a: T): or_10<T>;
 };
-export type or_dispatch_to_some__or__method_10<T extends {
-        or?: (alt: U) => T | U;
-    }, U> = {
-    (val2: U): or_dispatch_to_some__or__method_11<T, U>;
+export type or_10<T> = {
+    <U>(b: U): or_11<T, U>;
 };
-export type or_values_10<T> = {
-    <U>(b: U): or_values_11<T, U>;
+export type or_01<U> = {
+    <T>(a: T): or_11<T, U>;
 };
-export type or_dispatch_to_some__or__method_01<U> = {
-    <T extends {
-            or?: (alt: U) => T | U;
-        }>(fn1: T): or_dispatch_to_some__or__method_11<T, U>;
-};
-export type or_values_01<U> = {
-    <T>(a: T): or_values_11<T, U>;
-};
-export type or_dispatch_to_some__or__method_11<T extends {
-        or?: (alt: U) => T | U;
-    }, U> = T | U;
-export type or_values_11<T, U> = T | U;
+export type or_11<T, U> = T | U;
 /**
  * TODO
  */
