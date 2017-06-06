@@ -284,6 +284,18 @@ export type add_11 = number;
 /**
  * TODO
  */
+export declare const addIndex: addIndex_0;
+export type addIndex_0 = {
+    <T, U>(mapper: (fn: (value: T) => U, list: List<T>) => U[]): addIndex_array_1<T, U>;
+    <$SEL extends "1", $KIND extends "array">(): <T, U>(mapper: (fn: (value: T) => U, list: List<T>) => U[]) => addIndex_array_1<T, U>;
+    <$SEL extends "1", $KIND extends "object">(): <T, U>(mapper: (fn: (value: T) => U, obj: Obj<T>) => Obj<U>) => addIndex_object_1<T, U>;
+    <T, U>(mapper: (fn: (value: T) => U, obj: Obj<T>) => Obj<U>): addIndex_object_1<T, U>;
+};
+export type addIndex_array_1<T, U> = CurriedFunction2<((value: T, index: number, list: List<T>) => U), List<T>, U[]>;
+export type addIndex_object_1<T, U> = CurriedFunction2<((value: T, index: number, obj: Obj<T>) => U), Obj<T>, Obj<U>>;
+/**
+ * TODO
+ */
 export declare const adjust: adjust_000;
 export type adjust_000 = {
     <T>(fn: (a: T) => T, _index: PH, list: List<T>): adjust_101<T>;
