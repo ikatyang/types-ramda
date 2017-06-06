@@ -1385,6 +1385,33 @@ export type dropLastWhile_11<T, R extends List<T>> = T[];
 /**
  * TODO
  */
+export declare const dropRepeats: dropRepeats_0;
+export type dropRepeats_0 = {
+    <T>(list: List<T>): dropRepeats_1<T>;
+};
+export type dropRepeats_1<T> = T[];
+/**
+ * TODO
+ */
+export declare const dropRepeatsWith: dropRepeatsWith_00;
+export type dropRepeatsWith_00 = {
+    <T>(_pred: PH, list: List<T>): dropRepeatsWith_01<T>;
+    <T>(pred: Pred<T>, list: List<T>): dropRepeatsWith_11<T>;
+    <$SEL extends "11">(): <T>(pred: Pred<T>, list: List<T>) => dropRepeatsWith_11<T>;
+    <$SEL extends "1">(): <T>(pred: Pred<T>) => dropRepeatsWith_10<T>;
+    <$SEL extends "01">(): <T>(_pred: PH, list: List<T>) => dropRepeatsWith_01<T>;
+    <T>(pred: Pred<T>): dropRepeatsWith_10<T>;
+};
+export type dropRepeatsWith_10<T> = {
+    (list: List<T>): dropRepeatsWith_11<T>;
+};
+export type dropRepeatsWith_01<T> = {
+    (pred: Pred<T>): dropRepeatsWith_11<T>;
+};
+export type dropRepeatsWith_11<T> = T[];
+/**
+ * TODO
+ */
 export declare const dropWhile: dropWhile_00;
 export type dropWhile_00 = {
     <T, R extends List<T>>(_pred: PH, list: R): dropWhile_01<T, R>;
