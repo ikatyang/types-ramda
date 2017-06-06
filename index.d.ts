@@ -1661,6 +1661,10 @@ export type evolve_no_inference_11<T> = T;
 /**
  * TODO
  */
+export declare const F: () => false;
+/**
+ * TODO
+ */
 export declare const filter: filter_00;
 export type filter_00 = {
     <T>(_pred: PH, list: List<T>): filter_base_01<T>;
@@ -5327,6 +5331,10 @@ export type symmetricDifferenceWith_011<T> = {
     (pred: (a: T, b: T) => boolean): symmetricDifferenceWith_111<T>;
 };
 export type symmetricDifferenceWith_111<T> = T[];
+/**
+ * TODO
+ */
+export declare const T: () => true;
 /**
  * TODO
  */

@@ -93,7 +93,7 @@ source version: v0.23.x
 - [x] eqProps
 - [x] equals
 - [x] evolve
-- [ ] F
+- [x] F
 - [x] filter
 - [x] find
 - [x] findIndex
@@ -227,7 +227,7 @@ source version: v0.23.x
 - [x] sum
 - [x] symmetricDifference
 - [x] symmetricDifferenceWith
-- [ ] T
+- [x] T
 - [x] tail
 - [x] take
 - [x] takeLast
