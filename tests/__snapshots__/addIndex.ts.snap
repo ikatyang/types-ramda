@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.addIndex(R.map) 1`] = `"R.CurriedFunction2<R.IndexedMorphism<any, any>, R.List<any>, any[]>"`;
-
-exports[`R.addIndex<'1', 'array'>()(R.map) 1`] = `"R.CurriedFunction2<R.IndexedMorphism<any, any>, R.List<any>, any[]>"`;
-
-exports[`R.addIndex<'1', 'object'>()(R.map) 1`] = `"R.CurriedFunction2<R.IndexedMorphism<any, any>, R.Dictionary<any>, R.Dictionary<any>>"`;

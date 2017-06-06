@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.and(false, false) 1`] = `"false"`;
-
-exports[`R.and(false, true) 1`] = `"boolean"`;
-
-exports[`R.and(true, false) 1`] = `"boolean"`;
-
-exports[`R.and(true, true) 1`] = `"true"`;

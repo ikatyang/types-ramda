@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.equals([1, 2, 3], [1, 2, 3]) 1`] = `"boolean"`;
-
-exports[`R.equals(1, 1) 1`] = `"boolean"`;
-
-exports[`R.equals(a, b) 1`] = `"boolean"`;

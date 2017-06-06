@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.replace('{name}', R.__, 'Hello, {name}!') 1`] = `"R.replace_101"`;
-
-exports[`R.replace(R.__, 'Alice', 'Hello, {name}!') 1`] = `"R.replace_011"`;
-
-exports[`R.replace(R.__, R.__, 'Hello, {name}!') 1`] = `"R.replace_001"`;
-
-exports[`R.replace(R.__, R.__, 'Hello, {name}!')(R.__, 'Alice') 1`] = `"R.replace_011"`;

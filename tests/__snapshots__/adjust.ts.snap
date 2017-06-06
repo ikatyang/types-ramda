@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.adjust(R.add(10))(1)([1, 2, 3]) 1`] = `"number[]"`;
-
-exports[`R.adjust(R.add(10), 1, [1, 2, 3]) 1`] = `"number[]"`;
