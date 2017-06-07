@@ -44,3 +44,12 @@ export function liftDef(i: number) {
   const types = nm(i, n => `T${n + 1}`);
   return `function lift<${types}, TResult>(fn: (${pars}) => TResult): (${listPars}) => TResult[];`;
 }
+
+export function liftNDef(i: number, together = true) {
+  const pars = nm(i, n => `v${n + 1}: T${n + 1}`);
+  const listPars = nm(i, n => `v${n + 1}: List<T${n + 1}>`);
+  const types = nm(i, n => `T${n + 1}`);
+  return together
+    ? `function liftN<${types}, TResult>(n: number, fn: (${pars}) => TResult): (${listPars}) => TResult[];`
+    : `function liftN(n: number): <${types}, TResult>(fn: (${pars}) => TResult) => (${listPars}) => TResult[];`;
+}

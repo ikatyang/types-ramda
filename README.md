@@ -143,7 +143,7 @@ source version: v0.23.x
 - [x] lensPath
 - [x] lensProp
 - [x] lift
-- [ ] liftN
+- [x] liftN
 - [x] lt
 - [x] lte
 - [x] map
