@@ -4472,14 +4472,14 @@ export type invoker_111<T, R> = R;
 export declare const is: is_00;
 export type is_00 = {
     (_ctor: PH, val: any): is_01;
-    <T>(ctor: Type<T>, val: any): is_11<T>;
-    <$SEL extends "11">(): <T>(ctor: Type<T>, val: any) => is_11<T>;
+    <T>(ctor: Type<T>, val: any): val is T;
+    <$SEL extends "11">(): <T>(ctor: Type<T>, val: any) => val is T;
     <$SEL extends "1">(): <T>(ctor: Type<T>) => is_10<T>;
     <$SEL extends "01">(): (_ctor: PH, val: any) => is_01;
     <T>(ctor: Type<T>): is_10<T>;
 };
 export type is_10<T> = {
-    (val: any): is_11<T>;
+    (val: any): val is T;
 };
 export type is_01 = {
     <T>(ctor: Type<T>): is_11<T>;
@@ -4507,7 +4507,7 @@ export type is_11<T> = boolean;
  */
 export declare const isArrayLike: isArrayLike_0;
 export type isArrayLike_0 = {
-    (val: any): isArrayLike_1;
+    (val: any): val is List<any>;
 };
 export type isArrayLike_1 = boolean;
 /**
@@ -7474,14 +7474,14 @@ export type propIs_000 = {
     (_type: PH, name: Prop, obj: Struct<any>): propIs_curry_friendlier_fallback_011;
     <K extends string, V, U extends Record<K, V>>(_type: PH, name: K, obj: U): propIs_Record_011<K, V, U>;
     <K extends string, V, U extends Record<K, V>>(_type: PH, _name: PH, obj: U): propIs_Record_001<K, V, U>;
-    <T extends Function, K extends string, V, U extends Record<K, V>>(type: T, name: K, obj: U): propIs_Record_111<T, K, V, U>;
+    <T extends Function, K extends string, V, U extends Record<K, V>>(type: T, name: K, obj: U): obj is U & Record<K, V>;
     (type: Function, name: Prop, obj: Struct<any>): propIs_curry_friendlier_fallback_111;
     <K extends string>(_type: PH, name: K): propIs_Record_010<K>;
     (_type: PH, name: Prop): propIs_curry_friendlier_fallback_010;
     <T extends Function, K extends string>(type: T, name: K): propIs_Record_110<T, K>;
     (type: Function, name: Prop): propIs_curry_friendlier_fallback_110;
     (type: Function): propIs_curry_friendlier_fallback_100;
-    <$SEL extends "111", $KIND extends "Record">(): <T extends Function, K extends string, V, U extends Record<K, V>>(type: T, name: K, obj: U) => propIs_Record_111<T, K, V, U>;
+    <$SEL extends "111", $KIND extends "Record">(): <T extends Function, K extends string, V, U extends Record<K, V>>(type: T, name: K, obj: U) => obj is U & Record<K, V>;
     <$SEL extends "11", $KIND extends "Record">(): <T extends Function, K extends string>(type: T, name: K) => propIs_Record_110<T, K>;
     <$SEL extends "101", $KIND extends "Record">(): <T extends Function, K extends string, V, U extends Record<K, V>>(type: T, _name: PH, obj: U) => propIs_Record_101<T, K, V, U>;
     <$SEL extends "1", $KIND extends "Record">(): <T extends Function>(type: T) => propIs_Record_100<T>;
@@ -7499,8 +7499,8 @@ export type propIs_000 = {
 };
 export type propIs_Record_100<T extends Function> = {
     <K extends string, V, U extends Record<K, V>>(_name: PH, obj: U): propIs_Record_101<T, K, V, U>;
-    <K extends string, V, U extends Record<K, V>>(name: K, obj: U): propIs_Record_111<T, K, V, U>;
-    <$SEL extends "11">(): <K extends string, V, U extends Record<K, V>>(name: K, obj: U) => propIs_Record_111<T, K, V, U>;
+    <K extends string, V, U extends Record<K, V>>(name: K, obj: U): obj is U & Record<K, V>;
+    <$SEL extends "11">(): <K extends string, V, U extends Record<K, V>>(name: K, obj: U) => obj is U & Record<K, V>;
     <$SEL extends "1">(): <K extends string>(name: K) => propIs_Record_110<T, K>;
     <$SEL extends "01">(): <K extends string, V, U extends Record<K, V>>(_name: PH, obj: U) => propIs_Record_101<T, K, V, U>;
     <K extends string>(name: K): propIs_Record_110<T, K>;
@@ -7515,8 +7515,8 @@ export type propIs_curry_friendlier_fallback_100 = {
 };
 export type propIs_Record_010<K extends string> = {
     <V, U extends Record<K, V>>(_type: PH, obj: U): propIs_Record_011<K, V, U>;
-    <T extends Function, V, U extends Record<K, V>>(type: T, obj: U): propIs_Record_111<T, K, V, U>;
-    <$SEL extends "11">(): <T extends Function, V, U extends Record<K, V>>(type: T, obj: U) => propIs_Record_111<T, K, V, U>;
+    <T extends Function, V, U extends Record<K, V>>(type: T, obj: U): obj is U & Record<K, V>;
+    <$SEL extends "11">(): <T extends Function, V, U extends Record<K, V>>(type: T, obj: U) => obj is U & Record<K, V>;
     <$SEL extends "1">(): <T extends Function>(type: T) => propIs_Record_110<T, K>;
     <$SEL extends "01">(): <V, U extends Record<K, V>>(_type: PH, obj: U) => propIs_Record_011<K, V, U>;
     <T extends Function>(type: T): propIs_Record_110<T, K>;
@@ -7530,7 +7530,7 @@ export type propIs_curry_friendlier_fallback_010 = {
     (type: Function): propIs_curry_friendlier_fallback_110;
 };
 export type propIs_Record_110<T extends Function, K extends string> = {
-    <V, U extends Record<K, V>>(obj: U): propIs_Record_111<T, K, V, U>;
+    <V, U extends Record<K, V>>(obj: U): obj is U & Record<K, V>;
 };
 export type propIs_curry_friendlier_fallback_110 = {
     (obj: Struct<any>): propIs_curry_friendlier_fallback_111;

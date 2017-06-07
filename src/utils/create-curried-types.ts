@@ -19,9 +19,11 @@ export const create_curried_types = (name: string, type: dts.IFunctionType, sele
     return: return_type,
   } = type;
 
-  if (is_type_predicate(return_type)) {
-    throw new Error('Not support TypePredicate');
-  }
+  const type_predicate_parameter = is_type_predicate(return_type)
+    ? parameters.find(
+      parameter => (parameter.name === (return_type.parameter as string)),
+    )!
+    : null;
 
   const placeholders = parameters.map(parameter =>
     dts.create_parameter_declaration({
@@ -73,7 +75,9 @@ export const create_curried_types = (name: string, type: dts.IFunctionType, sele
 
   const target_types = [...new Array(2 ** parameters.length)].map((_, index, array) =>
     (index === array.length - 1)
-      ? return_type
+      ? is_type_predicate(return_type)
+        ? dts.boolean_type
+        : return_type
       : dts.create_object_type({members: []}),
   );
 
@@ -127,10 +131,14 @@ export const create_curried_types = (name: string, type: dts.IFunctionType, sele
                 generics: return_type_declaration.generics!.filter(generic =>
                   type_declaration.generics!.indexOf(generic) === -1),
                 parameters: used_parameters,
-                return: dts.create_general_type({
-                  name: return_type_declaration.name,
-                  generics: return_type_generics,
-                }),
+                return: return_mask.split('').every(x => x === '1')
+                  && (type_predicate_parameter !== null)
+                  && (used_parameters.indexOf(type_predicate_parameter) !== -1)
+                  ? return_type
+                  : dts.create_general_type({
+                    name: return_type_declaration.name,
+                    generics: return_type_generics,
+                  }),
               }),
             }),
           }),
