@@ -62,7 +62,7 @@ source version: v0.23.x
 - [x] comparator
 - [x] complement
 - [x] compose
-- [ ] composeK
+- [x] composeK
 - [ ] composeP
 - [x] concat
 - [x] cond

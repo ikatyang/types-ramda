@@ -13,3 +13,9 @@ export function composeDef(i: number, j: number) {
   const types = nm(i, n => `T${n + 1}`);
   return `function compose<${vals}, ${types}>(${fns}${i > 1 ? ', ' : ''}fn0: (${pars}) => T1): (${pars}) => T${i};`;
 }
+
+export function composeKDef(i: number) {
+  const fns = nm(i - 1, n => `fn${i - 1 - n}: (x: T${i - 1 - n}) => Chain<T${i - n}>`);
+  const types = nm(i, n => `T${n + 1}`);
+  return `function composeK<V, ${types}>(${fns}${i > 1 ? ', ' : ''}fn0: (v: Chain<V>) => Chain<T1>): (v: V) => Chain<T${i}>;`;
+}
