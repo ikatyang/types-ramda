@@ -1,4 +1,5 @@
-import * as R from 'ramda';
+// tslint:disable-next-line:no-require-imports no-var-requires
+const R = require('ramda');
 
 // https://github.com/types/npm-ramda/blob/master/scripts.js
 
@@ -29,7 +30,7 @@ export function composePDef(i: number, j: number) {
 }
 
 const alphabets = 26;
-const letters = (idx: number) => (n: number) => R.range(idx, idx + R.clamp(0, alphabets, n)).map(i => String.fromCharCode(i));
+const letters = (idx: number) => (n: number) => R.range(idx, idx + (R.clamp(0, alphabets, n) as number)).map((i: number) => String.fromCharCode(i));
 const lower = letters('a'.charCodeAt(0));
 export function curryDef(i: number) {
   const lows = lower(i);
@@ -55,7 +56,7 @@ export function liftNDef(i: number, together = true) {
 }
 
 export function pathDef(i: number) {
-  const obj = R.range(1, i + 1).reduce((str, n) => `{[K${i - n + 1} in T${i - n + 1}]: ${str}}`, 'TResult');
+  const obj = R.range(1, i + 1).reduce((str: string, n: number) => `{[K${i - n + 1} in T${i - n + 1}]: ${str}}`, 'TResult');
   const types = nm(i, n => `T${n + 1}`);
   const typesStr = nm(i, n => `T${n + 1} extends string`);
   return `function path<${typesStr}, TResult>(path: [${types}], obj: ${obj}): TResult;`;
