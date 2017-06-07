@@ -5055,11 +5055,55 @@ export type lte_11 = boolean;
  * @symb R.map(f, { x: a, y: b }) = { x: f(a), y: f(b) }
  * @symb R.map(f, functor_o) = functor_o.map(f)
  */
-export declare const map: map_0;
-export type map_0 = {
-    <T, U>(fn: (value: T) => U): map_1<T, U>;
+export declare const map: map_00;
+export type map_00 = {
+    <T>(_fn: PH, list: List<T>): map_base_01<T>;
+    <T, M extends Obj<T>>(_fn: PH, obj: M): map_object__keyof_version_01<T, M>;
+    <T, K extends string>(_fn: PH, obj: Record<K, T>): map_object__Record_version_01<T, K>;
+    <T>(_fn: PH, obj: Functor<T>): map_functor_01<T>;
+    <T, U>(fn: (val: T) => U, list: List<T>): map_base_11<T, U>;
+    <T, U, M extends Obj<T>>(fn: (val: T) => U, obj: M): map_object__keyof_version_11<T, U, M>;
+    <T, U, K extends string>(fn: (val: T) => U, obj: Record<K, T>): map_object__Record_version_11<T, U, K>;
+    <T, U>(fn: (val: T) => U, obj: Functor<T>): map_functor_11<T, U>;
+    <$SEL extends "11", $KIND extends "base">(): <T, U>(fn: (val: T) => U, list: List<T>) => map_base_11<T, U>;
+    <$SEL extends "01", $KIND extends "base">(): <T>(_fn: PH, list: List<T>) => map_base_01<T>;
+    <$SEL extends "11", $KIND extends "object__keyof_version">(): <T, U, M extends Obj<T>>(fn: (val: T) => U, obj: M) => map_object__keyof_version_11<T, U, M>;
+    <$SEL extends "01", $KIND extends "object__keyof_version">(): <T, M extends Obj<T>>(_fn: PH, obj: M) => map_object__keyof_version_01<T, M>;
+    <$SEL extends "11", $KIND extends "object__Record_version">(): <T, U, K extends string>(fn: (val: T) => U, obj: Record<K, T>) => map_object__Record_version_11<T, U, K>;
+    <$SEL extends "01", $KIND extends "object__Record_version">(): <T, K extends string>(_fn: PH, obj: Record<K, T>) => map_object__Record_version_01<T, K>;
+    <$SEL extends "11", $KIND extends "functor">(): <T, U>(fn: (val: T) => U, obj: Functor<T>) => map_functor_11<T, U>;
+    <$SEL extends "01", $KIND extends "functor">(): <T>(_fn: PH, obj: Functor<T>) => map_functor_01<T>;
+    <$SEL extends "1">(): <T, U>(fn: (val: T) => U) => map_10<T, U>;
+    <T, U>(fn: (val: T) => U): map_10<T, U>;
 };
-export type map_1<T, U> = [object, Object];
+export type map_10<T, U> = {
+    (list: List<T>): map_base_11<T, U>;
+    <M extends Obj<T>>(obj: M): map_object__keyof_version_11<T, U, M>;
+    <K extends string>(obj: Record<K, T>): map_object__Record_version_11<T, U, K>;
+    <$SEL extends "1", $KIND extends "base">(): (list: List<T>) => map_base_11<T, U>;
+    <$SEL extends "1", $KIND extends "object__keyof_version">(): <M extends Obj<T>>(obj: M) => map_object__keyof_version_11<T, U, M>;
+    <$SEL extends "1", $KIND extends "object__Record_version">(): <K extends string>(obj: Record<K, T>) => map_object__Record_version_11<T, U, K>;
+    <$SEL extends "1", $KIND extends "functor">(): (obj: Functor<T>) => map_functor_11<T, U>;
+    (obj: Functor<T>): map_functor_11<T, U>;
+};
+export type map_base_01<T> = {
+    <U>(fn: (val: T) => U): map_base_11<T, U>;
+};
+export type map_object__keyof_version_01<T, M extends Obj<T>> = {
+    <U>(fn: (val: T) => U): map_object__keyof_version_11<T, U, M>;
+};
+export type map_object__Record_version_01<T, K extends string> = {
+    <U>(fn: (val: T) => U): map_object__Record_version_11<T, U, K>;
+};
+export type map_functor_01<T> = {
+    <U>(fn: (val: T) => U): map_functor_11<T, U>;
+};
+export type map_base_11<T, U> = U[];
+export type map_object__keyof_version_11<T, U, M extends Obj<T>> = {
+    [K in keyof M]: U;
+};
+export type map_object__Record_version_11<T, U, K extends string> = Record<K, U>;
+export type map_functor_11<T, U> = Functor<U>;
 /**
  * The mapAccum function behaves like a combination of map and reduce; it
  * applies a function to each element of a list, passing an accumulating
@@ -7591,11 +7635,189 @@ export type propIs_curry_friendlier_fallback_111 = boolean;
  *      favorite(alice);  //=> undefined
  *      favoriteWithDefault(alice);  //=> 'Ramda'
  */
-export declare const propOr: propOr_0;
-export type propOr_0 = {
-    <T>(val: T): propOr_1<T>;
+export declare const propOr: propOr_000;
+export type propOr_000 = {
+    <T, U>(val: T, _p: PH, obj: U): propOr_keyof_101<T, U>;
+    <T, K extends string, V, U extends Record<K, V>>(val: T, _p: PH, obj: U): propOr_record_101<T, K, V, U>;
+    <T, U>(val: T, _p: PH, obj: U): propOr_unbound_101<T, U>;
+    <T>(val: T, _p: PH, obj: Struct<any>): propOr_same_101<T>;
+    <K extends string, V, U extends Record<K, V>>(_val: PH, _p: PH, obj: U): propOr_record_001<K, V, U>;
+    <U>(_val: PH, p: Prop, obj: U): propOr_unbound_011<U>;
+    (_val: PH, p: Prop, obj: Struct<any>): propOr_same_011;
+    <U, K extends keyof U>(_val: PH, p: K, obj: U): propOr_keyof_011<U, K>;
+    <K extends string, V, U extends Record<K, V>>(_val: PH, p: K, obj: U): propOr_record_011<K, V, U>;
+    <U>(_val: PH, _p: PH, obj: U): propOr_keyof_001<U>;
+    (_val: PH, _p: PH, obj: Struct<any>): propOr_same_001;
+    <U>(_val: PH, _p: PH, obj: U): propOr_unbound_001<U>;
+    <T>(val: T, p: Prop, obj: Struct<any>): propOr_same_111<T>;
+    <T, U, K extends keyof U>(val: T, p: K, obj: U): propOr_keyof_111<T, U, K>;
+    <T, K extends string, V, U extends Record<K, V>>(val: T, p: K, obj: U): propOr_record_111<T, K, V, U>;
+    <T, U, V>(val: T, p: Prop, obj: U): propOr_unbound_111<T, U, V>;
+    (_val: PH, p: Prop): propOr_same_010;
+    <U, K extends keyof U>(_val: PH, p: K): propOr_keyof_010<U, K>;
+    (_val: PH, p: Prop): propOr_unbound_010;
+    <K extends string>(_val: PH, p: K): propOr_record_010<K>;
+    <T>(val: T, p: Prop): propOr_same_110<T>;
+    <T, K extends string>(val: T, p: K): propOr_record_110<T, K>;
+    <T>(val: T, p: Prop): propOr_unbound_110<T>;
+    <T, U, K extends keyof U>(val: T, p: K): propOr_keyof_110<T, U, K>;
+    <$SEL extends "111", $KIND extends "record">(): <T, K extends string, V, U extends Record<K, V>>(val: T, p: K, obj: U) => propOr_record_111<T, K, V, U>;
+    <$SEL extends "11", $KIND extends "record">(): <T, K extends string>(val: T, p: K) => propOr_record_110<T, K>;
+    <$SEL extends "101", $KIND extends "record">(): <T, K extends string, V, U extends Record<K, V>>(val: T, _p: PH, obj: U) => propOr_record_101<T, K, V, U>;
+    <$SEL extends "011", $KIND extends "record">(): <K extends string, V, U extends Record<K, V>>(_val: PH, p: K, obj: U) => propOr_record_011<K, V, U>;
+    <$SEL extends "01", $KIND extends "record">(): <K extends string>(_val: PH, p: K) => propOr_record_010<K>;
+    <$SEL extends "001", $KIND extends "record">(): <K extends string, V, U extends Record<K, V>>(_val: PH, _p: PH, obj: U) => propOr_record_001<K, V, U>;
+    <$SEL extends "111", $KIND extends "keyof">(): <T, U, K extends keyof U>(val: T, p: K, obj: U) => propOr_keyof_111<T, U, K>;
+    <$SEL extends "11", $KIND extends "keyof">(): <T, U, K extends keyof U>(val: T, p: K) => propOr_keyof_110<T, U, K>;
+    <$SEL extends "101", $KIND extends "keyof">(): <T, U>(val: T, _p: PH, obj: U) => propOr_keyof_101<T, U>;
+    <$SEL extends "011", $KIND extends "keyof">(): <U, K extends keyof U>(_val: PH, p: K, obj: U) => propOr_keyof_011<U, K>;
+    <$SEL extends "01", $KIND extends "keyof">(): <U, K extends keyof U>(_val: PH, p: K) => propOr_keyof_010<U, K>;
+    <$SEL extends "001", $KIND extends "keyof">(): <U>(_val: PH, _p: PH, obj: U) => propOr_keyof_001<U>;
+    <$SEL extends "111", $KIND extends "same">(): <T>(val: T, p: Prop, obj: Struct<any>) => propOr_same_111<T>;
+    <$SEL extends "11", $KIND extends "same">(): <T>(val: T, p: Prop) => propOr_same_110<T>;
+    <$SEL extends "101", $KIND extends "same">(): <T>(val: T, _p: PH, obj: Struct<any>) => propOr_same_101<T>;
+    <$SEL extends "011", $KIND extends "same">(): (_val: PH, p: Prop, obj: Struct<any>) => propOr_same_011;
+    <$SEL extends "01", $KIND extends "same">(): (_val: PH, p: Prop) => propOr_same_010;
+    <$SEL extends "001", $KIND extends "same">(): (_val: PH, _p: PH, obj: Struct<any>) => propOr_same_001;
+    <$SEL extends "111", $KIND extends "unbound">(): <T, U, V>(val: T, p: Prop, obj: U) => propOr_unbound_111<T, U, V>;
+    <$SEL extends "11", $KIND extends "unbound">(): <T>(val: T, p: Prop) => propOr_unbound_110<T>;
+    <$SEL extends "101", $KIND extends "unbound">(): <T, U>(val: T, _p: PH, obj: U) => propOr_unbound_101<T, U>;
+    <$SEL extends "011", $KIND extends "unbound">(): <U>(_val: PH, p: Prop, obj: U) => propOr_unbound_011<U>;
+    <$SEL extends "01", $KIND extends "unbound">(): (_val: PH, p: Prop) => propOr_unbound_010;
+    <$SEL extends "001", $KIND extends "unbound">(): <U>(_val: PH, _p: PH, obj: U) => propOr_unbound_001<U>;
+    <$SEL extends "1">(): <T>(val: T) => propOr_100<T>;
+    <T>(val: T): propOr_100<T>;
 };
-export type propOr_1<T> = [object, Object];
+export type propOr_100<T> = {
+    <U>(_p: PH, obj: U): propOr_unbound_101<T, U>;
+    <K extends string, V, U extends Record<K, V>>(_p: PH, obj: U): propOr_record_101<T, K, V, U>;
+    <U>(_p: PH, obj: U): propOr_keyof_101<T, U>;
+    (_p: PH, obj: Struct<any>): propOr_same_101<T>;
+    <U, V>(p: Prop, obj: U): propOr_unbound_111<T, U, V>;
+    <K extends string, V, U extends Record<K, V>>(p: K, obj: U): propOr_record_111<T, K, V, U>;
+    <U, K extends keyof U>(p: K, obj: U): propOr_keyof_111<T, U, K>;
+    (p: Prop, obj: Struct<any>): propOr_same_111<T>;
+    (p: Prop): propOr_same_110<T>;
+    <K extends string>(p: K): propOr_record_110<T, K>;
+    <U, K extends keyof U>(p: K): propOr_keyof_110<T, U, K>;
+    <$SEL extends "11", $KIND extends "record">(): <K extends string, V, U extends Record<K, V>>(p: K, obj: U) => propOr_record_111<T, K, V, U>;
+    <$SEL extends "1", $KIND extends "record">(): <K extends string>(p: K) => propOr_record_110<T, K>;
+    <$SEL extends "01", $KIND extends "record">(): <K extends string, V, U extends Record<K, V>>(_p: PH, obj: U) => propOr_record_101<T, K, V, U>;
+    <$SEL extends "11", $KIND extends "keyof">(): <U, K extends keyof U>(p: K, obj: U) => propOr_keyof_111<T, U, K>;
+    <$SEL extends "1", $KIND extends "keyof">(): <U, K extends keyof U>(p: K) => propOr_keyof_110<T, U, K>;
+    <$SEL extends "01", $KIND extends "keyof">(): <U>(_p: PH, obj: U) => propOr_keyof_101<T, U>;
+    <$SEL extends "11", $KIND extends "same">(): (p: Prop, obj: Struct<any>) => propOr_same_111<T>;
+    <$SEL extends "1", $KIND extends "same">(): (p: Prop) => propOr_same_110<T>;
+    <$SEL extends "01", $KIND extends "same">(): (_p: PH, obj: Struct<any>) => propOr_same_101<T>;
+    <$SEL extends "11", $KIND extends "unbound">(): <U, V>(p: Prop, obj: U) => propOr_unbound_111<T, U, V>;
+    <$SEL extends "1", $KIND extends "unbound">(): (p: Prop) => propOr_unbound_110<T>;
+    <$SEL extends "01", $KIND extends "unbound">(): <U>(_p: PH, obj: U) => propOr_unbound_101<T, U>;
+    (p: Prop): propOr_unbound_110<T>;
+};
+export type propOr_record_010<K extends string> = {
+    <V, U extends Record<K, V>>(_val: PH, obj: U): propOr_record_011<K, V, U>;
+    <T, V, U extends Record<K, V>>(val: T, obj: U): propOr_record_111<T, K, V, U>;
+    <$SEL extends "11">(): <T, V, U extends Record<K, V>>(val: T, obj: U) => propOr_record_111<T, K, V, U>;
+    <$SEL extends "1">(): <T>(val: T) => propOr_record_110<T, K>;
+    <$SEL extends "01">(): <V, U extends Record<K, V>>(_val: PH, obj: U) => propOr_record_011<K, V, U>;
+    <T>(val: T): propOr_record_110<T, K>;
+};
+export type propOr_keyof_010<U, K extends keyof U> = {
+    (_val: PH, obj: U): propOr_keyof_011<U, K>;
+    <T>(val: T, obj: U): propOr_keyof_111<T, U, K>;
+    <$SEL extends "11">(): <T>(val: T, obj: U) => propOr_keyof_111<T, U, K>;
+    <$SEL extends "1">(): <T>(val: T) => propOr_keyof_110<T, U, K>;
+    <$SEL extends "01">(): (_val: PH, obj: U) => propOr_keyof_011<U, K>;
+    <T>(val: T): propOr_keyof_110<T, U, K>;
+};
+export type propOr_same_010 = {
+    (_val: PH, obj: Struct<any>): propOr_same_011;
+    <T>(val: T, obj: Struct<any>): propOr_same_111<T>;
+    <$SEL extends "11">(): <T>(val: T, obj: Struct<any>) => propOr_same_111<T>;
+    <$SEL extends "1">(): <T>(val: T) => propOr_same_110<T>;
+    <$SEL extends "01">(): (_val: PH, obj: Struct<any>) => propOr_same_011;
+    <T>(val: T): propOr_same_110<T>;
+};
+export type propOr_unbound_010 = {
+    <U>(_val: PH, obj: U): propOr_unbound_011<U>;
+    <T, U, V>(val: T, obj: U): propOr_unbound_111<T, U, V>;
+    <$SEL extends "11">(): <T, U, V>(val: T, obj: U) => propOr_unbound_111<T, U, V>;
+    <$SEL extends "1">(): <T>(val: T) => propOr_unbound_110<T>;
+    <$SEL extends "01">(): <U>(_val: PH, obj: U) => propOr_unbound_011<U>;
+    <T>(val: T): propOr_unbound_110<T>;
+};
+export type propOr_record_110<T, K extends string> = {
+    <V, U extends Record<K, V>>(obj: U): propOr_record_111<T, K, V, U>;
+};
+export type propOr_keyof_110<T, U, K extends keyof U> = {
+    (obj: U): propOr_keyof_111<T, U, K>;
+};
+export type propOr_same_110<T> = {
+    (obj: Struct<any>): propOr_same_111<T>;
+};
+export type propOr_unbound_110<T> = {
+    <U, V>(obj: U): propOr_unbound_111<T, U, V>;
+};
+export type propOr_record_001<K extends string, V, U extends Record<K, V>> = {
+    (_val: PH, p: K): propOr_record_011<K, V, U>;
+    <T>(val: T, p: K): propOr_record_111<T, K, V, U>;
+    <$SEL extends "11">(): <T>(val: T, p: K) => propOr_record_111<T, K, V, U>;
+    <$SEL extends "1">(): <T>(val: T) => propOr_record_101<T, K, V, U>;
+    <$SEL extends "01">(): (_val: PH, p: K) => propOr_record_011<K, V, U>;
+    <T>(val: T): propOr_record_101<T, K, V, U>;
+};
+export type propOr_keyof_001<U> = {
+    <K extends keyof U>(_val: PH, p: K): propOr_keyof_011<U, K>;
+    <T, K extends keyof U>(val: T, p: K): propOr_keyof_111<T, U, K>;
+    <$SEL extends "11">(): <T, K extends keyof U>(val: T, p: K) => propOr_keyof_111<T, U, K>;
+    <$SEL extends "1">(): <T>(val: T) => propOr_keyof_101<T, U>;
+    <$SEL extends "01">(): <K extends keyof U>(_val: PH, p: K) => propOr_keyof_011<U, K>;
+    <T>(val: T): propOr_keyof_101<T, U>;
+};
+export type propOr_same_001 = {
+    (_val: PH, p: Prop): propOr_same_011;
+    <T>(val: T, p: Prop): propOr_same_111<T>;
+    <$SEL extends "11">(): <T>(val: T, p: Prop) => propOr_same_111<T>;
+    <$SEL extends "1">(): <T>(val: T) => propOr_same_101<T>;
+    <$SEL extends "01">(): (_val: PH, p: Prop) => propOr_same_011;
+    <T>(val: T): propOr_same_101<T>;
+};
+export type propOr_unbound_001<U> = {
+    (_val: PH, p: Prop): propOr_unbound_011<U>;
+    <T, V>(val: T, p: Prop): propOr_unbound_111<T, U, V>;
+    <$SEL extends "11">(): <T, V>(val: T, p: Prop) => propOr_unbound_111<T, U, V>;
+    <$SEL extends "1">(): <T>(val: T) => propOr_unbound_101<T, U>;
+    <$SEL extends "01">(): (_val: PH, p: Prop) => propOr_unbound_011<U>;
+    <T>(val: T): propOr_unbound_101<T, U>;
+};
+export type propOr_record_101<T, K extends string, V, U extends Record<K, V>> = {
+    (p: K): propOr_record_111<T, K, V, U>;
+};
+export type propOr_keyof_101<T, U> = {
+    <K extends keyof U>(p: K): propOr_keyof_111<T, U, K>;
+};
+export type propOr_same_101<T> = {
+    (p: Prop): propOr_same_111<T>;
+};
+export type propOr_unbound_101<T, U> = {
+    <V>(p: Prop): propOr_unbound_111<T, U, V>;
+};
+export type propOr_record_011<K extends string, V, U extends Record<K, V>> = {
+    <T>(val: T): propOr_record_111<T, K, V, U>;
+};
+export type propOr_keyof_011<U, K extends keyof U> = {
+    <T>(val: T): propOr_keyof_111<T, U, K>;
+};
+export type propOr_same_011 = {
+    <T>(val: T): propOr_same_111<T>;
+};
+export type propOr_unbound_011<U> = {
+    <T, V>(val: T): propOr_unbound_111<T, U, V>;
+};
+export type propOr_record_111<T, K extends string, V, U extends Record<K, V>> = V | T;
+export type propOr_keyof_111<T, U, K extends keyof U> = U[K] | T;
+export type propOr_same_111<T> = T;
+export type propOr_unbound_111<T, U, V> = V;
 /**
  * Acts as multiple `prop`: array of keys in, array of values out. Preserves
  * order.
