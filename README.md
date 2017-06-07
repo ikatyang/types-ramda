@@ -12,6 +12,9 @@ developing ...
 # linting
 yarn run lint
 
+# migrate jsdoc (ramda repo -> ./src/templates/*.md)
+yarn run jsdoc
+
 # build for test (./ramda/*.d.ts)
 yarn run build
 
