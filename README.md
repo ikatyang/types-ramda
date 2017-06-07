@@ -189,7 +189,7 @@ source version: v0.23.x
 - [x] pickAll
 - [x] pickBy
 - [x] pipe
-- [ ] pipeK
+- [x] pipeK
 - [ ] pipeP
 - [x] pluck
 - [x] prepend
