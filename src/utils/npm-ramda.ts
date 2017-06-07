@@ -60,3 +60,11 @@ export function pathDef(i: number) {
   const typesStr = nm(i, n => `T${n + 1} extends string`);
   return `function path<${typesStr}, TResult>(path: [${types}], obj: ${obj}): TResult;`;
 }
+
+export function pipeDef(i: number, j: number) {
+  const vals = nm(j, n => `V${n}`);
+  const pars = nm(j, n => `x${n}: V${n}`);
+  const fns = nm(i - 1, n => `fn${n + 1}: (x: T${n + 1}) => T${n + 2}`);
+  const types = nm(i, n => `T${n + 1}`);
+  return `function pipe<${vals}, ${types}>(fn0: (${pars}) => T1${i > 1 ? ', ' : ''}${fns}): (${pars}) => T${i};`;
+}
