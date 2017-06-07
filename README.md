@@ -142,7 +142,7 @@ source version: v0.23.x
 - [x] lensIndex
 - [x] lensPath
 - [x] lensProp
-- [ ] lift
+- [x] lift
 - [ ] liftN
 - [x] lt
 - [x] lte
