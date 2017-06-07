@@ -53,3 +53,10 @@ export function liftNDef(i: number, together = true) {
     ? `function liftN<${types}, TResult>(n: number, fn: (${pars}) => TResult): (${listPars}) => TResult[];`
     : `function liftN(n: number): <${types}, TResult>(fn: (${pars}) => TResult) => (${listPars}) => TResult[];`;
 }
+
+export function pathDef(i: number) {
+  const obj = R.range(1, i + 1).reduce((str, n) => `{[K${i - n + 1} in T${i - n + 1}]: ${str}}`, 'TResult');
+  const types = nm(i, n => `T${n + 1}`);
+  const typesStr = nm(i, n => `T${n + 1} extends string`);
+  return `function path<${typesStr}, TResult>(path: [${types}], obj: ${obj}): TResult;`;
+}

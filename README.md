@@ -181,7 +181,7 @@ source version: v0.23.x
 - [x] partial
 - [x] partialRight
 - [x] partition
-- [ ] path
+- [x] path
 - [x] pathEq
 - [x] pathOr
 - [x] pathSatisfies
