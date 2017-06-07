@@ -63,7 +63,7 @@ source version: v0.23.x
 - [x] complement
 - [x] compose
 - [x] composeK
-- [ ] composeP
+- [x] composeP
 - [x] concat
 - [x] cond
 - [x] construct
