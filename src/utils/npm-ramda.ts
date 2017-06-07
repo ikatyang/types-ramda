@@ -27,3 +27,13 @@ export function composePDef(i: number, j: number) {
   const types = nm(i, n => `T${n + 1}`);
   return `function composeP<${vals}, ${types}>(${fns}${i > 1 ? ', ' : ''}fn0: (${pars}) => Promise<T1>): (${pars}) => Promise<T${i}>;`;
 }
+
+const alphabets = 26;
+const letters = (idx: number) => (n: number) => R.range(idx, idx + R.clamp(0, alphabets, n)).map(i => String.fromCharCode(i));
+const lower = letters('a'.charCodeAt(0));
+export function curryDef(i: number) {
+  const lows = lower(i);
+  const pars = nm(i, n => `${lows[n]}: T${n + 1}`);
+  const types = nm(i, n => `T${n + 1}`);
+  return `function curry<${types}, TResult>(fn: (${pars}) => TResult): CurriedFunction${i}<${types}, TResult>;`;
+}
