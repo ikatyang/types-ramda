@@ -74,3 +74,11 @@ export function pipeKDef(i: number) {
   const types = nm(i, n => `T${n + 1}`);
   return `function pipeK<V, ${types}>(fn0: (v: Chain<V>) => Chain<T1>${i > 1 ? ', ' : ''}${fns}): (v: V) => Chain<T${i}>;`;
 }
+
+export function pipePDef(i: number, j: number) {
+  const vals = nm(j, n => `V${n}`);
+  const pars = nm(j, n => `x${n}: V${n}`);
+  const fns = nm(i - 1, n => `fn${n + 1}: (x: T${n + 1}) => Promise<T${n + 2}>|T${n + 2}`);
+  const types = nm(i, n => `T${n + 1}`);
+  return `function pipeP<${vals}, ${types}>(fn0: (${pars}) => Promise<T1>${i > 1 ? ', ' : ''}${fns}): (${pars}) => Promise<T${i}>;`;
+}
