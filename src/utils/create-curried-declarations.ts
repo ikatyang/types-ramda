@@ -31,6 +31,7 @@ export const create_curried_declarations = (
     }),
     ...members.map(member => {
       const member_type = member.type!;
+      // tslint:disable-next-line:strict-boolean-expressions
       if (is_object_type(member_type) && (member_type.members || []).every(is_object_member)) {
         member_type.members = sort_signatures(member_type.members! as dts.IObjectMember[]);
       }

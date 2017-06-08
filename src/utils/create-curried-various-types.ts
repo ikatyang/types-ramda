@@ -85,7 +85,7 @@ export const create_various_curried_types = (name: string, types: {[kind: string
           const members = (curried_type_declarations[index].type as dts.IObjectType).members;
           return members !== undefined && members.every(is_object_member)
             ? create_selectable_signatures(
-              (members as dts.IObjectMember[]) || [],
+              (members as dts.IObjectMember[]),
             )
             : [];
         }),

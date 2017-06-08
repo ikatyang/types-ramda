@@ -15,6 +15,7 @@ export const sort_signatures = (signatures: dts.IObjectMember[]) => {
   signatures.forEach(signature => {
     const function_decalration = signature.owned as dts.IFunctionDeclaration;
     const function_type = function_decalration.type as dts.IFunctionType;
+    // tslint:disable-next-line:strict-boolean-expressions
     if ((function_type.parameters || []).length === 0) {
       selectables.push(signature);
     } else {
