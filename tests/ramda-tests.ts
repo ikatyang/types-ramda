@@ -72,20 +72,20 @@ class F2 {
     addThree(3);
 
     const xy = R.curry(<X,Y>(x: X, y: Y) => ({ x, y }));
-    // @dts-jest:show <Y>(v2: Y) => { x: number; y: Y; }
+    // @dts-jest:skip <Y>(v2: Y) => { x: number; y: Y; }
     xy(3);
-    // @dts-jest:show { x: number; y: number; }
+    // @dts-jest:skip { x: number; y: number; }
     xy(3)(1);
     const xyz = R.curry(<X,Y,Z>(x: X, y: Y, z: Z) => ({ x, y, z }));
-    // @dts-jest:show { x: number; y: number; z: number; }
+    // @dts-jest:skip { x: number; y: number; z: number; }
     xyz(3, 2, 1);
-    // @dts-jest:show { x: number; y: number; z: number; }
+    // @dts-jest:skip { x: number; y: number; z: number; }
     xyz(3)(2)(1);
-    // @dts-jest:show <Z>(v3: Z) => ({ x: number; y: number; z: Z; })
+    // @dts-jest:skip <Z>(v3: Z) => ({ x: number; y: number; z: Z; })
     xyz(3, 2);
-    // @dts-jest:show <Z>(v3: Z) => ({ x: number; y: number; z: Z; })
+    // @dts-jest:skip <Z>(v3: Z) => ({ x: number; y: number; z: Z; })
     xyz(3)(2);
-    // @dts-jest:show <Y, Z>(v2: Y, v3: Z) => ({ x: number; y: Y; z: Z; })
+    // @dts-jest:skip <Y, Z>(v2: Y, v3: Z) => ({ x: number; y: Y; z: Z; })
     xyz(3);
 };
 
@@ -107,9 +107,9 @@ class F2 {
     curriedFourNumbers(1);
     // @dts-jest
     curriedFourNumbers(1)(2);
-    // @dts-jest:show <T1,R>(v1: T1) => R
+    // @dts-jest:skip <T1,R>(v1: T1) => R
     curriedFourNumbers(1)(2)(3);
-    // @dts-jest:show <T1,R>(v1: T1) => R
+    // @dts-jest:skip <T1,R>(v1: T1) => R
     curriedFourNumbers(1,2,4);
     // @dts-jest
     curriedFourNumbers(1)(2)(3)(4);
@@ -118,25 +118,25 @@ class F2 {
     // @dts-jest
     curriedFourNumbers(1,2,3)(4);
 
-    // @dts-jest:show () => boolean
+    // @dts-jest:skip () => boolean
     R.nAry(0, takesNoArg);
-    // @dts-jest:show () => number[]
+    // @dts-jest:skip () => number[]
     R.nAry(0, takesOneArg);
-    // @dts-jest:show (a: number) => number[]
+    // @dts-jest:skip (a: number) => number[]
     R.nAry(1, takesTwoArgs);
-    // @dts-jest:show (a: number) => number[]
+    // @dts-jest:skip (a: number) => number[]
     R.nAry(1, takesThreeArgs);
 
-    // @dts-jest:show (a: number) => number[]
+    // @dts-jest:skip (a: number) => number[]
     R.unary(takesOneArg);
-    // @dts-jest:show (a: number) => number[]
+    // @dts-jest:skip (a: number) => number[]
     R.unary(takesTwoArgs);
-    // @dts-jest:show (a: number) => number[]
+    // @dts-jest:skip (a: number) => number[]
     R.unary(takesThreeArgs);
 
-    // @dts-jest:show (a: number, b: number) => number[]
+    // @dts-jest:skip (a: number, b: number) => number[]
     R.binary(takesTwoArgs);
-    // @dts-jest:show (a: number, b: number) => number[]
+    // @dts-jest:skip (a: number, b: number) => number[]
     R.binary(takesThreeArgs);
 
     let addTwoNumbers = function(a: number, b: number) { return a + b; };
@@ -162,25 +162,25 @@ class F2 {
 // unless
 () => {
     const coerceArray = R.unless(R.isArrayLike, R.of);
-    // @dts-jest:show <a>(v: a|[a]) => [a]
+    // @dts-jest:skip <a>(v: a|[a]) => [a]
     coerceArray;
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     coerceArray([1, 2, 3]); // => [1, 2, 3]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     coerceArray(1);         // => [1]
 };
 
 // nthArg
 (() => {
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.nthArg(1)('a', 'b', 'c'); // => 'b'
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.nthArg(-1)('a', 'b', 'c'); // => 'c'
 });
 
 // unapply
 () => {
-    // @dts-jest:show (...args: string[])=>string
+    // @dts-jest:skip (...args: string[])=>string
     R.unapply(JSON.stringify);
     // @dts-jest
     R.unapply(JSON.stringify)(1, 2, 3); // => '[1,2,3]'
@@ -224,9 +224,9 @@ class F2 {
     const g2 = R.map((i: number) => i > 5 ? 'bigger' : 'smaller');
     const g3 = R.all((i: string) => i === 'smaller');
     const g = R.compose(g3, g2, g1, g0);
-    // @dts-jest:show (list: number[]) => boolean
+    // @dts-jest:skip (list: number[]) => boolean
     g;
-    // @dts-jest:show boolean
+    // @dts-jest:skip boolean
     g([1, 2, 10, 13]);
 };
 
@@ -237,7 +237,7 @@ class F2 {
     // @dts-jest
     R.pipe(double, double, shout)(10);
 
-    // @dts-jest:show string
+    // @dts-jest:skip string
     (str: string) => R.pipe(
         R.split(''),
         R.adjust(R.toUpper, 0),
@@ -249,7 +249,7 @@ class F2 {
     f(3, 4); // -(3^4) + 1
 
     // test for type degeneration if the first function has generics
-    // @dts-jest:show (x0: number) => number
+    // @dts-jest:skip (x0: number) => number
     R.pipe(R.identity, double);
 };
 
@@ -267,9 +267,9 @@ class F2 {
 
 // invoker
 () => {
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.invoker(0, 'toUpperCase', 'foo');
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.invoker(1, 'charAt', 'foo', 1);
 };
 
@@ -280,7 +280,7 @@ class F2 {
     range(3, 4, 9, -3); // => [-3, 9]
 
     const chopped = R.juxt([R.head, R.last]);
-    // @dts-jest:show string[]
+    // @dts-jest:skip string[]
     chopped('longstring'); // => ['l', 'g']
 });
 
@@ -301,7 +301,7 @@ class F2 {
 (() => {
   let printXPlusFive = function(x: number) { console.log(x + 5); };
   R.forEach(printXPlusFive, [1, 2, 3]);
-  // @dts-jest:show Object[]
+  // @dts-jest:skip Object[]
   R.clone([{},{},{}]);
   // @dts-jest
   R.clone([1,2,3]);
@@ -394,7 +394,7 @@ class F2 {
     R.match(/([a-z]a)/g, 'bananas'); // => ['ba', 'na', 'na']
     // @dts-jest
     R.match(/a/, 'b'); // => []
-    // @dts-jest:show Argument of type 'null' is not assignable to parameter of type 'string'.
+    // @dts-jest:skip Argument of type 'null' is not assignable to parameter of type 'string'.
     R.match(/a/, null); // error with strict null checks
 };
 
@@ -421,7 +421,7 @@ class F2 {
     let flattenPairs = function(acc: [string, number], pair: [string, number]) {
       return acc.concat(pair);
     };
-    // @dts-jest:show Array<number|string>
+    // @dts-jest:skip Array<number|string>
     R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 })();
 
@@ -443,7 +443,7 @@ class F2 {
     let prependKeyAndDouble = function(num: number, key: string, obj: any) {
         return key + (num * 2);
     };
-    // @dts-jest:show Dictionary<string>
+    // @dts-jest:skip Dictionary<string>
     R.mapObjIndexed(prependKeyAndDouble, values); // => { x: 'x2', y: 'y4', z: 'z6' }
 });
 
@@ -463,9 +463,9 @@ class F2 {
     R.empty([1,2,3,4,5]); // => []
     // @dts-jest
     R.empty([1, 2, 3]);     // => []
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.empty('unicorns');    // => ''
-    // @dts-jest:show {}
+    // @dts-jest:skip {}
     R.empty({x: 1, y: 2});  // => {}
 };
 
@@ -488,7 +488,7 @@ class F2 {
     let lastTwo = function(val: number, idx: number, list: number[]) {
       return list.length - idx <= 2;
     };
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [0, 9]
 
     let isOdd = function(n: number) {
@@ -512,10 +512,10 @@ class F2 {
 // unfold
 (() => {
     let f = function(n: number) { return n > 50 ? false : [-n, n + 10]; };
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.unfold(f, 10); // => [-10, -20, -30, -40, -50]
     let b = R.unfold(f); // => [-10, -20, -30, -40, -50]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     b(10);
 });
 
@@ -575,7 +575,7 @@ class F2 {
     age: 314.159
   };
   let people = [clara, bob, alice];
-  // @dts-jest:show typeof people
+  // @dts-jest:skip typeof people
   R.sort(byAge, people);
 };
 
@@ -599,13 +599,13 @@ class F2 {
     R.append('tests')(['write', 'more']); // => ['write', 'more', 'tests']
     // @dts-jest
     R.append('tests', []); // => ['tests']
-    // @dts-jest:show Array<string[]|string>
+    // @dts-jest:skip Array<string[]|string>
     R.append<string, string[]>(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
-    // @dts-jest:show Array<string[]|string>
+    // @dts-jest:skip Array<string[]|string>
     R.append(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
-    // @dts-jest:show Array<string[]|string>
+    // @dts-jest:skip Array<string[]|string>
     R.append<string[]>(['tests'])(['write', 'more']); // => ['write', 'more', ['tests']]
-    // @dts-jest:show Array<string[]|string>
+    // @dts-jest:skip Array<string[]|string>
     R.append(['tests'])(['write', 'more']); // => ['write', 'more', ['tests']]
 };
 
@@ -618,21 +618,21 @@ class F2 {
     R.chain(duplicate, [1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
     // @dts-jest
     R.chain(duplicate)([1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.chain(R.append, R.head)([1, 2, 3]); // => [1, 2, 3, 1]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.chain(R.append)(R.head)([1, 2, 3]); // => [1, 2, 3, 1]
 };
 
 // clamp
 () => {
-    // @dts-jest:show number
+    // @dts-jest:skip number
     R.clamp(1, 10, -1); // => 1
     // @dts-jest
     R.clamp(1, 10)(11); // => 10
     // @dts-jest
     R.clamp(1)(10, 4);  // => 4
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.clamp('a', 'd', 'e');  // => 'd'
 };
 
@@ -678,7 +678,7 @@ class F2 {
     age: 314.159
   };
   let people = [clara, bob, alice];
-  // @dts-jest:show typeof people
+  // @dts-jest:skip typeof people
   R.sort(byAge, people);
 };
 
@@ -688,9 +688,9 @@ class F2 {
     R.drop(3, [1,2,3,4,5,6,7]); // => [4,5,6,7]
     // @dts-jest
     R.drop(3)([1,2,3,4,5,6,7]); // => [4,5,6,7]
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.drop(3, 'ramda'); // => 'ram'
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.drop(3)('ramda'); // => 'ram'
 };
 
@@ -700,9 +700,9 @@ class F2 {
     R.dropLast(1, ['foo', 'bar', 'baz']); // => ['foo', 'bar']
     // @dts-jest
     R.dropLast(2)(['foo', 'bar', 'baz']); // => ['foo']
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.dropLast(3, 'ramda');               // => 'ra'
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.dropLast(3)('ramda');               // => 'ra'
 });
 
@@ -735,14 +735,14 @@ class F2 {
     let isEvenFn = R.filter(isEven);
     isEvenFn([1, 2, 3, 4]);
     // ... but also objects
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, d: 4}
     let isEvenFnObj = R.filter(isEven);
     // see that we did not break anything
     // and we kept type information
     // @dts-jest
     onlyNumberList(R.filter(isEven,[1,2,3,4]));
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     onlyNumberObj(R.filter(isEven, {a: 1, b: 2, c: 3, d: 4})); // strictNullChecks: Partial fails, consider Pick
 };
 
@@ -753,19 +753,19 @@ class F2 {
     };
     let filterIndexed = R.addIndex(R.filter);
 
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [0, 9]
     let lastTwoFn = filterIndexed(lastTwo);
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     lastTwoFn([8, 6, 7, 5, 3, 0, 9]);
 };
 
 // find, propEq
 () => {
     let xs = [{a: 1}, {a: 2}, {a: 3}];
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.find(R.propEq('a', 2))(xs); // => {a: 2}
-    // @dts-jest:show undefined
+    // @dts-jest:skip undefined
     R.find(R.propEq('a', 4))(xs); // => undefined
 };
 
@@ -775,7 +775,7 @@ class F2 {
     let tasks: Task[] = [];
     const a = R.find((task: Task) => task.id === 1, tasks); // this works
     const f: (list: Task[]) => Task = R.find<Task>((task: Task) => task.id === 1);
-    // @dts-jest:show Task
+    // @dts-jest:skip Task
     f(tasks); // works
 };
 
@@ -796,9 +796,9 @@ class F2 {
 // findLast
 () => {
     let xs = [{a: 1, b: 0}, {a: 1, b: 1}];
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.findLast(R.propEq('a', 1))(xs); // => {a: 1, b: 1}
-    // @dts-jest:show undefined
+    // @dts-jest:skip undefined
     R.findLast(R.propEq('a', 4))(xs); // => undefined
 };
 
@@ -809,7 +809,7 @@ class F2 {
     R.findLastIndex(R.propEq('a', 1))(xs); // => 1
     // @dts-jest
     R.findLastIndex(R.propEq('a', 4))(xs); // => -1
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.findLastIndex((x: number) => x === 1, [1, 2, 3]);
 };
 
@@ -820,7 +820,7 @@ class F2 {
     let user3 = { name: 'Bob' };
     let users = [ user1, user2, user3 ];
     let isFamous = R.pathEq(['address', 'zipCode'], 90210);
-    // @dts-jest:show Object[]
+    // @dts-jest:skip Object[]
     R.filter(isFamous, users); // => [ user1 ]
 };
 
@@ -877,20 +877,20 @@ interface Obj { a: number; b: number; };
 // forEach
 () => {
     let printKeyConcatValue = (value: any, key: string, obj: any) => console.log(key + ':' + value);
-    // @dts-jest:show {x: 1, y: 2}
+    // @dts-jest:skip {x: 1, y: 2}
     R.forEachObjIndexed(printKeyConcatValue, {x: 1, y: 2});
-    // @dts-jest:show {x: 1, y: 2}
+    // @dts-jest:skip {x: 1, y: 2}
     R.forEachObjIndexed(printKeyConcatValue)({x: 1, y: 2});
-    // @dts-jest:show [1, 2]
+    // @dts-jest:skip [1, 2]
     R.forEachObjIndexed(printKeyConcatValue, [1, 2]);
-    // @dts-jest:show [1, 2]
+    // @dts-jest:skip [1, 2]
     R.forEachObjIndexed(printKeyConcatValue)([1, 2]);
 };
 
 // addIndex?
 () => {
     let plusFive = function(num: number, idx: number, list: number[]) { list[idx] = num + 5; };
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.addIndex(R.forEach)(plusFive)([1, 2, 3]); // => [6, 7, 8]
 };
 
@@ -906,22 +906,22 @@ interface Obj { a: number; b: number; };
     let students = [{name: 'Abby', score: 84},
       {name: 'Eddy', score: 58},
       {name: 'Jack', score: 69}];
-    // @dts-jest:show Dictionary<Object[]>
+    // @dts-jest:skip Dictionary<Object[]>
     byGrade(students);
 };
 
 // groupWith
 () => {
-    // @dts-jest:show number[][]
+    // @dts-jest:skip number[][]
     R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21]);
     // [[0], [1, 1], [2, 3, 5, 8, 13, 21]]
 
-    // @dts-jest:show number[][]
+    // @dts-jest:skip number[][]
     R.groupWith((a: number, b: number) => a % 2 === b % 2, [0, 1, 1, 2, 3, 5, 8, 13, 21]);
     // [[0], [1, 1], [2], [3, 5], [8], [13, 21]]
 
     const isVowel = (a: string) => R.contains(a, 'aeiou') ? a : '';
-    // @dts-jest:show string[]
+    // @dts-jest:skip string[]
     R.groupWith(R.eqBy<string>(isVowel), 'aestiou');
     // ['ae', 'st', 'iou']
 };
@@ -939,11 +939,11 @@ interface Obj { a: number; b: number; };
 // indexBy
 (() => {
     let list = [{id: 'xyz', title: 'A'}, {id: 'abc', title: 'B'}];
-    // @dts-jest:show Dictionary<Object>
+    // @dts-jest:skip Dictionary<Object>
     R.indexBy(R.prop('id'), list);
-    // @dts-jest:show Dictionary<Object>
+    // @dts-jest:skip Dictionary<Object>
     R.indexBy(R.prop('id'))(list);
-    // @dts-jest:show Dictionary<Object>
+    // @dts-jest:skip Dictionary<Object>
     R.indexBy<{id: string}>(R.prop('id'))(list);
 });
 
@@ -1013,15 +1013,15 @@ interface Obj { a: number; b: number; };
       {id: 177, name: 'Neil Young'}
     ];
 
-    // @dts-jest:show { id: number, name: string }[]
+    // @dts-jest:skip { id: number, name: string }[]
     R.intersectionWith(R.eqBy(R.prop('id')), buffaloSpringfield, csny);
     // => [{id: 456, name: 'Stephen Stills'}, {id: 177, name: 'Neil Young'}]
-    // @dts-jest:show { id: number, name: string }[]
+    // @dts-jest:skip { id: number, name: string }[]
     R.intersectionWith(R.eqBy(R.prop('id')), buffaloSpringfield, csny);
         // => [{id: 456, name: 'Stephen Stills'}, {id: 177, name: 'Neil Young'}]
-    // @dts-jest:show { id: number, name: string }[]
+    // @dts-jest:skip { id: number, name: string }[]
     R.intersectionWith(R.eqBy(R.prop('id')))(buffaloSpringfield, csny);
-    // @dts-jest:show { id: number, name: string }[]
+    // @dts-jest:skip { id: number, name: string }[]
     R.intersectionWith(R.eqBy(R.prop('id')))(buffaloSpringfield)(csny);
 };
 
@@ -1033,17 +1033,17 @@ interface Obj { a: number; b: number; };
     let transducer = R.compose(R.map(R.add(1)), R.take(2));
 
 
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.into([], transducer, numbers); // => [2, 3]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.into([])(transducer, numbers); // => [2, 3]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.into([], transducer)(numbers); // => [2, 3]
 
     let intoArray = R.into([]);
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     intoArray(transducer, numbers); // => [2, 3]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     intoArray(transducer)(numbers); // => [2, 3]
 };
 
@@ -1058,7 +1058,7 @@ interface Obj { a: number; b: number; };
 
 // last
 () => {
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.last(['fi', 'fo', 'fum']); // => 'fum'
 };
 
@@ -1080,15 +1080,15 @@ interface Obj { a: number; b: number; };
 // lensIndex, set, view, over
 () => {
     let headLens = R.lensIndex(0);
-    // @dts-jest:show number
+    // @dts-jest:skip number
     headLens([10, 20, 30, 40]); // => 10
-    // @dts-jest:show Array<number|string>
+    // @dts-jest:skip Array<number|string>
     headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.view(headLens, ['a', 'b', 'c']);            // => 'a'
-    // @dts-jest:show string[]
+    // @dts-jest:skip string[]
     R.set(headLens, 'x', ['a', 'b', 'c']);        // => ['x', 'b', 'c']
-    // @dts-jest:show string[]
+    // @dts-jest:skip string[]
     R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
 };
 
@@ -1096,24 +1096,24 @@ interface Obj { a: number; b: number; };
 () => {
     let arrayify = <T>(v: T): T[] => [v];
     // homogeneous array
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.map(double, [1, 2, 3]); // => [2, 4, 6]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.map(double)([1, 2, 3]); // => [2, 4, 6]
     // homogeneous object
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.map(double, { a: 1, b: 2, c: 3 }); // => { a: 2, b: 4, c: 6 }
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.map(double)({ a: 1, b: 2, c: 3 }); // => { a: 2, b: 4, c: 6 }
     // heterogeneous array
-    // @dts-jest:show [number[], string[]]
+    // @dts-jest:skip [number[], string[]]
     R.map(arrayify, [1, 'a']); // => [[1], ['a']]
-    // @dts-jest:show [number[], string[]]
+    // @dts-jest:skip [number[], string[]]
     R.map(arrayify)([1, 'a']); // => [[1], ['a']]
     // heterogeneous object
-    // @dts-jest:show { a: number[], b: string[] }
+    // @dts-jest:skip { a: number[], b: string[] }
     R.map(arrayify, { a: 1, b: 'c' }); // => { a: [1], b: ['c'] }
-    // @dts-jest:show { a: number[], b: string[] }
+    // @dts-jest:skip { a: number[], b: string[] }
     R.map(arrayify)({ a: 1, b: 'c' }); // => { a: [1], b: ['c'] }
 
     // functor
@@ -1133,13 +1133,13 @@ interface Obj { a: number; b: number; };
     let append = function(a: string, b: string): [string, string]{
         return [a + b, a + b];
     };
-    // @dts-jest:show Array<string[]|string>
+    // @dts-jest:skip Array<string[]|string>
     R.mapAccum(append, '0', digits); // => ['01234', ['01', '012', '0123', '01234']]
-    // @dts-jest:show Array<string[]|string>
+    // @dts-jest:skip Array<string[]|string>
     R.mapAccum(append)('0', digits); // => ['01234', ['01', '012', '0123', '01234']]
-    // @dts-jest:show Array<string[]|string>
+    // @dts-jest:skip Array<string[]|string>
     R.mapAccum(append, '0')(digits); // => ['01234', ['01', '012', '0123', '01234']]
-    // @dts-jest:show Array<string[]|string>
+    // @dts-jest:skip Array<string[]|string>
     R.mapAccum(append)('0')(digits); // => ['01234', ['01', '012', '0123', '01234']]
 };
 
@@ -1149,13 +1149,13 @@ interface Obj { a: number; b: number; };
     let append = function(a: string, b: string): [string, string] {
         return [a + b, a + b];
     };
-    // @dts-jest:show Array<string|string[]>
+    // @dts-jest:skip Array<string|string[]>
     R.mapAccumRight(append, '0', digits); // => ['04321', ['04321', '0432', '043', '04']]
-    // @dts-jest:show Array<string|string[]>
+    // @dts-jest:skip Array<string|string[]>
     R.mapAccumRight(append)('0', digits); // => ['04321', ['04321', '0432', '043', '04']]
-    // @dts-jest:show Array<string|string[]>
+    // @dts-jest:skip Array<string|string[]>
     R.mapAccumRight(append, '0')(digits); // => ['04321', ['04321', '0432', '043', '04']]
-    // @dts-jest:show Array<string|string[]>
+    // @dts-jest:skip Array<string|string[]>
     R.mapAccumRight(append)('0')(digits); // => ['04321', ['04321', '0432', '043', '04']]
 };
 
@@ -1167,28 +1167,28 @@ interface Obj { a: number; b: number; };
         }
         return elt;
     };
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.addIndex(R.map)(squareEnds, [8, 5, 3, 0, 9]); // => [64, 5, 3, 0, 81]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.addIndex(R.map)(squareEnds)([8, 5, 3, 0, 9]); // => [64, 5, 3, 0, 81]
 };
 
 // none
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest:skip boolean
     R.none(R.isNaN, [1, 2, 3]); // => true
-    // @dts-jest:show boolean
+    // @dts-jest:skip boolean
     R.none(R.isNaN, [1, 2, 3, NaN]); // => false
-    // @dts-jest:show boolean
+    // @dts-jest:skip boolean
     R.none(R.isNaN)([1, 2, 3, NaN]); // => false
 };
 
 // nth
 () => {
     let list = ['foo', 'bar', 'baz', 'quux'];
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.nth(1, list); // => 'bar'
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.nth(-1, list); // => 'quux'
     // @dts-jest
     R.nth(-99, list); // => undefined
@@ -1206,7 +1206,7 @@ interface Obj { a: number; b: number; };
     R.partition((x: number) => x > 2, [1, 2, 3, 4]);
     // @dts-jest
     R.partition((x: number) => x > 2)([1, 2, 3, 4]);
-    // @dts-jest:show Object[]
+    // @dts-jest:skip Object[]
     R.partition(R.contains('s'),{ a: 'sss', b: 'ttt', foo: 'bars' }); // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' }  ]
 };
 
@@ -1214,11 +1214,11 @@ interface Obj { a: number; b: number; };
 () => {
     // @dts-jest
     R.pluck('a', [{a: 1}, {a: 2}]); // => [1, 2]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.pluck(0, [[1, 2], [3, 4]]);   // => [1, 3]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.pluck('a')([{a: 1}, {a: 2}]); // => [1, 2]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.pluck(0)([[1, 2], [3, 4]]);   // => [1, 3]
 };
 
@@ -1270,7 +1270,7 @@ interface Student {
     let students = [{name: 'Lucy', score: 92},
                     {name: 'Drew', score: 85},
                     {name: 'Bart', score: 62}];
-    // @dts-jest:show Dictionary<string[]>
+    // @dts-jest:skip Dictionary<string[]>
     namesByGrade(students);
     // {
     //   'A': ['Lucy'],
@@ -1287,11 +1287,11 @@ interface Student {
         accObject[elem] = idx;
         return accObject;
     };
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     reduceIndexed(objectify, {}, letters); // => { 'a': 0, 'b': 1, 'c': 2 }
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     reduceIndexed(objectify)({}, letters); // => { 'a': 0, 'b': 1, 'c': 2 }
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     reduceIndexed(objectify, {})(letters); // => { 'a': 0, 'b': 1, 'c': 2 }
 };
 
@@ -1303,11 +1303,11 @@ type Pair = KeyValuePair<string, number>;
     let flattenPairs = function(pair: Pair, acc: Pair[]): Pair[] {
         return acc.concat(pair);
     };
-    // @dts-jest:show Array<string[]|string>
+    // @dts-jest:skip Array<string[]|string>
     R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
-    // @dts-jest:show Array<string[]|string>
+    // @dts-jest:skip Array<string[]|string>
     R.reduceRight(flattenPairs, [])(pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
-    // @dts-jest:show Array<string[]|string>
+    // @dts-jest:skip Array<string[]|string>
     R.reduceRight(flattenPairs)([], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 };
 
@@ -1329,9 +1329,9 @@ type Pair = KeyValuePair<string, number>;
         return list.length - idx <= 2;
     };
     const rejectIndexed = R.addIndex(R.reject);
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     rejectIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [8, 6, 7, 5, 3]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     rejectIndexed(lastTwo)([8, 6, 7, 5, 3, 0, 9]); // => [8, 6, 7, 5, 3]
 };
 
@@ -1363,7 +1363,7 @@ type Pair = KeyValuePair<string, number>;
     R.reverse([1, 2]);     // => [2, 1]
     // @dts-jest
     R.reverse([1]);        // => [1]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.reverse([]);         // => []
 };
 
@@ -1442,11 +1442,11 @@ type Pair = KeyValuePair<string, number>;
     takeFive(members); // => ['Paul Desmond','Bob Bates','Joe Dodge','Ron Crotty','Lloyd Davis']
 };
 () => {
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.take(3,'Example'); // => 'Exa'
 
     let takeThree = R.take(3);
-    // @dts-jest:show string
+    // @dts-jest:skip string
     takeThree('Example'); // => 'Exa'
 };
 
@@ -1456,9 +1456,9 @@ type Pair = KeyValuePair<string, number>;
     R.takeLast(1, ['foo', 'bar', 'baz']); // => ['baz']
     // @dts-jest
     R.takeLast(2)(['foo', 'bar', 'baz']); // => ['bar', 'baz']
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.takeLast(3, 'ramda');               // => 'mda'
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.takeLast(3)('ramda');               // => 'mda'
 };
 
@@ -1535,13 +1535,13 @@ type Pair = KeyValuePair<string, number>;
     let numbers = [1, 2, 3, 4];
     let transducer = R.compose(R.map(R.add(1)), R.take(2));
     let fn = R.flip<number, number[], number[]>(R.append);
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.transduce(transducer, fn, [] as number[], numbers); // => [2, 3]   // strictNullChecks: must annotate empty array type
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.transduce(transducer, fn, [] as number[])(numbers); // => [2, 3]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.transduce(transducer, fn)([] as number[], numbers); // => [2, 3]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.transduce(transducer)(fn, [] as number[], numbers); // => [2, 3]
 };
 
@@ -1556,7 +1556,7 @@ type Pair = KeyValuePair<string, number>;
 
 // transpose
 () => {
-    // @dts-jest:show any[][]
+    // @dts-jest:skip any[][]
     R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]); // => [[1, 2, 3], ['a', 'b', 'c']]
     // @dts-jest
     R.transpose([[1, 2, 3], ['a', 'b', 'c']]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
@@ -1577,30 +1577,30 @@ type Pair = KeyValuePair<string, number>;
 () => {
     // @dts-jest
     R.uniq([1, 1, 2, 1]); // => [1, 2]
-    // @dts-jest:show Object[]
+    // @dts-jest:skip Object[]
     R.uniq([{}, {}]);     // => [{}, {}]
-    // @dts-jest:show any[]
+    // @dts-jest:skip any[]
     R.uniq([1, '1']);     // => [1, '1']
 };
 
 // uniqWith
 () => {
     let strEq = function(a: any, b: any) { return String(a) === String(b); };
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.uniqWith(strEq, [1, '1', 2, 1]); // => [1, 2]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.uniqWith(strEq)([1, '1', 2, 1]); // => [1, 2]
-    // @dts-jest:show Object[]
+    // @dts-jest:skip Object[]
     R.uniqWith(strEq)([{}, {}]);       // => [{}]
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.uniqWith(strEq)([1, '1', 1]);    // => [1]
-    // @dts-jest:show string[]
+    // @dts-jest:skip string[]
     R.uniqWith(strEq)(['1', 1, 1]);    // => ['1']
 };
 
 // unnest, equals
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest:skip boolean
     R.equals(R.unnest([1, [2], [[3]]]), [1,2,[3]]); // => true
     // @dts-jest
     R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]),[1,2,3,4,5,6]); // => true
@@ -1608,25 +1608,25 @@ type Pair = KeyValuePair<string, number>;
 
 // xprod
 () => {
-    // @dts-jest:show [number, string][]
+    // @dts-jest:skip [number, string][]
     R.xprod([1, 2], ['a', 'b']); // => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
-    // @dts-jest:show [number, string][]
+    // @dts-jest:skip [number, string][]
     R.xprod([1, 2])(['a', 'b']); // => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
 };
 
 // zip
 () => {
-    // @dts-jest:show [number, string][]
+    // @dts-jest:skip [number, string][]
     R.zip([1, 2, 3], ['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
-    // @dts-jest:show [number, string][]
+    // @dts-jest:skip [number, string][]
     R.zip([1, 2, 3])(['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
 };
 
 // zipObj
 () => {
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.zipObj(['a', 'b', 'c'], [1, 2, 3]); // => {a: 1, b: 2, c: 3}
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.zipObj(['a', 'b', 'c'])([1, 2, 3]); // => {a: 1, b: 2, c: 3}
 };
 
@@ -1635,11 +1635,11 @@ type Pair = KeyValuePair<string, number>;
     let f = function(x: number, y: string) {
         // ...
     };
-    // @dts-jest:show any[]
+    // @dts-jest:skip any[]
     R.zipWith(f, [1, 2, 3], ['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
-    // @dts-jest:show any[]
+    // @dts-jest:skip any[]
     R.zipWith(f)([1, 2, 3], ['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
-    // @dts-jest:show any[]
+    // @dts-jest:skip any[]
     R.zipWith(f, [1, 2, 3])(['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
 };
 
@@ -1649,42 +1649,42 @@ type Pair = KeyValuePair<string, number>;
 
 // assoc
 () => {
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.assoc('c', 3, {a: 1, b: 2}); // => {a: 1, b: 2, c: 3}
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.assoc('c')(3, {a: 1, b: 2}); // => {a: 1, b: 2, c: 3}
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.assoc('c', 3)({a: 1, b: 2}); // => {a: 1, b: 2, c: 3}
 };
 
 // dissoc
 () => {
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.dissoc<{a: number, c: number}>('b', {a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.dissoc('b', {a: 1, b: 2, c: 3});                         // => {a: 1, c: 3}
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.dissoc('b')<{a: number, c: number}>({a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
 };
 
 // assocPath
 () => {
-    // @dts-jest:show {a: {b: {c: number}}}
+    // @dts-jest:skip {a: {b: {c: number}}}
     R.assocPath(['a', 'b', 'c'], 42, {a: {b: {c: 0}}}); // => {a: {b: {c: 42}}}
-    // @dts-jest:show {a: {b: {c: number}}}
+    // @dts-jest:skip {a: {b: {c: number}}}
     R.assocPath(['a', 'b', 'c'])(42, {a: {b: {c: 0}}}); // => {a: {b: {c: 42}}}
-    // @dts-jest:show {a: {b: {c: number}}}
+    // @dts-jest:skip {a: {b: {c: number}}}
     R.assocPath(['a', 'b', 'c'], 42)({a: {b: {c: 0}}}); // => {a: {b: {c: 42}}}
 };
 
 // dissocPath
 () => {
-    // @dts-jest:show {a: {b: {}}}
+    // @dts-jest:skip {a: {b: {}}}
     R.dissocPath(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
     // optionally specify return type
-    // @dts-jest:show {a: {b: {}}}
+    // @dts-jest:skip {a: {b: {}}}
     R.dissocPath<{a : { b: number}}>(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
-    // @dts-jest:show {a: {b: {}}}
+    // @dts-jest:skip {a: {b: {}}}
     R.dissocPath(['a', 'b', 'c'])({a: {b: {c: 42}}}); // => {a: {b: {}}}
 };
 
@@ -1692,11 +1692,11 @@ type Pair = KeyValuePair<string, number>;
 () => {
     let obj1 = [{}, {}, {}];
     let obj2 = [{a: 1}, {a: 2}, {a: 3}];
-    // @dts-jest:show any[]
+    // @dts-jest:skip any[]
     R.clone(obj1);
-    // @dts-jest:show {a: number}[]
+    // @dts-jest:skip {a: number}[]
     R.clone(obj2);
-    // @dts-jest:show Object
+    // @dts-jest:skip Object
     R.clone({});
     // @dts-jest
     R.clone(10);
@@ -1714,9 +1714,9 @@ type Pair = KeyValuePair<string, number>;
     R.eqProps('a', o1, o2); // => false
     // @dts-jest
     R.eqProps('c', o1, o2); // => true
-    // @dts-jest:show {<T,U>(obj1: T, obj2: U): boolean}
+    // @dts-jest:skip {<T,U>(obj1: T, obj2: U): boolean}
     R.eqProps('c');
-    // @dts-jest:show {<U>(obj2: U): boolean}
+    // @dts-jest:skip {<U>(obj2: U): boolean}
     R.eqProps('c', o1);
 };
 
@@ -1729,10 +1729,10 @@ type Pair = KeyValuePair<string, number>;
         data: {elapsed: R.add(1), remaining: R.add(-1)}
     };
     const a: typeof tomato = R.evolve(transformations, tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
-    // @dts-jest:show typeof tomato
+    // @dts-jest:skip typeof tomato
     a;
     const b: typeof tomato = R.evolve(transformations)(tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
-    // @dts-jest:show typeof tomato
+    // @dts-jest:skip typeof tomato
     b;
 };
 
@@ -1783,7 +1783,7 @@ class Rectangle {
       second: 'jake',
       third: 'alice'
     };
-    // @dts-jest:show Dictionary<string[]>
+    // @dts-jest:skip Dictionary<string[]>
     R.invert(raceResultsByFirstName);
     // => { 'alice': ['first', 'third'], 'jake': ['second'] }
 };
@@ -1794,13 +1794,13 @@ class Rectangle {
       first: 'alice',
       second: 'jake'
     };
-    // @dts-jest:show Dictionary<string>
+    // @dts-jest:skip Dictionary<string>
     R.invertObj(raceResults0);
     // => { 'alice': 'first', 'jake': 'second' }
 
     // Alternatively:
     let raceResults1 = ['alice', 'jake'];
-    // @dts-jest:show Dictionary<string>
+    // @dts-jest:skip Dictionary<string>
     R.invertObj(raceResults1);
     // => { 'alice': '0', 'jake': '1' }
 };
@@ -1828,52 +1828,52 @@ class Rectangle {
     // let xLens = R.lens<number, xy>(R.prop('x'), R.assoc('x'));
     let xLens = R.lens<number>(R.prop('x'))(R.assoc('x'));
     // ^ works with only 1 generic, for curried version managed to split the inferred generic from the manual generic
-    // @dts-jest:show number
+    // @dts-jest:skip number
     R.view(xLens, {x: 1, y: 2});            // => 1
-    // @dts-jest:show { x: number, y: number }
+    // @dts-jest:skip { x: number, y: number }
     R.set(xLens, 4, {x: 1, y: 2});          // => {x: 4, y: 2}
-    // @dts-jest:show { x: number, y: number }
+    // @dts-jest:skip { x: number, y: number }
     R.set(xLens)(4, {x: 1, y: 2});          // => {x: 4, y: 2}
-    // @dts-jest:show { x: number, y: number }
+    // @dts-jest:skip { x: number, y: number }
     R.set(xLens, 4)({x: 1, y: 2});          // => {x: 4, y: 2}
-    // @dts-jest:show { x: number, y: number }
+    // @dts-jest:skip { x: number, y: number }
     R.over(xLens, R.negate, {x: 1, y: 2});  // => {x: -1, y: 2}
-    // @dts-jest:show { x: number, y: number }
+    // @dts-jest:skip { x: number, y: number }
     R.over(xLens, R.negate)({x: 1, y: 2});  // => {x: -1, y: 2}
-    // @dts-jest:show { x: number, y: number }
+    // @dts-jest:skip { x: number, y: number }
     R.over(xLens)(R.negate, {x: 1, y: 2});  // => {x: -1, y: 2}
 };
 
 // lensIndex
 () => {
     let headLens = R.lensIndex(0);
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.view(headLens, ['a', 'b', 'c']);            // => 'a'
-    // @dts-jest:show string[]
+    // @dts-jest:skip string[]
     R.set(headLens, 'x', ['a', 'b', 'c']);        // => ['x', 'b', 'c']
-    // @dts-jest:show string[]
+    // @dts-jest:skip string[]
     R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
 };
 
 // lensProp
 () => {
     let xLens = R.lensProp('x');
-    // @dts-jest:show number
+    // @dts-jest:skip number
     R.view(xLens, {x: 1, y: 2});            // => 1
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.set(xLens, 4, {x: 1, y: 2});          // => {x: 4, y: 2}
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.over(xLens, R.negate, {x: 1, y: 2});  // => {x: -1, y: 2}
 };
 
 // lensPath
 () => {
   const xyLens = R.lensPath(['x', 'y']);
-  // @dts-jest:show number
+  // @dts-jest:skip number
   R.view(xyLens, {x: {y: 2, z: 3}});            // => 2
-  // @dts-jest:show { [s: string]: { [s: string]: number } }
+  // @dts-jest:skip { [s: string]: { [s: string]: number } }
   R.set(xyLens, 4, {x: {y: 2, z: 3}});          // => {x: {y: 4, z: 3}}
-  // @dts-jest:show { [s: string]: { [s: string]: number } }
+  // @dts-jest:skip { [s: string]: { [s: string]: number } }
   R.over(xyLens, R.negate, {x: {y: 2, z: 3}});  // => {x: {y: -2, z: 3}}
 };
 
@@ -1897,7 +1897,7 @@ class Rectangle {
       function set(val: number, arr: number[]) { return [val].concat(arr.slice(1)); }
     );
     headLens([10, 20, 30, 40]); // => 10
-    // // @dts-jest:show Argument of type 'mu' is not assignable to parameter of type 'number'.
+    // // @dts-jest:skip Argument of type 'mu' is not assignable to parameter of type 'number'.
     // headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
 
     let phraseLens = R.lens(
@@ -1910,11 +1910,11 @@ class Rectangle {
     );
     let obj1 = { phrase: 'Absolute filth . . . and I LOVED it!'};
     let obj2 = { phrase: "What's all this, then?"};
-    // @dts-jest:show string
+    // @dts-jest:skip string
     phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
-    // @dts-jest:show string
+    // @dts-jest:skip string
     phraseLens(obj2); // => "What's all this, then?"
-    // @dts-jest:show Dictionary<string>
+    // @dts-jest:skip Dictionary<string>
     phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
 };
 
@@ -1923,35 +1923,35 @@ class Rectangle {
     let phraseLens = R.lensProp('phrase');
     let obj1 = { phrase: 'Absolute filth . . . and I LOVED it!'};
     let obj2 = { phrase: "What's all this, then?"};
-    // @dts-jest:show string
+    // @dts-jest:skip string
     phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
-    // @dts-jest:show string
+    // @dts-jest:skip string
     phraseLens(obj2); // => 'What's all this, then?'
-    // @dts-jest:show Dictionary<string>
+    // @dts-jest:skip Dictionary<string>
     phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
 };
 
 // merge
 () => {
-    // @dts-jest:show Dictionary<any>
+    // @dts-jest:skip Dictionary<any>
     R.merge({ 'name': 'fred', 'age': 10 }, { 'age': 40 });
     // => { 'name': 'fred', 'age': 40 }
     let resetToDefault = R.flip(R.merge)({x: 0});
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     resetToDefault({x: 5, y: 2}); // => {x: 0, y: 2}
 };
 
 // megeAll
 () => {
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.mergeAll([{foo: 1},{bar: 2},{baz: 3}]); // => {foo: 1,bar: 2,baz: 3}
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.mergeAll([{foo: 1},{foo: 2},{bar: 2}]); // => {foo: 2,bar: 2}
 };
 
 // mergeWith
 () => {
-    // @dts-jest:show { a: boolean, b: boolean, values: number[] }
+    // @dts-jest:skip { a: boolean, b: boolean, values: number[] }
     R.mergeWith(R.concat,
         { a: true, values: [10, 20] },
         { b: true, values: [15, 35] });
@@ -1965,19 +1965,19 @@ class Rectangle {
         { a: true, thing: 'foo', values: [10, 20] },
         { b: true, thing: 'bar', values: [15, 35] });
     const merge = R.mergeWithKey(concatValues);
-    // @dts-jest:show { a: boolean, b: boolean, values: number[], thing: string }
+    // @dts-jest:skip { a: boolean, b: boolean, values: number[], thing: string }
     merge({ a: true, thing: 'foo', values: [10, 20] }, { b: true, thing: 'bar', values: [15, 35] });
 };
 
 // pathOr
 () => {
-    // @dts-jest:show number
+    // @dts-jest:skip number
     R.pathOr('N/A', ['a', 'b'], {a: {b: 2}}); // => 2
-    // @dts-jest:show number
+    // @dts-jest:skip number
     R.pathOr('N/A', ['a', 'b'])({a: {b: 2}}); // => 2
-    // @dts-jest:show number
+    // @dts-jest:skip number
     R.pathOr('N/A', ['a', 'b'], {c: {b: 2}}); // => 'N/A'
-    // @dts-jest:show number
+    // @dts-jest:skip number
     R.pathOr({c: 2})(['a', 'b'], {c: {b: 2}}); // => 'N/A'
 };
 
@@ -2004,31 +2004,31 @@ class Rectangle {
     let isPositive = function(n: number) {
         return n > 0;
     };
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.pickBy(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); // => {a: 1, b: 2, e: 5}
     let containsBackground = function(val: any) {
         return val.bgcolor;
     };
     let colors = {1: {color: 'read'}, 2: {color: 'black', bgcolor: 'yellow'}};
-    // @dts-jest:show { 2: R.Dictionary<string> }
+    // @dts-jest:skip { 2: R.Dictionary<string> }
     R.pickBy(containsBackground, colors); // => {2: {color: 'black', bgcolor: 'yellow'}}
 
     let isUpperCase = function(val: number, key: string) { return key.toUpperCase() === key; };
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
 };
 
 
 // pick
 () => {
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.pick(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
     // the following should errror: e/f are not keys in these objects
-    // @dts-jest:show not keys
+    // @dts-jest:skip not keys
     R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
-    // @dts-jest:show not keys
+    // @dts-jest:skip not keys
     R.pick(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
-    // @dts-jest:show not keys
+    // @dts-jest:skip not keys
     R.pick(['a', 'e', 'f'], [1, 2, 3, 4]);             // => {a: 1}
 };
 
@@ -2038,21 +2038,21 @@ class Rectangle {
       R.objOf('must'),
       R.map(R.objOf('match_phrase'))
     );
-    // @dts-jest:show { must: { match_phrase: string }[] }
+    // @dts-jest:skip { must: { match_phrase: string }[] }
     matchPhrases(['foo', 'bar', 'baz']);
 };
 
 // omit
 () => {
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
 };
 
 // fromPairs
 () => {
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.fromPairs([['a', 1], ['b', 2],  ['c', 3]]); // => {a: 1, b: 2, c: 3}
 };
 
@@ -2069,26 +2069,26 @@ class Rectangle {
 // over, lensIndex
 () => {
     let headLens = R.lensIndex(0);
-    // @dts-jest:show string[]
+    // @dts-jest:skip string[]
     R.over(headLens, R.toUpper, ['foo', 'bar', 'baz']); // => ['FOO', 'bar', 'baz']
 };
 
 // pickAll
 () => {
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.pickAll(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}    // why does this pass while the above fails?
 };
 
 // pickBy
 () => {
     let isUpperCase = function(val: number, key: string) { return key.toUpperCase() === key; };
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
 };
 
@@ -2097,7 +2097,7 @@ class Rectangle {
     let abby = {name: 'Abby', age: 7, hair: 'blond', grade: 2};
     let fred = {name: 'Fred', age: 12, hair: 'brown', grade: 7};
     let kids = [abby, fred];
-    // @dts-jest:show { name: string, grade: number }[]
+    // @dts-jest:skip { name: string, grade: number }[]
     R.project(['name', 'grade'], kids); // => [{name: 'Abby', grade: 2}, {name: 'Fred', grade: 7}]
 };
 
@@ -2105,7 +2105,7 @@ class Rectangle {
 () => {
     // @dts-jest
     R.prop('x', {x: 100}); // => 100
-    // @dts-jest:show Argument of type 'x' is not assignable to parameter of type 'never'.
+    // @dts-jest:skip Argument of type 'x' is not assignable to parameter of type 'never'.
     R.prop('x', {}); // => undefined
 };
 
@@ -2118,9 +2118,9 @@ class Rectangle {
     let favorite = R.prop('favoriteLibrary');
     let favoriteWithDefault = R.propOr('Ramda', 'favoriteLibrary');
 
-    // @dts-jest:show undefined
+    // @dts-jest:skip undefined
     favorite(alice);  // => undefined
-    // @dts-jest:show string
+    // @dts-jest:skip string
     favoriteWithDefault(alice);  // => 'Ramda'
 };
 
@@ -2138,7 +2138,7 @@ class Rectangle {
 () => {
     // @dts-jest
     R.props(['x', 'y'], {x: 1, y: 2}); // => [1, 2]
-    // @dts-jest:show Array<number|undefined>
+    // @dts-jest:skip Array<number|undefined>
     R.props(['c', 'a', 'b'], {b: 2, a: 1}); // => [undefined, 1, 2]
 
     let fullName = R.compose(R.join(' '), R.props(['first', 'last']));
@@ -2155,9 +2155,9 @@ class Rectangle {
 // toPairsIn
 () => {
     let f = new F();
-    // @dts-jest:show [string, string][]
+    // @dts-jest:skip [string, string][]
     R.toPairsIn(f); // => [['x','X'], ['y','Y']]
-    // @dts-jest:show [string, string][]
+    // @dts-jest:skip [string, string][]
     R.toPairsIn(f); // => [['x','X'], ['y','Y']]
 };
 
@@ -2170,7 +2170,7 @@ class Rectangle {
 // valuesIn
 () => {
     let f = new F();
-    // @dts-jest:show string[]
+    // @dts-jest:skip string[]
     R.valuesIn(f); // => ['X', 'Y']
 };
 
@@ -2197,22 +2197,22 @@ class Rectangle {
     R.where(spec2, {x: 3, y: 8}); // => true
 
     let xs = [{x: 2, y: 1}, {x: 10, y: 2}, {x: 8, y: 3}, {x: 10, y: 4}];
-    // @dts-jest:show { x: number, y: number }[]
+    // @dts-jest:skip { x: number, y: number }[]
     R.filter(R.where({x: 10}), xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
-    // @dts-jest:show { x: number, y: number }[]
+    // @dts-jest:skip { x: number, y: number }[]
     R.filter(R.where({x: 10}))(xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
 };
 
 // whereEq
 () => {
     let pred = R.whereEq({a: 1, b: 2});
-    // @dts-jest:show (v: Object) => Boolean
+    // @dts-jest:skip (v: Object) => Boolean
     pred;
-    // @dts-jest:show boolean
+    // @dts-jest:skip boolean
     pred({a: 1});              // => false
     // @dts-jest
     pred({a: 1, b: 2});        // => true
-    // @dts-jest:show boolean
+    // @dts-jest:skip boolean
     pred({a: 1, b: 2, c: 3});  // => true
     // @dts-jest
     pred({a: 1, b: 1});        // => false
@@ -2231,10 +2231,10 @@ class Rectangle {
     let mapIndexed = R.addIndex<string,string>(R.map);
     // @dts-jest
     mapIndexed(function(val: string, idx: number) {return idx + '-' + val;})(['f', 'o', 'o', 'b', 'a', 'r']);
-    // @dts-jest:show string[]
+    // @dts-jest:skip string[]
     R.mapIndexed(function(val: string, idx: number) {return idx + '-' + val;})(['f', 'o', 'o', 'b', 'a', 'r']);
     // => ['0-f', '1-o', '2-o', '3-b', '4-a', '5-r']
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.mapIndexed((rectangle: Rectangle, idx: number): number => rectangle.area()*idx, [new Rectangle(1,2), new Rectangle(4,7)]);
     // => [2, 56]
 };
@@ -2242,7 +2242,7 @@ class Rectangle {
 // addIndex
 () => {
     let reduceIndexed = R.addIndex(R.reduce);
-    // @dts-jest:show string[]
+    // @dts-jest:skip string[]
     reduceIndexed(
       (acc: string, val: string, idx: number) => acc + ',' + idx + '-' + val
       ,''
@@ -2281,7 +2281,7 @@ class Rectangle {
     const getMetrics = R.applySpec<T>({
         sum: R.add, nested: { mul: R.multiply }
     });
-    // @dts-jest:show T
+    // @dts-jest:skip T
     getMetrics(2, 4); // => { sum: 6, nested: { mul: 8 } }
 };
 
@@ -2299,7 +2299,7 @@ class Rectangle {
     // @dts-jest
     takesTwoArgs.length; // => 2
     // Only 2 arguments are passed to the wrapped function
-    // @dts-jest:show Supplied parameters do not match any signature of call target.
+    // @dts-jest:skip Supplied parameters do not match any signature of call target.
     takesTwoArgs(1, 2, 3); // => [1, 2, undefined]
 };
 
@@ -2319,7 +2319,7 @@ class Rectangle {
     let people = [
       {name: 'Agy', age: 33}, {name: 'Bib', age: 15}, {name: 'Cari', age: 16}
     ];
-    // @dts-jest:show { age: number, name: string }[]
+    // @dts-jest:skip { age: number, name: string }[]
     R.sort(cmp, people);
 };
 
@@ -2360,7 +2360,7 @@ class Rectangle {
     f5(3, 4); // -(3^4) + 1
 
     // test for type degeneration if the first function has generics
-    // @dts-jest:show (x0: number) => number
+    // @dts-jest:skip (x0: number) => number
     R.compose(double, R.identity);
 };
 
@@ -2387,10 +2387,10 @@ class Rectangle {
     };
     Circle.prototype.area = function() {return Math.PI * Math.pow(this.r, 2);};
     let circleN = R.constructN(2, Circle);
-    // @dts-jest:show circle
+    // @dts-jest:skip circle
     circleN(1, 'red');
     let circle = R.construct(Circle);
-    // @dts-jest:show circle
+    // @dts-jest:skip circle
     circle(1, 'red');
 })();
 
@@ -2402,9 +2402,9 @@ class Rectangle {
 () => {
     let numbers = [1.0, 1.1, 1.2, 2.0, 3.0, 2.2];
     let letters = R.split('', 'abcABCaaaBBc');
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.countBy(Math.floor)(numbers);    // => {'1': 3, '2': 2, '3': 1}
-    // @dts-jest:show Dictionary<number>
+    // @dts-jest:skip Dictionary<number>
     R.countBy(R.toLower)(letters);   // => {'a': 5, 'b': 4, 'c': 3}
 };
 
@@ -2421,11 +2421,11 @@ class Rectangle {
     function cmp(x: any, y: any) { return x.a === y.a; }
     let l1 = [{a: 1}, {a: 2}, {a: 3}];
     let l2 = [{a: 3}, {a: 4}];
-    // @dts-jest:show {a: number}[]
+    // @dts-jest:skip {a: number}[]
     R.differenceWith(cmp, l1, l2); // => [{a: 1}, {a: 2}]
-    // @dts-jest:show {a: number}[]
+    // @dts-jest:skip {a: number}[]
     R.differenceWith(cmp)(l1, l2); // => [{a: 1}, {a: 2}]
-    // @dts-jest:show {a: number}[]
+    // @dts-jest:skip {a: number}[]
     R.differenceWith(cmp)(l1)(l2); // => [{a: 1}, {a: 2}]
 };
 
@@ -2477,7 +2477,7 @@ class Rectangle {
 () => {
     // @dts-jest
     R.path(['a', 'b'], {a: {b: 2}}); // => 2
-    // @dts-jest:show number
+    // @dts-jest:skip number
     R.path(['a', 'b'])({a: {b: 2}}); // => 2
 };
 
@@ -2499,11 +2499,11 @@ class Rectangle {
       age: 314.159
     };
     let people = [clara, bob, alice];
-    // @dts-jest:show { name: string, age: number }[]
+    // @dts-jest:skip { name: string, age: number }[]
     sortByAgeDescending(people); //=> [alice, bob, clara]
-    // @dts-jest:show { name: string, age: number }[]
+    // @dts-jest:skip { name: string, age: number }[]
     sortByNameCaseInsensitive(people); // => [alice, bob, clara]
-    // @dts-jest:show { name: string, age: number }[]
+    // @dts-jest:skip { name: string, age: number }[]
     sortByAgeAscending(people); // => [bob, alice, clara]
 };
 
@@ -2522,7 +2522,7 @@ class Rectangle {
     age: 40
   };
   let people = [clara, bob, alice];
-  // @dts-jest:show typeof people
+  // @dts-jest:skip typeof people
   R.sortWith([
     R.descend(R.prop('age')),
     R.ascend(R.prop('name'))
@@ -2531,7 +2531,7 @@ class Rectangle {
     R.descend(R.prop('age')),
     R.ascend(R.prop('name'))
   ]);
-  // @dts-jest:show typeof people
+  // @dts-jest:skip typeof people
   ageNameSort(people);
   // => [alice, clara, bob]
 };
@@ -2614,11 +2614,11 @@ class Rectangle {
 
 // isNaN
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest:skip boolean
     R.isNaN(NaN);        // => true
-    // @dts-jest:show boolean
+    // @dts-jest:skip boolean
     R.isNaN(undefined);  // => false
-    // @dts-jest:show boolean
+    // @dts-jest:skip boolean
     R.isNaN({});         // => false
 };
 
@@ -2678,9 +2678,9 @@ class Rectangle {
 
 // max
 () => {
-    // @dts-jest:show number
+    // @dts-jest:skip number
     R.max(7, 3); // => 7
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.max('a', 'z'); // => 'z'
 };
 
@@ -2698,7 +2698,7 @@ class Rectangle {
     R.maxBy(cmp)(a, c); // => {x: 3}
     // @dts-jest
     R.maxBy(cmp)(a)(b);
-    // @dts-jest:show Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'
+    // @dts-jest:skip Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'
     R.maxBy(cmp)(d)(e);
 };
 
@@ -2720,9 +2720,9 @@ class Rectangle {
 
 // min
 () => {
-    // @dts-jest:show number
+    // @dts-jest:skip number
     R.min(9, 3); // => 3
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.min('a', 'z'); // => 'a'
 };
 
@@ -2734,13 +2734,13 @@ class Rectangle {
     let c = {x: 3};
     let d = {x: 'a'};
     let e = {x: 'z'};
-    // @dts-jest:show { x: number }
+    // @dts-jest:skip { x: number }
     R.minBy(cmp, a, b); // => {x: 1}
-    // @dts-jest:show { x: number }
+    // @dts-jest:skip { x: number }
     R.minBy(cmp)(a, b); // => {x: 1}
-    // @dts-jest:show { x: number }
+    // @dts-jest:skip { x: number }
     R.minBy(cmp)(a)(c);
-    // @dts-jest:show Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'
+    // @dts-jest:skip Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'
     R.minBy(cmp, d, e);
 };
 
@@ -2820,11 +2820,11 @@ class Rectangle {
   const eqA = R.eqBy(R.prop('a'));
   const l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}];
   const l2 = [{a: 3}, {a: 4}, {a: 5}, {a: 6}];
-  // @dts-jest:show { a: number }[]
+  // @dts-jest:skip { a: number }[]
   R.symmetricDifferenceWith(eqA, l1, l2); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
-  // @dts-jest:show { a: number }[]
+  // @dts-jest:skip { a: number }[]
   R.symmetricDifferenceWith(eqA)(l1, l2); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
-  // @dts-jest:show (a: any[]) => any[]
+  // @dts-jest:skip (a: any[]) => any[]
   R.symmetricDifferenceWith(eqA)(l1); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
 };
 
@@ -2910,11 +2910,11 @@ class Rectangle {
 () => {
     // @dts-jest
     R.and(false, true); // => false
-    // @dts-jest:show number
+    // @dts-jest:skip number
     R.and(0, []); // => 0
-    // @dts-jest:show number
+    // @dts-jest:skip number
     R.and(0)([]); // => 0
-    // @dts-jest:show null
+    // @dts-jest:skip null
     R.and(null, ''); // => null
     let Why: any = (function(val: boolean) {
         let why: any;
@@ -2925,7 +2925,7 @@ class Rectangle {
         return Why;
     })(true);
     let why = new Why(true);
-    // @dts-jest:show boolean
+    // @dts-jest:skip boolean
     R.and(why, false); // false
 };
 
@@ -2977,11 +2977,11 @@ class Rectangle {
 // defaultTo
 () => {
     let defaultTo42 = R.defaultTo(42);
-    // @dts-jest:show number
+    // @dts-jest:skip number
     defaultTo42(null);  // => 42
-    // @dts-jest:show number
+    // @dts-jest:skip number
     defaultTo42(undefined);  // => 42
-    // @dts-jest:show string
+    // @dts-jest:skip string
     defaultTo42('Ramda');  // => 'Ramda'
 };
 
@@ -3002,9 +3002,9 @@ class Rectangle {
     // Flatten all arrays in the list but leave other values alone.
     let flattenArrays = R.map(R.ifElse(Array.isArray, R.flatten, R.identity));
 
-    // @dts-jest:show any[]
+    // @dts-jest:skip any[]
     flattenArrays([[0], [[10], [8]], 1234, {}]); // => [[0], [10, 8], 1234, {}]
-    // @dts-jest:show any[]
+    // @dts-jest:skip any[]
     flattenArrays([[[10], 123], [8, [10]], 'hello']); // => [[10, 123], [8, 10], 'hello']
 };
 
@@ -3050,16 +3050,16 @@ class Why {
 () => {
     // @dts-jest
     R.or(false, true); // => false
-    // @dts-jest:show number|any[]
+    // @dts-jest:skip number|any[]
     R.or(0, []); // => []
-    // @dts-jest:show number|any[]
+    // @dts-jest:skip number|any[]
     R.or(0)([]); // => []
-    // @dts-jest:show string
+    // @dts-jest:skip string
     R.or(null, ''); // => ''
 
     let why = new Why(true);
     why.or(true);
-    // @dts-jest:show Why|boolean
+    // @dts-jest:skip Why|boolean
     R.or(why, false); // false
 };
 
@@ -3082,7 +3082,7 @@ class Why {
     const a1 = R.evolve({ elapsed: R.add(1), remaining: R.add(-1) }, { name: 'Tomato', elapsed: 100, remaining: 1400 });
     const a2 = R.evolve({ elapsed: R.add(1), remaining: R.add(-1) })({ name: 'Tomato', elapsed: 100, remaining: 1400 });
     let test = { a: 1, b: 2};
-    // @dts-jest:show { a: number, b: number }
+    // @dts-jest:skip { a: number, b: number }
     R.evolve({ a: R.add(1)}, test );
 };
 
@@ -3125,9 +3125,9 @@ class Why {
 
 () => {
     // #29
-    // @dts-jest:show string[]
+    // @dts-jest:skip string[]
     R.pipe(R.append('a'), R.uniq)(['a', 'b', 'c']);
-    // @dts-jest:show string[][]
+    // @dts-jest:skip string[][]
     R.pipe(
         R.split(''),
         R.map((letter: string) => ([ letter ]))
@@ -3190,20 +3190,20 @@ class Why {
             return array;
         }
     });
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     updateBy((n: number) => n > 1, 0, [1,2,3]);
 };
 
 () => {
     // #86: lose generics in compose
     let pairs = [['1','A'], ['2','B'], ['3','C']];
-    // @dts-jest:show { [index: string]: string }
+    // @dts-jest:skip { [index: string]: string }
     R.fromPairs ([['1','A'], ['2','B'], ['3','C']]);
-    // @dts-jest:show { [index: string]: string }
+    // @dts-jest:skip { [index: string]: string }
     R.fromPairs (pairs);   // fails -- variable reduced to string[][], killing tuples
-    // @dts-jest:show { [index: string]: string }
+    // @dts-jest:skip { [index: string]: string }
     R.pipe   (R.fromPairs)([['1','A'], ['2','B'], ['3','C']]);
-    // @dts-jest:show { [index: string]: string }
+    // @dts-jest:skip { [index: string]: string }
     R.compose(R.fromPairs)([['1','A'], ['2','B'], ['3','C']]);
 
     // generics in pipe loses generics
@@ -3231,12 +3231,12 @@ class Why {
         [R.F, R.F],
         [R.T, R.identity]
     ]);
-    // @dts-jest:show <T>(v: T) => T
+    // @dts-jest:skip <T>(v: T) => T
     x;
     // argument order matters for some reason...
-    // @dts-jest:show (v: number) => number
+    // @dts-jest:skip (v: number) => number
     R.pipe   (R.inc, x); // ok
-    // @dts-jest:show (v: number) => number
+    // @dts-jest:skip (v: number) => number
     R.compose(x, R.inc); // boom
 
     // don't use generics in pipe/compose/curry if it can't resolve them right away:
@@ -3246,7 +3246,7 @@ class Why {
     // argument order matters too:
     let pipeF1 = R.pipe   (R.inc, R.identity);  // : (v: number) => number
     let compF1 = R.compose(R.identity, R.inc);  // : (v: number) => {}
-    // @dts-jest:show number
+    // @dts-jest:skip number
     compF1(1);          // uh-oh, fails
 
     // also can't reason backward:
@@ -3284,7 +3284,7 @@ class Why {
 
 () => {
     // #118: flatten
-    // @dts-jest:show number[]
+    // @dts-jest:skip number[]
     R.flatten([1, 2, [3, 4], 5, [6, [7, 8, [9, [10, 11], 12]]]]);
     // => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 };
@@ -3293,10 +3293,10 @@ class Why {
   // #119: path
   // @dts-jest
   R.path(['a', 'b', 'c'], {a: {b: {c: 2}}});
-  // @dts-jest:show null
+  // @dts-jest:skip null
   R.path(['a', 'b', 'c'], {a: {b: 2}});   // still fails
   // let n = R.path(['a', '0', 'c'], {a: [{c: 2}] })
-  // @dts-jest:show number
+  // @dts-jest:skip number
   R.path(['a', 0, 'c'], {a: [{c: 2}] });
 };
 
