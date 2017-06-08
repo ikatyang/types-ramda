@@ -133,14 +133,6 @@ class F2 {
     addTwoNumbersCurried(2,3);
 };
 
-// uncurry
-() => {
-    const addFour = (a: number) => (b: number) => (c: number) => (d: number) => a + b + c + d;
-    const uncurriedAddFour = R.uncurryN<number>(4, addFour);
-    // @dts-jest
-    uncurriedAddFour(1, 2, 3, 4); // => 10
-};
-
 // unless
 () => {
     const coerceArray = R.unless(R.isArrayLike, R.of);

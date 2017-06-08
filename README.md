@@ -256,7 +256,7 @@ done
 - [x] type
 - [ ] unapply
 - [ ] unary
-- [ ] uncurryN
+- [x] uncurryN
 - [ ] unfold
 - [ ] union
 - [ ] unionWith
