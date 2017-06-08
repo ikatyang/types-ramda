@@ -591,20 +591,6 @@ exports[`R.tryCatch<boolean>(R.prop('x'), R.F)({x: true}) 1`] = `"boolean"`;
 
 exports[`R.tryCatch<boolean>(R.prop('x'), R.F)(null) 1`] = `"boolean"`;
 
-exports[`R.type('s') 1`] = `"string"`;
-
-exports[`R.type(/[A-z]/) 1`] = `"string"`;
-
-exports[`R.type([]) 1`] = `"string"`;
-
-exports[`R.type({}) 1`] = `"string"`;
-
-exports[`R.type(1) 1`] = `"string"`;
-
-exports[`R.type(false) 1`] = `"string"`;
-
-exports[`R.type(null) 1`] = `"string"`;
-
 exports[`R.unapply(JSON.stringify)(1, 2, 3) 1`] = `"string"`;
 
 exports[`R.uniq([1, 1, 2, 1]) 1`] = `"number[]"`;

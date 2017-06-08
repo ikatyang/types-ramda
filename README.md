@@ -253,7 +253,7 @@ done
 - [ ] traverse
 - [ ] trim
 - [ ] tryCatch
-- [ ] type
+- [x] type
 - [ ] unapply
 - [ ] unary
 - [ ] uncurryN
