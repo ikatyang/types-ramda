@@ -56,7 +56,7 @@ class F2 {
     R.propIs(Number)('x')({x: 1, y: 2});  // => true
     // @dts-jest
     R.propIs(Number, 'x', {x: 'foo'});    // => false
-    // $ExpectError Argument of type 'x' is not assignable to parameter of type 'never'.`, because 'x' is not in `{}`.
+    // @dts-jest:show Argument of type 'x' is not assignable to parameter of type 'never'.`, because 'x' is not in `{}`.
     R.propIs(Number, 'x', {});            // => false
 });
 
@@ -187,8 +187,9 @@ class F2 {
 
 // unless
 () => {
-    // @dts-jest:show <a>(v: a|[a]) => [a]
     const coerceArray = R.unless(R.isArrayLike, R.of);
+    // @dts-jest:show <a>(v: a|[a]) => [a]
+    coerceArray;
     // @dts-jest:show number[]
     coerceArray([1, 2, 3]); // => [1, 2, 3]
     // @dts-jest:show number[]
@@ -248,8 +249,9 @@ class F2 {
     const g1 = R.dropWhile(R.gt(10));
     const g2 = R.map((i: number) => i > 5 ? 'bigger' : 'smaller');
     const g3 = R.all((i: string) => i === 'smaller');
-    // @dts-jest:show (list: number[]) => boolean
     const g = R.compose(g3, g2, g1, g0);
+    // @dts-jest:show (list: number[]) => boolean
+    g;
     // @dts-jest:show boolean
     g([1, 2, 10, 13]);
 };
@@ -262,7 +264,7 @@ class F2 {
     R.pipe(double, double, shout)(10);
 
     // @dts-jest:show string
-    const capitalize = (str: string) => R.pipe(
+    (str: string) => R.pipe(
         R.split(''),
         R.adjust(R.toUpper, 0),
         R.join('')
@@ -418,8 +420,8 @@ class F2 {
     R.match(/([a-z]a)/g, 'bananas'); // => ['ba', 'na', 'na']
     // @dts-jest
     R.match(/a/, 'b'); // => []
-    // $ExpectError Argument of type 'null' is not assignable to parameter of type 'string'.
-    let sr = R.match(/a/, null); // error with strict null checks
+    // @dts-jest:show Argument of type 'null' is not assignable to parameter of type 'string'.
+    R.match(/a/, null); // error with strict null checks
 };
 
 // reduce
@@ -600,7 +602,7 @@ class F2 {
   };
   let people = [clara, bob, alice];
   // @dts-jest:show typeof people
-  let peopleByYoungestFirst = R.sort(byAge, people);
+  R.sort(byAge, people);
 };
 
 // aperture
@@ -703,7 +705,7 @@ class F2 {
   };
   let people = [clara, bob, alice];
   // @dts-jest:show typeof people
-  let peopleByOldestFirst = R.sort(byAge, people);
+  R.sort(byAge, people);
 };
 
 // drop
@@ -1752,10 +1754,12 @@ type Pair = KeyValuePair<string, number>;
         lastName: R.trim, // Will not get invoked.
         data: {elapsed: R.add(1), remaining: R.add(-1)}
     };
-    // @dts-jest:show typeof tomato
     const a: typeof tomato = R.evolve(transformations, tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
     // @dts-jest:show typeof tomato
+    a;
     const b: typeof tomato = R.evolve(transformations)(tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
+    // @dts-jest:show typeof tomato
+    b;
 };
 
 // has
@@ -1919,7 +1923,7 @@ class Rectangle {
       function set(val: number, arr: number[]) { return [val].concat(arr.slice(1)); }
     );
     headLens([10, 20, 30, 40]); // => 10
-    // // $ExpectError Argument of type 'mu' is not assignable to parameter of type 'number'.
+    // // @dts-jest:show Argument of type 'mu' is not assignable to parameter of type 'number'.
     // headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
 
     let phraseLens = R.lens(
@@ -2046,12 +2050,12 @@ class Rectangle {
     // @dts-jest:show Dictionary<number>
     R.pick(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
     // the following should errror: e/f are not keys in these objects
-    // $ExpectError not keys
-    let no1 = R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
-    // $ExpectError not keys
-    let no2 = R.pick(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
-    // $ExpectError not keys
-    let no3 = R.pick(['a', 'e', 'f'], [1, 2, 3, 4]);             // => {a: 1}
+    // @dts-jest:show not keys
+    R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
+    // @dts-jest:show not keys
+    R.pick(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
+    // @dts-jest:show not keys
+    R.pick(['a', 'e', 'f'], [1, 2, 3, 4]);             // => {a: 1}
 };
 
 // objOf
@@ -2127,7 +2131,7 @@ class Rectangle {
 () => {
     // @dts-jest
     R.prop('x', {x: 100}); // => 100
-    // $ExpectError Argument of type 'x' is not assignable to parameter of type 'never'.
+    // @dts-jest:show Argument of type 'x' is not assignable to parameter of type 'never'.
     R.prop('x', {}); // => undefined
 };
 
@@ -2227,8 +2231,9 @@ class Rectangle {
 
 // whereEq
 () => {
-    // @dts-jest:show (v: Object) => Boolean
     let pred = R.whereEq({a: 1, b: 2});
+    // @dts-jest:show (v: Object) => Boolean
+    pred;
     // @dts-jest:show boolean
     pred({a: 1});              // => false
     // @dts-jest
@@ -2320,7 +2325,7 @@ class Rectangle {
     // @dts-jest
     takesTwoArgs.length; // => 2
     // Only 2 arguments are passed to the wrapped function
-    // $ExpectError Supplied parameters do not match any signature of call target.
+    // @dts-jest:show Supplied parameters do not match any signature of call target.
     takesTwoArgs(1, 2, 3); // => [1, 2, undefined]
 };
 
@@ -2719,7 +2724,7 @@ class Rectangle {
     R.maxBy(cmp)(a, c); // => {x: 3}
     // @dts-jest
     R.maxBy(cmp)(a)(b);
-    // $ExpectError Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'
+    // @dts-jest:show Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'
     R.maxBy(cmp)(d)(e);
 };
 
@@ -2761,7 +2766,7 @@ class Rectangle {
     R.minBy(cmp)(a, b); // => {x: 1}
     // @dts-jest:show { x: number }
     R.minBy(cmp)(a)(c);
-    // $ExpectError Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'
+    // @dts-jest:show Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'
     R.minBy(cmp, d, e);
 };
 
@@ -3248,11 +3253,12 @@ class Why {
     // #92: lose generics in compose
 
     // can't infer cond paths, must annotate:
-    // @dts-jest:show <T>(v: T) => T
     const x = R.cond([
         [R.F, R.F],
         [R.T, R.identity]
     ]);
+    // @dts-jest:show <T>(v: T) => T
+    x;
     // argument order matters for some reason...
     // @dts-jest:show (v: number) => number
     R.pipe   (R.inc, x); // ok
