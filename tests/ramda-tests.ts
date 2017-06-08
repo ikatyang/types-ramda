@@ -2,21 +2,6 @@ import * as R from 'ramda';
 
 // tslint:disable
 
-declare let console: any;
-
-let double = (x: number): number => x + x;
-
-class F {
-    x = 'X';
-    y = 'Y';
-}
-class F2 {
-    a = 100;
-    y = 1;
-    x() {};
-    z() {};
-}
-
 // curry
 {
     const addTwo = R.curry((x: number, y: number) => x + y);
@@ -163,6 +148,7 @@ class F2 {
 
 // compose
 {
+    let double = (x: number): number => x + x;
     let limit10 = function(x: number): boolean {
         return x >= 10;
     };
@@ -189,6 +175,7 @@ class F2 {
 
 // pipe
 {
+    let double = (x: number): number => x + x;
     let shout = function(x: number): string {
         return x >= 10
             ? 'big'
@@ -252,6 +239,7 @@ class F2 {
 
 // useWith
 {
+    let double = (x: number): number => x + x;
     let square = function(x: number) { return x * x; };
     let add = function(a: number, b: number) { return a + b; };
     // Adds any number of arguments together
@@ -288,6 +276,7 @@ class F2 {
 
 // pipe
 {
+  let double = (x: number): number => x + x;
   let triple = function(x: number): number { return x * 3; };
   let square = function(x: number): number { return x * x; };
   let squareThenDoubleThenTriple = R.pipe(square, double, triple);
@@ -1073,6 +1062,7 @@ class F2 {
 
 // map
 {
+    let double = (x: number): number => x + x;
     let arrayify = <T>(v: T): T[] => [v];
     // homogeneous array
     // @dts-jest:skip number[]
@@ -1794,7 +1784,7 @@ class F2 {
 
 // keysIn
 {
-    let f = new F();
+    let f = {x: 'X', y: 'Y'};
     // @dts-jest
     R.keysIn(f); // => ['x', 'y']
 }
@@ -1866,7 +1856,7 @@ class F2 {
 
 // keysIn
 {
-    let f = new F();
+    let f = {x: 'X', y: 'Y'};
     // @dts-jest
     R.keysIn(f); // => ['x', 'y']
 }
@@ -2135,7 +2125,7 @@ class F2 {
 
 // toPairsIn
 {
-    let f = new F();
+    let f = {x: 'X', y: 'Y'};
     // @dts-jest:skip [string, string][]
     R.toPairsIn(f); // => [['x','X'], ['y','Y']]
     // @dts-jest:skip [string, string][]
@@ -2150,7 +2140,7 @@ class F2 {
 
 // valuesIn
 {
-    let f = new F();
+    let f = {x: 'X', y: 'Y'};
     // @dts-jest:skip string[]
     R.valuesIn(f); // => ['X', 'Y']
 }
@@ -2349,6 +2339,7 @@ class F2 {
     // @dts-jest
     f5(3, 4); // -(3^4) + 1
 
+    let double = (x: number): number => x + x;
     // test for type degeneration if the first function has generics
     // @dts-jest:skip (x0: number) => number
     R.compose(double, R.identity);
