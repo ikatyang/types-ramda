@@ -135,7 +135,7 @@ done
 - [ ] invertObj
 - [ ] invoker
 - [ ] is
-- [ ] isArrayLike
+- [x] isArrayLike
 - [ ] isEmpty
 - [ ] isNil
 - [ ] join

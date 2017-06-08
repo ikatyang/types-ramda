@@ -262,12 +262,6 @@ exports[`R.is(String, '') 1`] = `"boolean"`;
 
 exports[`R.is(String, 's') 1`] = `"boolean"`;
 
-exports[`R.isArrayLike('a') 1`] = `"boolean"`;
-
-exports[`R.isArrayLike([]) 1`] = `"boolean"`;
-
-exports[`R.isArrayLike([1,2,3]) 1`] = `"boolean"`;
-
 exports[`R.isEmpty('') 1`] = `"boolean"`;
 
 exports[`R.isEmpty([]) 1`] = `"boolean"`;
