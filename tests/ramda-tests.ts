@@ -81,7 +81,7 @@ class F2 {
 // curry
 () => {
     const addTwo = R.curry((x: number, y: number) => x + y);
-    // @dts-jest:show (v2: number) => number
+    // @dts-jest
     addTwo(3);
     // @dts-jest
     addTwo(3)(1);
@@ -90,11 +90,11 @@ class F2 {
     addThree(3, 2, 1);
     // @dts-jest
     addThree(3)(2)(1);
-    // @dts-jest:show (v3: number) => number
+    // @dts-jest
     addThree(3, 2);
-    // @dts-jest:show (v2: number) => number
+    // @dts-jest
     addThree(3)(2);
-    // @dts-jest:show CurriedFunction2<number, number, number>
+    // @dts-jest
     addThree(3);
 
     const xy = R.curry(<X,Y>(x: X, y: Y) => ({ x, y }));
@@ -127,11 +127,11 @@ class F2 {
     };
 
     const curriedFourNumbers = R.curry(addFourNumbers);
-    // @dts-jest:show CurriedFunction4<number, number, number, number, number>
+    // @dts-jest
     curriedFourNumbers;
-    // @dts-jest:show CurriedFunction3<number, number, number, number>
+    // @dts-jest
     curriedFourNumbers(1);
-    // @dts-jest:show CurriedFunction2<number, number, number>
+    // @dts-jest
     curriedFourNumbers(1)(2);
     // @dts-jest:show <T1,R>(v1: T1) => R
     curriedFourNumbers(1)(2)(3);
@@ -166,8 +166,9 @@ class F2 {
     R.binary(takesThreeArgs);
 
     let addTwoNumbers = function(a: number, b: number) { return a + b; };
-    // @dts-jest:show CurriedFunction2<number, number, number>
     let addTwoNumbersCurried = R.curry(addTwoNumbers);
+    // @dts-jest
+    addTwoNumbersCurried;
 
     let inc = addTwoNumbersCurried(1);
     // @dts-jest
