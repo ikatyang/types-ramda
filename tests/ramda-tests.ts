@@ -36,25 +36,25 @@ class F2 {
 
 // isArrayLike
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.isArrayLike('a');
-    // @dts-jest:show boolean
+    // @dts-jest
     R.isArrayLike([1,2,3]);
-    // @dts-jest:show boolean
+    // @dts-jest
     R.isArrayLike([]);
 };
 
 // propIs
 (() => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propIs(Number, 'x', {x: 1, y: 2});  // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propIs(Number, 'x')({x: 1, y: 2});  // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propIs(Number)('x', {x: 1, y: 2});  // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propIs(Number)('x')({x: 1, y: 2});  // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propIs(Number, 'x', {x: 'foo'});    // => false
     // $ExpectError Argument of type 'x' is not assignable to parameter of type 'never'.`, because 'x' is not in `{}`.
     R.propIs(Number, 'x', {});            // => false
@@ -62,19 +62,19 @@ class F2 {
 
 // type
 (() => {
-    // @dts-jest:show string
+    // @dts-jest
     R.type({}); // => 'Object'
-    // @dts-jest:show string
+    // @dts-jest
     R.type(1); // => 'Number'
-    // @dts-jest:show string
+    // @dts-jest
     R.type(false); // => 'Boolean'
-    // @dts-jest:show string
+    // @dts-jest
     R.type('s'); // => 'String'
-    // @dts-jest:show string
+    // @dts-jest
     R.type(null); // => 'Null'
-    // @dts-jest:show string
+    // @dts-jest
     R.type([]); // => 'Array'
-    // @dts-jest:show string
+    // @dts-jest
     R.type(/[A-z]/); // => 'RegExp'
 });
 
@@ -83,12 +83,12 @@ class F2 {
     const addTwo = R.curry((x: number, y: number) => x + y);
     // @dts-jest:show (v2: number) => number
     addTwo(3);
-    // @dts-jest:show number
+    // @dts-jest
     addTwo(3)(1);
     const addThree = R.curry((x: number, y: number, z: number) => x + y + z);
-    // @dts-jest:show number
+    // @dts-jest
     addThree(3, 2, 1);
-    // @dts-jest:show number
+    // @dts-jest
     addThree(3)(2)(1);
     // @dts-jest:show (v3: number) => number
     addThree(3, 2);
@@ -137,11 +137,11 @@ class F2 {
     curriedFourNumbers(1)(2)(3);
     // @dts-jest:show <T1,R>(v1: T1) => R
     curriedFourNumbers(1,2,4);
-    // @dts-jest:show number
+    // @dts-jest
     curriedFourNumbers(1)(2)(3)(4);
-    // @dts-jest:show number
+    // @dts-jest
     curriedFourNumbers(1,2)(3,4);
-    // @dts-jest:show number
+    // @dts-jest
     curriedFourNumbers(1,2,3)(4);
 
     // @dts-jest:show () => boolean
@@ -170,9 +170,9 @@ class F2 {
     let addTwoNumbersCurried = R.curry(addTwoNumbers);
 
     let inc = addTwoNumbersCurried(1);
-    // @dts-jest:show number
+    // @dts-jest
     inc(2);
-    // @dts-jest:show number
+    // @dts-jest
     addTwoNumbersCurried(2,3);
 };
 
@@ -180,7 +180,7 @@ class F2 {
 () => {
     const addFour = (a: number) => (b: number) => (c: number) => (d: number) => a + b + c + d;
     const uncurriedAddFour = R.uncurryN<number>(4, addFour);
-    // @dts-jest:show number
+    // @dts-jest
     uncurriedAddFour(1, 2, 3, 4); // => 10
 };
 
@@ -206,13 +206,13 @@ class F2 {
 () => {
     // @dts-jest:show (...args: string[])=>string
     R.unapply(JSON.stringify);
-    // @dts-jest:show string
+    // @dts-jest
     R.unapply(JSON.stringify)(1, 2, 3); // => '[1,2,3]'
 };
 
 // until
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.until(R.flip(R.gt)(100), R.multiply(2))(1); // => 128
 };
 
@@ -222,9 +222,9 @@ class F2 {
         R.propSatisfies(R.flip(R.gt)(10), 'length'),
         R.pipe(R.take(10), R.append('…'), R.join(''))
     );
-    // @dts-jest:show string
+    // @dts-jest
     truncate('12345');         // => '12345'
-    // @dts-jest:show string
+    // @dts-jest
     truncate('0123456789ABC'); // => '0123456789…'
 };
 
@@ -233,9 +233,9 @@ class F2 {
     let limit10 = function(x: number): boolean {
         return x >= 10;
     };
-    // @dts-jest:show (x0: number) => boolean
+    // @dts-jest
     R.compose(limit10, double);
-    // @dts-jest:show boolean
+    // @dts-jest
     R.compose(limit10, double)(10);
 
     const f0 = (s: string) => +s;      // string -> number
@@ -255,9 +255,9 @@ class F2 {
 
 /* pipe */
 () => {
-    // @dts-jest:show (x0: number) => string
+    // @dts-jest
     R.pipe(double, double, shout);
-    // @dts-jest:show string
+    // @dts-jest
     R.pipe(double, double, shout)(10);
 
     // @dts-jest:show string
@@ -268,7 +268,7 @@ class F2 {
     )(str);
 
     let f = R.pipe(Math.pow, R.negate, R.inc);
-    // @dts-jest:show number
+    // @dts-jest
     f(3, 4); // -(3^4) + 1
 
     // test for type degeneration if the first function has generics
@@ -278,7 +278,7 @@ class F2 {
 
 /* pipeP */
 () => {
-    // @dts-jest:show Promise<number>
+    // @dts-jest
     R.pipeP(
         (m: number) => Promise.resolve(R.multiply(2, m)),
         (m: number) => Promise.resolve(m / 2),
@@ -299,7 +299,7 @@ class F2 {
 // juxt
 (() => {
     const range = R.juxt([Math.min, Math.max]);
-    // @dts-jest:show number[]
+    // @dts-jest
     range(3, 4, 9, -3); // => [-3, 9]
 
     const chopped = R.juxt([R.head, R.last]);
@@ -326,7 +326,7 @@ class F2 {
   R.forEach(printXPlusFive, [1, 2, 3]);
   // @dts-jest:show Object[]
   R.clone([{},{},{}]);
-  // @dts-jest:show number[]
+  // @dts-jest
   R.clone([1,2,3]);
 })();
 
@@ -339,7 +339,7 @@ class F2 {
 // times
 (() => {
     let i = function(x: number) {return x;};
-    // @dts-jest:show number[]
+    // @dts-jest
     R.times(i, 5);
 })();
 
@@ -348,7 +348,7 @@ class F2 {
   let triple = function(x: number): number { return x * 3; };
   let square = function(x: number): number { return x * x; };
   let squareThenDoubleThenTriple = R.pipe(square, double, triple);
-  // @dts-jest:show number
+  // @dts-jest
   squareThenDoubleThenTriple(5); // => 150
 })();
 
@@ -356,7 +356,7 @@ class F2 {
 (() => {
     let multiply = function(a: number, b: number) { return a * b; };
     let double = R.partial(multiply, [2]);
-    // @dts-jest:show number
+    // @dts-jest
     double(2); // => 4
 
     let greet = function(salutation: string, title: string, firstName: string, lastName: string) {
@@ -364,11 +364,11 @@ class F2 {
     };
     let sayHello = R.partial(greet, ['Hello']);
     let sayHelloToMs = R.partial(sayHello, ['Ms.']);
-    // @dts-jest:show string
+    // @dts-jest
     sayHelloToMs('Jane', 'Jones'); // => 'Hello, Ms. Jane Jones!'
 
     let greetMsJaneJones = R.partialRight(greet, ['Ms.', 'Jane', 'Jones']);
-    // @dts-jest:show string
+    // @dts-jest
     greetMsJaneJones('Hello'); // => 'Hello, Ms. Jane Jones!'
 })();
 
@@ -381,23 +381,23 @@ class F2 {
     };
     let memoTrackedAdd = R.memoize(trackedAdd);
 
-    // @dts-jest:show number
+    // @dts-jest
     memoTrackedAdd(1, 2); // => 3
-    // @dts-jest:show number
+    // @dts-jest
     numberOfCalls;        // => 1
-    // @dts-jest:show number
+    // @dts-jest
     memoTrackedAdd(1, 2); // => 3
-    // @dts-jest:show number
+    // @dts-jest
     numberOfCalls;        // => 1
-    // @dts-jest:show number
+    // @dts-jest
     memoTrackedAdd(2, 3); // => 5
-    // @dts-jest:show number
+    // @dts-jest
     numberOfCalls;        // => 2
 
     // Note that argument order matters
-    // @dts-jest:show number
+    // @dts-jest
     memoTrackedAdd(2, 1); // => 3
-    // @dts-jest:show number
+    // @dts-jest
     numberOfCalls; // => 3
 })();
 
@@ -405,17 +405,17 @@ class F2 {
 (() => {
     let x: number;
     let addOneOnce = R.once(function(x: number){ return x + 1; });
-    // @dts-jest:show number
+    // @dts-jest
     addOneOnce(10); // => 11
-    // @dts-jest:show number
+    // @dts-jest
     addOneOnce(addOneOnce(50)); // => 11
 })();
 
 // match
 () => {
-    // @dts-jest:show string[]
+    // @dts-jest
     R.match(/([a-z]a)/g, 'bananas'); // => ['ba', 'na', 'na']
-    // @dts-jest:show string[]
+    // @dts-jest
     R.match(/a/, 'b'); // => []
     // $ExpectError Argument of type 'null' is not assignable to parameter of type 'string'.
     let sr = R.match(/a/, null); // error with strict null checks
@@ -427,14 +427,14 @@ class F2 {
     let add = function(a: number, b: number) {
         return a + b;
     };
-    // @dts-jest:show number
+    // @dts-jest
     R.reduce(add, 10, numbers); // => 16;
 })();
 
 // add
 (() => {
     let plus3 = R.add(3);
-    // @dts-jest:show number
+    // @dts-jest
     plus3(5);
 })();
 
@@ -452,11 +452,11 @@ class F2 {
 () => {
     let isOdd = (x: number, acc: number) => x % 2 === 1;
     let xs = [1, 3, 5, 60, 777, 800];
-    // @dts-jest:show number
+    // @dts-jest
     R.reduceWhile(isOdd, R.add, 0, xs); // => 9
 
     let ys = [2, 4, 6];
-    // @dts-jest:show number
+    // @dts-jest
     R.reduceWhile(isOdd, R.add, 111, ys); // => 111
 };
 
@@ -472,19 +472,19 @@ class F2 {
 
 // ap, of
 (() => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.ap([R.multiply(2), R.add(3)], [1,2,3]); // => [2, 4, 6, 4, 5, 6]
-    // @dts-jest:show number[][]
+    // @dts-jest
     R.of([1]); // => [[1]]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.of(1);
 });
 
 // empty
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.empty([1,2,3,4,5]); // => []
-    // @dts-jest:show number[]
+    // @dts-jest
     R.empty([1, 2, 3]);     // => []
     // @dts-jest:show string
     R.empty('unicorns');    // => ''
@@ -494,7 +494,7 @@ class F2 {
 
 // length
 (() => {
-    // @dts-jest:show number
+    // @dts-jest
     R.length([1, 2, 3]); // => 3
 });
 
@@ -505,7 +505,7 @@ class F2 {
     };
     const filterIndexed = R.addIndex(R.filter);
 
-    // @dts-jest:show number[]
+    // @dts-jest
     R.filter(isEven, [1, 2, 3, 4]); // => [2, 4]
 
     let lastTwo = function(val: number, idx: number, list: number[]) {
@@ -517,7 +517,7 @@ class F2 {
     let isOdd = function(n: number) {
       return n % 2 === 1;
     };
-    // @dts-jest:show number[]
+    // @dts-jest
     R.reject(isOdd, [1, 2, 3, 4]); // => [2, 4]
 });
 
@@ -526,9 +526,9 @@ class F2 {
     let isNotFour = function(x: number) {
       return !(x === 4);
     };
-    // @dts-jest:show number[]
+    // @dts-jest
     R.takeWhile(isNotFour, [1, 2, 3, 4]); // => [1, 2, 3]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.take(2, [1, 2, 3, 4]); // => [1, 2]
 });
 
@@ -551,10 +551,10 @@ class F2 {
     let mergeThree = function(a: number, b: number, c: number): number[] {
       return ([] as number[]).concat(a, b, c);  // strictNullChecks: must cast array to right type
     };
-    // @dts-jest:show number[]
+    // @dts-jest
     mergeThree(1, 2, 3); // => [1, 2, 3]
     let flipped = R.flip(mergeThree);
-    // @dts-jest:show number[]
+    // @dts-jest
     flipped(1, 2, 3); // => [2, 1, 3]
  };
 
@@ -566,9 +566,9 @@ class F2 {
 () => {
     let lessThan2 = R.flip(R.lt)(2);
     let lessThan3 = R.flip(R.lt)(3);
-    // @dts-jest:show boolean
+    // @dts-jest
     R.all(lessThan2)([1, 2]); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.all(lessThan3)([1, 2]); // => true
 };
 
@@ -576,9 +576,9 @@ class F2 {
 () => {
     let lessThan0 = R.flip(R.lt)(0);
     let lessThan2 = R.flip(R.lt)(2);
-    // @dts-jest:show boolean
+    // @dts-jest
     R.any(lessThan0)([1, 2]); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.any(lessThan2)([1, 2]); // => true
 };
 
@@ -604,23 +604,23 @@ class F2 {
 
 // aperture
 () => {
-    // @dts-jest:show number[][]
+    // @dts-jest
     R.aperture(2, [1, 2, 3, 4, 5]); // => [[1, 2], [2, 3], [3, 4], [4, 5]]
-    // @dts-jest:show number[][]
+    // @dts-jest
     R.aperture(3, [1, 2, 3, 4, 5]); // => [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
-    // @dts-jest:show number[][]
+    // @dts-jest
     R.aperture(7, [1, 2, 3, 4, 5]); // => []
-    // @dts-jest:show number[][]
+    // @dts-jest
     R.aperture(7)([1, 2, 3, 4, 5]); // => []
 };
 
 // append
 () => {
-    // @dts-jest:show string[]
+    // @dts-jest
     R.append('tests', ['write', 'more']); // => ['write', 'more', 'tests']
-    // @dts-jest:show string[]
+    // @dts-jest
     R.append('tests')(['write', 'more']); // => ['write', 'more', 'tests']
-    // @dts-jest:show string[]
+    // @dts-jest
     R.append('tests', []); // => ['tests']
     // @dts-jest:show Array<string[]|string>
     R.append<string, string[]>(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
@@ -637,9 +637,9 @@ class F2 {
     let duplicate = function(n: number) {
         return [n, n];
     };
-    // @dts-jest:show number[]
+    // @dts-jest
     R.chain(duplicate, [1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.chain(duplicate)([1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
     // @dts-jest:show number[]
     R.chain(R.append, R.head)([1, 2, 3]); // => [1, 2, 3, 1]
@@ -651,9 +651,9 @@ class F2 {
 () => {
     // @dts-jest:show number
     R.clamp(1, 10, -1); // => 1
-    // @dts-jest:show number
+    // @dts-jest
     R.clamp(1, 10)(11); // => 10
-    // @dts-jest:show number
+    // @dts-jest
     R.clamp(1)(10, 4);  // => 4
     // @dts-jest:show string
     R.clamp('a', 'd', 'e');  // => 'd'
@@ -662,26 +662,26 @@ class F2 {
 // concat
 () => {
     R.concat([], []); // => []   // let r: [] =
-    // @dts-jest:show number[]
+    // @dts-jest
     R.concat([4, 5, 6], [1, 2, 3]); // => [4, 5, 6, 1, 2, 3]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.concat([4, 5, 6])([1, 2, 3]); // => [4, 5, 6, 1, 2, 3]
-    // @dts-jest:show string
+    // @dts-jest
     R.concat('ABC')('DEF'); // 'ABCDEF'
 };
 
 // contains
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.contains(3)([1, 2, 3]); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.contains(3, [1, 2, 3]); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.contains(4)([1, 2, 3]); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.contains({})([{}, {}]); // => false
     let obj = {};
-    // @dts-jest:show boolean
+    // @dts-jest
     R.contains(obj)([{}, obj, {}]); // => true
 };
 
@@ -707,9 +707,9 @@ class F2 {
 
 // drop
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.drop(3, [1,2,3,4,5,6,7]); // => [4,5,6,7]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.drop(3)([1,2,3,4,5,6,7]); // => [4,5,6,7]
     // @dts-jest:show string
     R.drop(3, 'ramda'); // => 'ram'
@@ -719,9 +719,9 @@ class F2 {
 
 // dropLast
 (() => {
-    // @dts-jest:show string[]
+    // @dts-jest
     R.dropLast(1, ['foo', 'bar', 'baz']); // => ['foo', 'bar']
-    // @dts-jest:show string[]
+    // @dts-jest
     R.dropLast(2)(['foo', 'bar', 'baz']); // => ['foo']
     // @dts-jest:show string
     R.dropLast(3, 'ramda');               // => 'ra'
@@ -732,7 +732,7 @@ class F2 {
 // dropLastWhile
 (() => {
     let lteThree = (x: number) => x <= 3;
-    // @dts-jest:show number[]
+    // @dts-jest
     R.dropLastWhile(lteThree, [1, 2, 3, 4, 3, 2, 1]); // => [1, 2, 3, 4]
 });
 
@@ -741,9 +741,9 @@ class F2 {
     let lteTwo = function(x: number) {
         return x <= 2;
     };
-    // @dts-jest:show number[]
+    // @dts-jest
     R.dropWhile(lteTwo, [1, 2, 3, 4]); // => [3, 4]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.dropWhile(lteTwo)([1, 2, 3, 4]); // => [3, 4]
 };
 
@@ -753,7 +753,7 @@ class F2 {
         return n % 2 === 0;
     };
     // filter works with lists...
-    // @dts-jest:show number[]
+    // @dts-jest
     R.filter(isEven, [1, 2, 3, 4]); // => [2, 4]
     let isEvenFn = R.filter(isEven);
     isEvenFn([1, 2, 3, 4]);
@@ -763,7 +763,7 @@ class F2 {
     let isEvenFnObj = R.filter(isEven);
     // see that we did not break anything
     // and we kept type information
-    // @dts-jest:show number[]
+    // @dts-jest
     onlyNumberList(R.filter(isEven,[1,2,3,4]));
     // @dts-jest:show Dictionary<number>
     onlyNumberObj(R.filter(isEven, {a: 1, b: 2, c: 3, d: 4})); // strictNullChecks: Partial fails, consider Pick
@@ -807,12 +807,12 @@ class F2 {
     type Task = {a: number};
     let xs = [{a: 1}, {a: 2}, {a: 3}];
     const a: (list: Task[]) => number = R.findIndex(R.propEq('a', 2));
-    // @dts-jest:show number
+    // @dts-jest
     a(xs); // => 1
-    // @dts-jest:show number
+    // @dts-jest
     R.findIndex(R.propEq('a', 4))(xs); // => -1
 
-    // @dts-jest:show number
+    // @dts-jest
     R.findIndex((x: number) => x === 1, [1, 2, 3]);
 };
 
@@ -828,9 +828,9 @@ class F2 {
 // findLastIndex
 () => {
     let xs = [{a: 1, b: 0}, {a: 1, b: 1}];
-    // @dts-jest:show number
+    // @dts-jest
     R.findLastIndex(R.propEq('a', 1))(xs); // => 1
-    // @dts-jest:show number
+    // @dts-jest
     R.findLastIndex(R.propEq('a', 4))(xs); // => -1
     // @dts-jest:show number[]
     R.findLastIndex((x: number) => x === 1, [1, 2, 3]);
@@ -850,47 +850,47 @@ class F2 {
 // propEq
 () => {
     let xs: {[key: string]: string} = {a: '1', b: '0'};
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propEq('a', '1', xs);// => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propEq('a', '4', xs); // => false
 };
 () => {
     let xs: {[key: string]: number} = {a: 1, b: 0};
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propEq('a', 1, xs);// => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propEq('a', 4, xs); // => false
 };
 () => {
     let xs = {a: '1', b: '0'};
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propEq('a', '1', xs);// => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propEq('a', '4', xs); // => false
 };
 () => {
     let xs = {a: 1, b: 0};
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propEq('a', 1, xs);// => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propEq('a', 4, xs); // => false
 };
 interface Obj { a: number; b: number; };
 () => {
     let xs: Obj = {a: 1, b: 0};
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propEq('a', 1, xs);// => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propEq('a', 4, xs); // => false
 };
 
 // forEach
 () => {
     let printXPlusFive = function(x: number) { console.log(x + 5); };
-    // @dts-jest:show number[]
+    // @dts-jest
     R.forEach(printXPlusFive, [1, 2, 3]); // => [1, 2, 3]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.forEach(printXPlusFive)([1, 2, 3]); // => [1, 2, 3]
     // => 6
     // => 7
@@ -951,11 +951,11 @@ interface Obj { a: number; b: number; };
 
 // head
 () => {
-    // @dts-jest:show string
+    // @dts-jest
     R.head(['fi', 'fo', 'fum']); // => 'fi'
-    // @dts-jest:show number
+    // @dts-jest
     R.head([10, 'ten']); // => 10
-    // @dts-jest:show string
+    // @dts-jest
     R.head(['10', 10]); // => '10'
 };
 
@@ -972,51 +972,51 @@ interface Obj { a: number; b: number; };
 
 // indexOf
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.indexOf(3, [1,2,3,4]); // => 2
-    // @dts-jest:show number
+    // @dts-jest
     R.indexOf(10)([1,2,3,4]); // => -1
 };
 
 // init
 () => {
-    // @dts-jest:show string[]
+    // @dts-jest
     R.init(['fi', 'fo', 'fum']); // => ['fi', 'fo']
 };
 
 // insert
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.insert(2, 5, [1,2,3,4]); // => [1,2,5,3,4]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.insert(2)(5, [1,2,3,4]); // => [1,2,5,3,4]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.insert(2, 5)([1,2,3,4]); // => [1,2,5,3,4]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.insert(2)(5)([1,2,3,4]); // => [1,2,5,3,4]
 };
 
 // insertAll
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.insertAll(2, [10,11,12], [1,2,3,4]);
-    // @dts-jest:show number[]
+    // @dts-jest
     R.insertAll(2)([10,11,12], [1,2,3,4]);
-    // @dts-jest:show number[]
+    // @dts-jest
     R.insertAll(2, [10,11,12])([1,2,3,4]);
-    // @dts-jest:show number[]
+    // @dts-jest
     R.insertAll(2)([10,11,12])([1,2,3,4]);
 };
 
 // intersection
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.intersection([1,2,3,4], [7,6,5,4,3]); // => [4, 3]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.intersection([1,2,3,4])([7,6,5,4,3]); // => [4, 3]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.intersection([1,2,4], [1,2,3]); // => [1,2]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.intersection([1,2,4])([1,2,3]); // => [1,2]
 };
 
@@ -1073,9 +1073,9 @@ interface Obj { a: number; b: number; };
 // join
 () => {
     let spacer = R.join(' ');
-    // @dts-jest:show string
+    // @dts-jest
     spacer(['a', 2, 3.4]);   // => 'a 2 3.4'
-    // @dts-jest:show string
+    // @dts-jest
     R.join('|', [1, 2, 3]);    // => '1|2|3'
 };
 
@@ -1094,9 +1094,9 @@ interface Obj { a: number; b: number; };
 
 // length
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.length([]); // => 0
-    // @dts-jest:show number
+    // @dts-jest
     R.length([1, 2, 3]); // => 3
 };
 
@@ -1213,21 +1213,21 @@ interface Obj { a: number; b: number; };
     R.nth(1, list); // => 'bar'
     // @dts-jest:show string
     R.nth(-1, list); // => 'quux'
-    // @dts-jest:show undefined
+    // @dts-jest
     R.nth(-99, list); // => undefined
-    // @dts-jest:show undefined
+    // @dts-jest
     R.nth(-99)(list); // => undefined
 };
 
 // partition, contains
 () => {
-    // @dts-jest:show [string[], string[]]
+    // @dts-jest
     R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']);
-    // @dts-jest:show [string[], string[]]
+    // @dts-jest
     R.partition(R.contains('s'))(['sss', 'ttt', 'foo', 'bars']);
-    // @dts-jest:show [number[], number[]]
+    // @dts-jest
     R.partition((x: number) => x > 2, [1, 2, 3, 4]);
-    // @dts-jest:show [number[], number[]]
+    // @dts-jest
     R.partition((x: number) => x > 2)([1, 2, 3, 4]);
     // @dts-jest:show Object[]
     R.partition(R.contains('s'),{ a: 'sss', b: 'ttt', foo: 'bars' }); // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' }  ]
@@ -1235,7 +1235,7 @@ interface Obj { a: number; b: number; };
 
 // pluck
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.pluck('a', [{a: 1}, {a: 2}]); // => [1, 2]
     // @dts-jest:show number[]
     R.pluck(0, [[1, 2], [3, 4]]);   // => [1, 3]
@@ -1247,17 +1247,17 @@ interface Obj { a: number; b: number; };
 
 // prepend
 () => {
-    // @dts-jest:show string[]
+    // @dts-jest
     R.prepend('fee', ['fi', 'fo', 'fum']); // => ['fee', 'fi', 'fo', 'fum']
-    // @dts-jest:show string[]
+    // @dts-jest
     R.prepend('fee')(['fi', 'fo', 'fum']); // => ['fee', 'fi', 'fo', 'fum']
 };
 
 // range
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.range(1, 5);    // => [1, 2, 3, 4]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.range(50)(53);  // => [50, 51, 52]
 };
 
@@ -1267,11 +1267,11 @@ interface Obj { a: number; b: number; };
     let add = function(a: number, b: number) {
         return a + b;
     };
-    // @dts-jest:show number
+    // @dts-jest
     R.reduce(add, 10, numbers); // => 16
-    // @dts-jest:show number
+    // @dts-jest
     R.reduce(add)(10, numbers); // => 16
-    // @dts-jest:show number
+    // @dts-jest
     R.reduce(add, 10)(numbers); // => 16
 };
 
@@ -1339,10 +1339,10 @@ type Pair = KeyValuePair<string, number>;
     let isOdd = function(n: number) {
         return n % 2 === 1;
     };
-    // @dts-jest:show number[]
+    // @dts-jest
     R.reject(isOdd, [1, 2, 3, 4]); // => [2, 4]
     const a2 = R.reject(isOdd);
-    // @dts-jest:show number[]
+    // @dts-jest
     R.reject(isOdd)([1, 2, 3, 4]); // => [2, 4]
 };
 
@@ -1360,31 +1360,31 @@ type Pair = KeyValuePair<string, number>;
 
 // remove
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.remove(2, 3, [1,2,3,4,5,6,7,8]); // => [1,2,6,7,8]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.remove(2, 3)([1,2,3,4,5,6,7,8]); // => [1,2,6,7,8]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.remove(2)(3, [1,2,3,4,5,6,7,8]); // => [1,2,6,7,8]
 };
 
 // repeat
 () => {
-    // @dts-jest:show string[]
+    // @dts-jest
     R.repeat('hi', 5); // => ['hi', 'hi', 'hi', 'hi', 'hi']
     let obj = {};
     let repeatedObjs = R.repeat(obj, 5); // => [{}, {}, {}, {}, {}]
-    // @dts-jest:show boolean
+    // @dts-jest
     repeatedObjs[0] === repeatedObjs[1]; // => true
 };
 
 // reverse
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.reverse([1, 2, 3]);  // => [3, 2, 1]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.reverse([1, 2]);     // => [2, 1]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.reverse([1]);        // => [1]
     // @dts-jest:show number[]
     R.reverse([]);         // => []
@@ -1393,39 +1393,39 @@ type Pair = KeyValuePair<string, number>;
 // scan
 () => {
     let numbers = [1, 2, 3, 4];
-    // @dts-jest:show number[]
+    // @dts-jest
     R.scan(R.multiply, 1, numbers); // => [1, 1, 2, 6, 24]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.scan(R.multiply, 1)(numbers); // => [1, 1, 2, 6, 24]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.scan(R.multiply)(1, numbers); // => [1, 1, 2, 6, 24]
 };
 
 // slice
 () => {
     let xs = R.range(0, 10);
-    // @dts-jest:show number[]
+    // @dts-jest
     R.slice(2, 5, xs); // => [2, 3, 4]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.slice(2, 5)(xs); // => [2, 3, 4]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.slice(2)(5, xs); // => [2, 3, 4]
 
     let str = 'Hello World';
-    // @dts-jest:show string
+    // @dts-jest
     R.slice(2, 5, str); // => 'llo'
-    // @dts-jest:show string
+    // @dts-jest
     R.slice(2, 5)(str); // => 'llo'
-    // @dts-jest:show string
+    // @dts-jest
     R.slice(2)(5, str); // => 'llo'
 };
 
 // sort
 () => {
     let diff = function(a: number, b: number) { return a - b; };
-    // @dts-jest:show number[]
+    // @dts-jest
     R.sort(diff, [4,2,7,5]); // => [2, 4, 5, 7]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.sort(diff)([4,2,7,5]); // => [2, 4, 5, 7]
 };
 
@@ -1436,32 +1436,32 @@ type Pair = KeyValuePair<string, number>;
         [R.equals(100), R.always('water boils at 100°C')],
         [R.T,           (temp: number) => 'nothing special happens at ' + temp + '°C']
     ]);
-    // @dts-jest:show string
+    // @dts-jest
     fn(0); // => 'water freezes at 0°C'
-    // @dts-jest:show string
+    // @dts-jest
     fn(50); // => 'nothing special happens at 50°C'
-    // @dts-jest:show string
+    // @dts-jest
     fn(100); // => 'water boils at 100°C'
 };
 
 // tail
 () => {
-    // @dts-jest:show string[]
+    // @dts-jest
     R.tail(['fi', 'fo', 'fum']); // => ['fo', 'fum']
-    // @dts-jest:show number[]
+    // @dts-jest
     R.tail([1, 2, 3]); // => [2, 3]
 };
 
 // take
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.take(3,[1,2,3,4,5]); // => [1,2,3]
 
     let members= [ 'Paul Desmond','Bob Bates','Joe Dodge','Ron Crotty','Lloyd Davis','Joe Morello','Norman Bates',
     'Eugene Wright','Gerry Mulligan','Jack Six','Alan Dawson','Darius Brubeck','Chris Brubeck',
     'Dan Brubeck','Bobby Militello','Michael Moore','Randy Jones'];
     let takeFive = R.take(5);
-    // @dts-jest:show string[]
+    // @dts-jest
     takeFive(members); // => ['Paul Desmond','Bob Bates','Joe Dodge','Ron Crotty','Lloyd Davis']
 };
 () => {
@@ -1475,9 +1475,9 @@ type Pair = KeyValuePair<string, number>;
 
 // takeLast
 () => {
-    // @dts-jest:show string[]
+    // @dts-jest
     R.takeLast(1, ['foo', 'bar', 'baz']); // => ['baz']
-    // @dts-jest:show string[]
+    // @dts-jest
     R.takeLast(2)(['foo', 'bar', 'baz']); // => ['bar', 'baz']
     // @dts-jest:show string
     R.takeLast(3, 'ramda');               // => 'mda'
@@ -1488,9 +1488,9 @@ type Pair = KeyValuePair<string, number>;
 // takeLastWhile
 () => {
   const isNotOne = (x: number) => x !== 1;
-  // @dts-jest:show number[]
+  // @dts-jest
   R.takeLastWhile(isNotOne, [1, 2, 3, 4]); // => [2, 3, 4]
-  // @dts-jest:show number[]
+  // @dts-jest
   R.takeLastWhile(isNotOne)([1, 2, 3, 4]); // => [2, 3, 4]
 };
 
@@ -1499,32 +1499,32 @@ type Pair = KeyValuePair<string, number>;
     let isNotFour = function(x: number) {
         return !(x === 4);
     };
-    // @dts-jest:show number[]
+    // @dts-jest
     R.takeWhile(isNotFour, [1, 2, 3, 4]); // => [1, 2, 3]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.takeWhile(isNotFour)([1, 2, 3, 4]); // => [1, 2, 3]
 };
 
 // tap
 () => {
     const sayX = (x: number) => console.log('x is ' + x);
-    // @dts-jest:show number
+    // @dts-jest
     R.tap(sayX, 100); // => 100
 };
 
 // test
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.test(/^x/, 'xyz'); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.test(/^y/)('xyz'); // => false
 };
 
 // times
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.times(R.identity, 5); // => [0, 1, 2, 3, 4]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.times(R.identity)(5); // => [0, 1, 2, 3, 4]
 };
 
@@ -1539,17 +1539,17 @@ type Pair = KeyValuePair<string, number>;
           return 'new Point(' + this.x + ', ' + this.y + ')';
     }
     };
-    // @dts-jest:show string
+    // @dts-jest
     R.toString(new Point(1, 2)); // => 'new Point(1, 2)'
-    // @dts-jest:show string
+    // @dts-jest
     R.toString(42); // => '42'
-    // @dts-jest:show string
+    // @dts-jest
     R.toString('abc'); // => ''abc''
-    // @dts-jest:show string
+    // @dts-jest
     R.toString([1, 2, 3]); // => '[1, 2, 3]'
-    // @dts-jest:show string
+    // @dts-jest
     R.toString({foo: 1, bar: 2, baz: 3}); // => '{'bar': 2, 'baz': 3, 'foo': 1}'
-    // @dts-jest:show string
+    // @dts-jest
     R.toString(new Date('2001-02-03T04: 05: 06Z')); // => 'new Date('2001-02-03T04: 05: 06.000Z')'
 };
 
@@ -1581,24 +1581,24 @@ type Pair = KeyValuePair<string, number>;
 () => {
     // @dts-jest:show any[][]
     R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]); // => [[1, 2, 3], ['a', 'b', 'c']]
-    // @dts-jest:show any[][]
+    // @dts-jest
     R.transpose([[1, 2, 3], ['a', 'b', 'c']]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
-    // @dts-jest:show number[][]
+    // @dts-jest
     R.transpose([[10, 11], [20], [], [30, 31, 32]]); // => [[10, 20, 30], [11, 31], [32]]
 };
 
 // tryCatch
 () => {
     const x = R.prop('x');
-    // @dts-jest:show boolean
+    // @dts-jest
     R.tryCatch<boolean>(R.prop('x'), R.F)({x: true}); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.tryCatch<boolean>(R.prop('x'), R.F)(null);      // => false
 };
 
 // uniq
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.uniq([1, 1, 2, 1]); // => [1, 2]
     // @dts-jest:show Object[]
     R.uniq([{}, {}]);     // => [{}, {}]
@@ -1625,7 +1625,7 @@ type Pair = KeyValuePair<string, number>;
 () => {
     // @dts-jest:show boolean
     R.equals(R.unnest([1, [2], [[3]]]), [1,2,[3]]); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]),[1,2,3,4,5,6]); // => true
 };
 
@@ -1721,11 +1721,11 @@ type Pair = KeyValuePair<string, number>;
     R.clone(obj2);
     // @dts-jest:show Object
     R.clone({});
-    // @dts-jest:show 10
+    // @dts-jest
     R.clone(10);
-    // @dts-jest:show "foo"
+    // @dts-jest
     R.clone('foo');
-    // @dts-jest:show number
+    // @dts-jest
     R.clone(Date.now());
 };
 
@@ -1733,9 +1733,9 @@ type Pair = KeyValuePair<string, number>;
 () => {
     let o1 = { a: 1, b: 2, c: 3, d: 4 };
     let o2 = { a: 10, b: 20, c: 3, d: 40 };
-    // @dts-jest:show boolean
+    // @dts-jest
     R.eqProps('a', o1, o2); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.eqProps('c', o1, o2); // => true
     // @dts-jest:show {<T,U>(obj1: T, obj2: U): boolean}
     R.eqProps('c');
@@ -1760,20 +1760,20 @@ type Pair = KeyValuePair<string, number>;
 // has
 () => {
     const hasName = R.has('name');
-    // @dts-jest:show boolean
+    // @dts-jest
     hasName({name: 'alice'});   // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     hasName({name: 'bob'});     // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     hasName({});                // => false
 
     const point = {x: 0, y: 0};
     const pointHas = R.flip(R.has)(point);
-    // @dts-jest:show boolean
+    // @dts-jest
     pointHas('x');  // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     pointHas('y');  // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     pointHas('z');  // => false
 };
 
@@ -1789,11 +1789,11 @@ class Rectangle {
 };
 () => {
     let square = new Rectangle(2, 2);
-    // @dts-jest:show boolean
+    // @dts-jest
     R.hasIn('width', square);  // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.hasIn('area', square);  // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.flip(R.hasIn)(square)('area');  // => true
 };
 
@@ -1828,14 +1828,14 @@ class Rectangle {
 
 // keys
 () => {
-    // @dts-jest:show string[]
+    // @dts-jest
     R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
 };
 
 // keysIn
 () => {
     let f = new F();
-    // @dts-jest:show string[]
+    // @dts-jest
     R.keysIn(f); // => ['x', 'y']
 };
 
@@ -1900,14 +1900,14 @@ class Rectangle {
 
 // keys
 () => {
-    // @dts-jest:show string[]
+    // @dts-jest
     R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
 };
 
 // keysIn
 () => {
     let f = new F();
-    // @dts-jest:show string[]
+    // @dts-jest
     R.keysIn(f); // => ['x', 'y']
 };
 
@@ -2004,19 +2004,19 @@ class Rectangle {
 
 // pathSatisfies
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.pathSatisfies((a: any) => a === 'foo', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.pathSatisfies((a: any) => a === 'bar', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'], {a: {b: {c: 1}}}); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.pathSatisfies((a: any) => a !== 1, ['a', 'b', 'c'], {a: {b: {c: 2}}}); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'], {a: {b: {c: 1}}}); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'])({a: {b: {c: 1}}}); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'])({a: {b: {c: 1}}}); // => true
 };
 
@@ -2081,9 +2081,9 @@ class Rectangle {
 () => {
     R.pair('foo', 'bar'); // => ['foo', 'bar']
     let p = R.pair('foo', 1); // => ['foo', 'bar']
-    // @dts-jest:show string
+    // @dts-jest
     p[0];
-    // @dts-jest:show number
+    // @dts-jest
     p[1];
 };
 
@@ -2124,7 +2124,7 @@ class Rectangle {
 
 // prop
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.prop('x', {x: 100}); // => 100
     // $ExpectError Argument of type 'x' is not assignable to parameter of type 'never'.
     R.prop('x', {}); // => undefined
@@ -2147,29 +2147,29 @@ class Rectangle {
 
 // propSatisfies
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propSatisfies((x: number) => x > 0, 'x', {x: 1, y: 2}); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propSatisfies((x: number) => x > 0, 'x')({x: 1, y: 2}); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.propSatisfies((x: number) => x > 0)('x')({x: 1, y: 2}); // => true
 };
 
 // props
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.props(['x', 'y'], {x: 1, y: 2}); // => [1, 2]
     // @dts-jest:show Array<number|undefined>
     R.props(['c', 'a', 'b'], {b: 2, a: 1}); // => [undefined, 1, 2]
 
     let fullName = R.compose(R.join(' '), R.props(['first', 'last']));
-    // @dts-jest:show string
+    // @dts-jest
     fullName({last: 'Bullet-Tooth', age: 33, first: 'Tony'}); // => 'Tony Bullet-Tooth'
 };
 
 // toPairs
 () => {
-    // @dts-jest:show [string, number][]
+    // @dts-jest
     R.toPairs({a: 1, b: 2, c: 3}); // => [['a', 1], ['b', 2], ['c', 3]]
 };
 
@@ -2184,7 +2184,7 @@ class Rectangle {
 
 // values
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.values({a: 1, b: 2, c: 3}); // => [1, 2, 3]
 };
 
@@ -2198,13 +2198,13 @@ class Rectangle {
 // where
 () => {
     let spec = {x: 2};
-    // @dts-jest:show boolean
+    // @dts-jest
     R.where(spec, {w: 10, x: 2, y: 300}); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.where(spec, {x: 1, y: 'moo', z: true}); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.where(spec)({w: 10, x: 2, y: 300}); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.where(spec)({x: 1, y: 'moo', z: true}); // => false
 
     // There's no way to represent the below functionality in typescript
@@ -2212,9 +2212,9 @@ class Rectangle {
     // will need a work around.
 
     let spec2 = {x: function(val: number, obj: any) { return  val + obj.y > 10; }};
-    // @dts-jest:show boolean
+    // @dts-jest
     R.where(spec2, {x: 2, y: 7}); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.where(spec2, {x: 3, y: 8}); // => true
 
     let xs = [{x: 2, y: 1}, {x: 10, y: 2}, {x: 8, y: 3}, {x: 10, y: 4}];
@@ -2230,26 +2230,26 @@ class Rectangle {
     let pred = R.whereEq({a: 1, b: 2});
     // @dts-jest:show boolean
     pred({a: 1});              // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     pred({a: 1, b: 2});        // => true
     // @dts-jest:show boolean
     pred({a: 1, b: 2, c: 3});  // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     pred({a: 1, b: 1});        // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.whereEq({a: 'one'}, {a: 'one'}); // => true
 };
 
 // without
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.without([1, 2], [1, 2, 1, 3, 4]); // => [3, 4]
 };
 
 // mapIndexed, addIndex
 () => {
     let mapIndexed = R.addIndex<string,string>(R.map);
-    // @dts-jest:show string[]
+    // @dts-jest
     mapIndexed(function(val: string, idx: number) {return idx + '-' + val;})(['f', 'o', 'o', 'b', 'a', 'r']);
     // @dts-jest:show string[]
     R.mapIndexed(function(val: string, idx: number) {return idx + '-' + val;})(['f', 'o', 'o', 'b', 'a', 'r']);
@@ -2274,24 +2274,24 @@ class Rectangle {
 // always
 () => {
     let t = R.always('Tee');
-    // @dts-jest:show string
+    // @dts-jest
     t(); // => 'Tee'
 };
 
 // ap
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.ap([R.multiply(2), R.add(3)], [1,2,3]); // => [2, 4, 6, 4, 5, 6]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.ap([R.multiply(2), R.add(3)])([1,2,3]); // => [2, 4, 6, 4, 5, 6]
 };
 
 // apply
 () => {
     let nums = [1, 2, 3, -99, 42, 6, 7];
-    // @dts-jest:show number
+    // @dts-jest
     R.apply(Math.max, nums); // => 42
-    // @dts-jest:show number
+    // @dts-jest
     R.apply(Math.max)(nums); // => 42
 };
 
@@ -2310,13 +2310,13 @@ class Rectangle {
     let takesThreeArgs = function(a: number, b: number, c: number) {
         return [a, b, c];
     };
-    // @dts-jest:show number
+    // @dts-jest
     takesThreeArgs.length; // => 3
-    // @dts-jest:show number[]
+    // @dts-jest
     takesThreeArgs(1, 2, 3); // => [1, 2, 3]
 
     let takesTwoArgs = R.binary(takesThreeArgs);
-    // @dts-jest:show number
+    // @dts-jest
     takesTwoArgs.length; // => 2
     // Only 2 arguments are passed to the wrapped function
     // $ExpectError Supplied parameters do not match any signature of call target.
@@ -2326,7 +2326,7 @@ class Rectangle {
 // pipe, inc, negate
 () => {
     const f = R.pipe(Math.pow, R.negate, R.inc);
-    // @dts-jest:show number
+    // @dts-jest
     f(3, 4); // -(3^4) + 1
 };
 
@@ -2350,11 +2350,11 @@ class Rectangle {
     let subtract = function(a: number, b: number) { return a - b; };
 
     // ≅ multiply( add(1, 2), subtract(1, 2) );
-    // @dts-jest:show number
+    // @dts-jest
     R.converge(multiply, [ add, subtract ])(1, 2); // => -3
 
     let add3 = function(a: number, b: number, c: number) { return a + b + c; };
-    // @dts-jest:show number
+    // @dts-jest
     R.converge(add3, [ multiply, add, subtract ])(1, 2); // => 4
 };
 
@@ -2366,17 +2366,17 @@ class Rectangle {
     const f3 = R.compose(R.inc, R.inc, R.negate, Math.pow);
     const f4 = R.compose(R.inc, R.inc, R.inc, R.negate, Math.pow);
     const f5 = R.compose(R.inc, R.inc, R.inc, R.inc, R.negate, Math.pow);
-    // @dts-jest:show number
+    // @dts-jest
     f0(3, 4); // -(3^4) + 1
-    // @dts-jest:show number
+    // @dts-jest
     f1(3, 4); // -(3^4) + 1
-    // @dts-jest:show number
+    // @dts-jest
     f2(3, 4); // -(3^4) + 1
-    // @dts-jest:show number
+    // @dts-jest
     f3(3, 4); // -(3^4) + 1
-    // @dts-jest:show number
+    // @dts-jest
     f4(3, 4); // -(3^4) + 1
-    // @dts-jest:show number
+    // @dts-jest
     f5(3, 4); // -(3^4) + 1
 
     // test for type degeneration if the first function has generics
@@ -2390,7 +2390,7 @@ class Rectangle {
         return [a,b,c];
     };
     const gn = R.compose(R.length, fn);
-    // @dts-jest:show number
+    // @dts-jest
     gn('Hello', 4, 'world');
 };
 
@@ -2430,9 +2430,9 @@ class Rectangle {
 
 // difference
 () => {
-    // @dts-jest:show number[]
+    // @dts-jest
     R.difference([1,2,3,4], [7,6,5,4,3]); // => [1,2]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.difference([7,6,5,4,3], [1,2,3,4]); // => [7,6,5]
 };
 
@@ -2451,16 +2451,16 @@ class Rectangle {
 
 // equals
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.equals(1, 1);     // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.equals('2', '1'); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.equals([1, 2, 3], [1, 2, 3]); // => true
 
     let a: any = {}; a.v = a;
     let b: any = {}; b.v = b;
-    // @dts-jest:show boolean
+    // @dts-jest
     R.equals(a, b); // => true
 };
 
@@ -2468,34 +2468,34 @@ class Rectangle {
 () => {
     const a1 = R.identity(1); // => 1
     let obj = {};
-    // @dts-jest:show number[]
+    // @dts-jest
     R.identity([1,2,3]);
-    // @dts-jest:show string[]
+    // @dts-jest
     R.identity(['a','b','c']);
-    // @dts-jest:show boolean
+    // @dts-jest
     R.identity(obj) === obj; // => true
 };
 
 // identical
 () => {
     let o = {};
-    // @dts-jest:show boolean
+    // @dts-jest
     R.identical(o, o); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.identical(1, 1); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.identical('2', '1'); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.identical([], []); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.identical(0, -0); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.identical(NaN, NaN); // => true
 };
 
 // path
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.path(['a', 'b'], {a: {b: 2}}); // => 2
     // @dts-jest:show number
     R.path(['a', 'b'])({a: {b: 2}}); // => 2
@@ -2558,77 +2558,77 @@ class Rectangle {
 
 // splitAt
 () => {
-    // @dts-jest:show number[][]
+    // @dts-jest
     R.splitAt(1, [1, 2, 3]);        // => [[1], [2, 3]]
-    // @dts-jest:show number[][]
+    // @dts-jest
     R.splitAt(1)([1, 2, 3]);        // => [[1], [2, 3]]
-    // @dts-jest:show string[]
+    // @dts-jest
     R.splitAt(5, 'hello world');    // => ['hello', ' world']
-    // @dts-jest:show string[]
+    // @dts-jest
     R.splitAt(-1, 'foobar');        // => ['fooba', 'r']
 };
 
 // splitWhen
 () => {
-  // @dts-jest:show number[][]
+  // @dts-jest
   R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]);   // => [[1], [2, 3, 1, 2, 3]]
-  // @dts-jest:show number[][]
+  // @dts-jest
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]);   // => [[1], [2, 3, 1, 2, 3]]
 };
 
 // add
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.add(2, 3);       // =>  5
-    // @dts-jest:show number
+    // @dts-jest
     R.add(7)(10);      // => 17
 };
 
 // dec
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.dec(42); // => 41
 };
 
 // divide
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.divide(71, 100); // => 0.71
 
     let half = R.flip(R.divide)(2);
-    // @dts-jest:show number
+    // @dts-jest
     half(42); // => 21
 
     let reciprocal = R.divide(1);
-    // @dts-jest:show number
+    // @dts-jest
     reciprocal(4);   // => 0.25
 };
 
 // gt
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.gt(2, 6); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.gt(2, 0); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.gt(2, 2); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.flip(R.gt)(2)(10); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.gt(2)(10); // => false
 };
 
 // gte
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.gte(2, 6); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.gte(2, 0); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.gte(2, 2); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.flip(R.gte)(2)(10); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.gte(2)(10); // => false
 };
 
@@ -2644,55 +2644,55 @@ class Rectangle {
 
 // lt
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.lt(2, 6); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.lt(2, 0); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.lt(2, 2); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.lt(5)(10); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.flip(R.lt)(5)(10); // => false // right-sectioned currying
 };
 
 // lte
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.lte(2, 6); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.lte(2, 0); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.lte(2, 2); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.flip(R.lte)(2)(1); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.lte(2)(10); // => true
 };
 
 // mathMod
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.mathMod(-17, 5);  // => 3
-    // @dts-jest:show number
+    // @dts-jest
     R.mathMod(17, 5);   // => 2
-    // @dts-jest:show number
+    // @dts-jest
     R.mathMod(17, -5);  // => NaN
-    // @dts-jest:show number
+    // @dts-jest
     R.mathMod(17, 0);   // => NaN
-    // @dts-jest:show number
+    // @dts-jest
     R.mathMod(17.2, 5); // => NaN
-    // @dts-jest:show number
+    // @dts-jest
     R.mathMod(17, 5.3); // => NaN
 
     let clock = R.flip(R.mathMod)(12);
-    // @dts-jest:show number
+    // @dts-jest
     clock(15); // => 3
-    // @dts-jest:show number
+    // @dts-jest
     clock(24); // => 0
 
     let seventeenMod = R.mathMod(17);
-    // @dts-jest:show number
+    // @dts-jest
     seventeenMod(3);  // => 2
 };
 
@@ -2712,11 +2712,11 @@ class Rectangle {
     let c = {x: 3};
     let d = {x: 'a'};
     let e = {x: 'z'};
-    // @dts-jest:show { x: number; }
+    // @dts-jest
     R.maxBy(cmp, a, c); // => {x: 3}
-    // @dts-jest:show { x: number; }
+    // @dts-jest
     R.maxBy(cmp)(a, c); // => {x: 3}
-    // @dts-jest:show { x: number; }
+    // @dts-jest
     R.maxBy(cmp)(a)(b);
     // $ExpectError Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'
     R.maxBy(cmp)(d)(e);
@@ -2724,17 +2724,17 @@ class Rectangle {
 
 // mean
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.mean([2, 7, 9]); // => 6
-    // @dts-jest:show number
+    // @dts-jest
     R.mean([]); // => NaN
 };
 
 // median
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.median([7, 2, 10, 9]); // => 8
-    // @dts-jest:show number
+    // @dts-jest
     R.median([]); // => NaN
 };
 
@@ -2766,18 +2766,18 @@ class Rectangle {
 
 // modulo
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.modulo(17, 3); // => 2
     // JS behavior:
-    // @dts-jest:show number
+    // @dts-jest
     R.modulo(-17, 3); // => -2
-    // @dts-jest:show number
+    // @dts-jest
     R.modulo(17, -3); // => 2
 
     let isOdd = R.flip(R.modulo)(2);
-    // @dts-jest:show number
+    // @dts-jest
     isOdd(42); // => 0
-    // @dts-jest:show number
+    // @dts-jest
     isOdd(21); // => 1
 };
 
@@ -2785,53 +2785,53 @@ class Rectangle {
 () => {
     let double = R.multiply(2);
     let triple = R.multiply(3);
-    // @dts-jest:show number
+    // @dts-jest
     double(3);       // =>  6
-    // @dts-jest:show number
+    // @dts-jest
     triple(4);       // => 12
-    // @dts-jest:show number
+    // @dts-jest
     R.multiply(2, 5);  // => 10
 };
 
 // negate
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.negate(42); // => -42
 };
 
 // product
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.product([2,4,6,8,100,1]); // => 38400
 };
 
 // subtract
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.subtract(10, 8); // => 2
 
     let minus5 = R.flip(R.subtract)(5);
-    // @dts-jest:show number
+    // @dts-jest
     minus5(17); // => 12
 
     let complementaryAngle = R.subtract(90);
-    // @dts-jest:show number
+    // @dts-jest
     complementaryAngle(30); // => 60
-    // @dts-jest:show number
+    // @dts-jest
     complementaryAngle(72); // => 18
 };
 
 // sum
 () => {
-    // @dts-jest:show number
+    // @dts-jest
     R.sum([2,4,6,8,100,1]); // => 121
 };
 
 // symmetricDifference
 () => {
-  // @dts-jest:show number[]
+  // @dts-jest
   R.symmetricDifference([1,2,3,4], [7,6,5,4,3]); // => [1,2,7,6,5]
-  // @dts-jest:show number[]
+  // @dts-jest
   R.symmetricDifference([7,6,5,4,3])([1,2,3,4]); // => [7,6,5,1,2]
 };
 
@@ -2854,21 +2854,21 @@ class Rectangle {
 
 // replace
 () => {
-    // @dts-jest:show string
+    // @dts-jest
     R.replace('foo', 'bar', 'foo foo foo'); // => 'bar foo foo'
-    // @dts-jest:show string
+    // @dts-jest
     R.replace('foo', 'bar')('foo foo foo'); // => 'bar foo foo'
-    // @dts-jest:show string
+    // @dts-jest
     R.replace('foo')('bar')('foo foo foo'); // => 'bar foo foo'
-    // @dts-jest:show string
+    // @dts-jest
     R.replace(/foo/, 'bar', 'foo foo foo'); // => 'bar foo foo'
 
     // Use the 'g' (global) flag to replace all occurrences:
-    // @dts-jest:show string
+    // @dts-jest
     R.replace(/foo/g, 'bar', 'foo foo foo'); // => 'bar bar bar'
-    // @dts-jest:show string
+    // @dts-jest
     R.replace(/foo/g, 'bar')('foo foo foo'); // => 'bar bar bar'
-    // @dts-jest:show string
+    // @dts-jest
     R.replace(/foo/g)('bar')('foo foo foo'); // => 'bar bar bar'
 };
 
@@ -2877,37 +2877,37 @@ class Rectangle {
  */
 
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(Object, {}); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(Object)({}); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(Number, 1); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(Number)(1); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(Object, 1); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(Object)(1); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(String, 's'); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(String)('s'); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(String, ''); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(String)(''); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(Object, new Object()); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(Object)(new Object()); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(Object, 's'); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(Object)('s'); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(Number, {}); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.is(Number)({}); // => false
 };
 
@@ -2920,15 +2920,15 @@ class Rectangle {
     let gt10 = function(x: number) { return x > 10; };
     let even = function(x: number) { return x % 2 === 0;};
     let f = R.allPass([gt10, even]);
-    // @dts-jest:show boolean
+    // @dts-jest
     f(11); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     f(12); // => true
 };
 
 // and
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.and(false, true); // => false
     // @dts-jest:show number
     R.and(0, []); // => 0
@@ -2954,11 +2954,11 @@ class Rectangle {
     let gt10 = function(x: number) { return x > 10; };
     let even = function(x: number) { return x % 2 === 0;};
     let f = R.anyPass([gt10, even]);
-    // @dts-jest:show boolean
+    // @dts-jest
     f(11); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     f(8); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     f(9); // => false
 };
 
@@ -2968,9 +2968,9 @@ class Rectangle {
     let even = function(x: number) { return x % 2 === 0; };
     let f = R.both(gt10, even);
     let g = R.both(gt10)(even);
-    // @dts-jest:show boolean
+    // @dts-jest
     f(100); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     f(101); // => false
 };
 
@@ -2978,19 +2978,19 @@ class Rectangle {
 () => {
     let isEven = function(n: number) { return n % 2 === 0; };
     let isOdd = R.complement(isEven);
-    // @dts-jest:show boolean
+    // @dts-jest
     isOdd(21); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     isOdd(42); // => false
 };
 
 // eqBy
 (() => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.eqBy(Math.abs, 5, -5); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.eqBy(Math.abs)(5, -5); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.eqBy(Math.abs, 5)(-5); // => true
 });
 
@@ -3011,9 +3011,9 @@ class Rectangle {
     let even = function(x: number) { return x % 2 === 0; };
     let f = R.either(gt10, even);
     let g = R.either(gt10)(even);
-    // @dts-jest:show boolean
+    // @dts-jest
     f(101); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     f(8); // => true
 };
 
@@ -3030,29 +3030,29 @@ class Rectangle {
 
 // isEmpty
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.isEmpty([1, 2, 3]); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.isEmpty([]); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.isEmpty(''); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.isEmpty(null); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.isEmpty({}); // =>true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.isEmpty({a: 1}); // => false
 };
 
 // not
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.not(true); // => false
-    // @dts-jest:show boolean
+    // @dts-jest
     R.not(false); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.not(0); // => true
-    // @dts-jest:show boolean
+    // @dts-jest
     R.not(1); // => false
 };
 
@@ -3068,7 +3068,7 @@ class Why {
 
 // or
 () => {
-    // @dts-jest:show boolean
+    // @dts-jest
     R.or(false, true); // => false
     // @dts-jest:show number|any[]
     R.or(0, []); // => []
@@ -3085,11 +3085,11 @@ class Why {
 
 // intersperse
 () => {
-    // @dts-jest:show string[]
+    // @dts-jest
     R.intersperse(',', ['foo', 'bar']); // => ['foo', ',', 'bar']
-    // @dts-jest:show number[]
+    // @dts-jest
     R.intersperse(0, [1, 2]); // => [1, 0, 2]
-    // @dts-jest:show number[]
+    // @dts-jest
     R.intersperse(0, [1]); // => [1]
 };
 
@@ -3116,7 +3116,7 @@ class Why {
         [0, 1],
         [1, 0]
     ];
-    // @dts-jest:show number[]
+    // @dts-jest
     filterMatrix(1, b); // --> [1, 1]
 
     // compiles
@@ -3153,7 +3153,7 @@ class Why {
         R.map((letter: string) => ([ letter ]))
     )('dave');
 
-    // @dts-jest:show number
+    // @dts-jest
     R.pipe(
         R.prop<string>('name'),
         R.length
@@ -3270,10 +3270,10 @@ class Why {
 
     // also can't reason backward:
     let compF2 = R.compose(R.inc, R.identity);  // : (v: {}) => number
-    // @dts-jest:show number
+    // @dts-jest
     compF2('foo');      // uh-oh, passes
     let pipeF2 = R.pipe   (R.identity, R.inc);  // : (v: {}) => number
-    // @dts-jest:show number
+    // @dts-jest
     pipeF2('foo');      // uh-oh, passes
 };
 
@@ -3310,7 +3310,7 @@ class Why {
 
 () => {
   // #119: path
-  // @dts-jest:show number
+  // @dts-jest
   R.path(['a', 'b', 'c'], {a: {b: {c: 2}}});
   // @dts-jest:show null
   R.path(['a', 'b', 'c'], {a: {b: 2}});   // still fails
