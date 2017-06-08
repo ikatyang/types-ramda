@@ -204,7 +204,7 @@ done
 - [ ] project
 - [ ] prop
 - [ ] propEq
-- [ ] propIs
+- [x] propIs
 - [ ] propOr
 - [ ] props
 - [ ] propSatisfies

@@ -34,22 +34,6 @@ class F2 {
     z() {};
 }
 
-// propIs
-(() => {
-    // @dts-jest
-    R.propIs(Number, 'x', {x: 1, y: 2});  // => true
-    // @dts-jest
-    R.propIs(Number, 'x')({x: 1, y: 2});  // => true
-    // @dts-jest
-    R.propIs(Number)('x', {x: 1, y: 2});  // => true
-    // @dts-jest
-    R.propIs(Number)('x')({x: 1, y: 2});  // => true
-    // @dts-jest
-    R.propIs(Number, 'x', {x: 'foo'});    // => false
-    // @dts-jest:show Argument of type 'x' is not assignable to parameter of type 'never'.`, because 'x' is not in `{}`.
-    R.propIs(Number, 'x', {});            // => false
-});
-
 // type
 (() => {
     // @dts-jest

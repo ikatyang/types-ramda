@@ -435,16 +435,6 @@ exports[`R.propEq('a', 4, xs) 2`] = `"boolean"`;
 
 exports[`R.propEq('a', 4, xs) 3`] = `"boolean"`;
 
-exports[`R.propIs(Number)('x')({x: 1, y: 2}) 1`] = `"boolean"`;
-
-exports[`R.propIs(Number)('x', {x: 1, y: 2}) 1`] = `"boolean"`;
-
-exports[`R.propIs(Number, 'x')({x: 1, y: 2}) 1`] = `"boolean"`;
-
-exports[`R.propIs(Number, 'x', {x: 'foo'}) 1`] = `"boolean"`;
-
-exports[`R.propIs(Number, 'x', {x: 1, y: 2}) 1`] = `"boolean"`;
-
 exports[`R.propSatisfies((x: number) => x > 0)('x')({x: 1, y: 2}) 1`] = `"boolean"`;
 
 exports[`R.propSatisfies((x: number) => x > 0, 'x')({x: 1, y: 2}) 1`] = `"boolean"`;
