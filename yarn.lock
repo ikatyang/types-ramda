@@ -827,9 +827,9 @@ dts-element@2.0.3:
   dependencies:
     typescript "^2.4.0-dev.20170524"
 
-dts-jest@20.0.3:
-  version "20.0.3"
-  resolved "https://registry.yarnpkg.com/dts-jest/-/dts-jest-20.0.3.tgz#b882b71d98c59f3541817c48c8aa62d873061d6f"
+dts-jest@20.0.4:
+  version "20.0.4"
+  resolved "https://registry.yarnpkg.com/dts-jest/-/dts-jest-20.0.4.tgz#685b58c7c74189a7a916054c74b47f4e157dd892"
   dependencies:
     express "^4.15.3"
     jest-cli "^20.0.4"
@@ -3527,11 +3527,7 @@ tsconfig@^6.0.0:
     strip-bom "^3.0.0"
     strip-json-comments "^2.0.0"
 
-tslib@^1.0.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.7.0.tgz#6e8366695f72961252b35167b0dd4fbeeafba491"
-
-tslib@^1.7.1:
+tslib@^1.0.0, tslib@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.7.1.tgz#bc8004164691923a79fe8378bbeb3da2017538ec"
 
