@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.prepend('fee')(['fi', 'fo', 'fum']) 1`] = `"string[]"`;
+
+exports[`R.prepend('fee', ['fi', 'fo', 'fum']) 1`] = `"string[]"`;

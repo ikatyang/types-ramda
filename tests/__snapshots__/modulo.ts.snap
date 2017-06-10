@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.modulo(-17, 3) 1`] = `"number"`;
+
+exports[`R.modulo(17, -3) 1`] = `"number"`;
+
+exports[`R.modulo(17, 3) 1`] = `"number"`;
+
+exports[`isOdd(21) 1`] = `"number"`;
+
+exports[`isOdd(42) 1`] = `"number"`;

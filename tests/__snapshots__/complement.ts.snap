@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`isOdd(21) 1`] = `"boolean"`;
+
+exports[`isOdd(42) 1`] = `"boolean"`;

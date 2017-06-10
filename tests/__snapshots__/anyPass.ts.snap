@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`f(8) 1`] = `"boolean"`;
+
+exports[`f(9) 1`] = `"boolean"`;
+
+exports[`f(11) 1`] = `"boolean"`;

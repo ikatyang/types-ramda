@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.identical('2', '1') 1`] = `"boolean"`;
+
+exports[`R.identical([], []) 1`] = `"boolean"`;
+
+exports[`R.identical(0, -0) 1`] = `"boolean"`;
+
+exports[`R.identical(1, 1) 1`] = `"boolean"`;
+
+exports[`R.identical(NaN, NaN) 1`] = `"boolean"`;
+
+exports[`R.identical(o, o) 1`] = `"boolean"`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.tryCatch<boolean>(R.prop('x'), R.F)({x: true}) 1`] = `"boolean"`;
+
+exports[`R.tryCatch<boolean>(R.prop('x'), R.F)(null) 1`] = `"boolean"`;

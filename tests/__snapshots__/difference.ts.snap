@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.difference([1,2,3,4], [7,6,5,4,3]) 1`] = `"number[]"`;
+
+exports[`R.difference([7,6,5,4,3], [1,2,3,4]) 1`] = `"number[]"`;

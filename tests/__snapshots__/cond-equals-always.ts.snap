@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fn(0) 1`] = `"string"`;
+
+exports[`fn(50) 1`] = `"string"`;
+
+exports[`fn(100) 1`] = `"string"`;

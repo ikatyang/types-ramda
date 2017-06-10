@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.converge(add3, [ multiply, add, subtract ])(1, 2) 1`] = `"number"`;
+
+exports[`R.converge(multiply, [ add, subtract ])(1, 2) 1`] = `"number"`;

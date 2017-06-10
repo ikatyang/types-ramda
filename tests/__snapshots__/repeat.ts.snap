@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.repeat('hi', 5) 1`] = `"string[]"`;
+
+exports[`repeatedObjs[0] === repeatedObjs[1] 1`] = `"boolean"`;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.head(['10', 10]) 1`] = `"string"`;
+
+exports[`R.head(['fi', 'fo', 'fum']) 1`] = `"string"`;
+
+exports[`R.head([10, 'ten']) 1`] = `"number"`;

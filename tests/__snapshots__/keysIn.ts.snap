@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.keysIn(f) 1`] = `"string[]"`;
+
+exports[`R.keysIn(f) 2`] = `"string[]"`;

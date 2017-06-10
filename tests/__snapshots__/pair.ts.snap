@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p[0] 1`] = `"string"`;
+
+exports[`p[1] 1`] = `"number"`;

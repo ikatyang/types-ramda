@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.isEmpty('') 1`] = `"boolean"`;
+
+exports[`R.isEmpty([]) 1`] = `"boolean"`;
+
+exports[`R.isEmpty([1, 2, 3]) 1`] = `"boolean"`;
+
+exports[`R.isEmpty({}) 1`] = `"boolean"`;
+
+exports[`R.isEmpty({a: 1}) 1`] = `"boolean"`;
+
+exports[`R.isEmpty(null) 1`] = `"boolean"`;

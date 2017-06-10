@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.not(0) 1`] = `"boolean"`;
+
+exports[`R.not(1) 1`] = `"boolean"`;
+
+exports[`R.not(false) 1`] = `"boolean"`;
+
+exports[`R.not(true) 1`] = `"boolean"`;

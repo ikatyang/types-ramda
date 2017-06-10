@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.tail(['fi', 'fo', 'fum']) 1`] = `"string[]"`;
+
+exports[`R.tail([1, 2, 3]) 1`] = `"number[]"`;

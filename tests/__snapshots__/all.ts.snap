@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.all(lessThan2)([1, 2]) 1`] = `"boolean"`;
+
+exports[`R.all(lessThan3)([1, 2]) 1`] = `"boolean"`;

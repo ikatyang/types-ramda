@@ -128,23 +128,7 @@ import * as R from 'ramda';
     R.unapply(JSON.stringify)(1, 2, 3); // => '[1,2,3]'
 }
 
-// until
-{
-    // @dts-jest
-    R.until(R.flip(R.gt)(100), R.multiply(2))(1); // => 128
-}
 
-// propSatisfies
-{
-    const truncate = R.when(
-        R.propSatisfies(R.flip(R.gt)(10), 'length'),
-        R.pipe(R.take(10), R.append('…'), R.join(''))
-    );
-    // @dts-jest
-    truncate('12345');         // => '12345'
-    // @dts-jest
-    truncate('0123456789ABC'); // => '0123456789…'
-}
 
 // compose
 {
@@ -203,15 +187,6 @@ import * as R from 'ramda';
     R.pipe(R.identity, double);
 }
 
-// pipeP
-{
-    // @dts-jest
-    R.pipeP(
-        (m: number) => Promise.resolve(R.multiply(2, m)),
-        (m: number) => Promise.resolve(m / 2),
-        R.multiply(2)
-    )(10);
-}
 
 // pipeK
 {
@@ -267,81 +242,10 @@ import * as R from 'ramda';
 //   R.forEach.idx(printXPlusFive, [{name: 1}, {name: 2}, {name: 3}]);
 // })();
 
-// times
-{
-    let i = function(x: number) {return x;};
-    // @dts-jest
-    R.times(i, 5);
-}
 
-// pipe
-{
-  let double = (x: number): number => x + x;
-  let triple = function(x: number): number { return x * 3; };
-  let square = function(x: number): number { return x * x; };
-  let squareThenDoubleThenTriple = R.pipe(square, double, triple);
-  // @dts-jest
-  squareThenDoubleThenTriple(5); // => 150
-}
 
-// partial
-{
-    let multiply = function(a: number, b: number) { return a * b; };
-    let double = R.partial(multiply, [2]);
-    // @dts-jest
-    double(2); // => 4
 
-    let greet = function(salutation: string, title: string, firstName: string, lastName: string) {
-      return salutation + ', ' + title + ' ' + firstName + ' ' + lastName + '!';
-    };
-    let sayHello = R.partial(greet, ['Hello']);
-    let sayHelloToMs = R.partial(sayHello, ['Ms.']);
-    // @dts-jest
-    sayHelloToMs('Jane', 'Jones'); // => 'Hello, Ms. Jane Jones!'
 
-    let greetMsJaneJones = R.partialRight(greet, ['Ms.', 'Jane', 'Jones']);
-    // @dts-jest
-    greetMsJaneJones('Hello'); // => 'Hello, Ms. Jane Jones!'
-}
-
-// memoize
-{
-    let numberOfCalls = 0;
-    let trackedAdd = function(a: number, b: number) {
-      numberOfCalls += 1;
-      return a + b;
-    };
-    let memoTrackedAdd = R.memoize(trackedAdd);
-
-    // @dts-jest
-    memoTrackedAdd(1, 2); // => 3
-    // @dts-jest
-    numberOfCalls;        // => 1
-    // @dts-jest
-    memoTrackedAdd(1, 2); // => 3
-    // @dts-jest
-    numberOfCalls;        // => 1
-    // @dts-jest
-    memoTrackedAdd(2, 3); // => 5
-    // @dts-jest
-    numberOfCalls;        // => 2
-
-    // Note that argument order matters
-    // @dts-jest
-    memoTrackedAdd(2, 1); // => 3
-    // @dts-jest
-    numberOfCalls; // => 3
-}
-
-// once
-{
-    let x: number;
-    let addOneOnce = R.once(function(x: number){ return x + 1; });
-    // @dts-jest
-    addOneOnce(10); // => 11
-    // @dts-jest
-    addOneOnce(addOneOnce(50)); // => 11
-}
 
 // match
 {
@@ -353,22 +257,7 @@ import * as R from 'ramda';
     R.match(/a/, null); // error with strict null checks
 }
 
-// reduce
-{
-    let numbers = [1, 2, 3];
-    let add = function(a: number, b: number) {
-        return a + b;
-    };
-    // @dts-jest
-    R.reduce(add, 10, numbers); // => 16;
-}
 
-// add
-{
-    let plus3 = R.add(3);
-    // @dts-jest
-    plus3(5);
-}
 
 // reduceRight
 {
@@ -380,17 +269,6 @@ import * as R from 'ramda';
     R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 }
 
-// reduceWhile
-{
-    let isOdd = (x: number, acc: number) => x % 2 === 1;
-    let xs = [1, 3, 5, 60, 777, 800];
-    // @dts-jest
-    R.reduceWhile(isOdd, R.add, 0, xs); // => 9
-
-    let ys = [2, 4, 6];
-    // @dts-jest
-    R.reduceWhile(isOdd, R.add, 111, ys); // => 111
-}
 
 // mapObjIndexed
 {
@@ -402,15 +280,6 @@ import * as R from 'ramda';
     R.mapObjIndexed(prependKeyAndDouble, values); // => { x: 'x2', y: 'y4', z: 'z6' }
 }
 
-// ap, of
-{
-    // @dts-jest
-    R.ap([R.multiply(2), R.add(3)], [1,2,3]); // => [2, 4, 6, 4, 5, 6]
-    // @dts-jest
-    R.of([1]); // => [[1]]
-    // @dts-jest
-    R.of(1);
-}
 
 // empty
 {
@@ -424,11 +293,6 @@ import * as R from 'ramda';
     R.empty({x: 1, y: 2});  // => {}
 }
 
-// length
-{
-    // @dts-jest
-    R.length([1, 2, 3]); // => 3
-}
 
 // addIndex, filter, reject
 {
@@ -453,16 +317,6 @@ import * as R from 'ramda';
     R.reject(isOdd, [1, 2, 3, 4]); // => [2, 4]
 }
 
-// take, takeWhile
-{
-    let isNotFour = function(x: number) {
-      return !(x === 4);
-    };
-    // @dts-jest
-    R.takeWhile(isNotFour, [1, 2, 3, 4]); // => [1, 2, 3]
-    // @dts-jest
-    R.take(2, [1, 2, 3, 4]); // => [1, 2]
-}
 
 // unfold
 {
@@ -478,41 +332,12 @@ import * as R from 'ramda';
  * Function category
  */
 
-// flip
-{
-    let mergeThree = function(a: number, b: number, c: number): number[] {
-      return ([] as number[]).concat(a, b, c);  // strictNullChecks: must cast array to right type
-    };
-    // @dts-jest
-    mergeThree(1, 2, 3); // => [1, 2, 3]
-    let flipped = R.flip(mergeThree);
-    // @dts-jest
-    flipped(1, 2, 3); // => [2, 1, 3]
-}
 
 /*********************
  * List category
  ********************/
 
-// all
-{
-    let lessThan2 = R.flip(R.lt)(2);
-    let lessThan3 = R.flip(R.lt)(3);
-    // @dts-jest
-    R.all(lessThan2)([1, 2]); // => false
-    // @dts-jest
-    R.all(lessThan3)([1, 2]); // => true
-}
 
-// any
-{
-    let lessThan0 = R.flip(R.lt)(0);
-    let lessThan2 = R.flip(R.lt)(2);
-    // @dts-jest
-    R.any(lessThan0)([1, 2]); // => false
-    // @dts-jest
-    R.any(lessThan2)([1, 2]); // => true
-}
 
 // ascend
 {
@@ -534,17 +359,6 @@ import * as R from 'ramda';
   R.sort(byAge, people);
 }
 
-// aperture
-{
-    // @dts-jest
-    R.aperture(2, [1, 2, 3, 4, 5]); // => [[1, 2], [2, 3], [3, 4], [4, 5]]
-    // @dts-jest
-    R.aperture(3, [1, 2, 3, 4, 5]); // => [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
-    // @dts-jest
-    R.aperture(7, [1, 2, 3, 4, 5]); // => []
-    // @dts-jest
-    R.aperture(7)([1, 2, 3, 4, 5]); // => []
-}
 
 // append
 {
@@ -591,31 +405,7 @@ import * as R from 'ramda';
     R.clamp('a', 'd', 'e');  // => 'd'
 }
 
-// concat
-{
-    R.concat([], []); // => []   // let r: [] =
-    // @dts-jest
-    R.concat([4, 5, 6], [1, 2, 3]); // => [4, 5, 6, 1, 2, 3]
-    // @dts-jest
-    R.concat([4, 5, 6])([1, 2, 3]); // => [4, 5, 6, 1, 2, 3]
-    // @dts-jest
-    R.concat('ABC')('DEF'); // 'ABCDEF'
-}
 
-// contains
-{
-    // @dts-jest
-    R.contains(3)([1, 2, 3]); // => true
-    // @dts-jest
-    R.contains(3, [1, 2, 3]); // => true
-    // @dts-jest
-    R.contains(4)([1, 2, 3]); // => false
-    // @dts-jest
-    R.contains({})([{}, {}]); // => false
-    let obj = {};
-    // @dts-jest
-    R.contains(obj)([{}, obj, {}]); // => true
-}
 
 // descend
 {
@@ -661,23 +451,7 @@ import * as R from 'ramda';
     R.dropLast(3)('ramda');               // => 'ra'
 }
 
-// dropLastWhile
-{
-    let lteThree = (x: number) => x <= 3;
-    // @dts-jest
-    R.dropLastWhile(lteThree, [1, 2, 3, 4, 3, 2, 1]); // => [1, 2, 3, 4]
-}
 
-// dropWhile
-{
-    let lteTwo = function(x: number) {
-        return x <= 2;
-    };
-    // @dts-jest
-    R.dropWhile(lteTwo, [1, 2, 3, 4]); // => [3, 4]
-    // @dts-jest
-    R.dropWhile(lteTwo)([1, 2, 3, 4]); // => [3, 4]
-}
 
 // filter
 {
@@ -745,19 +519,6 @@ import * as R from 'ramda';
     f(tasks); // works
 }
 
-// findIndex
-{
-    type Task = {a: number};
-    let xs = [{a: 1}, {a: 2}, {a: 3}];
-    const a: (list: Task[]) => number = R.findIndex(R.propEq('a', 2));
-    // @dts-jest
-    a(xs); // => 1
-    // @dts-jest
-    R.findIndex(R.propEq('a', 4))(xs); // => -1
-
-    // @dts-jest
-    R.findIndex((x: number) => x === 1, [1, 2, 3]);
-}
 
 // findLast
 {
@@ -790,57 +551,7 @@ import * as R from 'ramda';
     R.filter(isFamous, users); // => [ user1 ]
 }
 
-// propEq
-{
-  {
-      let xs: {[key: string]: string} = {a: '1', b: '0'};
-      // @dts-jest
-      R.propEq('a', '1', xs);// => true
-      // @dts-jest
-      R.propEq('a', '4', xs); // => false
-  }
-  {
-      let xs: {[key: string]: number} = {a: 1, b: 0};
-      // @dts-jest
-      R.propEq('a', 1, xs);// => true
-      // @dts-jest
-      R.propEq('a', 4, xs); // => false
-  }
-  {
-      let xs = {a: '1', b: '0'};
-      // @dts-jest
-      R.propEq('a', '1', xs);// => true
-      // @dts-jest
-      R.propEq('a', '4', xs); // => false
-  }
-  {
-      let xs = {a: 1, b: 0};
-      // @dts-jest
-      R.propEq('a', 1, xs);// => true
-      // @dts-jest
-      R.propEq('a', 4, xs); // => false
-  }
-  {
-      interface Obj { a: number; b: number; };
-      let xs: Obj = {a: 1, b: 0};
-      // @dts-jest
-      R.propEq('a', 1, xs);// => true
-      // @dts-jest
-      R.propEq('a', 4, xs); // => false
-  }
-}
 
-// forEach
-{
-    let printXPlusFive = function(x: number) { console.log(x + 5); };
-    // @dts-jest
-    R.forEach(printXPlusFive, [1, 2, 3]); // => [1, 2, 3]
-    // @dts-jest
-    R.forEach(printXPlusFive)([1, 2, 3]); // => [1, 2, 3]
-    // => 6
-    // => 7
-    // => 8
-}
 
 // forEach
 {
@@ -894,15 +605,6 @@ import * as R from 'ramda';
     // ['ae', 'st', 'iou']
 }
 
-// head
-{
-    // @dts-jest
-    R.head(['fi', 'fo', 'fum']); // => 'fi'
-    // @dts-jest
-    R.head([10, 'ten']); // => 10
-    // @dts-jest
-    R.head(['10', 10]); // => '10'
-}
 
 // indexBy
 {
@@ -915,55 +617,10 @@ import * as R from 'ramda';
     R.indexBy<{id: string}>(R.prop('id'))(list);
 }
 
-// indexOf
-{
-    // @dts-jest
-    R.indexOf(3, [1,2,3,4]); // => 2
-    // @dts-jest
-    R.indexOf(10)([1,2,3,4]); // => -1
-}
 
-// init
-{
-    // @dts-jest
-    R.init(['fi', 'fo', 'fum']); // => ['fi', 'fo']
-}
 
-// insert
-{
-    // @dts-jest
-    R.insert(2, 5, [1,2,3,4]); // => [1,2,5,3,4]
-    // @dts-jest
-    R.insert(2)(5, [1,2,3,4]); // => [1,2,5,3,4]
-    // @dts-jest
-    R.insert(2, 5)([1,2,3,4]); // => [1,2,5,3,4]
-    // @dts-jest
-    R.insert(2)(5)([1,2,3,4]); // => [1,2,5,3,4]
-}
 
-// insertAll
-{
-    // @dts-jest
-    R.insertAll(2, [10,11,12], [1,2,3,4]);
-    // @dts-jest
-    R.insertAll(2)([10,11,12], [1,2,3,4]);
-    // @dts-jest
-    R.insertAll(2, [10,11,12])([1,2,3,4]);
-    // @dts-jest
-    R.insertAll(2)([10,11,12])([1,2,3,4]);
-}
 
-// intersection
-{
-    // @dts-jest
-    R.intersection([1,2,3,4], [7,6,5,4,3]); // => [4, 3]
-    // @dts-jest
-    R.intersection([1,2,3,4])([7,6,5,4,3]); // => [4, 3]
-    // @dts-jest
-    R.intersection([1,2,4], [1,2,3]); // => [1,2]
-    // @dts-jest
-    R.intersection([1,2,4])([1,2,3]); // => [1,2]
-}
 
 // intersectionWith
 {
@@ -1015,14 +672,6 @@ import * as R from 'ramda';
     intoArray(transducer)(numbers); // => [2, 3]
 }
 
-// join
-{
-    let spacer = R.join(' ');
-    // @dts-jest
-    spacer(['a', 2, 3.4]);   // => 'a 2 3.4'
-    // @dts-jest
-    R.join('|', [1, 2, 3]);    // => '1|2|3'
-}
 
 // last
 {
@@ -1037,13 +686,6 @@ import * as R from 'ramda';
     R.lastIndexOf(10)([1,2,3,4]); // => -1
 }
 
-// length
-{
-    // @dts-jest
-    R.length([]); // => 0
-    // @dts-jest
-    R.length([1, 2, 3]); // => 3
-}
 
 // lensIndex, set, view, over
 {
@@ -1191,35 +833,8 @@ import * as R from 'ramda';
     R.pluck(0)([[1, 2], [3, 4]]);   // => [1, 3]
 }
 
-// prepend
-{
-    // @dts-jest
-    R.prepend('fee', ['fi', 'fo', 'fum']); // => ['fee', 'fi', 'fo', 'fum']
-    // @dts-jest
-    R.prepend('fee')(['fi', 'fo', 'fum']); // => ['fee', 'fi', 'fo', 'fum']
-}
 
-// range
-{
-    // @dts-jest
-    R.range(1, 5);    // => [1, 2, 3, 4]
-    // @dts-jest
-    R.range(50)(53);  // => [50, 51, 52]
-}
 
-// reduce
-{
-    let numbers = [1, 2, 3];
-    let add = function(a: number, b: number) {
-        return a + b;
-    };
-    // @dts-jest
-    R.reduce(add, 10, numbers); // => 16
-    // @dts-jest
-    R.reduce(add)(10, numbers); // => 16
-    // @dts-jest
-    R.reduce(add, 10)(numbers); // => 16
-}
 
 // reduceBy
 {
@@ -1280,17 +895,6 @@ import * as R from 'ramda';
     R.reduceRight(flattenPairs)([], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 }
 
-// reject
-{
-    let isOdd = function(n: number) {
-        return n % 2 === 1;
-    };
-    // @dts-jest
-    R.reject(isOdd, [1, 2, 3, 4]); // => [2, 4]
-    const a2 = R.reject(isOdd);
-    // @dts-jest
-    R.reject(isOdd)([1, 2, 3, 4]); // => [2, 4]
-}
 
 // rejectIndexed
 {
@@ -1304,25 +908,7 @@ import * as R from 'ramda';
     rejectIndexed(lastTwo)([8, 6, 7, 5, 3, 0, 9]); // => [8, 6, 7, 5, 3]
 }
 
-// remove
-{
-    // @dts-jest
-    R.remove(2, 3, [1,2,3,4,5,6,7,8]); // => [1,2,6,7,8]
-    // @dts-jest
-    R.remove(2, 3)([1,2,3,4,5,6,7,8]); // => [1,2,6,7,8]
-    // @dts-jest
-    R.remove(2)(3, [1,2,3,4,5,6,7,8]); // => [1,2,6,7,8]
-}
 
-// repeat
-{
-    // @dts-jest
-    R.repeat('hi', 5); // => ['hi', 'hi', 'hi', 'hi', 'hi']
-    let obj = {};
-    let repeatedObjs = R.repeat(obj, 5); // => [{}, {}, {}, {}, {}]
-    // @dts-jest
-    repeatedObjs[0] === repeatedObjs[1]; // => true
-}
 
 // reverse
 {
@@ -1336,67 +922,10 @@ import * as R from 'ramda';
     R.reverse([]);         // => []
 }
 
-// scan
-{
-    let numbers = [1, 2, 3, 4];
-    // @dts-jest
-    R.scan(R.multiply, 1, numbers); // => [1, 1, 2, 6, 24]
-    // @dts-jest
-    R.scan(R.multiply, 1)(numbers); // => [1, 1, 2, 6, 24]
-    // @dts-jest
-    R.scan(R.multiply)(1, numbers); // => [1, 1, 2, 6, 24]
-}
 
-// slice
-{
-    let xs = R.range(0, 10);
-    // @dts-jest
-    R.slice(2, 5, xs); // => [2, 3, 4]
-    // @dts-jest
-    R.slice(2, 5)(xs); // => [2, 3, 4]
-    // @dts-jest
-    R.slice(2)(5, xs); // => [2, 3, 4]
 
-    let str = 'Hello World';
-    // @dts-jest
-    R.slice(2, 5, str); // => 'llo'
-    // @dts-jest
-    R.slice(2, 5)(str); // => 'llo'
-    // @dts-jest
-    R.slice(2)(5, str); // => 'llo'
-}
 
-// sort
-{
-    let diff = function(a: number, b: number) { return a - b; };
-    // @dts-jest
-    R.sort(diff, [4,2,7,5]); // => [2, 4, 5, 7]
-    // @dts-jest
-    R.sort(diff)([4,2,7,5]); // => [2, 4, 5, 7]
-}
 
-// cond, equals, always
-{
-    const fn = R.cond([
-        [R.equals(0),   R.always('water freezes at 0°C')],
-        [R.equals(100), R.always('water boils at 100°C')],
-        [R.T,           (temp: number) => 'nothing special happens at ' + temp + '°C']
-    ]);
-    // @dts-jest
-    fn(0); // => 'water freezes at 0°C'
-    // @dts-jest
-    fn(50); // => 'nothing special happens at 50°C'
-    // @dts-jest
-    fn(100); // => 'water boils at 100°C'
-}
-
-// tail
-{
-    // @dts-jest
-    R.tail(['fi', 'fo', 'fum']); // => ['fo', 'fum']
-    // @dts-jest
-    R.tail([1, 2, 3]); // => [2, 3]
-}
 
 // take
 {
@@ -1433,73 +962,11 @@ import * as R from 'ramda';
     R.takeLast(3)('ramda');               // => 'mda'
 }
 
-// takeLastWhile
-{
-  const isNotOne = (x: number) => x !== 1;
-  // @dts-jest
-  R.takeLastWhile(isNotOne, [1, 2, 3, 4]); // => [2, 3, 4]
-  // @dts-jest
-  R.takeLastWhile(isNotOne)([1, 2, 3, 4]); // => [2, 3, 4]
-}
 
-// takeWhile
-{
-    let isNotFour = function(x: number) {
-        return !(x === 4);
-    };
-    // @dts-jest
-    R.takeWhile(isNotFour, [1, 2, 3, 4]); // => [1, 2, 3]
-    // @dts-jest
-    R.takeWhile(isNotFour)([1, 2, 3, 4]); // => [1, 2, 3]
-}
 
-// tap
-{
-    const sayX = (x: number) => console.log('x is ' + x);
-    // @dts-jest
-    R.tap(sayX, 100); // => 100
-}
 
-// test
-{
-    // @dts-jest
-    R.test(/^x/, 'xyz'); // => true
-    // @dts-jest
-    R.test(/^y/)('xyz'); // => false
-}
 
-// times
-{
-    // @dts-jest
-    R.times(R.identity, 5); // => [0, 1, 2, 3, 4]
-    // @dts-jest
-    R.times(R.identity)(5); // => [0, 1, 2, 3, 4]
-}
 
-// toString
-{
-    class Point {
-      constructor(public x: number, public y: number) {
-          this.x = x;
-          this.y = y;
-      }
-      toStringn() {
-            return 'new Point(' + this.x + ', ' + this.y + ')';
-      }
-    };
-    // @dts-jest
-    R.toString(new Point(1, 2)); // => 'new Point(1, 2)'
-    // @dts-jest
-    R.toString(42); // => '42'
-    // @dts-jest
-    R.toString('abc'); // => ''abc''
-    // @dts-jest
-    R.toString([1, 2, 3]); // => '[1, 2, 3]'
-    // @dts-jest
-    R.toString({foo: 1, bar: 2, baz: 3}); // => '{'bar': 2, 'baz': 3, 'foo': 1}'
-    // @dts-jest
-    R.toString(new Date('2001-02-03T04: 05: 06Z')); // => 'new Date('2001-02-03T04: 05: 06.000Z')'
-}
 
 // transduce
 {
@@ -1535,14 +1002,6 @@ import * as R from 'ramda';
     R.transpose([[10, 11], [20], [], [30, 31, 32]]); // => [[10, 20, 30], [11, 31], [32]]
 }
 
-// tryCatch
-{
-    const x = R.prop('x');
-    // @dts-jest
-    R.tryCatch<boolean>(R.prop('x'), R.F)({x: true}); // => true
-    // @dts-jest
-    R.tryCatch<boolean>(R.prop('x'), R.F)(null);      // => false
-}
 
 // uniq
 {
@@ -1707,45 +1166,7 @@ import * as R from 'ramda';
     b;
 }
 
-// has
-{
-    const hasName = R.has('name');
-    // @dts-jest
-    hasName({name: 'alice'});   // => true
-    // @dts-jest
-    hasName({name: 'bob'});     // => true
-    // @dts-jest
-    hasName({});                // => false
 
-    const point = {x: 0, y: 0};
-    const pointHas = R.flip(R.has)(point);
-    // @dts-jest
-    pointHas('x');  // => true
-    // @dts-jest
-    pointHas('y');  // => true
-    // @dts-jest
-    pointHas('z');  // => false
-}
-
-// hasIn
-{
-    class Rectangle {
-        constructor(public width: number, public height: number) {
-            this.width = width;
-            this.height = height;
-        }
-        area(): number {
-            return this.width * this.height;
-        }
-    }
-    let square = new Rectangle(2, 2);
-    // @dts-jest
-    R.hasIn('width', square);  // => true
-    // @dts-jest
-    R.hasIn('area', square);  // => true
-    // @dts-jest
-    R.flip(R.hasIn)(square)('area');  // => true
-}
 
 // invert
 {
@@ -1776,18 +1197,7 @@ import * as R from 'ramda';
     // => { 'alice': '0', 'jake': '1' }
 }
 
-// keys
-{
-    // @dts-jest
-    R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
-}
 
-// keysIn
-{
-    let f = {x: 'X', y: 'Y'};
-    // @dts-jest
-    R.keysIn(f); // => ['x', 'y']
-}
 
 // lens
 {
@@ -1848,18 +1258,7 @@ import * as R from 'ramda';
   R.over(xyLens, R.negate, {x: {y: 2, z: 3}});  // => {x: {y: -2, z: 3}}
 }
 
-// keys
-{
-    // @dts-jest
-    R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
-}
 
-// keysIn
-{
-    let f = {x: 'X', y: 'Y'};
-    // @dts-jest
-    R.keysIn(f); // => ['x', 'y']
-}
 
 // lens
 {
@@ -1952,23 +1351,6 @@ import * as R from 'ramda';
     R.pathOr({c: 2})(['a', 'b'], {c: {b: 2}}); // => 'N/A'
 }
 
-// pathSatisfies
-{
-    // @dts-jest
-    R.pathSatisfies((a: any) => a === 'foo', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}); // => true
-    // @dts-jest
-    R.pathSatisfies((a: any) => a === 'bar', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}); // => false
-    // @dts-jest
-    R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'], {a: {b: {c: 1}}}); // => true
-    // @dts-jest
-    R.pathSatisfies((a: any) => a !== 1, ['a', 'b', 'c'], {a: {b: {c: 2}}}); // => true
-    // @dts-jest
-    R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'], {a: {b: {c: 1}}}); // => true
-    // @dts-jest
-    R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'])({a: {b: {c: 1}}}); // => true
-    // @dts-jest
-    R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'])({a: {b: {c: 1}}}); // => true
-}
 
 // pickBy
 {
@@ -2027,15 +1409,6 @@ import * as R from 'ramda';
     R.fromPairs([['a', 1], ['b', 2],  ['c', 3]]); // => {a: 1, b: 2, c: 3}
 }
 
-// pair
-{
-    R.pair('foo', 'bar'); // => ['foo', 'bar']
-    let p = R.pair('foo', 1); // => ['foo', 'bar']
-    // @dts-jest
-    p[0];
-    // @dts-jest
-    p[1];
-}
 
 // over, lensIndex
 {
@@ -2095,15 +1468,6 @@ import * as R from 'ramda';
     favoriteWithDefault(alice);  // => 'Ramda'
 }
 
-// propSatisfies
-{
-    // @dts-jest
-    R.propSatisfies((x: number) => x > 0, 'x', {x: 1, y: 2}); // => true
-    // @dts-jest
-    R.propSatisfies((x: number) => x > 0, 'x')({x: 1, y: 2}); // => true
-    // @dts-jest
-    R.propSatisfies((x: number) => x > 0)('x')({x: 1, y: 2}); // => true
-}
 
 // props
 {
@@ -2117,11 +1481,6 @@ import * as R from 'ramda';
     fullName({last: 'Bullet-Tooth', age: 33, first: 'Tony'}); // => 'Tony Bullet-Tooth'
 }
 
-// toPairs
-{
-    // @dts-jest
-    R.toPairs({a: 1, b: 2, c: 3}); // => [['a', 1], ['b', 2], ['c', 3]]
-}
 
 // toPairsIn
 {
@@ -2132,11 +1491,6 @@ import * as R from 'ramda';
     R.toPairsIn(f); // => [['x','X'], ['y','Y']]
 }
 
-// values
-{
-    // @dts-jest
-    R.values({a: 1, b: 2, c: 3}); // => [1, 2, 3]
-}
 
 // valuesIn
 {
@@ -2191,11 +1545,6 @@ import * as R from 'ramda';
     R.whereEq({a: 'one'}, {a: 'one'}); // => true
 }
 
-// without
-{
-    // @dts-jest
-    R.without([1, 2], [1, 2, 1, 3, 4]); // => [3, 4]
-}
 
 // mapIndexed, addIndex
 {
@@ -2231,29 +1580,8 @@ import * as R from 'ramda';
     // => ['0-f,1-o,2-o,3-b,4-a,5-r']
 }
 
-// always
-{
-    let t = R.always('Tee');
-    // @dts-jest
-    t(); // => 'Tee'
-}
 
-// ap
-{
-    // @dts-jest
-    R.ap([R.multiply(2), R.add(3)], [1,2,3]); // => [2, 4, 6, 4, 5, 6]
-    // @dts-jest
-    R.ap([R.multiply(2), R.add(3)])([1,2,3]); // => [2, 4, 6, 4, 5, 6]
-}
 
-// apply
-{
-    let nums = [1, 2, 3, -99, 42, 6, 7];
-    // @dts-jest
-    R.apply(Math.max, nums); // => 42
-    // @dts-jest
-    R.apply(Math.max)(nums); // => 42
-}
 
 // applySpec
 {
@@ -2283,12 +1611,6 @@ import * as R from 'ramda';
     takesTwoArgs(1, 2, 3); // => [1, 2, undefined]
 }
 
-// pipe, inc, negate
-{
-    const f = R.pipe(Math.pow, R.negate, R.inc);
-    // @dts-jest
-    f(3, 4); // -(3^4) + 1
-}
 
 // comparator
 {
@@ -2303,20 +1625,6 @@ import * as R from 'ramda';
     R.sort(cmp, people);
 }
 
-// converge
-{
-    let add = function(a: number, b: number) { return a + b; };
-    let multiply = function(a: number, b: number) { return a * b; };
-    let subtract = function(a: number, b: number) { return a - b; };
-
-    // ≅ multiply( add(1, 2), subtract(1, 2) );
-    // @dts-jest
-    R.converge(multiply, [ add, subtract ])(1, 2); // => -3
-
-    let add3 = function(a: number, b: number, c: number) { return a + b + c; };
-    // @dts-jest
-    R.converge(add3, [ multiply, add, subtract ])(1, 2); // => 4
-}
 
 // compose
 {
@@ -2345,15 +1653,6 @@ import * as R from 'ramda';
     R.compose(double, R.identity);
 }
 
-// compose
-{
-    const fn = function(a: string, b: number, c: string) {
-        return [a,b,c];
-    };
-    const gn = R.compose(R.length, fn);
-    // @dts-jest
-    gn('Hello', 4, 'world');
-}
 
 // composeP
 {
@@ -2395,13 +1694,6 @@ import * as R from 'ramda';
     R.countBy(R.toLower)(letters);   // => {'a': 5, 'b': 4, 'c': 3}
 }
 
-// difference
-{
-    // @dts-jest
-    R.difference([1,2,3,4], [7,6,5,4,3]); // => [1,2]
-    // @dts-jest
-    R.difference([7,6,5,4,3], [1,2,3,4]); // => [7,6,5]
-}
 
 // differenceWith
 {
@@ -2416,49 +1708,8 @@ import * as R from 'ramda';
     R.differenceWith(cmp)(l1)(l2); // => [{a: 1}, {a: 2}]
 }
 
-// equals
-{
-    // @dts-jest
-    R.equals(1, 1);     // => true
-    // @dts-jest
-    R.equals('2', '1'); // => false
-    // @dts-jest
-    R.equals([1, 2, 3], [1, 2, 3]); // => true
 
-    let a: any = {}; a.v = a;
-    let b: any = {}; b.v = b;
-    // @dts-jest
-    R.equals(a, b); // => true
-}
 
-// identity
-{
-    const a1 = R.identity(1); // => 1
-    let obj = {};
-    // @dts-jest
-    R.identity([1,2,3]);
-    // @dts-jest
-    R.identity(['a','b','c']);
-    // @dts-jest
-    R.identity(obj) === obj; // => true
-}
-
-// identical
-{
-    let o = {};
-    // @dts-jest
-    R.identical(o, o); // => true
-    // @dts-jest
-    R.identical(1, 1); // => true
-    // @dts-jest
-    R.identical('2', '1'); // => false
-    // @dts-jest
-    R.identical([], []); // => false
-    // @dts-jest
-    R.identical(0, -0); // => false
-    // @dts-jest
-    R.identical(NaN, NaN); // => true
-}
 
 // path
 {
@@ -2523,81 +1774,12 @@ import * as R from 'ramda';
   // => [alice, clara, bob]
 }
 
-// splitAt
-{
-    // @dts-jest
-    R.splitAt(1, [1, 2, 3]);        // => [[1], [2, 3]]
-    // @dts-jest
-    R.splitAt(1)([1, 2, 3]);        // => [[1], [2, 3]]
-    // @dts-jest
-    R.splitAt(5, 'hello world');    // => ['hello', ' world']
-    // @dts-jest
-    R.splitAt(-1, 'foobar');        // => ['fooba', 'r']
-}
 
-// splitWhen
-{
-  // @dts-jest
-  R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]);   // => [[1], [2, 3, 1, 2, 3]]
-  // @dts-jest
-  R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]);   // => [[1], [2, 3, 1, 2, 3]]
-}
 
-// add
-{
-    // @dts-jest
-    R.add(2, 3);       // =>  5
-    // @dts-jest
-    R.add(7)(10);      // => 17
-}
 
-// dec
-{
-    // @dts-jest
-    R.dec(42); // => 41
-}
 
-// divide
-{
-    // @dts-jest
-    R.divide(71, 100); // => 0.71
 
-    let half = R.flip(R.divide)(2);
-    // @dts-jest
-    half(42); // => 21
 
-    let reciprocal = R.divide(1);
-    // @dts-jest
-    reciprocal(4);   // => 0.25
-}
-
-// gt
-{
-    // @dts-jest
-    R.gt(2, 6); // => false
-    // @dts-jest
-    R.gt(2, 0); // => true
-    // @dts-jest
-    R.gt(2, 2); // => false
-    // @dts-jest
-    R.flip(R.gt)(2)(10); // => true
-    // @dts-jest
-    R.gt(2)(10); // => false
-}
-
-// gte
-{
-    // @dts-jest
-    R.gte(2, 6); // => false
-    // @dts-jest
-    R.gte(2, 0); // => true
-    // @dts-jest
-    R.gte(2, 2); // => false
-    // @dts-jest
-    R.flip(R.gte)(2)(10); // => true
-    // @dts-jest
-    R.gte(2)(10); // => false
-}
 
 // isNaN
 {
@@ -2609,59 +1791,8 @@ import * as R from 'ramda';
     R.isNaN({});         // => false
 }
 
-// lt
-{
-    // @dts-jest
-    R.lt(2, 6); // => true
-    // @dts-jest
-    R.lt(2, 0); // => false
-    // @dts-jest
-    R.lt(2, 2); // => false
-    // @dts-jest
-    R.lt(5)(10); // => true
-    // @dts-jest
-    R.flip(R.lt)(5)(10); // => false // right-sectioned currying
-}
 
-// lte
-{
-    // @dts-jest
-    R.lte(2, 6); // => true
-    // @dts-jest
-    R.lte(2, 0); // => false
-    // @dts-jest
-    R.lte(2, 2); // => true
-    // @dts-jest
-    R.flip(R.lte)(2)(1); // => true
-    // @dts-jest
-    R.lte(2)(10); // => true
-}
 
-// mathMod
-{
-    // @dts-jest
-    R.mathMod(-17, 5);  // => 3
-    // @dts-jest
-    R.mathMod(17, 5);   // => 2
-    // @dts-jest
-    R.mathMod(17, -5);  // => NaN
-    // @dts-jest
-    R.mathMod(17, 0);   // => NaN
-    // @dts-jest
-    R.mathMod(17.2, 5); // => NaN
-    // @dts-jest
-    R.mathMod(17, 5.3); // => NaN
-
-    let clock = R.flip(R.mathMod)(12);
-    // @dts-jest
-    clock(15); // => 3
-    // @dts-jest
-    clock(24); // => 0
-
-    let seventeenMod = R.mathMod(17);
-    // @dts-jest
-    seventeenMod(3);  // => 2
-}
 
 // max
 {
@@ -2689,21 +1820,7 @@ import * as R from 'ramda';
     R.maxBy(cmp)(d)(e);
 }
 
-// mean
-{
-    // @dts-jest
-    R.mean([2, 7, 9]); // => 6
-    // @dts-jest
-    R.mean([]); // => NaN
-}
 
-// median
-{
-    // @dts-jest
-    R.median([7, 2, 10, 9]); // => 8
-    // @dts-jest
-    R.median([]); // => NaN
-}
 
 // min
 {
@@ -2731,76 +1848,12 @@ import * as R from 'ramda';
     R.minBy(cmp, d, e);
 }
 
-// modulo
-{
-    // @dts-jest
-    R.modulo(17, 3); // => 2
-    // JS behavior:
-    // @dts-jest
-    R.modulo(-17, 3); // => -2
-    // @dts-jest
-    R.modulo(17, -3); // => 2
 
-    let isOdd = R.flip(R.modulo)(2);
-    // @dts-jest
-    isOdd(42); // => 0
-    // @dts-jest
-    isOdd(21); // => 1
-}
 
-// multiply
-{
-    let double = R.multiply(2);
-    let triple = R.multiply(3);
-    // @dts-jest
-    double(3);       // =>  6
-    // @dts-jest
-    triple(4);       // => 12
-    // @dts-jest
-    R.multiply(2, 5);  // => 10
-}
 
-// negate
-{
-    // @dts-jest
-    R.negate(42); // => -42
-}
 
-// product
-{
-    // @dts-jest
-    R.product([2,4,6,8,100,1]); // => 38400
-}
 
-// subtract
-{
-    // @dts-jest
-    R.subtract(10, 8); // => 2
 
-    let minus5 = R.flip(R.subtract)(5);
-    // @dts-jest
-    minus5(17); // => 12
-
-    let complementaryAngle = R.subtract(90);
-    // @dts-jest
-    complementaryAngle(30); // => 60
-    // @dts-jest
-    complementaryAngle(72); // => 18
-}
-
-// sum
-{
-    // @dts-jest
-    R.sum([2,4,6,8,100,1]); // => 121
-}
-
-// symmetricDifference
-{
-  // @dts-jest
-  R.symmetricDifference([1,2,3,4], [7,6,5,4,3]); // => [1,2,7,6,5]
-  // @dts-jest
-  R.symmetricDifference([7,6,5,4,3])([1,2,3,4]); // => [7,6,5,1,2]
-}
 
 // symmetricDifferenceWith
 {
@@ -2819,80 +1872,16 @@ import * as R from 'ramda';
  * String category
  */
 
-// replace
-{
-    // @dts-jest
-    R.replace('foo', 'bar', 'foo foo foo'); // => 'bar foo foo'
-    // @dts-jest
-    R.replace('foo', 'bar')('foo foo foo'); // => 'bar foo foo'
-    // @dts-jest
-    R.replace('foo')('bar')('foo foo foo'); // => 'bar foo foo'
-    // @dts-jest
-    R.replace(/foo/, 'bar', 'foo foo foo'); // => 'bar foo foo'
-
-    // Use the 'g' (global) flag to replace all occurrences:
-    // @dts-jest
-    R.replace(/foo/g, 'bar', 'foo foo foo'); // => 'bar bar bar'
-    // @dts-jest
-    R.replace(/foo/g, 'bar')('foo foo foo'); // => 'bar bar bar'
-    // @dts-jest
-    R.replace(/foo/g)('bar')('foo foo foo'); // => 'bar bar bar'
-}
 
 /*****************************************************************
  * Is category
  */
 
-// is
-{
-    // @dts-jest
-    R.is(Object, {}); // => true
-    // @dts-jest
-    R.is(Object)({}); // => true
-    // @dts-jest
-    R.is(Number, 1); // => true
-    // @dts-jest
-    R.is(Number)(1); // => true
-    // @dts-jest
-    R.is(Object, 1); // => false
-    // @dts-jest
-    R.is(Object)(1); // => false
-    // @dts-jest
-    R.is(String, 's'); // => true
-    // @dts-jest
-    R.is(String)('s'); // => true
-    // @dts-jest
-    R.is(String, ''); // => true
-    // @dts-jest
-    R.is(String)(''); // => true
-    // @dts-jest
-    R.is(Object, new Object()); // => true
-    // @dts-jest
-    R.is(Object)(new Object()); // => true
-    // @dts-jest
-    R.is(Object, 's'); // => false
-    // @dts-jest
-    R.is(Object)('s'); // => false
-    // @dts-jest
-    R.is(Number, {}); // => false
-    // @dts-jest
-    R.is(Number)({}); // => false
-}
 
 /*****************************************************************
  * Logic category
  */
 
-// allPass
-{
-    let gt10 = function(x: number) { return x > 10; };
-    let even = function(x: number) { return x % 2 === 0;};
-    let f = R.allPass([gt10, even]);
-    // @dts-jest
-    f(11); // => false
-    // @dts-jest
-    f(12); // => true
-}
 
 // and
 {
@@ -2917,50 +1906,9 @@ import * as R from 'ramda';
     R.and(why, false); // false
 }
 
-// anyPass
-{
-    let gt10 = function(x: number) { return x > 10; };
-    let even = function(x: number) { return x % 2 === 0;};
-    let f = R.anyPass([gt10, even]);
-    // @dts-jest
-    f(11); // => true
-    // @dts-jest
-    f(8); // => true
-    // @dts-jest
-    f(9); // => false
-}
 
-// both
-{
-    let gt10 = function(x: number) { return x > 10; };
-    let even = function(x: number) { return x % 2 === 0; };
-    let f = R.both(gt10, even);
-    let g = R.both(gt10)(even);
-    // @dts-jest
-    f(100); // => true
-    // @dts-jest
-    f(101); // => false
-}
 
-// complement
-{
-    let isEven = function(n: number) { return n % 2 === 0; };
-    let isOdd = R.complement(isEven);
-    // @dts-jest
-    isOdd(21); // => true
-    // @dts-jest
-    isOdd(42); // => false
-}
 
-// eqBy
-{
-    // @dts-jest
-    R.eqBy(Math.abs, 5, -5); // => true
-    // @dts-jest
-    R.eqBy(Math.abs)(5, -5); // => true
-    // @dts-jest
-    R.eqBy(Math.abs, 5)(-5); // => true
-}
 
 // defaultTo
 {
@@ -2973,17 +1921,6 @@ import * as R from 'ramda';
     defaultTo42('Ramda');  // => 'Ramda'
 }
 
-// either
-{
-    let gt10 = function(x: number) { return x > 10; };
-    let even = function(x: number) { return x % 2 === 0; };
-    let f = R.either(gt10, even);
-    let g = R.either(gt10)(even);
-    // @dts-jest
-    f(101); // => true
-    // @dts-jest
-    f(8); // => true
-}
 
 // ifElse
 {
@@ -2996,33 +1933,7 @@ import * as R from 'ramda';
     flattenArrays([[[10], 123], [8, [10]], 'hello']); // => [[10, 123], [8, 10], 'hello']
 }
 
-// isEmpty
-{
-    // @dts-jest
-    R.isEmpty([1, 2, 3]); // => false
-    // @dts-jest
-    R.isEmpty([]); // => true
-    // @dts-jest
-    R.isEmpty(''); // => true
-    // @dts-jest
-    R.isEmpty(null); // => false
-    // @dts-jest
-    R.isEmpty({}); // =>true
-    // @dts-jest
-    R.isEmpty({a: 1}); // => false
-}
 
-// not
-{
-    // @dts-jest
-    R.not(true); // => false
-    // @dts-jest
-    R.not(false); // => true
-    // @dts-jest
-    R.not(0); // => true
-    // @dts-jest
-    R.not(1); // => false
-}
 
 // or
 {
@@ -3051,15 +1962,6 @@ import * as R from 'ramda';
     R.or(why, false); // false
 }
 
-// intersperse
-{
-    // @dts-jest
-    R.intersperse(',', ['foo', 'bar']); // => ['foo', ',', 'bar']
-    // @dts-jest
-    R.intersperse(0, [1, 2]); // => [1, 0, 2]
-    // @dts-jest
-    R.intersperse(0, [1]); // => [1]
-}
 
 // ISSUES:
 
@@ -3075,29 +1977,6 @@ import * as R from 'ramda';
     R.evolve({ a: R.add(1)}, test );
 }
 
-// #73
-{
-    let filterMatrix = function (v: number, m: Array<Array<number>>): Array<number> {
-      return R.chain(R.filter((c: number) => c === v), m);
-      // return R.chain(R.filter(R.equals(v)), m)
-    };
-    let b = [
-        [0, 1],
-        [1, 0]
-    ];
-    // @dts-jest
-    filterMatrix(1, b); // --> [1, 1]
-
-    // compiles
-    let filterMatrix2 = function (v: number, m: Array<Array<number>>): Array<number> {
-        return R.chain((r: number[]) => R.filter((c: number) => c === v, r), m);
-    };
-
-    // also compiles
-    let mapMatrix3 = function(fn: (v: number) => number, m: Array<Array<number>>): Array<number> {
-      return R.chain(R.map((c: number) => fn(c)), m);
-    };
-}
 
 // #109
 {

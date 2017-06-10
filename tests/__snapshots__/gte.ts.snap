@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.flip(R.gte)(2)(10) 1`] = `"boolean"`;
+
+exports[`R.gte(2)(10) 1`] = `"boolean"`;
+
+exports[`R.gte(2, 0) 1`] = `"boolean"`;
+
+exports[`R.gte(2, 2) 1`] = `"boolean"`;
+
+exports[`R.gte(2, 6) 1`] = `"boolean"`;

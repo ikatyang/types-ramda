@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.findIndex((x: number) => x === 1, [1, 2, 3]) 1`] = `"number"`;
+
+exports[`R.findIndex(R.propEq('a', 4))(xs) 1`] = `"number"`;
+
+exports[`a(xs) 1`] = `"number"`;

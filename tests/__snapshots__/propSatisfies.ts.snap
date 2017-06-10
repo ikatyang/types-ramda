@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.propSatisfies((x: number) => x > 0)('x')({x: 1, y: 2}) 1`] = `"boolean"`;
+
+exports[`R.propSatisfies((x: number) => x > 0, 'x')({x: 1, y: 2}) 1`] = `"boolean"`;
+
+exports[`R.propSatisfies((x: number) => x > 0, 'x', {x: 1, y: 2}) 1`] = `"boolean"`;
+
+exports[`truncate('0123456789ABC') 1`] = `"string"`;
+
+exports[`truncate('12345') 1`] = `"string"`;

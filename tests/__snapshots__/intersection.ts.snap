@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.intersection([1,2,3,4])([7,6,5,4,3]) 1`] = `"number[]"`;
+
+exports[`R.intersection([1,2,3,4], [7,6,5,4,3]) 1`] = `"number[]"`;
+
+exports[`R.intersection([1,2,4])([1,2,3]) 1`] = `"number[]"`;
+
+exports[`R.intersection([1,2,4], [1,2,3]) 1`] = `"number[]"`;

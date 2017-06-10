@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.mathMod(-17, 5) 1`] = `"number"`;
+
+exports[`R.mathMod(17, -5) 1`] = `"number"`;
+
+exports[`R.mathMod(17, 0) 1`] = `"number"`;
+
+exports[`R.mathMod(17, 5) 1`] = `"number"`;
+
+exports[`R.mathMod(17, 5.3) 1`] = `"number"`;
+
+exports[`R.mathMod(17.2, 5) 1`] = `"number"`;
+
+exports[`clock(15) 1`] = `"number"`;
+
+exports[`clock(24) 1`] = `"number"`;
+
+exports[`seventeenMod(3) 1`] = `"number"`;

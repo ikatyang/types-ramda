@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.subtract(10, 8) 1`] = `"number"`;
+
+exports[`complementaryAngle(30) 1`] = `"number"`;
+
+exports[`complementaryAngle(72) 1`] = `"number"`;
+
+exports[`minus5(17) 1`] = `"number"`;

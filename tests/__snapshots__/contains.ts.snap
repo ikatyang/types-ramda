@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.contains({})([{}, {}]) 1`] = `"boolean"`;
+
+exports[`R.contains(3)([1, 2, 3]) 1`] = `"boolean"`;
+
+exports[`R.contains(3, [1, 2, 3]) 1`] = `"boolean"`;
+
+exports[`R.contains(4)([1, 2, 3]) 1`] = `"boolean"`;
+
+exports[`R.contains(obj)([{}, obj, {}]) 1`] = `"boolean"`;
