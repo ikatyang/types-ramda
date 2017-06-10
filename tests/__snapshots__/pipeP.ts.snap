@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`R.pipeP(
-        (m: number) => Promise.resolve(R.multiply(2, m)),
-        (m: number) => Promise.resolve(m / 2),
-        R.multiply(2)
+      (m: number) => Promise.resolve(R.multiply(2, m)),
+      (m: number) => Promise.resolve(m / 2),
+      R.multiply(2),
     )(10) 1`] = `"Promise<number>"`;

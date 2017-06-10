@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-let o = {};
+const o = {};
 // @dts-jest
 R.identical(o, o); // => true
 // @dts-jest

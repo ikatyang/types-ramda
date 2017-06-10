@@ -2,8 +2,8 @@ import * as R from 'ramda';
 
 {
   const truncate = R.when(
-      R.propSatisfies(R.flip(R.gt)(10), 'length'),
-      R.pipe(R.take(10), R.append('…'), R.join(''))
+    R.propSatisfies(R.flip(R.gt)(10), 'length'),
+    R.pipe(R.take(10), R.append('…'), R.join('')),
   );
   // @dts-jest
   truncate('12345');         // => '12345'

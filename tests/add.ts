@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
 {
-  let plus3 = R.add(3);
+  const plus3 = R.add(3);
   // @dts-jest
   plus3(5);
 }

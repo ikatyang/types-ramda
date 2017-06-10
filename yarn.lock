@@ -827,9 +827,9 @@ dts-element@2.0.3:
   dependencies:
     typescript "^2.4.0-dev.20170524"
 
-dts-jest@20.0.4:
-  version "20.0.4"
-  resolved "https://registry.yarnpkg.com/dts-jest/-/dts-jest-20.0.4.tgz#685b58c7c74189a7a916054c74b47f4e157dd892"
+dts-jest@20.0.6:
+  version "20.0.6"
+  resolved "https://registry.yarnpkg.com/dts-jest/-/dts-jest-20.0.6.tgz#b02afdf02940051d8b82fbcd8d8b56e3b3e7b489"
   dependencies:
     express "^4.15.3"
     jest-cli "^20.0.4"
@@ -3531,9 +3531,9 @@ tslib@^1.0.0, tslib@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.7.1.tgz#bc8004164691923a79fe8378bbeb3da2017538ec"
 
-tslint-config-ikatyang@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/tslint-config-ikatyang/-/tslint-config-ikatyang-0.5.0.tgz#54f18544c6437e8a042be1267e853c37ee824913"
+tslint-config-ikatyang@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/tslint-config-ikatyang/-/tslint-config-ikatyang-0.7.0.tgz#58d4643a692ec0d4d8f04ee279ad6cfb5a6e4a9e"
   dependencies:
     tslint-eslint-rules "^4.1.0"
 

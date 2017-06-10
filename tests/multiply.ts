@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
-let double = R.multiply(2);
-let triple = R.multiply(3);
+const double = R.multiply(2);
+const triple = R.multiply(3);
 // @dts-jest
 double(3);       // =>  6
 // @dts-jest

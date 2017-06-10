@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
 {
-  let i = function(x: number) {return x;};
+  const i = (x: number) => x;
   // @dts-jest
   R.times(i, 5);
 }

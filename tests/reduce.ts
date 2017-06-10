@@ -1,19 +1,15 @@
 import * as R from 'ramda';
 
 {
-  let numbers = [1, 2, 3];
-  let add = function(a: number, b: number) {
-      return a + b;
-  };
+  const numbers = [1, 2, 3];
+  const add = (a: number, b: number) => a + b;
   // @dts-jest
   R.reduce(add, 10, numbers); // => 16;
 }
 
 {
-  let numbers = [1, 2, 3];
-  let add = function(a: number, b: number) {
-      return a + b;
-  };
+  const numbers = [1, 2, 3];
+  const add = (a: number, b: number) => a + b;
   // @dts-jest
   R.reduce(add, 10, numbers); // => 16
   // @dts-jest

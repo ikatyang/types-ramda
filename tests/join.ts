@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-let spacer = R.join(' ');
+const spacer = R.join(' ');
 // @dts-jest
 spacer(['a', 2, 3.4]);   // => 'a 2 3.4'
 // @dts-jest

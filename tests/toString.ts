@@ -1,14 +1,17 @@
 import * as R from 'ramda';
 
 class Point {
-  constructor(public x: number, public y: number) {
-      this.x = x;
-      this.y = y;
+  public x: number;
+  public y: number;
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
   }
-  toStringn() {
-        return 'new Point(' + this.x + ', ' + this.y + ')';
+  public toString() {
+    return `new Point(${this.x}, ${this.y})`;
   }
-};
+}
+
 // @dts-jest
 R.toString(new Point(1, 2)); // => 'new Point(1, 2)'
 // @dts-jest

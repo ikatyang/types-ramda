@@ -1,11 +1,11 @@
 import * as R from 'ramda';
 
 let numberOfCalls = 0;
-let trackedAdd = function(a: number, b: number) {
+const trackedAdd = (a: number, b: number) => {
   numberOfCalls += 1;
   return a + b;
 };
-let memoTrackedAdd = R.memoize(trackedAdd);
+const memoTrackedAdd = R.memoize(trackedAdd);
 
 // @dts-jest
 memoTrackedAdd(1, 2); // => 3

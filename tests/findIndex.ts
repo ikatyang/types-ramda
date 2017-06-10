@@ -1,7 +1,9 @@
 import * as R from 'ramda';
 
-type Task = {a: number};
-let xs = [{a: 1}, {a: 2}, {a: 3}];
+interface Task {
+  a: number;
+}
+const xs = [{a: 1}, {a: 2}, {a: 3}];
 const a: (list: Task[]) => number = R.findIndex(R.propEq('a', 2));
 // @dts-jest
 a(xs); // => 1
