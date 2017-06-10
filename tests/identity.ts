@@ -1,6 +1,5 @@
 import * as R from 'ramda';
 
-const a1 = R.identity(1); // => 1
 const obj = {};
 // @dts-jest
 R.identity([1, 2, 3]);

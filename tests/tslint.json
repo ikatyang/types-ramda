@@ -3,6 +3,8 @@
   "rules": {
     "no-magic-numbers": false,
     "no-console": [false],
-    "no-unused-expression": false
+    "no-unused-expression": false,
+    "no-unbound-method": false,
+    "promise-function-async": false
   }
 }
