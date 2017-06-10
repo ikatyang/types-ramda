@@ -488,7 +488,7 @@ import * as R from 'ramda';
     let flipped = R.flip(mergeThree);
     // @dts-jest
     flipped(1, 2, 3); // => [2, 1, 3]
- };
+}
 
 /*********************
  * List category
@@ -1478,14 +1478,14 @@ import * as R from 'ramda';
 
 // toString
 {
-  class Point {
-    constructor(public x: number, public y: number) {
-        this.x = x;
-        this.y = y;
-    }
-    toStringn() {
-          return 'new Point(' + this.x + ', ' + this.y + ')';
-    }
+    class Point {
+      constructor(public x: number, public y: number) {
+          this.x = x;
+          this.y = y;
+      }
+      toStringn() {
+            return 'new Point(' + this.x + ', ' + this.y + ')';
+      }
     };
     // @dts-jest
     R.toString(new Point(1, 2)); // => 'new Point(1, 2)'
