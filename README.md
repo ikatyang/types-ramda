@@ -48,7 +48,7 @@ done
 - [x] all
 - [x] allPass
 - [x] always
-- [ ] and
+- [x] and
 - [x] any
 - [x] anyPass
 - [x] ap
@@ -182,7 +182,7 @@ done
 - [x] of
 - [ ] omit
 - [x] once
-- [ ] or
+- [x] or
 - [ ] over
 - [x] pair
 - [x] partial
