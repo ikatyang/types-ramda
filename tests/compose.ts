@@ -8,18 +8,12 @@ import * as R from 'ramda';
 }
 
 {
-  let double = (x: number): number => x + x;
-  let limit10 = function(x: number): boolean {
-      return x >= 10;
-  };
+  const double = (x: number): number => x + x;
+  const limit10 = (x: number): boolean => x >= 10;
   // @dts-jest
   R.compose(limit10, double);
   // @dts-jest
   R.compose(limit10, double)(10);
-
-  const f0 = (s: string) => +s;      // string -> number
-  const f1 = (n: number) => n === 1; // number -> boolean
-  const f2 = R.compose(f1, f0);      // string -> boolean
 
   // akward example that bounces types between number and string
   const g0 = (list: number[]) => R.map(R.inc, list);
@@ -53,7 +47,7 @@ import * as R from 'ramda';
   // @dts-jest
   f5(3, 4); // -(3^4) + 1
 
-  let double = (x: number): number => x + x;
+  const double = (x: number): number => x + x;
   // test for type degeneration if the first function has generics
   // @dts-jest:skip (x0: number) => number
   R.compose(double, R.identity);

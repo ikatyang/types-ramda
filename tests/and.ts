@@ -8,14 +8,17 @@ R.and(0, []); // => 0
 R.and(0)([]); // => 0
 // @dts-jest:skip null
 R.and(null, ''); // => null
-let Why: any = (function(val: boolean) {
-    let why: any;
-    why.val = val;
-    why.and = function(x: boolean) {
-        return this.val && x;
-    };
-    return Why;
+
+// tslint:disable
+
+const Why: any = (function (val: boolean) {
+  let why: any;
+  why.val = val;
+  why.and = function (x: boolean) {
+    return this.val && x;
+  };
+  return Why;
 })(true);
-let why = new Why(true);
+const why = new Why(true);
 // @dts-jest:skip boolean
 R.and(why, false); // false

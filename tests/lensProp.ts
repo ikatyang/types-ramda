@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
 {
-  let xLens = R.lensProp('x');
+  const xLens = R.lensProp('x');
   // @dts-jest:skip number
   R.view(xLens, {x: 1, y: 2});            // => 1
   // @dts-jest:skip Dictionary<number>
@@ -11,9 +11,9 @@ import * as R from 'ramda';
 }
 
 {
-  let phraseLens = R.lensProp('phrase');
-  let obj1 = { phrase: 'Absolute filth . . . and I LOVED it!'};
-  let obj2 = { phrase: "What's all this, then?"};
+  const phraseLens = R.lensProp('phrase');
+  const obj1 = {phrase: 'Absolute filth . . . and I LOVED it!'};
+  const obj2 = {phrase: "What's all this, then?"};
   // @dts-jest:skip string
   phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
   // @dts-jest:skip string

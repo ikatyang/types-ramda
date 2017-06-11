@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
 // @dts-jest
-R.empty([1,2,3,4,5]); // => []
+R.empty([1, 2, 3, 4, 5]); // => []
 // @dts-jest
 R.empty([1, 2, 3]);     // => []
 // @dts-jest:skip string

@@ -1,8 +1,6 @@
 import * as R from 'ramda';
 
-let duplicate = function(n: number) {
-    return [n, n];
-};
+const duplicate = (n: number) => [n, n];
 // @dts-jest
 R.chain(duplicate, [1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
 // @dts-jest

@@ -1,12 +1,12 @@
 import * as R from 'ramda';
 
 class Why {
-  val: boolean;
+  public val: boolean;
   constructor(val: boolean) {
-      this.val = val;
+    this.val = val;
   }
-  or(x: boolean) {
-      return this.val && x;
+  public or(x: boolean) {
+    return this.val && x;
   }
 }
 
@@ -19,7 +19,7 @@ R.or(0)([]); // => []
 // @dts-jest:skip string
 R.or(null, ''); // => ''
 
-let why = new Why(true);
+const why = new Why(true);
 why.or(true);
 // @dts-jest:skip Why|boolean
 R.or(why, false); // false

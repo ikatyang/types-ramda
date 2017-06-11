@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-let headLens = R.lensIndex(0);
+const headLens = R.lensIndex(0);
 // @dts-jest:skip string
 R.view(headLens, ['a', 'b', 'c']);            // => 'a'
 // @dts-jest:skip string[]

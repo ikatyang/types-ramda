@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-let defaultTo42 = R.defaultTo(42);
+const defaultTo42 = R.defaultTo(42);
 // @dts-jest:skip number
 defaultTo42(null);  // => 42
 // @dts-jest:skip number

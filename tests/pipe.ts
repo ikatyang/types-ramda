@@ -10,12 +10,11 @@ import * as R from 'ramda';
 }
 
 {
-  let double = (x: number): number => x + x;
-  let shout = function(x: number): string {
-      return x >= 10
-          ? 'big'
-          : 'small';
-  }
+  const double = (x: number): number => x + x;
+  const shout = (x: number): string =>
+    x >= 10
+      ? 'big'
+      : 'small';
 
   // @dts-jest
   R.pipe(double, double, shout);
@@ -24,12 +23,12 @@ import * as R from 'ramda';
 
   // @dts-jest:skip string
   (str: string) => R.pipe(
-      R.split(''),
-      R.adjust(R.toUpper, 0),
-      R.join('')
+    R.split(''),
+    R.adjust(R.toUpper, 0),
+    R.join(''),
   )(str);
 
-  let f = R.pipe(Math.pow, R.negate, R.inc);
+  const f = R.pipe(Math.pow, R.negate, R.inc);
   // @dts-jest
   f(3, 4); // -(3^4) + 1
 

@@ -8,4 +8,4 @@ R.path(['a', 'b', 'c'], {a: {b: {c: 2}}});
 R.path(['a', 'b', 'c'], {a: {b: 2}});   // still fails
 // let n = R.path(['a', '0', 'c'], {a: [{c: 2}] })
 // @dts-jest:skip number
-R.path(['a', 0, 'c'], {a: [{c: 2}] });
+R.path(['a', 0, 'c'], {a: [{c: 2}]});

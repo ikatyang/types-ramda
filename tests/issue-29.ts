@@ -4,40 +4,36 @@ import * as R from 'ramda';
 R.pipe(R.append('a'), R.uniq)(['a', 'b', 'c']);
 // @dts-jest:skip string[][]
 R.pipe(
-    R.split(''),
-    R.map((letter: string) => ([ letter ]))
+  R.split(''),
+  R.map((letter: string) => ([letter])),
 )('dave');
 
 // @dts-jest
 R.pipe(
-    R.prop<string>('name'),
-    R.length
-)({ name: 'dave' });
-
-let build: string;
-let mapPackages = R.partial(R.map, [(test: any) => test.package]);
-let filterBuild = R.partial(R.filter, [(test: any) => test.build === build]);
-let getPackages = R.compose(R.uniq, mapPackages, filterBuild);
-this.packages = getPackages(this._tests);
-// ^ expected: ??
+  R.prop<string>('name'),
+  R.length,
+)({name: 'dave'});
 
 interface Foo {
-    build: string;
-    package: string;
+  build: string;
+  package: string;
 }
 const build2 = 'dev';
-let mapPackages2 = R.map((test: Foo) => test.package);
-let filterBuild2 = R.filter((test: Foo) => test.build === build2);
-let getPackages2 = R.compose(R.uniq, mapPackages2, filterBuild2);
-let foos = [{
+const mapPackages2 = R.map((test: Foo) => test.package);
+const filterBuild2 = R.filter((test: Foo) => test.build === build2);
+const getPackages2 = R.compose(R.uniq, mapPackages2, filterBuild2);
+const foos = [
+  {
     build: 'dev',
-    package: 'devPackage'
-}, {
+    package: 'devPackage',
+  },
+  {
     build: 'prod',
-    package: 'prodPackage'
-}, {
+    package: 'prodPackage',
+  },
+  {
     build: 'dev',
-    package: 'devPackage'
-}];
-let foosFiltered = getPackages2(foos);
-// ^ expected: ??
+    package: 'devPackage',
+  }];
+// @dts-jest:skip expected: ??
+getPackages2(foos);

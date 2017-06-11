@@ -12,7 +12,7 @@ import * as R from 'ramda';
 }
 
 {
-  let printKeyConcatValue = (value: any, key: string, obj: any) => console.log(key + ':' + value);
+  const printKeyConcatValue = (value: any, key: string, obj: any) => console.log(`${key}':${value}`);
   // @dts-jest:skip {x: 1, y: 2}
   R.forEachObjIndexed(printKeyConcatValue, {x: 1, y: 2});
   // @dts-jest:skip {x: 1, y: 2}

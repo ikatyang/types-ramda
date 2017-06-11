@@ -9,4 +9,4 @@ R.partition((x: number) => x > 2, [1, 2, 3, 4]);
 // @dts-jest
 R.partition((x: number) => x > 2)([1, 2, 3, 4]);
 // @dts-jest:skip Object[]
-R.partition(R.contains('s'),{ a: 'sss', b: 'ttt', foo: 'bars' }); // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' }  ]
+R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}); // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' }  ]

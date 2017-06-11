@@ -1,18 +1,18 @@
 import * as R from 'ramda';
 
-let byAge = R.descend(R.prop('age'));
-let alice = {
+const byAge = R.descend(R.prop('age'));
+const alice = {
   name: 'ALICE',
-  age: 101
+  age: 101,
 };
-let bob = {
+const bob = {
   name: 'Bob',
-  age: -10
+  age: -10,
 };
-let clara = {
+const clara = {
   name: 'clara',
-  age: 314.159
+  age: 314.159,
 };
-let people = [clara, bob, alice];
+const people = [clara, bob, alice];
 // @dts-jest:skip typeof people
 R.sort(byAge, people);

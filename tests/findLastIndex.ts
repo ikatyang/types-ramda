@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-let xs = [{a: 1, b: 0}, {a: 1, b: 1}];
+const xs = [{a: 1, b: 0}, {a: 1, b: 1}];
 // @dts-jest
 R.findLastIndex(R.propEq('a', 1))(xs); // => 1
 // @dts-jest

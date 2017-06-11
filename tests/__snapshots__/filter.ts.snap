@@ -2,4 +2,4 @@
 
 exports[`R.filter(isEven, [1, 2, 3, 4]) 1`] = `"number[]"`;
 
-exports[`onlyNumberList(R.filter(isEven,[1,2,3,4])) 1`] = `"number[]"`;
+exports[`onlyNumberList(R.filter(isEven, [1, 2, 3, 4])) 1`] = `"number[]"`;

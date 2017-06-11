@@ -1,11 +1,11 @@
 import * as R from 'ramda';
 
-let alice = {
+const alice = {
   name: 'ALICE',
-  age: 101
+  age: 101,
 };
-let favorite = R.prop('favoriteLibrary');
-let favoriteWithDefault = R.propOr('Ramda', 'favoriteLibrary');
+const favorite = R.prop('favoriteLibrary');
+const favoriteWithDefault = R.propOr('Ramda', 'favoriteLibrary');
 
 // @dts-jest:skip undefined
 favorite(alice);  // => undefined

@@ -2,7 +2,7 @@
 
 exports[`addTwoNumbersCurried 1`] = `"R.CurriedFunction2<number, number, number>"`;
 
-exports[`addTwoNumbersCurried(2,3) 1`] = `"number"`;
+exports[`addTwoNumbersCurried(2, 3) 1`] = `"number"`;
 
 exports[`curriedFourNumbers 1`] = `"R.CurriedFunction4<number, number, number, number, number>"`;
 
@@ -12,8 +12,8 @@ exports[`curriedFourNumbers(1)(2) 1`] = `"R.CurriedFunction2<number, number, num
 
 exports[`curriedFourNumbers(1)(2)(3)(4) 1`] = `"number"`;
 
-exports[`curriedFourNumbers(1,2)(3,4) 1`] = `"number"`;
+exports[`curriedFourNumbers(1, 2)(3, 4) 1`] = `"number"`;
 
-exports[`curriedFourNumbers(1,2,3)(4) 1`] = `"number"`;
+exports[`curriedFourNumbers(1, 2, 3)(4) 1`] = `"number"`;
 
 exports[`inc(2) 1`] = `"number"`;

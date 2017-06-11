@@ -1,17 +1,19 @@
 import * as R from 'ramda';
 
 {
-  let printXPlusFive = function(x: number) { console.log(x + 5); };
+  const printXPlusFive = (x: number) => {
+    console.log(x + 5);
+  };
   R.forEach(printXPlusFive, [1, 2, 3]);
   // @dts-jest:skip Object[]
-  R.clone([{},{},{}]);
+  R.clone([{}, {}, {}]);
   // @dts-jest
-  R.clone([1,2,3]);
+  R.clone([1, 2, 3]);
 }
 
 {
-  let obj1 = [{}, {}, {}];
-  let obj2 = [{a: 1}, {a: 2}, {a: 3}];
+  const obj1 = [{}, {}, {}];
+  const obj2 = [{a: 1}, {a: 2}, {a: 3}];
   // @dts-jest:skip any[]
   R.clone(obj1);
   // @dts-jest:skip {a: number}[]

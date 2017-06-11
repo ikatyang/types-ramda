@@ -1,23 +1,23 @@
 import * as R from 'ramda';
 
-let sortByNameCaseInsensitive = R.sortBy(R.compose(R.toLower, R.prop('name')));
-let sortByAgeDescending = R.sortBy(R.compose(R.negate, R.prop('age')));
-let sortByAgeAscending = R.sortBy(R.prop('age'));
-let alice = {
+const sortByNameCaseInsensitive = R.sortBy(R.compose(R.toLower, R.prop('name')));
+const sortByAgeDescending = R.sortBy(R.compose(R.negate, R.prop('age')));
+const sortByAgeAscending = R.sortBy(R.prop('age'));
+const alice = {
   name: 'ALICE',
-  age: 101
+  age: 101,
 };
-let bob = {
+const bob = {
   name: 'Bob',
-  age: -10
+  age: -10,
 };
-let clara = {
+const clara = {
   name: 'clara',
-  age: 314.159
+  age: 314.159,
 };
-let people = [clara, bob, alice];
+const people = [clara, bob, alice];
 // @dts-jest:skip { name: string, age: number }[]
-sortByAgeDescending(people); //=> [alice, bob, clara]
+sortByAgeDescending(people); // => [alice, bob, clara]
 // @dts-jest:skip { name: string, age: number }[]
 sortByNameCaseInsensitive(people); // => [alice, bob, clara]
 // @dts-jest:skip { name: string, age: number }[]

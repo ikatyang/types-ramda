@@ -1,9 +1,9 @@
 import * as R from 'ramda';
 
-let raceResultsByFirstName = {
+const raceResultsByFirstName = {
   first: 'alice',
   second: 'jake',
-  third: 'alice'
+  third: 'alice',
 };
 // @dts-jest:skip Dictionary<string[]>
 R.invert(raceResultsByFirstName);

@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-let pred = R.whereEq({a: 1, b: 2});
+const pred = R.whereEq({a: 1, b: 2});
 // @dts-jest:skip (v: Object) => Boolean
 pred;
 // @dts-jest:skip boolean

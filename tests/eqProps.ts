@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
-let o1 = { a: 1, b: 2, c: 3, d: 4 };
-let o2 = { a: 10, b: 20, c: 3, d: 40 };
+const o1 = {a: 1, b: 2, c: 3, d: 4};
+const o2 = {a: 10, b: 20, c: 3, d: 40};
 // @dts-jest
 R.eqProps('a', o1, o2); // => false
 // @dts-jest

@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
 // Flatten all arrays in the list but leave other values alone.
-let flattenArrays = R.map(R.ifElse(Array.isArray, R.flatten, R.identity));
+const flattenArrays = R.map(R.ifElse(Array.isArray, R.flatten, R.identity));
 
 // @dts-jest:skip any[]
 flattenArrays([[0], [[10], [8]], 1234, {}]); // => [[0], [10, 8], 1234, {}]

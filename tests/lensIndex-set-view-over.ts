@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-let headLens = R.lensIndex(0);
+const headLens = R.lensIndex(0);
 // @dts-jest:skip number
 headLens([10, 20, 30, 40]); // => 10
 // @dts-jest:skip Array<number|string>
