@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`R.pipe(double, double, shout) 1`] = `"(x0: number) => string"`;
+
+exports[`R.pipe(double, double, shout)(10) 1`] = `"string"`;
+
+exports[`f(3, 4) 1`] = `"number"`;
+
 exports[`squareThenDoubleThenTriple(5) 1`] = `"number"`;

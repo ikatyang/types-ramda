@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addThree(3) 1`] = `"R.CurriedFunction2<number, number, number>"`;
+
+exports[`addThree(3)(2) 1`] = `"R.CurriedFunction1<number, number>"`;
+
+exports[`addThree(3)(2)(1) 1`] = `"number"`;
+
+exports[`addThree(3, 2) 1`] = `"R.CurriedFunction1<number, number>"`;
+
+exports[`addThree(3, 2, 1) 1`] = `"number"`;
+
+exports[`addTwo(3) 1`] = `"R.CurriedFunction1<number, number>"`;
+
+exports[`addTwo(3)(1) 1`] = `"number"`;

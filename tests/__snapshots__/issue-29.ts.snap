@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.pipe(
+        R.prop<string>('name'),
+        R.length
+    )({ name: 'dave' }) 1`] = `"number"`;

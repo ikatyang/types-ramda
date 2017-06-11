@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.clone('foo') 1`] = `"\\"foo\\""`;
+
+exports[`R.clone([1,2,3]) 1`] = `"number[]"`;
+
+exports[`R.clone(10) 1`] = `"10"`;
+
+exports[`R.clone(Date.now()) 1`] = `"number"`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.take(3,[1,2,3,4,5]) 1`] = `"number[]"`;
+
+exports[`takeFive(members) 1`] = `"string[]"`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.filter(isEven, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`R.reject(isOdd, [1, 2, 3, 4]) 1`] = `"number[]"`;

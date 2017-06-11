@@ -68,7 +68,7 @@ done
 - [ ] clone
 - [ ] comparator
 - [x] complement
-- [x] compose
+- [ ] compose
 - [ ] composeK
 - [ ] composeP
 - [x] concat
@@ -108,7 +108,7 @@ done
 - [ ] findLastIndex
 - [ ] flatten
 - [x] flip
-- [x] forEach
+- [ ] forEach
 - [ ] forEachObjIndexed
 - [ ] fromPairs
 - [ ] groupBy
@@ -195,7 +195,7 @@ done
 - [ ] pick
 - [ ] pickAll
 - [ ] pickBy
-- [x] pipe
+- [ ] pipe
 - [ ] pipeK
 - [x] pipeP
 - [ ] pluck

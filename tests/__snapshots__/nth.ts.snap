@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.nth(-99)(list) 1`] = `"undefined"`;
+
+exports[`R.nth(-99, list) 1`] = `"undefined"`;

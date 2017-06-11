@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.partition((x: number) => x > 2)([1, 2, 3, 4]) 1`] = `"[number[], number[]]"`;
+
+exports[`R.partition((x: number) => x > 2, [1, 2, 3, 4]) 1`] = `"[number[], number[]]"`;
+
+exports[`R.partition(R.contains('s'))(['sss', 'ttt', 'foo', 'bars']) 1`] = `"[string[], string[]]"`;
+
+exports[`R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']) 1`] = `"[string[], string[]]"`;

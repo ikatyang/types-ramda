@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.pluck('a', [{a: 1}, {a: 2}]) 1`] = `"number[]"`;

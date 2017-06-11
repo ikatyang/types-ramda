@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.maxBy(cmp)(a)(b) 1`] = `"{ x: number; }"`;
+
+exports[`R.maxBy(cmp)(a, c) 1`] = `"{ x: number; }"`;
+
+exports[`R.maxBy(cmp, a, c) 1`] = `"{ x: number; }"`;

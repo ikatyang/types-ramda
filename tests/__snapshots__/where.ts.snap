@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.where(spec)({w: 10, x: 2, y: 300}) 1`] = `"boolean"`;
+
+exports[`R.where(spec)({x: 1, y: 'moo', z: true}) 1`] = `"boolean"`;
+
+exports[`R.where(spec, {w: 10, x: 2, y: 300}) 1`] = `"boolean"`;
+
+exports[`R.where(spec, {x: 1, y: 'moo', z: true}) 1`] = `"boolean"`;
+
+exports[`R.where(spec2, {x: 2, y: 7}) 1`] = `"boolean"`;
+
+exports[`R.where(spec2, {x: 3, y: 8}) 1`] = `"boolean"`;

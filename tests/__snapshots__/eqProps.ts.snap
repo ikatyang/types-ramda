@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R.eqProps('a', o1, o2) 1`] = `"boolean"`;
+
+exports[`R.eqProps('c', o1, o2) 1`] = `"boolean"`;
