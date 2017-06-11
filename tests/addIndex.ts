@@ -5,7 +5,7 @@ import * as R from 'ramda';
       return list.length - idx <= 2;
   };
   let filterIndexed = R.addIndex(R.filter);
-  
+
   // @dts-jest:skip number[]
   filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [0, 9]
   let lastTwoFn = filterIndexed(lastTwo);
@@ -50,4 +50,10 @@ import * as R from 'ramda';
     ,['f', 'o', 'o', 'b', 'a', 'r']
   );
   // => ['0-f,1-o,2-o,3-b,4-a,5-r']
+}
+
+{
+  let plusFive = function(num: number, idx: number, list: number[]) { list[idx] = num + 5; };
+  // @dts-jest:skip number[]
+  R.addIndex(R.forEach)(plusFive)([1, 2, 3]); // => [6, 7, 8]
 }
