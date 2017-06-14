@@ -33,7 +33,7 @@ yarn run test -- --watch
 source version: v0.24.x
 
 - [ ] __
-- [ ] add
+- [x] add
 - [ ] addIndex
 - [ ] adjust
 - [ ] all
