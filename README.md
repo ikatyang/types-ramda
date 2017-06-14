@@ -47,7 +47,7 @@ source version: v0.24.x
 - [x] append
 - [x] apply
 - [x] applySpec
-- [ ] ascend
+- [x] ascend
 - [ ] assoc
 - [ ] assocPath
 - [ ] binary
@@ -73,7 +73,7 @@ source version: v0.24.x
 - [ ] curryN
 - [ ] dec
 - [ ] defaultTo
-- [ ] descend
+- [x] descend
 - [ ] difference
 - [ ] differenceWith
 - [ ] dissoc
