@@ -1,4 +1,5 @@
 export type Ordered = string | number;
+export type Property = string | number | symbol;
 
 export type Morphism<T, U> = (value: T) => U;
 export type IndexedListMorphism<T, U> = (value: T, index: number, list: List<T>) => U;
