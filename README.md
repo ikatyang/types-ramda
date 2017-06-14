@@ -45,7 +45,7 @@ source version: v0.24.x
 - [x] ap
 - [x] aperture
 - [x] append
-- [ ] apply
+- [x] apply
 - [ ] applySpec
 - [ ] ascend
 - [ ] assoc
