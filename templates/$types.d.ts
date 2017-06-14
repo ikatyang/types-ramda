@@ -13,6 +13,13 @@ export interface List<T> {
   readonly length: number;
 }
 
+export interface Dictionary<T> {
+  [key: string]: T;
+}
+export interface NestedDictionary<T> {
+  [key: string]: T | NestedDictionary<T>;
+}
+
 export interface Functor<T> {
   map<U>(fn: Morphism<T, U>): Functor<U>;
 }
