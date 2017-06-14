@@ -12,6 +12,7 @@ import * as always from "./src/always";
 import * as and from "./src/and";
 import * as any from "./src/any";
 import * as anyPass from "./src/anyPass";
+import * as ap from "./src/ap";
 import * as map from "./src/map";
 import * as or from "./src/or";
-export { __, add, addIndex, adjust, all, allPass, always, and, any, anyPass, map, or };
+export { __, add, addIndex, adjust, all, allPass, always, and, any, anyPass, ap, map, or };

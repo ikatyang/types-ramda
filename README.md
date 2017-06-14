@@ -42,7 +42,7 @@ source version: v0.24.x
 - [x] and
 - [x] any
 - [x] anyPass
-- [ ] ap
+- [x] ap
 - [ ] aperture
 - [ ] append
 - [ ] apply
