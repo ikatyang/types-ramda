@@ -44,7 +44,7 @@ source version: v0.24.x
 - [x] anyPass
 - [x] ap
 - [x] aperture
-- [ ] append
+- [x] append
 - [ ] apply
 - [ ] applySpec
 - [ ] ascend
@@ -197,7 +197,7 @@ source version: v0.24.x
 - [ ] pipeK
 - [ ] pipeP
 - [ ] pluck
-- [ ] prepend
+- [x] prepend
 - [ ] product
 - [ ] project
 - [ ] prop
