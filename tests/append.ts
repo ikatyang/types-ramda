@@ -1,9 +1,9 @@
 import * as R_append from 'ramda/src/append';
 
-declare const number: number;
+declare const string: string;
 declare const number_array: number[];
 
 // @dts-jest
-R_append(number)(number_array);
+R_append(string)(number_array);
 // @dts-jest
-R_append(number, number_array);
+R_append(string, number_array);
