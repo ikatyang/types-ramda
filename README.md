@@ -39,7 +39,7 @@ source version: v0.24.x
 - [x] all
 - [x] allPass
 - [x] always
-- [ ] and
+- [x] and
 - [x] any
 - [x] anyPass
 - [ ] ap
@@ -180,7 +180,7 @@ source version: v0.24.x
 - [ ] of
 - [ ] omit
 - [ ] once
-- [ ] or
+- [x] or
 - [ ] over
 - [ ] pair
 - [ ] partial
