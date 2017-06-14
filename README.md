@@ -37,11 +37,11 @@ source version: v0.24.x
 - [x] addIndex
 - [x] adjust
 - [x] all
-- [ ] allPass
+- [x] allPass
 - [ ] always
 - [ ] and
 - [x] any
-- [ ] anyPass
+- [x] anyPass
 - [ ] ap
 - [ ] aperture
 - [ ] append

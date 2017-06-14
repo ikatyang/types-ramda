@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_allPass([string_predicate, string_predicate]) 1`] = `"(value: string) => boolean"`;
+
+exports[`R_allPass<string | number>([string_predicate, number_preficate]) 1`] = `"(value: string | number) => boolean"`;
