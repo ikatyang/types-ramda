@@ -1,26 +1,22 @@
-import {Functor} from 'ramda/src/$types';
+import {Functor, Morphism} from 'ramda/src/$types';
 import * as R_map from 'ramda/src/map';
 
-{
-  // @dts-jest
-  R_map((x: string) => +x, ['1', '2']);
+declare const string_to_number: Morphism<string, number>;
+declare const string_array: string[];
+declare const string_object: Record<string, string>;
+declare const string_functor: Functor<string>;
 
-  // @dts-jest
-  R_map((x: string) => +x)(['1', '2']);
-}
+// @dts-jest
+R_map(string_to_number, string_array);
+// @dts-jest
+R_map(string_to_number)(string_array);
 
-{
-  // @dts-jest
-  R_map((x: string) => +x, {a: '1', b: '2'});
-  // @dts-jest
-  R_map((x: string) => +x)({a: '1', b: '2'});
-}
+// @dts-jest
+R_map(string_to_number, string_object);
+// @dts-jest
+R_map(string_to_number)(string_object);
 
-{
-  declare const string_functor: Functor<string>;
-
-  // @dts-jest
-  R_map((x: string) => +x, string_functor);
-  // @dts-jest
-  R_map((x: string) => +x)(string_functor);
-}
+// @dts-jest
+R_map(string_to_number, string_functor);
+// @dts-jest
+R_map(string_to_number)(string_functor);
