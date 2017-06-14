@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`double(2) 1`] = `"number"`;
-
-exports[`greetMsJaneJones('Hello') 1`] = `"string"`;
-
-exports[`sayHelloToMs('Jane', 'Jones') 1`] = `"string"`;

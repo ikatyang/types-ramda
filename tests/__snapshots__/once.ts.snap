@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`addOneOnce(10) 1`] = `"number"`;
-
-exports[`addOneOnce(addOneOnce(50)) 1`] = `"number"`;

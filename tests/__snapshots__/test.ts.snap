@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.test(/^x/, 'xyz') 1`] = `"boolean"`;
-
-exports[`R.test(/^y/)('xyz') 1`] = `"boolean"`;

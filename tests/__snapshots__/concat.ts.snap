@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.concat('ABC')('DEF') 1`] = `"string"`;
-
-exports[`R.concat([4, 5, 6])([1, 2, 3]) 1`] = `"number[]"`;
-
-exports[`R.concat([4, 5, 6], [1, 2, 3]) 1`] = `"number[]"`;

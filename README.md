@@ -12,17 +12,14 @@ developing ...
 # linting
 yarn run lint
 
-# migrate jsdoc (ramda repo -> ./src/templates/*.md)
+# migrate jsdoc (ramda-repo -> ./templates/*.md)
 yarn run jsdoc
 
-# build for test (./ramda/*.d.ts)
+# build types (./index.d.ts, ./src/*.d.ts)
 yarn run build
 
-# build for test with watching mode
+# build types with watching mode
 yarn run build-watch
-
-# build for release (./index.d.ts)
-yarn run build-release
 
 # snapshot test
 yarn run test
@@ -33,230 +30,232 @@ yarn run test -- --watch
 
 ## Progress
 
-source version: v0.23.x
-
-#### migration
-
-done
-
-#### testing
+source version: v0.24.x
 
 - [ ] __
-- [x] add
+- [ ] add
 - [ ] addIndex
 - [ ] adjust
-- [x] all
-- [x] allPass
-- [x] always
-- [x] and
-- [x] any
-- [x] anyPass
-- [x] ap
-- [x] aperture
+- [ ] all
+- [ ] allPass
+- [ ] always
+- [ ] and
+- [ ] any
+- [ ] anyPass
+- [ ] ap
+- [ ] aperture
 - [ ] append
-- [x] apply
+- [ ] apply
 - [ ] applySpec
 - [ ] ascend
 - [ ] assoc
 - [ ] assocPath
 - [ ] binary
 - [ ] bind
-- [x] both
+- [ ] both
 - [ ] call
 - [ ] chain
 - [ ] clamp
 - [ ] clone
 - [ ] comparator
-- [x] complement
+- [ ] complement
 - [ ] compose
 - [ ] composeK
 - [ ] composeP
-- [x] concat
-- [x] cond
+- [ ] concat
+- [ ] cond
 - [ ] construct
 - [ ] constructN
-- [x] contains
-- [x] converge
+- [ ] contains
+- [ ] converge
 - [ ] countBy
 - [ ] curry
 - [ ] curryN
-- [x] dec
+- [ ] dec
 - [ ] defaultTo
 - [ ] descend
-- [x] difference
+- [ ] difference
 - [ ] differenceWith
 - [ ] dissoc
 - [ ] dissocPath
-- [x] divide
+- [ ] divide
 - [ ] drop
 - [ ] dropLast
-- [x] dropLastWhile
+- [ ] dropLastWhile
 - [ ] dropRepeats
 - [ ] dropRepeatsWith
-- [x] dropWhile
-- [x] either
+- [ ] dropWhile
+- [ ] either
 - [ ] empty
-- [x] eqBy
+- [ ] endsWith
+- [ ] eqBy
 - [ ] eqProps
-- [x] equals
+- [ ] equals
 - [ ] evolve
 - [ ] F
 - [ ] filter
 - [ ] find
-- [x] findIndex
+- [ ] findIndex
 - [ ] findLast
 - [ ] findLastIndex
 - [ ] flatten
-- [x] flip
+- [ ] flip
 - [ ] forEach
 - [ ] forEachObjIndexed
 - [ ] fromPairs
 - [ ] groupBy
 - [ ] groupWith
-- [x] gt
-- [x] gte
-- [x] has
-- [x] hasIn
-- [x] head
-- [x] identical
-- [x] identity
+- [ ] gt
+- [ ] gte
+- [ ] has
+- [ ] hasIn
+- [ ] head
+- [ ] identical
+- [ ] identity
 - [ ] ifElse
-- [x] inc
+- [ ] inc
 - [ ] indexBy
-- [x] indexOf
-- [x] init
-- [x] insert
-- [x] insertAll
-- [x] intersection
+- [ ] indexOf
+- [ ] init
+- [ ] innerJoin
+- [ ] insert
+- [ ] insertAll
+- [ ] intersection
 - [ ] intersectionWith
-- [x] intersperse
+- [ ] intersperse
 - [ ] into
 - [ ] invert
 - [ ] invertObj
 - [ ] invoker
-- [x] is
-- [x] isArrayLike
-- [x] isEmpty
+- [ ] is
+- [ ] isEmpty
 - [ ] isNil
-- [x] join
+- [ ] join
 - [ ] juxt
-- [x] keys
-- [x] keysIn
+- [ ] keys
+- [ ] keysIn
 - [ ] last
 - [ ] lastIndexOf
-- [x] length
+- [ ] length
 - [ ] lens
 - [ ] lensIndex
 - [ ] lensPath
 - [ ] lensProp
 - [ ] lift
 - [ ] liftN
-- [x] lt
-- [x] lte
-- [ ] map
+- [ ] lt
+- [ ] lte
+- [x] map
 - [ ] mapAccum
 - [ ] mapAccumRight
 - [ ] mapObjIndexed
 - [ ] match
-- [x] mathMod
+- [ ] mathMod
 - [ ] max
 - [ ] maxBy
-- [x] mean
-- [x] median
-- [x] memoize
+- [ ] mean
+- [ ] median
+- [ ] memoize
+- [ ] memoizeWith
 - [ ] merge
 - [ ] mergeAll
+- [ ] mergeDeepLeft
+- [ ] mergeDeepRight
+- [ ] mergeDeepWith
+- [ ] mergeDeepWithKey
 - [ ] mergeWith
 - [ ] mergeWithKey
 - [ ] min
 - [ ] minBy
-- [x] modulo
-- [x] multiply
+- [ ] modulo
+- [ ] multiply
 - [ ] nAry
-- [x] negate
+- [ ] negate
 - [ ] none
-- [x] not
+- [ ] not
 - [ ] nth
 - [ ] nthArg
+- [ ] o
 - [ ] objOf
-- [x] of
+- [ ] of
 - [ ] omit
-- [x] once
-- [x] or
+- [ ] once
+- [ ] or
 - [ ] over
-- [x] pair
-- [x] partial
+- [ ] pair
+- [ ] partial
 - [ ] partialRight
 - [ ] partition
 - [ ] path
 - [ ] pathEq
 - [ ] pathOr
-- [x] pathSatisfies
+- [ ] pathSatisfies
 - [ ] pick
 - [ ] pickAll
 - [ ] pickBy
 - [ ] pipe
 - [ ] pipeK
-- [x] pipeP
+- [ ] pipeP
 - [ ] pluck
-- [x] prepend
-- [x] product
+- [ ] prepend
+- [ ] product
 - [ ] project
 - [ ] prop
-- [x] propEq
-- [x] propIs
+- [ ] propEq
+- [ ] propIs
 - [ ] propOr
 - [ ] props
-- [x] propSatisfies
-- [x] range
-- [x] reduce
+- [ ] propSatisfies
+- [ ] range
+- [ ] reduce
 - [ ] reduceBy
 - [ ] reduced
 - [ ] reduceRight
-- [x] reduceWhile
-- [x] reject
-- [x] remove
-- [x] repeat
-- [x] replace
+- [ ] reduceWhile
+- [ ] reject
+- [ ] remove
+- [ ] repeat
+- [ ] replace
 - [ ] reverse
-- [x] scan
+- [ ] scan
 - [ ] sequence
 - [ ] set
-- [x] slice
-- [x] sort
+- [ ] slice
+- [ ] sort
 - [ ] sortBy
 - [ ] sortWith
 - [ ] split
-- [x] splitAt
+- [ ] splitAt
 - [ ] splitEvery
-- [x] splitWhen
-- [x] subtract
-- [x] sum
-- [x] symmetricDifference
+- [ ] splitWhen
+- [ ] startsWith
+- [ ] subtract
+- [ ] sum
+- [ ] symmetricDifference
 - [ ] symmetricDifferenceWith
 - [ ] T
-- [x] tail
-- [x] take
+- [ ] tail
+- [ ] take
 - [ ] takeLast
-- [x] takeLastWhile
-- [x] takeWhile
-- [x] tap
-- [x] test
-- [x] times
+- [ ] takeLastWhile
+- [ ] takeWhile
+- [ ] tap
+- [ ] test
+- [ ] times
 - [ ] toLower
-- [x] toPairs
+- [ ] toPairs
 - [ ] toPairsIn
-- [x] toString
+- [ ] toString
 - [ ] toUpper
 - [ ] transduce
 - [ ] transpose
 - [ ] traverse
 - [ ] trim
-- [x] tryCatch
-- [x] type
+- [ ] tryCatch
+- [ ] type
 - [ ] unapply
 - [ ] unary
-- [x] uncurryN
+- [ ] uncurryN
 - [ ] unfold
 - [ ] union
 - [ ] unionWith
@@ -265,17 +264,21 @@ done
 - [ ] uniqWith
 - [ ] unless
 - [ ] unnest
-- [x] until
+- [ ] until
 - [ ] update
 - [ ] useWith
-- [x] values
+- [ ] values
 - [ ] valuesIn
 - [ ] view
 - [ ] when
 - [ ] where
 - [ ] whereEq
-- [x] without
+- [ ] without
 - [ ] xprod
 - [ ] zip
 - [ ] zipObj
 - [ ] zipWith
+
+## License
+
+MIT © [Ika](https://github.com/ikatyang)

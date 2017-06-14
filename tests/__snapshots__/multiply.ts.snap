@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.multiply(2, 5) 1`] = `"number"`;
-
-exports[`double(3) 1`] = `"number"`;
-
-exports[`triple(4) 1`] = `"number"`;

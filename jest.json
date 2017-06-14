@@ -2,7 +2,5 @@
   "testEnvironment": "node",
   "moduleFileExtensions": ["ts", "js", "json"],
   "testRegex": "/tests/.+\\.ts$",
-  "transform": {"/tests/.+\\.ts$": "dts-jest/transform"},
-  "reporters": ["default", "dts-jest/reporter"],
-  "setupTestFrameworkScriptFile": "<rootDir>/scripts/set-jest-timeout.js"
+  "transform": {"/tests/.+\\.ts$": "dts-jest/transform"}
 }

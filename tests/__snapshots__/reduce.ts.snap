@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.reduce(add)(10, numbers) 1`] = `"number"`;
-
-exports[`R.reduce(add, 10)(numbers) 1`] = `"number"`;
-
-exports[`R.reduce(add, 10, numbers) 1`] = `"number"`;
-
-exports[`R.reduce(add, 10, numbers) 2`] = `"number"`;

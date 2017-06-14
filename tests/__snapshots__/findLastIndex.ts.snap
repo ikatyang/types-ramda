@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.findLastIndex(R.propEq('a', 1))(xs) 1`] = `"number"`;
-
-exports[`R.findLastIndex(R.propEq('a', 4))(xs) 1`] = `"number"`;

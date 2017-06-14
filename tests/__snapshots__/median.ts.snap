@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.median([]) 1`] = `"number"`;
-
-exports[`R.median([7, 2, 10, 9]) 1`] = `"number"`;

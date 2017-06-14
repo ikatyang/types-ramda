@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.takeLast(1, ['foo', 'bar', 'baz']) 1`] = `"string[]"`;
-
-exports[`R.takeLast(2)(['foo', 'bar', 'baz']) 1`] = `"string[]"`;

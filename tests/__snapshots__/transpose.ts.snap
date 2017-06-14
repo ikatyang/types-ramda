@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.transpose([[1, 2, 3], ['a', 'b', 'c']]) 1`] = `"any[][]"`;
-
-exports[`R.transpose([[10, 11], [20], [], [30, 31, 32]]) 1`] = `"number[][]"`;

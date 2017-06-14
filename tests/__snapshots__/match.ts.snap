@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.match(/([a-z]a)/g, 'bananas') 1`] = `"string[]"`;
-
-exports[`R.match(/a/, 'b') 1`] = `"string[]"`;

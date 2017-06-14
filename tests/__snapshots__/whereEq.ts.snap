@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.whereEq({a: 'one'}, {a: 'one'}) 1`] = `"boolean"`;
-
-exports[`pred({a: 1, b: 1}) 1`] = `"boolean"`;
-
-exports[`pred({a: 1, b: 2}) 1`] = `"boolean"`;

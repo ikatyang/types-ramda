@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`compF2('foo') 1`] = `"number"`;
-
-exports[`pipeF2('foo') 1`] = `"number"`;

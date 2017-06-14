@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.aperture(2, [1, 2, 3, 4, 5]) 1`] = `"number[][]"`;
-
-exports[`R.aperture(3, [1, 2, 3, 4, 5]) 1`] = `"number[][]"`;
-
-exports[`R.aperture(7)([1, 2, 3, 4, 5]) 1`] = `"number[][]"`;
-
-exports[`R.aperture(7, [1, 2, 3, 4, 5]) 1`] = `"number[][]"`;

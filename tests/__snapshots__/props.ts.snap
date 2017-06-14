@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.props(['x', 'y'], {x: 1, y: 2}) 1`] = `"number[]"`;
-
-exports[`fullName({last: 'Bullet-Tooth', age: 33, first: 'Tony'}) 1`] = `"string"`;

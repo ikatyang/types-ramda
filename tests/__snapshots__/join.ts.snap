@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.join('|', [1, 2, 3]) 1`] = `"string"`;
-
-exports[`spacer(['a', 2, 3.4]) 1`] = `"string"`;

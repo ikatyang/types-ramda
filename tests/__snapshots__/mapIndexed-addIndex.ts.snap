@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`mapIndexed((val: string, idx: number) => \`\${idx}-\${val}\`)(['f', 'o', 'o', 'b', 'a', 'r']) 1`] = `"string[]"`;

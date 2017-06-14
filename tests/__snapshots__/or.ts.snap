@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.or(0)([1]) 1`] = `"number | number[]"`;
-
-exports[`R.or(0, [1]) 1`] = `"R.or_11<0, number[]>"`;
-
-exports[`R.or(false, true) 1`] = `"boolean"`;
-
-exports[`R.or(null, '') 1`] = `"R.or_11<null, \\"\\">"`;

@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.intersperse(',', ['foo', 'bar']) 1`] = `"string[]"`;
-
-exports[`R.intersperse(0, [1, 2]) 1`] = `"number[]"`;
-
-exports[`R.intersperse(0, [1]) 1`] = `"number[]"`;

@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.mean([]) 1`] = `"number"`;
-
-exports[`R.mean([2, 7, 9]) 1`] = `"number"`;

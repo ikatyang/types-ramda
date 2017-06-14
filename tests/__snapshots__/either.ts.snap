@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`f(8) 1`] = `"boolean"`;
-
-exports[`f(101) 1`] = `"boolean"`;

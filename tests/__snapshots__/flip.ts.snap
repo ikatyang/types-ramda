@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`flipped(1, 2, 3) 1`] = `"number[]"`;
-
-exports[`mergeThree(1, 2, 3) 1`] = `"number[]"`;

@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.divide(71, 100) 1`] = `"number"`;
-
-exports[`half(42) 1`] = `"number"`;
-
-exports[`reciprocal(4) 1`] = `"number"`;

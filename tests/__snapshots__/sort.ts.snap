@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`R.sort(diff)([4, 2, 7, 5]) 1`] = `"number[]"`;
-
-exports[`R.sort(diff, [4, 2, 7, 5]) 1`] = `"number[]"`;
