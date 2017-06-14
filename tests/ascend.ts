@@ -1,7 +1,7 @@
 import {Morphism, Ordered} from 'ramda/src/$types';
 import * as R_ascend from 'ramda/src/ascend';
 
-declare const get_order_from_object: Morphism<object, string>;
+declare const get_order_from_object: Morphism<object, Ordered>;
 declare const object_a: object;
 declare const object_b: object;
 
