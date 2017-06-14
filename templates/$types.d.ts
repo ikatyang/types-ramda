@@ -1,4 +1,4 @@
-export type Ordered = string | number;
+export type Ordered = string | number | boolean | Date;
 export type Property = string | number | symbol;
 
 export type Morphism<T, U> = (value: T) => U;
