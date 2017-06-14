@@ -28,13 +28,7 @@ const output_index_filename = `${output_index_relative_dirname}/${output_index_b
 
 gulp.task('clean', async () => del([output_relative_dirname, output_index_filename]));
 gulp.task('build-files', () => generate_files(glob_templates));
-
-gulp.task('build-index', () =>
-  gulp.src(glob_index)
-    .pipe(gulp_generate(generate_index_content))
-    .pipe(gulp_rename({basename: output_index_basename, extname: output_extname}))
-    .pipe(gulp.dest(output_index_relative_dirname)),
-);
+gulp.task('build-index', generate_index);
 
 gulp.task('build', ['clean'], (callback: (error?: any) => void) =>
   gulp_run(['build-index', 'build-files'], callback));
@@ -50,37 +44,54 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
 
     switch (event.type) {
       case 'changed':
-        build_file();
+        generate_files(input_relative_filename, on_error, on_end);
         break;
       case 'added':
       case 'deleted':
-        gulp_run('build-index', build_file);
+        generate_index();
+        generate_files(input_relative_filename, on_error, on_end);
         break;
       default:
         throw new Error(`Unexpected event type '${event.type}'`);
     }
 
-    function build_file() {
-      try {
-        generate_files(input_relative_filename);
+    let error: Error | undefined;
+    function on_error(this: NodeJS.ReadWriteStream, e: Error) {
+      error = e;
+      // tslint:disable-next-line:no-invalid-this
+      this.end();
+    }
+    function on_end() {
+      if (error !== undefined) {
+        gulp_util.log(`Building '${gulp_util.colors.cyan(output_relative_filename)}' failed\n\n${error.stack}`);
+      } else {
         gulp_util.log(`Building '${gulp_util.colors.cyan(output_relative_filename)}' complete`);
-      } catch (error) {
-        const {stack} = error as Error;
-        gulp_util.log(`Building '${gulp_util.colors.cyan(output_relative_filename)}' failed: ${stack}`);
       }
       gulp_util.log('Watching for file changes.');
     }
   });
 });
 
-function generate_files(glob: string) {
-  gulp.src(glob_templates)
+function generate_files(
+    glob: string,
+    on_error: (error: Error) => void = error => { throw error; },
+    on_end: () => void = () => { /* do nothing */ }) {
+  return gulp.src(glob_templates)
     .pipe(gulp_generate(generate_file_content))
+    .on('error', on_error)
+    .on('end', on_end)
     .pipe(gulp_rename(the_path => {
       the_path.basename = the_path.basename!.replace(/\.d$/, '');
       the_path.extname = output_extname;
     }))
     .pipe(gulp.dest(output_relative_dirname));
+}
+
+function generate_index() {
+  return gulp.src(glob_index)
+    .pipe(gulp_generate(generate_index_content))
+    .pipe(gulp_rename({basename: output_index_basename, extname: output_extname}))
+    .pipe(gulp.dest(output_index_relative_dirname));
 }
 
 function get_top_level_members(filename: string): dts.ITopLevelMember[] {
@@ -246,8 +257,12 @@ function generate_index_content() {
 function gulp_generate(fn: (filename: string) => string) {
   return through.obj((file: gulp_util.File, encoding, callback) => {
     if (file.isBuffer()) {
-      file.contents = new Buffer(fn(file.path));
-      callback(null, file);
+      try {
+        file.contents = new Buffer(fn(file.path));
+        callback(null, file);
+      } catch (e) {
+        callback(e);
+      }
     } else {
       callback(new Error('Support buffer only.'));
     }
