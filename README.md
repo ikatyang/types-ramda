@@ -43,7 +43,7 @@ source version: v0.24.x
 - [x] any
 - [x] anyPass
 - [x] ap
-- [ ] aperture
+- [x] aperture
 - [ ] append
 - [ ] apply
 - [ ] applySpec
