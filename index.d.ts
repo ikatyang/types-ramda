@@ -6,5 +6,7 @@ import * as __ from "./src/__";
 import * as add from "./src/add";
 import * as addIndex from "./src/addIndex";
 import * as adjust from "./src/adjust";
+import * as all from "./src/all";
+import * as any from "./src/any";
 import * as map from "./src/map";
-export { __, add, addIndex, adjust, map };
+export { __, add, addIndex, adjust, all, any, map };

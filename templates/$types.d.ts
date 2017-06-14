@@ -1,4 +1,5 @@
 export type Morphism<T, U> = (value: T) => U;
+export type Predicate<T> = Morphism<T, boolean>;
 export type IndexedListMorphism<T, U> = (value: T, index: number, list: List<T>) => U;
 export type IndexedObjectMorphism<T, U, K extends string> = (value: T, index: number, object: Record<K, T>) => U;
 
