@@ -6,6 +6,19 @@ TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 
 developing ...
 
+## Features
+
+#### For User
+
+- support placeholder ( `R.__` )
+- support partial import ( `import * as map from "ramda/src/map"` )
+- support selectable overloads ( use 0-param: `R.map<"11", "list">()` )
+
+#### For Developer
+
+- support snapshot testing ( via [`dts-jest`](https://github.com/ikatyang/dts-jest), see `./tests/*.ts` )
+- support functions auto-currying ( via [`dts-element`](https://github.com/ikatyang/dts-element), see `./templates/*.d.ts` )
+
 ## Development
 
 ```sh
