@@ -50,7 +50,7 @@ source version: v0.24.x
 - [x] ascend
 - [x] assoc
 - [x] assocPath
-- [ ] binary
+- [x] binary
 - [ ] bind
 - [ ] both
 - [ ] call
