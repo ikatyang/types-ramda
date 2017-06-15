@@ -79,7 +79,7 @@ source version: v0.24.x
 - [x] cond
 - [ ] construct
 - [ ] constructN
-- [ ] contains
+- [x] contains
 - [ ] converge
 - [ ] countBy
 - [ ] curry
