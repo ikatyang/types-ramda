@@ -166,8 +166,8 @@ source version: v0.24.x
 - [x] mathMod
 - [ ] max
 - [ ] maxBy
-- [ ] mean
-- [ ] median
+- [x] mean
+- [x] median
 - [ ] memoize
 - [ ] memoizeWith
 - [ ] merge
@@ -211,7 +211,7 @@ source version: v0.24.x
 - [ ] pipeP
 - [ ] pluck
 - [x] prepend
-- [ ] product
+- [x] product
 - [ ] project
 - [ ] prop
 - [ ] propEq
@@ -243,7 +243,7 @@ source version: v0.24.x
 - [ ] splitWhen
 - [ ] startsWith
 - [x] subtract
-- [ ] sum
+- [x] sum
 - [ ] symmetricDifference
 - [ ] symmetricDifferenceWith
 - [ ] T
