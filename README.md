@@ -94,10 +94,10 @@ source version: v0.24.x
 - [x] divide
 - [x] drop
 - [x] dropLast
-- [ ] dropLastWhile
+- [x] dropLastWhile
 - [ ] dropRepeats
 - [ ] dropRepeatsWith
-- [ ] dropWhile
+- [x] dropWhile
 - [ ] either
 - [ ] empty
 - [ ] endsWith
@@ -250,8 +250,8 @@ source version: v0.24.x
 - [ ] tail
 - [x] take
 - [x] takeLast
-- [ ] takeLastWhile
-- [ ] takeWhile
+- [x] takeLastWhile
+- [x] takeWhile
 - [ ] tap
 - [ ] test
 - [ ] times
