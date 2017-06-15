@@ -69,7 +69,7 @@ source version: v0.24.x
 - [x] call
 - [ ] chain
 - [x] clamp
-- [ ] clone
+- [x] clone
 - [ ] comparator
 - [ ] complement
 - [ ] compose
