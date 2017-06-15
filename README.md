@@ -65,7 +65,7 @@ source version: v0.24.x
 - [x] assocPath
 - [x] binary
 - [x] bind
-- [ ] both
+- [x] both
 - [ ] call
 - [ ] chain
 - [ ] clamp
