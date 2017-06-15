@@ -70,7 +70,7 @@ source version: v0.24.x
 - [ ] chain
 - [x] clamp
 - [x] clone
-- [ ] comparator
+- [x] comparator
 - [ ] complement
 - [ ] compose
 - [ ] composeK
