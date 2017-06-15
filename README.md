@@ -183,7 +183,7 @@ source version: v0.24.x
 - [x] modulo
 - [x] multiply
 - [x] nAry
-- [ ] negate
+- [x] negate
 - [ ] none
 - [ ] not
 - [ ] nth
