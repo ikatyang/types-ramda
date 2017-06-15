@@ -95,8 +95,8 @@ source version: v0.24.x
 - [x] drop
 - [x] dropLast
 - [x] dropLastWhile
-- [ ] dropRepeats
-- [ ] dropRepeatsWith
+- [x] dropRepeats
+- [x] dropRepeatsWith
 - [x] dropWhile
 - [ ] either
 - [ ] empty
