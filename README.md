@@ -92,8 +92,8 @@ source version: v0.24.x
 - [x] dissoc
 - [x] dissocPath
 - [x] divide
-- [ ] drop
-- [ ] dropLast
+- [x] drop
+- [x] dropLast
 - [ ] dropLastWhile
 - [ ] dropRepeats
 - [ ] dropRepeatsWith
@@ -248,8 +248,8 @@ source version: v0.24.x
 - [x] symmetricDifferenceWith
 - [ ] T
 - [ ] tail
-- [ ] take
-- [ ] takeLast
+- [x] take
+- [x] takeLast
 - [ ] takeLastWhile
 - [ ] takeWhile
 - [ ] tap
