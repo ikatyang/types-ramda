@@ -101,7 +101,7 @@ source version: v0.24.x
 - [x] either
 - [x] empty
 - [x] endsWith
-- [ ] eqBy
+- [x] eqBy
 - [ ] eqProps
 - [ ] equals
 - [ ] evolve
