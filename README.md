@@ -98,7 +98,7 @@ source version: v0.24.x
 - [x] dropRepeats
 - [x] dropRepeatsWith
 - [x] dropWhile
-- [ ] either
+- [x] either
 - [ ] empty
 - [ ] endsWith
 - [ ] eqBy
