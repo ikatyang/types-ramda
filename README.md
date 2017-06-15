@@ -85,7 +85,7 @@ source version: v0.24.x
 - [ ] curry
 - [ ] curryN
 - [x] dec
-- [ ] defaultTo
+- [x] defaultTo
 - [x] descend
 - [ ] difference
 - [ ] differenceWith

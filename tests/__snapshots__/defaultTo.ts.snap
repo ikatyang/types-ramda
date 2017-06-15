@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_defaultTo(number_or_undefined) 1`] = `"<U>(value: U) => number | U"`;
+
+exports[`R_defaultTo(number_or_undefined, string) 1`] = `"string | number"`;
