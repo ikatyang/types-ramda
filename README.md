@@ -99,7 +99,7 @@ source version: v0.24.x
 - [x] dropRepeatsWith
 - [x] dropWhile
 - [x] either
-- [ ] empty
+- [x] empty
 - [ ] endsWith
 - [ ] eqBy
 - [ ] eqProps
