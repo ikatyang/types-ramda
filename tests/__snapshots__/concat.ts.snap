@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_concat(number_array, number_array) 1`] = `"number[]"`;
+
+exports[`R_concat(string, string) 1`] = `"string"`;
