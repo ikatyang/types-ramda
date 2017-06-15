@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_dissoc(string_property)(object) 1`] = `"object"`;
+
+exports[`R_dissoc(string_property)<string>(object) 1`] = `"string"`;
+
+exports[`R_dissoc(string_property, object) 1`] = `"object"`;
+
+exports[`R_dissoc<string>(string_property, object) 1`] = `"string"`;
