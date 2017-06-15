@@ -88,7 +88,7 @@ source version: v0.24.x
 - [x] defaultTo
 - [x] descend
 - [x] difference
-- [ ] differenceWith
+- [x] differenceWith
 - [ ] dissoc
 - [ ] dissocPath
 - [x] divide
@@ -134,7 +134,7 @@ source version: v0.24.x
 - [ ] insert
 - [ ] insertAll
 - [x] intersection
-- [ ] intersectionWith
+- [x] intersectionWith
 - [ ] intersperse
 - [ ] into
 - [ ] invert
@@ -245,7 +245,7 @@ source version: v0.24.x
 - [x] subtract
 - [x] sum
 - [x] symmetricDifference
-- [ ] symmetricDifferenceWith
+- [x] symmetricDifferenceWith
 - [ ] T
 - [ ] tail
 - [ ] take
@@ -271,7 +271,7 @@ source version: v0.24.x
 - [ ] uncurryN
 - [ ] unfold
 - [x] union
-- [ ] unionWith
+- [x] unionWith
 - [ ] uniq
 - [ ] uniqBy
 - [ ] uniqWith
