@@ -1,8 +1,12 @@
 - `__.d.ts`: constant with jsdoc binding
-- `*.d.ts`: funciton prototypes with jsdoc binding and auto-curryifying
-- `*.ts`: funciton prototypes with jsdoc binding
-- `$*.d.ts`: additional manual types without jsdoc binding
-- `$*.ts`: additional auto-generated types without jsdoc binding
+
+- `*.d.ts`: manual funciton prototypes with jsdoc binding and auto-currying
+- `*.c.ts`: codegen funciton prototypes with jsdoc binding and auto-currying
+- `*.ts`: codegen funciton prototypes with jsdoc binding
+
+- `$*.d.ts`: manual types without jsdoc binding
+- `$*.ts`: codegen types without jsdoc binding
+
 - `README.md`: a placeholder file for gulp
 
 ---

@@ -40,7 +40,7 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
 
     const output_relative_filename = input_relative_filename
       .replace(input_relative_dirname, output_relative_dirname)
-      .replace(/(\.d)?\.ts$/, '.d.ts');
+      .replace(/(\.[a-z])?\.ts$/, '.d.ts');
 
     switch (event.type) {
       case 'changed':
@@ -81,7 +81,7 @@ function generate_files(
     .on('error', on_error)
     .on('end', on_end)
     .pipe(gulp_rename(the_path => {
-      the_path.basename = the_path.basename!.replace(/\.d$/, '');
+      the_path.basename = the_path.basename!.replace(/\.[a-z]$/, '');
       the_path.extname = output_extname;
     }))
     .pipe(gulp.dest(output_relative_dirname));
@@ -102,8 +102,10 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
     if (basename === '__.d.ts' || basename.startsWith('$')) {
       push_members();
     } else {
-      push_dts_members();
+      push_d_ts_members();
     }
+  } else if (basename.endsWith('.c.ts')) {
+    push_c_ts_members();
   } else if (basename.endsWith('.ts')) {
     push_ts_members();
   } else {
@@ -138,12 +140,26 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
     members.push(...top_level_element.members);
   }
 
-  function push_dts_members() {
+  function push_d_ts_members() {
     const top_level_element = dts.parse(fs.readFileSync(filename, 'utf8'));
-    const imports = top_level_element.members.filter(
+    push_curry_members(top_level_element.members);
+  }
+
+  function push_ts_members() {
+    const declarations = get_ts_members();
+    members.push(...declarations);
+  }
+
+  function push_c_ts_members() {
+    const declarations = get_ts_members();
+    push_curry_members(declarations);
+  }
+
+  function push_curry_members(the_members: dts.ITopLevelMember[]) {
+    const imports = the_members.filter(
       (member): member is dts.IImportNamed => (member.kind === dts.ElementKind.ImportNamed),
     );
-    const functions = top_level_element.members.filter(
+    const functions = the_members.filter(
       (member): member is dts.IFunctionDeclaration => (member.kind === dts.ElementKind.FunctionDeclaration),
     );
 
@@ -186,7 +202,7 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
     );
   }
 
-  function push_ts_members() {
+  function get_ts_members() {
     // tslint:disable-next-line:no-require-imports
     const required: any = require(filename);
     delete require.cache[require.resolve(filename)];
@@ -196,7 +212,7 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
       throw new Error(`Template.ts should default-export an array of declarations: ${filename}`);
     }
 
-    members.push(...declarations);
+    return declarations;
   }
 
   function is_valid_export_default(export_default: any): export_default is dts.ITopLevelMember[] {
@@ -214,7 +230,7 @@ function generate_file_content(filename: string) {
 
 function generate_index_content() {
   const filenames = glob.sync(glob_templates).map(filename =>
-    `./${output_relative_dirname}/${path.relative(input_relative_dirname, filename).replace(/(\.d)?\.ts$/, '')}`,
+    `./${output_relative_dirname}/${path.relative(input_relative_dirname, filename).replace(/(\.[a-z])?\.ts$/, '')}`,
   );
 
   const jsdoc_binded_filenames: string[] = [];

@@ -16,7 +16,7 @@ const is_object_member = (value: any): value is dts.IObjectMember =>
 
 export const create_curried_declarations = (
     filename: string, type: dts.IFunctionType | {[kind: string]: dts.IFunctionType}) => {
-  const name = path.basename(filename).replace(/(\.d)?\.ts$/, '');
+  const name = path.basename(filename).replace(/(\.[a-z])?\.ts$/, '');
   const members = is_function_type(type)
     ? create_curried_types(name, type)
     : create_various_curried_types(name, type);
