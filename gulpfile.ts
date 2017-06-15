@@ -48,6 +48,7 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
         break;
       case 'added':
       case 'deleted':
+      case 'renamed':
         generate_index();
         generate_files(input_relative_filename, on_error, on_end);
         break;
