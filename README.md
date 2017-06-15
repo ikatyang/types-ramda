@@ -84,7 +84,7 @@ source version: v0.24.x
 - [ ] countBy
 - [ ] curry
 - [ ] curryN
-- [ ] dec
+- [x] dec
 - [ ] defaultTo
 - [x] descend
 - [ ] difference
@@ -126,7 +126,7 @@ source version: v0.24.x
 - [ ] identical
 - [ ] identity
 - [ ] ifElse
-- [ ] inc
+- [x] inc
 - [ ] indexBy
 - [ ] indexOf
 - [ ] init
