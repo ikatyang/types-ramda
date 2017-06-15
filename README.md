@@ -100,7 +100,7 @@ source version: v0.24.x
 - [x] dropWhile
 - [x] either
 - [x] empty
-- [ ] endsWith
+- [x] endsWith
 - [ ] eqBy
 - [ ] eqProps
 - [ ] equals
@@ -241,7 +241,7 @@ source version: v0.24.x
 - [ ] splitAt
 - [ ] splitEvery
 - [ ] splitWhen
-- [ ] startsWith
+- [x] startsWith
 - [x] subtract
 - [x] sum
 - [x] symmetricDifference
