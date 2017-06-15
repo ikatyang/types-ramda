@@ -91,7 +91,7 @@ source version: v0.24.x
 - [ ] differenceWith
 - [ ] dissoc
 - [ ] dissocPath
-- [ ] divide
+- [x] divide
 - [ ] drop
 - [ ] dropLast
 - [ ] dropLastWhile
@@ -163,7 +163,7 @@ source version: v0.24.x
 - [ ] mapAccumRight
 - [ ] mapObjIndexed
 - [ ] match
-- [ ] mathMod
+- [x] mathMod
 - [ ] max
 - [ ] maxBy
 - [ ] mean
@@ -180,8 +180,8 @@ source version: v0.24.x
 - [ ] mergeWithKey
 - [ ] min
 - [ ] minBy
-- [ ] modulo
-- [ ] multiply
+- [x] modulo
+- [x] multiply
 - [x] nAry
 - [ ] negate
 - [ ] none
@@ -242,7 +242,7 @@ source version: v0.24.x
 - [ ] splitEvery
 - [ ] splitWhen
 - [ ] startsWith
-- [ ] subtract
+- [x] subtract
 - [ ] sum
 - [ ] symmetricDifference
 - [ ] symmetricDifferenceWith
