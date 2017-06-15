@@ -90,7 +90,7 @@ source version: v0.24.x
 - [x] difference
 - [x] differenceWith
 - [x] dissoc
-- [ ] dissocPath
+- [x] dissocPath
 - [x] divide
 - [ ] drop
 - [ ] dropLast

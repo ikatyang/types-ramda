@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_dissocPath(path)(object) 1`] = `"object"`;
+
+exports[`R_dissocPath(path)<string>(object) 1`] = `"string"`;
+
+exports[`R_dissocPath(path, object) 1`] = `"object"`;
+
+exports[`R_dissocPath<string>(path, object) 1`] = `"string"`;
