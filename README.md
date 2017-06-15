@@ -182,7 +182,7 @@ source version: v0.24.x
 - [ ] minBy
 - [ ] modulo
 - [ ] multiply
-- [ ] nAry
+- [x] nAry
 - [ ] negate
 - [ ] none
 - [ ] not
