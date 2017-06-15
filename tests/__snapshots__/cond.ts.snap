@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_cond([
+      [string_to_boolean, string_to_number],
+      [string_to_boolean, string_to_number],
+    ]) 1`] = `"Morphism<string, number>"`;

@@ -76,7 +76,7 @@ source version: v0.24.x
 - [ ] composeK
 - [ ] composeP
 - [x] concat
-- [ ] cond
+- [x] cond
 - [ ] construct
 - [ ] constructN
 - [ ] contains
