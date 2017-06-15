@@ -196,14 +196,7 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
       throw new Error(`Template.ts should default-export an array of declarations: ${filename}`);
     }
 
-    members.push(
-      ...declarations.map(
-        declaration => ({
-          ...declaration,
-          export: true,
-        }),
-      ),
-    );
+    members.push(...declarations);
   }
 
   function is_valid_export_default(export_default: any): export_default is dts.ITopLevelMember[] {

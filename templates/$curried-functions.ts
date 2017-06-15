@@ -2,6 +2,8 @@ import * as dts from 'dts-element';
 import {placeholder_name, placeholder_name_abbr} from './utils/constants';
 import {create_curried_interfaces} from './utils/create-curried-interfaces';
 
+export const max_curry_level = 6;
+
 export default [
   dts.create_import_named({
     members: [
@@ -12,7 +14,12 @@ export default [
     ],
     from: './$placeholder',
   }),
-  ...create_curried_interfaces(6),
+  ...create_curried_interfaces(max_curry_level).map(
+    the_interface => ({
+      ...the_interface,
+      export: true,
+    }),
+  ),
 ];
 
 // reference placeholder
