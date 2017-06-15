@@ -1,5 +1,4 @@
-- `__.d.ts`: constant with jsdoc binding
-
+- `*.r.ts`: manual constant with jsdoc binding
 - `*.d.ts`: manual funciton prototypes with jsdoc binding and auto-currying
 - `*.c.ts`: codegen funciton prototypes with jsdoc binding and auto-currying
 - `*.ts`: codegen funciton prototypes with jsdoc binding

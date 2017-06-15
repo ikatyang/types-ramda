@@ -99,13 +99,15 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
   const basename = path.basename(filename);
 
   if (basename.endsWith('.d.ts')) {
-    if (basename === '__.d.ts' || basename.startsWith('$')) {
-      push_members();
+    if (basename.startsWith('$')) {
+      push_r_ts_members();
     } else {
       push_d_ts_members();
     }
   } else if (basename.endsWith('.c.ts')) {
     push_c_ts_members();
+  } else if (basename.endsWith('.r.ts')) {
+    push_r_ts_members();
   } else if (basename.endsWith('.ts')) {
     push_ts_members();
   } else {
@@ -135,7 +137,7 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
     members.push(dts.create_export_equal({value: target_member.name!}));
   }
 
-  function push_members() {
+  function push_r_ts_members() {
     const top_level_element = dts.parse(fs.readFileSync(filename, 'utf8'));
     members.push(...top_level_element.members);
   }
