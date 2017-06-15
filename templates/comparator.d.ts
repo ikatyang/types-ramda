@@ -1,3 +1,3 @@
 import {Comparator} from './$types';
 
-export function $<T>(fn: (a: T, b: T) => boolean): Comparator<T>;
+export function $<T>(fn: Comparator<T, boolean>): Comparator<T, number>;

@@ -8,7 +8,7 @@ export type IndexedObjectMorphism<T, U, K extends string> = (value: T, index: nu
 
 export type Predicate<T> = Morphism<T, boolean>;
 export type Variadic<T> = (...args: any[]) => T;
-export type Comparator<T> = (a: T, b: T) => number;
+export type Comparator<T, U extends number | boolean> = (a: T, b: T) => U;
 
 export type ListMapper<T, U> = (fn: Morphism<T, U>, list: List<T>) => U[];
 export type ObjectMapper<T, U, K extends string> = (fn: Morphism<T, U>, object: Record<K, T>) => Record<K, U>;
