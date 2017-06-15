@@ -25,4 +25,5 @@ import * as descend from "./src/descend";
 import * as map from "./src/map";
 import * as or from "./src/or";
 import * as prepend from "./src/prepend";
-export { __, add, addIndex, adjust, all, allPass, always, and, any, anyPass, ap, aperture, append, apply, applySpec, ascend, assoc, assocPath, binary, descend, map, or, prepend };
+import * as unary from "./src/unary";
+export { __, add, addIndex, adjust, all, allPass, always, and, any, anyPass, ap, aperture, append, apply, applySpec, ascend, assoc, assocPath, binary, descend, map, or, prepend, unary };
