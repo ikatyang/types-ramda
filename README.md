@@ -135,7 +135,7 @@ source version: v0.24.x
 - [x] insertAll
 - [x] intersection
 - [x] intersectionWith
-- [ ] intersperse
+- [x] intersperse
 - [ ] into
 - [ ] invert
 - [ ] invertObj
