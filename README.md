@@ -107,9 +107,9 @@ source version: v0.24.x
 - [x] evolve
 - [x] F
 - [x] filter
-- [ ] find
+- [x] find
 - [ ] findIndex
-- [ ] findLast
+- [x] findLast
 - [ ] findLastIndex
 - [ ] flatten
 - [ ] flip
