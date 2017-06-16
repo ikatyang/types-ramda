@@ -164,7 +164,7 @@ source version: v0.24.x
 - [x] mapObjIndexed
 - [x] match
 - [x] mathMod
-- [ ] max
+- [x] max
 - [ ] maxBy
 - [x] mean
 - [x] median
@@ -178,7 +178,7 @@ source version: v0.24.x
 - [ ] mergeDeepWithKey
 - [ ] mergeWith
 - [ ] mergeWithKey
-- [ ] min
+- [x] min
 - [ ] minBy
 - [x] modulo
 - [x] multiply
