@@ -149,7 +149,7 @@ source version: v0.24.x
 - [x] keysIn
 - [x] last
 - [x] lastIndexOf
-- [ ] length
+- [x] length
 - [ ] lens
 - [ ] lensIndex
 - [ ] lensPath
