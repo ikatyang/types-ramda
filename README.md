@@ -201,7 +201,7 @@ source version: v0.24.x
 - [x] partition
 - [ ] path
 - [x] pathEq
-- [ ] pathOr
+- [x] pathOr
 - [ ] pathSatisfies
 - [ ] pick
 - [ ] pickAll
