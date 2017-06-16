@@ -143,7 +143,7 @@ source version: v0.24.x
 - [x] is
 - [x] isEmpty
 - [x] isNil
-- [ ] join
+- [x] join
 - [ ] juxt
 - [ ] keys
 - [ ] keysIn
