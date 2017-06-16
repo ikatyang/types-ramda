@@ -108,9 +108,9 @@ source version: v0.24.x
 - [x] F
 - [x] filter
 - [x] find
-- [ ] findIndex
+- [x] findIndex
 - [x] findLast
-- [ ] findLastIndex
+- [x] findLastIndex
 - [ ] flatten
 - [ ] flip
 - [ ] forEach
