@@ -145,8 +145,8 @@ source version: v0.24.x
 - [x] isNil
 - [x] join
 - [x] juxt
-- [ ] keys
-- [ ] keysIn
+- [x] keys
+- [x] keysIn
 - [x] last
 - [x] lastIndexOf
 - [ ] length
