@@ -115,7 +115,7 @@ source version: v0.24.x
 - [ ] flip
 - [x] forEach
 - [x] forEachObjIndexed
-- [ ] fromPairs
+- [x] fromPairs
 - [ ] groupBy
 - [ ] groupWith
 - [ ] gt

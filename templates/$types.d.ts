@@ -16,6 +16,11 @@ export type Comparator<T, U extends number | boolean> = (a: T, b: T) => U;
 export type ListMapper<T, U> = (fn: Morphism<T, U>, list: List<T>) => U[];
 export type ObjectMapper<T, U, K extends string> = (fn: Morphism<T, U>, object: Record<K, T>) => Record<K, U>;
 
+export interface KeyValuePair<K, V> extends List<K | V> {
+  0: K;
+  1: V;
+}
+
 export interface List<T> {
   readonly [index: number]: T;
   readonly length: number;
