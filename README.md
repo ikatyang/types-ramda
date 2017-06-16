@@ -138,7 +138,7 @@ source version: v0.24.x
 - [x] intersperse
 - [ ] into
 - [x] invert
-- [ ] invertObj
+- [x] invertObj
 - [ ] invoker
 - [ ] is
 - [ ] isEmpty
