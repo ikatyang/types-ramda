@@ -256,8 +256,8 @@ source version: v0.24.x
 - [ ] test
 - [ ] times
 - [ ] toLower
-- [ ] toPairs
-- [ ] toPairsIn
+- [x] toPairs
+- [x] toPairsIn
 - [ ] toString
 - [ ] toUpper
 - [ ] transduce
