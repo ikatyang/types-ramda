@@ -128,7 +128,7 @@ source version: v0.24.x
 - [x] ifElse
 - [x] inc
 - [x] indexBy
-- [ ] indexOf
+- [x] indexOf
 - [ ] init
 - [ ] innerJoin
 - [ ] insert
@@ -148,7 +148,7 @@ source version: v0.24.x
 - [ ] keys
 - [ ] keysIn
 - [x] last
-- [ ] lastIndexOf
+- [x] lastIndexOf
 - [ ] length
 - [ ] lens
 - [ ] lensIndex
