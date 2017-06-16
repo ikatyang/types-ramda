@@ -226,7 +226,7 @@ source version: v0.24.x
 - [ ] reduceRight
 - [ ] reduceWhile
 - [x] reject
-- [ ] remove
+- [x] remove
 - [ ] repeat
 - [ ] replace
 - [ ] reverse
