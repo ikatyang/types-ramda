@@ -209,7 +209,7 @@ source version: v0.24.x
 - [ ] pipe
 - [ ] pipeK
 - [ ] pipeP
-- [ ] pluck
+- [x] pluck
 - [x] prepend
 - [x] product
 - [ ] project
