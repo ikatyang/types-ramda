@@ -170,7 +170,7 @@ source version: v0.24.x
 - [x] median
 - [x] memoize
 - [x] memoizeWith
-- [ ] merge
+- [x] merge
 - [ ] mergeAll
 - [ ] mergeDeepLeft
 - [ ] mergeDeepRight

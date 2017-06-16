@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_merge(a_1) 1`] = `"<U>(b: U) => { a: 1; } & U"`;
+
+exports[`R_merge(a_1)(b_2) 1`] = `"{ a: 1; } & { b: 2; }"`;
+
+exports[`R_merge(a_1, b_2) 1`] = `"{ a: 1; } & { b: 2; }"`;
