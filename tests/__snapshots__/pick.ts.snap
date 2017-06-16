@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_pick([string])(object) 1`] = `"object"`;
+
+exports[`R_pick([string])<Record<string, string>>(object) 1`] = `"Record<string, string>"`;
+
+exports[`R_pick([string], object) 1`] = `"object"`;
+
+exports[`R_pick<Record<string, string>>([string], object) 1`] = `"Record<string, string>"`;

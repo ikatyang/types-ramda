@@ -203,7 +203,7 @@ source version: v0.24.x
 - [x] pathEq
 - [x] pathOr
 - [x] pathSatisfies
-- [ ] pick
+- [x] pick
 - [ ] pickAll
 - [ ] pickBy
 - [ ] pipe
