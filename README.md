@@ -189,7 +189,7 @@ source version: v0.24.x
 - [x] nth
 - [x] nthArg
 - [x] o
-- [ ] objOf
+- [x] objOf
 - [ ] of
 - [ ] omit
 - [ ] once
