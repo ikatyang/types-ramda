@@ -3,7 +3,6 @@ import * as R_eqProps from 'ramda/src/eqProps';
 
 declare const property: Property;
 declare const string: string;
-declare const number: number;
 
 // @dts-jest
 R_eqProps(property, string);
