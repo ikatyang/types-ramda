@@ -228,7 +228,7 @@ source version: v0.24.x
 - [x] reject
 - [x] remove
 - [x] repeat
-- [ ] replace
+- [x] replace
 - [ ] reverse
 - [ ] scan
 - [ ] sequence
