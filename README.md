@@ -120,8 +120,8 @@ source version: v0.24.x
 - [x] groupWith
 - [x] gt
 - [x] gte
-- [ ] has
-- [ ] hasIn
+- [x] has
+- [x] hasIn
 - [ ] head
 - [ ] identical
 - [ ] identity
