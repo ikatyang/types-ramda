@@ -22,3 +22,6 @@ export interface NestedDictionary<T> {
 export interface Functor<T> {
     map<U>(fn: Morphism<T, U>): Functor<U>;
 }
+export interface Filterable<T> {
+    filter(fn: Predicate<T>): Filterable<T>;
+}

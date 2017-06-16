@@ -106,7 +106,7 @@ source version: v0.24.x
 - [x] equals
 - [x] evolve
 - [x] F
-- [ ] filter
+- [x] filter
 - [ ] find
 - [ ] findIndex
 - [ ] findLast
