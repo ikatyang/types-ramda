@@ -185,7 +185,7 @@ source version: v0.24.x
 - [x] nAry
 - [x] negate
 - [x] none
-- [ ] not
+- [x] not
 - [ ] nth
 - [ ] nthArg
 - [ ] o
