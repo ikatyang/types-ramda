@@ -1,5 +1,4 @@
 import {Placeholder} from 'ramda/src/$placeholder';
-import {KeyedObjectMorphism} from 'ramda/src/$types';
 import * as R_mapObjIndexed from 'ramda/src/mapObjIndexed';
 
 declare const placeholder: Placeholder;

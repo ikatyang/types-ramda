@@ -2,9 +2,8 @@ import * as R_isNil from 'ramda/src/isNil';
 
 declare const string: string;
 
-// tslint:disable:no-unused-expression
-
 // @dts-jest
-R_isNil;
+R_isNil; // tslint:disable-line:no-unused-expression
+
 // @dts-jest
 R_isNil(string);
