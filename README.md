@@ -218,7 +218,7 @@ source version: v0.24.x
 - [x] propIs
 - [x] propOr
 - [x] props
-- [ ] propSatisfies
+- [x] propSatisfies
 - [ ] range
 - [ ] reduce
 - [ ] reduceBy
