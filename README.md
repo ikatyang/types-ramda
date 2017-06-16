@@ -103,7 +103,7 @@ source version: v0.24.x
 - [x] endsWith
 - [x] eqBy
 - [x] eqProps
-- [ ] equals
+- [x] equals
 - [ ] evolve
 - [ ] F
 - [ ] filter
