@@ -160,7 +160,7 @@ source version: v0.24.x
 - [x] lte
 - [x] map
 - [x] mapAccum
-- [ ] mapAccumRight
+- [x] mapAccumRight
 - [ ] mapObjIndexed
 - [ ] match
 - [x] mathMod
