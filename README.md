@@ -217,7 +217,7 @@ source version: v0.24.x
 - [x] propEq
 - [x] propIs
 - [x] propOr
-- [ ] props
+- [x] props
 - [ ] propSatisfies
 - [ ] range
 - [ ] reduce
