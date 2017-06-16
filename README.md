@@ -186,7 +186,7 @@ source version: v0.24.x
 - [x] negate
 - [x] none
 - [x] not
-- [ ] nth
+- [x] nth
 - [ ] nthArg
 - [ ] o
 - [ ] objOf
