@@ -176,8 +176,8 @@ source version: v0.24.x
 - [x] mergeDeepRight
 - [x] mergeDeepWith
 - [x] mergeDeepWithKey
-- [ ] mergeWith
-- [ ] mergeWithKey
+- [x] mergeWith
+- [x] mergeWithKey
 - [x] min
 - [x] minBy
 - [x] modulo
