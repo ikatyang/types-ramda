@@ -1,4 +1,3 @@
-import {Dictionary} from 'ramda/src/$types';
 import * as R_groupBy from 'ramda/src/groupBy';
 
 declare const object_to_string: (x: object) => string;
