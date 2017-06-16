@@ -171,7 +171,7 @@ source version: v0.24.x
 - [x] memoize
 - [x] memoizeWith
 - [x] merge
-- [ ] mergeAll
+- [x] mergeAll
 - [ ] mergeDeepLeft
 - [ ] mergeDeepRight
 - [ ] mergeDeepWith
