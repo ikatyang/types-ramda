@@ -131,7 +131,7 @@ source version: v0.24.x
 - [x] indexOf
 - [x] init
 - [x] innerJoin
-- [ ] insert
+- [x] insert
 - [ ] insertAll
 - [x] intersection
 - [x] intersectionWith
