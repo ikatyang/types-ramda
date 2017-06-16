@@ -130,7 +130,7 @@ source version: v0.24.x
 - [x] indexBy
 - [x] indexOf
 - [x] init
-- [ ] innerJoin
+- [x] innerJoin
 - [ ] insert
 - [ ] insertAll
 - [x] intersection
