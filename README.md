@@ -202,7 +202,7 @@ source version: v0.24.x
 - [ ] path
 - [x] pathEq
 - [x] pathOr
-- [ ] pathSatisfies
+- [x] pathSatisfies
 - [ ] pick
 - [ ] pickAll
 - [ ] pickBy
