@@ -123,7 +123,7 @@ source version: v0.24.x
 - [x] has
 - [x] hasIn
 - [x] head
-- [ ] identical
+- [x] identical
 - [ ] identity
 - [ ] ifElse
 - [x] inc
