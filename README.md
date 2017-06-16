@@ -168,7 +168,7 @@ source version: v0.24.x
 - [x] maxBy
 - [x] mean
 - [x] median
-- [ ] memoize
+- [x] memoize
 - [ ] memoizeWith
 - [ ] merge
 - [ ] mergeAll
