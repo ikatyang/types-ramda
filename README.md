@@ -141,7 +141,7 @@ source version: v0.24.x
 - [x] invertObj
 - [ ] invoker
 - [x] is
-- [ ] isEmpty
+- [x] isEmpty
 - [ ] isNil
 - [ ] join
 - [ ] juxt
