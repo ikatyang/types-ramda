@@ -124,7 +124,7 @@ source version: v0.24.x
 - [x] hasIn
 - [x] head
 - [x] identical
-- [ ] identity
+- [x] identity
 - [ ] ifElse
 - [x] inc
 - [ ] indexBy
