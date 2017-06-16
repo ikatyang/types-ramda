@@ -1,11 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_omit([string]) 1`] = `"<T>(object: any) => T"`;
-
-exports[`R_omit([string])(object) 1`] = `"{}"`;
+exports[`R_omit([string])(object) 1`] = `"object"`;
 
 exports[`R_omit([string])<Record<string, string>>(object) 1`] = `"Record<string, string>"`;
 
-exports[`R_omit([string], object) 1`] = `"{}"`;
+exports[`R_omit([string], object) 1`] = `"object"`;
 
 exports[`R_omit<Record<string, string>>([string], object) 1`] = `"Record<string, string>"`;

@@ -4,9 +4,6 @@ declare const object: object;
 declare const string: string;
 
 // @dts-jest
-R_omit([string]);
-
-// @dts-jest
 R_omit([string])(object);
 // @dts-jest
 R_omit([string], object);
