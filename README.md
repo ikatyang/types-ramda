@@ -212,7 +212,7 @@ source version: v0.24.x
 - [x] pluck
 - [x] prepend
 - [x] product
-- [ ] project
+- [x] project
 - [ ] prop
 - [ ] propEq
 - [ ] propIs
