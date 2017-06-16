@@ -140,7 +140,7 @@ source version: v0.24.x
 - [x] invert
 - [x] invertObj
 - [ ] invoker
-- [ ] is
+- [x] is
 - [ ] isEmpty
 - [ ] isNil
 - [ ] join

@@ -1,6 +1,7 @@
 export type Ordered = string | number | boolean | Date;
 export type Property = string | number | symbol;
 export type Path = List<Property>;
+export type Constructor<T> = new (...args: any[]) => T;
 export type Morphism<T, U> = (value: T) => U;
 export type IndexedListMorphism<T, U> = (value: T, index: number, list: List<T>) => U;
 export type IndexedObjectMorphism<T, U, K extends string> = (value: T, index: number, object: Record<K, T>) => U;
