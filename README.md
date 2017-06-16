@@ -213,7 +213,7 @@ source version: v0.24.x
 - [x] prepend
 - [x] product
 - [x] project
-- [ ] prop
+- [x] prop
 - [ ] propEq
 - [ ] propIs
 - [ ] propOr
