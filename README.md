@@ -142,7 +142,7 @@ source version: v0.24.x
 - [ ] invoker
 - [x] is
 - [x] isEmpty
-- [ ] isNil
+- [x] isNil
 - [ ] join
 - [ ] juxt
 - [ ] keys
