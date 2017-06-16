@@ -17,6 +17,10 @@ export interface List<T> {
   readonly [index: number]: T;
   readonly length: number;
 }
+export interface NestedList<T> {
+  readonly [index: number]: T | List<T>;
+  readonly length: number;
+}
 
 export interface Dictionary<T> {
   [key: string]: T;

@@ -111,7 +111,7 @@ source version: v0.24.x
 - [x] findIndex
 - [x] findLast
 - [x] findLastIndex
-- [ ] flatten
+- [x] flatten
 - [ ] flip
 - [ ] forEach
 - [ ] forEachObjIndexed
