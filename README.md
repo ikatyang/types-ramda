@@ -195,7 +195,7 @@ source version: v0.24.x
 - [ ] once
 - [x] or
 - [ ] over
-- [ ] pair
+- [x] pair
 - [ ] partial
 - [ ] partialRight
 - [ ] partition
