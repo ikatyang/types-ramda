@@ -144,7 +144,7 @@ source version: v0.24.x
 - [x] isEmpty
 - [x] isNil
 - [x] join
-- [ ] juxt
+- [x] juxt
 - [ ] keys
 - [ ] keysIn
 - [x] last
