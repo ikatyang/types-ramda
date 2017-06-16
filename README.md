@@ -215,7 +215,7 @@ source version: v0.24.x
 - [x] project
 - [x] prop
 - [x] propEq
-- [ ] propIs
+- [x] propIs
 - [ ] propOr
 - [ ] props
 - [ ] propSatisfies
