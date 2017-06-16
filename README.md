@@ -116,7 +116,7 @@ source version: v0.24.x
 - [x] forEach
 - [x] forEachObjIndexed
 - [x] fromPairs
-- [ ] groupBy
+- [x] groupBy
 - [ ] groupWith
 - [ ] gt
 - [ ] gte
