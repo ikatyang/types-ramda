@@ -114,7 +114,7 @@ source version: v0.24.x
 - [x] flatten
 - [ ] flip
 - [x] forEach
-- [ ] forEachObjIndexed
+- [x] forEachObjIndexed
 - [ ] fromPairs
 - [ ] groupBy
 - [ ] groupWith

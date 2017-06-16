@@ -7,6 +7,8 @@ export type IndexedListMorphism<T, U> = (value: T, index: number, list: List<T>)
 export type IndexedObjectMorphism<T, U, K extends string> = (value: T, index: number, object: Record<K, T>) => U;
 
 export type Tap<T> = (value: T) => void;
+export type KeyedObjectTap<T, U extends Dictionary<T>> = (value: T, key: string, object: U) => void;
+
 export type Predicate<T> = Morphism<T, boolean>;
 export type Variadic<T> = (...args: any[]) => T;
 export type Comparator<T, U extends number | boolean> = (a: T, b: T) => U;
