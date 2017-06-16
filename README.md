@@ -125,7 +125,7 @@ source version: v0.24.x
 - [x] head
 - [x] identical
 - [x] identity
-- [ ] ifElse
+- [x] ifElse
 - [x] inc
 - [ ] indexBy
 - [ ] indexOf
