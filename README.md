@@ -227,7 +227,7 @@ source version: v0.24.x
 - [ ] reduceWhile
 - [x] reject
 - [x] remove
-- [ ] repeat
+- [x] repeat
 - [ ] replace
 - [ ] reverse
 - [ ] scan
