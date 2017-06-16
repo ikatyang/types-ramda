@@ -113,7 +113,7 @@ source version: v0.24.x
 - [x] findLastIndex
 - [x] flatten
 - [ ] flip
-- [ ] forEach
+- [x] forEach
 - [ ] forEachObjIndexed
 - [ ] fromPairs
 - [ ] groupBy
