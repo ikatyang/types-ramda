@@ -196,8 +196,8 @@ source version: v0.24.x
 - [x] or
 - [ ] over
 - [x] pair
-- [ ] partial
-- [ ] partialRight
+- [x] partial
+- [x] partialRight
 - [ ] partition
 - [ ] path
 - [ ] pathEq
