@@ -200,7 +200,7 @@ source version: v0.24.x
 - [x] partialRight
 - [x] partition
 - [ ] path
-- [ ] pathEq
+- [x] pathEq
 - [ ] pathOr
 - [ ] pathSatisfies
 - [ ] pick
