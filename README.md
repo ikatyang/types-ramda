@@ -204,7 +204,7 @@ source version: v0.24.x
 - [x] pathOr
 - [x] pathSatisfies
 - [x] pick
-- [ ] pickAll
+- [x] pickAll
 - [ ] pickBy
 - [ ] pipe
 - [ ] pipeK
