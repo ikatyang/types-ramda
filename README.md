@@ -129,7 +129,7 @@ source version: v0.24.x
 - [x] inc
 - [x] indexBy
 - [x] indexOf
-- [ ] init
+- [x] init
 - [ ] innerJoin
 - [ ] insert
 - [ ] insertAll
@@ -247,7 +247,7 @@ source version: v0.24.x
 - [x] symmetricDifference
 - [x] symmetricDifferenceWith
 - [x] T
-- [ ] tail
+- [x] tail
 - [x] take
 - [x] takeLast
 - [x] takeLastWhile
