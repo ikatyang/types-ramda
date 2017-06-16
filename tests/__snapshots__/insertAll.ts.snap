@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_insertAll(number)(string_array)(object_array) 1`] = `"(string | object)[]"`;
+
+exports[`R_insertAll(number, string_array) 1`] = `"<U>(list: List<U>) => (string | U)[]"`;
+
+exports[`R_insertAll(number, string_array, object_array) 1`] = `"(string | object)[]"`;

@@ -132,7 +132,7 @@ source version: v0.24.x
 - [x] init
 - [x] innerJoin
 - [x] insert
-- [ ] insertAll
+- [x] insertAll
 - [x] intersection
 - [x] intersectionWith
 - [ ] intersperse
