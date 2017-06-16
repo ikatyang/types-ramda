@@ -159,7 +159,7 @@ source version: v0.24.x
 - [x] lt
 - [x] lte
 - [x] map
-- [ ] mapAccum
+- [x] mapAccum
 - [ ] mapAccumRight
 - [ ] mapObjIndexed
 - [ ] match
