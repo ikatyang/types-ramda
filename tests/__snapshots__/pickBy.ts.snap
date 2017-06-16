@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_pickBy(string_string_object_to_boolean)(object) 1`] = `"object"`;
+
+exports[`R_pickBy(string_string_object_to_boolean)<Record<string, string>>(object) 1`] = `"Record<string, string>"`;
+
+exports[`R_pickBy(string_string_object_to_boolean, object) 1`] = `"object"`;
+
+exports[`R_pickBy<Record<string, string>>(string_string_object_to_boolean, object) 1`] = `"Record<string, string>"`;
