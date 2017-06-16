@@ -122,7 +122,7 @@ source version: v0.24.x
 - [x] gte
 - [x] has
 - [x] hasIn
-- [ ] head
+- [x] head
 - [ ] identical
 - [ ] identity
 - [ ] ifElse
@@ -147,7 +147,7 @@ source version: v0.24.x
 - [ ] juxt
 - [ ] keys
 - [ ] keysIn
-- [ ] last
+- [x] last
 - [ ] lastIndexOf
 - [ ] length
 - [ ] lens
