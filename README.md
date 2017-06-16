@@ -192,7 +192,7 @@ source version: v0.24.x
 - [x] objOf
 - [x] of
 - [x] omit
-- [ ] once
+- [x] once
 - [x] or
 - [ ] over
 - [x] pair
