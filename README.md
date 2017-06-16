@@ -174,7 +174,7 @@ source version: v0.24.x
 - [x] mergeAll
 - [x] mergeDeepLeft
 - [x] mergeDeepRight
-- [ ] mergeDeepWith
+- [x] mergeDeepWith
 - [ ] mergeDeepWithKey
 - [ ] mergeWith
 - [ ] mergeWithKey
