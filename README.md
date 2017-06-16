@@ -118,8 +118,8 @@ source version: v0.24.x
 - [x] fromPairs
 - [x] groupBy
 - [x] groupWith
-- [ ] gt
-- [ ] gte
+- [x] gt
+- [x] gte
 - [ ] has
 - [ ] hasIn
 - [ ] head
@@ -156,8 +156,8 @@ source version: v0.24.x
 - [ ] lensProp
 - [ ] lift
 - [ ] liftN
-- [ ] lt
-- [ ] lte
+- [x] lt
+- [x] lte
 - [x] map
 - [ ] mapAccum
 - [ ] mapAccumRight
