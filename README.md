@@ -104,7 +104,7 @@ source version: v0.24.x
 - [x] eqBy
 - [x] eqProps
 - [x] equals
-- [ ] evolve
+- [x] evolve
 - [ ] F
 - [ ] filter
 - [ ] find

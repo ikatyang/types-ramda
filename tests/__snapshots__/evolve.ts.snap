@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_evolve(nested_string_to_number)(nested_string_dictionary) 1`] = `"Dictionary<string>"`;
+
+exports[`R_evolve(nested_string_to_number)<Dictionary<number>>(nested_string_dictionary) 1`] = `"Dictionary<number>"`;
+
+exports[`R_evolve(nested_string_to_number, nested_string_dictionary) 1`] = `"Dictionary<string>"`;
+
+exports[`R_evolve<Dictionary<number>>(nested_string_to_number, nested_string_dictionary) 1`] = `"Dictionary<number>"`;
