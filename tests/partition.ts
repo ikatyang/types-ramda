@@ -7,8 +7,6 @@ declare const a_1_b_2_c_3: {
   b: 2,
   c: 3,
 };
-declare const number: number;
-declare const string: string;
 
 // @dts-jest
 R_partition(number_to_boolean)(number_array);

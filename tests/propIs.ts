@@ -1,6 +1,5 @@
 import * as R_propIs from 'ramda/src/propIs';
 
-declare const string: string;
 declare const object: object;
 
 // @dts-jest
