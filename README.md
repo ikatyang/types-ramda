@@ -191,7 +191,7 @@ source version: v0.24.x
 - [x] o
 - [x] objOf
 - [x] of
-- [ ] omit
+- [x] omit
 - [ ] once
 - [x] or
 - [ ] over
