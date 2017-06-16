@@ -161,7 +161,7 @@ source version: v0.24.x
 - [x] map
 - [x] mapAccum
 - [x] mapAccumRight
-- [ ] mapObjIndexed
+- [x] mapObjIndexed
 - [ ] match
 - [x] mathMod
 - [ ] max
