@@ -229,7 +229,7 @@ source version: v0.24.x
 - [x] remove
 - [x] repeat
 - [x] replace
-- [ ] reverse
+- [x] reverse
 - [ ] scan
 - [ ] sequence
 - [ ] set
