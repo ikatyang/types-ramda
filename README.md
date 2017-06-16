@@ -165,7 +165,7 @@ source version: v0.24.x
 - [x] match
 - [x] mathMod
 - [x] max
-- [ ] maxBy
+- [x] maxBy
 - [x] mean
 - [x] median
 - [ ] memoize
@@ -179,7 +179,7 @@ source version: v0.24.x
 - [ ] mergeWith
 - [ ] mergeWithKey
 - [x] min
-- [ ] minBy
+- [x] minBy
 - [x] modulo
 - [x] multiply
 - [x] nAry
