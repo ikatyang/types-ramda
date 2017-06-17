@@ -290,7 +290,7 @@ source version: v0.24.x
 - [x] xprod
 - [x] zip
 - [x] zipObj
-- [ ] zipWith
+- [x] zipWith
 
 ## License
 
