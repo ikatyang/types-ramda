@@ -263,7 +263,7 @@ source version: v0.24.x
 - [ ] transduce
 - [x] transpose
 - [ ] traverse
-- [ ] trim
+- [x] trim
 - [ ] tryCatch
 - [ ] type
 - [ ] unapply
