@@ -285,7 +285,7 @@ source version: v0.24.x
 - [ ] view
 - [x] when
 - [x] where
-- [ ] whereEq
+- [x] whereEq
 - [ ] without
 - [ ] xprod
 - [ ] zip
