@@ -258,7 +258,7 @@ source version: v0.24.x
 - [x] toLower
 - [x] toPairs
 - [x] toPairsIn
-- [ ] toString
+- [x] toString
 - [x] toUpper
 - [ ] transduce
 - [ ] transpose
