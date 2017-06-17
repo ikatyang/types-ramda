@@ -239,7 +239,7 @@ source version: v0.24.x
 - [x] sortWith
 - [x] split
 - [x] splitAt
-- [ ] splitEvery
+- [x] splitEvery
 - [ ] splitWhen
 - [x] startsWith
 - [x] subtract
