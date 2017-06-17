@@ -277,7 +277,7 @@ source version: v0.24.x
 - [x] uniqWith
 - [x] unless
 - [ ] unnest
-- [ ] until
+- [x] until
 - [ ] update
 - [ ] useWith
 - [ ] values
