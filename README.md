@@ -280,8 +280,8 @@ source version: v0.24.x
 - [x] until
 - [x] update
 - [ ] useWith
-- [ ] values
-- [ ] valuesIn
+- [x] values
+- [x] valuesIn
 - [ ] view
 - [ ] when
 - [ ] where
