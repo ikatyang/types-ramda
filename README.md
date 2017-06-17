@@ -236,7 +236,7 @@ source version: v0.24.x
 - [x] slice
 - [x] sort
 - [x] sortBy
-- [ ] sortWith
+- [x] sortWith
 - [ ] split
 - [ ] splitAt
 - [ ] splitEvery
