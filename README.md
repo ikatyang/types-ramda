@@ -234,7 +234,7 @@ source version: v0.24.x
 - [ ] sequence
 - [ ] set
 - [x] slice
-- [ ] sort
+- [x] sort
 - [ ] sortBy
 - [ ] sortWith
 - [ ] split
