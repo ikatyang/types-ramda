@@ -284,7 +284,7 @@ source version: v0.24.x
 - [x] valuesIn
 - [ ] view
 - [x] when
-- [ ] where
+- [x] where
 - [ ] whereEq
 - [ ] without
 - [ ] xprod
