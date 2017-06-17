@@ -261,7 +261,7 @@ source version: v0.24.x
 - [x] toString
 - [x] toUpper
 - [ ] transduce
-- [ ] transpose
+- [x] transpose
 - [ ] traverse
 - [ ] trim
 - [ ] tryCatch
