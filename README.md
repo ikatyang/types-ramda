@@ -265,7 +265,7 @@ source version: v0.24.x
 - [ ] traverse
 - [x] trim
 - [x] tryCatch
-- [ ] type
+- [x] type
 - [ ] unapply
 - [x] unary
 - [ ] uncurryN
