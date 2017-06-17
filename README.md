@@ -278,7 +278,7 @@ source version: v0.24.x
 - [x] unless
 - [ ] unnest
 - [x] until
-- [ ] update
+- [x] update
 - [ ] useWith
 - [ ] values
 - [ ] valuesIn
