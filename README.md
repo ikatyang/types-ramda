@@ -254,7 +254,7 @@ source version: v0.24.x
 - [x] takeWhile
 - [x] tap
 - [x] test
-- [ ] times
+- [x] times
 - [ ] toLower
 - [x] toPairs
 - [x] toPairsIn
