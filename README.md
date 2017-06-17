@@ -269,7 +269,7 @@ source version: v0.24.x
 - [x] unapply
 - [x] unary
 - [ ] uncurryN
-- [ ] unfold
+- [x] unfold
 - [x] union
 - [x] unionWith
 - [ ] uniq
