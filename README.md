@@ -286,7 +286,7 @@ source version: v0.24.x
 - [x] when
 - [x] where
 - [x] whereEq
-- [ ] without
+- [x] without
 - [ ] xprod
 - [ ] zip
 - [ ] zipObj
