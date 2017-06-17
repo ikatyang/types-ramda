@@ -252,7 +252,7 @@ source version: v0.24.x
 - [x] takeLast
 - [x] takeLastWhile
 - [x] takeWhile
-- [ ] tap
+- [x] tap
 - [ ] test
 - [ ] times
 - [ ] toLower
