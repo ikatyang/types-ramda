@@ -255,11 +255,11 @@ source version: v0.24.x
 - [x] tap
 - [x] test
 - [x] times
-- [ ] toLower
+- [x] toLower
 - [x] toPairs
 - [x] toPairsIn
 - [ ] toString
-- [ ] toUpper
+- [x] toUpper
 - [ ] transduce
 - [ ] transpose
 - [ ] traverse
