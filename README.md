@@ -275,7 +275,7 @@ source version: v0.24.x
 - [x] uniq
 - [x] uniqBy
 - [x] uniqWith
-- [ ] unless
+- [x] unless
 - [ ] unnest
 - [ ] until
 - [ ] update
