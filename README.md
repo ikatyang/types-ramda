@@ -274,7 +274,7 @@ source version: v0.24.x
 - [x] unionWith
 - [x] uniq
 - [x] uniqBy
-- [ ] uniqWith
+- [x] uniqWith
 - [ ] unless
 - [ ] unnest
 - [ ] until
