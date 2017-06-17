@@ -272,7 +272,7 @@ source version: v0.24.x
 - [x] unfold
 - [x] union
 - [x] unionWith
-- [ ] uniq
+- [x] uniq
 - [ ] uniqBy
 - [ ] uniqWith
 - [ ] unless
