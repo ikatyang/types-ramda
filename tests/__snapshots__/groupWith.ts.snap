@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_groupWith(string_to_boolean) 1`] = `"<U extends List<string>>(list: U) => U[]"`;
+exports[`R_groupWith(string_to_boolean) 1`] = `"<U extends string[] | ArrayLike<string>>(list: U) => U[]"`;
 
 exports[`R_groupWith(string_to_boolean, string) 1`] = `"string[]"`;
 

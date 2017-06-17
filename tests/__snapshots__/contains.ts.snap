@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_contains(string) 1`] = `"(list: List<string>) => boolean"`;
+exports[`R_contains(string) 1`] = `"(list: string[] | ArrayLike<string>) => boolean"`;
 
 exports[`R_contains(string, string) 1`] = `"boolean"`;
 

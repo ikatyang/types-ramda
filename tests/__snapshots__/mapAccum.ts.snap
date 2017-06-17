@@ -2,6 +2,6 @@
 
 exports[`R_mapAccum(number_string_to_number_string_tuple)(number)(string_array) 1`] = `"[number, string[]]"`;
 
-exports[`R_mapAccum(number_string_to_number_string_tuple, number) 1`] = `"(list: List<string>) => [number, string[]]"`;
+exports[`R_mapAccum(number_string_to_number_string_tuple, number) 1`] = `"(list: string[] | ArrayLike<string>) => [number, string[]]"`;
 
 exports[`R_mapAccum(number_string_to_number_string_tuple, number, string_array) 1`] = `"[number, string[]]"`;

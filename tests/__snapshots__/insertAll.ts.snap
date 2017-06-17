@@ -2,6 +2,6 @@
 
 exports[`R_insertAll(number)(string_array)(object_array) 1`] = `"(string | object)[]"`;
 
-exports[`R_insertAll(number, string_array) 1`] = `"<U>(list: List<U>) => (string | U)[]"`;
+exports[`R_insertAll(number, string_array) 1`] = `"<U>(list: U[] | ArrayLike<U>) => (string | U)[]"`;
 
 exports[`R_insertAll(number, string_array, object_array) 1`] = `"(string | object)[]"`;
