@@ -21,19 +21,17 @@ export type TypedVariadic<T, R> = (...args: T[]) => R;
 export type ListMapper<T, U> = (fn: Morphism<T, U>, list: List<T>) => U[];
 export type ObjectMapper<T, U, K extends string> = (fn: Morphism<T, U>, object: Record<K, T>) => Record<K, U>;
 
-export interface KeyValuePair<K, V> extends List<K | V> {
+export interface KeyValuePair<K, V> extends ArrayLike<K | V> {
   0: K;
   1: V;
 }
 
-export interface List<T> {
+export interface ArrayLike<T> {
   readonly [index: number]: T;
   readonly length: number;
 }
-export interface NestedList<T> {
-  readonly [index: number]: T | List<T>;
-  readonly length: number;
-}
+export type List<T> = T[] | ArrayLike<T>;
+export type NestedList<T> = List<T | List<T>>;
 
 export interface Dictionary<T> {
   [key: string]: T;
