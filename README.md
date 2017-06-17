@@ -266,7 +266,7 @@ source version: v0.24.x
 - [x] trim
 - [x] tryCatch
 - [x] type
-- [ ] unapply
+- [x] unapply
 - [x] unary
 - [ ] uncurryN
 - [ ] unfold
