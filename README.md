@@ -283,7 +283,7 @@ source version: v0.24.x
 - [x] values
 - [x] valuesIn
 - [ ] view
-- [ ] when
+- [x] when
 - [ ] where
 - [ ] whereEq
 - [ ] without
