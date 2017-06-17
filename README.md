@@ -45,7 +45,7 @@ yarn run test -- --watch
 
 source version: v0.24.x
 
-- [ ] __
+- [x] __
 - [x] add
 - [x] addIndex
 - [x] adjust
