@@ -233,7 +233,7 @@ source version: v0.24.x
 - [ ] scan
 - [ ] sequence
 - [ ] set
-- [ ] slice
+- [x] slice
 - [ ] sort
 - [ ] sortBy
 - [ ] sortWith
