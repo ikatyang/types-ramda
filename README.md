@@ -240,7 +240,7 @@ source version: v0.24.x
 - [x] split
 - [x] splitAt
 - [x] splitEvery
-- [ ] splitWhen
+- [x] splitWhen
 - [x] startsWith
 - [x] subtract
 - [x] sum
