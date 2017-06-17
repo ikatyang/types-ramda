@@ -264,7 +264,7 @@ source version: v0.24.x
 - [x] transpose
 - [ ] traverse
 - [x] trim
-- [ ] tryCatch
+- [x] tryCatch
 - [ ] type
 - [ ] unapply
 - [x] unary
