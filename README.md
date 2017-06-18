@@ -78,7 +78,7 @@ source version: v0.24.x
 - [x] concat
 - [x] cond
 - [x] construct
-- [ ] constructN
+- [x] constructN
 - [x] contains
 - [ ] converge
 - [x] countBy
