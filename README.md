@@ -77,7 +77,7 @@ source version: v0.24.x
 - [x] composeP
 - [x] concat
 - [x] cond
-- [ ] construct
+- [x] construct
 - [ ] constructN
 - [x] contains
 - [ ] converge
