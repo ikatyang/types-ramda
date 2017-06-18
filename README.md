@@ -82,7 +82,7 @@ source version: v0.24.x
 - [x] contains
 - [x] converge
 - [x] countBy
-- [ ] curry
+- [x] curry
 - [ ] curryN
 - [x] dec
 - [x] defaultTo
