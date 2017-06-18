@@ -74,7 +74,7 @@ source version: v0.24.x
 - [x] complement
 - [x] compose
 - [x] composeK
-- [ ] composeP
+- [x] composeP
 - [x] concat
 - [x] cond
 - [ ] construct
