@@ -5,6 +5,7 @@ export type Path = List<Property>;
 export type Constructor<T> = new (...args: any[]) => T;
 
 export type Morphism<T, U> = (value: T) => U;
+export type NestedMorphism<T, U, V> = (value: T) => (value: U) => V;
 export type IndexedListMorphism<T, U> = (value: T, index: number, list: List<T>) => U;
 export type IndexedObjectMorphism<T, U, K extends string> = (value: T, index: number, object: Record<K, T>) => U;
 export type KeyedObjectMorphism<T, U, K extends string> = (value: T, key: K, object: Record<K, T>) => U;
@@ -42,6 +43,14 @@ export interface NestedDictionary<T> {
 
 export interface Functor<T> {
   map<U>(fn: Morphism<T, U>): Functor<U>;
+}
+
+interface Apply<T> extends Functor<T> {
+  apply<U>(fn: Apply<Morphism<T, U>>): Apply<U>;
+}
+
+interface Chain<T> extends Apply<T> {
+  chain<U>(fn: Morphism<T, Chain<U>>): Chain<U>;
 }
 
 export interface Filterable<T> {

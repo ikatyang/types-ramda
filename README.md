@@ -67,7 +67,7 @@ source version: v0.24.x
 - [x] bind
 - [x] both
 - [x] call
-- [ ] chain
+- [x] chain
 - [x] clamp
 - [x] clone
 - [x] comparator
