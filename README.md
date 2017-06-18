@@ -206,9 +206,9 @@ source version: v0.24.x
 - [x] pick
 - [x] pickAll
 - [x] pickBy
-- [ ] pipe
-- [ ] pipeK
-- [ ] pipeP
+- [x] pipe
+- [x] pipeK
+- [x] pipeP
 - [x] pluck
 - [x] prepend
 - [x] product
