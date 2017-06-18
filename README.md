@@ -80,7 +80,7 @@ source version: v0.24.x
 - [x] construct
 - [x] constructN
 - [x] contains
-- [ ] converge
+- [x] converge
 - [x] countBy
 - [ ] curry
 - [ ] curryN
