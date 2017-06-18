@@ -4,6 +4,6 @@ exports[`R_construct(new_7_string_to_number) 1`] = `"(...args: any[]) => number"
 
 exports[`R_construct(new_number_args_to_boolean) 1`] = `"() => boolean"`;
 
-exports[`R_construct(new_number_boolean_to_string) 1`] = `"(v1: number, v2: boolean) => string"`;
+exports[`R_construct(new_number_boolean_to_string) 1`] = `"CurriedFunction2<number, boolean, string>"`;
 
-exports[`R_construct(new_string_to_object) 1`] = `"(v1: string) => object"`;
+exports[`R_construct(new_string_to_object) 1`] = `"CurriedFunction1<string, object>"`;

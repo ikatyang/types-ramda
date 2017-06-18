@@ -1,3 +1,4 @@
+import { CurriedFunction0, CurriedFunction1, CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curried-functions";
 import { Constructor, Variadic } from "./$types";
 /**
  * Wraps a constructor function inside a curried function that can be called
@@ -31,13 +32,31 @@ import { Constructor, Variadic } from "./$types";
  *      var sightNewAnimal = R.compose(animalSighting, AnimalConstructor);
  *      R.map(sightNewAnimal, animalTypes); //=> ["It's a Lion!", "It's a Tiger!", "It's a Bear!"]
  */
-declare const construct: typeof $;
-declare function $<R>(constructor: new () => R): () => R;
-declare function $<T1, R>(constructor: new (v1: T1) => R): (v1: T1) => R;
-declare function $<T1, T2, R>(constructor: new (v1: T1, v2: T2) => R): (v1: T1, v2: T2) => R;
-declare function $<T1, T2, T3, R>(constructor: new (v1: T1, v2: T2, v3: T3) => R): (v1: T1, v2: T2, v3: T3) => R;
-declare function $<T1, T2, T3, T4, R>(constructor: new (v1: T1, v2: T2, v3: T3, v4: T4) => R): (v1: T1, v2: T2, v3: T3, v4: T4) => R;
-declare function $<T1, T2, T3, T4, T5, R>(constructor: new (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5) => R): (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5) => R;
-declare function $<T1, T2, T3, T4, T5, T6, R>(constructor: new (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, v6: T6) => R): (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, v6: T6) => R;
-declare function $<R>(constructor: Constructor<R>): Variadic<R>;
+declare const construct: construct_0;
+type construct_0 = {
+    <R>(constructor: new () => R): construct_0ary_1<R>;
+    <T1, R>(constructor: new (v1: T1) => R): construct_1ary_1<T1, R>;
+    <T1, T2, R>(constructor: new (v1: T1, v2: T2) => R): construct_2ary_1<T1, T2, R>;
+    <T1, T2, T3, R>(constructor: new (v1: T1, v2: T2, v3: T3) => R): construct_3ary_1<T1, T2, T3, R>;
+    <T1, T2, T3, T4, R>(constructor: new (v1: T1, v2: T2, v3: T3, v4: T4) => R): construct_4ary_1<T1, T2, T3, T4, R>;
+    <T1, T2, T3, T4, T5, R>(constructor: new (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5) => R): construct_5ary_1<T1, T2, T3, T4, T5, R>;
+    <T1, T2, T3, T4, T5, T6, R>(constructor: new (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, v6: T6) => R): construct_6ary_1<T1, T2, T3, T4, T5, T6, R>;
+    <$SEL extends "1", $KIND extends "0ary">(): <R>(constructor: new () => R) => construct_0ary_1<R>;
+    <$SEL extends "1", $KIND extends "1ary">(): <T1, R>(constructor: new (v1: T1) => R) => construct_1ary_1<T1, R>;
+    <$SEL extends "1", $KIND extends "2ary">(): <T1, T2, R>(constructor: new (v1: T1, v2: T2) => R) => construct_2ary_1<T1, T2, R>;
+    <$SEL extends "1", $KIND extends "3ary">(): <T1, T2, T3, R>(constructor: new (v1: T1, v2: T2, v3: T3) => R) => construct_3ary_1<T1, T2, T3, R>;
+    <$SEL extends "1", $KIND extends "4ary">(): <T1, T2, T3, T4, R>(constructor: new (v1: T1, v2: T2, v3: T3, v4: T4) => R) => construct_4ary_1<T1, T2, T3, T4, R>;
+    <$SEL extends "1", $KIND extends "5ary">(): <T1, T2, T3, T4, T5, R>(constructor: new (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5) => R) => construct_5ary_1<T1, T2, T3, T4, T5, R>;
+    <$SEL extends "1", $KIND extends "6ary">(): <T1, T2, T3, T4, T5, T6, R>(constructor: new (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, v6: T6) => R) => construct_6ary_1<T1, T2, T3, T4, T5, T6, R>;
+    <$SEL extends "1", $KIND extends "variadic">(): <R>(constructor: Constructor<R>) => construct_variadic_1<R>;
+    <R>(constructor: Constructor<R>): construct_variadic_1<R>;
+};
+type construct_0ary_1<R> = CurriedFunction0<R>;
+type construct_1ary_1<T1, R> = CurriedFunction1<T1, R>;
+type construct_2ary_1<T1, T2, R> = CurriedFunction2<T1, T2, R>;
+type construct_3ary_1<T1, T2, T3, R> = CurriedFunction3<T1, T2, T3, R>;
+type construct_4ary_1<T1, T2, T3, T4, R> = CurriedFunction4<T1, T2, T3, T4, R>;
+type construct_5ary_1<T1, T2, T3, T4, T5, R> = CurriedFunction5<T1, T2, T3, T4, T5, R>;
+type construct_6ary_1<T1, T2, T3, T4, T5, T6, R> = CurriedFunction6<T1, T2, T3, T4, T5, T6, R>;
+type construct_variadic_1<R> = Variadic<R>;
 export = construct;
