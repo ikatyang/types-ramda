@@ -14,6 +14,7 @@ export default [
     ],
     from: './$placeholder',
   }),
+  ...dts.parse(`export type CurriedFunction0<R> = () => R;`).members,
   ...create_curried_interfaces(max_curry_level).map(
     the_interface => ({
       ...the_interface,
@@ -25,6 +26,7 @@ export default [
 // reference placeholder
 
 // tslint:disable:no-empty-interface no-unused-variable
+export interface CurriedFunction0<R> {}
 export interface CurriedFunction1<T1, R> {}
 export interface CurriedFunction2<T1, T2, R> {}
 export interface CurriedFunction3<T1, T2, T3, R> {}
