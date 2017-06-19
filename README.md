@@ -4,7 +4,15 @@
 
 TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 
-developing ...
+## Usage
+
+```sh
+# using npm
+npm install --save-dev ikatyang/types-ramda
+
+# using yarn
+yarn add --dev ikatyang/types-ramda
+```
 
 ## Features
 
