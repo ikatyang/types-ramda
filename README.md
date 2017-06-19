@@ -276,7 +276,7 @@ source version: v0.24.x
 - [x] type
 - [x] unapply
 - [x] unary
-- [ ] uncurryN
+- [x] uncurryN
 - [x] unfold
 - [x] union
 - [x] unionWith
