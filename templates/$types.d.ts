@@ -67,3 +67,8 @@ export interface Reduced<T> {
   '@@transducer/value': T;
   '@@transducer/reduced': true;
 }
+
+export interface Lens<T, U> {
+  // tslint:disable-next-line:callable-types
+  (toFunctorFn: (value: T) => Functor<T>): (target: U) => U;
+}

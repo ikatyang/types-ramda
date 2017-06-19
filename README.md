@@ -158,7 +158,7 @@ source version: v0.24.x
 - [x] last
 - [x] lastIndexOf
 - [x] length
-- [ ] lens
+- [x] lens
 - [ ] lensIndex
 - [ ] lensPath
 - [ ] lensProp
