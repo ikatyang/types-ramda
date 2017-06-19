@@ -43,3 +43,12 @@ export interface Chain<T> extends Apply<T> {
 export interface Filterable<T> {
     filter(fn: Predicate<T>): Filterable<T>;
 }
+export interface Transformer<T, U, R> {
+    "@@transducer/init": () => U;
+    "@@transducer/step": (accumulator: U, value: T) => U;
+    "@@transducer/result": (accumulator: U) => R;
+}
+export interface Reduced<T> {
+    "@@transducer/value": T;
+    "@@transducer/reduced": true;
+}
