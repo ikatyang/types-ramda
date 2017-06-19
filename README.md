@@ -202,7 +202,7 @@ source version: v0.24.x
 - [x] omit
 - [x] once
 - [x] or
-- [ ] over
+- [x] over
 - [x] pair
 - [x] partial
 - [x] partialRight
