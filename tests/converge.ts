@@ -5,7 +5,6 @@ declare const string_number_boolean_to_object: (x: string, y: number, z: boolean
 declare const string_to_boolean: (x: string) => boolean;
 declare const string_to_number: (x: string) => number;
 declare const string_to_string: (x: string) => string;
-declare const string: string;
 
 // @dts-jest
 R_converge(string_number_boolean_to_object);
