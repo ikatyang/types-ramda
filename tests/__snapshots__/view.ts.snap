@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_view(number_object_lens) 1`] = `"(target: object) => number"`;
+
+exports[`R_view(number_object_lens)(object) 1`] = `"number"`;
+
+exports[`R_view(number_object_lens, object) 1`] = `"number"`;

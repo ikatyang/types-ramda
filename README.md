@@ -290,7 +290,7 @@ source version: v0.24.x
 - [ ] useWith
 - [x] values
 - [x] valuesIn
-- [ ] view
+- [x] view
 - [x] when
 - [x] where
 - [x] whereEq
