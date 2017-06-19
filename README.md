@@ -284,7 +284,7 @@ source version: v0.24.x
 - [x] uniqBy
 - [x] uniqWith
 - [x] unless
-- [ ] unnest
+- [x] unnest
 - [x] until
 - [x] update
 - [ ] useWith
