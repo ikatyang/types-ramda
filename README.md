@@ -139,7 +139,7 @@ source version: v0.24.x
 - [x] into
 - [x] invert
 - [x] invertObj
-- [ ] invoker
+- [x] invoker
 - [x] is
 - [x] isEmpty
 - [x] isNil
