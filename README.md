@@ -159,7 +159,7 @@ source version: v0.24.x
 - [x] lastIndexOf
 - [x] length
 - [x] lens
-- [ ] lensIndex
+- [x] lensIndex
 - [ ] lensPath
 - [ ] lensProp
 - [ ] lift
