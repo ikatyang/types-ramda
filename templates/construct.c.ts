@@ -1,27 +1,20 @@
 import * as dts from 'dts-element';
 import {max_curry_level} from './$curried-functions';
+import {create_n_ary_declarations} from './utils/create-n-ary-declarations';
 
-const generic_return = 'R';
-const generics = [...new Array(max_curry_level)].map((_, index) => `T${index + 1}`);
-const parameters = [...new Array(max_curry_level)].map((_, index) => `v${index + 1}`);
-
-const import_curried_functions = [];
-const declarations = [];
-for (let i = 0; i <= max_curry_level; i++) {
-  const current_generics = [...generics.slice(0, i), generic_return];
-  const current_parameters = parameters.slice(0, i).map((parameter, index) => `${parameter}: ${generics[index]}`);
-  const curried_function_name = `CurriedFunction${i}`;
-  declarations.push(`
-    function $${i}ary<${current_generics.join(',')}>(
-      constructor: new (${current_parameters.join(',')}) => ${generic_return}
-    ): ${curried_function_name}<${current_generics.join(',')}>;
-  `);
-  import_curried_functions.push(curried_function_name);
-}
-
-export default dts.parse(`
-  import {${import_curried_functions.join(',')}} from './$curried-functions';
-  import {Constructor, Variadic} from './$types';
-  ${declarations.join('\n')}
-  function $variadic<${generic_return}>(constructor: Constructor<${generic_return}>): Variadic<${generic_return}>;
-`).members;
+export default create_n_ary_declarations(
+  0,
+  max_curry_level,
+  args => `
+    function $${args.curry_level}ary<${args.generics.join(',')}>(
+      constructor: new (${args.parameters.join(',')}) => ${args.return_type}
+    ): CurriedFunction${args.curry_level}<${args.generics.join(',')}>;
+  `,
+  args => `
+    import {${args.curry_levels.map(i => `CurriedFunction${i}`).join(',')}} from './$curried-functions';
+    import {Constructor, Variadic} from './$types';
+    function $variadic<${args.return_type}>(
+      constructor: Constructor<${args.return_type}>
+    ): Variadic<${args.return_type}>;
+  `,
+);

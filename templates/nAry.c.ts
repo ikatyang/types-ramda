@@ -1,21 +1,21 @@
 import * as dts from 'dts-element';
 import {max_curry_level} from './$curried-functions';
+import {create_n_ary_declarations} from './utils/create-n-ary-declarations';
 
-const generic_return = 'R';
-const generics = [...new Array(max_curry_level)].map((_, index) => `T${index + 1}`);
-const parameters = [...new Array(max_curry_level)].map((_, index) => `v${index + 1}`);
-
-const elements: string[] = [];
-for (let i = 0; i <= max_curry_level; i++) {
-  const current_generics = [...generics.slice(0, i), generic_return];
-  const current_parameters = parameters.slice(0, i).map((parameter, index) => `${parameter}: ${generics[index]}`);
-  elements.push(`
-    function $${i}ary<${current_generics.join(',')}>(
-      n: ${i},
-      fn: (${[...current_parameters, '...args: any[]'].join(',')}) => ${generic_return}
-    ): (${current_parameters.join(',')}) => ${generic_return};
-  `);
-}
-elements.push(`function $variadic<${generic_return}>(n: number, fn: Variadic<${generic_return}>): Variadic<${generic_return}>`);
-elements.unshift(`import {Variadic} from './$types';`);
-export default dts.parse(elements.join('\n')).members;
+export default create_n_ary_declarations(
+  0,
+  max_curry_level,
+  args => `
+    function $${args.curry_level}ary<${args.generics.join(',')}>(
+      n: ${args.curry_level},
+      fn: (${[...args.parameters, '...args: any[]'].join(',')}) => ${args.return_type}
+    ): (${args.parameters.join(',')}) => ${args.return_type};
+  `,
+  args => `
+    import {Variadic} from './$types';
+    function $variadic<${args.return_type}>(
+      n: number,
+      fn: Variadic<${args.return_type}>
+    ): Variadic<${args.return_type}>;
+  `,
+);
