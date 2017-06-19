@@ -240,7 +240,7 @@ source version: v0.24.x
 - [x] reverse
 - [ ] scan
 - [ ] sequence
-- [ ] set
+- [x] set
 - [x] slice
 - [x] sort
 - [x] sortBy

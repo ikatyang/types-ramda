@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`R_set(number_object_lens)(number)(object) 1`] = `"object"`;
+
+exports[`R_set(number_object_lens, number) 1`] = `"(target: object) => object"`;
+
+exports[`R_set(number_object_lens, number, object) 1`] = `"object"`;
