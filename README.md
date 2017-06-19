@@ -160,7 +160,7 @@ source version: v0.24.x
 - [x] length
 - [x] lens
 - [x] lensIndex
-- [ ] lensPath
+- [x] lensPath
 - [ ] lensProp
 - [ ] lift
 - [ ] liftN
