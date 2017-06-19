@@ -6,7 +6,7 @@ export default create_n_ary_declarations(
   2,
   max_curry_level,
   args => `
-    function $${args.curry_level}ary<${args.generics.join(',')}>(
+    function $${args.curry_level}arity<${args.generics.join(',')}>(
       fn: (${args.parameters.join(',')}) => ${args.return_type}
     ): CurriedFunction${args.curry_level}<${[
       ...args.generics.slice(0, 2).reverse(),
