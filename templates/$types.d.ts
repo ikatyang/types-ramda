@@ -1,6 +1,10 @@
+// simple
+
 export type Ordered = string | number | boolean | Date;
 export type Property = string | number | symbol;
 export type Path = List<Property>;
+
+// general
 
 export type Constructor<T> = new (...args: any[]) => T;
 
@@ -27,10 +31,6 @@ export interface KeyValuePair<K, V> extends ArrayLike<K | V> {
   1: V;
 }
 
-export interface ArrayLike<T> {
-  readonly [index: number]: T;
-  readonly length: number;
-}
 export type List<T> = T[] | ArrayLike<T>;
 export type NestedList<T> = List<T | List<T>>;
 
@@ -40,6 +40,40 @@ export interface Dictionary<T> {
 export interface NestedDictionary<T> {
   [key: string]: T | NestedDictionary<T>;
 }
+
+// some-like
+
+export interface ArrayLike<T> {
+  // lib.es6.d.ts
+  readonly [index: number]: T;
+  readonly length: number;
+}
+
+// ramda
+
+export interface Lens<T, U> {
+  (toFunctorFn: (value: T) => Functor<T>): (target: U) => U; // tslint:disable-line:callable-types
+}
+
+export interface Transformer<T, U, R> {
+  // https://github.com/cognitect-labs/transducers-js#transformer-protocol
+  '@@transducer/init': () => U;
+  '@@transducer/step': (accumulator: U, value: T) => U;
+  '@@transducer/result': (accumulator: U) => R;
+}
+
+export interface Reduced<T> {
+  '@@transducer/value': T;
+  '@@transducer/reduced': true;
+}
+
+// ramda-dispatch
+
+export interface Filterable<T> {
+  filter(fn: Predicate<T>): Filterable<T>;
+}
+
+// https://github.com/fantasyland/fantasy-land
 
 export interface Functor<T> {
   map<U>(fn: Morphism<T, U>): Functor<U>;
@@ -51,24 +85,4 @@ export interface Apply<T> extends Functor<T> {
 
 export interface Chain<T> extends Apply<T> {
   chain<U>(fn: Morphism<T, Chain<U>>): Chain<U>;
-}
-
-export interface Filterable<T> {
-  filter(fn: Predicate<T>): Filterable<T>;
-}
-
-export interface Transformer<T, U, R> {
-  '@@transducer/init': () => U;
-  '@@transducer/step': (accumulator: U, value: T) => U;
-  '@@transducer/result': (accumulator: U) => R;
-}
-
-export interface Reduced<T> {
-  '@@transducer/value': T;
-  '@@transducer/reduced': true;
-}
-
-export interface Lens<T, U> {
-  // tslint:disable-next-line:callable-types
-  (toFunctorFn: (value: T) => Functor<T>): (target: U) => U;
 }

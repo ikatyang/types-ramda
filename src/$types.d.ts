@@ -19,10 +19,6 @@ export interface KeyValuePair<K, V> extends ArrayLike<K | V> {
     "0": K;
     "1": V;
 }
-export interface ArrayLike<T> {
-    readonly [index: number]: T;
-    readonly length: number;
-}
 export type List<T> = T[] | ArrayLike<T>;
 export type NestedList<T> = List<T | List<T>>;
 export interface Dictionary<T> {
@@ -31,17 +27,12 @@ export interface Dictionary<T> {
 export interface NestedDictionary<T> {
     [key: string]: T | NestedDictionary<T>;
 }
-export interface Functor<T> {
-    map<U>(fn: Morphism<T, U>): Functor<U>;
+export interface ArrayLike<T> {
+    readonly [index: number]: T;
+    readonly length: number;
 }
-export interface Apply<T> extends Functor<T> {
-    ap<U>(fn: Apply<Morphism<T, U>>): Apply<U>;
-}
-export interface Chain<T> extends Apply<T> {
-    chain<U>(fn: Morphism<T, Chain<U>>): Chain<U>;
-}
-export interface Filterable<T> {
-    filter(fn: Predicate<T>): Filterable<T>;
+export interface Lens<T, U> {
+    (toFunctorFn: (value: T) => Functor<T>): (target: U) => U;
 }
 export interface Transformer<T, U, R> {
     "@@transducer/init": () => U;
@@ -52,6 +43,15 @@ export interface Reduced<T> {
     "@@transducer/value": T;
     "@@transducer/reduced": true;
 }
-export interface Lens<T, U> {
-    (toFunctorFn: (value: T) => Functor<T>): (target: U) => U;
+export interface Filterable<T> {
+    filter(fn: Predicate<T>): Filterable<T>;
+}
+export interface Functor<T> {
+    map<U>(fn: Morphism<T, U>): Functor<U>;
+}
+export interface Apply<T> extends Functor<T> {
+    ap<U>(fn: Apply<Morphism<T, U>>): Apply<U>;
+}
+export interface Chain<T> extends Apply<T> {
+    chain<U>(fn: Morphism<T, Chain<U>>): Chain<U>;
 }
