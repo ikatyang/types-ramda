@@ -1,6 +1,15 @@
 import * as R from 'ramda';
 
 // https://github.com/types/npm-ramda/blob/master/tests/test.ts
+
+// add
+{
+  // @dts-jest:pass
+  R.add(2, 3); // => 5
+  // @dts-jest:pass
+  R.add(7)(10); // => 17
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -420,13 +429,6 @@ class F2 {
     };
     // $ExpectType number
     R.reduce(add, 10, numbers); // => 16;
-})();
-
-// add
-(() => {
-    let plus3 = R.add(3);
-    // $ExpectType number
-    plus3(5);
 })();
 
 // reduceRight
@@ -2567,13 +2569,7 @@ class Rectangle {
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]);   // => [[1], [2, 3, 1, 2, 3]]
 };
 
-// add
-() => {
-    // $ExpectType number
-    R.add(2, 3);       // =>  5
-    // $ExpectType number
-    R.add(7)(10);      // => 17
-};
+
 
 // dec
 () => {

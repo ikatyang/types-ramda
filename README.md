@@ -64,7 +64,7 @@ source version: v0.24.1
 #### Integration tests
 
 - [ ] __
-- [ ] add
+- [x] add
 - [ ] addIndex
 - [ ] adjust
 - [ ] all
