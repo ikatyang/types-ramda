@@ -238,7 +238,7 @@ source version: v0.24.x
 - [x] repeat
 - [x] replace
 - [x] reverse
-- [ ] scan
+- [x] scan
 - [ ] sequence
 - [x] set
 - [x] slice
