@@ -230,7 +230,7 @@ source version: v0.24.x
 - [x] range
 - [x] reduce
 - [ ] reduceBy
-- [ ] reduced
+- [x] reduced
 - [x] reduceRight
 - [ ] reduceWhile
 - [x] reject
