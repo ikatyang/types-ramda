@@ -239,7 +239,7 @@ source version: v0.24.x
 - [x] replace
 - [x] reverse
 - [x] scan
-- [ ] sequence
+- [x] sequence
 - [x] set
 - [x] slice
 - [x] sort
