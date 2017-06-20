@@ -35,7 +35,7 @@ export interface Functor<T> {
     map<U>(fn: Morphism<T, U>): Functor<U>;
 }
 export interface Apply<T> extends Functor<T> {
-    apply<U>(fn: Apply<Morphism<T, U>>): Apply<U>;
+    ap<U>(fn: Apply<Morphism<T, U>>): Apply<U>;
 }
 export interface Chain<T> extends Apply<T> {
     chain<U>(fn: Morphism<T, Chain<U>>): Chain<U>;
