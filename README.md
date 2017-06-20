@@ -287,7 +287,7 @@ source version: v0.24.x
 - [x] unnest
 - [x] until
 - [x] update
-- [ ] useWith
+- [x] useWith
 - [x] values
 - [x] valuesIn
 - [x] view
