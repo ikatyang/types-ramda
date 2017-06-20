@@ -268,7 +268,7 @@ source version: v0.24.x
 - [x] toPairsIn
 - [x] toString
 - [x] toUpper
-- [ ] transduce
+- [x] transduce
 - [x] transpose
 - [x] traverse
 - [x] trim
