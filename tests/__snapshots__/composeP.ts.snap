@@ -3,20 +3,20 @@
 exports[`R_composeP(
       boolean_to_number_promise,
       a_b_c_d_e_f_to_any_promise,
-    ) 1`] = `"(v1: null, v2: undefined, v3: boolean, v4: number, v5: string, v6: object) => Promise<number>"`;
+    ) 1`] = `"(v1: null, v2: undefined, v3: boolean, v4: number, v5: string, v6: object) => PromiseLike<number>"`;
 
 exports[`R_composeP(
       boolean_to_number_promise,
       string_to_boolean_promise,
       a_b_c_d_e_f_to_any_promise,
-    ) 1`] = `"(v1: null, v2: undefined, v3: boolean, v4: number, v5: string, v6: object) => Promise<number>"`;
+    ) 1`] = `"(v1: null, v2: undefined, v3: boolean, v4: number, v5: string, v6: object) => PromiseLike<number>"`;
 
 exports[`R_composeP(
       boolean_to_number_promise,
       string_to_boolean_promise,
       number_to_string_promise,
       a_b_c_d_e_f_to_any_promise,
-    ) 1`] = `"(v1: null, v2: undefined, v3: boolean, v4: number, v5: string, v6: object) => Promise<number>"`;
+    ) 1`] = `"(v1: null, v2: undefined, v3: boolean, v4: number, v5: string, v6: object) => PromiseLike<number>"`;
 
 exports[`R_composeP(
       boolean_to_number_promise,
@@ -24,7 +24,7 @@ exports[`R_composeP(
       number_to_string_promise,
       string_to_number_promise,
       a_b_c_d_e_f_to_any_promise,
-    ) 1`] = `"(v1: null, v2: undefined, v3: boolean, v4: number, v5: string, v6: object) => Promise<number>"`;
+    ) 1`] = `"(v1: null, v2: undefined, v3: boolean, v4: number, v5: string, v6: object) => PromiseLike<number>"`;
 
 exports[`R_composeP(
       boolean_to_number_promise,
@@ -33,7 +33,7 @@ exports[`R_composeP(
       string_to_number_promise,
       boolean_to_string_promise,
       a_b_c_d_e_f_to_any_promise,
-    ) 1`] = `"(v1: null, v2: undefined, v3: boolean, v4: number, v5: string, v6: object) => Promise<number>"`;
+    ) 1`] = `"(v1: null, v2: undefined, v3: boolean, v4: number, v5: string, v6: object) => PromiseLike<number>"`;
 
 exports[`R_composeP(
       boolean_to_number_promise,
@@ -42,7 +42,7 @@ exports[`R_composeP(
       string_to_number_promise,
       boolean_to_string_promise,
       number_to_boolean_promise,
-    ) 1`] = `"(v1: number) => Promise<number>"`;
+    ) 1`] = `"(v1: number) => PromiseLike<number>"`;
 
 exports[`R_composeP(
       boolean_to_number_promise,
@@ -50,26 +50,26 @@ exports[`R_composeP(
       number_to_string_promise,
       string_to_number_promise,
       boolean_to_string_promise,
-    ) 1`] = `"(v1: boolean) => Promise<number>"`;
+    ) 1`] = `"(v1: boolean) => PromiseLike<number>"`;
 
 exports[`R_composeP(
       boolean_to_number_promise,
       string_to_boolean_promise,
       number_to_string_promise,
       string_to_number_promise,
-    ) 1`] = `"(v1: string) => Promise<number>"`;
+    ) 1`] = `"(v1: string) => PromiseLike<number>"`;
 
 exports[`R_composeP(
       boolean_to_number_promise,
       string_to_boolean_promise,
       number_to_string_promise,
-    ) 1`] = `"(v1: number) => Promise<number>"`;
+    ) 1`] = `"(v1: number) => PromiseLike<number>"`;
 
 exports[`R_composeP(
       boolean_to_number_promise,
       string_to_boolean_promise,
-    ) 1`] = `"(v1: string) => Promise<number>"`;
+    ) 1`] = `"(v1: string) => PromiseLike<number>"`;
 
-exports[`R_composeP(a_b_c_d_e_f_to_any_promise) 1`] = `"(v1: null, v2: undefined, v3: boolean, v4: number, v5: string, v6: object) => Promise<any>"`;
+exports[`R_composeP(a_b_c_d_e_f_to_any_promise) 1`] = `"(v1: null, v2: undefined, v3: boolean, v4: number, v5: string, v6: object) => PromiseLike<any>"`;
 
-exports[`R_composeP(boolean_to_number_promise) 1`] = `"(v1: boolean) => Promise<number>"`;
+exports[`R_composeP(boolean_to_number_promise) 1`] = `"(v1: boolean) => PromiseLike<number>"`;
