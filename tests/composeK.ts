@@ -8,27 +8,27 @@ declare const chain_number_to_chain_string: (x: Chain<number>) => Chain<string>;
 declare const chain_string_to_chain_boolean: (x: Chain<string>) => Chain<boolean>;
 declare const chain_string_to_chain_number: (x: Chain<string>) => Chain<number>;
 
-// @dts-jest
+// @dts-jest:pass
 R_composeK(chain_boolean_to_chain_number);
-// @dts-jest
+// @dts-jest:pass
 R_composeK(
   chain_boolean_to_chain_number,
   chain_string_to_chain_boolean,
 );
-// @dts-jest
+// @dts-jest:pass
 R_composeK(
   chain_boolean_to_chain_number,
   chain_string_to_chain_boolean,
   chain_number_to_chain_string,
 );
-// @dts-jest
+// @dts-jest:pass
 R_composeK(
   chain_boolean_to_chain_number,
   chain_string_to_chain_boolean,
   chain_number_to_chain_string,
   chain_string_to_chain_number,
 );
-// @dts-jest
+// @dts-jest:pass
 R_composeK(
   chain_boolean_to_chain_number,
   chain_string_to_chain_boolean,
@@ -36,7 +36,7 @@ R_composeK(
   chain_string_to_chain_number,
   chain_boolean_to_chain_string,
 );
-// @dts-jest
+// @dts-jest:pass
 R_composeK(
   chain_boolean_to_chain_number,
   chain_string_to_chain_boolean,

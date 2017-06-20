@@ -4,9 +4,9 @@ declare const object_array: object[];
 declare const string_array: string[];
 declare const number: number;
 
-// @dts-jest
+// @dts-jest:pass
 R_insertAll(number, string_array);
-// @dts-jest
+// @dts-jest:pass
 R_insertAll(number, string_array, object_array);
-// @dts-jest
+// @dts-jest:pass
 R_insertAll(number)(string_array)(object_array);

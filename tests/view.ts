@@ -4,9 +4,9 @@ import * as R_view from 'ramda/src/view';
 declare const number_object_lens: Lens<number, object>;
 declare const object: object;
 
-// @dts-jest
+// @dts-jest:pass
 R_view(number_object_lens);
-// @dts-jest
+// @dts-jest:pass
 R_view(number_object_lens)(object);
-// @dts-jest
+// @dts-jest:pass
 R_view(number_object_lens, object);

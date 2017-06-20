@@ -4,9 +4,9 @@ import * as R_forEachObjIndexed from 'ramda/src/forEachObjIndexed';
 declare const number_dictionary: Dictionary<number>;
 declare const keyed_number_dictionary_tap: KeyedObjectTap<number, Dictionary<number>>;
 
-// @dts-jest
+// @dts-jest:pass
 R_forEachObjIndexed(keyed_number_dictionary_tap);
-// @dts-jest
+// @dts-jest:pass
 R_forEachObjIndexed(keyed_number_dictionary_tap)(number_dictionary);
-// @dts-jest
+// @dts-jest:pass
 R_forEachObjIndexed(keyed_number_dictionary_tap, number_dictionary);

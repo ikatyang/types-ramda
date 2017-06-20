@@ -1,14 +1,14 @@
 import * as R_invoker from 'ramda/src/invoker';
 
-// @dts-jest
+// @dts-jest:pass
 R_invoker(0);
-// @dts-jest
+// @dts-jest:pass
 R_invoker(1);
-// @dts-jest
+// @dts-jest:pass
 R_invoker(2);
-// @dts-jest
+// @dts-jest:pass
 R_invoker(5);
-// @dts-jest
+// @dts-jest:pass
 R_invoker(6);
-// @dts-jest
+// @dts-jest:pass
 R_invoker(7);

@@ -4,7 +4,7 @@ declare const number: number;
 declare const string: string;
 declare const boolean_array: boolean[];
 
-// @dts-jest
+// @dts-jest:pass
 R_takeLast(number, string);
-// @dts-jest
+// @dts-jest:pass
 R_takeLast(number, boolean_array);

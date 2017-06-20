@@ -4,9 +4,9 @@ import * as R_eqProps from 'ramda/src/eqProps';
 declare const property: Property;
 declare const string: string;
 
-// @dts-jest
+// @dts-jest:pass
 R_eqProps(property, string);
-// @dts-jest
+// @dts-jest:pass
 R_eqProps(property)(string, string);
-// @dts-jest
+// @dts-jest:pass
 R_eqProps(property, string, string);

@@ -4,7 +4,7 @@ import * as R_countBy from 'ramda/src/countBy';
 declare const object_to_string: Morphism<object, string>;
 declare const object_array: object[];
 
-// @dts-jest
+// @dts-jest:pass
 R_countBy(object_to_string);
-// @dts-jest
+// @dts-jest:pass
 R_countBy(object_to_string, object_array);

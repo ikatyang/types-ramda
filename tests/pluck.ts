@@ -4,15 +4,15 @@ import * as R_pluck from 'ramda/src/pluck';
 declare const placeholder: Placeholder;
 declare const a_number_record: Record<'a', number>;
 
-// @dts-jest
+// @dts-jest:pass
 R_pluck('a');
-// @dts-jest
+// @dts-jest:pass
 R_pluck('a')([a_number_record, a_number_record]);
 
-// @dts-jest
+// @dts-jest:pass
 R_pluck('a', [a_number_record, a_number_record]);
 
-// @dts-jest
+// @dts-jest:pass
 R_pluck(placeholder, [a_number_record, a_number_record]);
-// @dts-jest
+// @dts-jest:pass
 R_pluck(placeholder, [a_number_record, a_number_record])('a');

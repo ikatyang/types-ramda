@@ -2,7 +2,7 @@ import * as R_intersection from 'ramda/src/intersection';
 
 declare const number_array: number[];
 
-// @dts-jest
+// @dts-jest:pass
 R_intersection(number_array);
-// @dts-jest
+// @dts-jest:pass
 R_intersection(number_array, number_array);

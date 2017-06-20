@@ -3,7 +3,7 @@ import * as R_aperture from 'ramda/src/aperture';
 declare const number: number;
 declare const string_array: string[];
 
-// @dts-jest
+// @dts-jest:pass
 R_aperture(number)(string_array);
-// @dts-jest
+// @dts-jest:pass
 R_aperture(number, string_array);

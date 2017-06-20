@@ -4,12 +4,12 @@ declare const number: number;
 declare const string: string;
 declare const object_array: object[];
 
-// @dts-jest
+// @dts-jest:pass
 R_nth(number)(string);
-// @dts-jest
+// @dts-jest:pass
 R_nth(number, string);
 
-// @dts-jest
+// @dts-jest:pass
 R_nth(number)(object_array);
-// @dts-jest
+// @dts-jest:pass
 R_nth(number, object_array);

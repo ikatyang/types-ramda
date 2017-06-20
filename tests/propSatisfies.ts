@@ -5,15 +5,15 @@ declare const number_to_boolean: (x: number) => boolean;
 declare const placeholder: Placeholder;
 declare const a_b_number_record: Record<'a' | 'b', number>;
 
-// @dts-jest
+// @dts-jest:pass
 R_propSatisfies(number_to_boolean, 'a');
-// @dts-jest
+// @dts-jest:pass
 R_propSatisfies(number_to_boolean, 'a')(a_b_number_record);
 
-// @dts-jest
+// @dts-jest:pass
 R_propSatisfies(number_to_boolean, 'a', a_b_number_record);
 
-// @dts-jest
+// @dts-jest:pass
 R_propSatisfies(number_to_boolean, placeholder, a_b_number_record);
-// @dts-jest
+// @dts-jest:pass
 R_propSatisfies(number_to_boolean, placeholder, a_b_number_record)('a');

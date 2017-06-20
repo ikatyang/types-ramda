@@ -3,11 +3,11 @@ import * as R_objOf from 'ramda/src/objOf';
 declare const string: string;
 declare const object: object;
 
-// @dts-jest
+// @dts-jest:pass
 R_objOf(string);
-// @dts-jest
+// @dts-jest:pass
 R_objOf(string, object);
-// @dts-jest
+// @dts-jest:pass
 R_objOf('key');
-// @dts-jest
+// @dts-jest:pass
 R_objOf('key', object);

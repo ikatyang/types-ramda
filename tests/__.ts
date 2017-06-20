@@ -6,15 +6,15 @@ declare const number: number;
 declare const string: string;
 declare const curried_string_boolean_number_to_object: CurriedFunction3<string, boolean, number, object>;
 
-// @dts-jest
+// @dts-jest:pass
 curried_string_boolean_number_to_object(string)(boolean)(number);
-// @dts-jest
+// @dts-jest:pass
 curried_string_boolean_number_to_object(string, boolean, number);
-// @dts-jest
+// @dts-jest:pass
 curried_string_boolean_number_to_object(R___, boolean, number);
-// @dts-jest
+// @dts-jest:pass
 curried_string_boolean_number_to_object(string, R___, number);
-// @dts-jest
+// @dts-jest:pass
 curried_string_boolean_number_to_object(R___, R___, number);
-// @dts-jest
+// @dts-jest:pass
 curried_string_boolean_number_to_object(string)(R___, number);

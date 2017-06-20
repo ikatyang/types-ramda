@@ -5,15 +5,15 @@ declare const path: Path;
 declare const number: number;
 declare const object: object;
 
-// @dts-jest
+// @dts-jest:pass
 R_pathOr(number, path);
 
-// @dts-jest
+// @dts-jest:pass
 R_pathOr(number)(path)(object);
-// @dts-jest
+// @dts-jest:pass
 R_pathOr(number, path, object);
 
-// @dts-jest
+// @dts-jest:pass
 R_pathOr(number)(path)<string>(object);
-// @dts-jest
+// @dts-jest:pass
 R_pathOr<number, string>(number, path, object);

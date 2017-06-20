@@ -6,17 +6,17 @@ declare const string_array: string[];
 declare const string_object: Record<string, string>;
 declare const string_functor: Functor<string>;
 
-// @dts-jest
+// @dts-jest:pass
 R_map(string_to_number, string_array);
-// @dts-jest
+// @dts-jest:pass
 R_map(string_to_number)(string_array);
 
-// @dts-jest
+// @dts-jest:pass
 R_map(string_to_number, string_object);
-// @dts-jest
+// @dts-jest:pass
 R_map(string_to_number)(string_object);
 
-// @dts-jest
+// @dts-jest:pass
 R_map(string_to_number, string_functor);
-// @dts-jest
+// @dts-jest:pass
 R_map(string_to_number)(string_functor);

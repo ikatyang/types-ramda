@@ -3,7 +3,7 @@ import * as R_toString from 'ramda/src/toString';
 declare const number: number;
 declare const object: object;
 
-// @dts-jest
+// @dts-jest:pass
 R_toString(number);
-// @dts-jest
+// @dts-jest:pass
 R_toString(object);

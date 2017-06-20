@@ -3,7 +3,7 @@ import * as R_lensPath from 'ramda/src/lensPath';
 
 declare const path: Path;
 
-// @dts-jest
+// @dts-jest:pass
 R_lensPath(path);
-// @dts-jest
+// @dts-jest:pass
 R_lensPath<object, number[]>(path);

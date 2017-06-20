@@ -6,16 +6,16 @@ declare const object_number_to_object: (acc: object, val: number) => object;
 declare const number_to_string: (x: number) => string;
 declare const number_to_a_b_c: (x: number) => 'a' | 'b' | 'c';
 
-// @dts-jest
+// @dts-jest:pass
 R_reduceBy(object_number_to_object, object, number_to_string);
-// @dts-jest
+// @dts-jest:pass
 R_reduceBy(object_number_to_object)(object)(number_to_string)(number_array);
-// @dts-jest
+// @dts-jest:pass
 R_reduceBy(object_number_to_object, object, number_to_string, number_array);
 
-// @dts-jest
+// @dts-jest:pass
 R_reduceBy(object_number_to_object, object, number_to_a_b_c);
-// @dts-jest
+// @dts-jest:pass
 R_reduceBy(object_number_to_object)(object)(number_to_a_b_c)(number_array);
-// @dts-jest
+// @dts-jest:pass
 R_reduceBy(object_number_to_object, object, number_to_a_b_c, number_array);

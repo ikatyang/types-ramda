@@ -1,6 +1,6 @@
 import * as R_lensIndex from 'ramda/src/lensIndex';
 
-// @dts-jest
+// @dts-jest:pass
 R_lensIndex(0);
-// @dts-jest
+// @dts-jest:pass
 R_lensIndex<number, number[]>(0);

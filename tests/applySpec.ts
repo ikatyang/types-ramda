@@ -11,12 +11,12 @@ declare const name_spec: {
 
 declare const fullname: string;
 
-// @dts-jest
+// @dts-jest:pass
 R_applySpec(name_spec);
-// @dts-jest
+// @dts-jest:pass
 R_applySpec(name_spec)(fullname);
 
-// @dts-jest
+// @dts-jest:pass
 R_applySpec<Name>(name_spec);
-// @dts-jest
+// @dts-jest:pass
 R_applySpec<Name>(name_spec)(fullname);

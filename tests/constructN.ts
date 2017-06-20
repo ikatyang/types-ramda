@@ -13,11 +13,11 @@ declare const new_7_string_to_number: new (
   v7: string,
 ) => number;
 
-// @dts-jest
+// @dts-jest:pass
 R_constructN(0, new_string_to_object);
-// @dts-jest
+// @dts-jest:pass
 R_constructN(1, new_number_boolean_to_string);
-// @dts-jest
+// @dts-jest:pass
 R_constructN(4, new_number_args_to_boolean);
-// @dts-jest
+// @dts-jest:pass
 R_constructN(7, new_7_string_to_number);

@@ -16,43 +16,43 @@ declare const a_b_c_d_e_f_to_any: (
   f: object,
 ) => any;
 
-// @dts-jest
+// @dts-jest:pass
 R_pipe(boolean_to_number);
-// @dts-jest
+// @dts-jest:pass
 R_pipe(a_b_c_d_e_f_to_any);
 
-// @dts-jest
+// @dts-jest:pass
 R_pipe(
   string_to_boolean,
   boolean_to_number,
 );
-// @dts-jest
+// @dts-jest:pass
 R_pipe(
   a_b_c_d_e_f_to_any,
   boolean_to_number,
 );
 
-// @dts-jest
+// @dts-jest:pass
 R_pipe(
   number_to_string,
   string_to_boolean,
   boolean_to_number,
 );
-// @dts-jest
+// @dts-jest:pass
 R_pipe(
   a_b_c_d_e_f_to_any,
   string_to_boolean,
   boolean_to_number,
 );
 
-// @dts-jest
+// @dts-jest:pass
 R_pipe(
   string_to_number,
   number_to_string,
   string_to_boolean,
   boolean_to_number,
 );
-// @dts-jest
+// @dts-jest:pass
 R_pipe(
   a_b_c_d_e_f_to_any,
   number_to_string,
@@ -60,7 +60,7 @@ R_pipe(
   boolean_to_number,
 );
 
-// @dts-jest
+// @dts-jest:pass
 R_pipe(
   boolean_to_string,
   string_to_number,
@@ -68,7 +68,7 @@ R_pipe(
   string_to_boolean,
   boolean_to_number,
 );
-// @dts-jest
+// @dts-jest:pass
 R_pipe(
   a_b_c_d_e_f_to_any,
   string_to_number,
@@ -77,7 +77,7 @@ R_pipe(
   boolean_to_number,
 );
 
-// @dts-jest
+// @dts-jest:pass
 R_pipe(
   number_to_boolean,
   boolean_to_string,
@@ -86,7 +86,7 @@ R_pipe(
   string_to_boolean,
   boolean_to_number,
 );
-// @dts-jest
+// @dts-jest:pass
 R_pipe(
   a_b_c_d_e_f_to_any,
   boolean_to_string,

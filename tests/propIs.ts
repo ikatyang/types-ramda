@@ -2,11 +2,11 @@ import * as R_propIs from 'ramda/src/propIs';
 
 declare const object: object;
 
-// @dts-jest
+// @dts-jest:pass
 R_propIs(Number)('a');
-// @dts-jest
+// @dts-jest:pass
 R_propIs(Number, 'a');
-// @dts-jest
+// @dts-jest:pass
 R_propIs(Number)('a')(object);
-// @dts-jest
+// @dts-jest:pass
 R_propIs(Number, 'a', object);

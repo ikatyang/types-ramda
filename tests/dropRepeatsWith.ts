@@ -3,9 +3,9 @@ import * as R_dropRepeatsWith from 'ramda/src/dropRepeatsWith';
 declare const string_to_number: (x: string) => number;
 declare const string_array: string[];
 
-// @dts-jest
+// @dts-jest:pass
 R_dropRepeatsWith(string_to_number);
-// @dts-jest
+// @dts-jest:pass
 R_dropRepeatsWith(string_to_number)(string_array);
-// @dts-jest
+// @dts-jest:pass
 R_dropRepeatsWith(string_to_number, string_array);

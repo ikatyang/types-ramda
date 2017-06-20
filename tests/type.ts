@@ -5,11 +5,11 @@ declare const number: number;
 declare const object: object;
 declare const any: any;
 
-// @dts-jest
+// @dts-jest:pass
 R_type(boolean);
-// @dts-jest
+// @dts-jest:pass
 R_type(number);
-// @dts-jest
+// @dts-jest:pass
 R_type(object);
-// @dts-jest
+// @dts-jest:pass
 R_type(any);

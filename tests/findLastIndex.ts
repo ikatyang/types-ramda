@@ -4,9 +4,9 @@ import * as R_findLastIndex from 'ramda/src/findLastIndex';
 declare const string_predicate: Predicate<string>;
 declare const string_array: string[];
 
-// @dts-jest
+// @dts-jest:pass
 R_findLastIndex(string_predicate);
-// @dts-jest
+// @dts-jest:pass
 R_findLastIndex(string_predicate)(string_array);
-// @dts-jest
+// @dts-jest:pass
 R_findLastIndex(string_predicate, string_array);

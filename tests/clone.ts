@@ -4,7 +4,7 @@ import * as R_clone from 'ramda/src/clone';
 declare const number: number;
 declare const string_list: List<string>;
 
-// @dts-jest
+// @dts-jest:pass
 R_clone(number);
-// @dts-jest
+// @dts-jest:pass
 R_clone(string_list);

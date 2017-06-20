@@ -7,7 +7,7 @@ declare const a_1_b_2_c_3: {
   c: 3,
 };
 
-// @dts-jest
+// @dts-jest:pass
 R_valuesIn(object);
-// @dts-jest
+// @dts-jest:pass
 R_valuesIn(a_1_b_2_c_3);

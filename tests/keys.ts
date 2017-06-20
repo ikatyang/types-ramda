@@ -7,7 +7,7 @@ declare const a_1_b_2_c_3: {
 };
 declare const string_number_record: Record<string, number>;
 
-// @dts-jest
+// @dts-jest:pass
 R_keys(a_1_b_2_c_3);
-// @dts-jest
+// @dts-jest:pass
 R_keys(string_number_record);

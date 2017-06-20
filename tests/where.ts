@@ -14,28 +14,28 @@ declare const a_1_b_2_c_3: {
   c: 3,
 };
 
-// @dts-jest
+// @dts-jest:pass
 R_where(a_b_c_number_to_boolean);
 
-// @dts-jest
+// @dts-jest:pass
 R_where(a_b_c_number_to_boolean)(a_1_b_2_c_3);
-// @dts-jest
+// @dts-jest:pass
 R_where(a_b_c_number_to_boolean, a_1_b_2_c_3);
 
-// @dts-jest
+// @dts-jest:pass
 R_where(a_b_c_number_to_boolean)(number_dictionary);
-// @dts-jest
+// @dts-jest:pass
 R_where(a_b_c_number_to_boolean, number_dictionary);
 
-// @dts-jest
+// @dts-jest:pass
 R_where(dictionary_of_number_to_boolean);
 
-// @dts-jest
+// @dts-jest:pass
 R_where(dictionary_of_number_to_boolean)(a_1_b_2_c_3);
-// @dts-jest
+// @dts-jest:pass
 R_where(dictionary_of_number_to_boolean, a_1_b_2_c_3);
 
-// @dts-jest
+// @dts-jest:pass
 R_where(dictionary_of_number_to_boolean)(number_dictionary);
-// @dts-jest
+// @dts-jest:pass
 R_where(dictionary_of_number_to_boolean, number_dictionary);

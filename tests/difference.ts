@@ -2,7 +2,7 @@ import * as R_difference from 'ramda/src/difference';
 
 declare const number_array: number[];
 
-// @dts-jest
+// @dts-jest:pass
 R_difference(number_array);
-// @dts-jest
+// @dts-jest:pass
 R_difference(number_array, number_array);

@@ -2,7 +2,7 @@ import * as R_always from 'ramda/src/always';
 
 declare const string: string;
 
-// @dts-jest
+// @dts-jest:pass
 R_always(string);
-// @dts-jest
+// @dts-jest:pass
 R_always(string)();

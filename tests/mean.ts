@@ -2,5 +2,5 @@ import * as R_mean from 'ramda/src/mean';
 
 declare const number_array: number[];
 
-// @dts-jest
+// @dts-jest:pass
 R_mean(number_array);

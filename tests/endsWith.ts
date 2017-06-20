@@ -3,11 +3,11 @@ import * as R_endsWith from 'ramda/src/endsWith';
 declare const string: string;
 declare const boolean_array: boolean[];
 
-// @dts-jest
+// @dts-jest:pass
 R_endsWith(string);
-// @dts-jest
+// @dts-jest:pass
 R_endsWith(string, string);
-// @dts-jest
+// @dts-jest:pass
 R_endsWith(boolean_array);
-// @dts-jest
+// @dts-jest:pass
 R_endsWith(boolean_array, boolean_array);

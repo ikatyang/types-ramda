@@ -5,12 +5,12 @@ declare const number: number;
 declare const string: string;
 declare const object_list: List<object>;
 
-// @dts-jest
+// @dts-jest:pass
 R_splitEvery(number)(string);
-// @dts-jest
+// @dts-jest:pass
 R_splitEvery(number, string);
 
-// @dts-jest
+// @dts-jest:pass
 R_splitEvery(number)(object_list);
-// @dts-jest
+// @dts-jest:pass
 R_splitEvery(number, object_list);
