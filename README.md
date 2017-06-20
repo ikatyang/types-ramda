@@ -231,7 +231,7 @@ source version: v0.24.x
 - [x] reduce
 - [ ] reduceBy
 - [ ] reduced
-- [ ] reduceRight
+- [x] reduceRight
 - [ ] reduceWhile
 - [x] reject
 - [x] remove
