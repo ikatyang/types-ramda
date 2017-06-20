@@ -232,7 +232,7 @@ source version: v0.24.x
 - [x] reduceBy
 - [x] reduced
 - [x] reduceRight
-- [ ] reduceWhile
+- [x] reduceWhile
 - [x] reject
 - [x] remove
 - [x] repeat
