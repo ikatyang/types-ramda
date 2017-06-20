@@ -310,6 +310,10 @@ source version: v0.24.1
 - [ ] zipObj
 - [ ] zipWith
 
+## Related
+
+- [npm-ramda](https://github.com/types/npm-ramda): TypeScript's type definitions for Ramda from @types
+
 ## License
 
 MIT © [Ika](https://github.com/ikatyang)
