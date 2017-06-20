@@ -270,7 +270,7 @@ source version: v0.24.x
 - [x] toUpper
 - [ ] transduce
 - [x] transpose
-- [ ] traverse
+- [x] traverse
 - [x] trim
 - [x] tryCatch
 - [x] type
