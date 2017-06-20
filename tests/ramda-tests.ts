@@ -35,16 +35,6 @@ class F2 {
     z() {};
 }
 
-// isArrayLike
-() => {
-    // $ExpectType boolean
-    R.isArrayLike('a');
-    // $ExpectType boolean
-    R.isArrayLike([1,2,3]);
-    // $ExpectType boolean
-    R.isArrayLike([]);
-};
-
 // propIs
 (() => {
     // $ExpectType boolean
