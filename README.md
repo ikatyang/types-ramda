@@ -228,7 +228,7 @@ source version: v0.24.x
 - [x] props
 - [x] propSatisfies
 - [x] range
-- [ ] reduce
+- [x] reduce
 - [ ] reduceBy
 - [ ] reduced
 - [ ] reduceRight
