@@ -83,3 +83,5 @@ exports[`append R.append(['tests'], ['write', 'more']) 1`] = `"(string | string[
 exports[`apply R.apply(Math.max)(nums) 1`] = `"number"`;
 
 exports[`apply R.apply(Math.max, nums) 1`] = `"number"`;
+
+exports[`applySpec getMetrics(2, 4) 1`] = `"T"`;

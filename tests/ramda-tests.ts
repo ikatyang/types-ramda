@@ -184,6 +184,24 @@ import * as R from 'ramda';
   R.apply(Math.max)(nums); // => 42
 }
 
+// @dts-jest:group applySpec
+{
+  interface T {
+    sum: number;
+    nested: {
+      mul: number;
+    };
+  }
+  const getMetrics = R.applySpec<T>({
+    sum: R.add,
+    nested: {
+      mul: R.multiply,
+    },
+  });
+  // @dts-jest:pass
+  getMetrics(2, 4); // => {sum: 6, nested: {mul: 8}}
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -2323,16 +2341,6 @@ class Rectangle {
     // $ExpectType number[]
     R.mapIndexed((rectangle: Rectangle, idx: number): number => rectangle.area()*idx, [new Rectangle(1,2), new Rectangle(4,7)]);
     // => [2, 56]
-};
-
-// applySpec
-() => {
-    type T = {sum: number, nested: {mul: number}};
-    const getMetrics = R.applySpec<T>({
-        sum: R.add, nested: { mul: R.multiply }
-    });
-    // $ExpectType T
-    getMetrics(2, 4); // => { sum: 6, nested: { mul: 8 } }
 };
 
 // binary
