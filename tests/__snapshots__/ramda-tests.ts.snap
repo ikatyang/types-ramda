@@ -15,10 +15,10 @@ exports[`addIndex filterIndexed(lastTwo)([8, 6, 7, 5, 3, 0, 9]) 1`] = `"number[]
 exports[`addIndex filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]) 1`] = `"number[]"`;
 
 exports[`addIndex reduceIndexed(
-      (acc: string, val: string, idx: number) => \`\${acc},\${idx}-\${val}\`,
-      '',
-      ['f', 'o', 'o', 'b', 'a', 'r'],
-    ) 1`] = `"{}"`;
+        (acc: string, val: string, idx: number) => \`\${acc},\${idx}-\${val}\`,
+        '',
+        ['f', 'o', 'o', 'b', 'a', 'r'],
+      ) 1`] = `"{}"`;
 
 exports[`addIndex reduceIndexed(objectify)({}, ['a', 'b', 'c']) 1`] = `"Record<string, number>"`;
 
