@@ -278,6 +278,12 @@ import * as R from 'ramda';
   R.both(gt10)(even)(101); // => false
 }
 
+// @dts-jest:group call
+{
+  // @dts-jest:pass
+  R.call(R.add<'11'>(), 1, 2); // => 3
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;

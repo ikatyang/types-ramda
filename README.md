@@ -84,7 +84,7 @@ source version: v0.24.1
 - [x] binary
 - [x] bind
 - [x] both
-- [ ] call
+- [x] call
 - [ ] chain
 - [ ] clamp
 - [ ] clone
