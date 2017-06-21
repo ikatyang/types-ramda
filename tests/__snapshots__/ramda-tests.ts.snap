@@ -101,3 +101,11 @@ exports[`assocPath R.assocPath(['a', 'b', 'c'])(42, {a: {b: {c: 0}}}) 1`] = `"{ 
 exports[`assocPath R.assocPath(['a', 'b', 'c'], 42)({a: {b: {c: 0}}}) 1`] = `"{ a: { b: { c: number; }; }; }"`;
 
 exports[`assocPath R.assocPath(['a', 'b', 'c'], 42, {a: {b: {c: 0}}}) 1`] = `"{ a: { b: { c: number; }; }; }"`;
+
+exports[`binary takesThreeArgs(1, 2, 3) 1`] = `"number[]"`;
+
+exports[`binary takesThreeArgs.length 1`] = `"number"`;
+
+exports[`binary takesTwoArgs(1, 2, 3) 1`] = `"Expected 2 arguments, but got 3."`;
+
+exports[`binary takesTwoArgs.length 1`] = `"number"`;

@@ -245,6 +245,22 @@ import * as R from 'ramda';
   R.assocPath(['a', 'b', 'c'], 42)({a: {b: {c: 0}}}); // => {a: {b: {c: 42}}}
 }
 
+// @dts-jest:group binary
+{
+  const takesThreeArgs = (a: number, b: number, c: number) => [a, b, c];
+  const takesTwoArgs = R.binary(takesThreeArgs);
+
+  // @dts-jest:pass
+  takesThreeArgs.length; // => 3
+  // @dts-jest:pass
+  takesThreeArgs(1, 2, 3); // => [1, 2, 3]
+
+  // @dts-jest:pass
+  takesTwoArgs.length; // => 2
+  // @dts-jest:fail
+  takesTwoArgs(1, 2, 3); // => [1, 2, undefined]
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -2344,24 +2360,6 @@ class Rectangle {
     // $ExpectType number[]
     R.mapIndexed((rectangle: Rectangle, idx: number): number => rectangle.area()*idx, [new Rectangle(1,2), new Rectangle(4,7)]);
     // => [2, 56]
-};
-
-// binary
-() => {
-    let takesThreeArgs = function(a: number, b: number, c: number) {
-        return [a, b, c];
-    };
-    // $ExpectType number
-    takesThreeArgs.length; // => 3
-    // $ExpectType number[]
-    takesThreeArgs(1, 2, 3); // => [1, 2, 3]
-
-    let takesTwoArgs = R.binary(takesThreeArgs);
-    // $ExpectType number
-    takesTwoArgs.length; // => 2
-    // Only 2 arguments are passed to the wrapped function
-    // $ExpectError Supplied parameters do not match any signature of call target.
-    takesTwoArgs(1, 2, 3); // => [1, 2, undefined]
 };
 
 // pipe, inc, negate
