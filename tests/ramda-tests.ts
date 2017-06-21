@@ -79,6 +79,17 @@ import * as R from 'ramda';
   R.all(lessThan3)([1, 2]); // => true
 }
 
+// @dts-jest:group allPass
+{
+  const gt10 = (x: number) => x > 10;
+  const even = (x: number) => x % 2 === 0;
+
+  // @dts-jest:pass
+  R.allPass([gt10, even])(11); // => false
+  // @dts-jest:pass
+  R.allPass([gt10, even])(12); // => true
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -2899,17 +2910,6 @@ class Rectangle {
 /*****************************************************************
  * Logic category
  */
-
-// allPass
-() => {
-    let gt10 = function(x: number) { return x > 10; };
-    let even = function(x: number) { return x % 2 === 0;};
-    let f = R.allPass([gt10, even]);
-    // $ExpectType boolean
-    f(11); // => false
-    // $ExpectType boolean
-    f(12); // => true
-};
 
 // and
 () => {

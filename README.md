@@ -63,14 +63,14 @@ source version: v0.24.1
 
 #### Integration tests
 
-- __3__/__246__ done
+- __4__/__246__ done
 
 - [ ] __
 - [x] add
 - [x] addIndex
 - [ ] adjust
 - [x] all
-- [ ] allPass
+- [x] allPass
 - [ ] always
 - [ ] and
 - [ ] any
