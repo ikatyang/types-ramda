@@ -117,3 +117,11 @@ exports[`both R.both(gt10)(even)(101) 1`] = `"boolean"`;
 exports[`both R.both(gt10, even)(100) 1`] = `"boolean"`;
 
 exports[`call R.call(R.add<'11'>(), 1, 2) 1`] = `"number"`;
+
+exports[`chain R.chain(duplicate)([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`chain R.chain(duplicate, [1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`chain R.chain<number, number[], number>(R.append)(R.head)([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`chain R.chain<number, number[], number>(R.append, R.head)([1, 2, 3]) 1`] = `"number[]"`;

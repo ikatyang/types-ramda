@@ -284,6 +284,20 @@ import * as R from 'ramda';
   R.call(R.add<'11'>(), 1, 2); // => 3
 }
 
+// @dts-jest:group chain
+{
+  const duplicate = (n: number) => [n, n];
+
+  // @dts-jest:pass
+  R.chain(duplicate, [1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
+  // @dts-jest:pass
+  R.chain(duplicate)([1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
+  // @dts-jest:pass
+  R.chain<number, number[], number>(R.append, R.head)([1, 2, 3]); // => [1, 2, 3, 1]
+  // @dts-jest:pass
+  R.chain<number, number[], number>(R.append)(R.head)([1, 2, 3]); // => [1, 2, 3, 1]
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;
@@ -824,21 +838,6 @@ class F2 {
 /*********************
  * List category
  ********************/
-
-// chain
-() => {
-    let duplicate = function(n: number) {
-        return [n, n];
-    };
-    // $ExpectType number[]
-    R.chain(duplicate, [1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
-    // $ExpectType number[]
-    R.chain(duplicate)([1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
-    // $ExpectType number[]
-    R.chain(R.append, R.head)([1, 2, 3]); // => [1, 2, 3, 1]
-    // $ExpectType number[]
-    R.chain(R.append)(R.head)([1, 2, 3]); // => [1, 2, 3, 1]
-};
 
 // clamp
 () => {
