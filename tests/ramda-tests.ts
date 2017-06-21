@@ -174,6 +174,16 @@ import * as R from 'ramda';
   R.append(['tests'])(['write', 'more']); // => ['write', 'more', ['tests']]
 }
 
+// @dts-jest:group apply
+{
+  const nums = [1, 2, 3, -99, 42, 6, 7];
+
+  // @dts-jest:pass
+  R.apply(Math.max, nums); // => 42
+  // @dts-jest:pass
+  R.apply(Math.max)(nums); // => 42
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -2313,15 +2323,6 @@ class Rectangle {
     // $ExpectType number[]
     R.mapIndexed((rectangle: Rectangle, idx: number): number => rectangle.area()*idx, [new Rectangle(1,2), new Rectangle(4,7)]);
     // => [2, 56]
-};
-
-// apply
-() => {
-    let nums = [1, 2, 3, -99, 42, 6, 7];
-    // $ExpectType number
-    R.apply(Math.max, nums); // => 42
-    // $ExpectType number
-    R.apply(Math.max)(nums); // => 42
 };
 
 // applySpec
