@@ -298,6 +298,18 @@ import * as R from 'ramda';
   R.chain<number, number[], number>(R.append)(R.head)([1, 2, 3]); // => [1, 2, 3, 1]
 }
 
+// @dts-jest:group clamp
+{
+  // @dts-jest:pass
+  R.clamp(1, 10, -1); // => 1
+  // @dts-jest:pass
+  R.clamp<number>(1, 10)(11); // => 10
+  // @dts-jest:pass
+  R.clamp<number>(1)(10, 4); // => 4
+  // @dts-jest:pass
+  R.clamp('a', 'd', 'e'); // => 'd'
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;
@@ -838,18 +850,6 @@ class F2 {
 /*********************
  * List category
  ********************/
-
-// clamp
-() => {
-    // $ExpectType number
-    R.clamp(1, 10, -1); // => 1
-    // $ExpectType number
-    R.clamp(1, 10)(11); // => 10
-    // $ExpectType number
-    R.clamp(1)(10, 4);  // => 4
-    // $ExpectType string
-    R.clamp('a', 'd', 'e');  // => 'd'
-};
 
 // concat
 () => {

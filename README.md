@@ -86,7 +86,7 @@ source version: v0.24.1
 - [x] both
 - [x] call
 - [x] chain
-- [ ] clamp
+- [x] clamp
 - [ ] clone
 - [ ] comparator
 - [ ] complement

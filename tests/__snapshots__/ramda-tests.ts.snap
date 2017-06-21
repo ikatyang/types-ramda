@@ -125,3 +125,11 @@ exports[`chain R.chain(duplicate, [1, 2, 3]) 1`] = `"number[]"`;
 exports[`chain R.chain<number, number[], number>(R.append)(R.head)([1, 2, 3]) 1`] = `"number[]"`;
 
 exports[`chain R.chain<number, number[], number>(R.append, R.head)([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`clamp R.clamp('a', 'd', 'e') 1`] = `"\\"a\\" | \\"d\\" | \\"e\\""`;
+
+exports[`clamp R.clamp(1, 10, -1) 1`] = `"1 | 10 | -1"`;
+
+exports[`clamp R.clamp<number>(1)(10, 4) 1`] = `"number"`;
+
+exports[`clamp R.clamp<number>(1, 10)(11) 1`] = `"number"`;
