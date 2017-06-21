@@ -225,6 +225,16 @@ import * as R from 'ramda';
   R.sort(R.__, people)(byAge);
 }
 
+// @dts-jest:group assoc
+{
+  // @dts-jest:pass
+  R.assoc('c', 3, {a: 1, b: 2}); // => {a: 1, b: 2, c: 3}
+  // @dts-jest:pass
+  R.assoc('c')(3, {a: 1, b: 2}); // => {a: 1, b: 2, c: 3}
+  // @dts-jest:pass
+  R.assoc('c', 3)({a: 1, b: 2}); // => {a: 1, b: 2, c: 3}
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -1756,16 +1766,6 @@ type Pair = KeyValuePair<string, number>;
 /*****************************************************************
  * Object category
  */
-
-// assoc
-() => {
-    // $ExpectType Dictionary<number>
-    R.assoc('c', 3, {a: 1, b: 2}); // => {a: 1, b: 2, c: 3}
-    // $ExpectType Dictionary<number>
-    R.assoc('c')(3, {a: 1, b: 2}); // => {a: 1, b: 2, c: 3}
-    // $ExpectType Dictionary<number>
-    R.assoc('c', 3)({a: 1, b: 2}); // => {a: 1, b: 2, c: 3}
-};
 
 // dissoc
 () => {

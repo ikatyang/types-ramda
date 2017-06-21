@@ -89,3 +89,9 @@ exports[`applySpec getMetrics(2, 4) 1`] = `"T"`;
 exports[`ascend R.sort(R.__, people)(byAge) 1`] = `"{ name: string; age: number; }[]"`;
 
 exports[`ascend R.sort(byAge, people) 1`] = `"{}[]"`;
+
+exports[`assoc R.assoc('c')(3, {a: 1, b: 2}) 1`] = `"{ a: number; b: number; } & Record<\\"c\\", number>"`;
+
+exports[`assoc R.assoc('c', 3)({a: 1, b: 2}) 1`] = `"{ a: number; b: number; } & Record<\\"c\\", number>"`;
+
+exports[`assoc R.assoc('c', 3, {a: 1, b: 2}) 1`] = `"{ a: number; b: number; } & Record<\\"c\\", number>"`;
