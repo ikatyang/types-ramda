@@ -33,3 +33,5 @@ exports[`all R.all(lessThan3)([1, 2]) 1`] = `"boolean"`;
 exports[`allPass R.allPass([gt10, even])(11) 1`] = `"boolean"`;
 
 exports[`allPass R.allPass([gt10, even])(12) 1`] = `"boolean"`;
+
+exports[`always R.always('Tee')() 1`] = `"string"`;

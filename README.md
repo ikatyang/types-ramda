@@ -63,7 +63,7 @@ source version: v0.24.1
 
 #### Integration tests
 
-- __4__/__246__ done
+- __5__/__246__ done
 
 - [ ] __
 - [x] add
@@ -71,7 +71,7 @@ source version: v0.24.1
 - [ ] adjust
 - [x] all
 - [x] allPass
-- [ ] always
+- [x] always
 - [ ] and
 - [ ] any
 - [ ] anyPass

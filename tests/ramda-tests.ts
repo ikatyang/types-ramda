@@ -90,6 +90,12 @@ import * as R from 'ramda';
   R.allPass([gt10, even])(12); // => true
 }
 
+// @dts-jest:group always
+{
+  // @dts-jest:pass
+  R.always('Tee')(); // => 'Tee'
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -2271,13 +2277,6 @@ class Rectangle {
     // $ExpectType number[]
     R.mapIndexed((rectangle: Rectangle, idx: number): number => rectangle.area()*idx, [new Rectangle(1,2), new Rectangle(4,7)]);
     // => [2, 56]
-};
-
-// always
-() => {
-    let t = R.always('Tee');
-    // $ExpectType string
-    t(); // => 'Tee'
 };
 
 // ap
