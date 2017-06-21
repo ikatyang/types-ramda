@@ -267,6 +267,17 @@ import * as R from 'ramda';
   R.bind(console.log, console);
 }
 
+// @dts-jest:group both
+{
+  const gt10 = (x: number) => x > 10;
+  const even = (x: number) => x % 2 === 0;
+
+  // @dts-jest:pass
+  R.both(gt10, even)(100); // => true
+  // @dts-jest:pass
+  R.both(gt10)(even)(101); // => false
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;
@@ -2951,18 +2962,6 @@ class Rectangle {
 /*****************************************************************
  * Logic category
  */
-
-// both
-() => {
-    let gt10 = function(x: number) { return x > 10; };
-    let even = function(x: number) { return x % 2 === 0; };
-    let f = R.both(gt10, even);
-    let g = R.both(gt10)(even);
-    // $ExpectType boolean
-    f(100); // => true
-    // $ExpectType boolean
-    f(101); // => false
-};
 
 // complement
 () => {
