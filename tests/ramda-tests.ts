@@ -50,11 +50,11 @@ import * as R from 'ramda';
     };
 
     // @dts-jest:pass
-    reduceIndexed(objectify, {}, ['a', 'b', 'c']); // => { 'a': 0, 'b': 1, 'c': 2 }
+    reduceIndexed(objectify, {}, ['a', 'b', 'c']); // => {a: 0, b: 1, c: 2}
     // @dts-jest:pass
-    reduceIndexed(objectify)({}, ['a', 'b', 'c']); // => { 'a': 0, 'b': 1, 'c': 2 }
+    reduceIndexed(objectify)({}, ['a', 'b', 'c']); // => {a: 0, b: 1, c: 2}
     // @dts-jest:pass
-    reduceIndexed(objectify, {})(['a', 'b', 'c']); // => { 'a': 0, 'b': 1, 'c': 2 }
+    reduceIndexed(objectify, {})(['a', 'b', 'c']); // => {a: 0, b: 1, c: 2}
   }
   {
     const reduceIndexed = R.addIndex<'1', 'v2x1'>()(R.reduce<'111'>());
@@ -64,7 +64,7 @@ import * as R from 'ramda';
       (acc: string, val: string, idx: number) => `${acc},${idx}-${val}`,
       '',
       ['f', 'o', 'o', 'b', 'a', 'r'],
-    ); // => ['0-f,1-o,2-o,3-b,4-a,5-r']
+    ); // => [',0-f,1-o,2-o,3-b,4-a,5-r']
   }
 }
 
