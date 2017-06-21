@@ -72,7 +72,7 @@ source version: v0.24.1
 - [x] always
 - [x] and
 - [x] any
-- [ ] anyPass
+- [x] anyPass
 - [ ] ap
 - [ ] aperture
 - [ ] append

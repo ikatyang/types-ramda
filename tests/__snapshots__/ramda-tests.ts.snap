@@ -51,3 +51,9 @@ exports[`and R.and(null, '') 1`] = `"\\"\\" | null"`;
 exports[`any R.any(lessThan0)([1, 2]) 1`] = `"boolean"`;
 
 exports[`any R.any(lessThan2)([1, 2]) 1`] = `"boolean"`;
+
+exports[`anyPass R.anyPass([gt10, even])(8) 1`] = `"boolean"`;
+
+exports[`anyPass R.anyPass([gt10, even])(9) 1`] = `"boolean"`;
+
+exports[`anyPass R.anyPass([gt10, even])(11) 1`] = `"boolean"`;
