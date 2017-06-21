@@ -68,6 +68,17 @@ import * as R from 'ramda';
   }
 }
 
+// @dts-jest:group all
+{
+  const lessThan2 = R.flip(R.lt<'11'>())(2);
+  const lessThan3 = R.flip(R.lt<'11'>())(3);
+
+  // @dts-jest:pass
+  R.all(lessThan2)([1, 2]); // => false
+  // @dts-jest:pass
+  R.all(lessThan3)([1, 2]); // => true
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -612,16 +623,6 @@ class F2 {
 /*********************
  * List category
  ********************/
-
-// all
-() => {
-    let lessThan2 = R.flip(R.lt)(2);
-    let lessThan3 = R.flip(R.lt)(3);
-    // $ExpectType boolean
-    R.all(lessThan2)([1, 2]); // => false
-    // $ExpectType boolean
-    R.all(lessThan3)([1, 2]); // => true
-};
 
 // any
 () => {

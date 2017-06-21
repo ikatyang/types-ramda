@@ -63,11 +63,13 @@ source version: v0.24.1
 
 #### Integration tests
 
+- __3__/__246__ done
+
 - [ ] __
 - [x] add
 - [x] addIndex
 - [ ] adjust
-- [ ] all
+- [x] all
 - [ ] allPass
 - [ ] always
 - [ ] and

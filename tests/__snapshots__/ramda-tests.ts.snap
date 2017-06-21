@@ -25,3 +25,7 @@ exports[`addIndex reduceIndexed(objectify)({}, ['a', 'b', 'c']) 1`] = `"Record<s
 exports[`addIndex reduceIndexed(objectify, {})(['a', 'b', 'c']) 1`] = `"Record<string, number>"`;
 
 exports[`addIndex reduceIndexed(objectify, {}, ['a', 'b', 'c']) 1`] = `"Record<string, number>"`;
+
+exports[`all R.all(lessThan2)([1, 2]) 1`] = `"boolean"`;
+
+exports[`all R.all(lessThan3)([1, 2]) 1`] = `"boolean"`;
