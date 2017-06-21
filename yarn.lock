@@ -648,9 +648,9 @@ dts-element@2.0.4:
   dependencies:
     typescript "^2.4.0"
 
-dts-jest@20.3.0:
-  version "20.3.0"
-  resolved "https://registry.yarnpkg.com/dts-jest/-/dts-jest-20.3.0.tgz#76855b08ba1c8ec767cd4c41d96caf28bc9321bf"
+dts-jest@20.3.1:
+  version "20.3.1"
+  resolved "https://registry.yarnpkg.com/dts-jest/-/dts-jest-20.3.1.tgz#3b75d2bc1fec80cca6db9ef7e5f022a4b9cae129"
   dependencies:
     ts-comment "^1.0.1"
     tsconfig-extends "^1.0.1"
