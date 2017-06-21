@@ -116,6 +116,17 @@ import * as R from 'ramda';
   R.and(null, ''); // => null
 }
 
+// @dts-jest:group any
+{
+  const lessThan0 = R.flip(R.lt<'11'>())(0);
+  const lessThan2 = R.flip(R.lt<'11'>())(2);
+
+  // @dts-jest:pass
+  R.any(lessThan0)([1, 2]); // => false
+  // @dts-jest:pass
+  R.any(lessThan2)([1, 2]); // => true
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -660,16 +671,6 @@ class F2 {
 /*********************
  * List category
  ********************/
-
-// any
-() => {
-    let lessThan0 = R.flip(R.lt)(0);
-    let lessThan2 = R.flip(R.lt)(2);
-    // $ExpectType boolean
-    R.any(lessThan0)([1, 2]); // => false
-    // $ExpectType boolean
-    R.any(lessThan2)([1, 2]); // => true
-};
 
 // ascend
 () => {

@@ -71,7 +71,7 @@ source version: v0.24.1
 - [x] allPass
 - [x] always
 - [x] and
-- [ ] any
+- [x] any
 - [ ] anyPass
 - [ ] ap
 - [ ] aperture

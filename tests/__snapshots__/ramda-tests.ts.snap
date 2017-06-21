@@ -47,3 +47,7 @@ exports[`and R.and(0, []) 1`] = `"0 | never[]"`;
 exports[`and R.and(false, true) 1`] = `"boolean"`;
 
 exports[`and R.and(null, '') 1`] = `"\\"\\" | null"`;
+
+exports[`any R.any(lessThan0)([1, 2]) 1`] = `"boolean"`;
+
+exports[`any R.any(lessThan2)([1, 2]) 1`] = `"boolean"`;
