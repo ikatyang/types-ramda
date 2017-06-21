@@ -57,3 +57,7 @@ exports[`anyPass R.anyPass([gt10, even])(8) 1`] = `"boolean"`;
 exports[`anyPass R.anyPass([gt10, even])(9) 1`] = `"boolean"`;
 
 exports[`anyPass R.anyPass([gt10, even])(11) 1`] = `"boolean"`;
+
+exports[`ap R.ap([R.multiply(2), R.add(3)])([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`ap R.ap([R.multiply(2), R.add(3)], [1, 2, 3]) 1`] = `"number[]"`;

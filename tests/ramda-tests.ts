@@ -140,6 +140,14 @@ import * as R from 'ramda';
   R.anyPass([gt10, even])(9); // => false
 }
 
+// @dts-jest:group ap
+{
+  // @dts-jest:pass
+  R.ap([R.multiply(2), R.add(3)], [1, 2, 3]); // => [2, 4, 6, 4, 5, 6]
+  // @dts-jest:pass
+  R.ap([R.multiply(2), R.add(3)])([1, 2, 3]); // => [2, 4, 6, 4, 5, 6]
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -593,10 +601,8 @@ class F2 {
     R.mapObjIndexed(prependKeyAndDouble, values); // => { x: 'x2', y: 'y4', z: 'z6' }
 });
 
-// ap, of
+// of
 (() => {
-    // $ExpectType number[]
-    R.ap([R.multiply(2), R.add(3)], [1,2,3]); // => [2, 4, 6, 4, 5, 6]
     // $ExpectType number[][]
     R.of([1]); // => [[1]]
     // $ExpectType number[]
@@ -2311,14 +2317,6 @@ class Rectangle {
     // $ExpectType number[]
     R.mapIndexed((rectangle: Rectangle, idx: number): number => rectangle.area()*idx, [new Rectangle(1,2), new Rectangle(4,7)]);
     // => [2, 56]
-};
-
-// ap
-() => {
-    // $ExpectType number[]
-    R.ap([R.multiply(2), R.add(3)], [1,2,3]); // => [2, 4, 6, 4, 5, 6]
-    // $ExpectType number[]
-    R.ap([R.multiply(2), R.add(3)])([1,2,3]); // => [2, 4, 6, 4, 5, 6]
 };
 
 // apply
