@@ -63,12 +63,10 @@ source version: v0.24.1
 
 #### Integration tests
 
-- __6__/__246__ done
-
 - [ ] __
 - [x] add
 - [x] addIndex
-- [ ] adjust
+- [x] adjust
 - [x] all
 - [x] allPass
 - [x] always

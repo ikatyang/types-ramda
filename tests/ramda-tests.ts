@@ -68,6 +68,14 @@ import * as R from 'ramda';
   }
 }
 
+// @dts-jest:group adjust
+{
+  // @dts-jest:pass
+  R.adjust(R.add(10), 1, [1, 2, 3]); // => [1, 12, 3]
+  // @dts-jest:pass
+  R.adjust(R.add(10))(1)([1, 2, 3]); // => [1, 12, 3]
+}
+
 // @dts-jest:group all
 {
   const lessThan2 = R.flip(R.lt<'11'>())(2);
