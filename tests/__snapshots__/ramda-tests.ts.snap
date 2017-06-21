@@ -85,3 +85,7 @@ exports[`apply R.apply(Math.max)(nums) 1`] = `"number"`;
 exports[`apply R.apply(Math.max, nums) 1`] = `"number"`;
 
 exports[`applySpec getMetrics(2, 4) 1`] = `"T"`;
+
+exports[`ascend R.sort(R.__, people)(byAge) 1`] = `"{ name: string; age: number; }[]"`;
+
+exports[`ascend R.sort(byAge, people) 1`] = `"{}[]"`;

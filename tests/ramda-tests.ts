@@ -202,6 +202,29 @@ import * as R from 'ramda';
   getMetrics(2, 4); // => {sum: 6, nested: {mul: 8}}
 }
 
+// @dts-jest:group ascend
+{
+  const byAge = R.ascend(R.prop('age'));
+  const alice = {
+    name: 'ALICE',
+    age: 101,
+  };
+  const bob = {
+    name: 'Bob',
+    age: -10,
+  };
+  const clara = {
+    name: 'clara',
+    age: 314.159,
+  };
+  const people = [clara, bob, alice];
+
+  // @dts-jest:pass
+  R.sort(byAge, people);
+  // @dts-jest:pass
+  R.sort(R.__, people)(byAge);
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -744,26 +767,6 @@ class F2 {
 /*********************
  * List category
  ********************/
-
-// ascend
-() => {
-  let byAge = R.ascend(R.prop('age'));
-  let alice = {
-    name: 'ALICE',
-    age: 101
-  };
-  let bob = {
-    name: 'Bob',
-    age: -10
-  };
-  let clara = {
-    name: 'clara',
-    age: 314.159
-  };
-  let people = [clara, bob, alice];
-  // $ExpectType typeof people
-  let peopleByYoungestFirst = R.sort(byAge, people);
-};
 
 // chain
 () => {
