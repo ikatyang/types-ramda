@@ -61,3 +61,11 @@ exports[`anyPass R.anyPass([gt10, even])(11) 1`] = `"boolean"`;
 exports[`ap R.ap([R.multiply(2), R.add(3)])([1, 2, 3]) 1`] = `"number[]"`;
 
 exports[`ap R.ap([R.multiply(2), R.add(3)], [1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`aperture R.aperture(2, [1, 2, 3, 4, 5]) 1`] = `"number[][]"`;
+
+exports[`aperture R.aperture(3, [1, 2, 3, 4, 5]) 1`] = `"number[][]"`;
+
+exports[`aperture R.aperture(7)([1, 2, 3, 4, 5]) 1`] = `"number[][]"`;
+
+exports[`aperture R.aperture(7, [1, 2, 3, 4, 5]) 1`] = `"number[][]"`;

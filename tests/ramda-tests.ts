@@ -148,6 +148,18 @@ import * as R from 'ramda';
   R.ap([R.multiply(2), R.add(3)])([1, 2, 3]); // => [2, 4, 6, 4, 5, 6]
 }
 
+// @dts-jest:group aperture
+{
+  // @dts-jest:pass
+  R.aperture(2, [1, 2, 3, 4, 5]); // => [[1, 2], [2, 3], [3, 4], [4, 5]]
+  // @dts-jest:pass
+  R.aperture(3, [1, 2, 3, 4, 5]); // => [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+  // @dts-jest:pass
+  R.aperture(7, [1, 2, 3, 4, 5]); // => []
+  // @dts-jest:pass
+  R.aperture(7)([1, 2, 3, 4, 5]); // => []
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -709,18 +721,6 @@ class F2 {
   let people = [clara, bob, alice];
   // $ExpectType typeof people
   let peopleByYoungestFirst = R.sort(byAge, people);
-};
-
-// aperture
-() => {
-    // $ExpectType number[][]
-    R.aperture(2, [1, 2, 3, 4, 5]); // => [[1, 2], [2, 3], [3, 4], [4, 5]]
-    // $ExpectType number[][]
-    R.aperture(3, [1, 2, 3, 4, 5]); // => [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
-    // $ExpectType number[][]
-    R.aperture(7, [1, 2, 3, 4, 5]); // => []
-    // $ExpectType number[][]
-    R.aperture(7)([1, 2, 3, 4, 5]); // => []
 };
 
 // append
