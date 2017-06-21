@@ -261,9 +261,13 @@ import * as R from 'ramda';
   takesTwoArgs(1, 2, 3); // => [1, 2, undefined]
 }
 
-// tslint:disable
+// @dts-jest:group bind
+{
+  // @dts-jest:pass
+  R.bind(console.log, console);
+}
 
-declare let console: any;
+// tslint:disable
 
 let double = (x: number): number => x + x;
 

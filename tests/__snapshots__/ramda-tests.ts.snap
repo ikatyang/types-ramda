@@ -109,3 +109,5 @@ exports[`binary takesThreeArgs.length 1`] = `"number"`;
 exports[`binary takesTwoArgs(1, 2, 3) 1`] = `"Expected 2 arguments, but got 3."`;
 
 exports[`binary takesTwoArgs.length 1`] = `"number"`;
+
+exports[`bind R.bind(console.log, console) 1`] = `"{ (message?: any, ...optionalParams: any[]): void; (message?: any, ...optionalParams: any[]): void; }"`;

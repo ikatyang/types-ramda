@@ -82,7 +82,7 @@ source version: v0.24.1
 - [x] assoc
 - [x] assocPath
 - [x] binary
-- [ ] bind
+- [x] bind
 - [ ] both
 - [ ] call
 - [ ] chain
