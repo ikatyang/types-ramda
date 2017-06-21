@@ -96,6 +96,18 @@ import * as R from 'ramda';
   R.always('Tee')(); // => 'Tee'
 }
 
+// @dts-jest:group and
+{
+  // @dts-jest:pass
+  R.and(false, true); // => false
+  // @dts-jest:pass
+  R.and(0, []); // => 0
+  // @dts-jest:pass
+  R.and(0)([]); // => 0
+  // @dts-jest:pass
+  R.and(null, ''); // => null
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -2909,29 +2921,6 @@ class Rectangle {
 /*****************************************************************
  * Logic category
  */
-
-// and
-() => {
-    // $ExpectType boolean
-    R.and(false, true); // => false
-    // $ExpectType number
-    R.and(0, []); // => 0
-    // $ExpectType number
-    R.and(0)([]); // => 0
-    // $ExpectType null
-    R.and(null, ''); // => null
-    let Why: any = (function(val: boolean) {
-        let why: any;
-        why.val = val;
-        why.and = function(x: boolean) {
-            return this.val && x;
-        };
-        return Why;
-    })(true);
-    let why = new Why(true);
-    // $ExpectType boolean
-    R.and(why, false); // false
-};
 
 // anyPass
 () => {

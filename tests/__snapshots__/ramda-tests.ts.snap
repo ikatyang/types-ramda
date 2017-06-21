@@ -35,3 +35,11 @@ exports[`allPass R.allPass([gt10, even])(11) 1`] = `"boolean"`;
 exports[`allPass R.allPass([gt10, even])(12) 1`] = `"boolean"`;
 
 exports[`always R.always('Tee')() 1`] = `"string"`;
+
+exports[`and R.and(0)([]) 1`] = `"number | never[]"`;
+
+exports[`and R.and(0, []) 1`] = `"0 | never[]"`;
+
+exports[`and R.and(false, true) 1`] = `"boolean"`;
+
+exports[`and R.and(null, '') 1`] = `"\\"\\" | null"`;
