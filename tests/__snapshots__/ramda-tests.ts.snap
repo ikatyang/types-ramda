@@ -69,3 +69,13 @@ exports[`aperture R.aperture(3, [1, 2, 3, 4, 5]) 1`] = `"number[][]"`;
 exports[`aperture R.aperture(7)([1, 2, 3, 4, 5]) 1`] = `"number[][]"`;
 
 exports[`aperture R.aperture(7, [1, 2, 3, 4, 5]) 1`] = `"number[][]"`;
+
+exports[`append R.append('tests')(['write', 'more']) 1`] = `"string[]"`;
+
+exports[`append R.append('tests', ['write', 'more']) 1`] = `"string[]"`;
+
+exports[`append R.append('tests', []) 1`] = `"string[]"`;
+
+exports[`append R.append(['tests'])(['write', 'more']) 1`] = `"(string | string[])[]"`;
+
+exports[`append R.append(['tests'], ['write', 'more']) 1`] = `"(string | string[])[]"`;

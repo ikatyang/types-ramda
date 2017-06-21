@@ -160,6 +160,20 @@ import * as R from 'ramda';
   R.aperture(7)([1, 2, 3, 4, 5]); // => []
 }
 
+// @dts-jest:group append
+{
+  // @dts-jest:pass
+  R.append('tests', ['write', 'more']); // => ['write', 'more', 'tests']
+  // @dts-jest:pass
+  R.append('tests')(['write', 'more']); // => ['write', 'more', 'tests']
+  // @dts-jest:pass
+  R.append('tests', []); // => ['tests']
+  // @dts-jest:pass
+  R.append(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
+  // @dts-jest:pass
+  R.append(['tests'])(['write', 'more']); // => ['write', 'more', ['tests']]
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -721,24 +735,6 @@ class F2 {
   let people = [clara, bob, alice];
   // $ExpectType typeof people
   let peopleByYoungestFirst = R.sort(byAge, people);
-};
-
-// append
-() => {
-    // $ExpectType string[]
-    R.append('tests', ['write', 'more']); // => ['write', 'more', 'tests']
-    // $ExpectType string[]
-    R.append('tests')(['write', 'more']); // => ['write', 'more', 'tests']
-    // $ExpectType string[]
-    R.append('tests', []); // => ['tests']
-    // $ExpectType Array<string[]|string>
-    R.append<string, string[]>(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
-    // $ExpectType Array<string[]|string>
-    R.append(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
-    // $ExpectType Array<string[]|string>
-    R.append<string[]>(['tests'])(['write', 'more']); // => ['write', 'more', ['tests']]
-    // $ExpectType Array<string[]|string>
-    R.append(['tests'])(['write', 'more']); // => ['write', 'more', ['tests']]
 };
 
 // chain

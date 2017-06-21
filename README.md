@@ -75,7 +75,7 @@ source version: v0.24.1
 - [x] anyPass
 - [x] ap
 - [x] aperture
-- [ ] append
+- [x] append
 - [ ] apply
 - [ ] applySpec
 - [ ] ascend
