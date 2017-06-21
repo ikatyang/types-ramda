@@ -2,7 +2,7 @@ import * as R from 'ramda';
 
 // https://github.com/types/npm-ramda/blob/master/tests/test.ts
 
-// add
+// @dts-jest:group add
 {
   // @dts-jest:pass
   R.add(2, 3); // => 5
@@ -10,7 +10,7 @@ import * as R from 'ramda';
   R.add(7)(10); // => 17
 }
 
-// addIndex
+// @dts-jest:group addIndex
 {
   {
     const lastTwo = (val: number, idx: number, list: number[]) => list.length - idx <= 2;
