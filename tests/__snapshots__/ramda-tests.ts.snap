@@ -95,3 +95,9 @@ exports[`assoc R.assoc('c')(3, {a: 1, b: 2}) 1`] = `"{ a: number; b: number; } &
 exports[`assoc R.assoc('c', 3)({a: 1, b: 2}) 1`] = `"{ a: number; b: number; } & Record<\\"c\\", number>"`;
 
 exports[`assoc R.assoc('c', 3, {a: 1, b: 2}) 1`] = `"{ a: number; b: number; } & Record<\\"c\\", number>"`;
+
+exports[`assocPath R.assocPath(['a', 'b', 'c'])(42, {a: {b: {c: 0}}}) 1`] = `"{ a: { b: { c: number; }; }; }"`;
+
+exports[`assocPath R.assocPath(['a', 'b', 'c'], 42)({a: {b: {c: 0}}}) 1`] = `"{ a: { b: { c: number; }; }; }"`;
+
+exports[`assocPath R.assocPath(['a', 'b', 'c'], 42, {a: {b: {c: 0}}}) 1`] = `"{ a: { b: { c: number; }; }; }"`;

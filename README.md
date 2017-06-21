@@ -80,7 +80,7 @@ source version: v0.24.1
 - [x] applySpec
 - [x] ascend
 - [x] assoc
-- [ ] assocPath
+- [x] assocPath
 - [ ] binary
 - [ ] bind
 - [ ] both

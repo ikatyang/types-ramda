@@ -235,6 +235,16 @@ import * as R from 'ramda';
   R.assoc('c', 3)({a: 1, b: 2}); // => {a: 1, b: 2, c: 3}
 }
 
+// @dts-jest:group assocPath
+{
+  // @dts-jest:pass
+  R.assocPath(['a', 'b', 'c'], 42, {a: {b: {c: 0}}}); // => {a: {b: {c: 42}}}
+  // @dts-jest:pass
+  R.assocPath(['a', 'b', 'c'])(42, {a: {b: {c: 0}}}); // => {a: {b: {c: 42}}}
+  // @dts-jest:pass
+  R.assocPath(['a', 'b', 'c'], 42)({a: {b: {c: 0}}}); // => {a: {b: {c: 42}}}
+}
+
 // tslint:disable
 
 declare let console: any;
@@ -1775,16 +1785,6 @@ type Pair = KeyValuePair<string, number>;
     R.dissoc('b', {a: 1, b: 2, c: 3});                         // => {a: 1, c: 3}
     // $ExpectType Dictionary<number>
     R.dissoc('b')<{a: number, c: number}>({a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
-};
-
-// assocPath
-() => {
-    // $ExpectType {a: {b: {c: number}}}
-    R.assocPath(['a', 'b', 'c'], 42, {a: {b: {c: 0}}}); // => {a: {b: {c: 42}}}
-    // $ExpectType {a: {b: {c: number}}}
-    R.assocPath(['a', 'b', 'c'])(42, {a: {b: {c: 0}}}); // => {a: {b: {c: 42}}}
-    // $ExpectType {a: {b: {c: number}}}
-    R.assocPath(['a', 'b', 'c'], 42)({a: {b: {c: 0}}}); // => {a: {b: {c: 42}}}
 };
 
 // dissocPath
