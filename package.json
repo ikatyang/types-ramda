@@ -36,7 +36,7 @@
     "@types/through2": "2.0.33",
     "del": "2.2.2",
     "dts-element": "2.0.4",
-    "dts-jest": "20.2.0",
+    "dts-jest": "20.3.0",
     "glob": "7.1.2",
     "gulp": "3.9.1",
     "gulp-rename": "1.2.2",
