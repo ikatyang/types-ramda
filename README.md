@@ -119,10 +119,10 @@ source version: v0.24.1
 - [x] either
 - [x] empty
 - [ ] endsWith
-- [ ] eqBy
-- [ ] eqProps
-- [ ] equals
-- [ ] evolve
+- [x] eqBy
+- [x] eqProps
+- [x] equals
+- [x] evolve
 - [ ] F
 - [ ] filter
 - [ ] find

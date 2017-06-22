@@ -314,6 +314,10 @@ exports[`eqBy R.eqBy(Math.abs, 5, -5) 1`] = `"boolean"`;
 
 exports[`eqProps R.eqProps('a', o1, o2) 1`] = `"boolean"`;
 
+exports[`eqProps R.eqProps('c')(o1) 1`] = `"(b: { a: number; b: number; c: number; d: number; }) => boolean"`;
+
+exports[`eqProps R.eqProps('c', o1) 1`] = `"(b: { a: number; b: number; c: number; d: number; }) => boolean"`;
+
 exports[`eqProps R.eqProps('c', o1, o2) 1`] = `"boolean"`;
 
 exports[`equals R.equals('2', '1') 1`] = `"boolean"`;
@@ -323,6 +327,10 @@ exports[`equals R.equals([1, 2, 3], [1, 2, 3]) 1`] = `"boolean"`;
 exports[`equals R.equals(1, 1) 1`] = `"boolean"`;
 
 exports[`equals R.equals(a, b) 1`] = `"boolean"`;
+
+exports[`evolve R.evolve(transformations)(tomato) 1`] = `"{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }"`;
+
+exports[`evolve R.evolve(transformations, tomato) 1`] = `"{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }"`;
 
 exports[`filter R.filter(isEven, [1, 2, 3, 4]) 1`] = `"number[]"`;
 

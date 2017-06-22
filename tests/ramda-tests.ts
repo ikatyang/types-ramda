@@ -722,6 +722,59 @@ import * as R from 'ramda';
   R.empty({x: 1, y: 2}); // => {}
 }
 
+// @dts-jest:group eqBy
+{
+  // @dts-jest:pass
+  R.eqBy(Math.abs, 5, -5); // => true
+  // @dts-jest:pass
+  R.eqBy(Math.abs)(5, -5); // => true
+  // @dts-jest:pass
+  R.eqBy(Math.abs, 5)(-5); // => true
+}
+
+// @dts-jest:group eqProps
+{
+  const o1 = {a: 1, b: 2, c: 3, d: 4};
+  const o2 = {a: 10, b: 20, c: 3, d: 40};
+  // @dts-jest:pass
+  R.eqProps('a', o1, o2); // => false
+  // @dts-jest:pass
+  R.eqProps('c', o1, o2); // => true
+  // @dts-jest:pass
+  R.eqProps('c')(o1);
+  // @dts-jest:pass
+  R.eqProps('c', o1);
+}
+
+// @dts-jest:group equals
+{
+  // @dts-jest:pass
+  R.equals(1, 1); // => true
+  // @dts-jest:pass
+  R.equals('2', '1'); // => false
+  // @dts-jest:pass
+  R.equals([1, 2, 3], [1, 2, 3]); // => true
+
+  const a: any = {}; a.v = a;
+  const b: any = {}; b.v = b;
+  // @dts-jest:pass
+  R.equals(a, b); // => true
+}
+
+// @dts-jest:group evolve
+{
+  const tomato = {firstName: 'Tomato ', data: {elapsed: 100, remaining: 1400}, id: 123};
+  const transformations = {
+    firstName: R.trim,
+    lastName: R.trim, // Will not get invoked.
+    data: {elapsed: R.add(1), remaining: R.add(-1)},
+  };
+  // @dts-jest:pass
+  R.evolve(transformations, tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
+  // @dts-jest:pass
+  R.evolve(transformations)(tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -2010,34 +2063,6 @@ type Pair = KeyValuePair<string, number>;
  * Object category
  */
 
-// @dts-jest:group:skip eqProps
-{
-  const o1 = {a: 1, b: 2, c: 3, d: 4};
-  const o2 = {a: 10, b: 20, c: 3, d: 40};
-  // @dts-jest:pass
-  R.eqProps('a', o1, o2); // => false
-  // @dts-jest:pass
-  R.eqProps('c', o1, o2); // => true
-  // @dts-jest:show {<T,U>(obj1: T, obj2: U): boolean}
-  R.eqProps('c');
-  // @dts-jest:show {<U>(obj2: U): boolean}
-  R.eqProps('c', o1);
-}
-
-// @dts-jest:group:skip evolve
-{
-  const tomato = {firstName: 'Tomato ', data: {elapsed: 100, remaining: 1400}, id: 123};
-  const transformations = {
-    firstName: R.trim,
-    lastName: R.trim, // Will not get invoked.
-    data: {elapsed: R.add(1), remaining: R.add(-1)},
-  };
-  // @dts-jest:show typeof tomato
-  R.evolve(transformations, tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
-  // @dts-jest:show typeof tomato
-  R.evolve(transformations)(tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
-}
-
 // @dts-jest:group:skip has
 {
   const hasName = R.has('name');
@@ -2557,21 +2582,6 @@ class Rectangle {
  * Relation category
  */
 
-// @dts-jest:group:skip equals
-{
-  // @dts-jest:pass
-  R.equals(1, 1); // => true
-  // @dts-jest:pass
-  R.equals('2', '1'); // => false
-  // @dts-jest:pass
-  R.equals([1, 2, 3], [1, 2, 3]); // => true
-
-  const a: any = {}; a.v = a;
-  const b: any = {}; b.v = b;
-  // @dts-jest:pass
-  R.equals(a, b); // => true
-}
-
 // @dts-jest:group:skip identity
 {
   const obj = {};
@@ -2997,16 +3007,6 @@ class Rectangle {
 /*****************************************************************
  * Logic category
  */
-
-// @dts-jest:group:skip eqBy
-{
-  // @dts-jest:pass
-  R.eqBy(Math.abs, 5, -5); // => true
-  // @dts-jest:pass
-  R.eqBy(Math.abs)(5, -5); // => true
-  // @dts-jest:pass
-  R.eqBy(Math.abs, 5)(-5); // => true
-}
 
 // @dts-jest:group:skip ifElse
 {
