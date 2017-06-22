@@ -90,7 +90,7 @@ source version: v0.24.1
 - [x] clone
 - [x] comparator
 - [x] complement
-- [ ] compose
+- [x] compose
 - [ ] composeK
 - [ ] composeP
 - [ ] concat

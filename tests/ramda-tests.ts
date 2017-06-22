@@ -360,6 +360,44 @@ import * as R from 'ramda';
   R.complement(isEven)(42); // => false
 }
 
+// @dts-jest:group compose
+{
+  {
+    const f0 = R.compose(Math.pow);
+    const f1 = R.compose(R.negate, Math.pow);
+    const f2 = R.compose(R.inc, R.negate, Math.pow);
+    const f3 = R.compose(R.inc, R.inc, R.negate, Math.pow);
+    const f4 = R.compose(R.inc, R.inc, R.inc, R.negate, Math.pow);
+    const f5 = R.compose(R.inc, R.inc, R.inc, R.inc, R.negate, Math.pow);
+
+    // @dts-jest:pass
+    f0(3, 4); // -(3^4) + 1
+    // @dts-jest:pass
+    f1(3, 4); // -(3^4) + 1
+    // @dts-jest:pass
+    f2(3, 4); // -(3^4) + 1
+    // @dts-jest:pass
+    f3(3, 4); // -(3^4) + 1
+    // @dts-jest:pass
+    f4(3, 4); // -(3^4) + 1
+    // @dts-jest:pass
+    f5(3, 4); // -(3^4) + 1
+  }
+  {
+    const double = (x: number): number => x + x;
+
+    // @dts-jest:pass
+    R.compose<number, number, number>(double, R.identity);
+  }
+  {
+    const fn = (a: string, b: number, c: string) => [a, b, c];
+    const gn = R.compose(R.length, fn);
+
+    // @dts-jest:pass
+    gn('Hello', 4, 'world');
+  }
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;
@@ -2424,42 +2462,6 @@ class Rectangle {
     let add3 = function(a: number, b: number, c: number) { return a + b + c; };
     // $ExpectType number
     R.converge(add3, [ multiply, add, subtract ])(1, 2); // => 4
-};
-
-// compose
-() => {
-    const f0 = R.compose(Math.pow);
-    const f1 = R.compose(R.negate, Math.pow);
-    const f2 = R.compose(R.inc, R.negate, Math.pow);
-    const f3 = R.compose(R.inc, R.inc, R.negate, Math.pow);
-    const f4 = R.compose(R.inc, R.inc, R.inc, R.negate, Math.pow);
-    const f5 = R.compose(R.inc, R.inc, R.inc, R.inc, R.negate, Math.pow);
-    // $ExpectType number
-    f0(3, 4); // -(3^4) + 1
-    // $ExpectType number
-    f1(3, 4); // -(3^4) + 1
-    // $ExpectType number
-    f2(3, 4); // -(3^4) + 1
-    // $ExpectType number
-    f3(3, 4); // -(3^4) + 1
-    // $ExpectType number
-    f4(3, 4); // -(3^4) + 1
-    // $ExpectType number
-    f5(3, 4); // -(3^4) + 1
-
-    // test for type degeneration if the first function has generics
-    // $ExpectType (x0: number) => number
-    R.compose(double, R.identity);
-};
-
-// compose
-() => {
-    const fn = function(a: string, b: number, c: string) {
-        return [a,b,c];
-    };
-    const gn = R.compose(R.length, fn);
-    // $ExpectType number
-    gn('Hello', 4, 'world');
 };
 
 // TODO: composeP
