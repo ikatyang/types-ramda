@@ -98,8 +98,8 @@ source version: v0.24.1
 - [x] construct
 - [x] constructN
 - [x] contains
-- [ ] converge
-- [ ] countBy
+- [x] converge
+- [x] countBy
 - [ ] curry
 - [ ] curryN
 - [ ] dec

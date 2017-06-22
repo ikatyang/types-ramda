@@ -497,6 +497,33 @@ import * as R from 'ramda';
   R.contains({})([{}, {}]); // => false
 }
 
+// @dts-jest:group converge
+{
+  const add = (a: number, b: number) => a + b;
+  const add3 = (a: number, b: number, c: number) => a + b + c;
+
+  const subtract = (a: number, b: number) => a - b;
+  const multiply = (a: number, b: number) => a * b;
+
+  // @dts-jest:pass
+  R.converge(multiply, [add, subtract])(1, 2); // => -3
+
+  // @dts-jest:pass
+  R.converge(add3, [multiply, add, subtract])(1, 2); // => 4
+}
+
+// @dts-jest:group countBy
+{
+  const numbers = [1, 1.1, 1.2, 2, 3, 2.2];
+  const letters = R.split('', 'abcABCaaaBBc');
+  // @dts-jest:pass
+  R.countBy(Math.floor)(numbers); // => {'1': 3, '2': 2, '3': 1}
+  // @dts-jest:pass
+  R.countBy(R.toLower)(letters); // => {'a': 5, 'b': 4, 'c': 3}
+}
+
+// ---------------------------------------------------------------------
+
 const double = (x: number): number => x + x;
 
 const shout = (x: number): string =>
@@ -2453,21 +2480,6 @@ class Rectangle {
   f(3, 4); // -(3^4) + 1
 }
 
-// @dts-jest:group converge
-{
-  const add = (a: number, b: number) => a + b;
-  const multiply = (a: number, b: number) => a * b;
-  const subtract = (a: number, b: number) => a - b;
-
-  // ≅ multiply( add(1, 2), subtract(1, 2) );
-  // @dts-jest:pass
-  R.converge(multiply, [add, subtract])(1, 2); // => -3
-
-  const add3 = (a: number, b: number, c: number) => a + b + c;
-  // @dts-jest:pass
-  R.converge(add3, [multiply, add, subtract])(1, 2); // => 4
-}
-
 // @dts-jest:group TODO: composeP
 
 // @dts-jest:group TODO: composeK
@@ -2475,16 +2487,6 @@ class Rectangle {
 /*****************************************************************
  * Relation category
  */
-
-// @dts-jest:group countBy
-{
-  const numbers = [1, 1.1, 1.2, 2, 3, 2.2];
-  const letters = R.split('', 'abcABCaaaBBc');
-  // @dts-jest:pass
-  R.countBy(Math.floor)(numbers); // => {'1': 3, '2': 2, '3': 1}
-  // @dts-jest:pass
-  R.countBy(R.toLower)(letters); // => {'a': 5, 'b': 4, 'c': 3}
-}
 
 // @dts-jest:group difference
 {
