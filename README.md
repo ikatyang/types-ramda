@@ -89,7 +89,7 @@ source version: v0.24.1
 - [x] clamp
 - [x] clone
 - [x] comparator
-- [ ] complement
+- [x] complement
 - [ ] compose
 - [ ] composeK
 - [ ] composeP

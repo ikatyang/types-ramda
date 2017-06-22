@@ -350,6 +350,16 @@ import * as R from 'ramda';
   R.sort(R.comparator((a: Person, b: Person) => a.age < b.age), people);
 }
 
+// @dts-jest:group complement
+{
+  const isEven = (n: number) => n % 2 === 0;
+
+  // @dts-jest:pass
+  R.complement(isEven)(21); // => true
+  // @dts-jest:pass
+  R.complement(isEven)(42); // => false
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;
@@ -2966,16 +2976,6 @@ class Rectangle {
 /*****************************************************************
  * Logic category
  */
-
-// complement
-() => {
-    let isEven = function(n: number) { return n % 2 === 0; };
-    let isOdd = R.complement(isEven);
-    // $ExpectType boolean
-    isOdd(21); // => true
-    // $ExpectType boolean
-    isOdd(42); // => false
-};
 
 // eqBy
 (() => {
