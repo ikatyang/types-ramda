@@ -183,3 +183,9 @@ exports[`concat R.concat([], []) 1`] = `"never[]"`;
 exports[`concat R.concat([4, 5, 6])([1, 2, 3]) 1`] = `"number[]"`;
 
 exports[`concat R.concat([4, 5, 6], [1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`cond fn(0) 1`] = `"string"`;
+
+exports[`cond fn(50) 1`] = `"string"`;
+
+exports[`cond fn(100) 1`] = `"string"`;

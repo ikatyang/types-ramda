@@ -439,6 +439,22 @@ import * as R from 'ramda';
   R.concat('ABC')('DEF'); // 'ABCDEF'
 }
 
+// @dts-jest:group cond
+{
+  const fn = R.cond([
+      [R.equals(0), R.always('water freezes at 0°C')],
+      [R.equals(100), R.always('water boils at 100°C')],
+      [R.T, (temp: number) => `nothing special happens at ${temp}°C`],
+  ]);
+
+  // @dts-jest:pass
+  fn(0); // => 'water freezes at 0°C'
+  // @dts-jest:pass
+  fn(50); // => 'nothing special happens at 50°C'
+  // @dts-jest:pass
+  fn(100); // => 'water boils at 100°C'
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;
@@ -1678,21 +1694,6 @@ type Pair = KeyValuePair<string, number>;
     R.sort(diff, [4,2,7,5]); // => [2, 4, 5, 7]
     // $ExpectType number[]
     R.sort(diff)([4,2,7,5]); // => [2, 4, 5, 7]
-};
-
-// cond, equals, always
-() => {
-    const fn = R.cond([
-        [R.equals(0),   R.always('water freezes at 0°C')],
-        [R.equals(100), R.always('water boils at 100°C')],
-        [R.T,           (temp: number) => 'nothing special happens at ' + temp + '°C']
-    ]);
-    // $ExpectType string
-    fn(0); // => 'water freezes at 0°C'
-    // $ExpectType string
-    fn(50); // => 'nothing special happens at 50°C'
-    // $ExpectType string
-    fn(100); // => 'water boils at 100°C'
 };
 
 // tail
