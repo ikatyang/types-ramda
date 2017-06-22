@@ -4,6 +4,10 @@ declare const string: string;
 declare const number_or_undefined: number | undefined;
 
 // @dts-jest:pass
-R_defaultTo(number_or_undefined);
+R_defaultTo(string)(undefined);
 // @dts-jest:pass
-R_defaultTo(number_or_undefined, string);
+R_defaultTo(string, undefined);
+// @dts-jest:pass
+R_defaultTo(string)(number_or_undefined);
+// @dts-jest:pass
+R_defaultTo(string, number_or_undefined);

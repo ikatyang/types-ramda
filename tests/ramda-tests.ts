@@ -579,6 +579,17 @@ import * as R from 'ramda';
   R.dec(42); // => 41
 }
 
+// @dts-jest:group defaultTo
+{
+  const defaultTo42 = R.defaultTo(42);
+  // @dts-jest:pass
+  defaultTo42(null); // => 42
+  // @dts-jest:pass
+  defaultTo42(undefined); // => 42
+  // @dts-jest:pass
+  defaultTo42('Ramda'); // => 'Ramda'
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -2992,17 +3003,6 @@ class Rectangle {
   R.eqBy(Math.abs)(5, -5); // => true
   // @dts-jest:pass
   R.eqBy(Math.abs, 5)(-5); // => true
-}
-
-// @dts-jest:group:skip defaultTo
-{
-  const defaultTo42 = R.defaultTo(42);
-  // @dts-jest:show number
-  defaultTo42(null); // => 42
-  // @dts-jest:show number
-  defaultTo42(undefined); // => 42
-  // @dts-jest:show string
-  defaultTo42('Ramda'); // => 'Ramda'
 }
 
 // @dts-jest:group:skip either

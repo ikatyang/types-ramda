@@ -103,7 +103,7 @@ source version: v0.24.1
 - [x] curry
 - [x] curryN
 - [x] dec
-- [ ] defaultTo
+- [x] defaultTo
 - [ ] descend
 - [ ] difference
 - [ ] differenceWith

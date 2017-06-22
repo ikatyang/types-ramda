@@ -238,6 +238,12 @@ exports[`curryN curriedAddFourNumbers(1, 2)(3)(4) 1`] = `"number"`;
 
 exports[`dec R.dec(42) 1`] = `"number"`;
 
+exports[`defaultTo defaultTo42('Ramda') 1`] = `"number | \\"Ramda\\""`;
+
+exports[`defaultTo defaultTo42(null) 1`] = `"number"`;
+
+exports[`defaultTo defaultTo42(undefined) 1`] = `"number"`;
+
 exports[`difference R.difference([1, 2, 3, 4], [7, 6, 5, 4, 3]) 1`] = `"number[]"`;
 
 exports[`difference R.difference([7, 6, 5, 4, 3], [1, 2, 3, 4]) 1`] = `"number[]"`;
