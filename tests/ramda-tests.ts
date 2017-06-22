@@ -1328,40 +1328,42 @@ class F {
 
 // @dts-jest:group:skip propEq
 {
-  const xs: {[key: string]: string} = {a: '1', b: '0'};
-  // @dts-jest:pass
-  R.propEq('a', '1', xs); // => true
-  // @dts-jest:pass
-  R.propEq('a', '4', xs); // => false
-}
-{
-  const xs: {[key: string]: number} = {a: 1, b: 0};
-  // @dts-jest:pass
-  R.propEq('a', 1, xs); // => true
-  // @dts-jest:pass
-  R.propEq('a', 4, xs); // => false
-}
-{
-  const xs = {a: '1', b: '0'};
-  // @dts-jest:pass
-  R.propEq('a', '1', xs); // => true
-  // @dts-jest:pass
-  R.propEq('a', '4', xs); // => false
-}
-{
-  const xs = {a: 1, b: 0};
-  // @dts-jest:pass
-  R.propEq('a', 1, xs); // => true
-  // @dts-jest:pass
-  R.propEq('a', 4, xs); // => false
-}
-interface Obj { a: number; b: number; }
-{
-  const xs: Obj = {a: 1, b: 0};
-  // @dts-jest:pass
-  R.propEq('a', 1, xs); // => true
-  // @dts-jest:pass
-  R.propEq('a', 4, xs); // => false
+  {
+    const xs: {[key: string]: string} = {a: '1', b: '0'};
+    // @dts-jest:pass
+    R.propEq('a', '1', xs); // => true
+    // @dts-jest:pass
+    R.propEq('a', '4', xs); // => false
+  }
+  {
+    const xs: {[key: string]: number} = {a: 1, b: 0};
+    // @dts-jest:pass
+    R.propEq('a', 1, xs); // => true
+    // @dts-jest:pass
+    R.propEq('a', 4, xs); // => false
+  }
+  {
+    const xs = {a: '1', b: '0'};
+    // @dts-jest:pass
+    R.propEq('a', '1', xs); // => true
+    // @dts-jest:pass
+    R.propEq('a', '4', xs); // => false
+  }
+  {
+    const xs = {a: 1, b: 0};
+    // @dts-jest:pass
+    R.propEq('a', 1, xs); // => true
+    // @dts-jest:pass
+    R.propEq('a', 4, xs); // => false
+  }
+  {
+    interface Obj { a: number; b: number; }
+    const xs: Obj = {a: 1, b: 0};
+    // @dts-jest:pass
+    R.propEq('a', 1, xs); // => true
+    // @dts-jest:pass
+    R.propEq('a', 4, xs); // => false
+  }
 }
 
 // @dts-jest:group:skip groupBy
@@ -1703,23 +1705,29 @@ interface Obj { a: number; b: number; }
 }
 
 // @dts-jest:group:skip reduceBy
-
-interface Student {
-  name: string;
-  score: number;
-}
 {
+  interface Student {
+    name: string;
+    score: number;
+  }
   const reduceToNamesBy = R.reduceBy((acc: string[], student: Student) => acc.concat(student.name), []);
   const namesByGrade = reduceToNamesBy((student: Student) => {
     const score = student.score;
-    return score < 65 ? 'F' :
-                 score < 70 ? 'D' :
-                 score < 80 ? 'C' :
-                 score < 90 ? 'B' : 'A';
+    return score < 65
+      ? 'F'
+      : score < 70
+        ? 'D'
+        : score < 80
+          ? 'C'
+          : score < 90
+            ? 'B'
+            : 'A';
   });
-  const students = [{name: 'Lucy', score: 92},
-                    {name: 'Drew', score: 85},
-                    {name: 'Bart', score: 62}];
+  const students = [
+    {name: 'Lucy', score: 92},
+    {name: 'Drew', score: 85},
+    {name: 'Bart', score: 62},
+  ];
   // @dts-jest:show Dictionary<string[]>
   namesByGrade(students);
   // {
@@ -1730,9 +1738,9 @@ interface Student {
 }
 
 // @dts-jest:group:skip reduceRight
-interface KeyValuePair<K, V> extends Array<K | V> { 0: K; 1: V; }
-type Pair = KeyValuePair<string, number>;
 {
+  interface KeyValuePair<K, V> extends Array<K | V> { 0: K; 1: V; }
+  type Pair = KeyValuePair<string, number>;
   const pairs: Pair[] = [['a', 1], ['b', 2], ['c', 3]];
   const flattenPairs = (pair: Pair, acc: Pair[]): Pair[] =>
     acc.concat(pair);
@@ -1856,8 +1864,7 @@ type Pair = KeyValuePair<string, number>;
   const takeFive = R.take(5);
   // @dts-jest:pass
   takeFive(members); // => ['Paul Desmond','Bob Bates','Joe Dodge','Ron Crotty','Lloyd Davis']
-}
-{
+
   // @dts-jest:pass
   R.take(3, 'Example'); // => 'Exa'
 
@@ -2084,18 +2091,18 @@ type Pair = KeyValuePair<string, number>;
 }
 
 // @dts-jest:group:skip hasIn
-class Rectangle {
-  public width: number;
-  public height: number;
-  constructor(width: number, height: number) {
-    this.width = width;
-    this.height = height;
-  }
-  public area(): number {
-    return this.width * this.height;
-  }
-}
 {
+  class Rectangle {
+    public width: number;
+    public height: number;
+    constructor(width: number, height: number) {
+      this.width = width;
+      this.height = height;
+    }
+    public area(): number {
+      return this.width * this.height;
+    }
+  }
   const square = new Rectangle(2, 2);
   // @dts-jest:pass
   R.hasIn('width', square); // => true
@@ -2220,7 +2227,7 @@ class Rectangle {
   const headLens = R.lens(
     function get(arr: number[]) { return arr[0]; },
     function set(val: number, arr: number[]) { return [val].concat(arr.slice(1)); },
-    );
+  );
   headLens([10, 20, 30, 40]); // => 10
   // // @dts-jest:show Argument of type 'mu' is not assignable to parameter of type 'number'.
   // headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
@@ -2232,7 +2239,7 @@ class Rectangle {
       out.phrase = val;
       return out;
     },
-    );
+  );
   const obj1 = {phrase: 'Absolute filth . . . and I LOVED it!'};
   const obj2 = {phrase: "What's all this, then?"};
   // @dts-jest:show string
@@ -2359,7 +2366,7 @@ class Rectangle {
   const matchPhrases = R.compose(
     R.objOf('must'),
     R.map(R.objOf('match_phrase')),
-    );
+  );
   // @dts-jest:show { must: { match_phrase: string }[] }
   matchPhrases(['foo', 'bar', 'baz']);
 }
@@ -2963,6 +2970,7 @@ class Rectangle {
  * Is category
  */
 
+// @dts-jest:group:skip is
 {
   // @dts-jest:pass
   R.is(Object, {}); // => true
@@ -3041,16 +3049,6 @@ class Rectangle {
   R.not(1); // => false
 }
 
-class Why {
-  public val: boolean;
-  constructor(val: boolean) {
-    this.val = val;
-  }
-  public or(x: boolean) {
-    return this.val && x;
-  }
-}
-
 // @dts-jest:group:skip or
 {
   // @dts-jest:pass
@@ -3061,11 +3059,6 @@ class Why {
   R.or(0)([]); // => []
   // @dts-jest:show string
   R.or(null, ''); // => ''
-
-  const why = new Why(true);
-  why.or(true);
-  // @dts-jest:show Why|boolean
-  R.or(why, false); // false
 }
 
 // @dts-jest:group:skip intersperse
