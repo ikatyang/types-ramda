@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`#issues R.pipe(
+        R.prop<string>('name'),
+        R.length,
+      )({name: 'dave'}) 1`] = `"number"`;
+
+exports[`#issues compF2('foo') 1`] = `"number"`;
+
+exports[`#issues filterMatrix(1, b) 1`] = `"number[]"`;
+
+exports[`#issues pipeF2('foo') 1`] = `"number"`;
+
 exports[`add R.add(2, 3) 1`] = `"number"`;
 
 exports[`add R.add(7)(10) 1`] = `"number"`;
@@ -470,17 +481,6 @@ exports[`intersperse R.intersperse(0, [1, 2]) 1`] = `"number[]"`;
 
 exports[`intersperse R.intersperse(0, [1]) 1`] = `"number[]"`;
 
-exports[`intersperse R.pipe(
-        R.prop<string>('name'),
-        R.length,
-      )({name: 'dave'}) 1`] = `"number"`;
-
-exports[`intersperse compF2('foo') 1`] = `"number"`;
-
-exports[`intersperse filterMatrix(1, b) 1`] = `"number[]"`;
-
-exports[`intersperse pipeF2('foo') 1`] = `"number"`;
-
 exports[`invert R.invert(raceResultsByFirstName) 1`] = `"Dictionary<string[]>"`;
 
 exports[`invertObj R.invertObj(raceResults0) 1`] = `"Dictionary<string>"`;
@@ -846,9 +846,13 @@ exports[`tail R.tail(['fi', 'fo', 'fum']) 1`] = `"string[]"`;
 
 exports[`tail R.tail([1, 2, 3]) 1`] = `"number[]"`;
 
+exports[`take R.take(3, 'Example') 1`] = `"string"`;
+
 exports[`take R.take(3, [1, 2, 3, 4, 5]) 1`] = `"number[]"`;
 
 exports[`take takeFive(members) 1`] = `"string[]"`;
+
+exports[`take takeThree('Example') 1`] = `"string"`;
 
 exports[`take, takeWhile R.take(2, [1, 2, 3, 4]) 1`] = `"number[]"`;
 
@@ -857,6 +861,10 @@ exports[`take, takeWhile R.takeWhile(isNotFour, [1, 2, 3, 4]) 1`] = `"number[]"`
 exports[`takeLast R.takeLast(1, ['foo', 'bar', 'baz']) 1`] = `"string[]"`;
 
 exports[`takeLast R.takeLast(2)(['foo', 'bar', 'baz']) 1`] = `"string[]"`;
+
+exports[`takeLast R.takeLast(3)('ramda') 1`] = `"string"`;
+
+exports[`takeLast R.takeLast(3, 'ramda') 1`] = `"string"`;
 
 exports[`takeLastWhile R.takeLastWhile(isNotOne)([1, 2, 3, 4]) 1`] = `"number[]"`;
 

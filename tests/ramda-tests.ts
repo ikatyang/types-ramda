@@ -901,469 +901,6 @@ import * as R from 'ramda';
   R.fromPairs([['a', 1], ['b', 2], ['c', 3]]); // => {a: 1, b: 2, c: 3}
 }
 
-// ---------------------------------------------------------------------
-
-const double = (x: number): number => x + x;
-
-const shout = (x: number): string =>
-  x >= 10
-        ? 'big'
-        : 'small';
-
-class F {
-  public x = 'X';
-  public y = 'Y';
-}
-
-// @dts-jest:group:skip propIs
-{
-  // @dts-jest:pass
-  R.propIs(Number, 'x', {x: 1, y: 2}); // => true
-  // @dts-jest:pass
-  R.propIs(Number, 'x')({x: 1, y: 2}); // => true
-  // @dts-jest:pass
-  R.propIs(Number)('x', {x: 1, y: 2}); // => true
-  // @dts-jest:pass
-  R.propIs(Number)('x')({x: 1, y: 2}); // => true
-  // @dts-jest:pass
-  R.propIs(Number, 'x', {x: 'foo'}); // => false
-  // @dts-jest:pass
-  R.propIs(Number, 'x', {}); // => false
-}
-
-// @dts-jest:group:skip type
-{
-  // @dts-jest:pass
-  R.type({}); // => 'Object'
-  // @dts-jest:show string
-  R.type(1); // => 'Number'
-  // @dts-jest:show string
-  R.type(false); // => 'Boolean'
-  // @dts-jest:show string
-  R.type('s'); // => 'String'
-  // @dts-jest:show string
-  R.type(null); // => 'Null'
-  // @dts-jest:pass
-  R.type([]); // => 'Array'
-  // @dts-jest:pass
-  R.type(/[A-z]/); // => 'RegExp'
-}
-
-// @dts-jest:group:skip unary, binary, nAry
-{
-  const takesNoArg = () => true;
-  const takesOneArg = (a: number) => [a];
-  const takesTwoArgs = (a: number, b: number) => [a, b];
-  const takesThreeArgs = (a: number, b: number, c: number) => [a, b, c];
-
-  const addFourNumbers = (a: number, b: number, c: number, d: number): number =>
-    a + b + c + d;
-
-  const curriedFourNumbers = R.curry(addFourNumbers);
-  // @dts-jest:pass
-  curriedFourNumbers;
-  // @dts-jest:pass
-  curriedFourNumbers(1);
-  // @dts-jest:pass
-  curriedFourNumbers(1)(2);
-  // @dts-jest:show <T1,R>(v1: T1) => R
-  curriedFourNumbers(1)(2)(3);
-  // @dts-jest:show <T1,R>(v1: T1) => R
-  curriedFourNumbers(1, 2, 4);
-  // @dts-jest:pass
-  curriedFourNumbers(1)(2)(3)(4);
-  // @dts-jest:pass
-  curriedFourNumbers(1, 2)(3, 4);
-  // @dts-jest:pass
-  curriedFourNumbers(1, 2, 3)(4);
-
-  // @dts-jest:pass
-  R.nAry(0, takesNoArg);
-  // @dts-jest:pass
-  R.nAry(0, takesOneArg);
-  // @dts-jest:show (a: number) => number[]
-  R.nAry(1, takesTwoArgs);
-  // @dts-jest:show (a: number) => number[]
-  R.nAry(1, takesThreeArgs);
-
-  // @dts-jest:pass
-  R.unary(takesOneArg);
-  // @dts-jest:pass
-  R.unary(takesTwoArgs);
-  // @dts-jest:pass
-  R.unary(takesThreeArgs);
-
-  // @dts-jest:pass
-  R.binary(takesTwoArgs);
-  // @dts-jest:pass
-  R.binary(takesThreeArgs);
-
-  const addTwoNumbers = (a: number, b: number) => a + b;
-  // @dts-jest:show CurriedFunction2<number, number, number>
-  const addTwoNumbersCurried = R.curry(addTwoNumbers);
-
-  const inc = addTwoNumbersCurried(1);
-  // @dts-jest:pass
-  inc(2);
-  // @dts-jest:pass
-  addTwoNumbersCurried(2, 3);
-}
-
-// @dts-jest:group:skip uncurry
-{
-  const addFour = (a: number) => (b: number) => (c: number) => (d: number) => a + b + c + d;
-  const uncurriedAddFour = R.uncurryN<number>(4, addFour);
-  // @dts-jest:pass
-  uncurriedAddFour(1, 2, 3, 4); // => 10
-}
-
-// @dts-jest:group:skip unless
-{
-  // @dts-jest:show <a>(v: a|[a]) => [a]
-  const coerceArray = R.unless(R.isArrayLike, R.of);
-  // @dts-jest:show number[]
-  coerceArray([1, 2, 3]); // => [1, 2, 3]
-  // @dts-jest:show number[]
-  coerceArray(1); // => [1]
-}
-
-// @dts-jest:group:skip nthArg
-{
-  // @dts-jest:show string
-  R.nthArg(1)('a', 'b', 'c'); // => 'b'
-  // @dts-jest:show string
-  R.nthArg(-1)('a', 'b', 'c'); // => 'c'
-}
-
-// @dts-jest:group:skip unapply
-{
-  // @dts-jest:show (...args: string[])=>string
-  R.unapply(JSON.stringify);
-  // @dts-jest:pass
-  R.unapply(JSON.stringify)(1, 2, 3); // => '[1,2,3]'
-}
-
-// @dts-jest:group:skip until
-{
-  // @dts-jest:show number
-  R.until(R.flip(R.gt)(100), R.multiply(2))(1); // => 128
-}
-
-// @dts-jest:group:skip propSatisfies
-{
-  const truncate = R.when(
-    R.propSatisfies(R.flip(R.gt)(10), 'length'),
-    R.pipe(R.take(10), R.append('…'), R.join('')),
-    );
-  // @dts-jest:show string
-  truncate('12345'); // => '12345'
-  // @dts-jest:show string
-  truncate('0123456789ABC'); // => '0123456789…'
-}
-
-// @dts-jest:group:skip pipe
-{
-  // @dts-jest:show (x0: number) => string
-  R.pipe(double, double, shout);
-  // @dts-jest:pass
-  R.pipe(double, double, shout)(10);
-
-  // @dts-jest:pass
-  R.pipe(
-    R.split(''),
-    R.adjust(R.toUpper, 0),
-    R.join(''),
-  )('str');
-
-  const f = R.pipe(Math.pow, R.negate, R.inc);
-  // @dts-jest:pass
-  f(3, 4); // -(3^4) + 1
-
-  // test for type degeneration if the first function has generics
-  // @dts-jest:show (x0: number) => number
-  R.pipe(R.identity, double);
-}
-
-// @dts-jest:group:skip pipeP
-{
-  // @dts-jest:show Promise<number>
-  R.pipeP(
-    (m: number) => Promise.resolve(R.multiply(2, m)),
-    (m: number) => Promise.resolve(m / 2),
-    R.multiply(2),
-    )(10);
-}
-
-// @dts-jest:group:skip TODO: pipeK
-
-// @dts-jest:group:skip invoker
-{
-  // @dts-jest:show string
-  R.invoker(0, 'toUpperCase', 'foo');
-  // @dts-jest:show string
-  R.invoker(1, 'charAt', 'foo', 1);
-}
-
-// @dts-jest:group:skip juxt
-{
-  const range = R.juxt([Math.min, Math.max]);
-  // @dts-jest:pass
-  range(3, 4, 9, -3); // => [-3, 9]
-
-  const chopped = R.juxt([R.head, R.last]);
-  // @dts-jest:show string[]
-  chopped('longstring'); // => ['l', 'g']
-}
-
-// forEach
-// (() => {
-//   let printXPlusFive = function(x, i) { console.log(i + 5); };
-//   R.forEach.idx(printXPlusFive, [{name: 1}, {name: 2}, {name: 3}]);
-// }
-
-// @dts-jest:group:skip times
-{
-  const i = (x: number) => x;
-  // @dts-jest:pass
-  R.times(i, 5);
-}
-
-// @dts-jest:group:skip pipe
-{
-  const triple = (x: number): number => x * 3;
-  const square = (x: number): number => x * x;
-  const squareThenDoubleThenTriple = R.pipe(square, double, triple);
-  // @dts-jest:pass
-  squareThenDoubleThenTriple(5); // => 150
-}
-
-// @dts-jest:group:skip partial
-{
-  const multiply = (a: number, b: number) => a * b;
-
-  // @dts-jest:pass
-  R.partial(multiply, [2])(2); // => 4
-
-  const greet = (salutation: string, title: string, firstName: string, lastName: string) =>
-    `${salutation}, ${title} ${firstName} ${lastName}!`;
-  const sayHello = R.partial(greet, ['Hello']);
-  const sayHelloToMs = R.partial(sayHello, ['Ms.']);
-  // @dts-jest:pass
-  sayHelloToMs('Jane', 'Jones'); // => 'Hello, Ms. Jane Jones!'
-
-  const greetMsJaneJones = R.partialRight(greet, ['Ms.', 'Jane', 'Jones']);
-  // @dts-jest:pass
-  greetMsJaneJones('Hello'); // => 'Hello, Ms. Jane Jones!'
-}
-
-// @dts-jest:group:skip memoize
-{
-  let numberOfCalls = 0;
-  const trackedAdd = (a: number, b: number) => {
-    numberOfCalls += 1;
-    return a + b;
-  };
-  const memoTrackedAdd = R.memoize(trackedAdd);
-
-  // @dts-jest:pass
-  memoTrackedAdd(1, 2); // => 3
-  // @dts-jest:pass
-  numberOfCalls; // => 1
-  // @dts-jest:pass
-  memoTrackedAdd(1, 2); // => 3
-  // @dts-jest:pass
-  numberOfCalls; // => 1
-  // @dts-jest:pass
-  memoTrackedAdd(2, 3); // => 5
-  // @dts-jest:pass
-  numberOfCalls; // => 2
-
-  // Note that argument order matters
-  // @dts-jest:pass
-  memoTrackedAdd(2, 1); // => 3
-  // @dts-jest:pass
-  numberOfCalls; // => 3
-}
-
-// @dts-jest:group:skip once
-{
-  const addOneOnce = R.once((x: number) => x + 1);
-  // @dts-jest:pass
-  addOneOnce(10); // => 11
-  // @dts-jest:pass
-  addOneOnce(addOneOnce(50)); // => 11
-}
-
-// @dts-jest:group:skip match
-{
-  // @dts-jest:pass
-  R.match(/([a-z]a)/g, 'bananas'); // => ['ba', 'na', 'na']
-  // @dts-jest:pass
-  R.match(/a/, 'b'); // => []
-  // @dts-jest:fail
-  R.match(/a/, null); // error with strict null checks
-}
-
-// @dts-jest:group:skip reduce
-{
-  const numbers = [1, 2, 3];
-  const add = (a: number, b: number) =>
-    a + b;
-  // @dts-jest:pass
-  R.reduce(add, 10, numbers); // => 16;
-}
-
-// @dts-jest:group:skip reduceRight
-{
-  const pairs = [['a', 1], ['b', 2], ['c', 3]];
-  const flattenPairs = (acc: [string, number], pair: [string, number]) =>
-    acc.concat(pair);
-  // @dts-jest:show Array<number|string>
-  R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
-}
-
-// @dts-jest:group:skip reduceWhile
-{
-  const isOdd = (x: number, acc: number) => x % 2 === 1;
-  const xs = [1, 3, 5, 60, 777, 800];
-  // @dts-jest:pass
-  R.reduceWhile(isOdd, R.add, 0, xs); // => 9
-
-  const ys = [2, 4, 6];
-  // @dts-jest:pass
-  R.reduceWhile(isOdd, R.add, 111, ys); // => 111
-}
-
-// @dts-jest:group:skip mapObjIndexed
-{
-  const values = {x: 1, y: 2, z: 3};
-  const prependKeyAndDouble = (num: number, key: string, obj: any) => key + (num * 2).toString();
-  // @dts-jest:show Dictionary<string>
-  R.mapObjIndexed(prependKeyAndDouble, values); // => { x: 'x2', y: 'y4', z: 'z6' }
-}
-
-// @dts-jest:group:skip of
-{
-  // @dts-jest:pass
-  R.of([1]); // => [[1]]
-  // @dts-jest:pass
-  R.of(1);
-}
-
-// @dts-jest:group:skip length
-{
-  // @dts-jest:pass
-  R.length([1, 2, 3]); // => 3
-}
-
-// @dts-jest:group:skip addIndex, filter, reject
-{
-  const isEven = (n: number) =>
-    n % 2 === 0;
-  const filterIndexed = R.addIndex(R.filter);
-
-  // @dts-jest:pass
-  R.filter(isEven, [1, 2, 3, 4]); // => [2, 4]
-
-  const lastTwo = (val: number, idx: number, list: number[]) =>
-    list.length - idx <= 2;
-  // @dts-jest:show number[]
-  filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [0, 9]
-
-  const isOdd = (n: number) =>
-    n % 2 === 1;
-  // @dts-jest:pass
-  R.reject(isOdd, [1, 2, 3, 4]); // => [2, 4]
-}
-
-// @dts-jest:group:skip take, takeWhile
-{
-  const isNotFour = (x: number) =>
-    !(x === 4);
-  // @dts-jest:pass
-  R.takeWhile(isNotFour, [1, 2, 3, 4]); // => [1, 2, 3]
-  // @dts-jest:pass
-  R.take(2, [1, 2, 3, 4]); // => [1, 2]
-}
-
-// @dts-jest:group:skip unfold
-{
-  const f = (n: number) => n > 50 ? false : [-n, n + 10];
-  // @dts-jest:show number[]
-  R.unfold(f, 10); // => [-10, -20, -30, -40, -50]
-  const b = R.unfold(f); // => [-10, -20, -30, -40, -50]
-  // @dts-jest:show number[]
-  b(10);
-}
-
-/*****************************************************************
- * Function category
- */
-
-/*********************
- * List category
- ********************/
-
-// @dts-jest:group:skip find, propEq
-{
-  const xs = [{a: 1}, {a: 2}, {a: 3}];
-  // @dts-jest:show Dictionary<number>
-  R.find(R.propEq('a', 2))(xs); // => {a: 2}
-  // @dts-jest:show undefined
-  R.find(R.propEq('a', 4))(xs); // => undefined
-}
-
-// @dts-jest:group:skip pathEq
-{
-  const user1 = {address: {zipCode: 90210}};
-  const user2 = {address: {zipCode: 55555}};
-  const user3 = {name: 'Bob'};
-  const users = [user1, user2, user3];
-  const isFamous = R.pathEq(['address', 'zipCode'], 90210);
-  // @dts-jest:show Object[]
-  R.filter(isFamous, users); // => [ user1 ]
-}
-
-// @dts-jest:group:skip propEq
-{
-  {
-    const xs: {[key: string]: string} = {a: '1', b: '0'};
-    // @dts-jest:pass
-    R.propEq('a', '1', xs); // => true
-    // @dts-jest:pass
-    R.propEq('a', '4', xs); // => false
-  }
-  {
-    const xs: {[key: string]: number} = {a: 1, b: 0};
-    // @dts-jest:pass
-    R.propEq('a', 1, xs); // => true
-    // @dts-jest:pass
-    R.propEq('a', 4, xs); // => false
-  }
-  {
-    const xs = {a: '1', b: '0'};
-    // @dts-jest:pass
-    R.propEq('a', '1', xs); // => true
-    // @dts-jest:pass
-    R.propEq('a', '4', xs); // => false
-  }
-  {
-    const xs = {a: 1, b: 0};
-    // @dts-jest:pass
-    R.propEq('a', 1, xs); // => true
-    // @dts-jest:pass
-    R.propEq('a', 4, xs); // => false
-  }
-  {
-    interface Obj { a: number; b: number; }
-    const xs: Obj = {a: 1, b: 0};
-    // @dts-jest:pass
-    R.propEq('a', 1, xs); // => true
-    // @dts-jest:pass
-    R.propEq('a', 4, xs); // => false
-  }
-}
-
 // @dts-jest:group:skip groupBy
 {
   const byGrade = R.groupBy((student: {score: number; name: string}) => {
@@ -1396,6 +933,76 @@ class F {
   // ['ae', 'st', 'iou']
 }
 
+// @dts-jest:group:skip gt
+{
+  // @dts-jest:pass
+  R.gt(2, 6); // => false
+  // @dts-jest:pass
+  R.gt(2, 0); // => true
+  // @dts-jest:pass
+  R.gt(2, 2); // => false
+  // @dts-jest:show boolean
+  R.flip(R.gt)(2)(10); // => true
+  // @dts-jest:show boolean
+  R.gt(2)(10); // => false
+}
+
+// @dts-jest:group:skip gte
+{
+  // @dts-jest:pass
+  R.gte(2, 6); // => false
+  // @dts-jest:pass
+  R.gte(2, 0); // => true
+  // @dts-jest:pass
+  R.gte(2, 2); // => false
+  // @dts-jest:show boolean
+  R.flip(R.gte)(2)(10); // => true
+  // @dts-jest:show boolean
+  R.gte(2)(10); // => false
+}
+
+// @dts-jest:group:skip has
+{
+  const hasName = R.has('name');
+  // @dts-jest:pass
+  hasName({name: 'alice'}); // => true
+  // @dts-jest:pass
+  hasName({name: 'bob'}); // => true
+  // @dts-jest:pass
+  hasName({}); // => false
+
+  const point = {x: 0, y: 0};
+  const pointHas = R.flip(R.has)(point);
+  // @dts-jest:show boolean
+  pointHas('x'); // => true
+  // @dts-jest:show boolean
+  pointHas('y'); // => true
+  // @dts-jest:show boolean
+  pointHas('z'); // => false
+}
+
+// @dts-jest:group:skip hasIn
+{
+  class Rectangle {
+    public width: number;
+    public height: number;
+    constructor(width: number, height: number) {
+      this.width = width;
+      this.height = height;
+    }
+    public area(): number {
+      return this.width * this.height;
+    }
+  }
+  const square = new Rectangle(2, 2);
+  // @dts-jest:pass
+  R.hasIn('width', square); // => true
+  // @dts-jest:pass
+  R.hasIn('area', square); // => true
+  // @dts-jest:show boolean
+  R.flip(R.hasIn)(square)('area'); // => true
+}
+
 // @dts-jest:group:skip head
 {
   // @dts-jest:show string
@@ -1404,6 +1011,48 @@ class F {
   R.head([10, 'ten']); // => 10
   // @dts-jest:show string
   R.head(['10', 10]); // => '10'
+}
+
+// @dts-jest:group:skip identical
+{
+  const o = {};
+  // @dts-jest:pass
+  R.identical(o, o); // => true
+  // @dts-jest:pass
+  R.identical(1, 1); // => true
+  // @dts-jest:pass
+  R.identical('2', '1'); // => false
+  // @dts-jest:pass
+  R.identical([], []); // => false
+  // @dts-jest:pass
+  R.identical(0, -0); // => false
+  // @dts-jest:pass
+  R.identical(NaN, NaN); // => true
+}
+
+// @dts-jest:group:skip identity
+{
+  const obj = {};
+
+  // @dts-jest:pass
+  R.identity(obj) === obj; // => true
+  // @dts-jest:show number
+  R.identity(1); // => 1
+  // @dts-jest:pass
+  R.identity([1, 2, 3]);
+  // @dts-jest:pass
+  R.identity(['a', 'b', 'c']);
+}
+
+// @dts-jest:group:skip ifElse
+{
+  // Flatten all arrays in the list but leave other values alone.
+  const flattenArrays = R.map(R.ifElse(Array.isArray, R.flatten, R.identity));
+
+  // @dts-jest:pass
+  flattenArrays([[0], [[10], [8]], 1234, {}]); // => [[0], [10, 8], 1234, {}]
+  // @dts-jest:pass
+  flattenArrays([[[10], 123], [8, [10]], 'hello']); // => [[10, 123], [8, 10], 'hello']
 }
 
 // @dts-jest:group:skip indexBy
@@ -1495,6 +1144,16 @@ class F {
   R.intersectionWith(R.eqBy(R.prop('id')))(buffaloSpringfield)(csny);
 }
 
+// @dts-jest:group:skip intersperse
+{
+  // @dts-jest:pass
+  R.intersperse(',', ['foo', 'bar']); // => ['foo', ',', 'bar']
+  // @dts-jest:pass
+  R.intersperse(0, [1, 2]); // => [1, 0, 2]
+  // @dts-jest:pass
+  R.intersperse(0, [1]); // => [1]
+}
+
 // @dts-jest:group:skip into
 {
   const numbers = [1, 2, 3, 4];
@@ -1514,6 +1173,105 @@ class F {
   intoArray(transducer)(numbers); // => [2, 3]
 }
 
+// @dts-jest:group:skip invert
+{
+  const raceResultsByFirstName = {
+    first: 'alice',
+    second: 'jake',
+    third: 'alice',
+  };
+  // @dts-jest:pass
+  R.invert(raceResultsByFirstName);
+  // => { 'alice': ['first', 'third'], 'jake': ['second'] }
+}
+
+// @dts-jest:group:skip invertObj
+{
+  const raceResults0 = {
+    first: 'alice',
+    second: 'jake',
+  };
+  // @dts-jest:pass
+  R.invertObj(raceResults0);
+  // => { 'alice': 'first', 'jake': 'second' }
+
+  // Alternatively:
+  const raceResults1 = ['alice', 'jake'];
+  // @dts-jest:pass
+  R.invertObj(raceResults1);
+  // => { 'alice': '0', 'jake': '1' }
+}
+
+// @dts-jest:group:skip invoker
+{
+  // @dts-jest:show string
+  R.invoker(0, 'toUpperCase', 'foo');
+  // @dts-jest:show string
+  R.invoker(1, 'charAt', 'foo', 1);
+}
+
+// @dts-jest:group:skip is
+{
+  // @dts-jest:pass
+  R.is(Object, {}); // => true
+  // @dts-jest:pass
+  R.is(Object)({}); // => true
+  // @dts-jest:pass
+  R.is(Number, 1); // => true
+  // @dts-jest:pass
+  R.is(Number)(1); // => true
+  // @dts-jest:pass
+  R.is(Object, 1); // => false
+  // @dts-jest:pass
+  R.is(Object)(1); // => false
+  // @dts-jest:pass
+  R.is(String, 's'); // => true
+  // @dts-jest:pass
+  R.is(String)('s'); // => true
+  // @dts-jest:pass
+  R.is(String, ''); // => true
+  // @dts-jest:pass
+  R.is(String)(''); // => true
+  // @dts-jest:pass
+  R.is(Object, new Object()); // => true
+  // @dts-jest:pass
+  R.is(Object)(new Object()); // => true
+  // @dts-jest:pass
+  R.is(Object, 's'); // => false
+  // @dts-jest:pass
+  R.is(Object)('s'); // => false
+  // @dts-jest:pass
+  R.is(Number, {}); // => false
+  // @dts-jest:pass
+  R.is(Number)({}); // => false
+}
+
+// @dts-jest:group:skip isEmpty
+{
+  // @dts-jest:pass
+  R.isEmpty([1, 2, 3]); // => false
+  // @dts-jest:pass
+  R.isEmpty([]); // => true
+  // @dts-jest:pass
+  R.isEmpty(''); // => true
+  // @dts-jest:pass
+  R.isEmpty(null); // => false
+  // @dts-jest:pass
+  R.isEmpty({}); // =>true
+  // @dts-jest:pass
+  R.isEmpty({a: 1}); // => false
+}
+
+// @dts-jest:group:skip isNaN
+{
+  // @dts-jest:show boolean
+  R.isNaN(NaN); // => true
+  // @dts-jest:show boolean
+  R.isNaN(undefined); // => false
+  // @dts-jest:show boolean
+  R.isNaN({}); // => false
+}
+
 // @dts-jest:group:skip join
 {
   const spacer = R.join(' ');
@@ -1521,6 +1279,43 @@ class F {
   spacer(['a', 2, 3.4]); // => 'a 2 3.4'
   // @dts-jest:pass
   R.join('|', [1, 2, 3]); // => '1|2|3'
+}
+
+// @dts-jest:group:skip juxt
+{
+  const range = R.juxt([Math.min, Math.max]);
+  // @dts-jest:pass
+  range(3, 4, 9, -3); // => [-3, 9]
+
+  const chopped = R.juxt([R.head, R.last]);
+  // @dts-jest:show string[]
+  chopped('longstring'); // => ['l', 'g']
+}
+
+// @dts-jest:group:skip keys
+{
+  // @dts-jest:show string[]
+  R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
+}
+
+// @dts-jest:group:skip keys
+{
+  // @dts-jest:show string[]
+  R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
+}
+
+// @dts-jest:group:skip keysIn
+{
+  const f = new F();
+  // @dts-jest:show string[]
+  R.keysIn(f); // => ['x', 'y']
+}
+
+// @dts-jest:group:skip keysIn
+{
+  const f = new F();
+  // @dts-jest:show string[]
+  R.keysIn(f); // => ['x', 'y']
 }
 
 // @dts-jest:group:skip last
@@ -1544,13 +1339,65 @@ class F {
   R.length([1, 2, 3]); // => 3
 }
 
-// @dts-jest:group:skip lensIndex, set, view, over
+// @dts-jest:group:skip length
+{
+  // @dts-jest:pass
+  R.length([1, 2, 3]); // => 3
+}
+
+// @dts-jest:group:skip lens
+{
+  // let xLens = R.lens(R.prop('x'), R.assoc('x'));
+  // let xLens = R.lens<number, xy>(R.prop('x'), R.assoc('x'));
+  const xLens = R.lens<number>(R.prop('x'))(R.assoc('x'));
+  // ^ works with only 1 generic, for curried version managed to split the inferred generic from the manual generic
+  // @dts-jest:show number
+  R.view(xLens, {x: 1, y: 2}); // => 1
+  // @dts-jest:show { x: number, y: number }
+  R.set(xLens, 4, {x: 1, y: 2}); // => {x: 4, y: 2}
+  // @dts-jest:show { x: number, y: number }
+  R.set(xLens)(4, {x: 1, y: 2}); // => {x: 4, y: 2}
+  // @dts-jest:show { x: number, y: number }
+  R.set(xLens, 4)({x: 1, y: 2}); // => {x: 4, y: 2}
+  // @dts-jest:show { x: number, y: number }
+  R.over(xLens, R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
+  // @dts-jest:show { x: number, y: number }
+  R.over(xLens, R.negate)({x: 1, y: 2}); // => {x: -1, y: 2}
+  // @dts-jest:show { x: number, y: number }
+  R.over(xLens)(R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
+}
+
+// @dts-jest:group:skip lens
+{
+  const headLens = R.lens(
+    function get(arr: number[]) { return arr[0]; },
+    function set(val: number, arr: number[]) { return [val].concat(arr.slice(1)); },
+  );
+  headLens([10, 20, 30, 40]); // => 10
+  // // @dts-jest:show Argument of type 'mu' is not assignable to parameter of type 'number'.
+  // headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
+
+  const phraseLens = R.lens(
+    function get(obj: any) { return obj.phrase; },
+    function set(val: string, obj: any) {
+      const out = R.clone(obj);
+      out.phrase = val;
+      return out;
+    },
+  );
+  const obj1 = {phrase: 'Absolute filth . . . and I LOVED it!'};
+  const obj2 = {phrase: "What's all this, then?"};
+  // @dts-jest:show string
+  phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
+  // @dts-jest:show string
+  phraseLens(obj2); // => "What's all this, then?"
+  // @dts-jest:show Dictionary<string>
+  phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
+}
+
+// @dts-jest:group:skip lensIndex
 {
   const headLens = R.lensIndex(0);
-  // @dts-jest:show number
-  headLens([10, 20, 30, 40]); // => 10
-  // @dts-jest:show Array<number|string>
-  headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
   // @dts-jest:show string
   R.view(headLens, ['a', 'b', 'c']); // => 'a'
   // @dts-jest:show string[]
@@ -1559,8 +1406,72 @@ class F {
   R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
 }
 
+// @dts-jest:group:skip lensPath
+{
+  const xyLens = R.lensPath(['x', 'y']);
+  // @dts-jest:show number
+  R.view(xyLens, {x: {y: 2, z: 3}}); // => 2
+  // @dts-jest:show { [s: string]: { [s: string]: number } }
+  R.set(xyLens, 4, {x: {y: 2, z: 3}}); // => {x: {y: 4, z: 3}}
+  // @dts-jest:show { [s: string]: { [s: string]: number } }
+  R.over(xyLens, R.negate, {x: {y: 2, z: 3}}); // => {x: {y: -2, z: 3}}
+}
+
+// @dts-jest:group:skip lensProp
+{
+  const phraseLens = R.lensProp('phrase');
+  const obj1 = {phrase: 'Absolute filth . . . and I LOVED it!'};
+  const obj2 = {phrase: "What's all this, then?"};
+  // @dts-jest:show string
+  phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
+  // @dts-jest:show string
+  phraseLens(obj2); // => 'What's all this, then?'
+  // @dts-jest:show Dictionary<string>
+  phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
+}
+
+// @dts-jest:group:skip lensProp
+{
+  const xLens = R.lensProp('x');
+  // @dts-jest:show number
+  R.view(xLens, {x: 1, y: 2}); // => 1
+  // @dts-jest:show Dictionary<number>
+  R.set(xLens, 4, {x: 1, y: 2}); // => {x: 4, y: 2}
+  // @dts-jest:show Dictionary<number>
+  R.over(xLens, R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
+}
+
+// @dts-jest:group:skip lt
+{
+  // @dts-jest:pass
+  R.lt(2, 6); // => true
+  // @dts-jest:pass
+  R.lt(2, 0); // => false
+  // @dts-jest:pass
+  R.lt(2, 2); // => false
+  // @dts-jest:show boolean
+  R.lt(5)(10); // => true
+  // @dts-jest:show boolean
+  R.flip(R.lt)(5)(10); // => false // right-sectioned currying
+}
+
+// @dts-jest:group:skip lte
+{
+  // @dts-jest:pass
+  R.lte(2, 6); // => true
+  // @dts-jest:pass
+  R.lte(2, 0); // => false
+  // @dts-jest:pass
+  R.lte(2, 2); // => true
+  // @dts-jest:show boolean
+  R.flip(R.lte)(2)(1); // => true
+  // @dts-jest:show boolean
+  R.lte(2)(10); // => true
+}
+
 // @dts-jest:group:skip map
 {
+  const double = (x: number): number => x + x;
   const arrayify = <T>(v: T): T[] => [v];
   // homogeneous array
   // @dts-jest:pass
@@ -1624,6 +1535,218 @@ class F {
   R.mapAccumRight(append)('0')(digits); // => ['04321', ['04321', '0432', '043', '04']]
 }
 
+// @dts-jest:group:skip mapObjIndexed
+{
+  const values = {x: 1, y: 2, z: 3};
+  const prependKeyAndDouble = (num: number, key: string, obj: any) => key + (num * 2).toString();
+  // @dts-jest:show Dictionary<string>
+  R.mapObjIndexed(prependKeyAndDouble, values); // => { x: 'x2', y: 'y4', z: 'z6' }
+}
+
+// @dts-jest:group:skip match
+{
+  // @dts-jest:pass
+  R.match(/([a-z]a)/g, 'bananas'); // => ['ba', 'na', 'na']
+  // @dts-jest:pass
+  R.match(/a/, 'b'); // => []
+  // @dts-jest:fail
+  R.match(/a/, null); // error with strict null checks
+}
+
+// @dts-jest:group:skip mathMod
+{
+  // @dts-jest:pass
+  R.mathMod(-17, 5); // => 3
+  // @dts-jest:pass
+  R.mathMod(17, 5); // => 2
+  // @dts-jest:pass
+  R.mathMod(17, -5); // => NaN
+  // @dts-jest:pass
+  R.mathMod(17, 0); // => NaN
+  // @dts-jest:pass
+  R.mathMod(17.2, 5); // => NaN
+  // @dts-jest:pass
+  R.mathMod(17, 5.3); // => NaN
+
+  const clock = R.flip(R.mathMod)(12);
+  // @dts-jest:show number
+  clock(15); // => 3
+  // @dts-jest:show number
+  clock(24); // => 0
+
+  const seventeenMod = R.mathMod(17);
+  // @dts-jest:pass
+  seventeenMod(3); // => 2
+}
+
+// @dts-jest:group:skip max
+{
+  // @dts-jest:show number
+  R.max(7, 3); // => 7
+  // @dts-jest:show string
+  R.max('a', 'z'); // => 'z'
+}
+
+// @dts-jest:group:skip maxBy
+{
+  function cmp(obj: { x: number }) { return obj.x; }
+  const a = {x: 1};
+  const b = {x: 2};
+  const c = {x: 3};
+  const d = {x: 'a'};
+  const e = {x: 'z'};
+  // @dts-jest:pass
+  R.maxBy(cmp, a, c); // => {x: 3}
+  // @dts-jest:pass
+  R.maxBy(cmp)(a, c); // => {x: 3}
+  // @dts-jest:pass
+  R.maxBy(cmp)(a)(b);
+  // @dts-jest:fail
+  R.maxBy(cmp)(d)(e);
+}
+
+// @dts-jest:group:skip mean
+{
+  // @dts-jest:pass
+  R.mean([2, 7, 9]); // => 6
+  // @dts-jest:pass
+  R.mean([]); // => NaN
+}
+
+// @dts-jest:group:skip median
+{
+  // @dts-jest:pass
+  R.median([7, 2, 10, 9]); // => 8
+  // @dts-jest:pass
+  R.median([]); // => NaN
+}
+
+// @dts-jest:group:skip megeAll
+{
+  // @dts-jest:show Dictionary<number>
+  R.mergeAll([{foo: 1}, {bar: 2}, {baz: 3}]); // => {foo: 1,bar: 2,baz: 3}
+  // @dts-jest:show Dictionary<number>
+  R.mergeAll([{foo: 1}, {foo: 2}, {bar: 2}]); // => {foo: 2,bar: 2}
+}
+
+// @dts-jest:group:skip memoize
+{
+  let numberOfCalls = 0;
+  const trackedAdd = (a: number, b: number) => {
+    numberOfCalls += 1;
+    return a + b;
+  };
+  const memoTrackedAdd = R.memoize(trackedAdd);
+
+  // @dts-jest:pass
+  memoTrackedAdd(1, 2); // => 3
+  // @dts-jest:pass
+  numberOfCalls; // => 1
+  // @dts-jest:pass
+  memoTrackedAdd(1, 2); // => 3
+  // @dts-jest:pass
+  numberOfCalls; // => 1
+  // @dts-jest:pass
+  memoTrackedAdd(2, 3); // => 5
+  // @dts-jest:pass
+  numberOfCalls; // => 2
+
+  // Note that argument order matters
+  // @dts-jest:pass
+  memoTrackedAdd(2, 1); // => 3
+  // @dts-jest:pass
+  numberOfCalls; // => 3
+}
+
+// @dts-jest:group:skip merge
+{
+  // @dts-jest:show Dictionary<any>
+  R.merge({name: 'fred', age: 10}, {age: 40});
+  // => { 'name': 'fred', 'age': 40 }
+  const resetToDefault = R.flip(R.merge)({x: 0});
+  // @dts-jest:show Dictionary<number>
+  resetToDefault({x: 5, y: 2}); // => {x: 0, y: 2}
+}
+
+// @dts-jest:group:skip mergeWith
+{
+  // @dts-jest:show { a: boolean, b: boolean, values: number[] }
+  R.mergeWith(R.concat,
+              {a: true, values: [10, 20]},
+              {b: true, values: [15, 35]});
+  // => { a: true, b: true, values: [10, 20, 15, 35] }
+}
+
+// @dts-jest:group:skip mergeWithKey
+{
+  const concatValues = (k: string, l: string, r: string) => k === 'values' ? R.concat(l, r) : r;
+  R.mergeWithKey(concatValues,
+                 {a: true, thing: 'foo', values: [10, 20]},
+                 {b: true, thing: 'bar', values: [15, 35]});
+  const merge = R.mergeWithKey(concatValues);
+  // @dts-jest:show { a: boolean, b: boolean, values: number[], thing: string }
+  merge({a: true, thing: 'foo', values: [10, 20]}, {b: true, thing: 'bar', values: [15, 35]});
+}
+
+// @dts-jest:group:skip min
+{
+  // @dts-jest:show number
+  R.min(9, 3); // => 3
+  // @dts-jest:show string
+  R.min('a', 'z'); // => 'a'
+}
+
+// @dts-jest:group:skip minBy
+{
+  function cmp(obj: { x: number }) { return obj.x; }
+  const a = {x: 1};
+  const b = {x: 2};
+  const c = {x: 3};
+  const d = {x: 'a'};
+  const e = {x: 'z'};
+  // @dts-jest:show { x: number }
+  R.minBy(cmp, a, b); // => {x: 1}
+  // @dts-jest:show { x: number }
+  R.minBy(cmp)(a, b); // => {x: 1}
+  // @dts-jest:show { x: number }
+  R.minBy(cmp)(a)(c);
+  // @dts-jest:fail
+  R.minBy(cmp, d, e);
+}
+
+// @dts-jest:group:skip modulo
+{
+  // @dts-jest:pass
+  R.modulo(17, 3); // => 2
+  // JS behavior:
+  // @dts-jest:pass
+  R.modulo(-17, 3); // => -2
+  // @dts-jest:pass
+  R.modulo(17, -3); // => 2
+
+  const isOdd = R.flip(R.modulo)(2);
+  // @dts-jest:show number
+  isOdd(42); // => 0
+  // @dts-jest:show number
+  isOdd(21); // => 1
+}
+
+// @dts-jest:group:skip multiply
+{
+  // @dts-jest:pass
+  R.multiply(2)(3); // => 6
+  // @dts-jest:pass
+  R.multiply(3)(4); // => 12
+  // @dts-jest:pass
+  R.multiply(2, 5); // => 10
+}
+
+// @dts-jest:group:skip negate
+{
+  // @dts-jest:pass
+  R.negate(42); // => -42
+}
+
 // @dts-jest:group:skip none
 {
   // @dts-jest:show boolean
@@ -1632,6 +1755,18 @@ class F {
   R.none(R.isNaN, [1, 2, 3, NaN]); // => false
   // @dts-jest:show boolean
   R.none(R.isNaN)([1, 2, 3, NaN]); // => false
+}
+
+// @dts-jest:group:skip not
+{
+  // @dts-jest:pass
+  R.not(true); // => false
+  // @dts-jest:pass
+  R.not(false); // => true
+  // @dts-jest:pass
+  R.not(0); // => true
+  // @dts-jest:pass
+  R.not(1); // => false
 }
 
 // @dts-jest:group:skip nth
@@ -1647,18 +1782,234 @@ class F {
   R.nth(-99)(list); // => undefined
 }
 
-// @dts-jest:group:skip partition, contains
+// @dts-jest:group:skip nthArg
 {
-  // @dts-jest:show [string[], string[]]
-  R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']);
-  // @dts-jest:show [string[], string[]]
-  R.partition(R.contains('s'))(['sss', 'ttt', 'foo', 'bars']);
+  // @dts-jest:show string
+  R.nthArg(1)('a', 'b', 'c'); // => 'b'
+  // @dts-jest:show string
+  R.nthArg(-1)('a', 'b', 'c'); // => 'c'
+}
+
+// @dts-jest:group:skip objOf
+{
+  const matchPhrases = R.compose(
+    R.objOf('must'),
+    R.map(R.objOf('match_phrase')),
+  );
+  // @dts-jest:show { must: { match_phrase: string }[] }
+  matchPhrases(['foo', 'bar', 'baz']);
+}
+
+// @dts-jest:group:skip of
+{
   // @dts-jest:pass
-  R.partition((x: number) => x > 2, [1, 2, 3, 4]);
+  R.of([1]); // => [[1]]
   // @dts-jest:pass
-  R.partition((x: number) => x > 2)([1, 2, 3, 4]);
+  R.of(1);
+}
+
+// @dts-jest:group:skip omit
+{
+  // @dts-jest:show Dictionary<number>
+  R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
+  // @dts-jest:show Dictionary<number>
+  R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
+}
+
+// @dts-jest:group:skip once
+{
+  const addOneOnce = R.once((x: number) => x + 1);
+  // @dts-jest:pass
+  addOneOnce(10); // => 11
+  // @dts-jest:pass
+  addOneOnce(addOneOnce(50)); // => 11
+}
+
+// @dts-jest:group:skip or
+{
+  // @dts-jest:pass
+  R.or(false, true); // => false
+  // @dts-jest:show number|any[]
+  R.or(0, []); // => []
+  // @dts-jest:show number|any[]
+  R.or(0)([]); // => []
+  // @dts-jest:show string
+  R.or(null, ''); // => ''
+}
+
+// @dts-jest:group:skip pair
+{
+  R.pair('foo', 'bar'); // => ['foo', 'bar']
+  const p = R.pair('foo', 1); // => ['foo', 'bar']
+  // @dts-jest:show string
+  p[0];
+  // @dts-jest:pass
+  p[1];
+}
+
+// @dts-jest:group:skip partial
+{
+  const multiply = (a: number, b: number) => a * b;
+
+  // @dts-jest:pass
+  R.partial(multiply, [2])(2); // => 4
+
+  const greet = (salutation: string, title: string, firstName: string, lastName: string) =>
+    `${salutation}, ${title} ${firstName} ${lastName}!`;
+  const sayHello = R.partial(greet, ['Hello']);
+  const sayHelloToMs = R.partial(sayHello, ['Ms.']);
+  // @dts-jest:pass
+  sayHelloToMs('Jane', 'Jones'); // => 'Hello, Ms. Jane Jones!'
+
+  const greetMsJaneJones = R.partialRight(greet, ['Ms.', 'Jane', 'Jones']);
+  // @dts-jest:pass
+  greetMsJaneJones('Hello'); // => 'Hello, Ms. Jane Jones!'
+}
+
+// @dts-jest:group:skip path
+{
+  // @dts-jest:show number
+  R.path(['a', 'b'], {a: {b: 2}}); // => 2
+  // @dts-jest:show number
+  R.path(['a', 'b'])({a: {b: 2}}); // => 2
+}
+
+// @dts-jest:group:skip pathEq
+{
+  const user1 = {address: {zipCode: 90210}};
+  const user2 = {address: {zipCode: 55555}};
+  const user3 = {name: 'Bob'};
+  const users = [user1, user2, user3];
+  const isFamous = R.pathEq(['address', 'zipCode'], 90210);
   // @dts-jest:show Object[]
-  R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}); // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' } ]
+  R.filter(isFamous, users); // => [ user1 ]
+}
+
+// @dts-jest:group:skip pathOr
+{
+  // @dts-jest:show number
+  R.pathOr('N/A', ['a', 'b'], {a: {b: 2}}); // => 2
+  // @dts-jest:show number
+  R.pathOr('N/A', ['a', 'b'])({a: {b: 2}}); // => 2
+  // @dts-jest:show number
+  R.pathOr('N/A', ['a', 'b'], {c: {b: 2}}); // => 'N/A'
+  // @dts-jest:show number
+  R.pathOr({c: 2})(['a', 'b'], {c: {b: 2}}); // => 'N/A'
+}
+
+// @dts-jest:group:skip pathSatisfies
+{
+  // @dts-jest:pass
+  R.pathSatisfies((a: any) => a === 'foo', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}); // => true
+  // @dts-jest:pass
+  R.pathSatisfies((a: any) => a === 'bar', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}); // => false
+  // @dts-jest:pass
+  R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'], {a: {b: {c: 1}}}); // => true
+  // @dts-jest:pass
+  R.pathSatisfies((a: any) => a !== 1, ['a', 'b', 'c'], {a: {b: {c: 2}}}); // => true
+  // @dts-jest:pass
+  R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'], {a: {b: {c: 1}}}); // => true
+  // @dts-jest:pass
+  R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'])({a: {b: {c: 1}}}); // => true
+  // @dts-jest:pass
+  R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'])({a: {b: {c: 1}}}); // => true
+}
+
+// @dts-jest:group:skip pick
+{
+  // @dts-jest:show Dictionary<number>
+  R.pick(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
+  // the following should errror: e/f are not keys in these objects
+  // @dts-jest:pass
+  R.pick<{a: number}>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
+  // @dts-jest:pass
+  R.pick(['a', 'e', 'f'])<{a: number}>({a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
+  // @dts-jest:show:skip
+  R.pick(['a', 'e', 'f'], [1, 2, 3, 4]); // => {}
+}
+
+// @dts-jest:group:skip pickAll
+{
+  // @dts-jest:show Dictionary<number>
+  R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
+  // @dts-jest:show Dictionary<number>
+  R.pickAll(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
+  // @dts-jest:show Dictionary<number>
+  R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
+  // @dts-jest:show Dictionary<number>
+  R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
+}
+
+// @dts-jest:group:skip pickBy
+{
+  const isPositive = (n: number) =>
+    n > 0;
+  // @dts-jest:show Dictionary<number>
+  R.pickBy(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); // => {a: 1, b: 2, e: 5}
+  const containsBackground = (val: any) =>
+    val.bgcolor;
+  const colors = {1: {color: 'read'}, 2: {color: 'black', bgcolor: 'yellow'}};
+  // @dts-jest:show { 2: R.Dictionary<string> }
+  R.pickBy(containsBackground, colors); // => {2: {color: 'black', bgcolor: 'yellow'}}
+
+  const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
+  // @dts-jest:show Dictionary<number>
+  R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
+}
+
+// @dts-jest:group:skip pickBy
+{
+  const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
+  // @dts-jest:show Dictionary<number>
+  R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
+}
+
+// @dts-jest:group:skip pipe
+{
+  const shout = (x: number): string =>
+    x >= 10
+      ? 'big'
+      : 'small';
+  const double = (x: number): number => x + x;
+  // @dts-jest:show (x0: number) => string
+  R.pipe(double, double, shout);
+  // @dts-jest:pass
+  R.pipe(double, double, shout)(10);
+
+  // @dts-jest:pass
+  R.pipe(
+    R.split(''),
+    R.adjust(R.toUpper, 0),
+    R.join(''),
+  )('str');
+
+  const f = R.pipe(Math.pow, R.negate, R.inc);
+  // @dts-jest:pass
+  f(3, 4); // -(3^4) + 1
+
+  // test for type degeneration if the first function has generics
+  // @dts-jest:show (x0: number) => number
+  R.pipe(R.identity, double);
+}
+
+// @dts-jest:group:skip pipe
+{
+  const double = (x: number): number => x + x;
+  const triple = (x: number): number => x * 3;
+  const square = (x: number): number => x * x;
+  const squareThenDoubleThenTriple = R.pipe(square, double, triple);
+  // @dts-jest:pass
+  squareThenDoubleThenTriple(5); // => 150
+}
+
+// @dts-jest:group:skip pipeP
+{
+  // @dts-jest:show Promise<number>
+  R.pipeP(
+    (m: number) => Promise.resolve(R.multiply(2, m)),
+    (m: number) => Promise.resolve(m / 2),
+    R.multiply(2),
+  )(10);
 }
 
 // @dts-jest:group:skip pluck
@@ -1681,12 +2032,149 @@ class F {
   R.prepend('fee')(['fi', 'fo', 'fum']); // => ['fee', 'fi', 'fo', 'fum']
 }
 
+// @dts-jest:group:skip product
+{
+  // @dts-jest:pass
+  R.product([2, 4, 6, 8, 100, 1]); // => 38400
+}
+
+// @dts-jest:group:skip project
+{
+  const abby = {name: 'Abby', age: 7, hair: 'blond', grade: 2};
+  const fred = {name: 'Fred', age: 12, hair: 'brown', grade: 7};
+  const kids = [abby, fred];
+  // @dts-jest:show { name: string, grade: number }[]
+  R.project(['name', 'grade'], kids); // => [{name: 'Abby', grade: 2}, {name: 'Fred', grade: 7}]
+}
+
+// @dts-jest:group:skip prop
+{
+  // @dts-jest:pass
+  R.prop('x', {x: 100}); // => 100
+  // @dts-jest:show:skip Argument of type 'x' is not assignable to parameter of type 'never'.
+  R.prop('x', {}); // => undefined
+}
+
+// @dts-jest:group:skip propEq
+{
+  {
+    const xs: {[key: string]: string} = {a: '1', b: '0'};
+    // @dts-jest:pass
+    R.propEq('a', '1', xs); // => true
+    // @dts-jest:pass
+    R.propEq('a', '4', xs); // => false
+  }
+  {
+    const xs: {[key: string]: number} = {a: 1, b: 0};
+    // @dts-jest:pass
+    R.propEq('a', 1, xs); // => true
+    // @dts-jest:pass
+    R.propEq('a', 4, xs); // => false
+  }
+  {
+    const xs = {a: '1', b: '0'};
+    // @dts-jest:pass
+    R.propEq('a', '1', xs); // => true
+    // @dts-jest:pass
+    R.propEq('a', '4', xs); // => false
+  }
+  {
+    const xs = {a: 1, b: 0};
+    // @dts-jest:pass
+    R.propEq('a', 1, xs); // => true
+    // @dts-jest:pass
+    R.propEq('a', 4, xs); // => false
+  }
+  {
+    interface Obj { a: number; b: number; }
+    const xs: Obj = {a: 1, b: 0};
+    // @dts-jest:pass
+    R.propEq('a', 1, xs); // => true
+    // @dts-jest:pass
+    R.propEq('a', 4, xs); // => false
+  }
+}
+
+// @dts-jest:group:skip propIs
+{
+  // @dts-jest:pass
+  R.propIs(Number, 'x', {x: 1, y: 2}); // => true
+  // @dts-jest:pass
+  R.propIs(Number, 'x')({x: 1, y: 2}); // => true
+  // @dts-jest:pass
+  R.propIs(Number)('x', {x: 1, y: 2}); // => true
+  // @dts-jest:pass
+  R.propIs(Number)('x')({x: 1, y: 2}); // => true
+  // @dts-jest:pass
+  R.propIs(Number, 'x', {x: 'foo'}); // => false
+  // @dts-jest:pass
+  R.propIs(Number, 'x', {}); // => false
+}
+
+// @dts-jest:group:skip propOr
+{
+  const alice = {
+    name: 'ALICE',
+    age: 101,
+  };
+  const favorite = R.prop('favoriteLibrary');
+  const favoriteWithDefault = R.propOr('Ramda', 'favoriteLibrary');
+
+  // @dts-jest:show undefined
+  favorite(alice); // => undefined
+  // @dts-jest:show string
+  favoriteWithDefault(alice); // => 'Ramda'
+}
+
+// @dts-jest:group:skip propSatisfies
+{
+  const truncate = R.when(
+    R.propSatisfies(R.flip(R.gt)(10), 'length'),
+    R.pipe(R.take(10), R.append('…'), R.join('')),
+    );
+  // @dts-jest:show string
+  truncate('12345'); // => '12345'
+  // @dts-jest:show string
+  truncate('0123456789ABC'); // => '0123456789…'
+}
+
+// @dts-jest:group:skip propSatisfies
+{
+  // @dts-jest:pass
+  R.propSatisfies((x: number) => x > 0, 'x', {x: 1, y: 2}); // => true
+  // @dts-jest:show boolean
+  R.propSatisfies((x: number) => x > 0, 'x')({x: 1, y: 2}); // => true
+  // @dts-jest:show boolean
+  R.propSatisfies((x: number) => x > 0)('x')({x: 1, y: 2}); // => true
+}
+
+// @dts-jest:group:skip props
+{
+  // @dts-jest:pass
+  R.props(['x', 'y'], {x: 1, y: 2}); // => [1, 2]
+  // @dts-jest:show Array<number|undefined>
+  R.props(['c', 'a', 'b'], {b: 2, a: 1}); // => [undefined, 1, 2]
+
+  const fullName = R.compose(R.join(' '), R.props(['first', 'last']));
+  // @dts-jest:pass
+  fullName({last: 'Bullet-Tooth', age: 33, first: 'Tony'}); // => 'Tony Bullet-Tooth'
+}
+
 // @dts-jest:group:skip range
 {
   // @dts-jest:pass
   R.range(1, 5); // => [1, 2, 3, 4]
   // @dts-jest:pass
   R.range(50)(53); // => [50, 51, 52]
+}
+
+// @dts-jest:group:skip reduce
+{
+  const numbers = [1, 2, 3];
+  const add = (a: number, b: number) =>
+    a + b;
+  // @dts-jest:pass
+  R.reduce(add, 10, numbers); // => 16;
 }
 
 // @dts-jest:group:skip reduce
@@ -1750,6 +2238,27 @@ class F {
   R.reduceRight(flattenPairs)([], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 }
 
+// @dts-jest:group:skip reduceRight
+{
+  const pairs = [['a', 1], ['b', 2], ['c', 3]];
+  const flattenPairs = (acc: [string, number], pair: [string, number]) =>
+    acc.concat(pair);
+  // @dts-jest:show Array<number|string>
+  R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
+}
+
+// @dts-jest:group:skip reduceWhile
+{
+  const isOdd = (x: number, acc: number) => x % 2 === 1;
+  const xs = [1, 3, 5, 60, 777, 800];
+  // @dts-jest:pass
+  R.reduceWhile(isOdd, R.add, 0, xs); // => 9
+
+  const ys = [2, 4, 6];
+  // @dts-jest:pass
+  R.reduceWhile(isOdd, R.add, 111, ys); // => 111
+}
+
 // @dts-jest:group:skip reject
 {
   const isOdd = (n: number) => n % 2 === 1;
@@ -1788,6 +2297,26 @@ class F {
   const repeatedObjs = R.repeat(obj, 5); // => [{}, {}, {}, {}, {}]
   // @dts-jest:pass
   repeatedObjs[0] === repeatedObjs[1]; // => true
+}
+
+// @dts-jest:group:skip replace
+{
+  // @dts-jest:pass
+  R.replace('foo', 'bar', 'foo foo foo'); // => 'bar foo foo'
+  // @dts-jest:pass
+  R.replace('foo', 'bar')('foo foo foo'); // => 'bar foo foo'
+  // @dts-jest:pass
+  R.replace('foo')('bar')('foo foo foo'); // => 'bar foo foo'
+  // @dts-jest:pass
+  R.replace(/foo/, 'bar', 'foo foo foo'); // => 'bar foo foo'
+
+  // Use the 'g' (global) flag to replace all occurrences:
+  // @dts-jest:pass
+  R.replace(/foo/g, 'bar', 'foo foo foo'); // => 'bar bar bar'
+  // @dts-jest:pass
+  R.replace(/foo/g, 'bar')('foo foo foo'); // => 'bar bar bar'
+  // @dts-jest:pass
+  R.replace(/foo/g)('bar')('foo foo foo'); // => 'bar bar bar'
 }
 
 // @dts-jest:group:skip reverse
@@ -1839,785 +2368,6 @@ class F {
   R.sort(diff, [4, 2, 7, 5]); // => [2, 4, 5, 7]
   // @dts-jest:pass
   R.sort(diff)([4, 2, 7, 5]); // => [2, 4, 5, 7]
-}
-
-// @dts-jest:group:skip tail
-{
-  // @dts-jest:pass
-  R.tail(['fi', 'fo', 'fum']); // => ['fo', 'fum']
-  // @dts-jest:pass
-  R.tail([1, 2, 3]); // => [2, 3]
-}
-
-// @dts-jest:group:skip take
-{
-  // @dts-jest:pass
-  R.take(3, [1, 2, 3, 4, 5]); // => [1,2,3]
-
-  const members = [
-    'Paul Desmond', 'Bob Bates', 'Joe Dodge', 'Ron Crotty', 'Lloyd Davis', 'Joe Morello', 'Norman Bates',
-    'Eugene Wright', 'Gerry Mulligan', 'Jack Six', 'Alan Dawson', 'Darius Brubeck', 'Chris Brubeck',
-    'Dan Brubeck', 'Bobby Militello', 'Michael Moore', 'Randy Jones',
-  ];
-  const takeFive = R.take(5);
-  // @dts-jest:pass
-  takeFive(members); // => ['Paul Desmond','Bob Bates','Joe Dodge','Ron Crotty','Lloyd Davis']
-
-  // @dts-jest:pass
-  R.take(3, 'Example'); // => 'Exa'
-
-  const takeThree = R.take(3);
-  // @dts-jest:pass
-  takeThree('Example'); // => 'Exa'
-}
-
-// @dts-jest:group:skip takeLast
-{
-  // @dts-jest:pass
-  R.takeLast(1, ['foo', 'bar', 'baz']); // => ['baz']
-  // @dts-jest:pass
-  R.takeLast(2)(['foo', 'bar', 'baz']); // => ['bar', 'baz']
-  // @dts-jest:pass
-  R.takeLast(3, 'ramda'); // => 'mda'
-  // @dts-jest:pass
-  R.takeLast(3)('ramda'); // => 'mda'
-}
-
-// @dts-jest:group:skip takeLastWhile
-{
-  const isNotOne = (x: number) => x !== 1;
-  // @dts-jest:pass
-  R.takeLastWhile(isNotOne, [1, 2, 3, 4]); // => [2, 3, 4]
-  // @dts-jest:pass
-  R.takeLastWhile(isNotOne)([1, 2, 3, 4]); // => [2, 3, 4]
-}
-
-// @dts-jest:group:skip takeWhile
-{
-  const isNotFour = (x: number) =>
-    !(x === 4);
-  // @dts-jest:pass
-  R.takeWhile(isNotFour, [1, 2, 3, 4]); // => [1, 2, 3]
-  // @dts-jest:pass
-  R.takeWhile(isNotFour)([1, 2, 3, 4]); // => [1, 2, 3]
-}
-
-// @dts-jest:group:skip tap
-{
-  const sayX = (x: number) => console.log(`x is ${x}`);
-  // @dts-jest:pass
-  R.tap(sayX, 100); // => 100
-}
-
-// @dts-jest:group:skip test
-{
-  // @dts-jest:pass
-  R.test(/^x/, 'xyz'); // => true
-  // @dts-jest:pass
-  R.test(/^y/)('xyz'); // => false
-}
-
-// @dts-jest:group:skip times
-{
-  // @dts-jest:pass
-  R.times(R.identity, 5); // => [0, 1, 2, 3, 4]
-  // @dts-jest:pass
-  R.times(R.identity)(5); // => [0, 1, 2, 3, 4]
-}
-
-// @dts-jest:group:skip toString
-{
-  class Point {
-    public x: number;
-    public y: number;
-    constructor(x: number, y: number) {
-      this.x = x;
-      this.y = y;
-    }
-    public toString() {
-      return `new Point(${this.x}, ${this.y})`;
-    }
-  }
-  // @dts-jest:pass
-  R.toString(new Point(1, 2)); // => 'new Point(1, 2)'
-  // @dts-jest:pass
-  R.toString(42); // => '42'
-  // @dts-jest:pass
-  R.toString('abc'); // => ''abc''
-  // @dts-jest:pass
-  R.toString([1, 2, 3]); // => '[1, 2, 3]'
-  // @dts-jest:pass
-  R.toString({foo: 1, bar: 2, baz: 3}); // => '{'bar': 2, 'baz': 3, 'foo': 1}'
-  // @dts-jest:pass
-  R.toString(new Date('2001-02-03T04: 05: 06Z')); // => 'new Date('2001-02-03T04: 05: 06.000Z')'
-}
-
-// @dts-jest:group:skip transduce
-{
-  const numbers = [1, 2, 3, 4];
-  const transducer = R.compose(R.map(R.add(1)), R.take(2));
-  const fn = R.flip<number, number[], number[]>(R.append);
-  // @dts-jest:show number[]
-  R.transduce(transducer, fn, [] as number[], numbers); // => [2, 3] // strictNullChecks: must annotate empty array type
-  // @dts-jest:show number[]
-  R.transduce(transducer, fn, [] as number[])(numbers); // => [2, 3]
-  // @dts-jest:show number[]
-  R.transduce(transducer, fn)([] as number[], numbers); // => [2, 3]
-  // @dts-jest:show number[]
-  R.transduce(transducer)(fn, [] as number[], numbers); // => [2, 3]
-}
-
-// // traverse
-// () => {
-//   // Returns `Nothing` if the given divisor is `0`
-//   safeDiv = n => d => d === 0 ? Nothing() : Just(n / d)
-//
-//   R.traverse(Maybe.of, safeDiv(10), [2, 4, 5]); // => Just([5, 2.5, 2])
-//   R.traverse(Maybe.of, safeDiv(10), [2, 0, 5]); // => Nothing
-// }
-
-// @dts-jest:group:skip transpose
-{
-  // @dts-jest:show any[][]
-  R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]); // => [[1, 2, 3], ['a', 'b', 'c']]
-  // @dts-jest:show any[][]
-  R.transpose([[1, 2, 3], ['a', 'b', 'c']]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
-  // @dts-jest:pass
-  R.transpose([[10, 11], [20], [], [30, 31, 32]]); // => [[10, 20, 30], [11, 31], [32]]
-}
-
-// @dts-jest:group:skip tryCatch
-{
-  // @dts-jest:show boolean
-  R.tryCatch<boolean>(R.prop('x'), R.F)({x: true}); // => true
-  // @dts-jest:show boolean
-  R.tryCatch<boolean>(R.prop('x'), R.F)(null); // => false
-}
-
-// @dts-jest:group:skip uniq
-{
-  // @dts-jest:pass
-  R.uniq([1, 1, 2, 1]); // => [1, 2]
-  // @dts-jest:show Object[]
-  R.uniq([{}, {}]); // => [{}, {}]
-  // @dts-jest:show any[]
-  R.uniq([1, '1']); // => [1, '1']
-}
-
-// @dts-jest:group:skip uniqWith
-{
-  const strEq = (a: any, b: any) => String(a) === String(b);
-  // @dts-jest:show number[]
-  R.uniqWith(strEq, [1, '1', 2, 1]); // => [1, 2]
-  // @dts-jest:show number[]
-  R.uniqWith(strEq)([1, '1', 2, 1]); // => [1, 2]
-  // @dts-jest:show Object[]
-  R.uniqWith(strEq)([{}, {}]); // => [{}]
-  // @dts-jest:show number[]
-  R.uniqWith(strEq)([1, '1', 1]); // => [1]
-  // @dts-jest:show string[]
-  R.uniqWith(strEq)(['1', 1, 1]); // => ['1']
-}
-
-// @dts-jest:group:skip unnest, equals
-{
-  // @dts-jest:pass
-  R.equals(R.unnest([1, [2], [[3]]]), [1, 2, [3]]); // => true
-  // @dts-jest:pass
-  R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6]); // => true
-}
-
-// @dts-jest:group:skip xprod
-{
-  // @dts-jest:pass
-  R.xprod([1, 2], ['a', 'b']); // => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
-  // @dts-jest:pass
-  R.xprod([1, 2])(['a', 'b']); // => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
-}
-
-// @dts-jest:group:skip zip
-{
-  // @dts-jest:pass
-  R.zip([1, 2, 3], ['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
-  // @dts-jest:pass
-  R.zip([1, 2, 3])(['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
-}
-
-// @dts-jest:group:skip zipObj
-{
-  // @dts-jest:show Dictionary<number>
-  R.zipObj(['a', 'b', 'c'], [1, 2, 3]); // => {a: 1, b: 2, c: 3}
-  // @dts-jest:show Dictionary<number>
-  R.zipObj(['a', 'b', 'c'])([1, 2, 3]); // => {a: 1, b: 2, c: 3}
-}
-
-// @dts-jest:group:skip zipWith
-{
-  const f = (x: number, y: string) => {
-  // ...
-  };
-  // @dts-jest:show any[]
-  R.zipWith(f, [1, 2, 3], ['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
-  // @dts-jest:show any[]
-  R.zipWith(f)([1, 2, 3], ['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
-  // @dts-jest:show any[]
-  R.zipWith(f, [1, 2, 3])(['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
-}
-
-/*****************************************************************
- * Object category
- */
-
-// @dts-jest:group:skip has
-{
-  const hasName = R.has('name');
-  // @dts-jest:pass
-  hasName({name: 'alice'}); // => true
-  // @dts-jest:pass
-  hasName({name: 'bob'}); // => true
-  // @dts-jest:pass
-  hasName({}); // => false
-
-  const point = {x: 0, y: 0};
-  const pointHas = R.flip(R.has)(point);
-  // @dts-jest:show boolean
-  pointHas('x'); // => true
-  // @dts-jest:show boolean
-  pointHas('y'); // => true
-  // @dts-jest:show boolean
-  pointHas('z'); // => false
-}
-
-// @dts-jest:group:skip hasIn
-{
-  class Rectangle {
-    public width: number;
-    public height: number;
-    constructor(width: number, height: number) {
-      this.width = width;
-      this.height = height;
-    }
-    public area(): number {
-      return this.width * this.height;
-    }
-  }
-  const square = new Rectangle(2, 2);
-  // @dts-jest:pass
-  R.hasIn('width', square); // => true
-  // @dts-jest:pass
-  R.hasIn('area', square); // => true
-  // @dts-jest:show boolean
-  R.flip(R.hasIn)(square)('area'); // => true
-}
-
-// @dts-jest:group:skip invert
-{
-  const raceResultsByFirstName = {
-    first: 'alice',
-    second: 'jake',
-    third: 'alice',
-  };
-  // @dts-jest:pass
-  R.invert(raceResultsByFirstName);
-  // => { 'alice': ['first', 'third'], 'jake': ['second'] }
-}
-
-// @dts-jest:group:skip invertObj
-{
-  const raceResults0 = {
-    first: 'alice',
-    second: 'jake',
-  };
-  // @dts-jest:pass
-  R.invertObj(raceResults0);
-  // => { 'alice': 'first', 'jake': 'second' }
-
-  // Alternatively:
-  const raceResults1 = ['alice', 'jake'];
-  // @dts-jest:pass
-  R.invertObj(raceResults1);
-  // => { 'alice': '0', 'jake': '1' }
-}
-
-// @dts-jest:group:skip keys
-{
-  // @dts-jest:show string[]
-  R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
-}
-
-// @dts-jest:group:skip keysIn
-{
-  const f = new F();
-  // @dts-jest:show string[]
-  R.keysIn(f); // => ['x', 'y']
-}
-
-// @dts-jest:group:skip lens
-{
-  // let xLens = R.lens(R.prop('x'), R.assoc('x'));
-  // let xLens = R.lens<number, xy>(R.prop('x'), R.assoc('x'));
-  const xLens = R.lens<number>(R.prop('x'))(R.assoc('x'));
-  // ^ works with only 1 generic, for curried version managed to split the inferred generic from the manual generic
-  // @dts-jest:show number
-  R.view(xLens, {x: 1, y: 2}); // => 1
-  // @dts-jest:show { x: number, y: number }
-  R.set(xLens, 4, {x: 1, y: 2}); // => {x: 4, y: 2}
-  // @dts-jest:show { x: number, y: number }
-  R.set(xLens)(4, {x: 1, y: 2}); // => {x: 4, y: 2}
-  // @dts-jest:show { x: number, y: number }
-  R.set(xLens, 4)({x: 1, y: 2}); // => {x: 4, y: 2}
-  // @dts-jest:show { x: number, y: number }
-  R.over(xLens, R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
-  // @dts-jest:show { x: number, y: number }
-  R.over(xLens, R.negate)({x: 1, y: 2}); // => {x: -1, y: 2}
-  // @dts-jest:show { x: number, y: number }
-  R.over(xLens)(R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
-}
-
-// @dts-jest:group:skip lensIndex
-{
-  const headLens = R.lensIndex(0);
-  // @dts-jest:show string
-  R.view(headLens, ['a', 'b', 'c']); // => 'a'
-  // @dts-jest:show string[]
-  R.set(headLens, 'x', ['a', 'b', 'c']); // => ['x', 'b', 'c']
-  // @dts-jest:show string[]
-  R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
-}
-
-// @dts-jest:group:skip lensProp
-{
-  const xLens = R.lensProp('x');
-  // @dts-jest:show number
-  R.view(xLens, {x: 1, y: 2}); // => 1
-  // @dts-jest:show Dictionary<number>
-  R.set(xLens, 4, {x: 1, y: 2}); // => {x: 4, y: 2}
-  // @dts-jest:show Dictionary<number>
-  R.over(xLens, R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
-}
-
-// @dts-jest:group:skip lensPath
-{
-  const xyLens = R.lensPath(['x', 'y']);
-  // @dts-jest:show number
-  R.view(xyLens, {x: {y: 2, z: 3}}); // => 2
-  // @dts-jest:show { [s: string]: { [s: string]: number } }
-  R.set(xyLens, 4, {x: {y: 2, z: 3}}); // => {x: {y: 4, z: 3}}
-  // @dts-jest:show { [s: string]: { [s: string]: number } }
-  R.over(xyLens, R.negate, {x: {y: 2, z: 3}}); // => {x: {y: -2, z: 3}}
-}
-
-// @dts-jest:group:skip keys
-{
-  // @dts-jest:show string[]
-  R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
-}
-
-// @dts-jest:group:skip keysIn
-{
-  const f = new F();
-  // @dts-jest:show string[]
-  R.keysIn(f); // => ['x', 'y']
-}
-
-// @dts-jest:group:skip lens
-{
-  const headLens = R.lens(
-    function get(arr: number[]) { return arr[0]; },
-    function set(val: number, arr: number[]) { return [val].concat(arr.slice(1)); },
-  );
-  headLens([10, 20, 30, 40]); // => 10
-  // // @dts-jest:show Argument of type 'mu' is not assignable to parameter of type 'number'.
-  // headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
-
-  const phraseLens = R.lens(
-    function get(obj: any) { return obj.phrase; },
-    function set(val: string, obj: any) {
-      const out = R.clone(obj);
-      out.phrase = val;
-      return out;
-    },
-  );
-  const obj1 = {phrase: 'Absolute filth . . . and I LOVED it!'};
-  const obj2 = {phrase: "What's all this, then?"};
-  // @dts-jest:show string
-  phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
-  // @dts-jest:show string
-  phraseLens(obj2); // => "What's all this, then?"
-  // @dts-jest:show Dictionary<string>
-  phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
-}
-
-// @dts-jest:group:skip lensProp
-{
-  const phraseLens = R.lensProp('phrase');
-  const obj1 = {phrase: 'Absolute filth . . . and I LOVED it!'};
-  const obj2 = {phrase: "What's all this, then?"};
-  // @dts-jest:show string
-  phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
-  // @dts-jest:show string
-  phraseLens(obj2); // => 'What's all this, then?'
-  // @dts-jest:show Dictionary<string>
-  phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
-}
-
-// @dts-jest:group:skip merge
-{
-  // @dts-jest:show Dictionary<any>
-  R.merge({name: 'fred', age: 10}, {age: 40});
-  // => { 'name': 'fred', 'age': 40 }
-  const resetToDefault = R.flip(R.merge)({x: 0});
-  // @dts-jest:show Dictionary<number>
-  resetToDefault({x: 5, y: 2}); // => {x: 0, y: 2}
-}
-
-// @dts-jest:group:skip megeAll
-{
-  // @dts-jest:show Dictionary<number>
-  R.mergeAll([{foo: 1}, {bar: 2}, {baz: 3}]); // => {foo: 1,bar: 2,baz: 3}
-  // @dts-jest:show Dictionary<number>
-  R.mergeAll([{foo: 1}, {foo: 2}, {bar: 2}]); // => {foo: 2,bar: 2}
-}
-
-// @dts-jest:group:skip mergeWith
-{
-  // @dts-jest:show { a: boolean, b: boolean, values: number[] }
-  R.mergeWith(R.concat,
-              {a: true, values: [10, 20]},
-              {b: true, values: [15, 35]});
-  // => { a: true, b: true, values: [10, 20, 15, 35] }
-}
-
-// @dts-jest:group:skip mergeWithKey
-{
-  const concatValues = (k: string, l: string, r: string) => k === 'values' ? R.concat(l, r) : r;
-  R.mergeWithKey(concatValues,
-                 {a: true, thing: 'foo', values: [10, 20]},
-                 {b: true, thing: 'bar', values: [15, 35]});
-  const merge = R.mergeWithKey(concatValues);
-  // @dts-jest:show { a: boolean, b: boolean, values: number[], thing: string }
-  merge({a: true, thing: 'foo', values: [10, 20]}, {b: true, thing: 'bar', values: [15, 35]});
-}
-
-// @dts-jest:group:skip pathOr
-{
-  // @dts-jest:show number
-  R.pathOr('N/A', ['a', 'b'], {a: {b: 2}}); // => 2
-  // @dts-jest:show number
-  R.pathOr('N/A', ['a', 'b'])({a: {b: 2}}); // => 2
-  // @dts-jest:show number
-  R.pathOr('N/A', ['a', 'b'], {c: {b: 2}}); // => 'N/A'
-  // @dts-jest:show number
-  R.pathOr({c: 2})(['a', 'b'], {c: {b: 2}}); // => 'N/A'
-}
-
-// @dts-jest:group:skip pathSatisfies
-{
-  // @dts-jest:pass
-  R.pathSatisfies((a: any) => a === 'foo', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}); // => true
-  // @dts-jest:pass
-  R.pathSatisfies((a: any) => a === 'bar', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}); // => false
-  // @dts-jest:pass
-  R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'], {a: {b: {c: 1}}}); // => true
-  // @dts-jest:pass
-  R.pathSatisfies((a: any) => a !== 1, ['a', 'b', 'c'], {a: {b: {c: 2}}}); // => true
-  // @dts-jest:pass
-  R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'], {a: {b: {c: 1}}}); // => true
-  // @dts-jest:pass
-  R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'])({a: {b: {c: 1}}}); // => true
-  // @dts-jest:pass
-  R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'])({a: {b: {c: 1}}}); // => true
-}
-
-// @dts-jest:group:skip pickBy
-{
-  const isPositive = (n: number) =>
-    n > 0;
-  // @dts-jest:show Dictionary<number>
-  R.pickBy(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); // => {a: 1, b: 2, e: 5}
-  const containsBackground = (val: any) =>
-    val.bgcolor;
-  const colors = {1: {color: 'read'}, 2: {color: 'black', bgcolor: 'yellow'}};
-  // @dts-jest:show { 2: R.Dictionary<string> }
-  R.pickBy(containsBackground, colors); // => {2: {color: 'black', bgcolor: 'yellow'}}
-
-  const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
-  // @dts-jest:show Dictionary<number>
-  R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
-}
-
-// @dts-jest:group:skip pick
-{
-  // @dts-jest:show Dictionary<number>
-  R.pick(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
-  // the following should errror: e/f are not keys in these objects
-  // @dts-jest:pass
-  R.pick<{a: number}>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
-  // @dts-jest:pass
-  R.pick(['a', 'e', 'f'])<{a: number}>({a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
-  // @dts-jest:show:skip
-  R.pick(['a', 'e', 'f'], [1, 2, 3, 4]); // => {}
-}
-
-// @dts-jest:group:skip objOf
-{
-  const matchPhrases = R.compose(
-    R.objOf('must'),
-    R.map(R.objOf('match_phrase')),
-  );
-  // @dts-jest:show { must: { match_phrase: string }[] }
-  matchPhrases(['foo', 'bar', 'baz']);
-}
-
-// @dts-jest:group:skip omit
-{
-  // @dts-jest:show Dictionary<number>
-  R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
-  // @dts-jest:show Dictionary<number>
-  R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
-}
-
-// @dts-jest:group:skip pair
-{
-  R.pair('foo', 'bar'); // => ['foo', 'bar']
-  const p = R.pair('foo', 1); // => ['foo', 'bar']
-  // @dts-jest:show string
-  p[0];
-  // @dts-jest:pass
-  p[1];
-}
-
-// @dts-jest:group:skip over, lensIndex
-{
-  const headLens = R.lensIndex(0);
-  // @dts-jest:show string[]
-  R.over(headLens, R.toUpper, ['foo', 'bar', 'baz']); // => ['FOO', 'bar', 'baz']
-}
-
-// @dts-jest:group:skip pickAll
-{
-  // @dts-jest:show Dictionary<number>
-  R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
-  // @dts-jest:show Dictionary<number>
-  R.pickAll(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
-  // @dts-jest:show Dictionary<number>
-  R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
-  // @dts-jest:show Dictionary<number>
-  R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
-}
-
-// @dts-jest:group:skip pickBy
-{
-  const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
-  // @dts-jest:show Dictionary<number>
-  R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
-}
-
-// @dts-jest:group:skip project
-{
-  const abby = {name: 'Abby', age: 7, hair: 'blond', grade: 2};
-  const fred = {name: 'Fred', age: 12, hair: 'brown', grade: 7};
-  const kids = [abby, fred];
-  // @dts-jest:show { name: string, grade: number }[]
-  R.project(['name', 'grade'], kids); // => [{name: 'Abby', grade: 2}, {name: 'Fred', grade: 7}]
-}
-
-// @dts-jest:group:skip prop
-{
-  // @dts-jest:pass
-  R.prop('x', {x: 100}); // => 100
-  // @dts-jest:show:skip Argument of type 'x' is not assignable to parameter of type 'never'.
-  R.prop('x', {}); // => undefined
-}
-
-// @dts-jest:group:skip propOr
-{
-  const alice = {
-    name: 'ALICE',
-    age: 101,
-  };
-  const favorite = R.prop('favoriteLibrary');
-  const favoriteWithDefault = R.propOr('Ramda', 'favoriteLibrary');
-
-  // @dts-jest:show undefined
-  favorite(alice); // => undefined
-  // @dts-jest:show string
-  favoriteWithDefault(alice); // => 'Ramda'
-}
-
-// @dts-jest:group:skip propSatisfies
-{
-  // @dts-jest:pass
-  R.propSatisfies((x: number) => x > 0, 'x', {x: 1, y: 2}); // => true
-  // @dts-jest:show boolean
-  R.propSatisfies((x: number) => x > 0, 'x')({x: 1, y: 2}); // => true
-  // @dts-jest:show boolean
-  R.propSatisfies((x: number) => x > 0)('x')({x: 1, y: 2}); // => true
-}
-
-// @dts-jest:group:skip props
-{
-  // @dts-jest:pass
-  R.props(['x', 'y'], {x: 1, y: 2}); // => [1, 2]
-  // @dts-jest:show Array<number|undefined>
-  R.props(['c', 'a', 'b'], {b: 2, a: 1}); // => [undefined, 1, 2]
-
-  const fullName = R.compose(R.join(' '), R.props(['first', 'last']));
-  // @dts-jest:pass
-  fullName({last: 'Bullet-Tooth', age: 33, first: 'Tony'}); // => 'Tony Bullet-Tooth'
-}
-
-// @dts-jest:group:skip toPairs
-{
-  // @dts-jest:show [string, number][]
-  R.toPairs({a: 1, b: 2, c: 3}); // => [['a', 1], ['b', 2], ['c', 3]]
-}
-
-// @dts-jest:group:skip toPairsIn
-{
-  const f = new F();
-  // @dts-jest:show [string, string][]
-  R.toPairsIn(f); // => [['x','X'], ['y','Y']]
-  // @dts-jest:show [string, string][]
-  R.toPairsIn(f); // => [['x','X'], ['y','Y']]
-}
-
-// @dts-jest:group:skip values
-{
-  // @dts-jest:pass
-  R.values({a: 1, b: 2, c: 3}); // => [1, 2, 3]
-}
-
-// @dts-jest:group:skip valuesIn
-{
-  const f = new F();
-  // @dts-jest:pass
-  R.valuesIn(f); // => ['X', 'Y']
-}
-
-// @dts-jest:group:skip where
-{
-  const spec = {x: 2};
-  // @dts-jest:show boolean
-  R.where(spec, {w: 10, x: 2, y: 300}); // => true
-  // @dts-jest:show boolean
-  R.where(spec, {x: 1, y: 'moo', z: true}); // => false
-  // @dts-jest:show boolean
-  R.where(spec)({w: 10, x: 2, y: 300}); // => true
-  // @dts-jest:show boolean
-  R.where(spec)({x: 1, y: 'moo', z: true}); // => false
-
-  // There's no way to represent the below functionality in typescript
-  // per http: //stackoverflow.com/a/29803848/632495
-  // will need a work around.
-
-  interface XY {
-    x: number;
-    y: number;
-  }
-
-  const spec2 = {x(val: number, obj: XY) { return val + obj.y > 10; }};
-  // @dts-jest:show boolean
-  R.where(spec2, {x: 2, y: 7}); // => false
-  // @dts-jest:show boolean
-  R.where(spec2, {x: 3, y: 8}); // => true
-
-  const xs = [{x: 2, y: 1}, {x: 10, y: 2}, {x: 8, y: 3}, {x: 10, y: 4}];
-  // @dts-jest:show { x: number, y: number }[]
-  R.filter(R.where({x: 10}), xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
-  // @dts-jest:show { x: number, y: number }[]
-  R.filter(R.where({x: 10}))(xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
-}
-
-// @dts-jest:group:skip whereEq
-{
-  // @dts-jest:show (v: Object) => Boolean
-  const pred = R.whereEq({a: 1, b: 2});
-  // @dts-jest:pass
-  pred({a: 1}); // => false
-  // @dts-jest:pass
-  pred({a: 1, b: 2}); // => true
-  // @dts-jest:pass
-  pred({a: 1, b: 2, c: 3}); // => true
-  // @dts-jest:pass
-  pred({a: 1, b: 1}); // => false
-  // @dts-jest:pass
-  R.whereEq({a: 'one'}, {a: 'one'}); // => true
-}
-
-// @dts-jest:group:skip without
-{
-  // @dts-jest:pass
-  R.without([1, 2], [1, 2, 1, 3, 4]); // => [3, 4]
-}
-
-// @dts-jest:group:skip mapIndexed, addIndex
-{
-  const mapIndexed = R.addIndex<string, string>(R.map);
-  // @dts-jest:show string[]
-  mapIndexed((val: string, idx: number) => `${idx}-${val}`)(['f', 'o', 'o', 'b', 'a', 'r']);
-  // @dts-jest:show string[]
-  R.mapIndexed((val: string, idx: number) => `${idx}-${val}`)(['f', 'o', 'o', 'b', 'a', 'r']);
-  // => ['0-f', '1-o', '2-o', '3-b', '4-a', '5-r']
-  // @dts-jest:show number[]
-  R.mapIndexed(
-    (rectangle: Rectangle, idx: number) => rectangle.area() * idx,
-    [new Rectangle(1, 2), new Rectangle(4, 7)],
-  ); // => [2, 56]
-}
-
-// @dts-jest:group:skip pipe, inc, negate
-{
-  const f = R.pipe(Math.pow, R.negate, R.inc);
-  // @dts-jest:pass
-  f(3, 4); // -(3^4) + 1
-}
-
-// @dts-jest:group:skip TODO: composeP
-
-// @dts-jest:group:skip TODO: composeK
-
-/*****************************************************************
- * Relation category
- */
-
-// @dts-jest:group:skip identity
-{
-  const obj = {};
-
-  // @dts-jest:pass
-  R.identity(obj) === obj; // => true
-  // @dts-jest:show number
-  R.identity(1); // => 1
-  // @dts-jest:pass
-  R.identity([1, 2, 3]);
-  // @dts-jest:pass
-  R.identity(['a', 'b', 'c']);
-}
-
-// @dts-jest:group:skip identical
-{
-  const o = {};
-  // @dts-jest:pass
-  R.identical(o, o); // => true
-  // @dts-jest:pass
-  R.identical(1, 1); // => true
-  // @dts-jest:pass
-  R.identical('2', '1'); // => false
-  // @dts-jest:pass
-  R.identical([], []); // => false
-  // @dts-jest:pass
-  R.identical(0, -0); // => false
-  // @dts-jest:pass
-  R.identical(NaN, NaN); // => true
-}
-
-// @dts-jest:group:skip path
-{
-  // @dts-jest:show number
-  R.path(['a', 'b'], {a: {b: 2}}); // => 2
-  // @dts-jest:show number
-  R.path(['a', 'b'])({a: {b: 2}}); // => 2
 }
 
 // @dts-jest:group:skip sortBy
@@ -2698,205 +2448,6 @@ class F {
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
 }
 
-// @dts-jest:group:skip gt
-{
-  // @dts-jest:pass
-  R.gt(2, 6); // => false
-  // @dts-jest:pass
-  R.gt(2, 0); // => true
-  // @dts-jest:pass
-  R.gt(2, 2); // => false
-  // @dts-jest:show boolean
-  R.flip(R.gt)(2)(10); // => true
-  // @dts-jest:show boolean
-  R.gt(2)(10); // => false
-}
-
-// @dts-jest:group:skip gte
-{
-  // @dts-jest:pass
-  R.gte(2, 6); // => false
-  // @dts-jest:pass
-  R.gte(2, 0); // => true
-  // @dts-jest:pass
-  R.gte(2, 2); // => false
-  // @dts-jest:show boolean
-  R.flip(R.gte)(2)(10); // => true
-  // @dts-jest:show boolean
-  R.gte(2)(10); // => false
-}
-
-// @dts-jest:group:skip isNaN
-{
-  // @dts-jest:show boolean
-  R.isNaN(NaN); // => true
-  // @dts-jest:show boolean
-  R.isNaN(undefined); // => false
-  // @dts-jest:show boolean
-  R.isNaN({}); // => false
-}
-
-// @dts-jest:group:skip lt
-{
-  // @dts-jest:pass
-  R.lt(2, 6); // => true
-  // @dts-jest:pass
-  R.lt(2, 0); // => false
-  // @dts-jest:pass
-  R.lt(2, 2); // => false
-  // @dts-jest:show boolean
-  R.lt(5)(10); // => true
-  // @dts-jest:show boolean
-  R.flip(R.lt)(5)(10); // => false // right-sectioned currying
-}
-
-// @dts-jest:group:skip lte
-{
-  // @dts-jest:pass
-  R.lte(2, 6); // => true
-  // @dts-jest:pass
-  R.lte(2, 0); // => false
-  // @dts-jest:pass
-  R.lte(2, 2); // => true
-  // @dts-jest:show boolean
-  R.flip(R.lte)(2)(1); // => true
-  // @dts-jest:show boolean
-  R.lte(2)(10); // => true
-}
-
-// @dts-jest:group:skip mathMod
-{
-  // @dts-jest:pass
-  R.mathMod(-17, 5); // => 3
-  // @dts-jest:pass
-  R.mathMod(17, 5); // => 2
-  // @dts-jest:pass
-  R.mathMod(17, -5); // => NaN
-  // @dts-jest:pass
-  R.mathMod(17, 0); // => NaN
-  // @dts-jest:pass
-  R.mathMod(17.2, 5); // => NaN
-  // @dts-jest:pass
-  R.mathMod(17, 5.3); // => NaN
-
-  const clock = R.flip(R.mathMod)(12);
-  // @dts-jest:show number
-  clock(15); // => 3
-  // @dts-jest:show number
-  clock(24); // => 0
-
-  const seventeenMod = R.mathMod(17);
-  // @dts-jest:pass
-  seventeenMod(3); // => 2
-}
-
-// @dts-jest:group:skip max
-{
-  // @dts-jest:show number
-  R.max(7, 3); // => 7
-  // @dts-jest:show string
-  R.max('a', 'z'); // => 'z'
-}
-
-// @dts-jest:group:skip maxBy
-{
-  function cmp(obj: { x: number }) { return obj.x; }
-  const a = {x: 1};
-  const b = {x: 2};
-  const c = {x: 3};
-  const d = {x: 'a'};
-  const e = {x: 'z'};
-  // @dts-jest:pass
-  R.maxBy(cmp, a, c); // => {x: 3}
-  // @dts-jest:pass
-  R.maxBy(cmp)(a, c); // => {x: 3}
-  // @dts-jest:pass
-  R.maxBy(cmp)(a)(b);
-  // @dts-jest:fail
-  R.maxBy(cmp)(d)(e);
-}
-
-// @dts-jest:group:skip mean
-{
-  // @dts-jest:pass
-  R.mean([2, 7, 9]); // => 6
-  // @dts-jest:pass
-  R.mean([]); // => NaN
-}
-
-// @dts-jest:group:skip median
-{
-  // @dts-jest:pass
-  R.median([7, 2, 10, 9]); // => 8
-  // @dts-jest:pass
-  R.median([]); // => NaN
-}
-
-// @dts-jest:group:skip min
-{
-  // @dts-jest:show number
-  R.min(9, 3); // => 3
-  // @dts-jest:show string
-  R.min('a', 'z'); // => 'a'
-}
-
-// @dts-jest:group:skip minBy
-{
-  function cmp(obj: { x: number }) { return obj.x; }
-  const a = {x: 1};
-  const b = {x: 2};
-  const c = {x: 3};
-  const d = {x: 'a'};
-  const e = {x: 'z'};
-  // @dts-jest:show { x: number }
-  R.minBy(cmp, a, b); // => {x: 1}
-  // @dts-jest:show { x: number }
-  R.minBy(cmp)(a, b); // => {x: 1}
-  // @dts-jest:show { x: number }
-  R.minBy(cmp)(a)(c);
-  // @dts-jest:fail
-  R.minBy(cmp, d, e);
-}
-
-// @dts-jest:group:skip modulo
-{
-  // @dts-jest:pass
-  R.modulo(17, 3); // => 2
-  // JS behavior:
-  // @dts-jest:pass
-  R.modulo(-17, 3); // => -2
-  // @dts-jest:pass
-  R.modulo(17, -3); // => 2
-
-  const isOdd = R.flip(R.modulo)(2);
-  // @dts-jest:show number
-  isOdd(42); // => 0
-  // @dts-jest:show number
-  isOdd(21); // => 1
-}
-
-// @dts-jest:group:skip multiply
-{
-  // @dts-jest:pass
-  R.multiply(2)(3); // => 6
-  // @dts-jest:pass
-  R.multiply(3)(4); // => 12
-  // @dts-jest:pass
-  R.multiply(2, 5); // => 10
-}
-
-// @dts-jest:group:skip negate
-{
-  // @dts-jest:pass
-  R.negate(42); // => -42
-}
-
-// @dts-jest:group:skip product
-{
-  // @dts-jest:pass
-  R.product([2, 4, 6, 8, 100, 1]); // => 38400
-}
-
 // @dts-jest:group:skip subtract
 {
   // @dts-jest:pass
@@ -2940,138 +2491,599 @@ class F {
   R.symmetricDifferenceWith(eqA)(l1); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
 }
 
+// @dts-jest:group:skip tail
+{
+  // @dts-jest:pass
+  R.tail(['fi', 'fo', 'fum']); // => ['fo', 'fum']
+  // @dts-jest:pass
+  R.tail([1, 2, 3]); // => [2, 3]
+}
+
+// @dts-jest:group:skip take
+{
+  // @dts-jest:pass
+  R.take(3, [1, 2, 3, 4, 5]); // => [1,2,3]
+
+  const members = [
+    'Paul Desmond', 'Bob Bates', 'Joe Dodge', 'Ron Crotty', 'Lloyd Davis', 'Joe Morello', 'Norman Bates',
+    'Eugene Wright', 'Gerry Mulligan', 'Jack Six', 'Alan Dawson', 'Darius Brubeck', 'Chris Brubeck',
+    'Dan Brubeck', 'Bobby Militello', 'Michael Moore', 'Randy Jones',
+  ];
+  const takeFive = R.take(5);
+  // @dts-jest:pass
+  takeFive(members); // => ['Paul Desmond','Bob Bates','Joe Dodge','Ron Crotty','Lloyd Davis']
+
+  // @dts-jest:pass
+  R.take(3, 'Example'); // => 'Exa'
+
+  const takeThree = R.take(3);
+  // @dts-jest:pass
+  takeThree('Example'); // => 'Exa'
+}
+
+// @dts-jest:group:skip takeLast
+{
+  // @dts-jest:pass
+  R.takeLast(1, ['foo', 'bar', 'baz']); // => ['baz']
+  // @dts-jest:pass
+  R.takeLast(2)(['foo', 'bar', 'baz']); // => ['bar', 'baz']
+  // @dts-jest:pass
+  R.takeLast(3, 'ramda'); // => 'mda'
+  // @dts-jest:pass
+  R.takeLast(3)('ramda'); // => 'mda'
+}
+
+// @dts-jest:group:skip takeLastWhile
+{
+  const isNotOne = (x: number) => x !== 1;
+  // @dts-jest:pass
+  R.takeLastWhile(isNotOne, [1, 2, 3, 4]); // => [2, 3, 4]
+  // @dts-jest:pass
+  R.takeLastWhile(isNotOne)([1, 2, 3, 4]); // => [2, 3, 4]
+}
+
+// @dts-jest:group:skip takeWhile
+{
+  const isNotFour = (x: number) =>
+    !(x === 4);
+  // @dts-jest:pass
+  R.takeWhile(isNotFour, [1, 2, 3, 4]); // => [1, 2, 3]
+  // @dts-jest:pass
+  R.takeWhile(isNotFour)([1, 2, 3, 4]); // => [1, 2, 3]
+}
+
+// @dts-jest:group:skip tap
+{
+  const sayX = (x: number) => console.log(`x is ${x}`);
+  // @dts-jest:pass
+  R.tap(sayX, 100); // => 100
+}
+
+// @dts-jest:group:skip test
+{
+  // @dts-jest:pass
+  R.test(/^x/, 'xyz'); // => true
+  // @dts-jest:pass
+  R.test(/^y/)('xyz'); // => false
+}
+
+// @dts-jest:group:skip times
+{
+  const i = (x: number) => x;
+  // @dts-jest:pass
+  R.times(i, 5);
+}
+
+// @dts-jest:group:skip times
+{
+  // @dts-jest:pass
+  R.times(R.identity, 5); // => [0, 1, 2, 3, 4]
+  // @dts-jest:pass
+  R.times(R.identity)(5); // => [0, 1, 2, 3, 4]
+}
+
+// @dts-jest:group:skip toPairs
+{
+  // @dts-jest:show [string, number][]
+  R.toPairs({a: 1, b: 2, c: 3}); // => [['a', 1], ['b', 2], ['c', 3]]
+}
+
+// @dts-jest:group:skip toPairsIn
+{
+  class F {
+    public x = 'X';
+    public y = 'Y';
+  }
+  const f = new F();
+  // @dts-jest:show [string, string][]
+  R.toPairsIn(f); // => [['x','X'], ['y','Y']]
+  // @dts-jest:show [string, string][]
+  R.toPairsIn(f); // => [['x','X'], ['y','Y']]
+}
+
+// @dts-jest:group:skip toString
+{
+  class Point {
+    public x: number;
+    public y: number;
+    constructor(x: number, y: number) {
+      this.x = x;
+      this.y = y;
+    }
+    public toString() {
+      return `new Point(${this.x}, ${this.y})`;
+    }
+  }
+  // @dts-jest:pass
+  R.toString(new Point(1, 2)); // => 'new Point(1, 2)'
+  // @dts-jest:pass
+  R.toString(42); // => '42'
+  // @dts-jest:pass
+  R.toString('abc'); // => ''abc''
+  // @dts-jest:pass
+  R.toString([1, 2, 3]); // => '[1, 2, 3]'
+  // @dts-jest:pass
+  R.toString({foo: 1, bar: 2, baz: 3}); // => '{'bar': 2, 'baz': 3, 'foo': 1}'
+  // @dts-jest:pass
+  R.toString(new Date('2001-02-03T04: 05: 06Z')); // => 'new Date('2001-02-03T04: 05: 06.000Z')'
+}
+
+// @dts-jest:group:skip transduce
+{
+  const numbers = [1, 2, 3, 4];
+  const transducer = R.compose(R.map(R.add(1)), R.take(2));
+  const fn = R.flip<number, number[], number[]>(R.append);
+  // @dts-jest:show number[]
+  R.transduce(transducer, fn, [] as number[], numbers); // => [2, 3] // strictNullChecks: must annotate empty array type
+  // @dts-jest:show number[]
+  R.transduce(transducer, fn, [] as number[])(numbers); // => [2, 3]
+  // @dts-jest:show number[]
+  R.transduce(transducer, fn)([] as number[], numbers); // => [2, 3]
+  // @dts-jest:show number[]
+  R.transduce(transducer)(fn, [] as number[], numbers); // => [2, 3]
+}
+
+// @dts-jest:group:skip transpose
+{
+  // @dts-jest:show any[][]
+  R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]); // => [[1, 2, 3], ['a', 'b', 'c']]
+  // @dts-jest:show any[][]
+  R.transpose([[1, 2, 3], ['a', 'b', 'c']]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
+  // @dts-jest:pass
+  R.transpose([[10, 11], [20], [], [30, 31, 32]]); // => [[10, 20, 30], [11, 31], [32]]
+}
+
+// @dts-jest:group:skip tryCatch
+{
+  // @dts-jest:show boolean
+  R.tryCatch<boolean>(R.prop('x'), R.F)({x: true}); // => true
+  // @dts-jest:show boolean
+  R.tryCatch<boolean>(R.prop('x'), R.F)(null); // => false
+}
+
+// @dts-jest:group:skip type
+{
+  // @dts-jest:pass
+  R.type({}); // => 'Object'
+  // @dts-jest:show string
+  R.type(1); // => 'Number'
+  // @dts-jest:show string
+  R.type(false); // => 'Boolean'
+  // @dts-jest:show string
+  R.type('s'); // => 'String'
+  // @dts-jest:show string
+  R.type(null); // => 'Null'
+  // @dts-jest:pass
+  R.type([]); // => 'Array'
+  // @dts-jest:pass
+  R.type(/[A-z]/); // => 'RegExp'
+}
+
+// @dts-jest:group:skip unapply
+{
+  // @dts-jest:show (...args: string[])=>string
+  R.unapply(JSON.stringify);
+  // @dts-jest:pass
+  R.unapply(JSON.stringify)(1, 2, 3); // => '[1,2,3]'
+}
+
+// @dts-jest:group:skip uncurry
+{
+  const addFour = (a: number) => (b: number) => (c: number) => (d: number) => a + b + c + d;
+  const uncurriedAddFour = R.uncurryN<number>(4, addFour);
+  // @dts-jest:pass
+  uncurriedAddFour(1, 2, 3, 4); // => 10
+}
+
+// @dts-jest:group:skip unfold
+{
+  const f = (n: number) => n > 50 ? false : [-n, n + 10];
+  // @dts-jest:show number[]
+  R.unfold(f, 10); // => [-10, -20, -30, -40, -50]
+  const b = R.unfold(f); // => [-10, -20, -30, -40, -50]
+  // @dts-jest:show number[]
+  b(10);
+}
+
+// @dts-jest:group:skip uniq
+{
+  // @dts-jest:pass
+  R.uniq([1, 1, 2, 1]); // => [1, 2]
+  // @dts-jest:show Object[]
+  R.uniq([{}, {}]); // => [{}, {}]
+  // @dts-jest:show any[]
+  R.uniq([1, '1']); // => [1, '1']
+}
+
+// @dts-jest:group:skip uniqWith
+{
+  const strEq = (a: any, b: any) => String(a) === String(b);
+  // @dts-jest:show number[]
+  R.uniqWith(strEq, [1, '1', 2, 1]); // => [1, 2]
+  // @dts-jest:show number[]
+  R.uniqWith(strEq)([1, '1', 2, 1]); // => [1, 2]
+  // @dts-jest:show Object[]
+  R.uniqWith(strEq)([{}, {}]); // => [{}]
+  // @dts-jest:show number[]
+  R.uniqWith(strEq)([1, '1', 1]); // => [1]
+  // @dts-jest:show string[]
+  R.uniqWith(strEq)(['1', 1, 1]); // => ['1']
+}
+
+// @dts-jest:group:skip unless
+{
+  // @dts-jest:show <a>(v: a|[a]) => [a]
+  const coerceArray = R.unless(R.isArrayLike, R.of);
+  // @dts-jest:show number[]
+  coerceArray([1, 2, 3]); // => [1, 2, 3]
+  // @dts-jest:show number[]
+  coerceArray(1); // => [1]
+}
+
+// @dts-jest:group:skip until
+{
+  // @dts-jest:show number
+  R.until(R.flip(R.gt)(100), R.multiply(2))(1); // => 128
+}
+
+// @dts-jest:group:skip values
+{
+  // @dts-jest:pass
+  R.values({a: 1, b: 2, c: 3}); // => [1, 2, 3]
+}
+
+// @dts-jest:group:skip valuesIn
+{
+  const f = new F();
+  // @dts-jest:pass
+  R.valuesIn(f); // => ['X', 'Y']
+}
+
+// @dts-jest:group:skip where
+{
+  const spec = {x: 2};
+  // @dts-jest:show boolean
+  R.where(spec, {w: 10, x: 2, y: 300}); // => true
+  // @dts-jest:show boolean
+  R.where(spec, {x: 1, y: 'moo', z: true}); // => false
+  // @dts-jest:show boolean
+  R.where(spec)({w: 10, x: 2, y: 300}); // => true
+  // @dts-jest:show boolean
+  R.where(spec)({x: 1, y: 'moo', z: true}); // => false
+
+  // There's no way to represent the below functionality in typescript
+  // per http: //stackoverflow.com/a/29803848/632495
+  // will need a work around.
+
+  interface XY {
+    x: number;
+    y: number;
+  }
+
+  const spec2 = {x(val: number, obj: XY) { return val + obj.y > 10; }};
+  // @dts-jest:show boolean
+  R.where(spec2, {x: 2, y: 7}); // => false
+  // @dts-jest:show boolean
+  R.where(spec2, {x: 3, y: 8}); // => true
+
+  const xs = [{x: 2, y: 1}, {x: 10, y: 2}, {x: 8, y: 3}, {x: 10, y: 4}];
+  // @dts-jest:show { x: number, y: number }[]
+  R.filter(R.where({x: 10}), xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
+  // @dts-jest:show { x: number, y: number }[]
+  R.filter(R.where({x: 10}))(xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
+}
+
+// @dts-jest:group:skip whereEq
+{
+  // @dts-jest:show (v: Object) => Boolean
+  const pred = R.whereEq({a: 1, b: 2});
+  // @dts-jest:pass
+  pred({a: 1}); // => false
+  // @dts-jest:pass
+  pred({a: 1, b: 2}); // => true
+  // @dts-jest:pass
+  pred({a: 1, b: 2, c: 3}); // => true
+  // @dts-jest:pass
+  pred({a: 1, b: 1}); // => false
+  // @dts-jest:pass
+  R.whereEq({a: 'one'}, {a: 'one'}); // => true
+}
+
+// @dts-jest:group:skip without
+{
+  // @dts-jest:pass
+  R.without([1, 2], [1, 2, 1, 3, 4]); // => [3, 4]
+}
+
+// @dts-jest:group:skip xprod
+{
+  // @dts-jest:pass
+  R.xprod([1, 2], ['a', 'b']); // => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
+  // @dts-jest:pass
+  R.xprod([1, 2])(['a', 'b']); // => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
+}
+
+// @dts-jest:group:skip zip
+{
+  // @dts-jest:pass
+  R.zip([1, 2, 3], ['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
+  // @dts-jest:pass
+  R.zip([1, 2, 3])(['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
+}
+
+// @dts-jest:group:skip zipObj
+{
+  // @dts-jest:show Dictionary<number>
+  R.zipObj(['a', 'b', 'c'], [1, 2, 3]); // => {a: 1, b: 2, c: 3}
+  // @dts-jest:show Dictionary<number>
+  R.zipObj(['a', 'b', 'c'])([1, 2, 3]); // => {a: 1, b: 2, c: 3}
+}
+
+// @dts-jest:group:skip zipWith
+{
+  const f = (x: number, y: string) => {
+  // ...
+  };
+  // @dts-jest:show any[]
+  R.zipWith(f, [1, 2, 3], ['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
+  // @dts-jest:show any[]
+  R.zipWith(f)([1, 2, 3], ['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
+  // @dts-jest:show any[]
+  R.zipWith(f, [1, 2, 3])(['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
+}
+
+// ---------------------------------------------------------------------
+
+// @dts-jest:group:skip unary, binary, nAry
+{
+  const takesNoArg = () => true;
+  const takesOneArg = (a: number) => [a];
+  const takesTwoArgs = (a: number, b: number) => [a, b];
+  const takesThreeArgs = (a: number, b: number, c: number) => [a, b, c];
+
+  const addFourNumbers = (a: number, b: number, c: number, d: number): number =>
+    a + b + c + d;
+
+  const curriedFourNumbers = R.curry(addFourNumbers);
+  // @dts-jest:pass
+  curriedFourNumbers;
+  // @dts-jest:pass
+  curriedFourNumbers(1);
+  // @dts-jest:pass
+  curriedFourNumbers(1)(2);
+  // @dts-jest:show <T1,R>(v1: T1) => R
+  curriedFourNumbers(1)(2)(3);
+  // @dts-jest:show <T1,R>(v1: T1) => R
+  curriedFourNumbers(1, 2, 4);
+  // @dts-jest:pass
+  curriedFourNumbers(1)(2)(3)(4);
+  // @dts-jest:pass
+  curriedFourNumbers(1, 2)(3, 4);
+  // @dts-jest:pass
+  curriedFourNumbers(1, 2, 3)(4);
+
+  // @dts-jest:pass
+  R.nAry(0, takesNoArg);
+  // @dts-jest:pass
+  R.nAry(0, takesOneArg);
+  // @dts-jest:show (a: number) => number[]
+  R.nAry(1, takesTwoArgs);
+  // @dts-jest:show (a: number) => number[]
+  R.nAry(1, takesThreeArgs);
+
+  // @dts-jest:pass
+  R.unary(takesOneArg);
+  // @dts-jest:pass
+  R.unary(takesTwoArgs);
+  // @dts-jest:pass
+  R.unary(takesThreeArgs);
+
+  // @dts-jest:pass
+  R.binary(takesTwoArgs);
+  // @dts-jest:pass
+  R.binary(takesThreeArgs);
+
+  const addTwoNumbers = (a: number, b: number) => a + b;
+  // @dts-jest:show CurriedFunction2<number, number, number>
+  const addTwoNumbersCurried = R.curry(addTwoNumbers);
+
+  const inc = addTwoNumbersCurried(1);
+  // @dts-jest:pass
+  inc(2);
+  // @dts-jest:pass
+  addTwoNumbersCurried(2, 3);
+}
+
+// @dts-jest:group:skip TODO: pipeK
+
+// forEach
+// (() => {
+//   let printXPlusFive = function(x, i) { console.log(i + 5); };
+//   R.forEach.idx(printXPlusFive, [{name: 1}, {name: 2}, {name: 3}]);
+// }
+
+// @dts-jest:group:skip addIndex, filter, reject
+{
+  const isEven = (n: number) =>
+    n % 2 === 0;
+  const filterIndexed = R.addIndex(R.filter);
+
+  // @dts-jest:pass
+  R.filter(isEven, [1, 2, 3, 4]); // => [2, 4]
+
+  const lastTwo = (val: number, idx: number, list: number[]) =>
+    list.length - idx <= 2;
+  // @dts-jest:show number[]
+  filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [0, 9]
+
+  const isOdd = (n: number) =>
+    n % 2 === 1;
+  // @dts-jest:pass
+  R.reject(isOdd, [1, 2, 3, 4]); // => [2, 4]
+}
+
+// @dts-jest:group:skip take, takeWhile
+{
+  const isNotFour = (x: number) =>
+    !(x === 4);
+  // @dts-jest:pass
+  R.takeWhile(isNotFour, [1, 2, 3, 4]); // => [1, 2, 3]
+  // @dts-jest:pass
+  R.take(2, [1, 2, 3, 4]); // => [1, 2]
+}
+
+/*****************************************************************
+ * Function category
+ */
+
+/*********************
+ * List category
+ ********************/
+
+// @dts-jest:group:skip find, propEq
+{
+  const xs = [{a: 1}, {a: 2}, {a: 3}];
+  // @dts-jest:show Dictionary<number>
+  R.find(R.propEq('a', 2))(xs); // => {a: 2}
+  // @dts-jest:show undefined
+  R.find(R.propEq('a', 4))(xs); // => undefined
+}
+
+// @dts-jest:group:skip lensIndex, set, view, over
+{
+  const headLens = R.lensIndex(0);
+  // @dts-jest:show number
+  headLens([10, 20, 30, 40]); // => 10
+  // @dts-jest:show Array<number|string>
+  headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
+  // @dts-jest:show string
+  R.view(headLens, ['a', 'b', 'c']); // => 'a'
+  // @dts-jest:show string[]
+  R.set(headLens, 'x', ['a', 'b', 'c']); // => ['x', 'b', 'c']
+  // @dts-jest:show string[]
+  R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
+}
+
+// @dts-jest:group:skip partition, contains
+{
+  // @dts-jest:show [string[], string[]]
+  R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']);
+  // @dts-jest:show [string[], string[]]
+  R.partition(R.contains('s'))(['sss', 'ttt', 'foo', 'bars']);
+  // @dts-jest:pass
+  R.partition((x: number) => x > 2, [1, 2, 3, 4]);
+  // @dts-jest:pass
+  R.partition((x: number) => x > 2)([1, 2, 3, 4]);
+  // @dts-jest:show Object[]
+  R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}); // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' } ]
+}
+
+// // traverse
+// () => {
+//   // Returns `Nothing` if the given divisor is `0`
+//   safeDiv = n => d => d === 0 ? Nothing() : Just(n / d)
+//
+//   R.traverse(Maybe.of, safeDiv(10), [2, 4, 5]); // => Just([5, 2.5, 2])
+//   R.traverse(Maybe.of, safeDiv(10), [2, 0, 5]); // => Nothing
+// }
+
+// @dts-jest:group:skip unnest, equals
+{
+  // @dts-jest:pass
+  R.equals(R.unnest([1, [2], [[3]]]), [1, 2, [3]]); // => true
+  // @dts-jest:pass
+  R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6]); // => true
+}
+
+/*****************************************************************
+ * Object category
+ */
+
+// @dts-jest:group:skip over, lensIndex
+{
+  const headLens = R.lensIndex(0);
+  // @dts-jest:show string[]
+  R.over(headLens, R.toUpper, ['foo', 'bar', 'baz']); // => ['FOO', 'bar', 'baz']
+}
+
+// @dts-jest:group:skip mapIndexed, addIndex
+{
+  class Rectangle {
+    public width: number;
+    public height: number;
+    constructor(width: number, height: number) {
+      this.width = width;
+      this.height = height;
+    }
+    public area(): number {
+      return this.width * this.height;
+    }
+  }
+  const mapIndexed = R.addIndex<string, string>(R.map);
+  // @dts-jest:show string[]
+  mapIndexed((val: string, idx: number) => `${idx}-${val}`)(['f', 'o', 'o', 'b', 'a', 'r']);
+  // @dts-jest:show string[]
+  R.mapIndexed((val: string, idx: number) => `${idx}-${val}`)(['f', 'o', 'o', 'b', 'a', 'r']);
+  // => ['0-f', '1-o', '2-o', '3-b', '4-a', '5-r']
+  // @dts-jest:show number[]
+  R.mapIndexed(
+    (rectangle: Rectangle, idx: number) => rectangle.area() * idx,
+    [new Rectangle(1, 2), new Rectangle(4, 7)],
+  ); // => [2, 56]
+}
+
+// @dts-jest:group:skip pipe, inc, negate
+{
+  const f = R.pipe(Math.pow, R.negate, R.inc);
+  // @dts-jest:pass
+  f(3, 4); // -(3^4) + 1
+}
+
+// @dts-jest:group:skip TODO: composeP
+
+// @dts-jest:group:skip TODO: composeK
+
+/*****************************************************************
+ * Relation category
+ */
+
 /*****************************************************************
  * String category
  */
-
-// @dts-jest:group:skip replace
-{
-  // @dts-jest:pass
-  R.replace('foo', 'bar', 'foo foo foo'); // => 'bar foo foo'
-  // @dts-jest:pass
-  R.replace('foo', 'bar')('foo foo foo'); // => 'bar foo foo'
-  // @dts-jest:pass
-  R.replace('foo')('bar')('foo foo foo'); // => 'bar foo foo'
-  // @dts-jest:pass
-  R.replace(/foo/, 'bar', 'foo foo foo'); // => 'bar foo foo'
-
-  // Use the 'g' (global) flag to replace all occurrences:
-  // @dts-jest:pass
-  R.replace(/foo/g, 'bar', 'foo foo foo'); // => 'bar bar bar'
-  // @dts-jest:pass
-  R.replace(/foo/g, 'bar')('foo foo foo'); // => 'bar bar bar'
-  // @dts-jest:pass
-  R.replace(/foo/g)('bar')('foo foo foo'); // => 'bar bar bar'
-}
 
 /*****************************************************************
  * Is category
  */
 
-// @dts-jest:group:skip is
-{
-  // @dts-jest:pass
-  R.is(Object, {}); // => true
-  // @dts-jest:pass
-  R.is(Object)({}); // => true
-  // @dts-jest:pass
-  R.is(Number, 1); // => true
-  // @dts-jest:pass
-  R.is(Number)(1); // => true
-  // @dts-jest:pass
-  R.is(Object, 1); // => false
-  // @dts-jest:pass
-  R.is(Object)(1); // => false
-  // @dts-jest:pass
-  R.is(String, 's'); // => true
-  // @dts-jest:pass
-  R.is(String)('s'); // => true
-  // @dts-jest:pass
-  R.is(String, ''); // => true
-  // @dts-jest:pass
-  R.is(String)(''); // => true
-  // @dts-jest:pass
-  R.is(Object, new Object()); // => true
-  // @dts-jest:pass
-  R.is(Object)(new Object()); // => true
-  // @dts-jest:pass
-  R.is(Object, 's'); // => false
-  // @dts-jest:pass
-  R.is(Object)('s'); // => false
-  // @dts-jest:pass
-  R.is(Number, {}); // => false
-  // @dts-jest:pass
-  R.is(Number)({}); // => false
-}
-
 /*****************************************************************
  * Logic category
  */
 
-// @dts-jest:group:skip ifElse
-{
-  // Flatten all arrays in the list but leave other values alone.
-  const flattenArrays = R.map(R.ifElse(Array.isArray, R.flatten, R.identity));
-
-  // @dts-jest:pass
-  flattenArrays([[0], [[10], [8]], 1234, {}]); // => [[0], [10, 8], 1234, {}]
-  // @dts-jest:pass
-  flattenArrays([[[10], 123], [8, [10]], 'hello']); // => [[10, 123], [8, 10], 'hello']
-}
-
-// @dts-jest:group:skip isEmpty
-{
-  // @dts-jest:pass
-  R.isEmpty([1, 2, 3]); // => false
-  // @dts-jest:pass
-  R.isEmpty([]); // => true
-  // @dts-jest:pass
-  R.isEmpty(''); // => true
-  // @dts-jest:pass
-  R.isEmpty(null); // => false
-  // @dts-jest:pass
-  R.isEmpty({}); // =>true
-  // @dts-jest:pass
-  R.isEmpty({a: 1}); // => false
-}
-
-// @dts-jest:group:skip not
-{
-  // @dts-jest:pass
-  R.not(true); // => false
-  // @dts-jest:pass
-  R.not(false); // => true
-  // @dts-jest:pass
-  R.not(0); // => true
-  // @dts-jest:pass
-  R.not(1); // => false
-}
-
-// @dts-jest:group:skip or
-{
-  // @dts-jest:pass
-  R.or(false, true); // => false
-  // @dts-jest:show number|any[]
-  R.or(0, []); // => []
-  // @dts-jest:show number|any[]
-  R.or(0)([]); // => []
-  // @dts-jest:show string
-  R.or(null, ''); // => ''
-}
-
-// @dts-jest:group:skip intersperse
-{
-  // @dts-jest:pass
-  R.intersperse(',', ['foo', 'bar']); // => ['foo', ',', 'bar']
-  // @dts-jest:pass
-  R.intersperse(0, [1, 2]); // => [1, 0, 2]
-  // @dts-jest:pass
-  R.intersperse(0, [1]); // => [1]
-}
-
 // ISSUES:
 
 // RESOLVED ISSUES:
+
+// @dts-jest:group:skip #issues
 
 {
   // #65, evolve issue
