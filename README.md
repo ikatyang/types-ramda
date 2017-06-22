@@ -95,8 +95,8 @@ source version: v0.24.1
 - [x] composeP
 - [x] concat
 - [x] cond
-- [ ] construct
-- [ ] constructN
+- [x] construct
+- [x] constructN
 - [ ] contains
 - [ ] converge
 - [ ] countBy

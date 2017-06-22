@@ -455,6 +455,30 @@ import * as R from 'ramda';
   fn(100); // => 'water boils at 100°C'
 }
 
+{
+  class Circle {
+    public r: number;
+    public colors: string[];
+    constructor(r: number, ...colors: string[]) {
+      this.r = r;
+      this.colors = colors;
+    }
+    public area() {
+      return Math.PI * Math.pow(this.r, 2);
+    }
+  }
+  // @dts-jest:group construct
+  {
+    // @dts-jest:pass
+    R.construct<'1', 'variadic'>()(Circle)(1, 'red');
+  }
+  // @dts-jest:group constructN
+  {
+    // @dts-jest:pass
+    R.constructN(2, Circle)(1, 'red');
+  }
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;
@@ -2498,22 +2522,6 @@ class Rectangle {
 // TODO: composeP
 
 // TODO: composeK
-
-// construct, constructN
-(() => {
-    type circle = { r: number, colors: string[] };
-    let Circle = function(r: number) {
-        this.r = r;
-        this.colors = Array.prototype.slice.call(arguments, 1);
-    };
-    Circle.prototype.area = function() {return Math.PI * Math.pow(this.r, 2);};
-    let circleN = R.constructN(2, Circle);
-    // $ExpectType circle
-    circleN(1, 'red');
-    let circle = R.construct(Circle);
-    // $ExpectType circle
-    circle(1, 'red');
-})();
 
 /*****************************************************************
  * Relation category

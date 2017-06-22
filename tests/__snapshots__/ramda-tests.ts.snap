@@ -189,3 +189,7 @@ exports[`cond fn(0) 1`] = `"string"`;
 exports[`cond fn(50) 1`] = `"string"`;
 
 exports[`cond fn(100) 1`] = `"string"`;
+
+exports[`construct R.construct<'1', 'variadic'>()(Circle)(1, 'red') 1`] = `"Circle"`;
+
+exports[`constructN R.constructN(2, Circle)(1, 'red') 1`] = `"Circle"`;
