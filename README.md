@@ -102,7 +102,7 @@ source version: v0.24.1
 - [x] countBy
 - [x] curry
 - [x] curryN
-- [ ] dec
+- [x] dec
 - [ ] defaultTo
 - [ ] descend
 - [ ] difference

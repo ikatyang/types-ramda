@@ -573,6 +573,12 @@ import * as R from 'ramda';
   curriedAddFourNumbers(1, 2)(3)(4); // => 10
 }
 
+// @dts-jest:group dec
+{
+  // @dts-jest:pass
+  R.dec(42); // => 41
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -2653,12 +2659,6 @@ class Rectangle {
   R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
   // @dts-jest:pass
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
-}
-
-// @dts-jest:group:skip dec
-{
-  // @dts-jest:pass
-  R.dec(42); // => 41
 }
 
 // @dts-jest:group:skip divide
