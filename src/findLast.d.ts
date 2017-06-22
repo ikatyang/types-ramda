@@ -37,5 +37,5 @@ type findLast_10<T> = {
 type findLast_01<T> = {
     (fn: Predicate<T>): findLast_11<T>;
 };
-type findLast_11<T> = T;
+type findLast_11<T> = T | undefined;
 export = findLast;

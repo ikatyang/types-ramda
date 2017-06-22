@@ -814,6 +814,15 @@ import * as R from 'ramda';
   R.findIndex((x: number) => x === 1, [1, 2, 3]);
 }
 
+// @dts-jest:group findLast
+{
+  const xs = [{a: 1, b: 0}, {a: 1, b: 1}];
+  // @dts-jest:pass
+  R.findLast<typeof xs[number]>(R.propEq('a', 1))(xs); // => {a: 1, b: 1}
+  // @dts-jest:pass
+  R.findLast(R.__, xs)(R.propEq('a', 4)); // => undefined
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -1263,15 +1272,6 @@ class F {
   R.find(R.propEq('a', 2))(xs); // => {a: 2}
   // @dts-jest:show undefined
   R.find(R.propEq('a', 4))(xs); // => undefined
-}
-
-// @dts-jest:group:skip findLast
-{
-  const xs = [{a: 1, b: 0}, {a: 1, b: 1}];
-  // @dts-jest:show Dictionary<number>
-  R.findLast(R.propEq('a', 1))(xs); // => {a: 1, b: 1}
-  // @dts-jest:show undefined
-  R.findLast(R.propEq('a', 4))(xs); // => undefined
 }
 
 // @dts-jest:group:skip findLastIndex

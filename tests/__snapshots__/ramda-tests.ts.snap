@@ -340,13 +340,17 @@ exports[`filter R.filter(isEven, [1, 2, 3, 4]) 1`] = `"number[]"`;
 
 exports[`filter R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Dictionary<number>"`;
 
-exports[`find R.find((task: Task) => task.id === 1)(tasks) 1`] = `"Task"`;
+exports[`find R.find((task: Task) => task.id === 1)(tasks) 1`] = `"Task | undefined"`;
 
 exports[`findIndex R.findIndex((x: number) => x === 1, [1, 2, 3]) 1`] = `"number"`;
 
 exports[`findIndex R.findIndex(R.propEq('a', 4))(xs) 1`] = `"number"`;
 
 exports[`findIndex a(xs) 1`] = `"number"`;
+
+exports[`findLast R.findLast(R.__, xs)(R.propEq('a', 4)) 1`] = `"{ a: number; b: number; } | undefined"`;
+
+exports[`findLast R.findLast<typeof xs[number]>(R.propEq('a', 1))(xs) 1`] = `"{ a: number; b: number; } | undefined"`;
 
 exports[`findLastIndex R.findLastIndex(R.propEq('a', 1))(xs) 1`] = `"number"`;
 

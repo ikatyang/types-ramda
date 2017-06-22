@@ -127,7 +127,7 @@ source version: v0.24.1
 - [x] filter
 - [x] find
 - [x] findIndex
-- [ ] findLast
+- [x] findLast
 - [ ] findLastIndex
 - [ ] flatten
 - [ ] flip
