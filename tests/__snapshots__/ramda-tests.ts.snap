@@ -487,6 +487,38 @@ exports[`invertObj R.invertObj(raceResults0) 1`] = `"Dictionary<string>"`;
 
 exports[`invertObj R.invertObj(raceResults1) 1`] = `"Dictionary<string>"`;
 
+exports[`is R.is(Number)({}) 1`] = `"boolean"`;
+
+exports[`is R.is(Number)(1) 1`] = `"boolean"`;
+
+exports[`is R.is(Number, {}) 1`] = `"boolean"`;
+
+exports[`is R.is(Number, 1) 1`] = `"boolean"`;
+
+exports[`is R.is(Object)('s') 1`] = `"boolean"`;
+
+exports[`is R.is(Object)({}) 1`] = `"boolean"`;
+
+exports[`is R.is(Object)(1) 1`] = `"boolean"`;
+
+exports[`is R.is(Object)(new Object()) 1`] = `"boolean"`;
+
+exports[`is R.is(Object, 's') 1`] = `"boolean"`;
+
+exports[`is R.is(Object, {}) 1`] = `"boolean"`;
+
+exports[`is R.is(Object, 1) 1`] = `"boolean"`;
+
+exports[`is R.is(Object, new Object()) 1`] = `"boolean"`;
+
+exports[`is R.is(String)('') 1`] = `"boolean"`;
+
+exports[`is R.is(String)('s') 1`] = `"boolean"`;
+
+exports[`is R.is(String, '') 1`] = `"boolean"`;
+
+exports[`is R.is(String, 's') 1`] = `"boolean"`;
+
 exports[`isEmpty R.isEmpty('') 1`] = `"boolean"`;
 
 exports[`isEmpty R.isEmpty([]) 1`] = `"boolean"`;
@@ -743,38 +775,6 @@ exports[`remove R.remove(2, 3, [1, 2, 3, 4, 5, 6, 7, 8]) 1`] = `"number[]"`;
 exports[`repeat R.repeat('hi', 5) 1`] = `"string[]"`;
 
 exports[`repeat repeatedObjs[0] === repeatedObjs[1] 1`] = `"boolean"`;
-
-exports[`replace R.is(Number)({}) 1`] = `"boolean"`;
-
-exports[`replace R.is(Number)(1) 1`] = `"boolean"`;
-
-exports[`replace R.is(Number, {}) 1`] = `"boolean"`;
-
-exports[`replace R.is(Number, 1) 1`] = `"boolean"`;
-
-exports[`replace R.is(Object)('s') 1`] = `"boolean"`;
-
-exports[`replace R.is(Object)({}) 1`] = `"boolean"`;
-
-exports[`replace R.is(Object)(1) 1`] = `"boolean"`;
-
-exports[`replace R.is(Object)(new Object()) 1`] = `"boolean"`;
-
-exports[`replace R.is(Object, 's') 1`] = `"boolean"`;
-
-exports[`replace R.is(Object, {}) 1`] = `"boolean"`;
-
-exports[`replace R.is(Object, 1) 1`] = `"boolean"`;
-
-exports[`replace R.is(Object, new Object()) 1`] = `"boolean"`;
-
-exports[`replace R.is(String)('') 1`] = `"boolean"`;
-
-exports[`replace R.is(String)('s') 1`] = `"boolean"`;
-
-exports[`replace R.is(String, '') 1`] = `"boolean"`;
-
-exports[`replace R.is(String, 's') 1`] = `"boolean"`;
 
 exports[`replace R.replace('foo')('bar')('foo foo foo') 1`] = `"string"`;
 
