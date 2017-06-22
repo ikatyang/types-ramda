@@ -203,3 +203,22 @@ exports[`contains R.contains(3, [1, 2, 3]) 1`] = `"boolean"`;
 exports[`contains R.contains(4)([1, 2, 3]) 1`] = `"boolean"`;
 
 exports[`contains R.contains(obj)([{}, obj, {}]) 1`] = `"boolean"`;
+
+exports[`match R.match(/a/, null) 1`] = `"Argument of type 'null' is not assignable to parameter of type 'string'."`;
+
+exports[`maxBy R.maxBy(cmp)(d)(e) 1`] = `
+"Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'.
+  Types of property 'x' are incompatible.
+    Type 'string' is not assignable to type 'number'."
+`;
+
+exports[`minBy R.minBy(cmp, d, e) 1`] = `
+"Argument of type '(obj: { x: number; }) => number' is not assignable to parameter of type 'Placeholder'.
+  Property '\\"@@functional/placeholder\\"' is missing in type '(obj: { x: number; }) => number'."
+`;
+
+exports[`pick R.pick(['a', 'e', 'f'])<{a: number}>({a: 1, b: 2, c: 3, d: 4}) 1`] = `"{ a: number; }"`;
+
+exports[`pick R.pick<{a: number}>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"{ a: number; }"`;
+
+exports[`propIs R.propIs(Number, 'x', {}) 1`] = `"boolean"`;
