@@ -310,6 +310,30 @@ import * as R from 'ramda';
   R.clamp('a', 'd', 'e'); // => 'd'
 }
 
+// @dts-jest:group clone
+{
+  const obj1 = [{}, {}, {}];
+  const obj2 = [{a: 1}, {a: 2}, {a: 3}];
+
+  // @dts-jest:pass
+  R.clone(obj1);
+  // @dts-jest:pass
+  R.clone(obj2);
+
+  // @dts-jest:pass
+  R.clone([{}, {}, {}]);
+  // @dts-jest:pass
+  R.clone([1, 2, 3]);
+  // @dts-jest:pass
+  R.clone({});
+  // @dts-jest:pass
+  R.clone(10);
+  // @dts-jest:pass
+  R.clone('foo');
+  // @dts-jest:pass
+  R.clone(Date.now());
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;
@@ -617,16 +641,6 @@ class F2 {
     // Basic example
     R.useWith(addAll, [ double, square ]);
 });
-
-// clone
-(() => {
-  let printXPlusFive = function(x: number) { console.log(x + 5); };
-  R.forEach(printXPlusFive, [1, 2, 3]);
-  // $ExpectType Object[]
-  R.clone([{},{},{}]);
-  // $ExpectType number[]
-  R.clone([1,2,3]);
-})();
 
 // forEach
 // (() => {
@@ -1832,24 +1846,6 @@ type Pair = KeyValuePair<string, number>;
     R.dissocPath<{a : { b: number}}>(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
     // $ExpectType {a: {b: {}}}
     R.dissocPath(['a', 'b', 'c'])({a: {b: {c: 42}}}); // => {a: {b: {}}}
-};
-
-// clone
-() => {
-    let obj1 = [{}, {}, {}];
-    let obj2 = [{a: 1}, {a: 2}, {a: 3}];
-    // $ExpectType any[]
-    R.clone(obj1);
-    // $ExpectType {a: number}[]
-    R.clone(obj2);
-    // $ExpectType Object
-    R.clone({});
-    // $ExpectType 10
-    R.clone(10);
-    // $ExpectType "foo"
-    R.clone('foo');
-    // $ExpectType number
-    R.clone(Date.now());
 };
 
 // eqProps

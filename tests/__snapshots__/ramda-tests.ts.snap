@@ -133,3 +133,19 @@ exports[`clamp R.clamp(1, 10, -1) 1`] = `"1 | 10 | -1"`;
 exports[`clamp R.clamp<number>(1)(10, 4) 1`] = `"number"`;
 
 exports[`clamp R.clamp<number>(1, 10)(11) 1`] = `"number"`;
+
+exports[`clone R.clone('foo') 1`] = `"\\"foo\\""`;
+
+exports[`clone R.clone([{}, {}, {}]) 1`] = `"{}[]"`;
+
+exports[`clone R.clone([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`clone R.clone({}) 1`] = `"{}"`;
+
+exports[`clone R.clone(10) 1`] = `"10"`;
+
+exports[`clone R.clone(Date.now()) 1`] = `"number"`;
+
+exports[`clone R.clone(obj1) 1`] = `"{}[]"`;
+
+exports[`clone R.clone(obj2) 1`] = `"{ a: number; }[]"`;
