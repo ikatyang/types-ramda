@@ -544,7 +544,7 @@ class F {
   public y = 'Y';
 }
 
-// @dts-jest:group propIs
+// @dts-jest:group:skip propIs
 {
   // @dts-jest:pass
   R.propIs(Number, 'x', {x: 1, y: 2}); // => true
@@ -560,7 +560,7 @@ class F {
   R.propIs(Number, 'x', {}); // => false
 }
 
-// @dts-jest:group type
+// @dts-jest:group:skip type
 {
   // @dts-jest:pass
   R.type({}); // => 'Object'
@@ -578,7 +578,7 @@ class F {
   R.type(/[A-z]/); // => 'RegExp'
 }
 
-// @dts-jest:group curry
+// @dts-jest:group:skip curry
 {
   const addTwo = R.curry((x: number, y: number) => x + y);
   // @dts-jest:show (v2: number) => number
@@ -615,7 +615,7 @@ class F {
   xyz(3);
 }
 
-// @dts-jest:group unary, binary, nAry
+// @dts-jest:group:skip unary, binary, nAry
 {
   const takesNoArg = () => true;
   const takesOneArg = (a: number) => [a];
@@ -675,7 +675,7 @@ class F {
   addTwoNumbersCurried(2, 3);
 }
 
-// @dts-jest:group uncurry
+// @dts-jest:group:skip uncurry
 {
   const addFour = (a: number) => (b: number) => (c: number) => (d: number) => a + b + c + d;
   const uncurriedAddFour = R.uncurryN<number>(4, addFour);
@@ -683,7 +683,7 @@ class F {
   uncurriedAddFour(1, 2, 3, 4); // => 10
 }
 
-// @dts-jest:group unless
+// @dts-jest:group:skip unless
 {
   // @dts-jest:show <a>(v: a|[a]) => [a]
   const coerceArray = R.unless(R.isArrayLike, R.of);
@@ -693,7 +693,7 @@ class F {
   coerceArray(1); // => [1]
 }
 
-// @dts-jest:group nthArg
+// @dts-jest:group:skip nthArg
 {
   // @dts-jest:show string
   R.nthArg(1)('a', 'b', 'c'); // => 'b'
@@ -701,7 +701,7 @@ class F {
   R.nthArg(-1)('a', 'b', 'c'); // => 'c'
 }
 
-// @dts-jest:group unapply
+// @dts-jest:group:skip unapply
 {
   // @dts-jest:show (...args: string[])=>string
   R.unapply(JSON.stringify);
@@ -709,13 +709,13 @@ class F {
   R.unapply(JSON.stringify)(1, 2, 3); // => '[1,2,3]'
 }
 
-// @dts-jest:group until
+// @dts-jest:group:skip until
 {
   // @dts-jest:show number
   R.until(R.flip(R.gt)(100), R.multiply(2))(1); // => 128
 }
 
-// @dts-jest:group propSatisfies
+// @dts-jest:group:skip propSatisfies
 {
   const truncate = R.when(
     R.propSatisfies(R.flip(R.gt)(10), 'length'),
@@ -727,7 +727,7 @@ class F {
   truncate('0123456789ABC'); // => '0123456789…'
 }
 
-// @dts-jest:group compose
+// @dts-jest:group:skip compose
 {
   const limit10 = (x: number): boolean =>
     x >= 10;
@@ -747,7 +747,7 @@ class F {
   g([1, 2, 10, 13]);
 }
 
-// @dts-jest:group pipe
+// @dts-jest:group:skip pipe
 {
   // @dts-jest:show (x0: number) => string
   R.pipe(double, double, shout);
@@ -770,7 +770,7 @@ class F {
   R.pipe(R.identity, double);
 }
 
-// @dts-jest:group pipeP
+// @dts-jest:group:skip pipeP
 {
   // @dts-jest:show Promise<number>
   R.pipeP(
@@ -780,9 +780,9 @@ class F {
     )(10);
 }
 
-// @dts-jest:group TODO: pipeK
+// @dts-jest:group:skip TODO: pipeK
 
-// @dts-jest:group invoker
+// @dts-jest:group:skip invoker
 {
   // @dts-jest:show string
   R.invoker(0, 'toUpperCase', 'foo');
@@ -790,7 +790,7 @@ class F {
   R.invoker(1, 'charAt', 'foo', 1);
 }
 
-// @dts-jest:group juxt
+// @dts-jest:group:skip juxt
 {
   const range = R.juxt([Math.min, Math.max]);
   // @dts-jest:pass
@@ -807,14 +807,14 @@ class F {
 //   R.forEach.idx(printXPlusFive, [{name: 1}, {name: 2}, {name: 3}]);
 // }
 
-// @dts-jest:group times
+// @dts-jest:group:skip times
 {
   const i = (x: number) => x;
   // @dts-jest:pass
   R.times(i, 5);
 }
 
-// @dts-jest:group pipe
+// @dts-jest:group:skip pipe
 {
   const triple = (x: number): number => x * 3;
   const square = (x: number): number => x * x;
@@ -823,7 +823,7 @@ class F {
   squareThenDoubleThenTriple(5); // => 150
 }
 
-// @dts-jest:group partial
+// @dts-jest:group:skip partial
 {
   const multiply = (a: number, b: number) => a * b;
 
@@ -842,7 +842,7 @@ class F {
   greetMsJaneJones('Hello'); // => 'Hello, Ms. Jane Jones!'
 }
 
-// @dts-jest:group memoize
+// @dts-jest:group:skip memoize
 {
   let numberOfCalls = 0;
   const trackedAdd = (a: number, b: number) => {
@@ -871,7 +871,7 @@ class F {
   numberOfCalls; // => 3
 }
 
-// @dts-jest:group once
+// @dts-jest:group:skip once
 {
   const addOneOnce = R.once((x: number) => x + 1);
   // @dts-jest:pass
@@ -880,7 +880,7 @@ class F {
   addOneOnce(addOneOnce(50)); // => 11
 }
 
-// @dts-jest:group match
+// @dts-jest:group:skip match
 {
   // @dts-jest:pass
   R.match(/([a-z]a)/g, 'bananas'); // => ['ba', 'na', 'na']
@@ -890,7 +890,7 @@ class F {
   R.match(/a/, null); // error with strict null checks
 }
 
-// @dts-jest:group reduce
+// @dts-jest:group:skip reduce
 {
   const numbers = [1, 2, 3];
   const add = (a: number, b: number) =>
@@ -899,7 +899,7 @@ class F {
   R.reduce(add, 10, numbers); // => 16;
 }
 
-// @dts-jest:group reduceRight
+// @dts-jest:group:skip reduceRight
 {
   const pairs = [['a', 1], ['b', 2], ['c', 3]];
   const flattenPairs = (acc: [string, number], pair: [string, number]) =>
@@ -908,7 +908,7 @@ class F {
   R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 }
 
-// @dts-jest:group reduceWhile
+// @dts-jest:group:skip reduceWhile
 {
   const isOdd = (x: number, acc: number) => x % 2 === 1;
   const xs = [1, 3, 5, 60, 777, 800];
@@ -920,7 +920,7 @@ class F {
   R.reduceWhile(isOdd, R.add, 111, ys); // => 111
 }
 
-// @dts-jest:group mapObjIndexed
+// @dts-jest:group:skip mapObjIndexed
 {
   const values = {x: 1, y: 2, z: 3};
   const prependKeyAndDouble = (num: number, key: string, obj: any) => key + (num * 2).toString();
@@ -928,7 +928,7 @@ class F {
   R.mapObjIndexed(prependKeyAndDouble, values); // => { x: 'x2', y: 'y4', z: 'z6' }
 }
 
-// @dts-jest:group of
+// @dts-jest:group:skip of
 {
   // @dts-jest:pass
   R.of([1]); // => [[1]]
@@ -936,7 +936,7 @@ class F {
   R.of(1);
 }
 
-// @dts-jest:group empty
+// @dts-jest:group:skip empty
 {
   // @dts-jest:pass
   R.empty([1, 2, 3, 4, 5]); // => []
@@ -948,13 +948,13 @@ class F {
   R.empty({x: 1, y: 2}); // => {}
 }
 
-// @dts-jest:group length
+// @dts-jest:group:skip length
 {
   // @dts-jest:pass
   R.length([1, 2, 3]); // => 3
 }
 
-// @dts-jest:group addIndex, filter, reject
+// @dts-jest:group:skip addIndex, filter, reject
 {
   const isEven = (n: number) =>
     n % 2 === 0;
@@ -974,7 +974,7 @@ class F {
   R.reject(isOdd, [1, 2, 3, 4]); // => [2, 4]
 }
 
-// @dts-jest:group take, takeWhile
+// @dts-jest:group:skip take, takeWhile
 {
   const isNotFour = (x: number) =>
     !(x === 4);
@@ -984,7 +984,7 @@ class F {
   R.take(2, [1, 2, 3, 4]); // => [1, 2]
 }
 
-// @dts-jest:group unfold
+// @dts-jest:group:skip unfold
 {
   const f = (n: number) => n > 50 ? false : [-n, n + 10];
   // @dts-jest:show number[]
@@ -998,7 +998,7 @@ class F {
  * Function category
  */
 
-// @dts-jest:group flip
+// @dts-jest:group:skip flip
 {
   const mergeThree = (a: number, b: number, c: number): number[] =>
     ([] as number[]).concat(a, b, c); // strictNullChecks: must cast array to right type
@@ -1013,7 +1013,7 @@ class F {
  * List category
  ********************/
 
-// @dts-jest:group descend
+// @dts-jest:group:skip descend
 {
   const byAge = R.descend(R.prop('age'));
   const alice = {
@@ -1033,7 +1033,7 @@ class F {
   R.sort(byAge, people);
 }
 
-// @dts-jest:group drop
+// @dts-jest:group:skip drop
 {
   // @dts-jest:pass
   R.drop(3, [1, 2, 3, 4, 5, 6, 7]); // => [4,5,6,7]
@@ -1045,7 +1045,7 @@ class F {
   R.drop(3)('ramda'); // => 'ram'
 }
 
-// @dts-jest:group dropLast
+// @dts-jest:group:skip dropLast
 {
   // @dts-jest:pass
   R.dropLast(1, ['foo', 'bar', 'baz']); // => ['foo', 'bar']
@@ -1057,14 +1057,14 @@ class F {
   R.dropLast(3)('ramda'); // => 'ra'
 }
 
-// @dts-jest:group dropLastWhile
+// @dts-jest:group:skip dropLastWhile
 {
   const lteThree = (x: number) => x <= 3;
   // @dts-jest:pass
   R.dropLastWhile(lteThree, [1, 2, 3, 4, 3, 2, 1]); // => [1, 2, 3, 4]
 }
 
-// @dts-jest:group dropWhile
+// @dts-jest:group:skip dropWhile
 {
   const lteTwo = (x: number) =>
     x <= 2;
@@ -1074,7 +1074,7 @@ class F {
   R.dropWhile(lteTwo)([1, 2, 3, 4]); // => [3, 4]
 }
 
-// @dts-jest:group filter
+// @dts-jest:group:skip filter
 {
   const isEven = (n: number) =>
     n % 2 === 0;
@@ -1094,7 +1094,7 @@ class F {
   onlyNumberObj(R.filter(isEven, {a: 1, b: 2, c: 3, d: 4})); // strictNullChecks: Partial fails, consider Pick
 }
 
-// @dts-jest:group find, propEq
+// @dts-jest:group:skip find, propEq
 {
   const xs = [{a: 1}, {a: 2}, {a: 3}];
   // @dts-jest:show Dictionary<number>
@@ -1103,7 +1103,7 @@ class F {
   R.find(R.propEq('a', 4))(xs); // => undefined
 }
 
-// @dts-jest:group find
+// @dts-jest:group:skip find
 {
   interface Task {id: number; }
   const tasks: Task[] = [];
@@ -1112,7 +1112,7 @@ class F {
   f(tasks); // works
 }
 
-// @dts-jest:group findIndex
+// @dts-jest:group:skip findIndex
 {
   interface Task {a: number; }
   const xs = [{a: 1}, {a: 2}, {a: 3}];
@@ -1126,7 +1126,7 @@ class F {
   R.findIndex((x: number) => x === 1, [1, 2, 3]);
 }
 
-// @dts-jest:group findLast
+// @dts-jest:group:skip findLast
 {
   const xs = [{a: 1, b: 0}, {a: 1, b: 1}];
   // @dts-jest:show Dictionary<number>
@@ -1135,7 +1135,7 @@ class F {
   R.findLast(R.propEq('a', 4))(xs); // => undefined
 }
 
-// @dts-jest:group findLastIndex
+// @dts-jest:group:skip findLastIndex
 {
   const xs = [{a: 1, b: 0}, {a: 1, b: 1}];
   // @dts-jest:pass
@@ -1146,7 +1146,7 @@ class F {
   R.findLastIndex((x: number) => x === 1, [1, 2, 3]);
 }
 
-// @dts-jest:group pathEq
+// @dts-jest:group:skip pathEq
 {
   const user1 = {address: {zipCode: 90210}};
   const user2 = {address: {zipCode: 55555}};
@@ -1157,7 +1157,7 @@ class F {
   R.filter(isFamous, users); // => [ user1 ]
 }
 
-// @dts-jest:group propEq
+// @dts-jest:group:skip propEq
 {
   const xs: {[key: string]: string} = {a: '1', b: '0'};
   // @dts-jest:pass
@@ -1195,7 +1195,7 @@ interface Obj { a: number; b: number; }
   R.propEq('a', 4, xs); // => false
 }
 
-// @dts-jest:group forEach
+// @dts-jest:group:skip forEach
 {
   const printXPlusFive = (x: number) => { console.log(x + 5); };
   // @dts-jest:pass
@@ -1207,7 +1207,7 @@ interface Obj { a: number; b: number; }
   // => 8
 }
 
-// @dts-jest:group forEach
+// @dts-jest:group:skip forEach
 {
   const printKeyConcatValue = (value: any, key: string, obj: any) =>
     console.log(`${key}:${value}`);
@@ -1221,7 +1221,7 @@ interface Obj { a: number; b: number; }
   R.forEachObjIndexed(printKeyConcatValue)([1, 2]);
 }
 
-// @dts-jest:group groupBy
+// @dts-jest:group:skip groupBy
 {
   const byGrade = R.groupBy((student: {score: number; name: string}) => {
     const score = student.score;
@@ -1237,7 +1237,7 @@ interface Obj { a: number; b: number; }
   byGrade(students);
 }
 
-// @dts-jest:group groupWith
+// @dts-jest:group:skip groupWith
 {
   // @dts-jest:pass
   R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21]);
@@ -1253,7 +1253,7 @@ interface Obj { a: number; b: number; }
   // ['ae', 'st', 'iou']
 }
 
-// @dts-jest:group head
+// @dts-jest:group:skip head
 {
   // @dts-jest:show string
   R.head(['fi', 'fo', 'fum']); // => 'fi'
@@ -1263,7 +1263,7 @@ interface Obj { a: number; b: number; }
   R.head(['10', 10]); // => '10'
 }
 
-// @dts-jest:group indexBy
+// @dts-jest:group:skip indexBy
 {
   const list = [{id: 'xyz', title: 'A'}, {id: 'abc', title: 'B'}];
   // @dts-jest:show Dictionary<Object>
@@ -1274,7 +1274,7 @@ interface Obj { a: number; b: number; }
   R.indexBy<{id: string}>(R.prop('id'))(list);
 }
 
-// @dts-jest:group indexOf
+// @dts-jest:group:skip indexOf
 {
   // @dts-jest:pass
   R.indexOf(3, [1, 2, 3, 4]); // => 2
@@ -1282,13 +1282,13 @@ interface Obj { a: number; b: number; }
   R.indexOf(10)([1, 2, 3, 4]); // => -1
 }
 
-// @dts-jest:group init
+// @dts-jest:group:skip init
 {
   // @dts-jest:pass
   R.init(['fi', 'fo', 'fum']); // => ['fi', 'fo']
 }
 
-// @dts-jest:group insert
+// @dts-jest:group:skip insert
 {
   // @dts-jest:pass
   R.insert(2, 5, [1, 2, 3, 4]); // => [1,2,5,3,4]
@@ -1300,7 +1300,7 @@ interface Obj { a: number; b: number; }
   R.insert(2)(5)([1, 2, 3, 4]); // => [1,2,5,3,4]
 }
 
-// @dts-jest:group insertAll
+// @dts-jest:group:skip insertAll
 {
   // @dts-jest:pass
   R.insertAll(2, [10, 11, 12], [1, 2, 3, 4]);
@@ -1312,7 +1312,7 @@ interface Obj { a: number; b: number; }
   R.insertAll(2)([10, 11, 12])([1, 2, 3, 4]);
 }
 
-// @dts-jest:group intersection
+// @dts-jest:group:skip intersection
 {
   // @dts-jest:pass
   R.intersection([1, 2, 3, 4], [7, 6, 5, 4, 3]); // => [4, 3]
@@ -1324,7 +1324,7 @@ interface Obj { a: number; b: number; }
   R.intersection([1, 2, 4])([1, 2, 3]); // => [1,2]
 }
 
-// @dts-jest:group intersectionWith
+// @dts-jest:group:skip intersectionWith
 {
   const buffaloSpringfield = [
       {id: 824, name: 'Richie Furay'},
@@ -1352,7 +1352,7 @@ interface Obj { a: number; b: number; }
   R.intersectionWith(R.eqBy(R.prop('id')))(buffaloSpringfield)(csny);
 }
 
-// @dts-jest:group into
+// @dts-jest:group:skip into
 {
   const numbers = [1, 2, 3, 4];
   const transducer = R.compose(R.map(R.add(1)), R.take(2));
@@ -1371,7 +1371,7 @@ interface Obj { a: number; b: number; }
   intoArray(transducer)(numbers); // => [2, 3]
 }
 
-// @dts-jest:group join
+// @dts-jest:group:skip join
 {
   const spacer = R.join(' ');
   // @dts-jest:pass
@@ -1380,20 +1380,20 @@ interface Obj { a: number; b: number; }
   R.join('|', [1, 2, 3]); // => '1|2|3'
 }
 
-// @dts-jest:group last
+// @dts-jest:group:skip last
 {
   // @dts-jest:show string
   R.last(['fi', 'fo', 'fum']); // => 'fum'
 }
 
-// @dts-jest:group lastIndexOf
+// @dts-jest:group:skip lastIndexOf
 {
   R.lastIndexOf(3, [-1, 3, 3, 0, 1, 2, 3, 4]); // => 6
   R.lastIndexOf(10, [1, 2, 3, 4]); // => -1
   R.lastIndexOf(10)([1, 2, 3, 4]); // => -1
 }
 
-// @dts-jest:group length
+// @dts-jest:group:skip length
 {
   // @dts-jest:pass
   R.length([]); // => 0
@@ -1401,7 +1401,7 @@ interface Obj { a: number; b: number; }
   R.length([1, 2, 3]); // => 3
 }
 
-// @dts-jest:group lensIndex, set, view, over
+// @dts-jest:group:skip lensIndex, set, view, over
 {
   const headLens = R.lensIndex(0);
   // @dts-jest:show number
@@ -1416,7 +1416,7 @@ interface Obj { a: number; b: number; }
   R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
 }
 
-// @dts-jest:group map
+// @dts-jest:group:skip map
 {
   const arrayify = <T>(v: T): T[] => [v];
   // homogeneous array
@@ -1451,7 +1451,7 @@ interface Obj { a: number; b: number; }
   // let s = R.map((x: number) => x-1, stringFunctor); // => 'Hello World'
 }
 
-// @dts-jest:group mapAccum
+// @dts-jest:group:skip mapAccum
 {
   const digits = ['1', '2', '3', '4'];
   const append = (a: string, b: string): [string, string] =>
@@ -1466,7 +1466,7 @@ interface Obj { a: number; b: number; }
   R.mapAccum(append)('0')(digits); // => ['01234', ['01', '012', '0123', '01234']]
 }
 
-// @dts-jest:group mapAccumRight
+// @dts-jest:group:skip mapAccumRight
 {
   const digits = ['1', '2', '3', '4'];
   const append = (a: string, b: string): [string, string] =>
@@ -1481,7 +1481,7 @@ interface Obj { a: number; b: number; }
   R.mapAccumRight(append)('0')(digits); // => ['04321', ['04321', '0432', '043', '04']]
 }
 
-// @dts-jest:group none
+// @dts-jest:group:skip none
 {
   // @dts-jest:show boolean
   R.none(R.isNaN, [1, 2, 3]); // => true
@@ -1491,7 +1491,7 @@ interface Obj { a: number; b: number; }
   R.none(R.isNaN)([1, 2, 3, NaN]); // => false
 }
 
-// @dts-jest:group nth
+// @dts-jest:group:skip nth
 {
   const list = ['foo', 'bar', 'baz', 'quux'];
   // @dts-jest:show string
@@ -1504,7 +1504,7 @@ interface Obj { a: number; b: number; }
   R.nth(-99)(list); // => undefined
 }
 
-// @dts-jest:group partition, contains
+// @dts-jest:group:skip partition, contains
 {
   // @dts-jest:show [string[], string[]]
   R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']);
@@ -1518,7 +1518,7 @@ interface Obj { a: number; b: number; }
   R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}); // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' } ]
 }
 
-// @dts-jest:group pluck
+// @dts-jest:group:skip pluck
 {
   // @dts-jest:pass
   R.pluck('a', [{a: 1}, {a: 2}]); // => [1, 2]
@@ -1530,7 +1530,7 @@ interface Obj { a: number; b: number; }
   R.pluck(0)([[1, 2], [3, 4]]); // => [1, 3]
 }
 
-// @dts-jest:group prepend
+// @dts-jest:group:skip prepend
 {
   // @dts-jest:pass
   R.prepend('fee', ['fi', 'fo', 'fum']); // => ['fee', 'fi', 'fo', 'fum']
@@ -1538,7 +1538,7 @@ interface Obj { a: number; b: number; }
   R.prepend('fee')(['fi', 'fo', 'fum']); // => ['fee', 'fi', 'fo', 'fum']
 }
 
-// @dts-jest:group range
+// @dts-jest:group:skip range
 {
   // @dts-jest:pass
   R.range(1, 5); // => [1, 2, 3, 4]
@@ -1546,7 +1546,7 @@ interface Obj { a: number; b: number; }
   R.range(50)(53); // => [50, 51, 52]
 }
 
-// @dts-jest:group reduce
+// @dts-jest:group:skip reduce
 {
   const numbers = [1, 2, 3];
   const add = (a: number, b: number) =>
@@ -1559,7 +1559,7 @@ interface Obj { a: number; b: number; }
   R.reduce(add, 10)(numbers); // => 16
 }
 
-// @dts-jest:group reduceBy
+// @dts-jest:group:skip reduceBy
 
 interface Student {
   name: string;
@@ -1586,7 +1586,7 @@ interface Student {
   // }
 }
 
-// @dts-jest:group reduceRight
+// @dts-jest:group:skip reduceRight
 interface KeyValuePair<K, V> extends Array<K | V> { 0: K; 1: V; }
 type Pair = KeyValuePair<string, number>;
 {
@@ -1601,7 +1601,7 @@ type Pair = KeyValuePair<string, number>;
   R.reduceRight(flattenPairs)([], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 }
 
-// @dts-jest:group reject
+// @dts-jest:group:skip reject
 {
   const isOdd = (n: number) => n % 2 === 1;
   // @dts-jest:pass
@@ -1610,7 +1610,7 @@ type Pair = KeyValuePair<string, number>;
   R.reject(isOdd)([1, 2, 3, 4]); // => [2, 4]
 }
 
-// @dts-jest:group rejectIndexed
+// @dts-jest:group:skip rejectIndexed
 {
   const lastTwo = (val: number, idx: number, list: number[]) =>
     list.length - idx <= 2;
@@ -1621,7 +1621,7 @@ type Pair = KeyValuePair<string, number>;
   rejectIndexed(lastTwo)([8, 6, 7, 5, 3, 0, 9]); // => [8, 6, 7, 5, 3]
 }
 
-// @dts-jest:group remove
+// @dts-jest:group:skip remove
 {
   // @dts-jest:pass
   R.remove(2, 3, [1, 2, 3, 4, 5, 6, 7, 8]); // => [1,2,6,7,8]
@@ -1631,7 +1631,7 @@ type Pair = KeyValuePair<string, number>;
   R.remove(2)(3, [1, 2, 3, 4, 5, 6, 7, 8]); // => [1,2,6,7,8]
 }
 
-// @dts-jest:group repeat
+// @dts-jest:group:skip repeat
 {
   // @dts-jest:pass
   R.repeat('hi', 5); // => ['hi', 'hi', 'hi', 'hi', 'hi']
@@ -1641,7 +1641,7 @@ type Pair = KeyValuePair<string, number>;
   repeatedObjs[0] === repeatedObjs[1]; // => true
 }
 
-// @dts-jest:group reverse
+// @dts-jest:group:skip reverse
 {
   // @dts-jest:pass
   R.reverse([1, 2, 3]); // => [3, 2, 1]
@@ -1653,7 +1653,7 @@ type Pair = KeyValuePair<string, number>;
   R.reverse([]); // => []
 }
 
-// @dts-jest:group scan
+// @dts-jest:group:skip scan
 {
   const numbers = [1, 2, 3, 4];
   // @dts-jest:pass
@@ -1664,7 +1664,7 @@ type Pair = KeyValuePair<string, number>;
   R.scan(R.multiply)(1, numbers); // => [1, 1, 2, 6, 24]
 }
 
-// @dts-jest:group slice
+// @dts-jest:group:skip slice
 {
   const xs = R.range(0, 10);
   // @dts-jest:pass
@@ -1683,7 +1683,7 @@ type Pair = KeyValuePair<string, number>;
   R.slice(2)(5, str); // => 'llo'
 }
 
-// @dts-jest:group sort
+// @dts-jest:group:skip sort
 {
   const diff = (a: number, b: number) => a - b;
   // @dts-jest:pass
@@ -1692,7 +1692,7 @@ type Pair = KeyValuePair<string, number>;
   R.sort(diff)([4, 2, 7, 5]); // => [2, 4, 5, 7]
 }
 
-// @dts-jest:group tail
+// @dts-jest:group:skip tail
 {
   // @dts-jest:pass
   R.tail(['fi', 'fo', 'fum']); // => ['fo', 'fum']
@@ -1700,7 +1700,7 @@ type Pair = KeyValuePair<string, number>;
   R.tail([1, 2, 3]); // => [2, 3]
 }
 
-// @dts-jest:group take
+// @dts-jest:group:skip take
 {
   // @dts-jest:pass
   R.take(3, [1, 2, 3, 4, 5]); // => [1,2,3]
@@ -1723,7 +1723,7 @@ type Pair = KeyValuePair<string, number>;
   takeThree('Example'); // => 'Exa'
 }
 
-// @dts-jest:group takeLast
+// @dts-jest:group:skip takeLast
 {
   // @dts-jest:pass
   R.takeLast(1, ['foo', 'bar', 'baz']); // => ['baz']
@@ -1735,7 +1735,7 @@ type Pair = KeyValuePair<string, number>;
   R.takeLast(3)('ramda'); // => 'mda'
 }
 
-// @dts-jest:group takeLastWhile
+// @dts-jest:group:skip takeLastWhile
 {
   const isNotOne = (x: number) => x !== 1;
   // @dts-jest:pass
@@ -1744,7 +1744,7 @@ type Pair = KeyValuePair<string, number>;
   R.takeLastWhile(isNotOne)([1, 2, 3, 4]); // => [2, 3, 4]
 }
 
-// @dts-jest:group takeWhile
+// @dts-jest:group:skip takeWhile
 {
   const isNotFour = (x: number) =>
     !(x === 4);
@@ -1754,14 +1754,14 @@ type Pair = KeyValuePair<string, number>;
   R.takeWhile(isNotFour)([1, 2, 3, 4]); // => [1, 2, 3]
 }
 
-// @dts-jest:group tap
+// @dts-jest:group:skip tap
 {
   const sayX = (x: number) => console.log(`x is ${x}`);
   // @dts-jest:pass
   R.tap(sayX, 100); // => 100
 }
 
-// @dts-jest:group test
+// @dts-jest:group:skip test
 {
   // @dts-jest:pass
   R.test(/^x/, 'xyz'); // => true
@@ -1769,7 +1769,7 @@ type Pair = KeyValuePair<string, number>;
   R.test(/^y/)('xyz'); // => false
 }
 
-// @dts-jest:group times
+// @dts-jest:group:skip times
 {
   // @dts-jest:pass
   R.times(R.identity, 5); // => [0, 1, 2, 3, 4]
@@ -1777,7 +1777,7 @@ type Pair = KeyValuePair<string, number>;
   R.times(R.identity)(5); // => [0, 1, 2, 3, 4]
 }
 
-// @dts-jest:group toString
+// @dts-jest:group:skip toString
 {
   class Point {
     public x: number;
@@ -1804,7 +1804,7 @@ type Pair = KeyValuePair<string, number>;
   R.toString(new Date('2001-02-03T04: 05: 06Z')); // => 'new Date('2001-02-03T04: 05: 06.000Z')'
 }
 
-// @dts-jest:group transduce
+// @dts-jest:group:skip transduce
 {
   const numbers = [1, 2, 3, 4];
   const transducer = R.compose(R.map(R.add(1)), R.take(2));
@@ -1828,7 +1828,7 @@ type Pair = KeyValuePair<string, number>;
 //   R.traverse(Maybe.of, safeDiv(10), [2, 0, 5]); // => Nothing
 // }
 
-// @dts-jest:group transpose
+// @dts-jest:group:skip transpose
 {
   // @dts-jest:show any[][]
   R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]); // => [[1, 2, 3], ['a', 'b', 'c']]
@@ -1838,7 +1838,7 @@ type Pair = KeyValuePair<string, number>;
   R.transpose([[10, 11], [20], [], [30, 31, 32]]); // => [[10, 20, 30], [11, 31], [32]]
 }
 
-// @dts-jest:group tryCatch
+// @dts-jest:group:skip tryCatch
 {
   // @dts-jest:show boolean
   R.tryCatch<boolean>(R.prop('x'), R.F)({x: true}); // => true
@@ -1846,7 +1846,7 @@ type Pair = KeyValuePair<string, number>;
   R.tryCatch<boolean>(R.prop('x'), R.F)(null); // => false
 }
 
-// @dts-jest:group uniq
+// @dts-jest:group:skip uniq
 {
   // @dts-jest:pass
   R.uniq([1, 1, 2, 1]); // => [1, 2]
@@ -1856,7 +1856,7 @@ type Pair = KeyValuePair<string, number>;
   R.uniq([1, '1']); // => [1, '1']
 }
 
-// @dts-jest:group uniqWith
+// @dts-jest:group:skip uniqWith
 {
   const strEq = (a: any, b: any) => String(a) === String(b);
   // @dts-jest:show number[]
@@ -1871,7 +1871,7 @@ type Pair = KeyValuePair<string, number>;
   R.uniqWith(strEq)(['1', 1, 1]); // => ['1']
 }
 
-// @dts-jest:group unnest, equals
+// @dts-jest:group:skip unnest, equals
 {
   // @dts-jest:pass
   R.equals(R.unnest([1, [2], [[3]]]), [1, 2, [3]]); // => true
@@ -1879,7 +1879,7 @@ type Pair = KeyValuePair<string, number>;
   R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6]); // => true
 }
 
-// @dts-jest:group xprod
+// @dts-jest:group:skip xprod
 {
   // @dts-jest:pass
   R.xprod([1, 2], ['a', 'b']); // => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
@@ -1887,7 +1887,7 @@ type Pair = KeyValuePair<string, number>;
   R.xprod([1, 2])(['a', 'b']); // => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
 }
 
-// @dts-jest:group zip
+// @dts-jest:group:skip zip
 {
   // @dts-jest:pass
   R.zip([1, 2, 3], ['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
@@ -1895,7 +1895,7 @@ type Pair = KeyValuePair<string, number>;
   R.zip([1, 2, 3])(['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
 }
 
-// @dts-jest:group zipObj
+// @dts-jest:group:skip zipObj
 {
   // @dts-jest:show Dictionary<number>
   R.zipObj(['a', 'b', 'c'], [1, 2, 3]); // => {a: 1, b: 2, c: 3}
@@ -1903,7 +1903,7 @@ type Pair = KeyValuePair<string, number>;
   R.zipObj(['a', 'b', 'c'])([1, 2, 3]); // => {a: 1, b: 2, c: 3}
 }
 
-// @dts-jest:group zipWith
+// @dts-jest:group:skip zipWith
 {
   const f = (x: number, y: string) => {
   // ...
@@ -1920,7 +1920,7 @@ type Pair = KeyValuePair<string, number>;
  * Object category
  */
 
-// @dts-jest:group dissoc
+// @dts-jest:group:skip dissoc
 {
   // @dts-jest:show Dictionary<number>
   R.dissoc<{a: number, c: number}>('b', {a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
@@ -1930,7 +1930,7 @@ type Pair = KeyValuePair<string, number>;
   R.dissoc('b')<{a: number, c: number}>({a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
 }
 
-// @dts-jest:group dissocPath
+// @dts-jest:group:skip dissocPath
 {
   // @dts-jest:show {a: {b: {}}}
   R.dissocPath(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
@@ -1941,7 +1941,7 @@ type Pair = KeyValuePair<string, number>;
   R.dissocPath(['a', 'b', 'c'])({a: {b: {c: 42}}}); // => {a: {b: {}}}
 }
 
-// @dts-jest:group eqProps
+// @dts-jest:group:skip eqProps
 {
   const o1 = {a: 1, b: 2, c: 3, d: 4};
   const o2 = {a: 10, b: 20, c: 3, d: 40};
@@ -1955,7 +1955,7 @@ type Pair = KeyValuePair<string, number>;
   R.eqProps('c', o1);
 }
 
-// @dts-jest:group evolve
+// @dts-jest:group:skip evolve
 {
   const tomato = {firstName: 'Tomato ', data: {elapsed: 100, remaining: 1400}, id: 123};
   const transformations = {
@@ -1969,7 +1969,7 @@ type Pair = KeyValuePair<string, number>;
   R.evolve(transformations)(tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
 }
 
-// @dts-jest:group has
+// @dts-jest:group:skip has
 {
   const hasName = R.has('name');
   // @dts-jest:pass
@@ -1989,7 +1989,7 @@ type Pair = KeyValuePair<string, number>;
   pointHas('z'); // => false
 }
 
-// @dts-jest:group hasIn
+// @dts-jest:group:skip hasIn
 class Rectangle {
   public width: number;
   public height: number;
@@ -2011,7 +2011,7 @@ class Rectangle {
   R.flip(R.hasIn)(square)('area'); // => true
 }
 
-// @dts-jest:group invert
+// @dts-jest:group:skip invert
 {
   const raceResultsByFirstName = {
     first: 'alice',
@@ -2023,7 +2023,7 @@ class Rectangle {
   // => { 'alice': ['first', 'third'], 'jake': ['second'] }
 }
 
-// @dts-jest:group invertObj
+// @dts-jest:group:skip invertObj
 {
   const raceResults0 = {
     first: 'alice',
@@ -2040,20 +2040,20 @@ class Rectangle {
   // => { 'alice': '0', 'jake': '1' }
 }
 
-// @dts-jest:group keys
+// @dts-jest:group:skip keys
 {
   // @dts-jest:show string[]
   R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
 }
 
-// @dts-jest:group keysIn
+// @dts-jest:group:skip keysIn
 {
   const f = new F();
   // @dts-jest:show string[]
   R.keysIn(f); // => ['x', 'y']
 }
 
-// @dts-jest:group lens
+// @dts-jest:group:skip lens
 {
   // let xLens = R.lens(R.prop('x'), R.assoc('x'));
   // let xLens = R.lens<number, xy>(R.prop('x'), R.assoc('x'));
@@ -2075,7 +2075,7 @@ class Rectangle {
   R.over(xLens)(R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
 }
 
-// @dts-jest:group lensIndex
+// @dts-jest:group:skip lensIndex
 {
   const headLens = R.lensIndex(0);
   // @dts-jest:show string
@@ -2086,7 +2086,7 @@ class Rectangle {
   R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
 }
 
-// @dts-jest:group lensProp
+// @dts-jest:group:skip lensProp
 {
   const xLens = R.lensProp('x');
   // @dts-jest:show number
@@ -2097,7 +2097,7 @@ class Rectangle {
   R.over(xLens, R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
 }
 
-// @dts-jest:group lensPath
+// @dts-jest:group:skip lensPath
 {
   const xyLens = R.lensPath(['x', 'y']);
   // @dts-jest:show number
@@ -2108,20 +2108,20 @@ class Rectangle {
   R.over(xyLens, R.negate, {x: {y: 2, z: 3}}); // => {x: {y: -2, z: 3}}
 }
 
-// @dts-jest:group keys
+// @dts-jest:group:skip keys
 {
   // @dts-jest:show string[]
   R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
 }
 
-// @dts-jest:group keysIn
+// @dts-jest:group:skip keysIn
 {
   const f = new F();
   // @dts-jest:show string[]
   R.keysIn(f); // => ['x', 'y']
 }
 
-// @dts-jest:group lens
+// @dts-jest:group:skip lens
 {
   const headLens = R.lens(
     function get(arr: number[]) { return arr[0]; },
@@ -2149,7 +2149,7 @@ class Rectangle {
   phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
 }
 
-// @dts-jest:group lensProp
+// @dts-jest:group:skip lensProp
 {
   const phraseLens = R.lensProp('phrase');
   const obj1 = {phrase: 'Absolute filth . . . and I LOVED it!'};
@@ -2162,7 +2162,7 @@ class Rectangle {
   phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
 }
 
-// @dts-jest:group merge
+// @dts-jest:group:skip merge
 {
   // @dts-jest:show Dictionary<any>
   R.merge({name: 'fred', age: 10}, {age: 40});
@@ -2172,7 +2172,7 @@ class Rectangle {
   resetToDefault({x: 5, y: 2}); // => {x: 0, y: 2}
 }
 
-// @dts-jest:group megeAll
+// @dts-jest:group:skip megeAll
 {
   // @dts-jest:show Dictionary<number>
   R.mergeAll([{foo: 1}, {bar: 2}, {baz: 3}]); // => {foo: 1,bar: 2,baz: 3}
@@ -2180,7 +2180,7 @@ class Rectangle {
   R.mergeAll([{foo: 1}, {foo: 2}, {bar: 2}]); // => {foo: 2,bar: 2}
 }
 
-// @dts-jest:group mergeWith
+// @dts-jest:group:skip mergeWith
 {
   // @dts-jest:show { a: boolean, b: boolean, values: number[] }
   R.mergeWith(R.concat,
@@ -2189,7 +2189,7 @@ class Rectangle {
   // => { a: true, b: true, values: [10, 20, 15, 35] }
 }
 
-// @dts-jest:group mergeWithKey
+// @dts-jest:group:skip mergeWithKey
 {
   const concatValues = (k: string, l: string, r: string) => k === 'values' ? R.concat(l, r) : r;
   R.mergeWithKey(concatValues,
@@ -2200,7 +2200,7 @@ class Rectangle {
   merge({a: true, thing: 'foo', values: [10, 20]}, {b: true, thing: 'bar', values: [15, 35]});
 }
 
-// @dts-jest:group pathOr
+// @dts-jest:group:skip pathOr
 {
   // @dts-jest:show number
   R.pathOr('N/A', ['a', 'b'], {a: {b: 2}}); // => 2
@@ -2212,7 +2212,7 @@ class Rectangle {
   R.pathOr({c: 2})(['a', 'b'], {c: {b: 2}}); // => 'N/A'
 }
 
-// @dts-jest:group pathSatisfies
+// @dts-jest:group:skip pathSatisfies
 {
   // @dts-jest:pass
   R.pathSatisfies((a: any) => a === 'foo', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}); // => true
@@ -2230,7 +2230,7 @@ class Rectangle {
   R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'])({a: {b: {c: 1}}}); // => true
 }
 
-// @dts-jest:group pickBy
+// @dts-jest:group:skip pickBy
 {
   const isPositive = (n: number) =>
     n > 0;
@@ -2247,7 +2247,7 @@ class Rectangle {
   R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
 }
 
-// @dts-jest:group pick
+// @dts-jest:group:skip pick
 {
   // @dts-jest:show Dictionary<number>
   R.pick(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
@@ -2260,7 +2260,7 @@ class Rectangle {
   R.pick(['a', 'e', 'f'], [1, 2, 3, 4]); // => {}
 }
 
-// @dts-jest:group objOf
+// @dts-jest:group:skip objOf
 {
   const matchPhrases = R.compose(
     R.objOf('must'),
@@ -2270,7 +2270,7 @@ class Rectangle {
   matchPhrases(['foo', 'bar', 'baz']);
 }
 
-// @dts-jest:group omit
+// @dts-jest:group:skip omit
 {
   // @dts-jest:show Dictionary<number>
   R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
@@ -2278,13 +2278,13 @@ class Rectangle {
   R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
 }
 
-// @dts-jest:group fromPairs
+// @dts-jest:group:skip fromPairs
 {
   // @dts-jest:pass
   R.fromPairs([['a', 1], ['b', 2], ['c', 3]]); // => {a: 1, b: 2, c: 3}
 }
 
-// @dts-jest:group pair
+// @dts-jest:group:skip pair
 {
   R.pair('foo', 'bar'); // => ['foo', 'bar']
   const p = R.pair('foo', 1); // => ['foo', 'bar']
@@ -2294,14 +2294,14 @@ class Rectangle {
   p[1];
 }
 
-// @dts-jest:group over, lensIndex
+// @dts-jest:group:skip over, lensIndex
 {
   const headLens = R.lensIndex(0);
   // @dts-jest:show string[]
   R.over(headLens, R.toUpper, ['foo', 'bar', 'baz']); // => ['FOO', 'bar', 'baz']
 }
 
-// @dts-jest:group pickAll
+// @dts-jest:group:skip pickAll
 {
   // @dts-jest:show Dictionary<number>
   R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
@@ -2313,14 +2313,14 @@ class Rectangle {
   R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
 }
 
-// @dts-jest:group pickBy
+// @dts-jest:group:skip pickBy
 {
   const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
   // @dts-jest:show Dictionary<number>
   R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
 }
 
-// @dts-jest:group project
+// @dts-jest:group:skip project
 {
   const abby = {name: 'Abby', age: 7, hair: 'blond', grade: 2};
   const fred = {name: 'Fred', age: 12, hair: 'brown', grade: 7};
@@ -2329,7 +2329,7 @@ class Rectangle {
   R.project(['name', 'grade'], kids); // => [{name: 'Abby', grade: 2}, {name: 'Fred', grade: 7}]
 }
 
-// @dts-jest:group prop
+// @dts-jest:group:skip prop
 {
   // @dts-jest:pass
   R.prop('x', {x: 100}); // => 100
@@ -2337,7 +2337,7 @@ class Rectangle {
   R.prop('x', {}); // => undefined
 }
 
-// @dts-jest:group propOr
+// @dts-jest:group:skip propOr
 {
   const alice = {
     name: 'ALICE',
@@ -2352,7 +2352,7 @@ class Rectangle {
   favoriteWithDefault(alice); // => 'Ramda'
 }
 
-// @dts-jest:group propSatisfies
+// @dts-jest:group:skip propSatisfies
 {
   // @dts-jest:pass
   R.propSatisfies((x: number) => x > 0, 'x', {x: 1, y: 2}); // => true
@@ -2362,7 +2362,7 @@ class Rectangle {
   R.propSatisfies((x: number) => x > 0)('x')({x: 1, y: 2}); // => true
 }
 
-// @dts-jest:group props
+// @dts-jest:group:skip props
 {
   // @dts-jest:pass
   R.props(['x', 'y'], {x: 1, y: 2}); // => [1, 2]
@@ -2374,13 +2374,13 @@ class Rectangle {
   fullName({last: 'Bullet-Tooth', age: 33, first: 'Tony'}); // => 'Tony Bullet-Tooth'
 }
 
-// @dts-jest:group toPairs
+// @dts-jest:group:skip toPairs
 {
   // @dts-jest:show [string, number][]
   R.toPairs({a: 1, b: 2, c: 3}); // => [['a', 1], ['b', 2], ['c', 3]]
 }
 
-// @dts-jest:group toPairsIn
+// @dts-jest:group:skip toPairsIn
 {
   const f = new F();
   // @dts-jest:show [string, string][]
@@ -2389,20 +2389,20 @@ class Rectangle {
   R.toPairsIn(f); // => [['x','X'], ['y','Y']]
 }
 
-// @dts-jest:group values
+// @dts-jest:group:skip values
 {
   // @dts-jest:pass
   R.values({a: 1, b: 2, c: 3}); // => [1, 2, 3]
 }
 
-// @dts-jest:group valuesIn
+// @dts-jest:group:skip valuesIn
 {
   const f = new F();
   // @dts-jest:pass
   R.valuesIn(f); // => ['X', 'Y']
 }
 
-// @dts-jest:group where
+// @dts-jest:group:skip where
 {
   const spec = {x: 2};
   // @dts-jest:show boolean
@@ -2436,7 +2436,7 @@ class Rectangle {
   R.filter(R.where({x: 10}))(xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
 }
 
-// @dts-jest:group whereEq
+// @dts-jest:group:skip whereEq
 {
   // @dts-jest:show (v: Object) => Boolean
   const pred = R.whereEq({a: 1, b: 2});
@@ -2452,13 +2452,13 @@ class Rectangle {
   R.whereEq({a: 'one'}, {a: 'one'}); // => true
 }
 
-// @dts-jest:group without
+// @dts-jest:group:skip without
 {
   // @dts-jest:pass
   R.without([1, 2], [1, 2, 1, 3, 4]); // => [3, 4]
 }
 
-// @dts-jest:group mapIndexed, addIndex
+// @dts-jest:group:skip mapIndexed, addIndex
 {
   const mapIndexed = R.addIndex<string, string>(R.map);
   // @dts-jest:show string[]
@@ -2473,22 +2473,22 @@ class Rectangle {
   ); // => [2, 56]
 }
 
-// @dts-jest:group pipe, inc, negate
+// @dts-jest:group:skip pipe, inc, negate
 {
   const f = R.pipe(Math.pow, R.negate, R.inc);
   // @dts-jest:pass
   f(3, 4); // -(3^4) + 1
 }
 
-// @dts-jest:group TODO: composeP
+// @dts-jest:group:skip TODO: composeP
 
-// @dts-jest:group TODO: composeK
+// @dts-jest:group:skip TODO: composeK
 
 /*****************************************************************
  * Relation category
  */
 
-// @dts-jest:group difference
+// @dts-jest:group:skip difference
 {
   // @dts-jest:pass
   R.difference([1, 2, 3, 4], [7, 6, 5, 4, 3]); // => [1,2]
@@ -2496,7 +2496,7 @@ class Rectangle {
   R.difference([7, 6, 5, 4, 3], [1, 2, 3, 4]); // => [7,6,5]
 }
 
-// @dts-jest:group differenceWith
+// @dts-jest:group:skip differenceWith
 {
   function cmp(x: any, y: any) { return x.a === y.a; }
   const l1 = [{a: 1}, {a: 2}, {a: 3}];
@@ -2509,7 +2509,7 @@ class Rectangle {
   R.differenceWith(cmp)(l1)(l2); // => [{a: 1}, {a: 2}]
 }
 
-// @dts-jest:group equals
+// @dts-jest:group:skip equals
 {
   // @dts-jest:pass
   R.equals(1, 1); // => true
@@ -2524,7 +2524,7 @@ class Rectangle {
   R.equals(a, b); // => true
 }
 
-// @dts-jest:group identity
+// @dts-jest:group:skip identity
 {
   const obj = {};
 
@@ -2538,7 +2538,7 @@ class Rectangle {
   R.identity(['a', 'b', 'c']);
 }
 
-// @dts-jest:group identical
+// @dts-jest:group:skip identical
 {
   const o = {};
   // @dts-jest:pass
@@ -2555,7 +2555,7 @@ class Rectangle {
   R.identical(NaN, NaN); // => true
 }
 
-// @dts-jest:group path
+// @dts-jest:group:skip path
 {
   // @dts-jest:show number
   R.path(['a', 'b'], {a: {b: 2}}); // => 2
@@ -2563,7 +2563,7 @@ class Rectangle {
   R.path(['a', 'b'])({a: {b: 2}}); // => 2
 }
 
-// @dts-jest:group sortBy
+// @dts-jest:group:skip sortBy
 {
   const sortByNameCaseInsensitive = R.sortBy(R.compose(R.toLower, R.prop('name')));
   const sortByAgeDescending = R.sortBy(R.compose(R.negate, R.prop('age')));
@@ -2589,7 +2589,7 @@ class Rectangle {
   sortByAgeAscending(people); // => [bob, alice, clara]
 }
 
-// @dts-jest:group sortWith
+// @dts-jest:group:skip sortWith
 {
   const alice = {
     name: 'alice',
@@ -2621,7 +2621,7 @@ class Rectangle {
   // => [alice, clara, bob]
 }
 
-// @dts-jest:group splitAt
+// @dts-jest:group:skip splitAt
 {
   // @dts-jest:pass
   R.splitAt(1, [1, 2, 3]); // => [[1], [2, 3]]
@@ -2633,7 +2633,7 @@ class Rectangle {
   R.splitAt(-1, 'foobar'); // => ['fooba', 'r']
 }
 
-// @dts-jest:group splitWhen
+// @dts-jest:group:skip splitWhen
 {
   // @dts-jest:pass
   R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
@@ -2641,13 +2641,13 @@ class Rectangle {
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
 }
 
-// @dts-jest:group dec
+// @dts-jest:group:skip dec
 {
   // @dts-jest:pass
   R.dec(42); // => 41
 }
 
-// @dts-jest:group divide
+// @dts-jest:group:skip divide
 {
   // @dts-jest:pass
   R.divide(71, 100); // => 0.71
@@ -2661,7 +2661,7 @@ class Rectangle {
   reciprocal(4); // => 0.25
 }
 
-// @dts-jest:group gt
+// @dts-jest:group:skip gt
 {
   // @dts-jest:pass
   R.gt(2, 6); // => false
@@ -2675,7 +2675,7 @@ class Rectangle {
   R.gt(2)(10); // => false
 }
 
-// @dts-jest:group gte
+// @dts-jest:group:skip gte
 {
   // @dts-jest:pass
   R.gte(2, 6); // => false
@@ -2689,7 +2689,7 @@ class Rectangle {
   R.gte(2)(10); // => false
 }
 
-// @dts-jest:group isNaN
+// @dts-jest:group:skip isNaN
 {
   // @dts-jest:show boolean
   R.isNaN(NaN); // => true
@@ -2699,7 +2699,7 @@ class Rectangle {
   R.isNaN({}); // => false
 }
 
-// @dts-jest:group lt
+// @dts-jest:group:skip lt
 {
   // @dts-jest:pass
   R.lt(2, 6); // => true
@@ -2713,7 +2713,7 @@ class Rectangle {
   R.flip(R.lt)(5)(10); // => false // right-sectioned currying
 }
 
-// @dts-jest:group lte
+// @dts-jest:group:skip lte
 {
   // @dts-jest:pass
   R.lte(2, 6); // => true
@@ -2727,7 +2727,7 @@ class Rectangle {
   R.lte(2)(10); // => true
 }
 
-// @dts-jest:group mathMod
+// @dts-jest:group:skip mathMod
 {
   // @dts-jest:pass
   R.mathMod(-17, 5); // => 3
@@ -2753,7 +2753,7 @@ class Rectangle {
   seventeenMod(3); // => 2
 }
 
-// @dts-jest:group max
+// @dts-jest:group:skip max
 {
   // @dts-jest:show number
   R.max(7, 3); // => 7
@@ -2761,7 +2761,7 @@ class Rectangle {
   R.max('a', 'z'); // => 'z'
 }
 
-// @dts-jest:group maxBy
+// @dts-jest:group:skip maxBy
 {
   function cmp(obj: { x: number }) { return obj.x; }
   const a = {x: 1};
@@ -2779,7 +2779,7 @@ class Rectangle {
   R.maxBy(cmp)(d)(e);
 }
 
-// @dts-jest:group mean
+// @dts-jest:group:skip mean
 {
   // @dts-jest:pass
   R.mean([2, 7, 9]); // => 6
@@ -2787,7 +2787,7 @@ class Rectangle {
   R.mean([]); // => NaN
 }
 
-// @dts-jest:group median
+// @dts-jest:group:skip median
 {
   // @dts-jest:pass
   R.median([7, 2, 10, 9]); // => 8
@@ -2795,7 +2795,7 @@ class Rectangle {
   R.median([]); // => NaN
 }
 
-// @dts-jest:group min
+// @dts-jest:group:skip min
 {
   // @dts-jest:show number
   R.min(9, 3); // => 3
@@ -2803,7 +2803,7 @@ class Rectangle {
   R.min('a', 'z'); // => 'a'
 }
 
-// @dts-jest:group minBy
+// @dts-jest:group:skip minBy
 {
   function cmp(obj: { x: number }) { return obj.x; }
   const a = {x: 1};
@@ -2821,7 +2821,7 @@ class Rectangle {
   R.minBy(cmp, d, e);
 }
 
-// @dts-jest:group modulo
+// @dts-jest:group:skip modulo
 {
   // @dts-jest:pass
   R.modulo(17, 3); // => 2
@@ -2838,7 +2838,7 @@ class Rectangle {
   isOdd(21); // => 1
 }
 
-// @dts-jest:group multiply
+// @dts-jest:group:skip multiply
 {
   // @dts-jest:pass
   R.multiply(2)(3); // => 6
@@ -2848,19 +2848,19 @@ class Rectangle {
   R.multiply(2, 5); // => 10
 }
 
-// @dts-jest:group negate
+// @dts-jest:group:skip negate
 {
   // @dts-jest:pass
   R.negate(42); // => -42
 }
 
-// @dts-jest:group product
+// @dts-jest:group:skip product
 {
   // @dts-jest:pass
   R.product([2, 4, 6, 8, 100, 1]); // => 38400
 }
 
-// @dts-jest:group subtract
+// @dts-jest:group:skip subtract
 {
   // @dts-jest:pass
   R.subtract(10, 8); // => 2
@@ -2876,13 +2876,13 @@ class Rectangle {
   complementaryAngle(72); // => 18
 }
 
-// @dts-jest:group sum
+// @dts-jest:group:skip sum
 {
   // @dts-jest:pass
   R.sum([2, 4, 6, 8, 100, 1]); // => 121
 }
 
-// @dts-jest:group symmetricDifference
+// @dts-jest:group:skip symmetricDifference
 {
   // @dts-jest:pass
   R.symmetricDifference([1, 2, 3, 4], [7, 6, 5, 4, 3]); // => [1,2,7,6,5]
@@ -2890,7 +2890,7 @@ class Rectangle {
   R.symmetricDifference([7, 6, 5, 4, 3])([1, 2, 3, 4]); // => [7,6,5,1,2]
 }
 
-// @dts-jest:group symmetricDifferenceWith
+// @dts-jest:group:skip symmetricDifferenceWith
 {
   const eqA = R.eqBy(R.prop('a'));
   const l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}];
@@ -2907,7 +2907,7 @@ class Rectangle {
  * String category
  */
 
-// @dts-jest:group replace
+// @dts-jest:group:skip replace
 {
   // @dts-jest:pass
   R.replace('foo', 'bar', 'foo foo foo'); // => 'bar foo foo'
@@ -2970,7 +2970,7 @@ class Rectangle {
  * Logic category
  */
 
-// @dts-jest:group eqBy
+// @dts-jest:group:skip eqBy
 {
   // @dts-jest:pass
   R.eqBy(Math.abs, 5, -5); // => true
@@ -2980,7 +2980,7 @@ class Rectangle {
   R.eqBy(Math.abs, 5)(-5); // => true
 }
 
-// @dts-jest:group defaultTo
+// @dts-jest:group:skip defaultTo
 {
   const defaultTo42 = R.defaultTo(42);
   // @dts-jest:show number
@@ -2991,7 +2991,7 @@ class Rectangle {
   defaultTo42('Ramda'); // => 'Ramda'
 }
 
-// @dts-jest:group either
+// @dts-jest:group:skip either
 {
   const gt10 = (x: number) => x > 10;
   const even = (x: number) => x % 2 === 0;
@@ -3001,7 +3001,7 @@ class Rectangle {
   R.either(gt10)(even)(8); // => true
 }
 
-// @dts-jest:group ifElse
+// @dts-jest:group:skip ifElse
 {
   // Flatten all arrays in the list but leave other values alone.
   const flattenArrays = R.map(R.ifElse(Array.isArray, R.flatten, R.identity));
@@ -3012,7 +3012,7 @@ class Rectangle {
   flattenArrays([[[10], 123], [8, [10]], 'hello']); // => [[10, 123], [8, 10], 'hello']
 }
 
-// @dts-jest:group isEmpty
+// @dts-jest:group:skip isEmpty
 {
   // @dts-jest:pass
   R.isEmpty([1, 2, 3]); // => false
@@ -3028,7 +3028,7 @@ class Rectangle {
   R.isEmpty({a: 1}); // => false
 }
 
-// @dts-jest:group not
+// @dts-jest:group:skip not
 {
   // @dts-jest:pass
   R.not(true); // => false
@@ -3050,7 +3050,7 @@ class Why {
   }
 }
 
-// @dts-jest:group or
+// @dts-jest:group:skip or
 {
   // @dts-jest:pass
   R.or(false, true); // => false
@@ -3067,7 +3067,7 @@ class Why {
   R.or(why, false); // false
 }
 
-// @dts-jest:group intersperse
+// @dts-jest:group:skip intersperse
 {
   // @dts-jest:pass
   R.intersperse(',', ['foo', 'bar']); // => ['foo', ',', 'bar']
