@@ -352,6 +352,8 @@ exports[`findLast R.findLast(R.__, xs)(R.propEq('a', 4)) 1`] = `"{ a: number; b:
 
 exports[`findLast R.findLast<typeof xs[number]>(R.propEq('a', 1))(xs) 1`] = `"{ a: number; b: number; } | undefined"`;
 
+exports[`findLastIndex R.findLastIndex((x: number) => x === 1, [1, 2, 3]) 1`] = `"number"`;
+
 exports[`findLastIndex R.findLastIndex(R.propEq('a', 1))(xs) 1`] = `"number"`;
 
 exports[`findLastIndex R.findLastIndex(R.propEq('a', 4))(xs) 1`] = `"number"`;

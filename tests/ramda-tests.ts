@@ -823,6 +823,17 @@ import * as R from 'ramda';
   R.findLast(R.__, xs)(R.propEq('a', 4)); // => undefined
 }
 
+// @dts-jest:group findLastIndex
+{
+  const xs = [{a: 1, b: 0}, {a: 1, b: 1}];
+  // @dts-jest:pass
+  R.findLastIndex(R.propEq('a', 1))(xs); // => 1
+  // @dts-jest:pass
+  R.findLastIndex(R.propEq('a', 4))(xs); // => -1
+  // @dts-jest:pass
+  R.findLastIndex((x: number) => x === 1, [1, 2, 3]);
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -1272,17 +1283,6 @@ class F {
   R.find(R.propEq('a', 2))(xs); // => {a: 2}
   // @dts-jest:show undefined
   R.find(R.propEq('a', 4))(xs); // => undefined
-}
-
-// @dts-jest:group:skip findLastIndex
-{
-  const xs = [{a: 1, b: 0}, {a: 1, b: 1}];
-  // @dts-jest:pass
-  R.findLastIndex(R.propEq('a', 1))(xs); // => 1
-  // @dts-jest:pass
-  R.findLastIndex(R.propEq('a', 4))(xs); // => -1
-  // @dts-jest:show number[]
-  R.findLastIndex((x: number) => x === 1, [1, 2, 3]);
 }
 
 // @dts-jest:group:skip pathEq

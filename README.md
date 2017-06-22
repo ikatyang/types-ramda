@@ -128,7 +128,7 @@ source version: v0.24.1
 - [x] find
 - [x] findIndex
 - [x] findLast
-- [ ] findLastIndex
+- [x] findLastIndex
 - [ ] flatten
 - [ ] flip
 - [ ] forEach
