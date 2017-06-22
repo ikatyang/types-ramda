@@ -171,3 +171,7 @@ exports[`compose f4(3, 4) 1`] = `"number"`;
 exports[`compose f5(3, 4) 1`] = `"number"`;
 
 exports[`compose gn('Hello', 4, 'world') 1`] = `"number"`;
+
+exports[`composeP R.composeP(lookupFollowers, lookupUser) 1`] = `"(v1: string) => PromiseLike<{}>"`;
+
+exports[`composeP R.composeP<string, User, string[]>(lookupFollowers, lookupUser) 1`] = `"(v1: string) => PromiseLike<string[]>"`;

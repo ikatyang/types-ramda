@@ -398,6 +398,35 @@ import * as R from 'ramda';
   }
 }
 
+// @dts-jest:group composeP
+{
+  interface User {
+    name: string;
+    followers: string[];
+  }
+  interface DateBase {
+    users: {
+      [userId: string]: User;
+    };
+  }
+  const db: DateBase = {
+    users: {
+      JOE: {
+        name: 'Joe',
+        followers: ['STEVE', 'SUZY'],
+      },
+    },
+  };
+
+  const lookupUser = (userId: string) => Promise.resolve(db.users[userId]);
+  const lookupFollowers = (user: User) => Promise.resolve(user.followers);
+
+  // @dts-jest:pass
+  R.composeP(lookupFollowers, lookupUser);
+  // @dts-jest:pass
+  R.composeP<string, User, string[]>(lookupFollowers, lookupUser);
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;
