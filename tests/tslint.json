@@ -2,6 +2,7 @@
   "extends": "../tslint.json",
   "rules": {
     "no-unused-expression": false,
-    "no-unbound-method": false
+    "no-unbound-method": false,
+    "promise-function-async": false
   }
 }
