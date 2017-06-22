@@ -104,12 +104,12 @@ source version: v0.24.1
 - [x] curryN
 - [x] dec
 - [x] defaultTo
-- [ ] descend
-- [ ] difference
-- [ ] differenceWith
-- [ ] dissoc
-- [ ] dissocPath
-- [ ] divide
+- [x] descend
+- [x] difference
+- [x] differenceWith
+- [x] dissoc
+- [x] dissocPath
+- [x] divide
 - [ ] drop
 - [ ] dropLast
 - [ ] dropLastWhile

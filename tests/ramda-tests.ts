@@ -590,6 +590,75 @@ import * as R from 'ramda';
   defaultTo42('Ramda'); // => 'Ramda'
 }
 
+// @dts-jest:group descend
+{
+  const byAge = R.descend(R.prop('age'));
+  const alice = {
+    name: 'ALICE',
+    age: 101,
+  };
+  const bob = {
+    name: 'Bob',
+    age: -10,
+  };
+  const clara = {
+    name: 'clara',
+    age: 314.159,
+  };
+  const people = [clara, bob, alice];
+  // @dts-jest:pass
+  R.sort(byAge, people);
+  // @dts-jest:pass
+  R.sort(R.__, people)(byAge);
+}
+
+// @dts-jest:group difference
+{
+  // @dts-jest:pass
+  R.difference([1, 2, 3, 4], [7, 6, 5, 4, 3]); // => [1,2]
+  // @dts-jest:pass
+  R.difference([7, 6, 5, 4, 3], [1, 2, 3, 4]); // => [7,6,5]
+}
+
+// @dts-jest:group differenceWith
+{
+  function cmp(x: {a: number}, y: {a: number}) { return x.a === y.a; }
+  const l1 = [{a: 1}, {a: 2}, {a: 3}];
+  const l2 = [{a: 3}, {a: 4}];
+  // @dts-jest:pass
+  R.differenceWith(cmp, l1, l2); // => [{a: 1}, {a: 2}]
+  // @dts-jest:pass
+  R.differenceWith(cmp)(l1, l2); // => [{a: 1}, {a: 2}]
+  // @dts-jest:pass
+  R.differenceWith(cmp)(l1)(l2); // => [{a: 1}, {a: 2}]
+}
+
+// @dts-jest:group dissoc
+{
+  // @dts-jest:pass
+  R.dissoc<{a: number, c: number}>('b', {a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
+  // @dts-jest:pass
+  R.dissoc('b')<{a: number, c: number}>({a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
+}
+
+// @dts-jest:group dissocPath
+{
+  // @dts-jest:pass
+  R.dissocPath<{a: {b: {}}}>(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
+  // @dts-jest:pass
+  R.dissocPath(['a', 'b', 'c'])<{a: {b: {}}}>({a: {b: {c: 42}}}); // => {a: {b: {}}}
+}
+
+// @dts-jest:group divide
+{
+  // @dts-jest:pass
+  R.divide(71, 100); // => 0.71
+  // @dts-jest:pass
+  R.flip(R.divide<'11'>())(2)(42); // => 21
+  // @dts-jest:pass
+  R.divide(1)(4); // => 0.25
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -1043,26 +1112,6 @@ class F {
 /*********************
  * List category
  ********************/
-
-// @dts-jest:group:skip descend
-{
-  const byAge = R.descend(R.prop('age'));
-  const alice = {
-    name: 'ALICE',
-    age: 101,
-  };
-  const bob = {
-    name: 'Bob',
-    age: -10,
-  };
-  const clara = {
-    name: 'clara',
-    age: 314.159,
-  };
-  const people = [clara, bob, alice];
-  // @dts-jest:show typeof people
-  R.sort(byAge, people);
-}
 
 // @dts-jest:group:skip drop
 {
@@ -1951,27 +2000,6 @@ type Pair = KeyValuePair<string, number>;
  * Object category
  */
 
-// @dts-jest:group:skip dissoc
-{
-  // @dts-jest:show Dictionary<number>
-  R.dissoc<{a: number, c: number}>('b', {a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
-  // @dts-jest:show Dictionary<number>
-  R.dissoc('b', {a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
-  // @dts-jest:show Dictionary<number>
-  R.dissoc('b')<{a: number, c: number}>({a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
-}
-
-// @dts-jest:group:skip dissocPath
-{
-  // @dts-jest:show {a: {b: {}}}
-  R.dissocPath(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
-  // optionally specify return type
-  // @dts-jest:show {a: {b: {}}}
-  R.dissocPath<{a: { b: number}}>(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
-  // @dts-jest:show {a: {b: {}}}
-  R.dissocPath(['a', 'b', 'c'])({a: {b: {c: 42}}}); // => {a: {b: {}}}
-}
-
 // @dts-jest:group:skip eqProps
 {
   const o1 = {a: 1, b: 2, c: 3, d: 4};
@@ -2519,27 +2547,6 @@ class Rectangle {
  * Relation category
  */
 
-// @dts-jest:group:skip difference
-{
-  // @dts-jest:pass
-  R.difference([1, 2, 3, 4], [7, 6, 5, 4, 3]); // => [1,2]
-  // @dts-jest:pass
-  R.difference([7, 6, 5, 4, 3], [1, 2, 3, 4]); // => [7,6,5]
-}
-
-// @dts-jest:group:skip differenceWith
-{
-  function cmp(x: any, y: any) { return x.a === y.a; }
-  const l1 = [{a: 1}, {a: 2}, {a: 3}];
-  const l2 = [{a: 3}, {a: 4}];
-  // @dts-jest:show {a: number}[]
-  R.differenceWith(cmp, l1, l2); // => [{a: 1}, {a: 2}]
-  // @dts-jest:show {a: number}[]
-  R.differenceWith(cmp)(l1, l2); // => [{a: 1}, {a: 2}]
-  // @dts-jest:show {a: number}[]
-  R.differenceWith(cmp)(l1)(l2); // => [{a: 1}, {a: 2}]
-}
-
 // @dts-jest:group:skip equals
 {
   // @dts-jest:pass
@@ -2670,20 +2677,6 @@ class Rectangle {
   R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
   // @dts-jest:pass
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
-}
-
-// @dts-jest:group:skip divide
-{
-  // @dts-jest:pass
-  R.divide(71, 100); // => 0.71
-
-  const half = R.flip(R.divide)(2);
-  // @dts-jest:show number
-  half(42); // => 21
-
-  const reciprocal = R.divide(1);
-  // @dts-jest:pass
-  reciprocal(4); // => 0.25
 }
 
 // @dts-jest:group:skip gt
