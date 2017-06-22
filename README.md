@@ -129,11 +129,11 @@ source version: v0.24.1
 - [x] findIndex
 - [x] findLast
 - [x] findLastIndex
-- [ ] flatten
-- [ ] flip
-- [ ] forEach
-- [ ] forEachObjIndexed
-- [ ] fromPairs
+- [x] flatten
+- [x] flip
+- [x] forEach
+- [x] forEachObjIndexed
+- [x] fromPairs
 - [ ] groupBy
 - [ ] groupWith
 - [ ] gt

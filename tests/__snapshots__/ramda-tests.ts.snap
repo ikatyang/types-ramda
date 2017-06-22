@@ -358,13 +358,23 @@ exports[`findLastIndex R.findLastIndex(R.propEq('a', 1))(xs) 1`] = `"number"`;
 
 exports[`findLastIndex R.findLastIndex(R.propEq('a', 4))(xs) 1`] = `"number"`;
 
-exports[`flip flipped(1, 2, 3) 1`] = `"number[]"`;
+exports[`flatten R.flatten(
+        [1, 2, [3, 4], 5, [6, [7, 8, [9, [10, 11], 12]]]],
+      ) as number[] 1`] = `"number[]"`;
 
-exports[`flip mergeThree(1, 2, 3) 1`] = `"number[]"`;
+exports[`flatten R.flatten([1, 2, [3, 4], 5]) 1`] = `"number[]"`;
+
+exports[`flip R.flip(mergeThree)(1, true, 'str') 1`] = `"[boolean, number, string]"`;
+
+exports[`flip mergeThree(true, 1, 'str') 1`] = `"[boolean, number, string]"`;
 
 exports[`forEach R.forEach(printXPlusFive)([1, 2, 3]) 1`] = `"number[]"`;
 
 exports[`forEach R.forEach(printXPlusFive, [1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`forEachObjIndexed R.forEachObjIndexed(printKeyConcatValue)({x: 1, y: 2}) 1`] = `"Dictionary<number>"`;
+
+exports[`forEachObjIndexed R.forEachObjIndexed(printKeyConcatValue, {x: 1, y: 2}) 1`] = `"{ x: number; y: number; }"`;
 
 exports[`fromPairs R.fromPairs([['a', 1], ['b', 2], ['c', 3]]) 1`] = `"Dictionary<number>"`;
 

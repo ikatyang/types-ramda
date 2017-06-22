@@ -834,6 +834,55 @@ import * as R from 'ramda';
   R.findLastIndex((x: number) => x === 1, [1, 2, 3]);
 }
 
+// @dts-jest:group flatten
+{
+  // @dts-jest:pass
+  R.flatten([1, 2, [3, 4], 5]); // => [1, 2, 3, 4, 5]
+  // @dts-jest:pass
+  R.flatten(
+    [1, 2, [3, 4], 5, [6, [7, 8, [9, [10, 11], 12]]]],
+  ) as number[]; // => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+}
+
+// @dts-jest:group flip
+{
+  const mergeThree = (a: boolean, b: number, c: string): [boolean, number, string] => [a, b, c];
+
+  // @dts-jest:pass
+  mergeThree(true, 1, 'str'); // => [true, 1, 'str']
+
+  // @dts-jest:pass
+  R.flip(mergeThree)(1, true, 'str'); // => [true, 1, 'str']
+}
+
+// @dts-jest:group forEach
+{
+  const printXPlusFive = (x: number) => { console.log(x + 5); };
+  // @dts-jest:pass
+  R.forEach(printXPlusFive, [1, 2, 3]); // => [1, 2, 3]
+  // @dts-jest:pass
+  R.forEach(printXPlusFive)([1, 2, 3]); // => [1, 2, 3]
+  // => 6
+  // => 7
+  // => 8
+}
+
+// @dts-jest:group forEachObjIndexed
+{
+  const printKeyConcatValue = (value: number, key: string) =>
+    console.log(`${key}:${value}`);
+  // @dts-jest:pass
+  R.forEachObjIndexed(printKeyConcatValue, {x: 1, y: 2});
+  // @dts-jest:pass
+  R.forEachObjIndexed(printKeyConcatValue)({x: 1, y: 2});
+}
+
+// @dts-jest:group fromPairs
+{
+  // @dts-jest:pass
+  R.fromPairs([['a', 1], ['b', 2], ['c', 3]]); // => {a: 1, b: 2, c: 3}
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -1261,17 +1310,6 @@ class F {
  * Function category
  */
 
-// @dts-jest:group:skip flip
-{
-  const mergeThree = (a: number, b: number, c: number): number[] =>
-    ([] as number[]).concat(a, b, c); // strictNullChecks: must cast array to right type
-  // @dts-jest:pass
-  mergeThree(1, 2, 3); // => [1, 2, 3]
-  const flipped = R.flip(mergeThree);
-  // @dts-jest:pass
-  flipped(1, 2, 3); // => [2, 1, 3]
-}
-
 /*********************
  * List category
  ********************/
@@ -1332,32 +1370,6 @@ interface Obj { a: number; b: number; }
   R.propEq('a', 1, xs); // => true
   // @dts-jest:pass
   R.propEq('a', 4, xs); // => false
-}
-
-// @dts-jest:group:skip forEach
-{
-  const printXPlusFive = (x: number) => { console.log(x + 5); };
-  // @dts-jest:pass
-  R.forEach(printXPlusFive, [1, 2, 3]); // => [1, 2, 3]
-  // @dts-jest:pass
-  R.forEach(printXPlusFive)([1, 2, 3]); // => [1, 2, 3]
-  // => 6
-  // => 7
-  // => 8
-}
-
-// @dts-jest:group:skip forEach
-{
-  const printKeyConcatValue = (value: any, key: string, obj: any) =>
-    console.log(`${key}:${value}`);
-  // @dts-jest:show {x: 1, y: 2}
-  R.forEachObjIndexed(printKeyConcatValue, {x: 1, y: 2});
-  // @dts-jest:show {x: 1, y: 2}
-  R.forEachObjIndexed(printKeyConcatValue)({x: 1, y: 2});
-  // @dts-jest:show [1, 2]
-  R.forEachObjIndexed(printKeyConcatValue, [1, 2]);
-  // @dts-jest:show [1, 2]
-  R.forEachObjIndexed(printKeyConcatValue)([1, 2]);
 }
 
 // @dts-jest:group:skip groupBy
@@ -2368,12 +2380,6 @@ class Rectangle {
   R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
 }
 
-// @dts-jest:group:skip fromPairs
-{
-  // @dts-jest:pass
-  R.fromPairs([['a', 1], ['b', 2], ['c', 3]]); // => {a: 1, b: 2, c: 3}
-}
-
 // @dts-jest:group:skip pair
 {
   R.pair('foo', 'bar'); // => ['foo', 'bar']
@@ -3215,13 +3221,6 @@ class Why {
   const pipeF2 = R.pipe(R.identity, R.inc); // : (v: {}) => number
   // @dts-jest:pass
   pipeF2('foo'); // uh-oh, passes
-}
-
-{
-  // #118: flatten
-  // @dts-jest:show number[]
-  R.flatten([1, 2, [3, 4], 5, [6, [7, 8, [9, [10, 11], 12]]]]);
-  // => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 }
 
 {
