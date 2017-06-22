@@ -789,6 +789,31 @@ import * as R from 'ramda';
   R.filter(isEven)({a: 1, b: 2, c: 3, d: 4});
 }
 
+// @dts-jest:group find
+{
+  interface Task {
+    id: number;
+  }
+  const tasks: Task[] = [];
+
+  // @dts-jest:pass
+  R.find((task: Task) => task.id === 1)(tasks);
+}
+
+// @dts-jest:group findIndex
+{
+  interface Task {a: number; }
+  const xs = [{a: 1}, {a: 2}, {a: 3}];
+  const a: (list: Task[]) => number = R.findIndex(R.propEq('a', 2));
+  // @dts-jest:pass
+  a(xs); // => 1
+  // @dts-jest:pass
+  R.findIndex(R.propEq('a', 4))(xs); // => -1
+
+  // @dts-jest:pass
+  R.findIndex((x: number) => x === 1, [1, 2, 3]);
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -1238,29 +1263,6 @@ class F {
   R.find(R.propEq('a', 2))(xs); // => {a: 2}
   // @dts-jest:show undefined
   R.find(R.propEq('a', 4))(xs); // => undefined
-}
-
-// @dts-jest:group:skip find
-{
-  interface Task {id: number; }
-  const tasks: Task[] = [];
-  const f: (list: Task[]) => Task = R.find<Task>((task: Task) => task.id === 1);
-  // @dts-jest:pass
-  f(tasks); // works
-}
-
-// @dts-jest:group:skip findIndex
-{
-  interface Task {a: number; }
-  const xs = [{a: 1}, {a: 2}, {a: 3}];
-  const a: (list: Task[]) => number = R.findIndex(R.propEq('a', 2));
-  // @dts-jest:pass
-  a(xs); // => 1
-  // @dts-jest:pass
-  R.findIndex(R.propEq('a', 4))(xs); // => -1
-
-  // @dts-jest:pass
-  R.findIndex((x: number) => x === 1, [1, 2, 3]);
 }
 
 // @dts-jest:group:skip findLast

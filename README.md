@@ -125,8 +125,8 @@ source version: v0.24.1
 - [x] evolve
 - [ ] F
 - [x] filter
-- [ ] find
-- [ ] findIndex
+- [x] find
+- [x] findIndex
 - [ ] findLast
 - [ ] findLastIndex
 - [ ] flatten
