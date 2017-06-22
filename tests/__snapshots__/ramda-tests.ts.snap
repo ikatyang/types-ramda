@@ -149,3 +149,5 @@ exports[`clone R.clone(Date.now()) 1`] = `"number"`;
 exports[`clone R.clone(obj1) 1`] = `"{}[]"`;
 
 exports[`clone R.clone(obj2) 1`] = `"{ a: number; }[]"`;
+
+exports[`comparator R.sort(R.comparator((a: Person, b: Person) => a.age < b.age), people) 1`] = `"Person[]"`;

@@ -334,6 +334,22 @@ import * as R from 'ramda';
   R.clone(Date.now());
 }
 
+// @dts-jest:group comparator
+{
+  interface Person {
+    age: number;
+    name: string;
+  }
+  const people = [
+    {name: 'Agy', age: 33},
+    {name: 'Bib', age: 15},
+    {name: 'Cari', age: 16},
+  ];
+
+  // @dts-jest:pass
+  R.sort(R.comparator((a: Person, b: Person) => a.age < b.age), people);
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;
@@ -2383,19 +2399,6 @@ class Rectangle {
     const f = R.pipe(Math.pow, R.negate, R.inc);
     // $ExpectType number
     f(3, 4); // -(3^4) + 1
-};
-
-// comparator
-() => {
-    type T = {age: number};
-    let cmp = R.comparator(function(a: T, b: T) {
-      return a.age < b.age;
-    });
-    let people = [
-      {name: 'Agy', age: 33}, {name: 'Bib', age: 15}, {name: 'Cari', age: 16}
-    ];
-    // $ExpectType { age: number, name: string }[]
-    R.sort(cmp, people);
 };
 
 // converge
