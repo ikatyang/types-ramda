@@ -124,7 +124,7 @@ source version: v0.24.1
 - [x] equals
 - [x] evolve
 - [ ] F
-- [ ] filter
+- [x] filter
 - [ ] find
 - [ ] findIndex
 - [ ] findLast

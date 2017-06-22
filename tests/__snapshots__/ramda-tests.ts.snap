@@ -332,9 +332,13 @@ exports[`evolve R.evolve(transformations)(tomato) 1`] = `"{ firstName: string; d
 
 exports[`evolve R.evolve(transformations, tomato) 1`] = `"{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }"`;
 
+exports[`filter R.filter(isEven)([1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`filter R.filter(isEven)({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Dictionary<number>"`;
+
 exports[`filter R.filter(isEven, [1, 2, 3, 4]) 1`] = `"number[]"`;
 
-exports[`filter onlyNumberList(R.filter(isEven, [1, 2, 3, 4])) 1`] = `"number[]"`;
+exports[`filter R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Dictionary<number>"`;
 
 exports[`find f(tasks) 1`] = `"Task"`;
 

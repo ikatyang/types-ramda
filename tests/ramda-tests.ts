@@ -775,6 +775,20 @@ import * as R from 'ramda';
   R.evolve(transformations)(tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
 }
 
+// @dts-jest:group filter
+{
+  const isEven = (n: number) => n % 2 === 0;
+
+  // @dts-jest:pass
+  R.filter(isEven, [1, 2, 3, 4]); // => [2, 4]
+  // @dts-jest:pass
+  R.filter(isEven)([1, 2, 3, 4]);
+  // @dts-jest:pass
+  R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, d: 4}
+  // @dts-jest:pass
+  R.filter(isEven)({a: 1, b: 2, c: 3, d: 4});
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -1216,26 +1230,6 @@ class F {
 /*********************
  * List category
  ********************/
-
-// @dts-jest:group:skip filter
-{
-  const isEven = (n: number) =>
-    n % 2 === 0;
-  // filter works with lists...
-  // @dts-jest:pass
-  R.filter(isEven, [1, 2, 3, 4]); // => [2, 4]
-  const isEvenFn = R.filter(isEven);
-  isEvenFn([1, 2, 3, 4]);
-  // ... but also objects
-  // @dts-jest:show Dictionary<number>
-  R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, d: 4}
-  // see that we did not break anything
-  // and we kept type information
-  // @dts-jest:pass
-  onlyNumberList(R.filter(isEven, [1, 2, 3, 4]));
-  // @dts-jest:show Dictionary<number>
-  onlyNumberObj(R.filter(isEven, {a: 1, b: 2, c: 3, d: 4})); // strictNullChecks: Partial fails, consider Pick
-}
 
 // @dts-jest:group:skip find, propEq
 {
