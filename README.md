@@ -101,7 +101,7 @@ source version: v0.24.1
 - [x] converge
 - [x] countBy
 - [x] curry
-- [ ] curryN
+- [x] curryN
 - [ ] dec
 - [ ] defaultTo
 - [ ] descend

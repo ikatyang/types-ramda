@@ -522,7 +522,7 @@ import * as R from 'ramda';
   R.countBy(R.toLower)(letters); // => {'a': 5, 'b': 4, 'c': 3}
 }
 
-// @dts-jest:group:only curry
+// @dts-jest:group curry
 {
   const addTwo = R.curry((x: number, y: number) => x + y);
   // @dts-jest:pass
@@ -560,6 +560,17 @@ import * as R from 'ramda';
   xyz(3)(2);
   // @dts-jest:skip <Y, Z>(v2: Y, v3: Z) => ({ x: number; y: Y; z: Z; })
   xyz(3);
+}
+
+// @dts-jest:group curryN
+{
+  const sumArgs = (...args: number[]) => R.sum(args);
+  const curriedAddFourNumbers = R.curryN(4, sumArgs);
+
+  // @dts-jest:pass
+  curriedAddFourNumbers;
+  // @dts-jest:pass
+  curriedAddFourNumbers(1, 2)(3)(4); // => 10
 }
 
 // ---------------------------------------------------------------------

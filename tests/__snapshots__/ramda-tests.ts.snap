@@ -232,6 +232,10 @@ exports[`curry addTwo(3) 1`] = `"CurriedFunction1<number, number>"`;
 
 exports[`curry addTwo(3)(1) 1`] = `"number"`;
 
+exports[`curryN curriedAddFourNumbers 1`] = `"CurriedFunction4<number, number, number, number, number>"`;
+
+exports[`curryN curriedAddFourNumbers(1, 2)(3)(4) 1`] = `"number"`;
+
 exports[`dec R.dec(42) 1`] = `"number"`;
 
 exports[`difference R.difference([1, 2, 3, 4], [7, 6, 5, 4, 3]) 1`] = `"number[]"`;
