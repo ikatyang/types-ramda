@@ -23,18 +23,29 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const dropLast: dropLast_00;
 type dropLast_00 = {
-    <T extends List<any>>(_n: PH, list: T): dropLast_01<T>;
-    <T extends List<any>>(n: number, list: T): dropLast_11<T>;
-    <$SEL extends "11">(): <T extends List<any>>(n: number, list: T) => dropLast_11<T>;
+    (_n: PH, str: string): dropLast_string_01;
+    <T>(_n: PH, list: List<T>): dropLast_list_01<T>;
+    (n: number, str: string): dropLast_string_11;
+    <T>(n: number, list: List<T>): dropLast_list_11<T>;
+    <$SEL extends "11", $KIND extends "string">(): (n: number, str: string) => dropLast_string_11;
+    <$SEL extends "01", $KIND extends "string">(): (_n: PH, str: string) => dropLast_string_01;
+    <$SEL extends "11", $KIND extends "list">(): <T>(n: number, list: List<T>) => dropLast_list_11<T>;
+    <$SEL extends "01", $KIND extends "list">(): <T>(_n: PH, list: List<T>) => dropLast_list_01<T>;
     <$SEL extends "1">(): (n: number) => dropLast_10;
-    <$SEL extends "01">(): <T extends List<any>>(_n: PH, list: T) => dropLast_01<T>;
     (n: number): dropLast_10;
 };
 type dropLast_10 = {
-    <T extends List<any>>(list: T): dropLast_11<T>;
+    (str: string): dropLast_string_11;
+    <$SEL extends "1", $KIND extends "string">(): (str: string) => dropLast_string_11;
+    <$SEL extends "1", $KIND extends "list">(): <T>(list: List<T>) => dropLast_list_11<T>;
+    <T>(list: List<T>): dropLast_list_11<T>;
 };
-type dropLast_01<T extends List<any>> = {
-    (n: number): dropLast_11<T>;
+type dropLast_string_01 = {
+    (n: number): dropLast_string_11;
 };
-type dropLast_11<T extends List<any>> = T;
+type dropLast_list_01<T> = {
+    (n: number): dropLast_list_11<T>;
+};
+type dropLast_string_11 = string;
+type dropLast_list_11<T> = T[];
 export = dropLast;

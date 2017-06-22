@@ -24,18 +24,29 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const takeLast: takeLast_00;
 type takeLast_00 = {
-    <T extends List<any>>(_n: PH, list: T): takeLast_01<T>;
-    <T extends List<any>>(n: number, list: T): takeLast_11<T>;
-    <$SEL extends "11">(): <T extends List<any>>(n: number, list: T) => takeLast_11<T>;
+    (_n: PH, str: string): takeLast_string_01;
+    <T>(_n: PH, list: List<T>): takeLast_list_01<T>;
+    (n: number, str: string): takeLast_string_11;
+    <T>(n: number, list: List<T>): takeLast_list_11<T>;
+    <$SEL extends "11", $KIND extends "string">(): (n: number, str: string) => takeLast_string_11;
+    <$SEL extends "01", $KIND extends "string">(): (_n: PH, str: string) => takeLast_string_01;
+    <$SEL extends "11", $KIND extends "list">(): <T>(n: number, list: List<T>) => takeLast_list_11<T>;
+    <$SEL extends "01", $KIND extends "list">(): <T>(_n: PH, list: List<T>) => takeLast_list_01<T>;
     <$SEL extends "1">(): (n: number) => takeLast_10;
-    <$SEL extends "01">(): <T extends List<any>>(_n: PH, list: T) => takeLast_01<T>;
     (n: number): takeLast_10;
 };
 type takeLast_10 = {
-    <T extends List<any>>(list: T): takeLast_11<T>;
+    (str: string): takeLast_string_11;
+    <$SEL extends "1", $KIND extends "string">(): (str: string) => takeLast_string_11;
+    <$SEL extends "1", $KIND extends "list">(): <T>(list: List<T>) => takeLast_list_11<T>;
+    <T>(list: List<T>): takeLast_list_11<T>;
 };
-type takeLast_01<T extends List<any>> = {
-    (n: number): takeLast_11<T>;
+type takeLast_string_01 = {
+    (n: number): takeLast_string_11;
 };
-type takeLast_11<T extends List<any>> = T;
+type takeLast_list_01<T> = {
+    (n: number): takeLast_list_11<T>;
+};
+type takeLast_string_11 = string;
+type takeLast_list_11<T> = T[];
 export = takeLast;
