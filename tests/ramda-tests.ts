@@ -892,14 +892,6 @@ const shout = (x: number): string =>
         ? 'big'
         : 'small';
 
-// check type information is not lost for lists
-const onlyNumberList = (xs: number[]): number[] =>
-  xs;
-
-// check type information is not lost for simple objects
-const onlyNumberObj = (xs: {[key: string]: number}): {[key: string]: number} =>
-  xs;
-
 class F {
   public x = 'X';
   public y = 'Y';
