@@ -175,3 +175,11 @@ exports[`compose gn('Hello', 4, 'world') 1`] = `"number"`;
 exports[`composeP R.composeP(lookupFollowers, lookupUser) 1`] = `"(v1: string) => PromiseLike<{}>"`;
 
 exports[`composeP R.composeP<string, User, string[]>(lookupFollowers, lookupUser) 1`] = `"(v1: string) => PromiseLike<string[]>"`;
+
+exports[`concat R.concat('ABC')('DEF') 1`] = `"string"`;
+
+exports[`concat R.concat([], []) 1`] = `"never[]"`;
+
+exports[`concat R.concat([4, 5, 6])([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`concat R.concat([4, 5, 6], [1, 2, 3]) 1`] = `"number[]"`;

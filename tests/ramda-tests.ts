@@ -427,6 +427,18 @@ import * as R from 'ramda';
   R.composeP<string, User, string[]>(lookupFollowers, lookupUser);
 }
 
+// @dts-jest:group concat
+{
+  // @dts-jest:pass
+  R.concat([], []); // => []
+  // @dts-jest:pass
+  R.concat([4, 5, 6], [1, 2, 3]); // => [4, 5, 6, 1, 2, 3]
+  // @dts-jest:pass
+  R.concat([4, 5, 6])([1, 2, 3]); // => [4, 5, 6, 1, 2, 3]
+  // @dts-jest:pass
+  R.concat('ABC')('DEF'); // 'ABCDEF'
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;
@@ -957,17 +969,6 @@ class F2 {
 /*********************
  * List category
  ********************/
-
-// concat
-() => {
-    R.concat([], []); // => []   // let r: [] =
-    // $ExpectType number[]
-    R.concat([4, 5, 6], [1, 2, 3]); // => [4, 5, 6, 1, 2, 3]
-    // $ExpectType number[]
-    R.concat([4, 5, 6])([1, 2, 3]); // => [4, 5, 6, 1, 2, 3]
-    // $ExpectType string
-    R.concat('ABC')('DEF'); // 'ABCDEF'
-};
 
 // contains
 () => {

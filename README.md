@@ -93,7 +93,7 @@ source version: v0.24.1
 - [x] compose
 - [ ] composeK
 - [x] composeP
-- [ ] concat
+- [x] concat
 - [ ] cond
 - [ ] construct
 - [ ] constructN
