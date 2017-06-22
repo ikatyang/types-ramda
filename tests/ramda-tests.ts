@@ -659,6 +659,18 @@ import * as R from 'ramda';
   R.divide(1)(4); // => 0.25
 }
 
+// @dts-jest:group drop
+{
+  // @dts-jest:pass
+  R.drop(3, [1, 2, 3, 4, 5, 6, 7]); // => [4,5,6,7]
+  // @dts-jest:pass
+  R.drop(3)([1, 2, 3, 4, 5, 6, 7]); // => [4,5,6,7]
+  // @dts-jest:pass
+  R.drop(3, 'ramda'); // => 'ram'
+  // @dts-jest:pass
+  R.drop(3)('ramda'); // => 'ram'
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -1112,18 +1124,6 @@ class F {
 /*********************
  * List category
  ********************/
-
-// @dts-jest:group:skip drop
-{
-  // @dts-jest:pass
-  R.drop(3, [1, 2, 3, 4, 5, 6, 7]); // => [4,5,6,7]
-  // @dts-jest:pass
-  R.drop(3)([1, 2, 3, 4, 5, 6, 7]); // => [4,5,6,7]
-  // @dts-jest:show string
-  R.drop(3, 'ramda'); // => 'ram'
-  // @dts-jest:show string
-  R.drop(3)('ramda'); // => 'ram'
-}
 
 // @dts-jest:group:skip dropLast
 {

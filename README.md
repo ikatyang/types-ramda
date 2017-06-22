@@ -110,7 +110,7 @@ source version: v0.24.1
 - [x] dissoc
 - [x] dissocPath
 - [x] divide
-- [ ] drop
+- [x] drop
 - [ ] dropLast
 - [ ] dropLastWhile
 - [ ] dropRepeats
