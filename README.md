@@ -135,39 +135,39 @@ source version: v0.24.1
 - [x] forEachObjIndexed
 - [x] fromPairs
 - [ ] groupBy
-- [ ] groupWith
+- [x] groupWith
 - [ ] gt
 - [ ] gte
 - [ ] has
 - [ ] hasIn
 - [ ] head
-- [ ] identical
+- [x] identical
 - [ ] identity
-- [ ] ifElse
+- [x] ifElse
 - [ ] inc
 - [ ] indexBy
-- [ ] indexOf
-- [ ] init
+- [x] indexOf
+- [x] init
 - [ ] innerJoin
-- [ ] insert
-- [ ] insertAll
-- [ ] intersection
+- [x] insert
+- [x] insertAll
+- [x] intersection
 - [ ] intersectionWith
-- [ ] intersperse
+- [x] intersperse
 - [ ] into
-- [ ] invert
-- [ ] invertObj
+- [x] invert
+- [x] invertObj
 - [ ] invoker
-- [ ] is
-- [ ] isEmpty
+- [x] is
+- [x] isEmpty
 - [ ] isNil
-- [ ] join
+- [x] join
 - [ ] juxt
 - [ ] keys
 - [ ] keysIn
 - [ ] last
 - [ ] lastIndexOf
-- [ ] length
+- [x] length
 - [ ] lens
 - [ ] lensIndex
 - [ ] lensPath
@@ -180,13 +180,13 @@ source version: v0.24.1
 - [ ] mapAccum
 - [ ] mapAccumRight
 - [ ] mapObjIndexed
-- [ ] match
+- [x] match
 - [ ] mathMod
 - [ ] max
-- [ ] maxBy
-- [ ] mean
-- [ ] median
-- [ ] memoize
+- [x] maxBy
+- [x] mean
+- [x] median
+- [x] memoize
 - [ ] memoizeWith
 - [ ] merge
 - [ ] mergeAll
@@ -199,84 +199,84 @@ source version: v0.24.1
 - [ ] min
 - [ ] minBy
 - [ ] modulo
-- [ ] multiply
+- [x] multiply
 - [ ] nAry
-- [ ] negate
+- [x] negate
 - [ ] none
-- [ ] not
+- [x] not
 - [ ] nth
 - [ ] nthArg
 - [ ] o
 - [ ] objOf
-- [ ] of
+- [x] of
 - [ ] omit
-- [ ] once
+- [x] once
 - [ ] or
 - [ ] over
 - [ ] pair
-- [ ] partial
+- [x] partial
 - [ ] partialRight
 - [ ] partition
 - [ ] path
 - [ ] pathEq
 - [ ] pathOr
-- [ ] pathSatisfies
+- [x] pathSatisfies
 - [ ] pick
 - [ ] pickAll
 - [ ] pickBy
-- [ ] pipe
+- [x] pipe
 - [ ] pipeK
 - [ ] pipeP
 - [ ] pluck
-- [ ] prepend
-- [ ] product
+- [x] prepend
+- [x] product
 - [ ] project
 - [ ] prop
-- [ ] propEq
-- [ ] propIs
+- [x] propEq
+- [x] propIs
 - [ ] propOr
 - [ ] props
 - [ ] propSatisfies
-- [ ] range
-- [ ] reduce
+- [x] range
+- [x] reduce
 - [ ] reduceBy
 - [ ] reduced
 - [ ] reduceRight
-- [ ] reduceWhile
-- [ ] reject
-- [ ] remove
-- [ ] repeat
-- [ ] replace
+- [x] reduceWhile
+- [x] reject
+- [x] remove
+- [x] repeat
+- [x] replace
 - [ ] reverse
-- [ ] scan
+- [x] scan
 - [ ] sequence
 - [ ] set
-- [ ] slice
-- [ ] sort
+- [x] slice
+- [x] sort
 - [ ] sortBy
 - [ ] sortWith
 - [ ] split
-- [ ] splitAt
+- [x] splitAt
 - [ ] splitEvery
-- [ ] splitWhen
+- [x] splitWhen
 - [ ] startsWith
 - [ ] subtract
-- [ ] sum
-- [ ] symmetricDifference
+- [x] sum
+- [x] symmetricDifference
 - [ ] symmetricDifferenceWith
 - [ ] T
-- [ ] tail
-- [ ] take
-- [ ] takeLast
-- [ ] takeLastWhile
-- [ ] takeWhile
-- [ ] tap
-- [ ] test
-- [ ] times
+- [x] tail
+- [x] take
+- [x] takeLast
+- [x] takeLastWhile
+- [x] takeWhile
+- [x] tap
+- [x] test
+- [x] times
 - [ ] toLower
 - [ ] toPairs
 - [ ] toPairsIn
-- [ ] toString
+- [x] toString
 - [ ] toUpper
 - [ ] transduce
 - [ ] transpose
@@ -286,7 +286,7 @@ source version: v0.24.1
 - [ ] type
 - [ ] unapply
 - [ ] unary
-- [ ] uncurryN
+- [x] uncurryN
 - [ ] unfold
 - [ ] union
 - [ ] unionWith
@@ -298,15 +298,15 @@ source version: v0.24.1
 - [ ] until
 - [ ] update
 - [ ] useWith
-- [ ] values
-- [ ] valuesIn
+- [x] values
+- [x] valuesIn
 - [ ] view
 - [ ] when
 - [ ] where
 - [ ] whereEq
-- [ ] without
-- [ ] xprod
-- [ ] zip
+- [x] without
+- [x] xprod
+- [x] zip
 - [ ] zipObj
 - [ ] zipWith
 

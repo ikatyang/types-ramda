@@ -917,7 +917,7 @@ import * as R from 'ramda';
   byGrade(students);
 }
 
-// @dts-jest:group:skip groupWith
+// @dts-jest:group groupWith
 {
   // @dts-jest:pass
   R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21]);
@@ -1013,7 +1013,7 @@ import * as R from 'ramda';
   R.head(['10', 10]); // => '10'
 }
 
-// @dts-jest:group:skip identical
+// @dts-jest:group identical
 {
   const o = {};
   // @dts-jest:pass
@@ -1044,7 +1044,7 @@ import * as R from 'ramda';
   R.identity(['a', 'b', 'c']);
 }
 
-// @dts-jest:group:skip ifElse
+// @dts-jest:group ifElse
 {
   // Flatten all arrays in the list but leave other values alone.
   const flattenArrays = R.map(R.ifElse(Array.isArray, R.flatten, R.identity));
@@ -1066,7 +1066,7 @@ import * as R from 'ramda';
   R.indexBy<{id: string}>(R.prop('id'))(list);
 }
 
-// @dts-jest:group:skip indexOf
+// @dts-jest:group indexOf
 {
   // @dts-jest:pass
   R.indexOf(3, [1, 2, 3, 4]); // => 2
@@ -1074,13 +1074,13 @@ import * as R from 'ramda';
   R.indexOf(10)([1, 2, 3, 4]); // => -1
 }
 
-// @dts-jest:group:skip init
+// @dts-jest:group init
 {
   // @dts-jest:pass
   R.init(['fi', 'fo', 'fum']); // => ['fi', 'fo']
 }
 
-// @dts-jest:group:skip insert
+// @dts-jest:group insert
 {
   // @dts-jest:pass
   R.insert(2, 5, [1, 2, 3, 4]); // => [1,2,5,3,4]
@@ -1092,7 +1092,7 @@ import * as R from 'ramda';
   R.insert(2)(5)([1, 2, 3, 4]); // => [1,2,5,3,4]
 }
 
-// @dts-jest:group:skip insertAll
+// @dts-jest:group insertAll
 {
   // @dts-jest:pass
   R.insertAll(2, [10, 11, 12], [1, 2, 3, 4]);
@@ -1104,7 +1104,7 @@ import * as R from 'ramda';
   R.insertAll(2)([10, 11, 12])([1, 2, 3, 4]);
 }
 
-// @dts-jest:group:skip intersection
+// @dts-jest:group intersection
 {
   // @dts-jest:pass
   R.intersection([1, 2, 3, 4], [7, 6, 5, 4, 3]); // => [4, 3]
@@ -1144,7 +1144,7 @@ import * as R from 'ramda';
   R.intersectionWith(R.eqBy(R.prop('id')))(buffaloSpringfield)(csny);
 }
 
-// @dts-jest:group:skip intersperse
+// @dts-jest:group intersperse
 {
   // @dts-jest:pass
   R.intersperse(',', ['foo', 'bar']); // => ['foo', ',', 'bar']
@@ -1173,7 +1173,7 @@ import * as R from 'ramda';
   intoArray(transducer)(numbers); // => [2, 3]
 }
 
-// @dts-jest:group:skip invert
+// @dts-jest:group invert
 {
   const raceResultsByFirstName = {
     first: 'alice',
@@ -1185,7 +1185,7 @@ import * as R from 'ramda';
   // => { 'alice': ['first', 'third'], 'jake': ['second'] }
 }
 
-// @dts-jest:group:skip invertObj
+// @dts-jest:group invertObj
 {
   const raceResults0 = {
     first: 'alice',
@@ -1210,7 +1210,7 @@ import * as R from 'ramda';
   R.invoker(1, 'charAt', 'foo', 1);
 }
 
-// @dts-jest:group:skip is
+// @dts-jest:group is
 {
   // @dts-jest:pass
   R.is(Object, {}); // => true
@@ -1246,7 +1246,7 @@ import * as R from 'ramda';
   R.is(Number)({}); // => false
 }
 
-// @dts-jest:group:skip isEmpty
+// @dts-jest:group isEmpty
 {
   // @dts-jest:pass
   R.isEmpty([1, 2, 3]); // => false
@@ -1272,7 +1272,7 @@ import * as R from 'ramda';
   R.isNaN({}); // => false
 }
 
-// @dts-jest:group:skip join
+// @dts-jest:group join
 {
   const spacer = R.join(' ');
   // @dts-jest:pass
@@ -1331,7 +1331,7 @@ import * as R from 'ramda';
   R.lastIndexOf(10)([1, 2, 3, 4]); // => -1
 }
 
-// @dts-jest:group:skip length
+// @dts-jest:group length
 {
   // @dts-jest:pass
   R.length([]); // => 0
@@ -1339,7 +1339,7 @@ import * as R from 'ramda';
   R.length([1, 2, 3]); // => 3
 }
 
-// @dts-jest:group:skip length
+// @dts-jest:group length
 {
   // @dts-jest:pass
   R.length([1, 2, 3]); // => 3
@@ -1543,7 +1543,7 @@ import * as R from 'ramda';
   R.mapObjIndexed(prependKeyAndDouble, values); // => { x: 'x2', y: 'y4', z: 'z6' }
 }
 
-// @dts-jest:group:skip match
+// @dts-jest:group match
 {
   // @dts-jest:pass
   R.match(/([a-z]a)/g, 'bananas'); // => ['ba', 'na', 'na']
@@ -1587,7 +1587,7 @@ import * as R from 'ramda';
   R.max('a', 'z'); // => 'z'
 }
 
-// @dts-jest:group:skip maxBy
+// @dts-jest:group maxBy
 {
   function cmp(obj: { x: number }) { return obj.x; }
   const a = {x: 1};
@@ -1605,7 +1605,7 @@ import * as R from 'ramda';
   R.maxBy(cmp)(d)(e);
 }
 
-// @dts-jest:group:skip mean
+// @dts-jest:group mean
 {
   // @dts-jest:pass
   R.mean([2, 7, 9]); // => 6
@@ -1613,7 +1613,7 @@ import * as R from 'ramda';
   R.mean([]); // => NaN
 }
 
-// @dts-jest:group:skip median
+// @dts-jest:group median
 {
   // @dts-jest:pass
   R.median([7, 2, 10, 9]); // => 8
@@ -1629,7 +1629,7 @@ import * as R from 'ramda';
   R.mergeAll([{foo: 1}, {foo: 2}, {bar: 2}]); // => {foo: 2,bar: 2}
 }
 
-// @dts-jest:group:skip memoize
+// @dts-jest:group memoize
 {
   let numberOfCalls = 0;
   const trackedAdd = (a: number, b: number) => {
@@ -1731,7 +1731,7 @@ import * as R from 'ramda';
   isOdd(21); // => 1
 }
 
-// @dts-jest:group:skip multiply
+// @dts-jest:group multiply
 {
   // @dts-jest:pass
   R.multiply(2)(3); // => 6
@@ -1741,7 +1741,7 @@ import * as R from 'ramda';
   R.multiply(2, 5); // => 10
 }
 
-// @dts-jest:group:skip negate
+// @dts-jest:group negate
 {
   // @dts-jest:pass
   R.negate(42); // => -42
@@ -1757,7 +1757,7 @@ import * as R from 'ramda';
   R.none(R.isNaN)([1, 2, 3, NaN]); // => false
 }
 
-// @dts-jest:group:skip not
+// @dts-jest:group not
 {
   // @dts-jest:pass
   R.not(true); // => false
@@ -1800,7 +1800,7 @@ import * as R from 'ramda';
   matchPhrases(['foo', 'bar', 'baz']);
 }
 
-// @dts-jest:group:skip of
+// @dts-jest:group of
 {
   // @dts-jest:pass
   R.of([1]); // => [[1]]
@@ -1816,7 +1816,7 @@ import * as R from 'ramda';
   R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
 }
 
-// @dts-jest:group:skip once
+// @dts-jest:group once
 {
   const addOneOnce = R.once((x: number) => x + 1);
   // @dts-jest:pass
@@ -1847,7 +1847,7 @@ import * as R from 'ramda';
   p[1];
 }
 
-// @dts-jest:group:skip partial
+// @dts-jest:group partial
 {
   const multiply = (a: number, b: number) => a * b;
 
@@ -1897,7 +1897,7 @@ import * as R from 'ramda';
   R.pathOr({c: 2})(['a', 'b'], {c: {b: 2}}); // => 'N/A'
 }
 
-// @dts-jest:group:skip pathSatisfies
+// @dts-jest:group pathSatisfies
 {
   // @dts-jest:pass
   R.pathSatisfies((a: any) => a === 'foo', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}); // => true
@@ -1992,7 +1992,7 @@ import * as R from 'ramda';
   R.pipe(R.identity, double);
 }
 
-// @dts-jest:group:skip pipe
+// @dts-jest:group pipe
 {
   const double = (x: number): number => x + x;
   const triple = (x: number): number => x * 3;
@@ -2024,7 +2024,7 @@ import * as R from 'ramda';
   R.pluck(0)([[1, 2], [3, 4]]); // => [1, 3]
 }
 
-// @dts-jest:group:skip prepend
+// @dts-jest:group prepend
 {
   // @dts-jest:pass
   R.prepend('fee', ['fi', 'fo', 'fum']); // => ['fee', 'fi', 'fo', 'fum']
@@ -2032,7 +2032,7 @@ import * as R from 'ramda';
   R.prepend('fee')(['fi', 'fo', 'fum']); // => ['fee', 'fi', 'fo', 'fum']
 }
 
-// @dts-jest:group:skip product
+// @dts-jest:group product
 {
   // @dts-jest:pass
   R.product([2, 4, 6, 8, 100, 1]); // => 38400
@@ -2055,7 +2055,7 @@ import * as R from 'ramda';
   R.prop('x', {}); // => undefined
 }
 
-// @dts-jest:group:skip propEq
+// @dts-jest:group propEq
 {
   {
     const xs: {[key: string]: string} = {a: '1', b: '0'};
@@ -2095,7 +2095,7 @@ import * as R from 'ramda';
   }
 }
 
-// @dts-jest:group:skip propIs
+// @dts-jest:group propIs
 {
   // @dts-jest:pass
   R.propIs(Number, 'x', {x: 1, y: 2}); // => true
@@ -2160,7 +2160,7 @@ import * as R from 'ramda';
   fullName({last: 'Bullet-Tooth', age: 33, first: 'Tony'}); // => 'Tony Bullet-Tooth'
 }
 
-// @dts-jest:group:skip range
+// @dts-jest:group range
 {
   // @dts-jest:pass
   R.range(1, 5); // => [1, 2, 3, 4]
@@ -2168,7 +2168,7 @@ import * as R from 'ramda';
   R.range(50)(53); // => [50, 51, 52]
 }
 
-// @dts-jest:group:skip reduce
+// @dts-jest:group reduce
 {
   const numbers = [1, 2, 3];
   const add = (a: number, b: number) =>
@@ -2177,7 +2177,7 @@ import * as R from 'ramda';
   R.reduce(add, 10, numbers); // => 16;
 }
 
-// @dts-jest:group:skip reduce
+// @dts-jest:group reduce
 {
   const numbers = [1, 2, 3];
   const add = (a: number, b: number) =>
@@ -2247,7 +2247,7 @@ import * as R from 'ramda';
   R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 }
 
-// @dts-jest:group:skip reduceWhile
+// @dts-jest:group reduceWhile
 {
   const isOdd = (x: number, acc: number) => x % 2 === 1;
   const xs = [1, 3, 5, 60, 777, 800];
@@ -2259,7 +2259,7 @@ import * as R from 'ramda';
   R.reduceWhile(isOdd, R.add, 111, ys); // => 111
 }
 
-// @dts-jest:group:skip reject
+// @dts-jest:group reject
 {
   const isOdd = (n: number) => n % 2 === 1;
   // @dts-jest:pass
@@ -2279,7 +2279,7 @@ import * as R from 'ramda';
   rejectIndexed(lastTwo)([8, 6, 7, 5, 3, 0, 9]); // => [8, 6, 7, 5, 3]
 }
 
-// @dts-jest:group:skip remove
+// @dts-jest:group remove
 {
   // @dts-jest:pass
   R.remove(2, 3, [1, 2, 3, 4, 5, 6, 7, 8]); // => [1,2,6,7,8]
@@ -2289,7 +2289,7 @@ import * as R from 'ramda';
   R.remove(2)(3, [1, 2, 3, 4, 5, 6, 7, 8]); // => [1,2,6,7,8]
 }
 
-// @dts-jest:group:skip repeat
+// @dts-jest:group repeat
 {
   // @dts-jest:pass
   R.repeat('hi', 5); // => ['hi', 'hi', 'hi', 'hi', 'hi']
@@ -2299,7 +2299,7 @@ import * as R from 'ramda';
   repeatedObjs[0] === repeatedObjs[1]; // => true
 }
 
-// @dts-jest:group:skip replace
+// @dts-jest:group replace
 {
   // @dts-jest:pass
   R.replace('foo', 'bar', 'foo foo foo'); // => 'bar foo foo'
@@ -2331,7 +2331,7 @@ import * as R from 'ramda';
   R.reverse([]); // => []
 }
 
-// @dts-jest:group:skip scan
+// @dts-jest:group scan
 {
   const numbers = [1, 2, 3, 4];
   // @dts-jest:pass
@@ -2342,7 +2342,7 @@ import * as R from 'ramda';
   R.scan(R.multiply)(1, numbers); // => [1, 1, 2, 6, 24]
 }
 
-// @dts-jest:group:skip slice
+// @dts-jest:group slice
 {
   const xs = R.range(0, 10);
   // @dts-jest:pass
@@ -2361,7 +2361,7 @@ import * as R from 'ramda';
   R.slice(2)(5, str); // => 'llo'
 }
 
-// @dts-jest:group:skip sort
+// @dts-jest:group sort
 {
   const diff = (a: number, b: number) => a - b;
   // @dts-jest:pass
@@ -2428,7 +2428,7 @@ import * as R from 'ramda';
   // => [alice, clara, bob]
 }
 
-// @dts-jest:group:skip splitAt
+// @dts-jest:group splitAt
 {
   // @dts-jest:pass
   R.splitAt(1, [1, 2, 3]); // => [[1], [2, 3]]
@@ -2440,7 +2440,7 @@ import * as R from 'ramda';
   R.splitAt(-1, 'foobar'); // => ['fooba', 'r']
 }
 
-// @dts-jest:group:skip splitWhen
+// @dts-jest:group splitWhen
 {
   // @dts-jest:pass
   R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
@@ -2464,13 +2464,13 @@ import * as R from 'ramda';
   complementaryAngle(72); // => 18
 }
 
-// @dts-jest:group:skip sum
+// @dts-jest:group sum
 {
   // @dts-jest:pass
   R.sum([2, 4, 6, 8, 100, 1]); // => 121
 }
 
-// @dts-jest:group:skip symmetricDifference
+// @dts-jest:group symmetricDifference
 {
   // @dts-jest:pass
   R.symmetricDifference([1, 2, 3, 4], [7, 6, 5, 4, 3]); // => [1,2,7,6,5]
@@ -2491,7 +2491,7 @@ import * as R from 'ramda';
   R.symmetricDifferenceWith(eqA)(l1); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
 }
 
-// @dts-jest:group:skip tail
+// @dts-jest:group tail
 {
   // @dts-jest:pass
   R.tail(['fi', 'fo', 'fum']); // => ['fo', 'fum']
@@ -2499,7 +2499,7 @@ import * as R from 'ramda';
   R.tail([1, 2, 3]); // => [2, 3]
 }
 
-// @dts-jest:group:skip take
+// @dts-jest:group take
 {
   // @dts-jest:pass
   R.take(3, [1, 2, 3, 4, 5]); // => [1,2,3]
@@ -2521,7 +2521,7 @@ import * as R from 'ramda';
   takeThree('Example'); // => 'Exa'
 }
 
-// @dts-jest:group:skip takeLast
+// @dts-jest:group takeLast
 {
   // @dts-jest:pass
   R.takeLast(1, ['foo', 'bar', 'baz']); // => ['baz']
@@ -2533,7 +2533,7 @@ import * as R from 'ramda';
   R.takeLast(3)('ramda'); // => 'mda'
 }
 
-// @dts-jest:group:skip takeLastWhile
+// @dts-jest:group takeLastWhile
 {
   const isNotOne = (x: number) => x !== 1;
   // @dts-jest:pass
@@ -2542,7 +2542,7 @@ import * as R from 'ramda';
   R.takeLastWhile(isNotOne)([1, 2, 3, 4]); // => [2, 3, 4]
 }
 
-// @dts-jest:group:skip takeWhile
+// @dts-jest:group takeWhile
 {
   const isNotFour = (x: number) =>
     !(x === 4);
@@ -2552,14 +2552,14 @@ import * as R from 'ramda';
   R.takeWhile(isNotFour)([1, 2, 3, 4]); // => [1, 2, 3]
 }
 
-// @dts-jest:group:skip tap
+// @dts-jest:group tap
 {
   const sayX = (x: number) => console.log(`x is ${x}`);
   // @dts-jest:pass
   R.tap(sayX, 100); // => 100
 }
 
-// @dts-jest:group:skip test
+// @dts-jest:group test
 {
   // @dts-jest:pass
   R.test(/^x/, 'xyz'); // => true
@@ -2567,14 +2567,14 @@ import * as R from 'ramda';
   R.test(/^y/)('xyz'); // => false
 }
 
-// @dts-jest:group:skip times
+// @dts-jest:group times
 {
   const i = (x: number) => x;
   // @dts-jest:pass
   R.times(i, 5);
 }
 
-// @dts-jest:group:skip times
+// @dts-jest:group times
 {
   // @dts-jest:pass
   R.times(R.identity, 5); // => [0, 1, 2, 3, 4]
@@ -2601,7 +2601,7 @@ import * as R from 'ramda';
   R.toPairsIn(f); // => [['x','X'], ['y','Y']]
 }
 
-// @dts-jest:group:skip toString
+// @dts-jest:group toString
 {
   class Point {
     public x: number;
@@ -2687,7 +2687,7 @@ import * as R from 'ramda';
   R.unapply(JSON.stringify)(1, 2, 3); // => '[1,2,3]'
 }
 
-// @dts-jest:group:skip uncurry
+// @dts-jest:group uncurryN
 {
   const addFour = (a: number) => (b: number) => (c: number) => (d: number) => a + b + c + d;
   const uncurriedAddFour = R.uncurryN<number>(4, addFour);
@@ -2746,14 +2746,18 @@ import * as R from 'ramda';
   R.until(R.flip(R.gt)(100), R.multiply(2))(1); // => 128
 }
 
-// @dts-jest:group:skip values
+// @dts-jest:group values
 {
   // @dts-jest:pass
   R.values({a: 1, b: 2, c: 3}); // => [1, 2, 3]
 }
 
-// @dts-jest:group:skip valuesIn
+// @dts-jest:group valuesIn
 {
+  class F {
+    public x = 'X';
+    public y = 'Y';
+  }
   const f = new F();
   // @dts-jest:pass
   R.valuesIn(f); // => ['X', 'Y']
@@ -2809,13 +2813,13 @@ import * as R from 'ramda';
   R.whereEq({a: 'one'}, {a: 'one'}); // => true
 }
 
-// @dts-jest:group:skip without
+// @dts-jest:group without
 {
   // @dts-jest:pass
   R.without([1, 2], [1, 2, 1, 3, 4]); // => [3, 4]
 }
 
-// @dts-jest:group:skip xprod
+// @dts-jest:group xprod
 {
   // @dts-jest:pass
   R.xprod([1, 2], ['a', 'b']); // => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
@@ -2823,7 +2827,7 @@ import * as R from 'ramda';
   R.xprod([1, 2])(['a', 'b']); // => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
 }
 
-// @dts-jest:group:skip zip
+// @dts-jest:group zip
 {
   // @dts-jest:pass
   R.zip([1, 2, 3], ['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]

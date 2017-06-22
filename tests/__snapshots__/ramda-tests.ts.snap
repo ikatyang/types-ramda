@@ -938,7 +938,7 @@ exports[`unary, binary, nAry curriedFourNumbers(1, 2, 3)(4) 1`] = `"number"`;
 
 exports[`unary, binary, nAry inc(2) 1`] = `"number"`;
 
-exports[`uncurry uncurriedAddFour(1, 2, 3, 4) 1`] = `"number"`;
+exports[`uncurryN uncurriedAddFour(1, 2, 3, 4) 1`] = `"number"`;
 
 exports[`uniq R.uniq([1, 1, 2, 1]) 1`] = `"number[]"`;
 
