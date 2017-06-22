@@ -1131,9 +1131,9 @@ class F {
   R.dropLast(1, ['foo', 'bar', 'baz']); // => ['foo', 'bar']
   // @dts-jest:pass
   R.dropLast(2)(['foo', 'bar', 'baz']); // => ['foo']
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.dropLast(3, 'ramda'); // => 'ra'
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.dropLast(3)('ramda'); // => 'ra'
 }
 
@@ -1795,11 +1795,11 @@ type Pair = KeyValuePair<string, number>;
   takeFive(members); // => ['Paul Desmond','Bob Bates','Joe Dodge','Ron Crotty','Lloyd Davis']
 }
 {
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.take(3, 'Example'); // => 'Exa'
 
   const takeThree = R.take(3);
-  // @dts-jest:show string
+  // @dts-jest:pass
   takeThree('Example'); // => 'Exa'
 }
 
@@ -1809,9 +1809,9 @@ type Pair = KeyValuePair<string, number>;
   R.takeLast(1, ['foo', 'bar', 'baz']); // => ['baz']
   // @dts-jest:pass
   R.takeLast(2)(['foo', 'bar', 'baz']); // => ['bar', 'baz']
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.takeLast(3, 'ramda'); // => 'mda'
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.takeLast(3)('ramda'); // => 'mda'
 }
 
