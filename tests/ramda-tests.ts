@@ -519,15 +519,15 @@ class F {
 
 // @dts-jest:group propIs
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propIs(Number, 'x', {x: 1, y: 2}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propIs(Number, 'x')({x: 1, y: 2}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propIs(Number)('x', {x: 1, y: 2}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propIs(Number)('x')({x: 1, y: 2}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propIs(Number, 'x', {x: 'foo'}); // => false
   // @dts-jest:pass
   R.propIs(Number, 'x', {}); // => false
@@ -535,56 +535,56 @@ class F {
 
 // @dts-jest:group type
 {
-  // $ExpectType string
+  // @dts-jest:pass
   R.type({}); // => 'Object'
-  // $ExpectType string
+  // @dts-jest:show string
   R.type(1); // => 'Number'
-  // $ExpectType string
+  // @dts-jest:show string
   R.type(false); // => 'Boolean'
-  // $ExpectType string
+  // @dts-jest:show string
   R.type('s'); // => 'String'
-  // $ExpectType string
+  // @dts-jest:show string
   R.type(null); // => 'Null'
-  // $ExpectType string
+  // @dts-jest:pass
   R.type([]); // => 'Array'
-  // $ExpectType string
+  // @dts-jest:pass
   R.type(/[A-z]/); // => 'RegExp'
 }
 
 // @dts-jest:group curry
 {
   const addTwo = R.curry((x: number, y: number) => x + y);
-  // $ExpectType (v2: number) => number
+  // @dts-jest:show (v2: number) => number
   addTwo(3);
-  // $ExpectType number
+  // @dts-jest:pass
   addTwo(3)(1);
   const addThree = R.curry((x: number, y: number, z: number) => x + y + z);
-  // $ExpectType number
+  // @dts-jest:pass
   addThree(3, 2, 1);
-  // $ExpectType number
+  // @dts-jest:pass
   addThree(3)(2)(1);
-  // $ExpectType (v3: number) => number
+  // @dts-jest:show (v3: number) => number
   addThree(3, 2);
-  // $ExpectType (v2: number) => number
+  // @dts-jest:show (v2: number) => number
   addThree(3)(2);
-  // $ExpectType CurriedFunction2<number, number, number>
+  // @dts-jest:pass
   addThree(3);
 
   const xy = R.curry(<X, Y>(x: X, y: Y) => ({x, y}));
-  // $ExpectType <Y>(v2: Y) => { x: number; y: Y; }
+  // @dts-jest:show <Y>(v2: Y) => { x: number; y: Y; }
   xy(3);
-  // $ExpectType { x: number; y: number; }
+  // @dts-jest:show { x: number; y: number; }
   xy(3)(1);
   const xyz = R.curry(<X, Y, Z>(x: X, y: Y, z: Z) => ({x, y, z}));
-  // $ExpectType { x: number; y: number; z: number; }
+  // @dts-jest:show { x: number; y: number; z: number; }
   xyz(3, 2, 1);
-  // $ExpectType { x: number; y: number; z: number; }
+  // @dts-jest:show { x: number; y: number; z: number; }
   xyz(3)(2)(1);
-  // $ExpectType <Z>(v3: Z) => ({ x: number; y: number; z: Z; })
+  // @dts-jest:show <Z>(v3: Z) => ({ x: number; y: number; z: Z; })
   xyz(3, 2);
-  // $ExpectType <Z>(v3: Z) => ({ x: number; y: number; z: Z; })
+  // @dts-jest:show <Z>(v3: Z) => ({ x: number; y: number; z: Z; })
   xyz(3)(2);
-  // $ExpectType <Y, Z>(v2: Y, v3: Z) => ({ x: number; y: Y; z: Z; })
+  // @dts-jest:show <Y, Z>(v2: Y, v3: Z) => ({ x: number; y: Y; z: Z; })
   xyz(3);
 }
 
@@ -599,52 +599,52 @@ class F {
     a + b + c + d;
 
   const curriedFourNumbers = R.curry(addFourNumbers);
-  // $ExpectType CurriedFunction4<number, number, number, number, number>
+  // @dts-jest:pass
   curriedFourNumbers;
-  // $ExpectType CurriedFunction3<number, number, number, number>
+  // @dts-jest:pass
   curriedFourNumbers(1);
-  // $ExpectType CurriedFunction2<number, number, number>
+  // @dts-jest:pass
   curriedFourNumbers(1)(2);
-  // $ExpectType <T1,R>(v1: T1) => R
+  // @dts-jest:show <T1,R>(v1: T1) => R
   curriedFourNumbers(1)(2)(3);
-  // $ExpectType <T1,R>(v1: T1) => R
+  // @dts-jest:show <T1,R>(v1: T1) => R
   curriedFourNumbers(1, 2, 4);
-  // $ExpectType number
+  // @dts-jest:pass
   curriedFourNumbers(1)(2)(3)(4);
-  // $ExpectType number
+  // @dts-jest:pass
   curriedFourNumbers(1, 2)(3, 4);
-  // $ExpectType number
+  // @dts-jest:pass
   curriedFourNumbers(1, 2, 3)(4);
 
-  // $ExpectType () => boolean
+  // @dts-jest:pass
   R.nAry(0, takesNoArg);
-  // $ExpectType () => number[]
+  // @dts-jest:pass
   R.nAry(0, takesOneArg);
-  // $ExpectType (a: number) => number[]
+  // @dts-jest:show (a: number) => number[]
   R.nAry(1, takesTwoArgs);
-  // $ExpectType (a: number) => number[]
+  // @dts-jest:show (a: number) => number[]
   R.nAry(1, takesThreeArgs);
 
-  // $ExpectType (a: number) => number[]
+  // @dts-jest:pass
   R.unary(takesOneArg);
-  // $ExpectType (a: number) => number[]
+  // @dts-jest:pass
   R.unary(takesTwoArgs);
-  // $ExpectType (a: number) => number[]
+  // @dts-jest:pass
   R.unary(takesThreeArgs);
 
-  // $ExpectType (a: number, b: number) => number[]
+  // @dts-jest:pass
   R.binary(takesTwoArgs);
-  // $ExpectType (a: number, b: number) => number[]
+  // @dts-jest:pass
   R.binary(takesThreeArgs);
 
   const addTwoNumbers = (a: number, b: number) => a + b;
-  // $ExpectType CurriedFunction2<number, number, number>
+  // @dts-jest:show CurriedFunction2<number, number, number>
   const addTwoNumbersCurried = R.curry(addTwoNumbers);
 
   const inc = addTwoNumbersCurried(1);
-  // $ExpectType number
+  // @dts-jest:pass
   inc(2);
-  // $ExpectType number
+  // @dts-jest:pass
   addTwoNumbersCurried(2, 3);
 }
 
@@ -652,39 +652,39 @@ class F {
 {
   const addFour = (a: number) => (b: number) => (c: number) => (d: number) => a + b + c + d;
   const uncurriedAddFour = R.uncurryN<number>(4, addFour);
-  // $ExpectType number
+  // @dts-jest:pass
   uncurriedAddFour(1, 2, 3, 4); // => 10
 }
 
 // @dts-jest:group unless
 {
-  // $ExpectType <a>(v: a|[a]) => [a]
+  // @dts-jest:show <a>(v: a|[a]) => [a]
   const coerceArray = R.unless(R.isArrayLike, R.of);
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   coerceArray([1, 2, 3]); // => [1, 2, 3]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   coerceArray(1); // => [1]
 }
 
 // @dts-jest:group nthArg
 {
-  // $ExpectType string
+  // @dts-jest:show string
   R.nthArg(1)('a', 'b', 'c'); // => 'b'
-  // $ExpectType string
+  // @dts-jest:show string
   R.nthArg(-1)('a', 'b', 'c'); // => 'c'
 }
 
 // @dts-jest:group unapply
 {
-  // $ExpectType (...args: string[])=>string
+  // @dts-jest:show (...args: string[])=>string
   R.unapply(JSON.stringify);
-  // $ExpectType string
+  // @dts-jest:pass
   R.unapply(JSON.stringify)(1, 2, 3); // => '[1,2,3]'
 }
 
 // @dts-jest:group until
 {
-  // $ExpectType number
+  // @dts-jest:show number
   R.until(R.flip(R.gt)(100), R.multiply(2))(1); // => 128
 }
 
@@ -694,9 +694,9 @@ class F {
     R.propSatisfies(R.flip(R.gt)(10), 'length'),
     R.pipe(R.take(10), R.append('…'), R.join('')),
     );
-  // $ExpectType string
+  // @dts-jest:show string
   truncate('12345'); // => '12345'
-  // $ExpectType string
+  // @dts-jest:show string
   truncate('0123456789ABC'); // => '0123456789…'
 }
 
@@ -704,9 +704,9 @@ class F {
 {
   const limit10 = (x: number): boolean =>
     x >= 10;
-  // $ExpectType (x0: number) => boolean
+  // @dts-jest:show (x0: number) => boolean
   R.compose(limit10, double);
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.compose(limit10, double)(10);
 
   // akward example that bounces types between number and string
@@ -714,20 +714,20 @@ class F {
   const g1 = R.dropWhile(R.gt(10));
   const g2 = R.map((i: number) => i > 5 ? 'bigger' : 'smaller');
   const g3 = R.all((i: string) => i === 'smaller');
-  // $ExpectType (list: number[]) => boolean
+  // @dts-jest:show (list: number[]) => boolean
   const g = R.compose(g3, g2, g1, g0);
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   g([1, 2, 10, 13]);
 }
 
 // @dts-jest:group pipe
 {
-  // $ExpectType (x0: number) => string
+  // @dts-jest:show (x0: number) => string
   R.pipe(double, double, shout);
-  // $ExpectType string
+  // @dts-jest:pass
   R.pipe(double, double, shout)(10);
 
-  // $ExpectType string
+  // @dts-jest:pass
   R.pipe(
     R.split(''),
     R.adjust(R.toUpper, 0),
@@ -735,17 +735,17 @@ class F {
   )('str');
 
   const f = R.pipe(Math.pow, R.negate, R.inc);
-  // $ExpectType number
+  // @dts-jest:pass
   f(3, 4); // -(3^4) + 1
 
   // test for type degeneration if the first function has generics
-  // $ExpectType (x0: number) => number
+  // @dts-jest:show (x0: number) => number
   R.pipe(R.identity, double);
 }
 
 // @dts-jest:group pipeP
 {
-  // $ExpectType Promise<number>
+  // @dts-jest:show Promise<number>
   R.pipeP(
     (m: number) => Promise.resolve(R.multiply(2, m)),
     (m: number) => Promise.resolve(m / 2),
@@ -757,20 +757,20 @@ class F {
 
 // @dts-jest:group invoker
 {
-  // $ExpectType string
+  // @dts-jest:show string
   R.invoker(0, 'toUpperCase', 'foo');
-  // $ExpectType string
+  // @dts-jest:show string
   R.invoker(1, 'charAt', 'foo', 1);
 }
 
 // @dts-jest:group juxt
 {
   const range = R.juxt([Math.min, Math.max]);
-  // $ExpectType number[]
+  // @dts-jest:pass
   range(3, 4, 9, -3); // => [-3, 9]
 
   const chopped = R.juxt([R.head, R.last]);
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   chopped('longstring'); // => ['l', 'g']
 }
 
@@ -783,7 +783,7 @@ class F {
 // @dts-jest:group times
 {
   const i = (x: number) => x;
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.times(i, 5);
 }
 
@@ -792,7 +792,7 @@ class F {
   const triple = (x: number): number => x * 3;
   const square = (x: number): number => x * x;
   const squareThenDoubleThenTriple = R.pipe(square, double, triple);
-  // $ExpectType number
+  // @dts-jest:pass
   squareThenDoubleThenTriple(5); // => 150
 }
 
@@ -800,18 +800,18 @@ class F {
 {
   const multiply = (a: number, b: number) => a * b;
 
-  // $ExpectType number
+  // @dts-jest:pass
   R.partial(multiply, [2])(2); // => 4
 
   const greet = (salutation: string, title: string, firstName: string, lastName: string) =>
     `${salutation}, ${title} ${firstName} ${lastName}!`;
   const sayHello = R.partial(greet, ['Hello']);
   const sayHelloToMs = R.partial(sayHello, ['Ms.']);
-  // $ExpectType string
+  // @dts-jest:pass
   sayHelloToMs('Jane', 'Jones'); // => 'Hello, Ms. Jane Jones!'
 
   const greetMsJaneJones = R.partialRight(greet, ['Ms.', 'Jane', 'Jones']);
-  // $ExpectType string
+  // @dts-jest:pass
   greetMsJaneJones('Hello'); // => 'Hello, Ms. Jane Jones!'
 }
 
@@ -824,40 +824,40 @@ class F {
   };
   const memoTrackedAdd = R.memoize(trackedAdd);
 
-  // $ExpectType number
+  // @dts-jest:pass
   memoTrackedAdd(1, 2); // => 3
-  // $ExpectType number
+  // @dts-jest:pass
   numberOfCalls; // => 1
-  // $ExpectType number
+  // @dts-jest:pass
   memoTrackedAdd(1, 2); // => 3
-  // $ExpectType number
+  // @dts-jest:pass
   numberOfCalls; // => 1
-  // $ExpectType number
+  // @dts-jest:pass
   memoTrackedAdd(2, 3); // => 5
-  // $ExpectType number
+  // @dts-jest:pass
   numberOfCalls; // => 2
 
   // Note that argument order matters
-  // $ExpectType number
+  // @dts-jest:pass
   memoTrackedAdd(2, 1); // => 3
-  // $ExpectType number
+  // @dts-jest:pass
   numberOfCalls; // => 3
 }
 
 // @dts-jest:group once
 {
   const addOneOnce = R.once((x: number) => x + 1);
-  // $ExpectType number
+  // @dts-jest:pass
   addOneOnce(10); // => 11
-  // $ExpectType number
+  // @dts-jest:pass
   addOneOnce(addOneOnce(50)); // => 11
 }
 
 // @dts-jest:group match
 {
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.match(/([a-z]a)/g, 'bananas'); // => ['ba', 'na', 'na']
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.match(/a/, 'b'); // => []
   // @dts-jest:fail
   R.match(/a/, null); // error with strict null checks
@@ -868,7 +868,7 @@ class F {
   const numbers = [1, 2, 3];
   const add = (a: number, b: number) =>
     a + b;
-  // $ExpectType number
+  // @dts-jest:pass
   R.reduce(add, 10, numbers); // => 16;
 }
 
@@ -877,7 +877,7 @@ class F {
   const pairs = [['a', 1], ['b', 2], ['c', 3]];
   const flattenPairs = (acc: [string, number], pair: [string, number]) =>
     acc.concat(pair);
-  // $ExpectType Array<number|string>
+  // @dts-jest:show Array<number|string>
   R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 }
 
@@ -885,11 +885,11 @@ class F {
 {
   const isOdd = (x: number, acc: number) => x % 2 === 1;
   const xs = [1, 3, 5, 60, 777, 800];
-  // $ExpectType number
+  // @dts-jest:pass
   R.reduceWhile(isOdd, R.add, 0, xs); // => 9
 
   const ys = [2, 4, 6];
-  // $ExpectType number
+  // @dts-jest:pass
   R.reduceWhile(isOdd, R.add, 111, ys); // => 111
 }
 
@@ -897,33 +897,33 @@ class F {
 {
   const values = {x: 1, y: 2, z: 3};
   const prependKeyAndDouble = (num: number, key: string, obj: any) => key + (num * 2).toString();
-  // $ExpectType Dictionary<string>
+  // @dts-jest:show Dictionary<string>
   R.mapObjIndexed(prependKeyAndDouble, values); // => { x: 'x2', y: 'y4', z: 'z6' }
 }
 
 // @dts-jest:group of
 {
-  // $ExpectType number[][]
+  // @dts-jest:pass
   R.of([1]); // => [[1]]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.of(1);
 }
 
 // @dts-jest:group empty
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.empty([1, 2, 3, 4, 5]); // => []
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.empty([1, 2, 3]); // => []
-  // $ExpectType string
+  // @dts-jest:show string
   R.empty('unicorns'); // => ''
-  // $ExpectType {}
+  // @dts-jest:show {}
   R.empty({x: 1, y: 2}); // => {}
 }
 
 // @dts-jest:group length
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.length([1, 2, 3]); // => 3
 }
 
@@ -933,17 +933,17 @@ class F {
     n % 2 === 0;
   const filterIndexed = R.addIndex(R.filter);
 
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.filter(isEven, [1, 2, 3, 4]); // => [2, 4]
 
   const lastTwo = (val: number, idx: number, list: number[]) =>
     list.length - idx <= 2;
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [0, 9]
 
   const isOdd = (n: number) =>
     n % 2 === 1;
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.reject(isOdd, [1, 2, 3, 4]); // => [2, 4]
 }
 
@@ -951,19 +951,19 @@ class F {
 {
   const isNotFour = (x: number) =>
     !(x === 4);
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.takeWhile(isNotFour, [1, 2, 3, 4]); // => [1, 2, 3]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.take(2, [1, 2, 3, 4]); // => [1, 2]
 }
 
 // @dts-jest:group unfold
 {
   const f = (n: number) => n > 50 ? false : [-n, n + 10];
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.unfold(f, 10); // => [-10, -20, -30, -40, -50]
   const b = R.unfold(f); // => [-10, -20, -30, -40, -50]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   b(10);
 }
 
@@ -975,10 +975,10 @@ class F {
 {
   const mergeThree = (a: number, b: number, c: number): number[] =>
     ([] as number[]).concat(a, b, c); // strictNullChecks: must cast array to right type
-  // $ExpectType number[]
+  // @dts-jest:pass
   mergeThree(1, 2, 3); // => [1, 2, 3]
   const flipped = R.flip(mergeThree);
-  // $ExpectType number[]
+  // @dts-jest:pass
   flipped(1, 2, 3); // => [2, 1, 3]
 }
 
@@ -1002,38 +1002,38 @@ class F {
     age: 314.159,
   };
   const people = [clara, bob, alice];
-  // $ExpectType typeof people
+  // @dts-jest:show typeof people
   R.sort(byAge, people);
 }
 
 // @dts-jest:group drop
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.drop(3, [1, 2, 3, 4, 5, 6, 7]); // => [4,5,6,7]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.drop(3)([1, 2, 3, 4, 5, 6, 7]); // => [4,5,6,7]
-  // $ExpectType string
+  // @dts-jest:show string
   R.drop(3, 'ramda'); // => 'ram'
-  // $ExpectType string
+  // @dts-jest:show string
   R.drop(3)('ramda'); // => 'ram'
 }
 
 // @dts-jest:group dropLast
 {
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.dropLast(1, ['foo', 'bar', 'baz']); // => ['foo', 'bar']
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.dropLast(2)(['foo', 'bar', 'baz']); // => ['foo']
-  // $ExpectType string
+  // @dts-jest:show string
   R.dropLast(3, 'ramda'); // => 'ra'
-  // $ExpectType string
+  // @dts-jest:show string
   R.dropLast(3)('ramda'); // => 'ra'
 }
 
 // @dts-jest:group dropLastWhile
 {
   const lteThree = (x: number) => x <= 3;
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.dropLastWhile(lteThree, [1, 2, 3, 4, 3, 2, 1]); // => [1, 2, 3, 4]
 }
 
@@ -1041,9 +1041,9 @@ class F {
 {
   const lteTwo = (x: number) =>
     x <= 2;
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.dropWhile(lteTwo, [1, 2, 3, 4]); // => [3, 4]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.dropWhile(lteTwo)([1, 2, 3, 4]); // => [3, 4]
 }
 
@@ -1052,27 +1052,27 @@ class F {
   const isEven = (n: number) =>
     n % 2 === 0;
   // filter works with lists...
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.filter(isEven, [1, 2, 3, 4]); // => [2, 4]
   const isEvenFn = R.filter(isEven);
   isEvenFn([1, 2, 3, 4]);
   // ... but also objects
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, d: 4}
   // see that we did not break anything
   // and we kept type information
-  // $ExpectType number[]
+  // @dts-jest:pass
   onlyNumberList(R.filter(isEven, [1, 2, 3, 4]));
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   onlyNumberObj(R.filter(isEven, {a: 1, b: 2, c: 3, d: 4})); // strictNullChecks: Partial fails, consider Pick
 }
 
 // @dts-jest:group find, propEq
 {
   const xs = [{a: 1}, {a: 2}, {a: 3}];
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.find(R.propEq('a', 2))(xs); // => {a: 2}
-  // $ExpectType undefined
+  // @dts-jest:show undefined
   R.find(R.propEq('a', 4))(xs); // => undefined
 }
 
@@ -1081,7 +1081,7 @@ class F {
   interface Task {id: number; }
   const tasks: Task[] = [];
   const f: (list: Task[]) => Task = R.find<Task>((task: Task) => task.id === 1);
-  // $ExpectType Task
+  // @dts-jest:pass
   f(tasks); // works
 }
 
@@ -1090,32 +1090,32 @@ class F {
   interface Task {a: number; }
   const xs = [{a: 1}, {a: 2}, {a: 3}];
   const a: (list: Task[]) => number = R.findIndex(R.propEq('a', 2));
-  // $ExpectType number
+  // @dts-jest:pass
   a(xs); // => 1
-  // $ExpectType number
+  // @dts-jest:pass
   R.findIndex(R.propEq('a', 4))(xs); // => -1
 
-  // $ExpectType number
+  // @dts-jest:pass
   R.findIndex((x: number) => x === 1, [1, 2, 3]);
 }
 
 // @dts-jest:group findLast
 {
   const xs = [{a: 1, b: 0}, {a: 1, b: 1}];
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.findLast(R.propEq('a', 1))(xs); // => {a: 1, b: 1}
-  // $ExpectType undefined
+  // @dts-jest:show undefined
   R.findLast(R.propEq('a', 4))(xs); // => undefined
 }
 
 // @dts-jest:group findLastIndex
 {
   const xs = [{a: 1, b: 0}, {a: 1, b: 1}];
-  // $ExpectType number
+  // @dts-jest:pass
   R.findLastIndex(R.propEq('a', 1))(xs); // => 1
-  // $ExpectType number
+  // @dts-jest:pass
   R.findLastIndex(R.propEq('a', 4))(xs); // => -1
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.findLastIndex((x: number) => x === 1, [1, 2, 3]);
 }
 
@@ -1126,54 +1126,54 @@ class F {
   const user3 = {name: 'Bob'};
   const users = [user1, user2, user3];
   const isFamous = R.pathEq(['address', 'zipCode'], 90210);
-  // $ExpectType Object[]
+  // @dts-jest:show Object[]
   R.filter(isFamous, users); // => [ user1 ]
 }
 
 // @dts-jest:group propEq
 {
   const xs: {[key: string]: string} = {a: '1', b: '0'};
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propEq('a', '1', xs); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propEq('a', '4', xs); // => false
 }
 {
   const xs: {[key: string]: number} = {a: 1, b: 0};
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propEq('a', 1, xs); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propEq('a', 4, xs); // => false
 }
 {
   const xs = {a: '1', b: '0'};
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propEq('a', '1', xs); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propEq('a', '4', xs); // => false
 }
 {
   const xs = {a: 1, b: 0};
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propEq('a', 1, xs); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propEq('a', 4, xs); // => false
 }
 interface Obj { a: number; b: number; }
 {
   const xs: Obj = {a: 1, b: 0};
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propEq('a', 1, xs); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propEq('a', 4, xs); // => false
 }
 
 // @dts-jest:group forEach
 {
   const printXPlusFive = (x: number) => { console.log(x + 5); };
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.forEach(printXPlusFive, [1, 2, 3]); // => [1, 2, 3]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.forEach(printXPlusFive)([1, 2, 3]); // => [1, 2, 3]
   // => 6
   // => 7
@@ -1184,13 +1184,13 @@ interface Obj { a: number; b: number; }
 {
   const printKeyConcatValue = (value: any, key: string, obj: any) =>
     console.log(`${key}:${value}`);
-  // $ExpectType {x: 1, y: 2}
+  // @dts-jest:show {x: 1, y: 2}
   R.forEachObjIndexed(printKeyConcatValue, {x: 1, y: 2});
-  // $ExpectType {x: 1, y: 2}
+  // @dts-jest:show {x: 1, y: 2}
   R.forEachObjIndexed(printKeyConcatValue)({x: 1, y: 2});
-  // $ExpectType [1, 2]
+  // @dts-jest:show [1, 2]
   R.forEachObjIndexed(printKeyConcatValue, [1, 2]);
-  // $ExpectType [1, 2]
+  // @dts-jest:show [1, 2]
   R.forEachObjIndexed(printKeyConcatValue)([1, 2]);
 }
 
@@ -1206,94 +1206,94 @@ interface Obj { a: number; b: number; }
   const students = [{name: 'Abby', score: 84},
                     {name: 'Eddy', score: 58},
                     {name: 'Jack', score: 69}];
-  // $ExpectType Dictionary<Object[]>
+  // @dts-jest:show Dictionary<Object[]>
   byGrade(students);
 }
 
 // @dts-jest:group groupWith
 {
-  // $ExpectType number[][]
+  // @dts-jest:pass
   R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21]);
   // [[0], [1, 1], [2, 3, 5, 8, 13, 21]]
 
-  // $ExpectType number[][]
+  // @dts-jest:pass
   R.groupWith((a: number, b: number) => a % 2 === b % 2, [0, 1, 1, 2, 3, 5, 8, 13, 21]);
   // [[0], [1, 1], [2], [3, 5], [8], [13, 21]]
 
   const isVowel = (a: string) => R.contains(a, 'aeiou') ? a : '';
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.groupWith(R.eqBy<string>(isVowel), 'aestiou');
   // ['ae', 'st', 'iou']
 }
 
 // @dts-jest:group head
 {
-  // $ExpectType string
+  // @dts-jest:show string
   R.head(['fi', 'fo', 'fum']); // => 'fi'
-  // $ExpectType number
+  // @dts-jest:show number
   R.head([10, 'ten']); // => 10
-  // $ExpectType string
+  // @dts-jest:show string
   R.head(['10', 10]); // => '10'
 }
 
 // @dts-jest:group indexBy
 {
   const list = [{id: 'xyz', title: 'A'}, {id: 'abc', title: 'B'}];
-  // $ExpectType Dictionary<Object>
+  // @dts-jest:show Dictionary<Object>
   R.indexBy(R.prop('id'), list);
-  // $ExpectType Dictionary<Object>
+  // @dts-jest:show Dictionary<Object>
   R.indexBy(R.prop('id'))(list);
-  // $ExpectType Dictionary<Object>
+  // @dts-jest:show Dictionary<Object>
   R.indexBy<{id: string}>(R.prop('id'))(list);
 }
 
 // @dts-jest:group indexOf
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.indexOf(3, [1, 2, 3, 4]); // => 2
-  // $ExpectType number
+  // @dts-jest:pass
   R.indexOf(10)([1, 2, 3, 4]); // => -1
 }
 
 // @dts-jest:group init
 {
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.init(['fi', 'fo', 'fum']); // => ['fi', 'fo']
 }
 
 // @dts-jest:group insert
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.insert(2, 5, [1, 2, 3, 4]); // => [1,2,5,3,4]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.insert(2)(5, [1, 2, 3, 4]); // => [1,2,5,3,4]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.insert(2, 5)([1, 2, 3, 4]); // => [1,2,5,3,4]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.insert(2)(5)([1, 2, 3, 4]); // => [1,2,5,3,4]
 }
 
 // @dts-jest:group insertAll
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.insertAll(2, [10, 11, 12], [1, 2, 3, 4]);
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.insertAll(2)([10, 11, 12], [1, 2, 3, 4]);
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.insertAll(2, [10, 11, 12])([1, 2, 3, 4]);
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.insertAll(2)([10, 11, 12])([1, 2, 3, 4]);
 }
 
 // @dts-jest:group intersection
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.intersection([1, 2, 3, 4], [7, 6, 5, 4, 3]); // => [4, 3]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.intersection([1, 2, 3, 4])([7, 6, 5, 4, 3]); // => [4, 3]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.intersection([1, 2, 4], [1, 2, 3]); // => [1,2]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.intersection([1, 2, 4])([1, 2, 3]); // => [1,2]
 }
 
@@ -1313,15 +1313,15 @@ interface Obj { a: number; b: number; }
       {id: 177, name: 'Neil Young'},
   ];
 
-  // $ExpectType { id: number, name: string }[]
+  // @dts-jest:show { id: number, name: string }[]
   R.intersectionWith(R.eqBy(R.prop('id')), buffaloSpringfield, csny);
   // => [{id: 456, name: 'Stephen Stills'}, {id: 177, name: 'Neil Young'}]
-  // $ExpectType { id: number, name: string }[]
+  // @dts-jest:show { id: number, name: string }[]
   R.intersectionWith(R.eqBy(R.prop('id')), buffaloSpringfield, csny);
   // => [{id: 456, name: 'Stephen Stills'}, {id: 177, name: 'Neil Young'}]
-  // $ExpectType { id: number, name: string }[]
+  // @dts-jest:show { id: number, name: string }[]
   R.intersectionWith(R.eqBy(R.prop('id')))(buffaloSpringfield, csny);
-  // $ExpectType { id: number, name: string }[]
+  // @dts-jest:show { id: number, name: string }[]
   R.intersectionWith(R.eqBy(R.prop('id')))(buffaloSpringfield)(csny);
 }
 
@@ -1330,32 +1330,32 @@ interface Obj { a: number; b: number; }
   const numbers = [1, 2, 3, 4];
   const transducer = R.compose(R.map(R.add(1)), R.take(2));
 
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.into([], transducer, numbers); // => [2, 3]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.into([])(transducer, numbers); // => [2, 3]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.into([], transducer)(numbers); // => [2, 3]
 
   const intoArray = R.into([]);
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   intoArray(transducer, numbers); // => [2, 3]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   intoArray(transducer)(numbers); // => [2, 3]
 }
 
 // @dts-jest:group join
 {
   const spacer = R.join(' ');
-  // $ExpectType string
+  // @dts-jest:pass
   spacer(['a', 2, 3.4]); // => 'a 2 3.4'
-  // $ExpectType string
+  // @dts-jest:pass
   R.join('|', [1, 2, 3]); // => '1|2|3'
 }
 
 // @dts-jest:group last
 {
-  // $ExpectType string
+  // @dts-jest:show string
   R.last(['fi', 'fo', 'fum']); // => 'fum'
 }
 
@@ -1368,24 +1368,24 @@ interface Obj { a: number; b: number; }
 
 // @dts-jest:group length
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.length([]); // => 0
-  // $ExpectType number
+  // @dts-jest:pass
   R.length([1, 2, 3]); // => 3
 }
 
 // @dts-jest:group lensIndex, set, view, over
 {
   const headLens = R.lensIndex(0);
-  // $ExpectType number
+  // @dts-jest:show number
   headLens([10, 20, 30, 40]); // => 10
-  // $ExpectType Array<number|string>
+  // @dts-jest:show Array<number|string>
   headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
-  // $ExpectType string
+  // @dts-jest:show string
   R.view(headLens, ['a', 'b', 'c']); // => 'a'
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   R.set(headLens, 'x', ['a', 'b', 'c']); // => ['x', 'b', 'c']
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
 }
 
@@ -1393,24 +1393,24 @@ interface Obj { a: number; b: number; }
 {
   const arrayify = <T>(v: T): T[] => [v];
   // homogeneous array
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.map(double, [1, 2, 3]); // => [2, 4, 6]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.map(double)([1, 2, 3]); // => [2, 4, 6]
   // homogeneous object
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.map(double, {a: 1, b: 2, c: 3}); // => { a: 2, b: 4, c: 6 }
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.map(double)({a: 1, b: 2, c: 3}); // => { a: 2, b: 4, c: 6 }
   // heterogeneous array
-  // $ExpectType [number[], string[]]
+  // @dts-jest:show [number[], string[]]
   R.map(arrayify, [1, 'a']); // => [[1], ['a']]
-  // $ExpectType [number[], string[]]
+  // @dts-jest:show [number[], string[]]
   R.map(arrayify)([1, 'a']); // => [[1], ['a']]
   // heterogeneous object
-  // $ExpectType { a: number[], b: string[] }
+  // @dts-jest:show { a: number[], b: string[] }
   R.map(arrayify, {a: 1, b: 'c'}); // => { a: [1], b: ['c'] }
-  // $ExpectType { a: number[], b: string[] }
+  // @dts-jest:show { a: number[], b: string[] }
   R.map(arrayify)({a: 1, b: 'c'}); // => { a: [1], b: ['c'] }
 
   // functor
@@ -1429,13 +1429,13 @@ interface Obj { a: number; b: number; }
   const digits = ['1', '2', '3', '4'];
   const append = (a: string, b: string): [string, string] =>
     [a + b, a + b];
-  // $ExpectType Array<string[]|string>
+  // @dts-jest:show Array<string[]|string>
   R.mapAccum(append, '0', digits); // => ['01234', ['01', '012', '0123', '01234']]
-  // $ExpectType Array<string[]|string>
+  // @dts-jest:show Array<string[]|string>
   R.mapAccum(append)('0', digits); // => ['01234', ['01', '012', '0123', '01234']]
-  // $ExpectType Array<string[]|string>
+  // @dts-jest:show Array<string[]|string>
   R.mapAccum(append, '0')(digits); // => ['01234', ['01', '012', '0123', '01234']]
-  // $ExpectType Array<string[]|string>
+  // @dts-jest:show Array<string[]|string>
   R.mapAccum(append)('0')(digits); // => ['01234', ['01', '012', '0123', '01234']]
 }
 
@@ -1444,78 +1444,78 @@ interface Obj { a: number; b: number; }
   const digits = ['1', '2', '3', '4'];
   const append = (a: string, b: string): [string, string] =>
     [a + b, a + b];
-  // $ExpectType Array<string|string[]>
+  // @dts-jest:show Array<string|string[]>
   R.mapAccumRight(append, '0', digits); // => ['04321', ['04321', '0432', '043', '04']]
-  // $ExpectType Array<string|string[]>
+  // @dts-jest:show Array<string|string[]>
   R.mapAccumRight(append)('0', digits); // => ['04321', ['04321', '0432', '043', '04']]
-  // $ExpectType Array<string|string[]>
+  // @dts-jest:show Array<string|string[]>
   R.mapAccumRight(append, '0')(digits); // => ['04321', ['04321', '0432', '043', '04']]
-  // $ExpectType Array<string|string[]>
+  // @dts-jest:show Array<string|string[]>
   R.mapAccumRight(append)('0')(digits); // => ['04321', ['04321', '0432', '043', '04']]
 }
 
 // @dts-jest:group none
 {
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.none(R.isNaN, [1, 2, 3]); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.none(R.isNaN, [1, 2, 3, NaN]); // => false
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.none(R.isNaN)([1, 2, 3, NaN]); // => false
 }
 
 // @dts-jest:group nth
 {
   const list = ['foo', 'bar', 'baz', 'quux'];
-  // $ExpectType string
+  // @dts-jest:show string
   R.nth(1, list); // => 'bar'
-  // $ExpectType string
+  // @dts-jest:show string
   R.nth(-1, list); // => 'quux'
-  // $ExpectType undefined
+  // @dts-jest:show undefined
   R.nth(-99, list); // => undefined
-  // $ExpectType undefined
+  // @dts-jest:show undefined
   R.nth(-99)(list); // => undefined
 }
 
 // @dts-jest:group partition, contains
 {
-  // $ExpectType [string[], string[]]
+  // @dts-jest:show [string[], string[]]
   R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']);
-  // $ExpectType [string[], string[]]
+  // @dts-jest:show [string[], string[]]
   R.partition(R.contains('s'))(['sss', 'ttt', 'foo', 'bars']);
-  // $ExpectType [number[], number[]]
+  // @dts-jest:pass
   R.partition((x: number) => x > 2, [1, 2, 3, 4]);
-  // $ExpectType [number[], number[]]
+  // @dts-jest:pass
   R.partition((x: number) => x > 2)([1, 2, 3, 4]);
-  // $ExpectType Object[]
+  // @dts-jest:show Object[]
   R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}); // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' } ]
 }
 
 // @dts-jest:group pluck
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.pluck('a', [{a: 1}, {a: 2}]); // => [1, 2]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.pluck(0, [[1, 2], [3, 4]]); // => [1, 3]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.pluck('a')([{a: 1}, {a: 2}]); // => [1, 2]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.pluck(0)([[1, 2], [3, 4]]); // => [1, 3]
 }
 
 // @dts-jest:group prepend
 {
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.prepend('fee', ['fi', 'fo', 'fum']); // => ['fee', 'fi', 'fo', 'fum']
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.prepend('fee')(['fi', 'fo', 'fum']); // => ['fee', 'fi', 'fo', 'fum']
 }
 
 // @dts-jest:group range
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.range(1, 5); // => [1, 2, 3, 4]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.range(50)(53); // => [50, 51, 52]
 }
 
@@ -1524,11 +1524,11 @@ interface Obj { a: number; b: number; }
   const numbers = [1, 2, 3];
   const add = (a: number, b: number) =>
     a + b;
-  // $ExpectType number
+  // @dts-jest:pass
   R.reduce(add, 10, numbers); // => 16
-  // $ExpectType number
+  // @dts-jest:pass
   R.reduce(add)(10, numbers); // => 16
-  // $ExpectType number
+  // @dts-jest:pass
   R.reduce(add, 10)(numbers); // => 16
 }
 
@@ -1550,7 +1550,7 @@ interface Student {
   const students = [{name: 'Lucy', score: 92},
                     {name: 'Drew', score: 85},
                     {name: 'Bart', score: 62}];
-  // $ExpectType Dictionary<string[]>
+  // @dts-jest:show Dictionary<string[]>
   namesByGrade(students);
   // {
   //   'A': ['Lucy'],
@@ -1566,20 +1566,20 @@ type Pair = KeyValuePair<string, number>;
   const pairs: Pair[] = [['a', 1], ['b', 2], ['c', 3]];
   const flattenPairs = (pair: Pair, acc: Pair[]): Pair[] =>
     acc.concat(pair);
-  // $ExpectType Array<string[]|string>
+  // @dts-jest:show Array<string[]|string>
   R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
-  // $ExpectType Array<string[]|string>
+  // @dts-jest:show Array<string[]|string>
   R.reduceRight(flattenPairs, [])(pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
-  // $ExpectType Array<string[]|string>
+  // @dts-jest:show Array<string[]|string>
   R.reduceRight(flattenPairs)([], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 }
 
 // @dts-jest:group reject
 {
   const isOdd = (n: number) => n % 2 === 1;
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.reject(isOdd, [1, 2, 3, 4]); // => [2, 4]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.reject(isOdd)([1, 2, 3, 4]); // => [2, 4]
 }
 
@@ -1588,94 +1588,94 @@ type Pair = KeyValuePair<string, number>;
   const lastTwo = (val: number, idx: number, list: number[]) =>
     list.length - idx <= 2;
   const rejectIndexed = R.addIndex(R.reject);
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   rejectIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [8, 6, 7, 5, 3]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   rejectIndexed(lastTwo)([8, 6, 7, 5, 3, 0, 9]); // => [8, 6, 7, 5, 3]
 }
 
 // @dts-jest:group remove
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.remove(2, 3, [1, 2, 3, 4, 5, 6, 7, 8]); // => [1,2,6,7,8]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.remove(2, 3)([1, 2, 3, 4, 5, 6, 7, 8]); // => [1,2,6,7,8]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.remove(2)(3, [1, 2, 3, 4, 5, 6, 7, 8]); // => [1,2,6,7,8]
 }
 
 // @dts-jest:group repeat
 {
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.repeat('hi', 5); // => ['hi', 'hi', 'hi', 'hi', 'hi']
   const obj = {};
   const repeatedObjs = R.repeat(obj, 5); // => [{}, {}, {}, {}, {}]
-  // $ExpectType boolean
+  // @dts-jest:pass
   repeatedObjs[0] === repeatedObjs[1]; // => true
 }
 
 // @dts-jest:group reverse
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.reverse([1, 2, 3]); // => [3, 2, 1]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.reverse([1, 2]); // => [2, 1]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.reverse([1]); // => [1]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.reverse([]); // => []
 }
 
 // @dts-jest:group scan
 {
   const numbers = [1, 2, 3, 4];
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.scan(R.multiply, 1, numbers); // => [1, 1, 2, 6, 24]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.scan(R.multiply, 1)(numbers); // => [1, 1, 2, 6, 24]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.scan(R.multiply)(1, numbers); // => [1, 1, 2, 6, 24]
 }
 
 // @dts-jest:group slice
 {
   const xs = R.range(0, 10);
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.slice(2, 5, xs); // => [2, 3, 4]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.slice(2, 5)(xs); // => [2, 3, 4]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.slice(2)(5, xs); // => [2, 3, 4]
 
   const str = 'Hello World';
-  // $ExpectType string
+  // @dts-jest:pass
   R.slice(2, 5, str); // => 'llo'
-  // $ExpectType string
+  // @dts-jest:pass
   R.slice(2, 5)(str); // => 'llo'
-  // $ExpectType string
+  // @dts-jest:pass
   R.slice(2)(5, str); // => 'llo'
 }
 
 // @dts-jest:group sort
 {
   const diff = (a: number, b: number) => a - b;
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.sort(diff, [4, 2, 7, 5]); // => [2, 4, 5, 7]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.sort(diff)([4, 2, 7, 5]); // => [2, 4, 5, 7]
 }
 
 // @dts-jest:group tail
 {
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.tail(['fi', 'fo', 'fum']); // => ['fo', 'fum']
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.tail([1, 2, 3]); // => [2, 3]
 }
 
 // @dts-jest:group take
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.take(3, [1, 2, 3, 4, 5]); // => [1,2,3]
 
   const members = [
@@ -1684,36 +1684,36 @@ type Pair = KeyValuePair<string, number>;
     'Dan Brubeck', 'Bobby Militello', 'Michael Moore', 'Randy Jones',
   ];
   const takeFive = R.take(5);
-  // $ExpectType string[]
+  // @dts-jest:pass
   takeFive(members); // => ['Paul Desmond','Bob Bates','Joe Dodge','Ron Crotty','Lloyd Davis']
 }
 {
-  // $ExpectType string
+  // @dts-jest:show string
   R.take(3, 'Example'); // => 'Exa'
 
   const takeThree = R.take(3);
-  // $ExpectType string
+  // @dts-jest:show string
   takeThree('Example'); // => 'Exa'
 }
 
 // @dts-jest:group takeLast
 {
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.takeLast(1, ['foo', 'bar', 'baz']); // => ['baz']
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.takeLast(2)(['foo', 'bar', 'baz']); // => ['bar', 'baz']
-  // $ExpectType string
+  // @dts-jest:show string
   R.takeLast(3, 'ramda'); // => 'mda'
-  // $ExpectType string
+  // @dts-jest:show string
   R.takeLast(3)('ramda'); // => 'mda'
 }
 
 // @dts-jest:group takeLastWhile
 {
   const isNotOne = (x: number) => x !== 1;
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.takeLastWhile(isNotOne, [1, 2, 3, 4]); // => [2, 3, 4]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.takeLastWhile(isNotOne)([1, 2, 3, 4]); // => [2, 3, 4]
 }
 
@@ -1721,32 +1721,32 @@ type Pair = KeyValuePair<string, number>;
 {
   const isNotFour = (x: number) =>
     !(x === 4);
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.takeWhile(isNotFour, [1, 2, 3, 4]); // => [1, 2, 3]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.takeWhile(isNotFour)([1, 2, 3, 4]); // => [1, 2, 3]
 }
 
 // @dts-jest:group tap
 {
   const sayX = (x: number) => console.log(`x is ${x}`);
-  // $ExpectType number
+  // @dts-jest:pass
   R.tap(sayX, 100); // => 100
 }
 
 // @dts-jest:group test
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.test(/^x/, 'xyz'); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.test(/^y/)('xyz'); // => false
 }
 
 // @dts-jest:group times
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.times(R.identity, 5); // => [0, 1, 2, 3, 4]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.times(R.identity)(5); // => [0, 1, 2, 3, 4]
 }
 
@@ -1763,17 +1763,17 @@ type Pair = KeyValuePair<string, number>;
       return `new Point(${this.x}, ${this.y})`;
     }
   }
-  // $ExpectType string
+  // @dts-jest:pass
   R.toString(new Point(1, 2)); // => 'new Point(1, 2)'
-  // $ExpectType string
+  // @dts-jest:pass
   R.toString(42); // => '42'
-  // $ExpectType string
+  // @dts-jest:pass
   R.toString('abc'); // => ''abc''
-  // $ExpectType string
+  // @dts-jest:pass
   R.toString([1, 2, 3]); // => '[1, 2, 3]'
-  // $ExpectType string
+  // @dts-jest:pass
   R.toString({foo: 1, bar: 2, baz: 3}); // => '{'bar': 2, 'baz': 3, 'foo': 1}'
-  // $ExpectType string
+  // @dts-jest:pass
   R.toString(new Date('2001-02-03T04: 05: 06Z')); // => 'new Date('2001-02-03T04: 05: 06.000Z')'
 }
 
@@ -1782,13 +1782,13 @@ type Pair = KeyValuePair<string, number>;
   const numbers = [1, 2, 3, 4];
   const transducer = R.compose(R.map(R.add(1)), R.take(2));
   const fn = R.flip<number, number[], number[]>(R.append);
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.transduce(transducer, fn, [] as number[], numbers); // => [2, 3] // strictNullChecks: must annotate empty array type
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.transduce(transducer, fn, [] as number[])(numbers); // => [2, 3]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.transduce(transducer, fn)([] as number[], numbers); // => [2, 3]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.transduce(transducer)(fn, [] as number[], numbers); // => [2, 3]
 }
 
@@ -1803,76 +1803,76 @@ type Pair = KeyValuePair<string, number>;
 
 // @dts-jest:group transpose
 {
-  // $ExpectType any[][]
+  // @dts-jest:show any[][]
   R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]); // => [[1, 2, 3], ['a', 'b', 'c']]
-  // $ExpectType any[][]
+  // @dts-jest:show any[][]
   R.transpose([[1, 2, 3], ['a', 'b', 'c']]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
-  // $ExpectType number[][]
+  // @dts-jest:pass
   R.transpose([[10, 11], [20], [], [30, 31, 32]]); // => [[10, 20, 30], [11, 31], [32]]
 }
 
 // @dts-jest:group tryCatch
 {
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.tryCatch<boolean>(R.prop('x'), R.F)({x: true}); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.tryCatch<boolean>(R.prop('x'), R.F)(null); // => false
 }
 
 // @dts-jest:group uniq
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.uniq([1, 1, 2, 1]); // => [1, 2]
-  // $ExpectType Object[]
+  // @dts-jest:show Object[]
   R.uniq([{}, {}]); // => [{}, {}]
-  // $ExpectType any[]
+  // @dts-jest:show any[]
   R.uniq([1, '1']); // => [1, '1']
 }
 
 // @dts-jest:group uniqWith
 {
   const strEq = (a: any, b: any) => String(a) === String(b);
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.uniqWith(strEq, [1, '1', 2, 1]); // => [1, 2]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.uniqWith(strEq)([1, '1', 2, 1]); // => [1, 2]
-  // $ExpectType Object[]
+  // @dts-jest:show Object[]
   R.uniqWith(strEq)([{}, {}]); // => [{}]
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.uniqWith(strEq)([1, '1', 1]); // => [1]
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   R.uniqWith(strEq)(['1', 1, 1]); // => ['1']
 }
 
 // @dts-jest:group unnest, equals
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.equals(R.unnest([1, [2], [[3]]]), [1, 2, [3]]); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6]); // => true
 }
 
 // @dts-jest:group xprod
 {
-  // $ExpectType [number, string][]
+  // @dts-jest:pass
   R.xprod([1, 2], ['a', 'b']); // => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
-  // $ExpectType [number, string][]
+  // @dts-jest:pass
   R.xprod([1, 2])(['a', 'b']); // => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
 }
 
 // @dts-jest:group zip
 {
-  // $ExpectType [number, string][]
+  // @dts-jest:pass
   R.zip([1, 2, 3], ['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
-  // $ExpectType [number, string][]
+  // @dts-jest:pass
   R.zip([1, 2, 3])(['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
 }
 
 // @dts-jest:group zipObj
 {
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.zipObj(['a', 'b', 'c'], [1, 2, 3]); // => {a: 1, b: 2, c: 3}
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.zipObj(['a', 'b', 'c'])([1, 2, 3]); // => {a: 1, b: 2, c: 3}
 }
 
@@ -1881,11 +1881,11 @@ type Pair = KeyValuePair<string, number>;
   const f = (x: number, y: string) => {
   // ...
   };
-  // $ExpectType any[]
+  // @dts-jest:show any[]
   R.zipWith(f, [1, 2, 3], ['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
-  // $ExpectType any[]
+  // @dts-jest:show any[]
   R.zipWith(f)([1, 2, 3], ['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
-  // $ExpectType any[]
+  // @dts-jest:show any[]
   R.zipWith(f, [1, 2, 3])(['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
 }
 
@@ -1895,22 +1895,22 @@ type Pair = KeyValuePair<string, number>;
 
 // @dts-jest:group dissoc
 {
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.dissoc<{a: number, c: number}>('b', {a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.dissoc('b', {a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.dissoc('b')<{a: number, c: number}>({a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
 }
 
 // @dts-jest:group dissocPath
 {
-  // $ExpectType {a: {b: {}}}
+  // @dts-jest:show {a: {b: {}}}
   R.dissocPath(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
   // optionally specify return type
-  // $ExpectType {a: {b: {}}}
+  // @dts-jest:show {a: {b: {}}}
   R.dissocPath<{a: { b: number}}>(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
-  // $ExpectType {a: {b: {}}}
+  // @dts-jest:show {a: {b: {}}}
   R.dissocPath(['a', 'b', 'c'])({a: {b: {c: 42}}}); // => {a: {b: {}}}
 }
 
@@ -1918,13 +1918,13 @@ type Pair = KeyValuePair<string, number>;
 {
   const o1 = {a: 1, b: 2, c: 3, d: 4};
   const o2 = {a: 10, b: 20, c: 3, d: 40};
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.eqProps('a', o1, o2); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.eqProps('c', o1, o2); // => true
-  // $ExpectType {<T,U>(obj1: T, obj2: U): boolean}
+  // @dts-jest:show {<T,U>(obj1: T, obj2: U): boolean}
   R.eqProps('c');
-  // $ExpectType {<U>(obj2: U): boolean}
+  // @dts-jest:show {<U>(obj2: U): boolean}
   R.eqProps('c', o1);
 }
 
@@ -1936,29 +1936,29 @@ type Pair = KeyValuePair<string, number>;
     lastName: R.trim, // Will not get invoked.
     data: {elapsed: R.add(1), remaining: R.add(-1)},
   };
-  // $ExpectType typeof tomato
+  // @dts-jest:show typeof tomato
   R.evolve(transformations, tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
-  // $ExpectType typeof tomato
+  // @dts-jest:show typeof tomato
   R.evolve(transformations)(tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
 }
 
 // @dts-jest:group has
 {
   const hasName = R.has('name');
-  // $ExpectType boolean
+  // @dts-jest:pass
   hasName({name: 'alice'}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   hasName({name: 'bob'}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   hasName({}); // => false
 
   const point = {x: 0, y: 0};
   const pointHas = R.flip(R.has)(point);
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   pointHas('x'); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   pointHas('y'); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   pointHas('z'); // => false
 }
 
@@ -1976,11 +1976,11 @@ class Rectangle {
 }
 {
   const square = new Rectangle(2, 2);
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.hasIn('width', square); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.hasIn('area', square); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.flip(R.hasIn)(square)('area'); // => true
 }
 
@@ -1991,7 +1991,7 @@ class Rectangle {
     second: 'jake',
     third: 'alice',
   };
-  // $ExpectType Dictionary<string[]>
+  // @dts-jest:pass
   R.invert(raceResultsByFirstName);
   // => { 'alice': ['first', 'third'], 'jake': ['second'] }
 }
@@ -2002,27 +2002,27 @@ class Rectangle {
     first: 'alice',
     second: 'jake',
   };
-  // $ExpectType Dictionary<string>
+  // @dts-jest:pass
   R.invertObj(raceResults0);
   // => { 'alice': 'first', 'jake': 'second' }
 
   // Alternatively:
   const raceResults1 = ['alice', 'jake'];
-  // $ExpectType Dictionary<string>
+  // @dts-jest:pass
   R.invertObj(raceResults1);
   // => { 'alice': '0', 'jake': '1' }
 }
 
 // @dts-jest:group keys
 {
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
 }
 
 // @dts-jest:group keysIn
 {
   const f = new F();
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   R.keysIn(f); // => ['x', 'y']
 }
 
@@ -2032,65 +2032,65 @@ class Rectangle {
   // let xLens = R.lens<number, xy>(R.prop('x'), R.assoc('x'));
   const xLens = R.lens<number>(R.prop('x'))(R.assoc('x'));
   // ^ works with only 1 generic, for curried version managed to split the inferred generic from the manual generic
-  // $ExpectType number
+  // @dts-jest:show number
   R.view(xLens, {x: 1, y: 2}); // => 1
-  // $ExpectType { x: number, y: number }
+  // @dts-jest:show { x: number, y: number }
   R.set(xLens, 4, {x: 1, y: 2}); // => {x: 4, y: 2}
-  // $ExpectType { x: number, y: number }
+  // @dts-jest:show { x: number, y: number }
   R.set(xLens)(4, {x: 1, y: 2}); // => {x: 4, y: 2}
-  // $ExpectType { x: number, y: number }
+  // @dts-jest:show { x: number, y: number }
   R.set(xLens, 4)({x: 1, y: 2}); // => {x: 4, y: 2}
-  // $ExpectType { x: number, y: number }
+  // @dts-jest:show { x: number, y: number }
   R.over(xLens, R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
-  // $ExpectType { x: number, y: number }
+  // @dts-jest:show { x: number, y: number }
   R.over(xLens, R.negate)({x: 1, y: 2}); // => {x: -1, y: 2}
-  // $ExpectType { x: number, y: number }
+  // @dts-jest:show { x: number, y: number }
   R.over(xLens)(R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
 }
 
 // @dts-jest:group lensIndex
 {
   const headLens = R.lensIndex(0);
-  // $ExpectType string
+  // @dts-jest:show string
   R.view(headLens, ['a', 'b', 'c']); // => 'a'
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   R.set(headLens, 'x', ['a', 'b', 'c']); // => ['x', 'b', 'c']
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
 }
 
 // @dts-jest:group lensProp
 {
   const xLens = R.lensProp('x');
-  // $ExpectType number
+  // @dts-jest:show number
   R.view(xLens, {x: 1, y: 2}); // => 1
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.set(xLens, 4, {x: 1, y: 2}); // => {x: 4, y: 2}
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.over(xLens, R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
 }
 
 // @dts-jest:group lensPath
 {
   const xyLens = R.lensPath(['x', 'y']);
-  // $ExpectType number
+  // @dts-jest:show number
   R.view(xyLens, {x: {y: 2, z: 3}}); // => 2
-  // $ExpectType { [s: string]: { [s: string]: number } }
+  // @dts-jest:show { [s: string]: { [s: string]: number } }
   R.set(xyLens, 4, {x: {y: 2, z: 3}}); // => {x: {y: 4, z: 3}}
-  // $ExpectType { [s: string]: { [s: string]: number } }
+  // @dts-jest:show { [s: string]: { [s: string]: number } }
   R.over(xyLens, R.negate, {x: {y: 2, z: 3}}); // => {x: {y: -2, z: 3}}
 }
 
 // @dts-jest:group keys
 {
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
 }
 
 // @dts-jest:group keysIn
 {
   const f = new F();
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   R.keysIn(f); // => ['x', 'y']
 }
 
@@ -2114,11 +2114,11 @@ class Rectangle {
     );
   const obj1 = {phrase: 'Absolute filth . . . and I LOVED it!'};
   const obj2 = {phrase: "What's all this, then?"};
-  // $ExpectType string
+  // @dts-jest:show string
   phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
-  // $ExpectType string
+  // @dts-jest:show string
   phraseLens(obj2); // => "What's all this, then?"
-  // $ExpectType Dictionary<string>
+  // @dts-jest:show Dictionary<string>
   phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
 }
 
@@ -2127,35 +2127,35 @@ class Rectangle {
   const phraseLens = R.lensProp('phrase');
   const obj1 = {phrase: 'Absolute filth . . . and I LOVED it!'};
   const obj2 = {phrase: "What's all this, then?"};
-  // $ExpectType string
+  // @dts-jest:show string
   phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
-  // $ExpectType string
+  // @dts-jest:show string
   phraseLens(obj2); // => 'What's all this, then?'
-  // $ExpectType Dictionary<string>
+  // @dts-jest:show Dictionary<string>
   phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
 }
 
 // @dts-jest:group merge
 {
-  // $ExpectType Dictionary<any>
+  // @dts-jest:show Dictionary<any>
   R.merge({name: 'fred', age: 10}, {age: 40});
   // => { 'name': 'fred', 'age': 40 }
   const resetToDefault = R.flip(R.merge)({x: 0});
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   resetToDefault({x: 5, y: 2}); // => {x: 0, y: 2}
 }
 
 // @dts-jest:group megeAll
 {
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.mergeAll([{foo: 1}, {bar: 2}, {baz: 3}]); // => {foo: 1,bar: 2,baz: 3}
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.mergeAll([{foo: 1}, {foo: 2}, {bar: 2}]); // => {foo: 2,bar: 2}
 }
 
 // @dts-jest:group mergeWith
 {
-  // $ExpectType { a: boolean, b: boolean, values: number[] }
+  // @dts-jest:show { a: boolean, b: boolean, values: number[] }
   R.mergeWith(R.concat,
               {a: true, values: [10, 20]},
               {b: true, values: [15, 35]});
@@ -2169,37 +2169,37 @@ class Rectangle {
                  {a: true, thing: 'foo', values: [10, 20]},
                  {b: true, thing: 'bar', values: [15, 35]});
   const merge = R.mergeWithKey(concatValues);
-  // $ExpectType { a: boolean, b: boolean, values: number[], thing: string }
+  // @dts-jest:show { a: boolean, b: boolean, values: number[], thing: string }
   merge({a: true, thing: 'foo', values: [10, 20]}, {b: true, thing: 'bar', values: [15, 35]});
 }
 
 // @dts-jest:group pathOr
 {
-  // $ExpectType number
+  // @dts-jest:show number
   R.pathOr('N/A', ['a', 'b'], {a: {b: 2}}); // => 2
-  // $ExpectType number
+  // @dts-jest:show number
   R.pathOr('N/A', ['a', 'b'])({a: {b: 2}}); // => 2
-  // $ExpectType number
+  // @dts-jest:show number
   R.pathOr('N/A', ['a', 'b'], {c: {b: 2}}); // => 'N/A'
-  // $ExpectType number
+  // @dts-jest:show number
   R.pathOr({c: 2})(['a', 'b'], {c: {b: 2}}); // => 'N/A'
 }
 
 // @dts-jest:group pathSatisfies
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.pathSatisfies((a: any) => a === 'foo', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.pathSatisfies((a: any) => a === 'bar', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'], {a: {b: {c: 1}}}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.pathSatisfies((a: any) => a !== 1, ['a', 'b', 'c'], {a: {b: {c: 2}}}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'], {a: {b: {c: 1}}}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'])({a: {b: {c: 1}}}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'])({a: {b: {c: 1}}}); // => true
 }
 
@@ -2207,22 +2207,22 @@ class Rectangle {
 {
   const isPositive = (n: number) =>
     n > 0;
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.pickBy(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); // => {a: 1, b: 2, e: 5}
   const containsBackground = (val: any) =>
     val.bgcolor;
   const colors = {1: {color: 'read'}, 2: {color: 'black', bgcolor: 'yellow'}};
-  // $ExpectType { 2: R.Dictionary<string> }
+  // @dts-jest:show { 2: R.Dictionary<string> }
   R.pickBy(containsBackground, colors); // => {2: {color: 'black', bgcolor: 'yellow'}}
 
   const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
 }
 
 // @dts-jest:group pick
 {
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.pick(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
   // the following should errror: e/f are not keys in these objects
   // @dts-jest:pass
@@ -2239,21 +2239,21 @@ class Rectangle {
     R.objOf('must'),
     R.map(R.objOf('match_phrase')),
     );
-  // $ExpectType { must: { match_phrase: string }[] }
+  // @dts-jest:show { must: { match_phrase: string }[] }
   matchPhrases(['foo', 'bar', 'baz']);
 }
 
 // @dts-jest:group omit
 {
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
 }
 
 // @dts-jest:group fromPairs
 {
-  // $ExpectType Dictionary<number>
+  // @dts-jest:pass
   R.fromPairs([['a', 1], ['b', 2], ['c', 3]]); // => {a: 1, b: 2, c: 3}
 }
 
@@ -2261,35 +2261,35 @@ class Rectangle {
 {
   R.pair('foo', 'bar'); // => ['foo', 'bar']
   const p = R.pair('foo', 1); // => ['foo', 'bar']
-  // $ExpectType string
+  // @dts-jest:show string
   p[0];
-  // $ExpectType number
+  // @dts-jest:pass
   p[1];
 }
 
 // @dts-jest:group over, lensIndex
 {
   const headLens = R.lensIndex(0);
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   R.over(headLens, R.toUpper, ['foo', 'bar', 'baz']); // => ['FOO', 'bar', 'baz']
 }
 
 // @dts-jest:group pickAll
 {
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.pickAll(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
 }
 
 // @dts-jest:group pickBy
 {
   const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
-  // $ExpectType Dictionary<number>
+  // @dts-jest:show Dictionary<number>
   R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
 }
 
@@ -2298,13 +2298,13 @@ class Rectangle {
   const abby = {name: 'Abby', age: 7, hair: 'blond', grade: 2};
   const fred = {name: 'Fred', age: 12, hair: 'brown', grade: 7};
   const kids = [abby, fred];
-  // $ExpectType { name: string, grade: number }[]
+  // @dts-jest:show { name: string, grade: number }[]
   R.project(['name', 'grade'], kids); // => [{name: 'Abby', grade: 2}, {name: 'Fred', grade: 7}]
 }
 
 // @dts-jest:group prop
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.prop('x', {x: 100}); // => 100
   // @dts-jest:show:skip Argument of type 'x' is not assignable to parameter of type 'never'.
   R.prop('x', {}); // => undefined
@@ -2319,72 +2319,72 @@ class Rectangle {
   const favorite = R.prop('favoriteLibrary');
   const favoriteWithDefault = R.propOr('Ramda', 'favoriteLibrary');
 
-  // $ExpectType undefined
+  // @dts-jest:show undefined
   favorite(alice); // => undefined
-  // $ExpectType string
+  // @dts-jest:show string
   favoriteWithDefault(alice); // => 'Ramda'
 }
 
 // @dts-jest:group propSatisfies
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.propSatisfies((x: number) => x > 0, 'x', {x: 1, y: 2}); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.propSatisfies((x: number) => x > 0, 'x')({x: 1, y: 2}); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.propSatisfies((x: number) => x > 0)('x')({x: 1, y: 2}); // => true
 }
 
 // @dts-jest:group props
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.props(['x', 'y'], {x: 1, y: 2}); // => [1, 2]
-  // $ExpectType Array<number|undefined>
+  // @dts-jest:show Array<number|undefined>
   R.props(['c', 'a', 'b'], {b: 2, a: 1}); // => [undefined, 1, 2]
 
   const fullName = R.compose(R.join(' '), R.props(['first', 'last']));
-  // $ExpectType string
+  // @dts-jest:pass
   fullName({last: 'Bullet-Tooth', age: 33, first: 'Tony'}); // => 'Tony Bullet-Tooth'
 }
 
 // @dts-jest:group toPairs
 {
-  // $ExpectType [string, number][]
+  // @dts-jest:show [string, number][]
   R.toPairs({a: 1, b: 2, c: 3}); // => [['a', 1], ['b', 2], ['c', 3]]
 }
 
 // @dts-jest:group toPairsIn
 {
   const f = new F();
-  // $ExpectType [string, string][]
+  // @dts-jest:show [string, string][]
   R.toPairsIn(f); // => [['x','X'], ['y','Y']]
-  // $ExpectType [string, string][]
+  // @dts-jest:show [string, string][]
   R.toPairsIn(f); // => [['x','X'], ['y','Y']]
 }
 
 // @dts-jest:group values
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.values({a: 1, b: 2, c: 3}); // => [1, 2, 3]
 }
 
 // @dts-jest:group valuesIn
 {
   const f = new F();
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.valuesIn(f); // => ['X', 'Y']
 }
 
 // @dts-jest:group where
 {
   const spec = {x: 2};
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.where(spec, {w: 10, x: 2, y: 300}); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.where(spec, {x: 1, y: 'moo', z: true}); // => false
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.where(spec)({w: 10, x: 2, y: 300}); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.where(spec)({x: 1, y: 'moo', z: true}); // => false
 
   // There's no way to represent the below functionality in typescript
@@ -2397,49 +2397,49 @@ class Rectangle {
   }
 
   const spec2 = {x(val: number, obj: XY) { return val + obj.y > 10; }};
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.where(spec2, {x: 2, y: 7}); // => false
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.where(spec2, {x: 3, y: 8}); // => true
 
   const xs = [{x: 2, y: 1}, {x: 10, y: 2}, {x: 8, y: 3}, {x: 10, y: 4}];
-  // $ExpectType { x: number, y: number }[]
+  // @dts-jest:show { x: number, y: number }[]
   R.filter(R.where({x: 10}), xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
-  // $ExpectType { x: number, y: number }[]
+  // @dts-jest:show { x: number, y: number }[]
   R.filter(R.where({x: 10}))(xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
 }
 
 // @dts-jest:group whereEq
 {
-  // $ExpectType (v: Object) => Boolean
+  // @dts-jest:show (v: Object) => Boolean
   const pred = R.whereEq({a: 1, b: 2});
-  // $ExpectType boolean
+  // @dts-jest:pass
   pred({a: 1}); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   pred({a: 1, b: 2}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   pred({a: 1, b: 2, c: 3}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   pred({a: 1, b: 1}); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.whereEq({a: 'one'}, {a: 'one'}); // => true
 }
 
 // @dts-jest:group without
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.without([1, 2], [1, 2, 1, 3, 4]); // => [3, 4]
 }
 
 // @dts-jest:group mapIndexed, addIndex
 {
   const mapIndexed = R.addIndex<string, string>(R.map);
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   mapIndexed((val: string, idx: number) => `${idx}-${val}`)(['f', 'o', 'o', 'b', 'a', 'r']);
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   R.mapIndexed((val: string, idx: number) => `${idx}-${val}`)(['f', 'o', 'o', 'b', 'a', 'r']);
   // => ['0-f', '1-o', '2-o', '3-b', '4-a', '5-r']
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.mapIndexed(
     (rectangle: Rectangle, idx: number) => rectangle.area() * idx,
     [new Rectangle(1, 2), new Rectangle(4, 7)],
@@ -2449,7 +2449,7 @@ class Rectangle {
 // @dts-jest:group pipe, inc, negate
 {
   const f = R.pipe(Math.pow, R.negate, R.inc);
-  // $ExpectType number
+  // @dts-jest:pass
   f(3, 4); // -(3^4) + 1
 }
 
@@ -2460,11 +2460,11 @@ class Rectangle {
   const subtract = (a: number, b: number) => a - b;
 
   // ≅ multiply( add(1, 2), subtract(1, 2) );
-  // $ExpectType number
+  // @dts-jest:pass
   R.converge(multiply, [add, subtract])(1, 2); // => -3
 
   const add3 = (a: number, b: number, c: number) => a + b + c;
-  // $ExpectType number
+  // @dts-jest:pass
   R.converge(add3, [multiply, add, subtract])(1, 2); // => 4
 }
 
@@ -2480,17 +2480,17 @@ class Rectangle {
 {
   const numbers = [1, 1.1, 1.2, 2, 3, 2.2];
   const letters = R.split('', 'abcABCaaaBBc');
-  // $ExpectType Dictionary<number>
+  // @dts-jest:pass
   R.countBy(Math.floor)(numbers); // => {'1': 3, '2': 2, '3': 1}
-  // $ExpectType Dictionary<number>
+  // @dts-jest:pass
   R.countBy(R.toLower)(letters); // => {'a': 5, 'b': 4, 'c': 3}
 }
 
 // @dts-jest:group difference
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.difference([1, 2, 3, 4], [7, 6, 5, 4, 3]); // => [1,2]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.difference([7, 6, 5, 4, 3], [1, 2, 3, 4]); // => [7,6,5]
 }
 
@@ -2499,26 +2499,26 @@ class Rectangle {
   function cmp(x: any, y: any) { return x.a === y.a; }
   const l1 = [{a: 1}, {a: 2}, {a: 3}];
   const l2 = [{a: 3}, {a: 4}];
-  // $ExpectType {a: number}[]
+  // @dts-jest:show {a: number}[]
   R.differenceWith(cmp, l1, l2); // => [{a: 1}, {a: 2}]
-  // $ExpectType {a: number}[]
+  // @dts-jest:show {a: number}[]
   R.differenceWith(cmp)(l1, l2); // => [{a: 1}, {a: 2}]
-  // $ExpectType {a: number}[]
+  // @dts-jest:show {a: number}[]
   R.differenceWith(cmp)(l1)(l2); // => [{a: 1}, {a: 2}]
 }
 
 // @dts-jest:group equals
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.equals(1, 1); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.equals('2', '1'); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.equals([1, 2, 3], [1, 2, 3]); // => true
 
   const a: any = {}; a.v = a;
   const b: any = {}; b.v = b;
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.equals(a, b); // => true
 }
 
@@ -2526,38 +2526,38 @@ class Rectangle {
 {
   const obj = {};
 
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.identity(obj) === obj; // => true
-  // $ExpectType number
+  // @dts-jest:show number
   R.identity(1); // => 1
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.identity([1, 2, 3]);
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.identity(['a', 'b', 'c']);
 }
 
 // @dts-jest:group identical
 {
   const o = {};
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.identical(o, o); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.identical(1, 1); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.identical('2', '1'); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.identical([], []); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.identical(0, -0); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.identical(NaN, NaN); // => true
 }
 
 // @dts-jest:group path
 {
-  // $ExpectType number
+  // @dts-jest:show number
   R.path(['a', 'b'], {a: {b: 2}}); // => 2
-  // $ExpectType number
+  // @dts-jest:show number
   R.path(['a', 'b'])({a: {b: 2}}); // => 2
 }
 
@@ -2579,11 +2579,11 @@ class Rectangle {
     age: 314.159,
   };
   const people = [clara, bob, alice];
-  // $ExpectType { name: string, age: number }[]
+  // @dts-jest:show { name: string, age: number }[]
   sortByAgeDescending(people); // => [alice, bob, clara]
-  // $ExpectType { name: string, age: number }[]
+  // @dts-jest:show { name: string, age: number }[]
   sortByNameCaseInsensitive(people); // => [alice, bob, clara]
-  // $ExpectType { name: string, age: number }[]
+  // @dts-jest:show { name: string, age: number }[]
   sortByAgeAscending(people); // => [bob, alice, clara]
 }
 
@@ -2602,7 +2602,7 @@ class Rectangle {
     age: 40,
   };
   const people = [clara, bob, alice];
-  // $ExpectType typeof people
+  // @dts-jest:show typeof people
   R.sortWith(
     [
       R.descend(R.prop('age')),
@@ -2614,148 +2614,148 @@ class Rectangle {
     R.descend(R.prop('age')),
     R.ascend(R.prop('name')),
   ]);
-  // $ExpectType typeof people
+  // @dts-jest:show typeof people
   ageNameSort(people);
   // => [alice, clara, bob]
 }
 
 // @dts-jest:group splitAt
 {
-  // $ExpectType number[][]
+  // @dts-jest:pass
   R.splitAt(1, [1, 2, 3]); // => [[1], [2, 3]]
-  // $ExpectType number[][]
+  // @dts-jest:pass
   R.splitAt(1)([1, 2, 3]); // => [[1], [2, 3]]
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.splitAt(5, 'hello world'); // => ['hello', ' world']
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.splitAt(-1, 'foobar'); // => ['fooba', 'r']
 }
 
 // @dts-jest:group splitWhen
 {
-  // $ExpectType number[][]
+  // @dts-jest:pass
   R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
-  // $ExpectType number[][]
+  // @dts-jest:pass
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
 }
 
 // @dts-jest:group dec
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.dec(42); // => 41
 }
 
 // @dts-jest:group divide
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.divide(71, 100); // => 0.71
 
   const half = R.flip(R.divide)(2);
-  // $ExpectType number
+  // @dts-jest:show number
   half(42); // => 21
 
   const reciprocal = R.divide(1);
-  // $ExpectType number
+  // @dts-jest:pass
   reciprocal(4); // => 0.25
 }
 
 // @dts-jest:group gt
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.gt(2, 6); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.gt(2, 0); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.gt(2, 2); // => false
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.flip(R.gt)(2)(10); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.gt(2)(10); // => false
 }
 
 // @dts-jest:group gte
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.gte(2, 6); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.gte(2, 0); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.gte(2, 2); // => false
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.flip(R.gte)(2)(10); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.gte(2)(10); // => false
 }
 
 // @dts-jest:group isNaN
 {
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.isNaN(NaN); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.isNaN(undefined); // => false
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.isNaN({}); // => false
 }
 
 // @dts-jest:group lt
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.lt(2, 6); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.lt(2, 0); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.lt(2, 2); // => false
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.lt(5)(10); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.flip(R.lt)(5)(10); // => false // right-sectioned currying
 }
 
 // @dts-jest:group lte
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.lte(2, 6); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.lte(2, 0); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.lte(2, 2); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.flip(R.lte)(2)(1); // => true
-  // $ExpectType boolean
+  // @dts-jest:show boolean
   R.lte(2)(10); // => true
 }
 
 // @dts-jest:group mathMod
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.mathMod(-17, 5); // => 3
-  // $ExpectType number
+  // @dts-jest:pass
   R.mathMod(17, 5); // => 2
-  // $ExpectType number
+  // @dts-jest:pass
   R.mathMod(17, -5); // => NaN
-  // $ExpectType number
+  // @dts-jest:pass
   R.mathMod(17, 0); // => NaN
-  // $ExpectType number
+  // @dts-jest:pass
   R.mathMod(17.2, 5); // => NaN
-  // $ExpectType number
+  // @dts-jest:pass
   R.mathMod(17, 5.3); // => NaN
 
   const clock = R.flip(R.mathMod)(12);
-  // $ExpectType number
+  // @dts-jest:show number
   clock(15); // => 3
-  // $ExpectType number
+  // @dts-jest:show number
   clock(24); // => 0
 
   const seventeenMod = R.mathMod(17);
-  // $ExpectType number
+  // @dts-jest:pass
   seventeenMod(3); // => 2
 }
 
 // @dts-jest:group max
 {
-  // $ExpectType number
+  // @dts-jest:show number
   R.max(7, 3); // => 7
-  // $ExpectType string
+  // @dts-jest:show string
   R.max('a', 'z'); // => 'z'
 }
 
@@ -2767,11 +2767,11 @@ class Rectangle {
   const c = {x: 3};
   const d = {x: 'a'};
   const e = {x: 'z'};
-  // $ExpectType { x: number; }
+  // @dts-jest:pass
   R.maxBy(cmp, a, c); // => {x: 3}
-  // $ExpectType { x: number; }
+  // @dts-jest:pass
   R.maxBy(cmp)(a, c); // => {x: 3}
-  // $ExpectType { x: number; }
+  // @dts-jest:pass
   R.maxBy(cmp)(a)(b);
   // @dts-jest:fail
   R.maxBy(cmp)(d)(e);
@@ -2779,25 +2779,25 @@ class Rectangle {
 
 // @dts-jest:group mean
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.mean([2, 7, 9]); // => 6
-  // $ExpectType number
+  // @dts-jest:pass
   R.mean([]); // => NaN
 }
 
 // @dts-jest:group median
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.median([7, 2, 10, 9]); // => 8
-  // $ExpectType number
+  // @dts-jest:pass
   R.median([]); // => NaN
 }
 
 // @dts-jest:group min
 {
-  // $ExpectType number
+  // @dts-jest:show number
   R.min(9, 3); // => 3
-  // $ExpectType string
+  // @dts-jest:show string
   R.min('a', 'z'); // => 'a'
 }
 
@@ -2809,11 +2809,11 @@ class Rectangle {
   const c = {x: 3};
   const d = {x: 'a'};
   const e = {x: 'z'};
-  // $ExpectType { x: number }
+  // @dts-jest:show { x: number }
   R.minBy(cmp, a, b); // => {x: 1}
-  // $ExpectType { x: number }
+  // @dts-jest:show { x: number }
   R.minBy(cmp)(a, b); // => {x: 1}
-  // $ExpectType { x: number }
+  // @dts-jest:show { x: number }
   R.minBy(cmp)(a)(c);
   // @dts-jest:fail
   R.minBy(cmp, d, e);
@@ -2821,70 +2821,70 @@ class Rectangle {
 
 // @dts-jest:group modulo
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.modulo(17, 3); // => 2
   // JS behavior:
-  // $ExpectType number
+  // @dts-jest:pass
   R.modulo(-17, 3); // => -2
-  // $ExpectType number
+  // @dts-jest:pass
   R.modulo(17, -3); // => 2
 
   const isOdd = R.flip(R.modulo)(2);
-  // $ExpectType number
+  // @dts-jest:show number
   isOdd(42); // => 0
-  // $ExpectType number
+  // @dts-jest:show number
   isOdd(21); // => 1
 }
 
 // @dts-jest:group multiply
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.multiply(2)(3); // => 6
-  // $ExpectType number
+  // @dts-jest:pass
   R.multiply(3)(4); // => 12
-  // $ExpectType number
+  // @dts-jest:pass
   R.multiply(2, 5); // => 10
 }
 
 // @dts-jest:group negate
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.negate(42); // => -42
 }
 
 // @dts-jest:group product
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.product([2, 4, 6, 8, 100, 1]); // => 38400
 }
 
 // @dts-jest:group subtract
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.subtract(10, 8); // => 2
 
   const minus5 = R.flip(R.subtract)(5);
-  // $ExpectType number
+  // @dts-jest:show number
   minus5(17); // => 12
 
   const complementaryAngle = R.subtract(90);
-  // $ExpectType number
+  // @dts-jest:pass
   complementaryAngle(30); // => 60
-  // $ExpectType number
+  // @dts-jest:pass
   complementaryAngle(72); // => 18
 }
 
 // @dts-jest:group sum
 {
-  // $ExpectType number
+  // @dts-jest:pass
   R.sum([2, 4, 6, 8, 100, 1]); // => 121
 }
 
 // @dts-jest:group symmetricDifference
 {
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.symmetricDifference([1, 2, 3, 4], [7, 6, 5, 4, 3]); // => [1,2,7,6,5]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.symmetricDifference([7, 6, 5, 4, 3])([1, 2, 3, 4]); // => [7,6,5,1,2]
 }
 
@@ -2893,11 +2893,11 @@ class Rectangle {
   const eqA = R.eqBy(R.prop('a'));
   const l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}];
   const l2 = [{a: 3}, {a: 4}, {a: 5}, {a: 6}];
-  // $ExpectType { a: number }[]
+  // @dts-jest:show { a: number }[]
   R.symmetricDifferenceWith(eqA, l1, l2); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
-  // $ExpectType { a: number }[]
+  // @dts-jest:show { a: number }[]
   R.symmetricDifferenceWith(eqA)(l1, l2); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
-  // $ExpectType (a: any[]) => any[]
+  // @dts-jest:show (a: any[]) => any[]
   R.symmetricDifferenceWith(eqA)(l1); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
 }
 
@@ -2907,21 +2907,21 @@ class Rectangle {
 
 // @dts-jest:group replace
 {
-  // $ExpectType string
+  // @dts-jest:pass
   R.replace('foo', 'bar', 'foo foo foo'); // => 'bar foo foo'
-  // $ExpectType string
+  // @dts-jest:pass
   R.replace('foo', 'bar')('foo foo foo'); // => 'bar foo foo'
-  // $ExpectType string
+  // @dts-jest:pass
   R.replace('foo')('bar')('foo foo foo'); // => 'bar foo foo'
-  // $ExpectType string
+  // @dts-jest:pass
   R.replace(/foo/, 'bar', 'foo foo foo'); // => 'bar foo foo'
 
   // Use the 'g' (global) flag to replace all occurrences:
-  // $ExpectType string
+  // @dts-jest:pass
   R.replace(/foo/g, 'bar', 'foo foo foo'); // => 'bar bar bar'
-  // $ExpectType string
+  // @dts-jest:pass
   R.replace(/foo/g, 'bar')('foo foo foo'); // => 'bar bar bar'
-  // $ExpectType string
+  // @dts-jest:pass
   R.replace(/foo/g)('bar')('foo foo foo'); // => 'bar bar bar'
 }
 
@@ -2930,37 +2930,37 @@ class Rectangle {
  */
 
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(Object, {}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(Object)({}); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(Number, 1); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(Number)(1); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(Object, 1); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(Object)(1); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(String, 's'); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(String)('s'); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(String, ''); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(String)(''); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(Object, new Object()); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(Object)(new Object()); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(Object, 's'); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(Object)('s'); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(Number, {}); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.is(Number)({}); // => false
 }
 
@@ -2970,22 +2970,22 @@ class Rectangle {
 
 // @dts-jest:group eqBy
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.eqBy(Math.abs, 5, -5); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.eqBy(Math.abs)(5, -5); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.eqBy(Math.abs, 5)(-5); // => true
 }
 
 // @dts-jest:group defaultTo
 {
   const defaultTo42 = R.defaultTo(42);
-  // $ExpectType number
+  // @dts-jest:show number
   defaultTo42(null); // => 42
-  // $ExpectType number
+  // @dts-jest:show number
   defaultTo42(undefined); // => 42
-  // $ExpectType string
+  // @dts-jest:show string
   defaultTo42('Ramda'); // => 'Ramda'
 }
 
@@ -2993,9 +2993,9 @@ class Rectangle {
 {
   const gt10 = (x: number) => x > 10;
   const even = (x: number) => x % 2 === 0;
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.either(gt10, even)(101); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.either(gt10)(even)(8); // => true
 }
 
@@ -3004,37 +3004,37 @@ class Rectangle {
   // Flatten all arrays in the list but leave other values alone.
   const flattenArrays = R.map(R.ifElse(Array.isArray, R.flatten, R.identity));
 
-  // $ExpectType any[]
+  // @dts-jest:pass
   flattenArrays([[0], [[10], [8]], 1234, {}]); // => [[0], [10, 8], 1234, {}]
-  // $ExpectType any[]
+  // @dts-jest:pass
   flattenArrays([[[10], 123], [8, [10]], 'hello']); // => [[10, 123], [8, 10], 'hello']
 }
 
 // @dts-jest:group isEmpty
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.isEmpty([1, 2, 3]); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.isEmpty([]); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.isEmpty(''); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.isEmpty(null); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.isEmpty({}); // =>true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.isEmpty({a: 1}); // => false
 }
 
 // @dts-jest:group not
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.not(true); // => false
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.not(false); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.not(0); // => true
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.not(1); // => false
 }
 
@@ -3050,28 +3050,28 @@ class Why {
 
 // @dts-jest:group or
 {
-  // $ExpectType boolean
+  // @dts-jest:pass
   R.or(false, true); // => false
-  // $ExpectType number|any[]
+  // @dts-jest:show number|any[]
   R.or(0, []); // => []
-  // $ExpectType number|any[]
+  // @dts-jest:show number|any[]
   R.or(0)([]); // => []
-  // $ExpectType string
+  // @dts-jest:show string
   R.or(null, ''); // => ''
 
   const why = new Why(true);
   why.or(true);
-  // $ExpectType Why|boolean
+  // @dts-jest:show Why|boolean
   R.or(why, false); // false
 }
 
 // @dts-jest:group intersperse
 {
-  // $ExpectType string[]
+  // @dts-jest:pass
   R.intersperse(',', ['foo', 'bar']); // => ['foo', ',', 'bar']
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.intersperse(0, [1, 2]); // => [1, 0, 2]
-  // $ExpectType number[]
+  // @dts-jest:pass
   R.intersperse(0, [1]); // => [1]
 }
 
@@ -3082,7 +3082,7 @@ class Why {
 {
   // #65, evolve issue
   const test = {a: 1, b: 2};
-  // $ExpectType { a: number, b: number }
+  // @dts-jest:show { a: number, b: number }
   R.evolve({a: R.add(1)}, test);
 }
 
@@ -3094,7 +3094,7 @@ class Why {
     [0, 1],
     [1, 0],
   ];
-  // $ExpectType number[]
+  // @dts-jest:pass
   filterMatrix(1, b); // --> [1, 1]
 }
 
@@ -3102,15 +3102,15 @@ class Why {
 
 {
   // #29
-  // $ExpectType string[]
+  // @dts-jest:show string[]
   R.pipe(R.append('a'), R.uniq)(['a', 'b', 'c']);
-  // $ExpectType string[][]
+  // @dts-jest:show string[][]
   R.pipe(
     R.split(''),
     R.map((letter: string) => ([letter])),
   )('dave');
 
-  // $ExpectType number
+  // @dts-jest:pass
   R.pipe(
     R.prop<string>('name'),
     R.length,
@@ -3147,20 +3147,20 @@ class Why {
       return array;
     }
   });
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   updateBy((n: number) => n > 1, 0, [1, 2, 3]);
 }
 
 {
   // #86: lose generics in compose
   const pairs = [['1', 'A'], ['2', 'B'], ['3', 'C']];
-  // $ExpectType { [index: string]: string }
+  // @dts-jest:show { [index: string]: string }
   R.fromPairs([['1', 'A'], ['2', 'B'], ['3', 'C']]);
-  // $ExpectType { [index: string]: string }
+  // @dts-jest:show { [index: string]: string }
   R.fromPairs(pairs); // fails -- variable reduced to string[][], killing tuples
-  // $ExpectType { [index: string]: string }
+  // @dts-jest:show { [index: string]: string }
   R.pipe(R.fromPairs)([['1', 'A'], ['2', 'B'], ['3', 'C']]);
-  // $ExpectType { [index: string]: string }
+  // @dts-jest:show { [index: string]: string }
   R.compose(R.fromPairs)([['1', 'A'], ['2', 'B'], ['3', 'C']]);
 
   // generics in pipe loses generics
@@ -3182,15 +3182,15 @@ class Why {
   // #92: lose generics in compose
 
   // can't infer cond paths, must annotate:
-  // $ExpectType <T>(v: T) => T
+  // @dts-jest:show <T>(v: T) => T
   const x = R.cond([
     [R.F, R.F],
     [R.T, R.identity],
   ]);
   // argument order matters for some reason...
-  // $ExpectType (v: number) => number
+  // @dts-jest:show (v: number) => number
   R.pipe(R.inc, x); // ok
-  // $ExpectType (v: number) => number
+  // @dts-jest:show (v: number) => number
   R.compose(x, R.inc); // boom
 
   // don't use generics in pipe/compose/curry if it can't resolve them right away:
@@ -3200,32 +3200,32 @@ class Why {
   // argument order matters too:
   // const pipeF1 = R.pipe(R.inc, R.identity); // : (v: number) => number
   const compF1 = R.compose(R.identity, R.inc); // : (v: number) => {}
-  // $ExpectType number
+  // @dts-jest:show number
   compF1(1); // uh-oh, fails
 
   // also can't reason backward:
   const compF2 = R.compose(R.inc, R.identity); // : (v: {}) => number
-  // $ExpectType number
+  // @dts-jest:pass
   compF2('foo'); // uh-oh, passes
   const pipeF2 = R.pipe(R.identity, R.inc); // : (v: {}) => number
-  // $ExpectType number
+  // @dts-jest:pass
   pipeF2('foo'); // uh-oh, passes
 }
 
 {
   // #118: flatten
-  // $ExpectType number[]
+  // @dts-jest:show number[]
   R.flatten([1, 2, [3, 4], 5, [6, [7, 8, [9, [10, 11], 12]]]]);
   // => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 }
 
 {
   // #119: path
-  // $ExpectType number
+  // @dts-jest:show number
   R.path(['a', 'b', 'c'], {a: {b: {c: 2}}});
-  // $ExpectType null
+  // @dts-jest:show null
   R.path(['a', 'b', 'c'], {a: {b: 2}}); // still fails
   // let n = R.path(['a', '0', 'c'], {a: [{c: 2}] })
-  // $ExpectType number
+  // @dts-jest:show number
   R.path(['a', 0, 'c'], {a: [{c: 2}]});
 }

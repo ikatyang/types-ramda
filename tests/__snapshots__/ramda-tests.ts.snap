@@ -26,6 +26,10 @@ exports[`addIndex reduceIndexed(objectify, {})(['a', 'b', 'c']) 1`] = `"Record<s
 
 exports[`addIndex reduceIndexed(objectify, {}, ['a', 'b', 'c']) 1`] = `"Record<string, number>"`;
 
+exports[`addIndex, filter, reject R.filter(isEven, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`addIndex, filter, reject R.reject(isOdd, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
 exports[`adjust R.adjust(R.add(10))(1)([1, 2, 3]) 1`] = `"number[]"`;
 
 exports[`adjust R.adjust(R.add(10), 1, [1, 2, 3]) 1`] = `"number[]"`;
@@ -156,6 +160,8 @@ exports[`complement R.complement(isEven)(21) 1`] = `"boolean"`;
 
 exports[`complement R.complement(isEven)(42) 1`] = `"boolean"`;
 
+exports[`compose R.compose(limit10, double)(10) 1`] = `"boolean"`;
+
 exports[`compose R.compose<number, number, number>(double, R.identity) 1`] = `"(v1: number) => number"`;
 
 exports[`compose f0(3, 4) 1`] = `"number"`;
@@ -204,7 +210,264 @@ exports[`contains R.contains(4)([1, 2, 3]) 1`] = `"boolean"`;
 
 exports[`contains R.contains(obj)([{}, obj, {}]) 1`] = `"boolean"`;
 
+exports[`converge R.converge(add3, [multiply, add, subtract])(1, 2) 1`] = `"number"`;
+
+exports[`converge R.converge(multiply, [add, subtract])(1, 2) 1`] = `"number"`;
+
+exports[`countBy R.countBy(Math.floor)(numbers) 1`] = `"Dictionary<number>"`;
+
+exports[`countBy R.countBy(R.toLower)(letters) 1`] = `"Dictionary<number>"`;
+
+exports[`curry addThree(3) 1`] = `"CurriedFunction2<number, number, number>"`;
+
+exports[`curry addThree(3)(2)(1) 1`] = `"number"`;
+
+exports[`curry addThree(3, 2, 1) 1`] = `"number"`;
+
+exports[`curry addTwo(3)(1) 1`] = `"number"`;
+
+exports[`dec R.dec(42) 1`] = `"number"`;
+
+exports[`difference R.difference([1, 2, 3, 4], [7, 6, 5, 4, 3]) 1`] = `"number[]"`;
+
+exports[`difference R.difference([7, 6, 5, 4, 3], [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`divide R.divide(71, 100) 1`] = `"number"`;
+
+exports[`divide reciprocal(4) 1`] = `"number"`;
+
+exports[`drop R.drop(3)([1, 2, 3, 4, 5, 6, 7]) 1`] = `"number[]"`;
+
+exports[`drop R.drop(3, [1, 2, 3, 4, 5, 6, 7]) 1`] = `"number[]"`;
+
+exports[`dropLast R.dropLast(1, ['foo', 'bar', 'baz']) 1`] = `"string[]"`;
+
+exports[`dropLast R.dropLast(2)(['foo', 'bar', 'baz']) 1`] = `"string[]"`;
+
+exports[`dropLastWhile R.dropLastWhile(lteThree, [1, 2, 3, 4, 3, 2, 1]) 1`] = `"number[]"`;
+
+exports[`dropWhile R.dropWhile(lteTwo)([1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`dropWhile R.dropWhile(lteTwo, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`either R.either(gt10)(even)(8) 1`] = `"boolean"`;
+
+exports[`either R.either(gt10, even)(101) 1`] = `"boolean"`;
+
+exports[`empty R.empty([1, 2, 3, 4, 5]) 1`] = `"number[]"`;
+
+exports[`empty R.empty([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`eqBy R.eqBy(Math.abs)(5, -5) 1`] = `"boolean"`;
+
+exports[`eqBy R.eqBy(Math.abs, 5)(-5) 1`] = `"boolean"`;
+
+exports[`eqBy R.eqBy(Math.abs, 5, -5) 1`] = `"boolean"`;
+
+exports[`eqProps R.eqProps('a', o1, o2) 1`] = `"boolean"`;
+
+exports[`eqProps R.eqProps('c', o1, o2) 1`] = `"boolean"`;
+
+exports[`equals R.equals('2', '1') 1`] = `"boolean"`;
+
+exports[`equals R.equals([1, 2, 3], [1, 2, 3]) 1`] = `"boolean"`;
+
+exports[`equals R.equals(1, 1) 1`] = `"boolean"`;
+
+exports[`equals R.equals(a, b) 1`] = `"boolean"`;
+
+exports[`filter R.filter(isEven, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`filter onlyNumberList(R.filter(isEven, [1, 2, 3, 4])) 1`] = `"number[]"`;
+
+exports[`find f(tasks) 1`] = `"Task"`;
+
+exports[`findIndex R.findIndex((x: number) => x === 1, [1, 2, 3]) 1`] = `"number"`;
+
+exports[`findIndex R.findIndex(R.propEq('a', 4))(xs) 1`] = `"number"`;
+
+exports[`findIndex a(xs) 1`] = `"number"`;
+
+exports[`findLastIndex R.findLastIndex(R.propEq('a', 1))(xs) 1`] = `"number"`;
+
+exports[`findLastIndex R.findLastIndex(R.propEq('a', 4))(xs) 1`] = `"number"`;
+
+exports[`flip flipped(1, 2, 3) 1`] = `"number[]"`;
+
+exports[`flip mergeThree(1, 2, 3) 1`] = `"number[]"`;
+
+exports[`forEach R.forEach(printXPlusFive)([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`forEach R.forEach(printXPlusFive, [1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`fromPairs R.fromPairs([['a', 1], ['b', 2], ['c', 3]]) 1`] = `"Dictionary<number>"`;
+
+exports[`groupWith R.groupWith((a: number, b: number) => a % 2 === b % 2, [0, 1, 1, 2, 3, 5, 8, 13, 21]) 1`] = `"number[][]"`;
+
+exports[`groupWith R.groupWith(R.eqBy<string>(isVowel), 'aestiou') 1`] = `"string[]"`;
+
+exports[`groupWith R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21]) 1`] = `"number[][]"`;
+
+exports[`gt R.gt(2, 0) 1`] = `"boolean"`;
+
+exports[`gt R.gt(2, 2) 1`] = `"boolean"`;
+
+exports[`gt R.gt(2, 6) 1`] = `"boolean"`;
+
+exports[`gte R.gte(2, 0) 1`] = `"boolean"`;
+
+exports[`gte R.gte(2, 2) 1`] = `"boolean"`;
+
+exports[`gte R.gte(2, 6) 1`] = `"boolean"`;
+
+exports[`has hasName({}) 1`] = `"boolean"`;
+
+exports[`has hasName({name: 'alice'}) 1`] = `"boolean"`;
+
+exports[`has hasName({name: 'bob'}) 1`] = `"boolean"`;
+
+exports[`hasIn R.hasIn('area', square) 1`] = `"boolean"`;
+
+exports[`hasIn R.hasIn('width', square) 1`] = `"boolean"`;
+
+exports[`identical R.identical('2', '1') 1`] = `"boolean"`;
+
+exports[`identical R.identical([], []) 1`] = `"boolean"`;
+
+exports[`identical R.identical(0, -0) 1`] = `"boolean"`;
+
+exports[`identical R.identical(1, 1) 1`] = `"boolean"`;
+
+exports[`identical R.identical(NaN, NaN) 1`] = `"boolean"`;
+
+exports[`identical R.identical(o, o) 1`] = `"boolean"`;
+
+exports[`identity R.identity(['a', 'b', 'c']) 1`] = `"string[]"`;
+
+exports[`identity R.identity([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`identity R.identity(obj) === obj 1`] = `"boolean"`;
+
+exports[`ifElse flattenArrays([[[10], 123], [8, [10]], 'hello']) 1`] = `"any[]"`;
+
+exports[`ifElse flattenArrays([[0], [[10], [8]], 1234, {}]) 1`] = `"any[]"`;
+
+exports[`indexOf R.indexOf(3, [1, 2, 3, 4]) 1`] = `"number"`;
+
+exports[`indexOf R.indexOf(10)([1, 2, 3, 4]) 1`] = `"number"`;
+
+exports[`init R.init(['fi', 'fo', 'fum']) 1`] = `"string[]"`;
+
+exports[`insert R.insert(2)(5)([1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`insert R.insert(2)(5, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`insert R.insert(2, 5)([1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`insert R.insert(2, 5, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`insertAll R.insertAll(2)([10, 11, 12])([1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`insertAll R.insertAll(2)([10, 11, 12], [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`insertAll R.insertAll(2, [10, 11, 12])([1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`insertAll R.insertAll(2, [10, 11, 12], [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`intersection R.intersection([1, 2, 3, 4])([7, 6, 5, 4, 3]) 1`] = `"number[]"`;
+
+exports[`intersection R.intersection([1, 2, 3, 4], [7, 6, 5, 4, 3]) 1`] = `"number[]"`;
+
+exports[`intersection R.intersection([1, 2, 4])([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`intersection R.intersection([1, 2, 4], [1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`intersperse R.intersperse(',', ['foo', 'bar']) 1`] = `"string[]"`;
+
+exports[`intersperse R.intersperse(0, [1, 2]) 1`] = `"number[]"`;
+
+exports[`intersperse R.intersperse(0, [1]) 1`] = `"number[]"`;
+
+exports[`intersperse R.pipe(
+        R.prop<string>('name'),
+        R.length,
+      )({name: 'dave'}) 1`] = `"number"`;
+
+exports[`intersperse compF2('foo') 1`] = `"number"`;
+
+exports[`intersperse filterMatrix(1, b) 1`] = `"number[]"`;
+
+exports[`intersperse pipeF2('foo') 1`] = `"number"`;
+
+exports[`invert R.invert(raceResultsByFirstName) 1`] = `"Dictionary<string[]>"`;
+
+exports[`invertObj R.invertObj(raceResults0) 1`] = `"Dictionary<string>"`;
+
+exports[`invertObj R.invertObj(raceResults1) 1`] = `"Dictionary<string>"`;
+
+exports[`isEmpty R.isEmpty('') 1`] = `"boolean"`;
+
+exports[`isEmpty R.isEmpty([]) 1`] = `"boolean"`;
+
+exports[`isEmpty R.isEmpty([1, 2, 3]) 1`] = `"boolean"`;
+
+exports[`isEmpty R.isEmpty({}) 1`] = `"boolean"`;
+
+exports[`isEmpty R.isEmpty({a: 1}) 1`] = `"boolean"`;
+
+exports[`isEmpty R.isEmpty(null) 1`] = `"boolean"`;
+
+exports[`join R.join('|', [1, 2, 3]) 1`] = `"string"`;
+
+exports[`join spacer(['a', 2, 3.4]) 1`] = `"string"`;
+
+exports[`juxt range(3, 4, 9, -3) 1`] = `"number[]"`;
+
+exports[`length R.length([]) 1`] = `"number"`;
+
+exports[`length R.length([1, 2, 3]) 1`] = `"number"`;
+
+exports[`length R.length([1, 2, 3]) 2`] = `"number"`;
+
+exports[`lt R.lt(2, 0) 1`] = `"boolean"`;
+
+exports[`lt R.lt(2, 2) 1`] = `"boolean"`;
+
+exports[`lt R.lt(2, 6) 1`] = `"boolean"`;
+
+exports[`lte R.lte(2, 0) 1`] = `"boolean"`;
+
+exports[`lte R.lte(2, 2) 1`] = `"boolean"`;
+
+exports[`lte R.lte(2, 6) 1`] = `"boolean"`;
+
+exports[`map R.map(double)([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`map R.map(double, [1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`match R.match(/([a-z]a)/g, 'bananas') 1`] = `"string[]"`;
+
+exports[`match R.match(/a/, 'b') 1`] = `"string[]"`;
+
 exports[`match R.match(/a/, null) 1`] = `"Argument of type 'null' is not assignable to parameter of type 'string'."`;
+
+exports[`mathMod R.mathMod(-17, 5) 1`] = `"number"`;
+
+exports[`mathMod R.mathMod(17, -5) 1`] = `"number"`;
+
+exports[`mathMod R.mathMod(17, 0) 1`] = `"number"`;
+
+exports[`mathMod R.mathMod(17, 5) 1`] = `"number"`;
+
+exports[`mathMod R.mathMod(17, 5.3) 1`] = `"number"`;
+
+exports[`mathMod R.mathMod(17.2, 5) 1`] = `"number"`;
+
+exports[`mathMod seventeenMod(3) 1`] = `"number"`;
+
+exports[`maxBy R.maxBy(cmp)(a)(b) 1`] = `"{ x: number; }"`;
+
+exports[`maxBy R.maxBy(cmp)(a, c) 1`] = `"{ x: number; }"`;
 
 exports[`maxBy R.maxBy(cmp)(d)(e) 1`] = `
 "Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'.
@@ -212,13 +475,407 @@ exports[`maxBy R.maxBy(cmp)(d)(e) 1`] = `
     Type 'string' is not assignable to type 'number'."
 `;
 
+exports[`maxBy R.maxBy(cmp, a, c) 1`] = `"{ x: number; }"`;
+
+exports[`mean R.mean([]) 1`] = `"number"`;
+
+exports[`mean R.mean([2, 7, 9]) 1`] = `"number"`;
+
+exports[`median R.median([]) 1`] = `"number"`;
+
+exports[`median R.median([7, 2, 10, 9]) 1`] = `"number"`;
+
+exports[`memoize memoTrackedAdd(1, 2) 1`] = `"number"`;
+
+exports[`memoize memoTrackedAdd(1, 2) 2`] = `"number"`;
+
+exports[`memoize memoTrackedAdd(2, 1) 1`] = `"number"`;
+
+exports[`memoize memoTrackedAdd(2, 3) 1`] = `"number"`;
+
+exports[`memoize numberOfCalls 1`] = `"number"`;
+
+exports[`memoize numberOfCalls 2`] = `"number"`;
+
+exports[`memoize numberOfCalls 3`] = `"number"`;
+
+exports[`memoize numberOfCalls 4`] = `"number"`;
+
 exports[`minBy R.minBy(cmp, d, e) 1`] = `
 "Argument of type '(obj: { x: number; }) => number' is not assignable to parameter of type 'Placeholder'.
   Property '\\"@@functional/placeholder\\"' is missing in type '(obj: { x: number; }) => number'."
 `;
 
+exports[`modulo R.modulo(-17, 3) 1`] = `"number"`;
+
+exports[`modulo R.modulo(17, -3) 1`] = `"number"`;
+
+exports[`modulo R.modulo(17, 3) 1`] = `"number"`;
+
+exports[`multiply R.multiply(2)(3) 1`] = `"number"`;
+
+exports[`multiply R.multiply(2, 5) 1`] = `"number"`;
+
+exports[`multiply R.multiply(3)(4) 1`] = `"number"`;
+
+exports[`negate R.negate(42) 1`] = `"number"`;
+
+exports[`not R.not(0) 1`] = `"boolean"`;
+
+exports[`not R.not(1) 1`] = `"boolean"`;
+
+exports[`not R.not(false) 1`] = `"boolean"`;
+
+exports[`not R.not(true) 1`] = `"boolean"`;
+
+exports[`of R.of([1]) 1`] = `"number[][]"`;
+
+exports[`of R.of(1) 1`] = `"number[]"`;
+
+exports[`once addOneOnce(10) 1`] = `"number"`;
+
+exports[`once addOneOnce(addOneOnce(50)) 1`] = `"number"`;
+
+exports[`or R.or(false, true) 1`] = `"boolean"`;
+
+exports[`pair p[1] 1`] = `"number"`;
+
+exports[`partial R.partial(multiply, [2])(2) 1`] = `"number"`;
+
+exports[`partial greetMsJaneJones('Hello') 1`] = `"string"`;
+
+exports[`partial sayHelloToMs('Jane', 'Jones') 1`] = `"string"`;
+
+exports[`partition, contains R.partition((x: number) => x > 2)([1, 2, 3, 4]) 1`] = `"[number[], number[]]"`;
+
+exports[`partition, contains R.partition((x: number) => x > 2, [1, 2, 3, 4]) 1`] = `"[number[], number[]]"`;
+
+exports[`pathSatisfies R.pathSatisfies((a: any) => a !== 1, ['a', 'b', 'c'], {a: {b: {c: 2}}}) 1`] = `"boolean"`;
+
+exports[`pathSatisfies R.pathSatisfies((a: any) => a === 'bar', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}) 1`] = `"boolean"`;
+
+exports[`pathSatisfies R.pathSatisfies((a: any) => a === 'foo', ['a', 'b', 'c'], {a: {b: {c: 'foo'}}}) 1`] = `"boolean"`;
+
+exports[`pathSatisfies R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'])({a: {b: {c: 1}}}) 1`] = `"boolean"`;
+
+exports[`pathSatisfies R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'], {a: {b: {c: 1}}}) 1`] = `"boolean"`;
+
+exports[`pathSatisfies R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'])({a: {b: {c: 1}}}) 1`] = `"boolean"`;
+
+exports[`pathSatisfies R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'], {a: {b: {c: 1}}}) 1`] = `"boolean"`;
+
 exports[`pick R.pick(['a', 'e', 'f'])<{a: number}>({a: 1, b: 2, c: 3, d: 4}) 1`] = `"{ a: number; }"`;
 
 exports[`pick R.pick<{a: number}>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"{ a: number; }"`;
 
+exports[`pipe R.pipe(
+        R.split(''),
+        R.adjust(R.toUpper, 0),
+        R.join(''),
+      )('str') 1`] = `"string"`;
+
+exports[`pipe R.pipe(double, double, shout)(10) 1`] = `"string"`;
+
+exports[`pipe f(3, 4) 1`] = `"number"`;
+
+exports[`pipe squareThenDoubleThenTriple(5) 1`] = `"number"`;
+
+exports[`pipe, inc, negate f(3, 4) 1`] = `"number"`;
+
+exports[`pluck R.pluck('a')([{a: 1}, {a: 2}]) 1`] = `"number[]"`;
+
+exports[`pluck R.pluck('a', [{a: 1}, {a: 2}]) 1`] = `"number[]"`;
+
+exports[`prepend R.prepend('fee')(['fi', 'fo', 'fum']) 1`] = `"string[]"`;
+
+exports[`prepend R.prepend('fee', ['fi', 'fo', 'fum']) 1`] = `"string[]"`;
+
+exports[`product R.product([2, 4, 6, 8, 100, 1]) 1`] = `"number"`;
+
+exports[`prop R.prop('x', {x: 100}) 1`] = `"number"`;
+
+exports[`propEq R.propEq('a', '1', xs) 1`] = `"boolean"`;
+
+exports[`propEq R.propEq('a', '1', xs) 2`] = `"boolean"`;
+
+exports[`propEq R.propEq('a', '4', xs) 1`] = `"boolean"`;
+
+exports[`propEq R.propEq('a', '4', xs) 2`] = `"boolean"`;
+
+exports[`propEq R.propEq('a', 1, xs) 1`] = `"boolean"`;
+
+exports[`propEq R.propEq('a', 1, xs) 2`] = `"boolean"`;
+
+exports[`propEq R.propEq('a', 1, xs) 3`] = `"boolean"`;
+
+exports[`propEq R.propEq('a', 4, xs) 1`] = `"boolean"`;
+
+exports[`propEq R.propEq('a', 4, xs) 2`] = `"boolean"`;
+
+exports[`propEq R.propEq('a', 4, xs) 3`] = `"boolean"`;
+
+exports[`propIs R.propIs(Number)('x')({x: 1, y: 2}) 1`] = `"boolean"`;
+
+exports[`propIs R.propIs(Number)('x', {x: 1, y: 2}) 1`] = `"boolean"`;
+
+exports[`propIs R.propIs(Number, 'x')({x: 1, y: 2}) 1`] = `"boolean"`;
+
 exports[`propIs R.propIs(Number, 'x', {}) 1`] = `"boolean"`;
+
+exports[`propIs R.propIs(Number, 'x', {x: 'foo'}) 1`] = `"boolean"`;
+
+exports[`propIs R.propIs(Number, 'x', {x: 1, y: 2}) 1`] = `"boolean"`;
+
+exports[`propSatisfies R.propSatisfies((x: number) => x > 0, 'x', {x: 1, y: 2}) 1`] = `"boolean"`;
+
+exports[`props R.props(['x', 'y'], {x: 1, y: 2}) 1`] = `"number[]"`;
+
+exports[`props fullName({last: 'Bullet-Tooth', age: 33, first: 'Tony'}) 1`] = `"string"`;
+
+exports[`range R.range(1, 5) 1`] = `"number[]"`;
+
+exports[`range R.range(50)(53) 1`] = `"number[]"`;
+
+exports[`reduce R.reduce(add)(10, numbers) 1`] = `"number"`;
+
+exports[`reduce R.reduce(add, 10)(numbers) 1`] = `"number"`;
+
+exports[`reduce R.reduce(add, 10, numbers) 1`] = `"number"`;
+
+exports[`reduce R.reduce(add, 10, numbers) 2`] = `"number"`;
+
+exports[`reduceWhile R.reduceWhile(isOdd, R.add, 0, xs) 1`] = `"number"`;
+
+exports[`reduceWhile R.reduceWhile(isOdd, R.add, 111, ys) 1`] = `"number"`;
+
+exports[`reject R.reject(isOdd)([1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`reject R.reject(isOdd, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`remove R.remove(2)(3, [1, 2, 3, 4, 5, 6, 7, 8]) 1`] = `"number[]"`;
+
+exports[`remove R.remove(2, 3)([1, 2, 3, 4, 5, 6, 7, 8]) 1`] = `"number[]"`;
+
+exports[`remove R.remove(2, 3, [1, 2, 3, 4, 5, 6, 7, 8]) 1`] = `"number[]"`;
+
+exports[`repeat R.repeat('hi', 5) 1`] = `"string[]"`;
+
+exports[`repeat repeatedObjs[0] === repeatedObjs[1] 1`] = `"boolean"`;
+
+exports[`replace R.is(Number)({}) 1`] = `"boolean"`;
+
+exports[`replace R.is(Number)(1) 1`] = `"boolean"`;
+
+exports[`replace R.is(Number, {}) 1`] = `"boolean"`;
+
+exports[`replace R.is(Number, 1) 1`] = `"boolean"`;
+
+exports[`replace R.is(Object)('s') 1`] = `"boolean"`;
+
+exports[`replace R.is(Object)({}) 1`] = `"boolean"`;
+
+exports[`replace R.is(Object)(1) 1`] = `"boolean"`;
+
+exports[`replace R.is(Object)(new Object()) 1`] = `"boolean"`;
+
+exports[`replace R.is(Object, 's') 1`] = `"boolean"`;
+
+exports[`replace R.is(Object, {}) 1`] = `"boolean"`;
+
+exports[`replace R.is(Object, 1) 1`] = `"boolean"`;
+
+exports[`replace R.is(Object, new Object()) 1`] = `"boolean"`;
+
+exports[`replace R.is(String)('') 1`] = `"boolean"`;
+
+exports[`replace R.is(String)('s') 1`] = `"boolean"`;
+
+exports[`replace R.is(String, '') 1`] = `"boolean"`;
+
+exports[`replace R.is(String, 's') 1`] = `"boolean"`;
+
+exports[`replace R.replace('foo')('bar')('foo foo foo') 1`] = `"string"`;
+
+exports[`replace R.replace('foo', 'bar')('foo foo foo') 1`] = `"string"`;
+
+exports[`replace R.replace('foo', 'bar', 'foo foo foo') 1`] = `"string"`;
+
+exports[`replace R.replace(/foo/, 'bar', 'foo foo foo') 1`] = `"string"`;
+
+exports[`replace R.replace(/foo/g)('bar')('foo foo foo') 1`] = `"string"`;
+
+exports[`replace R.replace(/foo/g, 'bar')('foo foo foo') 1`] = `"string"`;
+
+exports[`replace R.replace(/foo/g, 'bar', 'foo foo foo') 1`] = `"string"`;
+
+exports[`reverse R.reverse([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`reverse R.reverse([1, 2]) 1`] = `"number[]"`;
+
+exports[`reverse R.reverse([1]) 1`] = `"number[]"`;
+
+exports[`scan R.scan(R.multiply)(1, numbers) 1`] = `"number[]"`;
+
+exports[`scan R.scan(R.multiply, 1)(numbers) 1`] = `"number[]"`;
+
+exports[`scan R.scan(R.multiply, 1, numbers) 1`] = `"number[]"`;
+
+exports[`slice R.slice(2)(5, str) 1`] = `"string"`;
+
+exports[`slice R.slice(2)(5, xs) 1`] = `"number[]"`;
+
+exports[`slice R.slice(2, 5)(str) 1`] = `"string"`;
+
+exports[`slice R.slice(2, 5)(xs) 1`] = `"number[]"`;
+
+exports[`slice R.slice(2, 5, str) 1`] = `"string"`;
+
+exports[`slice R.slice(2, 5, xs) 1`] = `"number[]"`;
+
+exports[`sort R.sort(diff)([4, 2, 7, 5]) 1`] = `"number[]"`;
+
+exports[`sort R.sort(diff, [4, 2, 7, 5]) 1`] = `"number[]"`;
+
+exports[`splitAt R.splitAt(-1, 'foobar') 1`] = `"string[]"`;
+
+exports[`splitAt R.splitAt(1)([1, 2, 3]) 1`] = `"number[][]"`;
+
+exports[`splitAt R.splitAt(1, [1, 2, 3]) 1`] = `"number[][]"`;
+
+exports[`splitAt R.splitAt(5, 'hello world') 1`] = `"string[]"`;
+
+exports[`splitWhen R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]) 1`] = `"number[][]"`;
+
+exports[`splitWhen R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]) 1`] = `"number[][]"`;
+
+exports[`subtract R.subtract(10, 8) 1`] = `"number"`;
+
+exports[`subtract complementaryAngle(30) 1`] = `"number"`;
+
+exports[`subtract complementaryAngle(72) 1`] = `"number"`;
+
+exports[`sum R.sum([2, 4, 6, 8, 100, 1]) 1`] = `"number"`;
+
+exports[`symmetricDifference R.symmetricDifference([1, 2, 3, 4], [7, 6, 5, 4, 3]) 1`] = `"number[]"`;
+
+exports[`symmetricDifference R.symmetricDifference([7, 6, 5, 4, 3])([1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`tail R.tail(['fi', 'fo', 'fum']) 1`] = `"string[]"`;
+
+exports[`tail R.tail([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`take R.take(3, [1, 2, 3, 4, 5]) 1`] = `"number[]"`;
+
+exports[`take takeFive(members) 1`] = `"string[]"`;
+
+exports[`take, takeWhile R.take(2, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`take, takeWhile R.takeWhile(isNotFour, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`takeLast R.takeLast(1, ['foo', 'bar', 'baz']) 1`] = `"string[]"`;
+
+exports[`takeLast R.takeLast(2)(['foo', 'bar', 'baz']) 1`] = `"string[]"`;
+
+exports[`takeLastWhile R.takeLastWhile(isNotOne)([1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`takeLastWhile R.takeLastWhile(isNotOne, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`takeWhile R.takeWhile(isNotFour)([1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`takeWhile R.takeWhile(isNotFour, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`tap R.tap(sayX, 100) 1`] = `"number"`;
+
+exports[`test R.test(/^x/, 'xyz') 1`] = `"boolean"`;
+
+exports[`test R.test(/^y/)('xyz') 1`] = `"boolean"`;
+
+exports[`times R.times(R.identity)(5) 1`] = `"number[]"`;
+
+exports[`times R.times(R.identity, 5) 1`] = `"number[]"`;
+
+exports[`times R.times(i, 5) 1`] = `"number[]"`;
+
+exports[`toString R.toString('abc') 1`] = `"string"`;
+
+exports[`toString R.toString([1, 2, 3]) 1`] = `"string"`;
+
+exports[`toString R.toString({foo: 1, bar: 2, baz: 3}) 1`] = `"string"`;
+
+exports[`toString R.toString(42) 1`] = `"string"`;
+
+exports[`toString R.toString(new Date('2001-02-03T04: 05: 06Z')) 1`] = `"string"`;
+
+exports[`toString R.toString(new Point(1, 2)) 1`] = `"string"`;
+
+exports[`transpose R.transpose([[10, 11], [20], [], [30, 31, 32]]) 1`] = `"number[][]"`;
+
+exports[`type R.type(/[A-z]/) 1`] = `"string"`;
+
+exports[`type R.type([]) 1`] = `"string"`;
+
+exports[`type R.type({}) 1`] = `"string"`;
+
+exports[`unapply R.unapply(JSON.stringify)(1, 2, 3) 1`] = `"string"`;
+
+exports[`unary, binary, nAry R.binary(takesThreeArgs) 1`] = `"(a: number, b: number) => number[]"`;
+
+exports[`unary, binary, nAry R.binary(takesTwoArgs) 1`] = `"(a: number, b: number) => number[]"`;
+
+exports[`unary, binary, nAry R.nAry(0, takesNoArg) 1`] = `"() => boolean"`;
+
+exports[`unary, binary, nAry R.nAry(0, takesOneArg) 1`] = `"() => number[]"`;
+
+exports[`unary, binary, nAry R.unary(takesOneArg) 1`] = `"(a: number) => number[]"`;
+
+exports[`unary, binary, nAry R.unary(takesThreeArgs) 1`] = `"(a: number) => number[]"`;
+
+exports[`unary, binary, nAry R.unary(takesTwoArgs) 1`] = `"(a: number) => number[]"`;
+
+exports[`unary, binary, nAry addTwoNumbersCurried(2, 3) 1`] = `"number"`;
+
+exports[`unary, binary, nAry curriedFourNumbers 1`] = `"CurriedFunction4<number, number, number, number, number>"`;
+
+exports[`unary, binary, nAry curriedFourNumbers(1) 1`] = `"CurriedFunction3<number, number, number, number>"`;
+
+exports[`unary, binary, nAry curriedFourNumbers(1)(2) 1`] = `"CurriedFunction2<number, number, number>"`;
+
+exports[`unary, binary, nAry curriedFourNumbers(1)(2)(3)(4) 1`] = `"number"`;
+
+exports[`unary, binary, nAry curriedFourNumbers(1, 2)(3, 4) 1`] = `"number"`;
+
+exports[`unary, binary, nAry curriedFourNumbers(1, 2, 3)(4) 1`] = `"number"`;
+
+exports[`unary, binary, nAry inc(2) 1`] = `"number"`;
+
+exports[`uncurry uncurriedAddFour(1, 2, 3, 4) 1`] = `"number"`;
+
+exports[`uniq R.uniq([1, 1, 2, 1]) 1`] = `"number[]"`;
+
+exports[`unnest, equals R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6]) 1`] = `"boolean"`;
+
+exports[`unnest, equals R.equals(R.unnest([1, [2], [[3]]]), [1, 2, [3]]) 1`] = `"boolean"`;
+
+exports[`values R.values({a: 1, b: 2, c: 3}) 1`] = `"number[]"`;
+
+exports[`valuesIn R.valuesIn(f) 1`] = `"string[]"`;
+
+exports[`whereEq R.whereEq({a: 'one'}, {a: 'one'}) 1`] = `"boolean"`;
+
+exports[`whereEq pred({a: 1, b: 1}) 1`] = `"boolean"`;
+
+exports[`whereEq pred({a: 1, b: 2, c: 3}) 1`] = `"boolean"`;
+
+exports[`whereEq pred({a: 1, b: 2}) 1`] = `"boolean"`;
+
+exports[`whereEq pred({a: 1}) 1`] = `"boolean"`;
+
+exports[`without R.without([1, 2], [1, 2, 1, 3, 4]) 1`] = `"number[]"`;
+
+exports[`xprod R.xprod([1, 2])(['a', 'b']) 1`] = `"[number, string][]"`;
+
+exports[`xprod R.xprod([1, 2], ['a', 'b']) 1`] = `"[number, string][]"`;
+
+exports[`zip R.zip([1, 2, 3])(['a', 'b', 'c']) 1`] = `"[number, string][]"`;
+
+exports[`zip R.zip([1, 2, 3], ['a', 'b', 'c']) 1`] = `"[number, string][]"`;
