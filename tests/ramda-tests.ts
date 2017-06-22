@@ -516,12 +516,6 @@ class F {
   public x = 'X';
   public y = 'Y';
 }
-class F2 {
-  public a = 100;
-  public y = 1;
-  public x() {}
-  public z() {}
-}
 
 // @dts-jest:group:skip propIs
 {
@@ -715,10 +709,6 @@ class F2 {
   // $ExpectType boolean
   R.compose(limit10, double)(10);
 
-  const f0 = (s: string) => +s; // string -> number
-  const f1 = (n: number) => n === 1; // number -> boolean
-  const f2 = R.compose(f1, f0); // string -> boolean
-
   // akward example that bounces types between number and string
   const g0 = (list: number[]) => R.map(R.inc, list);
   const g1 = R.dropWhile(R.gt(10));
@@ -738,11 +728,11 @@ class F2 {
   R.pipe(double, double, shout)(10);
 
   // $ExpectType string
-  const capitalize = (str: string) => R.pipe(
+  R.pipe(
     R.split(''),
     R.adjust(R.toUpper, 0),
     R.join(''),
-    )(str);
+  )('str');
 
   const f = R.pipe(Math.pow, R.negate, R.inc);
   // $ExpectType number
@@ -782,18 +772,6 @@ class F2 {
   const chopped = R.juxt([R.head, R.last]);
   // $ExpectType string[]
   chopped('longstring'); // => ['l', 'g']
-}
-
-// @dts-jest:group:skip useWith
-{
-  const square = (x: number) => x * x;
-  const add = (a: number, b: number) => a + b;
-  // Adds any number of arguments together
-  const addAll = () =>
-    0;
-
-  // Basic example
-  R.useWith(addAll, [double, square]);
 }
 
 // forEach
@@ -882,7 +860,7 @@ class F2 {
   // $ExpectType string[]
   R.match(/a/, 'b'); // => []
   // $ExpectError Argument of type 'null' is not assignable to parameter of type 'string'.
-  const sr = R.match(/a/, null); // error with strict null checks
+  R.match(/a/, null); // error with strict null checks
 }
 
 // @dts-jest:group:skip reduce
@@ -918,8 +896,7 @@ class F2 {
 // @dts-jest:group:skip mapObjIndexed
 {
   const values = {x: 1, y: 2, z: 3};
-  const prependKeyAndDouble = (num: number, key: string, obj: any) =>
-    key + (num * 2);
+  const prependKeyAndDouble = (num: number, key: string, obj: any) => key + (num * 2).toString();
   // $ExpectType Dictionary<string>
   R.mapObjIndexed(prependKeyAndDouble, values); // => { x: 'x2', y: 'y4', z: 'z6' }
 }
@@ -1026,7 +1003,7 @@ class F2 {
   };
   const people = [clara, bob, alice];
   // $ExpectType typeof people
-  const peopleByOldestFirst = R.sort(byAge, people);
+  R.sort(byAge, people);
 }
 
 // @dts-jest:group:skip drop
@@ -1082,7 +1059,6 @@ class F2 {
   // ... but also objects
   // $ExpectType Dictionary<number>
   R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, d: 4}
-  const isEvenFnObj = R.filter(isEven);
   // see that we did not break anything
   // and we kept type information
   // $ExpectType number[]
@@ -1104,7 +1080,6 @@ class F2 {
 {
   interface Task {id: number; }
   const tasks: Task[] = [];
-  const a = R.find((task: Task) => task.id === 1, tasks); // this works
   const f: (list: Task[]) => Task = R.find<Task>((task: Task) => task.id === 1);
   // $ExpectType Task
   f(tasks); // works
@@ -1353,8 +1328,6 @@ interface Obj { a: number; b: number; }
 // @dts-jest:group:skip into
 {
   const numbers = [1, 2, 3, 4];
-  const a = R.map(R.add(1), R.take(2, numbers));
-  const b = R.take(2);
   const transducer = R.compose(R.map(R.add(1)), R.take(2));
 
   // $ExpectType number[]
@@ -1603,11 +1576,9 @@ type Pair = KeyValuePair<string, number>;
 
 // @dts-jest:group:skip reject
 {
-  const isOdd = (n: number) =>
-    n % 2 === 1;
+  const isOdd = (n: number) => n % 2 === 1;
   // $ExpectType number[]
   R.reject(isOdd, [1, 2, 3, 4]); // => [2, 4]
-  const a2 = R.reject(isOdd);
   // $ExpectType number[]
   R.reject(isOdd)([1, 2, 3, 4]); // => [2, 4]
 }
@@ -1842,7 +1813,6 @@ type Pair = KeyValuePair<string, number>;
 
 // @dts-jest:group:skip tryCatch
 {
-  const x = R.prop('x');
   // $ExpectType boolean
   R.tryCatch<boolean>(R.prop('x'), R.F)({x: true}); // => true
   // $ExpectType boolean
@@ -2058,10 +2028,6 @@ class Rectangle {
 
 // @dts-jest:group:skip lens
 {
-  interface XY {
-    x: number;
-    y: number;
-  }
   // let xLens = R.lens(R.prop('x'), R.assoc('x'));
   // let xLens = R.lens<number, xy>(R.prop('x'), R.assoc('x'));
   const xLens = R.lens<number>(R.prop('x'))(R.assoc('x'));
@@ -2260,11 +2226,11 @@ class Rectangle {
   R.pick(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
   // the following should errror: e/f are not keys in these objects
   // $ExpectError not keys
-  const no1 = R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
+  R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
   // $ExpectError not keys
-  const no2 = R.pick(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
+  R.pick(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
   // $ExpectError not keys
-  const no3 = R.pick(['a', 'e', 'f'], [1, 2, 3, 4]); // => {a: 1}
+  R.pick(['a', 'e', 'f'], [1, 2, 3, 4]); // => {a: 1}
 }
 
 // @dts-jest:group:skip objOf
@@ -2425,7 +2391,12 @@ class Rectangle {
   // per http: //stackoverflow.com/a/29803848/632495
   // will need a work around.
 
-  const spec2 = {x(val: number, obj: any) { return val + obj.y > 10; }};
+  interface XY {
+    x: number;
+    y: number;
+  }
+
+  const spec2 = {x(val: number, obj: XY) { return val + obj.y > 10; }};
   // $ExpectType boolean
   R.where(spec2, {x: 2, y: 7}); // => false
   // $ExpectType boolean
@@ -2553,14 +2524,16 @@ class Rectangle {
 
 // @dts-jest:group:skip identity
 {
-  const a1 = R.identity(1); // => 1
   const obj = {};
+
+  // $ExpectType boolean
+  R.identity(obj) === obj; // => true
+  // $ExpectType number
+  R.identity(1); // => 1
   // $ExpectType number[]
   R.identity([1, 2, 3]);
   // $ExpectType string[]
   R.identity(['a', 'b', 'c']);
-  // $ExpectType boolean
-  R.identity(obj) === obj; // => true
 }
 
 // @dts-jest:group:skip identical
@@ -3020,12 +2993,10 @@ class Rectangle {
 {
   const gt10 = (x: number) => x > 10;
   const even = (x: number) => x % 2 === 0;
-  const f = R.either(gt10, even);
-  const g = R.either(gt10)(even);
   // $ExpectType boolean
-  f(101); // => true
+  R.either(gt10, even)(101); // => true
   // $ExpectType boolean
-  f(8); // => true
+  R.either(gt10)(even)(8); // => true
 }
 
 // @dts-jest:group:skip ifElse
@@ -3110,8 +3081,6 @@ class Why {
 
 {
   // #65, evolve issue
-  const a1 = R.evolve({elapsed: R.add(1), remaining: R.add(-1)}, {name: 'Tomato', elapsed: 100, remaining: 1400});
-  const a2 = R.evolve({elapsed: R.add(1), remaining: R.add(-1)})({name: 'Tomato', elapsed: 100, remaining: 1400});
   const test = {a: 1, b: 2};
   // $ExpectType { a: number, b: number }
   R.evolve({a: R.add(1)}, test);
@@ -3122,28 +3091,11 @@ class Why {
   const filterMatrix = (v: number, m: number[][]): number[] =>
     R.chain(R.filter((c: number) => c === v), m); // return R.chain(R.filter(R.equals(v)), m)
   const b = [
-        [0, 1],
-        [1, 0],
+    [0, 1],
+    [1, 0],
   ];
   // $ExpectType number[]
   filterMatrix(1, b); // --> [1, 1]
-
-  // compiles
-  const filterMatrix2 = (v: number, m: number[][]): number[] =>
-    R.chain((r: number[]) => R.filter((c: number) => c === v, r), m);
-
-  // also compiles
-  const mapMatrix3 = (fn: (v: number) => number, m: number[][]): number[] =>
-    R.chain(R.map(fn), m);
-}
-
-{
-  // #109
-  function grepSomethingRecursively(grepPatterns: string | string[]) {
-    if (R.is(Array, grepPatterns)) {
-      R.forEach(() => {}, grepPatterns);
-    }
-  }
 }
 
 // UNRESOLVED ISSUES:
@@ -3168,8 +3120,8 @@ class Why {
 {
   // #69: lens composition
   const sectioneditems = { sections: [
-        {items: []},
-        {items: []},
+    {items: []},
+    {items: []},
   ]};
   const elem = 'Hello';
   R.over(
@@ -3218,9 +3170,9 @@ class Why {
 {
   // #90: curried function loses generics
   const map = (func: (some: string) => (x: number) => 1) =>
-      func('xx')(1);
+    func('xx')(1);
   const map2 = (func: (some: string, other: string) => '1') =>
-      func('xx', 'x');
+    func('xx', 'x');
   // will work only with proposed changes
   map(R.assoc('xxx'));
   map2(R.assoc('xxx'));
@@ -3232,8 +3184,8 @@ class Why {
   // can't infer cond paths, must annotate:
   // $ExpectType <T>(v: T) => T
   const x = R.cond([
-        [R.F, R.F],
-        [R.T, R.identity],
+    [R.F, R.F],
+    [R.T, R.identity],
   ]);
   // argument order matters for some reason...
   // $ExpectType (v: number) => number
@@ -3242,11 +3194,11 @@ class Why {
   R.compose(x, R.inc); // boom
 
   // don't use generics in pipe/compose/curry if it can't resolve them right away:
-  const pipeF0 = R.pipe(R.identity); // : (v: {}) => {}
-  const compF0 = R.compose(R.identity); // : (v: {}) => {}
+  // const pipeF0 = R.pipe(R.identity); // : (v: {}) => {}
+  // const compF0 = R.compose(R.identity); // : (v: {}) => {}
 
   // argument order matters too:
-  const pipeF1 = R.pipe(R.inc, R.identity); // : (v: number) => number
+  // const pipeF1 = R.pipe(R.inc, R.identity); // : (v: number) => number
   const compF1 = R.compose(R.identity, R.inc); // : (v: number) => {}
   // $ExpectType number
   compF1(1); // uh-oh, fails
@@ -3258,30 +3210,6 @@ class Why {
   const pipeF2 = R.pipe(R.identity, R.inc); // : (v: {}) => number
   // $ExpectType number
   pipeF2('foo'); // uh-oh, passes
-}
-
-{
-  // #101: compose can't guess types for generic functions
-  interface SomeStruct {
-    a: number[];
-    b: string[];
-    c: { [index: string]: string };
-  }
-  const x: SomeStruct = {
-    a: [],
-    b: [],
-    c: {},
-  };
-  // const fun = <(y: SomeStruct) => SomeStruct>R.compose( // annotated: works
-  const fun = R.compose(
-    R.assoc('a', [1, 2, 3]),
-    R.assoc('b', ['a', 'b', 'c']),
-    R.assoc('c', {k: 'v'}),
-    );
-  const struct: SomeStruct = fun(x);
-
-  const a = R.assoc('a', 2, {z: 3});
-  const b = R.assoc('b', 2);
 }
 
 {
@@ -3300,17 +3228,4 @@ class Why {
   // let n = R.path(['a', '0', 'c'], {a: [{c: 2}] })
   // $ExpectType number
   R.path(['a', 0, 'c'], {a: [{c: 2}]});
-}
-
-{
-  // #129: nested evolve
-  interface FormState { index: number; }
-  function ramdaIssue(state: FormState): FormState {
-    return R.evolve(
-      {
-        index: R.inc,
-      },
-      state,
-    );
-  }
 }
