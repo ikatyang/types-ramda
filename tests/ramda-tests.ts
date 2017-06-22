@@ -364,6 +364,7 @@ import * as R from 'ramda';
 
 // @dts-jest:group compose
 {
+  const double = (x: number): number => x + x;
   {
     const f0 = R.compose(Math.pow);
     const f1 = R.compose(R.negate, Math.pow);
@@ -386,8 +387,6 @@ import * as R from 'ramda';
     f5(3, 4); // -(3^4) + 1
   }
   {
-    const double = (x: number): number => x + x;
-
     // @dts-jest:pass
     R.compose<number, number, number>(double, R.identity);
   }
@@ -397,6 +396,25 @@ import * as R from 'ramda';
 
     // @dts-jest:pass
     gn('Hello', 4, 'world');
+  }
+  {
+    const limit10 = (x: number): boolean => x >= 10;
+    // @dts-jest:pass
+    R.compose(limit10, double);
+    // @dts-jest:pass
+    R.compose(limit10, double)(10);
+
+    // akward example that bounces types between number and string
+    const g0 = (list: number[]) => R.map(R.inc, list);
+    const g1 = R.dropWhile(R.gt<number>(10));
+    const g2 = R.map((i: number) => i > 5 ? 'bigger' : 'smaller');
+    const g3 = R.all((i: string) => i === 'smaller');
+    const g = R.compose<number[], number[], number[], string[], boolean>(g3, g2, g1, g0);
+
+    // @dts-jest:pass
+    g;
+    // @dts-jest:pass
+    g([1, 2, 10, 13]);
   }
 }
 
@@ -1041,26 +1059,6 @@ class F {
   truncate('12345'); // => '12345'
   // @dts-jest:show string
   truncate('0123456789ABC'); // => '0123456789…'
-}
-
-// @dts-jest:group:skip compose
-{
-  const limit10 = (x: number): boolean =>
-    x >= 10;
-  // @dts-jest:show (x0: number) => boolean
-  R.compose(limit10, double);
-  // @dts-jest:pass
-  R.compose(limit10, double)(10);
-
-  // akward example that bounces types between number and string
-  const g0 = (list: number[]) => R.map(R.inc, list);
-  const g1 = R.dropWhile(R.gt(10));
-  const g2 = R.map((i: number) => i > 5 ? 'bigger' : 'smaller');
-  const g3 = R.all((i: string) => i === 'smaller');
-  // @dts-jest:show (list: number[]) => boolean
-  const g = R.compose(g3, g2, g1, g0);
-  // @dts-jest:show boolean
-  g([1, 2, 10, 13]);
 }
 
 // @dts-jest:group:skip pipe

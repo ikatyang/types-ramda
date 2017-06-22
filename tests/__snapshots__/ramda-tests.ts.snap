@@ -160,6 +160,8 @@ exports[`complement R.complement(isEven)(21) 1`] = `"boolean"`;
 
 exports[`complement R.complement(isEven)(42) 1`] = `"boolean"`;
 
+exports[`compose R.compose(limit10, double) 1`] = `"(v1: number) => boolean"`;
+
 exports[`compose R.compose(limit10, double)(10) 1`] = `"boolean"`;
 
 exports[`compose R.compose<number, number, number>(double, R.identity) 1`] = `"(v1: number) => number"`;
@@ -175,6 +177,10 @@ exports[`compose f3(3, 4) 1`] = `"number"`;
 exports[`compose f4(3, 4) 1`] = `"number"`;
 
 exports[`compose f5(3, 4) 1`] = `"number"`;
+
+exports[`compose g 1`] = `"(v1: number[]) => boolean"`;
+
+exports[`compose g([1, 2, 10, 13]) 1`] = `"boolean"`;
 
 exports[`compose gn('Hello', 4, 'world') 1`] = `"number"`;
 
