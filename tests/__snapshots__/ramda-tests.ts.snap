@@ -284,6 +284,10 @@ exports[`dropLast R.dropLast(1, ['foo', 'bar', 'baz']) 1`] = `"string[]"`;
 
 exports[`dropLast R.dropLast(2)(['foo', 'bar', 'baz']) 1`] = `"string[]"`;
 
+exports[`dropLast R.dropLast(3)('ramda') 1`] = `"string"`;
+
+exports[`dropLast R.dropLast(3, 'ramda') 1`] = `"string"`;
+
 exports[`dropLastWhile R.dropLastWhile(lteThree, [1, 2, 3, 4, 3, 2, 1]) 1`] = `"number[]"`;
 
 exports[`dropWhile R.dropWhile(lteTwo)([1, 2, 3, 4]) 1`] = `"number[]"`;

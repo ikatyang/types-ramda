@@ -111,12 +111,12 @@ source version: v0.24.1
 - [x] dissocPath
 - [x] divide
 - [x] drop
-- [ ] dropLast
-- [ ] dropLastWhile
+- [x] dropLast
+- [x] dropLastWhile
 - [ ] dropRepeats
 - [ ] dropRepeatsWith
-- [ ] dropWhile
-- [ ] either
+- [x] dropWhile
+- [x] either
 - [ ] empty
 - [ ] endsWith
 - [ ] eqBy

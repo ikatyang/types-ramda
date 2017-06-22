@@ -671,6 +671,45 @@ import * as R from 'ramda';
   R.drop(3)('ramda'); // => 'ram'
 }
 
+// @dts-jest:group dropLast
+{
+  // @dts-jest:pass
+  R.dropLast(1, ['foo', 'bar', 'baz']); // => ['foo', 'bar']
+  // @dts-jest:pass
+  R.dropLast(2)(['foo', 'bar', 'baz']); // => ['foo']
+  // @dts-jest:pass
+  R.dropLast(3, 'ramda'); // => 'ra'
+  // @dts-jest:pass
+  R.dropLast(3)('ramda'); // => 'ra'
+}
+
+// @dts-jest:group dropLastWhile
+{
+  const lteThree = (x: number) => x <= 3;
+  // @dts-jest:pass
+  R.dropLastWhile(lteThree, [1, 2, 3, 4, 3, 2, 1]); // => [1, 2, 3, 4]
+}
+
+// @dts-jest:group dropWhile
+{
+  const lteTwo = (x: number) =>
+    x <= 2;
+  // @dts-jest:pass
+  R.dropWhile(lteTwo, [1, 2, 3, 4]); // => [3, 4]
+  // @dts-jest:pass
+  R.dropWhile(lteTwo)([1, 2, 3, 4]); // => [3, 4]
+}
+
+// @dts-jest:group either
+{
+  const gt10 = (x: number) => x > 10;
+  const even = (x: number) => x % 2 === 0;
+  // @dts-jest:pass
+  R.either(gt10, even)(101); // => true
+  // @dts-jest:pass
+  R.either(gt10)(even)(8); // => true
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -1124,35 +1163,6 @@ class F {
 /*********************
  * List category
  ********************/
-
-// @dts-jest:group:skip dropLast
-{
-  // @dts-jest:pass
-  R.dropLast(1, ['foo', 'bar', 'baz']); // => ['foo', 'bar']
-  // @dts-jest:pass
-  R.dropLast(2)(['foo', 'bar', 'baz']); // => ['foo']
-  // @dts-jest:pass
-  R.dropLast(3, 'ramda'); // => 'ra'
-  // @dts-jest:pass
-  R.dropLast(3)('ramda'); // => 'ra'
-}
-
-// @dts-jest:group:skip dropLastWhile
-{
-  const lteThree = (x: number) => x <= 3;
-  // @dts-jest:pass
-  R.dropLastWhile(lteThree, [1, 2, 3, 4, 3, 2, 1]); // => [1, 2, 3, 4]
-}
-
-// @dts-jest:group:skip dropWhile
-{
-  const lteTwo = (x: number) =>
-    x <= 2;
-  // @dts-jest:pass
-  R.dropWhile(lteTwo, [1, 2, 3, 4]); // => [3, 4]
-  // @dts-jest:pass
-  R.dropWhile(lteTwo)([1, 2, 3, 4]); // => [3, 4]
-}
 
 // @dts-jest:group:skip filter
 {
@@ -2996,16 +3006,6 @@ class Rectangle {
   R.eqBy(Math.abs)(5, -5); // => true
   // @dts-jest:pass
   R.eqBy(Math.abs, 5)(-5); // => true
-}
-
-// @dts-jest:group:skip either
-{
-  const gt10 = (x: number) => x > 10;
-  const even = (x: number) => x % 2 === 0;
-  // @dts-jest:pass
-  R.either(gt10, even)(101); // => true
-  // @dts-jest:pass
-  R.either(gt10)(even)(8); // => true
 }
 
 // @dts-jest:group:skip ifElse
