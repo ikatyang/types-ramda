@@ -298,9 +298,13 @@ exports[`either R.either(gt10)(even)(8) 1`] = `"boolean"`;
 
 exports[`either R.either(gt10, even)(101) 1`] = `"boolean"`;
 
+exports[`empty R.empty('unicorns') 1`] = `"string"`;
+
 exports[`empty R.empty([1, 2, 3, 4, 5]) 1`] = `"number[]"`;
 
 exports[`empty R.empty([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`empty R.empty({x: 1, y: 2}) 1`] = `"{}"`;
 
 exports[`eqBy R.eqBy(Math.abs)(5, -5) 1`] = `"boolean"`;
 

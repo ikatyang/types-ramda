@@ -117,7 +117,7 @@ source version: v0.24.1
 - [ ] dropRepeatsWith
 - [x] dropWhile
 - [x] either
-- [ ] empty
+- [x] empty
 - [ ] endsWith
 - [ ] eqBy
 - [ ] eqProps

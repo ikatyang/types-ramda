@@ -710,6 +710,18 @@ import * as R from 'ramda';
   R.either(gt10)(even)(8); // => true
 }
 
+// @dts-jest:group empty
+{
+  // @dts-jest:pass
+  R.empty([1, 2, 3, 4, 5]); // => []
+  // @dts-jest:pass
+  R.empty([1, 2, 3]); // => []
+  // @dts-jest:pass
+  R.empty('unicorns'); // => ''
+  // @dts-jest:pass
+  R.empty({x: 1, y: 2}); // => {}
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -1085,18 +1097,6 @@ class F {
   R.of([1]); // => [[1]]
   // @dts-jest:pass
   R.of(1);
-}
-
-// @dts-jest:group:skip empty
-{
-  // @dts-jest:pass
-  R.empty([1, 2, 3, 4, 5]); // => []
-  // @dts-jest:pass
-  R.empty([1, 2, 3]); // => []
-  // @dts-jest:show string
-  R.empty('unicorns'); // => ''
-  // @dts-jest:show {}
-  R.empty({x: 1, y: 2}); // => {}
 }
 
 // @dts-jest:group:skip length
