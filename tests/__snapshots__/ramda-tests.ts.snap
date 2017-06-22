@@ -193,3 +193,13 @@ exports[`cond fn(100) 1`] = `"string"`;
 exports[`construct R.construct<'1', 'variadic'>()(Circle)(1, 'red') 1`] = `"Circle"`;
 
 exports[`constructN R.constructN(2, Circle)(1, 'red') 1`] = `"Circle"`;
+
+exports[`contains R.contains({})([{}, {}]) 1`] = `"boolean"`;
+
+exports[`contains R.contains(3)([1, 2, 3]) 1`] = `"boolean"`;
+
+exports[`contains R.contains(3, [1, 2, 3]) 1`] = `"boolean"`;
+
+exports[`contains R.contains(4)([1, 2, 3]) 1`] = `"boolean"`;
+
+exports[`contains R.contains(obj)([{}, obj, {}]) 1`] = `"boolean"`;

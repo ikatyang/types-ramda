@@ -479,6 +479,22 @@ import * as R from 'ramda';
   }
 }
 
+// @dts-jest:group contains
+{
+  const obj = {};
+
+  // @dts-jest:pass
+  R.contains(obj)([{}, obj, {}]); // => true
+  // @dts-jest:pass
+  R.contains(3)([1, 2, 3]); // => true
+  // @dts-jest:pass
+  R.contains(3, [1, 2, 3]); // => true
+  // @dts-jest:pass
+  R.contains(4)([1, 2, 3]); // => false
+  // @dts-jest:pass
+  R.contains({})([{}, {}]); // => false
+}
+
 // tslint:disable
 
 let double = (x: number): number => x + x;
@@ -1009,21 +1025,6 @@ class F2 {
 /*********************
  * List category
  ********************/
-
-// contains
-() => {
-    // $ExpectType boolean
-    R.contains(3)([1, 2, 3]); // => true
-    // $ExpectType boolean
-    R.contains(3, [1, 2, 3]); // => true
-    // $ExpectType boolean
-    R.contains(4)([1, 2, 3]); // => false
-    // $ExpectType boolean
-    R.contains({})([{}, {}]); // => false
-    let obj = {};
-    // $ExpectType boolean
-    R.contains(obj)([{}, obj, {}]); // => true
-};
 
 // descend
 () => {
