@@ -220,9 +220,15 @@ exports[`countBy R.countBy(R.toLower)(letters) 1`] = `"Dictionary<number>"`;
 
 exports[`curry addThree(3) 1`] = `"CurriedFunction2<number, number, number>"`;
 
+exports[`curry addThree(3)(2) 1`] = `"CurriedFunction1<number, number>"`;
+
 exports[`curry addThree(3)(2)(1) 1`] = `"number"`;
 
+exports[`curry addThree(3, 2) 1`] = `"CurriedFunction1<number, number>"`;
+
 exports[`curry addThree(3, 2, 1) 1`] = `"number"`;
+
+exports[`curry addTwo(3) 1`] = `"CurriedFunction1<number, number>"`;
 
 exports[`curry addTwo(3)(1) 1`] = `"number"`;
 

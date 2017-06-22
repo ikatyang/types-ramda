@@ -522,6 +522,46 @@ import * as R from 'ramda';
   R.countBy(R.toLower)(letters); // => {'a': 5, 'b': 4, 'c': 3}
 }
 
+// @dts-jest:group:only curry
+{
+  const addTwo = R.curry((x: number, y: number) => x + y);
+  // @dts-jest:pass
+  addTwo(3);
+  // @dts-jest:pass
+  addTwo(3)(1);
+
+  const addThree = R.curry((x: number, y: number, z: number) => x + y + z);
+  // @dts-jest:pass
+  addThree(3, 2, 1);
+  // @dts-jest:pass
+  addThree(3)(2)(1);
+  // @dts-jest:pass
+  addThree(3, 2);
+  // @dts-jest:pass
+  addThree(3)(2);
+  // @dts-jest:pass
+  addThree(3);
+
+  const xy = R.curry(<X, Y>(x: X, y: Y) => ({x, y}));
+
+  // @dts-jest:skip <Y>(v2: Y) => { x: number; y: Y; }
+  xy(3);
+  // @dts-jest:skip { x: number; y: number; }
+  xy(3)(1);
+
+  const xyz = R.curry(<X, Y, Z>(x: X, y: Y, z: Z) => ({x, y, z}));
+  // @dts-jest:skip { x: number; y: number; z: number; }
+  xyz(3, 2, 1);
+  // @dts-jest:skip { x: number; y: number; z: number; }
+  xyz(3)(2)(1);
+  // @dts-jest:skip <Z>(v3: Z) => ({ x: number; y: number; z: Z; })
+  xyz(3, 2);
+  // @dts-jest:skip <Z>(v3: Z) => ({ x: number; y: number; z: Z; })
+  xyz(3)(2);
+  // @dts-jest:skip <Y, Z>(v2: Y, v3: Z) => ({ x: number; y: Y; z: Z; })
+  xyz(3);
+}
+
 // ---------------------------------------------------------------------
 
 const double = (x: number): number => x + x;
@@ -576,43 +616,6 @@ class F {
   R.type([]); // => 'Array'
   // @dts-jest:pass
   R.type(/[A-z]/); // => 'RegExp'
-}
-
-// @dts-jest:group:skip curry
-{
-  const addTwo = R.curry((x: number, y: number) => x + y);
-  // @dts-jest:show (v2: number) => number
-  addTwo(3);
-  // @dts-jest:pass
-  addTwo(3)(1);
-  const addThree = R.curry((x: number, y: number, z: number) => x + y + z);
-  // @dts-jest:pass
-  addThree(3, 2, 1);
-  // @dts-jest:pass
-  addThree(3)(2)(1);
-  // @dts-jest:show (v3: number) => number
-  addThree(3, 2);
-  // @dts-jest:show (v2: number) => number
-  addThree(3)(2);
-  // @dts-jest:pass
-  addThree(3);
-
-  const xy = R.curry(<X, Y>(x: X, y: Y) => ({x, y}));
-  // @dts-jest:show <Y>(v2: Y) => { x: number; y: Y; }
-  xy(3);
-  // @dts-jest:show { x: number; y: number; }
-  xy(3)(1);
-  const xyz = R.curry(<X, Y, Z>(x: X, y: Y, z: Z) => ({x, y, z}));
-  // @dts-jest:show { x: number; y: number; z: number; }
-  xyz(3, 2, 1);
-  // @dts-jest:show { x: number; y: number; z: number; }
-  xyz(3)(2)(1);
-  // @dts-jest:show <Z>(v3: Z) => ({ x: number; y: number; z: Z; })
-  xyz(3, 2);
-  // @dts-jest:show <Z>(v3: Z) => ({ x: number; y: number; z: Z; })
-  xyz(3)(2);
-  // @dts-jest:show <Y, Z>(v2: Y, v3: Z) => ({ x: number; y: Y; z: Z; })
-  xyz(3);
 }
 
 // @dts-jest:group:skip unary, binary, nAry
