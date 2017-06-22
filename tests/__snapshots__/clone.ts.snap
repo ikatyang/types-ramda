@@ -2,4 +2,4 @@
 
 exports[`R_clone(number) 1`] = `"number"`;
 
-exports[`R_clone(string_list) 1`] = `"string[]"`;
+exports[`R_clone(string_list) 1`] = `"List<string>"`;

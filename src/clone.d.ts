@@ -22,11 +22,7 @@ import { List } from "./$types";
  */
 declare const clone: clone_0;
 type clone_0 = {
-    <T>(value: List<T>): clone_list_1<T>;
-    <$SEL extends "1", $KIND extends "list">(): <T>(value: List<T>) => clone_list_1<T>;
-    <$SEL extends "1", $KIND extends "general">(): <T>(value: T) => clone_general_1<T>;
-    <T>(value: T): clone_general_1<T>;
+    <T>(value: T): clone_1<T>;
 };
-type clone_list_1<T> = T[];
-type clone_general_1<T> = T;
+type clone_1<T> = T;
 export = clone;
