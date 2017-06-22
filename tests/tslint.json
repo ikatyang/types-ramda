@@ -3,6 +3,10 @@
   "rules": {
     "no-unused-expression": false,
     "no-unbound-method": false,
-    "promise-function-async": false
+    "promise-function-async": false,
+    "max-classes-per-file": [false],
+    "prefer-function-over-method": false,
+    "no-empty": false,
+    "no-console": [false]
   }
 }
