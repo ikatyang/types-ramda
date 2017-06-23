@@ -2636,18 +2636,21 @@ import * as R from 'ramda';
   R.toString(new Date('2001-02-03T04: 05: 06Z')); // => 'new Date('2001-02-03T04: 05: 06.000Z')'
 }
 
-// @dts-jest:group:skip transduce
+// @dts-jest:group transduce
 {
   const numbers = [1, 2, 3, 4];
-  const transducer = R.compose(R.map(R.add(1)), R.take(2));
+  const transducer = R.compose<number[], number[], number[]>(
+    R.map(R.add(1)),
+    R.take(2),
+  );
   const fn = R.flip<number, number[], number[]>(R.append);
-  // @dts-jest:show number[]
+  // @dts-jest:pass
   R.transduce(transducer, fn, [] as number[], numbers); // => [2, 3] // strictNullChecks: must annotate empty array type
-  // @dts-jest:show number[]
+  // @dts-jest:pass
   R.transduce(transducer, fn, [] as number[])(numbers); // => [2, 3]
-  // @dts-jest:show number[]
+  // @dts-jest:pass
   R.transduce(transducer, fn)([] as number[], numbers); // => [2, 3]
-  // @dts-jest:show number[]
+  // @dts-jest:pass
   R.transduce(transducer)(fn, [] as number[], numbers); // => [2, 3]
 }
 

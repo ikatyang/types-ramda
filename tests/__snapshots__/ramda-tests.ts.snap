@@ -1195,6 +1195,14 @@ exports[`toString R.toString(new Date('2001-02-03T04: 05: 06Z')) 1`] = `"string"
 
 exports[`toString R.toString(new Point(1, 2)) 1`] = `"string"`;
 
+exports[`transduce R.transduce(transducer)(fn, [] as number[], numbers) 1`] = `"number[]"`;
+
+exports[`transduce R.transduce(transducer, fn)([] as number[], numbers) 1`] = `"number[]"`;
+
+exports[`transduce R.transduce(transducer, fn, [] as number[])(numbers) 1`] = `"number[]"`;
+
+exports[`transduce R.transduce(transducer, fn, [] as number[], numbers) 1`] = `"number[]"`;
+
 exports[`transpose R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]) 1`] = `"(string | number)[][]"`;
 
 exports[`transpose R.transpose([[10, 11], [20], [], [30, 31, 32]]) 1`] = `"number[][]"`;
