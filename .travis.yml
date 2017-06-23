@@ -3,9 +3,6 @@ language: node_js
 node_js:
   - "stable"
 
-env:
-  - JOB=integration
-
 before_script:
   - yarn run lint
 
@@ -26,3 +23,5 @@ matrix:
       env: JOB=unit-a-to-m
     - node_js: "stable"
       env: JOB=unit-n-to-z
+    - node_js: "stable"
+      env: JOB=integration
