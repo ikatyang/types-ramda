@@ -227,7 +227,7 @@ source version: v0.24.1
 - [x] pipe
 - [ ] pipeK
 - [x] pipeP
-- [ ] pluck
+- [x] pluck
 - [x] prepend
 - [x] product
 - [ ] project

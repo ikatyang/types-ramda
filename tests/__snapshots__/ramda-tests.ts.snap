@@ -934,6 +934,10 @@ exports[`pluck R.pluck('a')([{a: 1}, {a: 2}]) 1`] = `"number[]"`;
 
 exports[`pluck R.pluck('a', [{a: 1}, {a: 2}]) 1`] = `"number[]"`;
 
+exports[`pluck R.pluck(0)([[1, 2], [3, 4]]) 1`] = `"number[]"`;
+
+exports[`pluck R.pluck(0, [[1, 2], [3, 4]]) 1`] = `"number[]"`;
+
 exports[`prepend R.prepend('fee')(['fi', 'fo', 'fum']) 1`] = `"string[]"`;
 
 exports[`prepend R.prepend('fee', ['fi', 'fo', 'fum']) 1`] = `"string[]"`;

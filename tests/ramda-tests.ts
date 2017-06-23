@@ -1960,15 +1960,15 @@ import * as R from 'ramda';
   )(10);
 }
 
-// @dts-jest:group:skip pluck
+// @dts-jest:group pluck
 {
   // @dts-jest:pass
   R.pluck('a', [{a: 1}, {a: 2}]); // => [1, 2]
-  // @dts-jest:show number[]
+  // @dts-jest:pass
   R.pluck(0, [[1, 2], [3, 4]]); // => [1, 3]
   // @dts-jest:pass
   R.pluck('a')([{a: 1}, {a: 2}]); // => [1, 2]
-  // @dts-jest:show number[]
+  // @dts-jest:pass
   R.pluck(0)([[1, 2], [3, 4]]); // => [1, 3]
 }
 
