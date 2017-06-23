@@ -3,11 +3,26 @@ language: node_js
 node_js:
   - "stable"
 
-script:
+env:
+  - JOB=integration
+
+before_script:
   - yarn run lint
-  - yarn run test -- --verbose
+
+script:
+  - if [ "$JOB" = "unit-a-to-m" ]; then yarn run test -- --verbose --testPathPattern=\\\\/[a-m][a-z]*\\\\.ts$; fi
+  - if [ "$JOB" = "unit-n-to-z" ]; then yarn run test -- --verbose --testPathPattern=\\\\/[n-z][a-z]*\\\\.ts$; fi
+  - if [ "$JOB" = "integration" ]; then yarn run test -- --verbose --testPathPattern=ramda-tests; fi
 
 cache:
   yarn: true
   directories:
     - node_modules
+
+matrix:
+  fast_finish: true
+  include:
+    - node_js: "stable"
+      env: JOB=unit-a-to-m
+    - node_js: "stable"
+      env: JOB=unit-n-to-z
