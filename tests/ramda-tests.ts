@@ -1275,53 +1275,47 @@ import * as R from 'ramda';
   R.join('|', [1, 2, 3]); // => '1|2|3'
 }
 
-// @dts-jest:group:skip juxt
+// @dts-jest:group juxt
 {
   const range = R.juxt([Math.min, Math.max]);
   // @dts-jest:pass
   range(3, 4, 9, -3); // => [-3, 9]
 
-  const chopped = R.juxt([R.head, R.last]);
-  // @dts-jest:show string[]
+  const chopped = R.juxt<string, string>([R.head, R.last]);
+  // @dts-jest:pass
   chopped('longstring'); // => ['l', 'g']
 }
 
-// @dts-jest:group:skip keys
+// @dts-jest:group keys
 {
-  // @dts-jest:show string[]
+  // @dts-jest:pass
   R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
 }
 
-// @dts-jest:group:skip keys
+// @dts-jest:group keysIn
 {
-  // @dts-jest:show string[]
-  R.keys({a: 1, b: 2, c: 3}); // => ['a', 'b', 'c']
-}
-
-// @dts-jest:group:skip keysIn
-{
+  class F {
+    public x = 'x';
+    public y = 'y';
+  }
   const f = new F();
-  // @dts-jest:show string[]
+  // @dts-jest:pass
   R.keysIn(f); // => ['x', 'y']
 }
 
-// @dts-jest:group:skip keysIn
+// @dts-jest:group last
 {
-  const f = new F();
-  // @dts-jest:show string[]
-  R.keysIn(f); // => ['x', 'y']
-}
-
-// @dts-jest:group:skip last
-{
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.last(['fi', 'fo', 'fum']); // => 'fum'
 }
 
-// @dts-jest:group:skip lastIndexOf
+// @dts-jest:group lastIndexOf
 {
+  // @dts-jest:pass
   R.lastIndexOf(3, [-1, 3, 3, 0, 1, 2, 3, 4]); // => 6
+  // @dts-jest:pass
   R.lastIndexOf(10, [1, 2, 3, 4]); // => -1
+  // @dts-jest:pass
   R.lastIndexOf(10)([1, 2, 3, 4]); // => -1
 }
 
@@ -1333,109 +1327,78 @@ import * as R from 'ramda';
   R.length([1, 2, 3]); // => 3
 }
 
-// @dts-jest:group length
+// @dts-jest:group lens
 {
-  // @dts-jest:pass
-  R.length([1, 2, 3]); // => 3
-}
+  interface XY {
+    x: number;
+    y: number;
+  }
+  const xLens = R.lens<XY['x'], XY>(R.prop('x'))(R.assoc('x'));
 
-// @dts-jest:group:skip lens
-{
-  // let xLens = R.lens(R.prop('x'), R.assoc('x'));
-  // let xLens = R.lens<number, xy>(R.prop('x'), R.assoc('x'));
-  const xLens = R.lens<number>(R.prop('x'))(R.assoc('x'));
-  // ^ works with only 1 generic, for curried version managed to split the inferred generic from the manual generic
-  // @dts-jest:show number
+  // @dts-jest:pass
   R.view(xLens, {x: 1, y: 2}); // => 1
-  // @dts-jest:show { x: number, y: number }
+  // @dts-jest:pass
   R.set(xLens, 4, {x: 1, y: 2}); // => {x: 4, y: 2}
-  // @dts-jest:show { x: number, y: number }
+  // @dts-jest:pass
   R.set(xLens)(4, {x: 1, y: 2}); // => {x: 4, y: 2}
-  // @dts-jest:show { x: number, y: number }
+  // @dts-jest:pass
   R.set(xLens, 4)({x: 1, y: 2}); // => {x: 4, y: 2}
-  // @dts-jest:show { x: number, y: number }
+  // @dts-jest:pass
   R.over(xLens, R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
-  // @dts-jest:show { x: number, y: number }
+  // @dts-jest:pass
   R.over(xLens, R.negate)({x: 1, y: 2}); // => {x: -1, y: 2}
-  // @dts-jest:show { x: number, y: number }
+  // @dts-jest:pass
   R.over(xLens)(R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
 }
 
-// @dts-jest:group:skip lens
+// @dts-jest:group lensIndex
 {
-  const headLens = R.lens(
-    function get(arr: number[]) { return arr[0]; },
-    function set(val: number, arr: number[]) { return [val].concat(arr.slice(1)); },
-  );
-  headLens([10, 20, 30, 40]); // => 10
-  // // @dts-jest:show Argument of type 'mu' is not assignable to parameter of type 'number'.
-  // headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
+  const headLens = R.lensIndex<any, any[]>(0);
+  // @dts-jest:pass
+  R.view<string, string[]>(headLens, ['a', 'b', 'c']); // => 'a'
 
-  const phraseLens = R.lens(
-    function get(obj: any) { return obj.phrase; },
-    function set(val: string, obj: any) {
-      const out = R.clone(obj);
-      out.phrase = val;
-      return out;
-    },
-  );
-  const obj1 = {phrase: 'Absolute filth . . . and I LOVED it!'};
-  const obj2 = {phrase: "What's all this, then?"};
-  // @dts-jest:show string
-  phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
-  // @dts-jest:show string
-  phraseLens(obj2); // => "What's all this, then?"
-  // @dts-jest:show Dictionary<string>
-  phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
+  // @dts-jest:pass
+  R.set<string, string[]>(headLens, 'x', ['a', 'b', 'c']); // => ['x', 'b', 'c']
+  // @dts-jest:pass
+  R.set(R.__, 'x', ['a', 'b', 'c'])(headLens); // => ['x', 'b', 'c']
+
+  // @dts-jest:pass
+  R.over<string, string[]>(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
+  // @dts-jest:pass
+  R.over(R.__, R.toUpper, ['a', 'b', 'c'])(headLens); // => ['A', 'b', 'c']
 }
 
-// @dts-jest:group:skip lensIndex
+// @dts-jest:group lensPath
 {
-  const headLens = R.lensIndex(0);
-  // @dts-jest:show string
-  R.view(headLens, ['a', 'b', 'c']); // => 'a'
-  // @dts-jest:show string[]
-  R.set(headLens, 'x', ['a', 'b', 'c']); // => ['x', 'b', 'c']
-  // @dts-jest:show string[]
-  R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
-}
-
-// @dts-jest:group:skip lensPath
-{
-  const xyLens = R.lensPath(['x', 'y']);
-  // @dts-jest:show number
+  interface XYZ {
+    x: {
+      y: number;
+      z: number;
+    };
+  }
+  const xyLens = R.lensPath<XYZ['x']['y'], XYZ>(['x', 'y']);
+  // @dts-jest:pass
   R.view(xyLens, {x: {y: 2, z: 3}}); // => 2
-  // @dts-jest:show { [s: string]: { [s: string]: number } }
+  // @dts-jest:pass
   R.set(xyLens, 4, {x: {y: 2, z: 3}}); // => {x: {y: 4, z: 3}}
-  // @dts-jest:show { [s: string]: { [s: string]: number } }
+  // @dts-jest:pass
   R.over(xyLens, R.negate, {x: {y: 2, z: 3}}); // => {x: {y: -2, z: 3}}
 }
 
-// @dts-jest:group:skip lensProp
+// @dts-jest:group lensProp
 {
-  const phraseLens = R.lensProp('phrase');
+  const phraseLens = R.lensProp<string, {phrase: string}>('phrase');
   const obj1 = {phrase: 'Absolute filth . . . and I LOVED it!'};
   const obj2 = {phrase: "What's all this, then?"};
-  // @dts-jest:show string
-  phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
-  // @dts-jest:show string
-  phraseLens(obj2); // => 'What's all this, then?'
-  // @dts-jest:show Dictionary<string>
-  phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
+  // @dts-jest:pass
+  R.view(phraseLens, obj1); // => 'Absolute filth . . . and I LOVED it!'
+  // @dts-jest:pass
+  R.view(phraseLens, obj2); // => 'What's all this, then?'
+  // @dts-jest:pass
+  R.set(phraseLens, 'Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
 }
 
-// @dts-jest:group:skip lensProp
-{
-  const xLens = R.lensProp('x');
-  // @dts-jest:show number
-  R.view(xLens, {x: 1, y: 2}); // => 1
-  // @dts-jest:show Dictionary<number>
-  R.set(xLens, 4, {x: 1, y: 2}); // => {x: 4, y: 2}
-  // @dts-jest:show Dictionary<number>
-  R.over(xLens, R.negate, {x: 1, y: 2}); // => {x: -1, y: 2}
-}
-
-// @dts-jest:group:skip lt
+// @dts-jest:group lt
 {
   // @dts-jest:pass
   R.lt(2, 6); // => true
@@ -1443,13 +1406,13 @@ import * as R from 'ramda';
   R.lt(2, 0); // => false
   // @dts-jest:pass
   R.lt(2, 2); // => false
-  // @dts-jest:show boolean
-  R.lt(5)(10); // => true
-  // @dts-jest:show boolean
-  R.flip(R.lt)(5)(10); // => false // right-sectioned currying
+  // @dts-jest:pass
+  R.lt<number>(5)(10); // => true
+  // @dts-jest:pass
+  R.flip(R.lt<'11'>())(5)(10); // => false // right-sectioned currying
 }
 
-// @dts-jest:group:skip lte
+// @dts-jest:group lte
 {
   // @dts-jest:pass
   R.lte(2, 6); // => true
@@ -1457,13 +1420,13 @@ import * as R from 'ramda';
   R.lte(2, 0); // => false
   // @dts-jest:pass
   R.lte(2, 2); // => true
-  // @dts-jest:show boolean
-  R.flip(R.lte)(2)(1); // => true
-  // @dts-jest:show boolean
-  R.lte(2)(10); // => true
+  // @dts-jest:pass
+  R.lte<number>(2)(10); // => true
+  // @dts-jest:pass
+  R.flip(R.lte<'11'>())(2)(1); // => true
 }
 
-// @dts-jest:group:skip map
+// @dts-jest:group map
 {
   const double = (x: number): number => x + x;
   const arrayify = <T>(v: T): T[] => [v];
@@ -1473,67 +1436,58 @@ import * as R from 'ramda';
   // @dts-jest:pass
   R.map(double)([1, 2, 3]); // => [2, 4, 6]
   // homogeneous object
-  // @dts-jest:show Dictionary<number>
+  // @dts-jest:pass
   R.map(double, {a: 1, b: 2, c: 3}); // => { a: 2, b: 4, c: 6 }
-  // @dts-jest:show Dictionary<number>
+  // @dts-jest:pass
   R.map(double)({a: 1, b: 2, c: 3}); // => { a: 2, b: 4, c: 6 }
+
   // heterogeneous array
-  // @dts-jest:show [number[], string[]]
+  // @dts-jest:skip [number[], string[]]
   R.map(arrayify, [1, 'a']); // => [[1], ['a']]
-  // @dts-jest:show [number[], string[]]
+  // @dts-jest:skip [number[], string[]]
   R.map(arrayify)([1, 'a']); // => [[1], ['a']]
   // heterogeneous object
-  // @dts-jest:show { a: number[], b: string[] }
+  // @dts-jest:skip { a: number[], b: string[] }
   R.map(arrayify, {a: 1, b: 'c'}); // => { a: [1], b: ['c'] }
-  // @dts-jest:show { a: number[], b: string[] }
+  // @dts-jest:skip { a: number[], b: string[] }
   R.map(arrayify)({a: 1, b: 'c'}); // => { a: [1], b: ['c'] }
-
-  // functor
-  // I'm sorry, I have no clue how to make this example work with proper functor typing
-  // const stringFunctor = {
-  //   map: (fn: (c: number) => number) => {
-  //     let chars = 'Ifmmp!Xpsme'.split('');
-  //     return chars.map((char) => String.fromCharCode(fn(char.charCodeAt(0)))).join('');
-  //   }
-  // };
-  // let s = R.map((x: number) => x-1, stringFunctor); // => 'Hello World'
 }
 
-// @dts-jest:group:skip mapAccum
+// @dts-jest:group mapAccum
 {
   const digits = ['1', '2', '3', '4'];
   const append = (a: string, b: string): [string, string] =>
     [a + b, a + b];
-  // @dts-jest:show Array<string[]|string>
+  // @dts-jest:pass
   R.mapAccum(append, '0', digits); // => ['01234', ['01', '012', '0123', '01234']]
-  // @dts-jest:show Array<string[]|string>
+  // @dts-jest:pass
   R.mapAccum(append)('0', digits); // => ['01234', ['01', '012', '0123', '01234']]
-  // @dts-jest:show Array<string[]|string>
+  // @dts-jest:pass
   R.mapAccum(append, '0')(digits); // => ['01234', ['01', '012', '0123', '01234']]
-  // @dts-jest:show Array<string[]|string>
+  // @dts-jest:pass
   R.mapAccum(append)('0')(digits); // => ['01234', ['01', '012', '0123', '01234']]
 }
 
-// @dts-jest:group:skip mapAccumRight
+// @dts-jest:group mapAccumRight
 {
   const digits = ['1', '2', '3', '4'];
   const append = (a: string, b: string): [string, string] =>
     [a + b, a + b];
-  // @dts-jest:show Array<string|string[]>
+  // @dts-jest:pass
   R.mapAccumRight(append, '0', digits); // => ['04321', ['04321', '0432', '043', '04']]
-  // @dts-jest:show Array<string|string[]>
+  // @dts-jest:pass
   R.mapAccumRight(append)('0', digits); // => ['04321', ['04321', '0432', '043', '04']]
-  // @dts-jest:show Array<string|string[]>
+  // @dts-jest:pass
   R.mapAccumRight(append, '0')(digits); // => ['04321', ['04321', '0432', '043', '04']]
-  // @dts-jest:show Array<string|string[]>
+  // @dts-jest:pass
   R.mapAccumRight(append)('0')(digits); // => ['04321', ['04321', '0432', '043', '04']]
 }
 
-// @dts-jest:group:skip mapObjIndexed
+// @dts-jest:group mapObjIndexed
 {
   const values = {x: 1, y: 2, z: 3};
   const prependKeyAndDouble = (num: number, key: string, obj: any) => key + (num * 2).toString();
-  // @dts-jest:show Dictionary<string>
+  // @dts-jest:pass
   R.mapObjIndexed(prependKeyAndDouble, values); // => { x: 'x2', y: 'y4', z: 'z6' }
 }
 
@@ -1547,7 +1501,7 @@ import * as R from 'ramda';
   R.match(/a/, null); // error with strict null checks
 }
 
-// @dts-jest:group:skip mathMod
+// @dts-jest:group mathMod
 {
   // @dts-jest:pass
   R.mathMod(-17, 5); // => 3
@@ -1562,10 +1516,10 @@ import * as R from 'ramda';
   // @dts-jest:pass
   R.mathMod(17, 5.3); // => NaN
 
-  const clock = R.flip(R.mathMod)(12);
-  // @dts-jest:show number
+  const clock = R.flip(R.mathMod<'11'>())(12);
+  // @dts-jest:pass
   clock(15); // => 3
-  // @dts-jest:show number
+  // @dts-jest:pass
   clock(24); // => 0
 
   const seventeenMod = R.mathMod(17);
@@ -1573,11 +1527,11 @@ import * as R from 'ramda';
   seventeenMod(3); // => 2
 }
 
-// @dts-jest:group:skip max
+// @dts-jest:group max
 {
-  // @dts-jest:show number
+  // @dts-jest:pass
   R.max(7, 3); // => 7
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.max('a', 'z'); // => 'z'
 }
 
@@ -1615,14 +1569,6 @@ import * as R from 'ramda';
   R.median([]); // => NaN
 }
 
-// @dts-jest:group:skip megeAll
-{
-  // @dts-jest:show Dictionary<number>
-  R.mergeAll([{foo: 1}, {bar: 2}, {baz: 3}]); // => {foo: 1,bar: 2,baz: 3}
-  // @dts-jest:show Dictionary<number>
-  R.mergeAll([{foo: 1}, {foo: 2}, {bar: 2}]); // => {foo: 2,bar: 2}
-}
-
 // @dts-jest:group memoize
 {
   let numberOfCalls = 0;
@@ -1652,45 +1598,59 @@ import * as R from 'ramda';
   numberOfCalls; // => 3
 }
 
-// @dts-jest:group:skip merge
+// @dts-jest:group merge
 {
-  // @dts-jest:show Dictionary<any>
-  R.merge({name: 'fred', age: 10}, {age: 40});
-  // => { 'name': 'fred', 'age': 40 }
-  const resetToDefault = R.flip(R.merge)({x: 0});
-  // @dts-jest:show Dictionary<number>
+  // @dts-jest:pass
+  R.merge({name: 'fred', age: 10}, {age: 40}); // => { 'name': 'fred', 'age': 40 }
+
+  const resetToDefault = R.flip(R.merge<'11'>())({x: 0});
+  // @dts-jest:skip Dictionary<number>
   resetToDefault({x: 5, y: 2}); // => {x: 0, y: 2}
 }
 
-// @dts-jest:group:skip mergeWith
+// @dts-jest:group mergeAll
 {
-  // @dts-jest:show { a: boolean, b: boolean, values: number[] }
-  R.mergeWith(R.concat,
-              {a: true, values: [10, 20]},
-              {b: true, values: [15, 35]});
-  // => { a: true, b: true, values: [10, 20, 15, 35] }
+  // @dts-jest:pass
+  R.mergeAll<Record<string, number>>([{foo: 1}, {bar: 2}, {baz: 3}]); // => {foo: 1,bar: 2,baz: 3}
+  // @dts-jest:pass
+  R.mergeAll<Record<string, number>>([{foo: 1}, {foo: 2}, {bar: 2}]); // => {foo: 2,bar: 2}
 }
 
-// @dts-jest:group:skip mergeWithKey
+// @dts-jest:group mergeWith
+{
+  // @dts-jest:pass
+  R.mergeWith<'111'>()<any, {a: boolean, b: boolean, values: number[]}>(
+    R.concat,
+    {a: true, values: [10, 20]},
+    {b: true, values: [15, 35]},
+  ); // => { a: true, b: true, values: [10, 20, 15, 35] }
+}
+
+// @dts-jest:group mergeWithKey
 {
   const concatValues = (k: string, l: string, r: string) => k === 'values' ? R.concat(l, r) : r;
-  R.mergeWithKey(concatValues,
-                 {a: true, thing: 'foo', values: [10, 20]},
-                 {b: true, thing: 'bar', values: [15, 35]});
+  R.mergeWithKey(
+    concatValues,
+    {a: true, thing: 'foo', values: [10, 20]},
+    {b: true, thing: 'bar', values: [15, 35]},
+  );
   const merge = R.mergeWithKey(concatValues);
-  // @dts-jest:show { a: boolean, b: boolean, values: number[], thing: string }
-  merge({a: true, thing: 'foo', values: [10, 20]}, {b: true, thing: 'bar', values: [15, 35]});
+  // @dts-jest:pass
+  merge<{a: boolean, b: boolean, values: number[], thing: string}>(
+    {a: true, thing: 'foo', values: [10, 20]},
+    {b: true, thing: 'bar', values: [15, 35]},
+  ); // => { a: boolean, b: boolean, values: number[], thing: string }
 }
 
-// @dts-jest:group:skip min
+// @dts-jest:group min
 {
-  // @dts-jest:show number
+  // @dts-jest:pass
   R.min(9, 3); // => 3
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.min('a', 'z'); // => 'a'
 }
 
-// @dts-jest:group:skip minBy
+// @dts-jest:group minBy
 {
   function cmp(obj: { x: number }) { return obj.x; }
   const a = {x: 1};
@@ -1698,17 +1658,17 @@ import * as R from 'ramda';
   const c = {x: 3};
   const d = {x: 'a'};
   const e = {x: 'z'};
-  // @dts-jest:show { x: number }
+  // @dts-jest:pass
   R.minBy(cmp, a, b); // => {x: 1}
-  // @dts-jest:show { x: number }
+  // @dts-jest:pass
   R.minBy(cmp)(a, b); // => {x: 1}
-  // @dts-jest:show { x: number }
+  // @dts-jest:pass
   R.minBy(cmp)(a)(c);
   // @dts-jest:fail
   R.minBy(cmp, d, e);
 }
 
-// @dts-jest:group:skip modulo
+// @dts-jest:group modulo
 {
   // @dts-jest:pass
   R.modulo(17, 3); // => 2
@@ -1718,10 +1678,10 @@ import * as R from 'ramda';
   // @dts-jest:pass
   R.modulo(17, -3); // => 2
 
-  const isOdd = R.flip(R.modulo)(2);
-  // @dts-jest:show number
+  const isOdd = R.flip(R.modulo<'11'>())(2);
+  // @dts-jest:pass
   isOdd(42); // => 0
-  // @dts-jest:show number
+  // @dts-jest:pass
   isOdd(21); // => 1
 }
 
@@ -1741,14 +1701,14 @@ import * as R from 'ramda';
   R.negate(42); // => -42
 }
 
-// @dts-jest:group:skip none
+// @dts-jest:group none
 {
-  // @dts-jest:show boolean
-  R.none(R.isNaN, [1, 2, 3]); // => true
-  // @dts-jest:show boolean
-  R.none(R.isNaN, [1, 2, 3, NaN]); // => false
-  // @dts-jest:show boolean
-  R.none(R.isNaN)([1, 2, 3, NaN]); // => false
+  // @dts-jest:pass boolean
+  R.none(isNaN, [1, 2, 3]); // => true
+  // @dts-jest:pass boolean
+  R.none(isNaN, [1, 2, 3, NaN]); // => false
+  // @dts-jest:pass boolean
+  R.none(isNaN)([1, 2, 3, NaN]); // => false
 }
 
 // @dts-jest:group not
@@ -1763,34 +1723,34 @@ import * as R from 'ramda';
   R.not(1); // => false
 }
 
-// @dts-jest:group:skip nth
+// @dts-jest:group nth
 {
   const list = ['foo', 'bar', 'baz', 'quux'];
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.nth(1, list); // => 'bar'
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.nth(-1, list); // => 'quux'
-  // @dts-jest:show undefined
+  // @dts-jest:pass
   R.nth(-99, list); // => undefined
-  // @dts-jest:show undefined
+  // @dts-jest:pass
   R.nth(-99)(list); // => undefined
 }
 
-// @dts-jest:group:skip nthArg
+// @dts-jest:group nthArg
 {
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.nthArg(1)('a', 'b', 'c'); // => 'b'
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.nthArg(-1)('a', 'b', 'c'); // => 'c'
 }
 
-// @dts-jest:group:skip objOf
+// @dts-jest:group objOf
 {
   const matchPhrases = R.compose(
     R.objOf('must'),
     R.map(R.objOf('match_phrase')),
   );
-  // @dts-jest:show { must: { match_phrase: string }[] }
+  // @dts-jest:pass
   matchPhrases(['foo', 'bar', 'baz']);
 }
 
@@ -1802,12 +1762,12 @@ import * as R from 'ramda';
   R.of(1);
 }
 
-// @dts-jest:group:skip omit
+// @dts-jest:group omit
 {
-  // @dts-jest:show Dictionary<number>
-  R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
-  // @dts-jest:show Dictionary<number>
-  R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
+  // @dts-jest:pass
+  R.omit<{b: number, c: number}>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
+  // @dts-jest:pass
+  R.omit(['a', 'd'])<{b: number, c: number}>({a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
 }
 
 // @dts-jest:group once
@@ -1819,23 +1779,23 @@ import * as R from 'ramda';
   addOneOnce(addOneOnce(50)); // => 11
 }
 
-// @dts-jest:group:skip or
+// @dts-jest:group or
 {
   // @dts-jest:pass
   R.or(false, true); // => false
-  // @dts-jest:show number|any[]
+  // @dts-jest:pass
   R.or(0, []); // => []
-  // @dts-jest:show number|any[]
+  // @dts-jest:pass
   R.or(0)([]); // => []
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.or(null, ''); // => ''
 }
 
-// @dts-jest:group:skip pair
+// @dts-jest:group pair
 {
   R.pair('foo', 'bar'); // => ['foo', 'bar']
   const p = R.pair('foo', 1); // => ['foo', 'bar']
-  // @dts-jest:show string
+  // @dts-jest:pass
   p[0];
   // @dts-jest:pass
   p[1];
@@ -1860,35 +1820,35 @@ import * as R from 'ramda';
   greetMsJaneJones('Hello'); // => 'Hello, Ms. Jane Jones!'
 }
 
-// @dts-jest:group:skip path
+// @dts-jest:group path
 {
-  // @dts-jest:show number
-  R.path(['a', 'b'], {a: {b: 2}}); // => 2
-  // @dts-jest:show number
-  R.path(['a', 'b'])({a: {b: 2}}); // => 2
+  // @dts-jest:pass
+  R.path<number>(['a', 'b'], {a: {b: 2}}); // => 2
+  // @dts-jest:pass
+  R.path(['a', 'b'])<number>({a: {b: 2}}); // => 2
 }
 
-// @dts-jest:group:skip pathEq
+// @dts-jest:group pathEq
 {
+  interface User {
+    address?: {zipCode: number};
+    name?: string;
+  }
   const user1 = {address: {zipCode: 90210}};
   const user2 = {address: {zipCode: 55555}};
   const user3 = {name: 'Bob'};
   const users = [user1, user2, user3];
   const isFamous = R.pathEq(['address', 'zipCode'], 90210);
-  // @dts-jest:show Object[]
-  R.filter(isFamous, users); // => [ user1 ]
+  // @dts-jest:pass
+  R.filter<User>(isFamous, users); // => [ user1 ]
 }
 
-// @dts-jest:group:skip pathOr
+// @dts-jest:group pathOr
 {
-  // @dts-jest:show number
-  R.pathOr('N/A', ['a', 'b'], {a: {b: 2}}); // => 2
-  // @dts-jest:show number
-  R.pathOr('N/A', ['a', 'b'])({a: {b: 2}}); // => 2
-  // @dts-jest:show number
-  R.pathOr('N/A', ['a', 'b'], {c: {b: 2}}); // => 'N/A'
-  // @dts-jest:show number
-  R.pathOr({c: 2})(['a', 'b'], {c: {b: 2}}); // => 'N/A'
+  // @dts-jest:pass
+  R.pathOr('N/A', ['a', 'b'])<number>({a: {b: 2}}); // => 2
+  // @dts-jest:pass
+  R.pathOr('N/A')<number>(['a', 'b'], {a: {b: 2}}); // => 2
 }
 
 // @dts-jest:group pathSatisfies
@@ -1909,91 +1869,86 @@ import * as R from 'ramda';
   R.pathSatisfies((a: any) => a === 1)(['a', 'b', 'c'])({a: {b: {c: 1}}}); // => true
 }
 
-// @dts-jest:group:skip pick
+// @dts-jest:group pick
 {
-  // @dts-jest:show Dictionary<number>
-  R.pick(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
-  // the following should errror: e/f are not keys in these objects
   // @dts-jest:pass
   R.pick<{a: number}>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
   // @dts-jest:pass
   R.pick(['a', 'e', 'f'])<{a: number}>({a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
-  // @dts-jest:show:skip
-  R.pick(['a', 'e', 'f'], [1, 2, 3, 4]); // => {}
+  // @dts-jest:pass
+  R.pick<{}>(['a', 'e', 'f'], [1, 2, 3, 4]); // => {}
 }
 
-// @dts-jest:group:skip pickAll
+// @dts-jest:group pickAll
 {
-  // @dts-jest:show Dictionary<number>
-  R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
-  // @dts-jest:show Dictionary<number>
-  R.pickAll(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
-  // @dts-jest:show Dictionary<number>
-  R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
-  // @dts-jest:show Dictionary<number>
-  R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
+  // @dts-jest:pass
+  R.pickAll<Record<string, number>>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
+  // @dts-jest:pass
+  R.pickAll(['a', 'd'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
+  // @dts-jest:pass
+  R.pickAll<Record<string, number>>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
+  // @dts-jest:pass
+  R.pickAll(['a', 'e', 'f'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
 }
 
-// @dts-jest:group:skip pickBy
+// @dts-jest:group pickBy
 {
-  const isPositive = (n: number) =>
-    n > 0;
-  // @dts-jest:show Dictionary<number>
-  R.pickBy(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); // => {a: 1, b: 2, e: 5}
-  const containsBackground = (val: any) =>
-    val.bgcolor;
-  const colors = {1: {color: 'read'}, 2: {color: 'black', bgcolor: 'yellow'}};
-  // @dts-jest:show { 2: R.Dictionary<string> }
-  R.pickBy(containsBackground, colors); // => {2: {color: 'black', bgcolor: 'yellow'}}
-
+  interface Color {
+    color: string;
+    bgcolor: string;
+  }
+  const colors = {
+    1: {color: 'read'},
+    2: {color: 'black', bgcolor: 'yellow'},
+  };
+  const isPositive = (n: number) => n > 0;
+  const containsBackground = (val: any) => val.bgcolor;
   const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
-  // @dts-jest:show Dictionary<number>
-  R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
-}
-
-// @dts-jest:group:skip pickBy
-{
-  const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
-  // @dts-jest:show Dictionary<number>
-  R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
-}
-
-// @dts-jest:group:skip pipe
-{
-  const shout = (x: number): string =>
-    x >= 10
-      ? 'big'
-      : 'small';
-  const double = (x: number): number => x + x;
-  // @dts-jest:show (x0: number) => string
-  R.pipe(double, double, shout);
-  // @dts-jest:pass
-  R.pipe(double, double, shout)(10);
 
   // @dts-jest:pass
-  R.pipe(
-    R.split(''),
-    R.adjust(R.toUpper, 0),
-    R.join(''),
-  )('str');
-
-  const f = R.pipe(Math.pow, R.negate, R.inc);
+  R.pickBy<Record<string, number>>(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); // => {a: 1, b: 2, e: 5}
   // @dts-jest:pass
-  f(3, 4); // -(3^4) + 1
-
-  // test for type degeneration if the first function has generics
-  // @dts-jest:show (x0: number) => number
-  R.pipe(R.identity, double);
+  R.pickBy<Record<string, Color>>(containsBackground, colors); // => {2: {color: 'black', bgcolor: 'yellow'}}
+  // @dts-jest:pass
+  R.pickBy<Record<string, number>>(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
 }
 
 // @dts-jest:group pipe
 {
-  const double = (x: number): number => x + x;
-  const triple = (x: number): number => x * 3;
-  const square = (x: number): number => x * x;
-  const squareThenDoubleThenTriple = R.pipe(square, double, triple);
-  // @dts-jest:pass
-  squareThenDoubleThenTriple(5); // => 150
+  {
+    const shout = (x: number): string =>
+      x >= 10
+        ? 'big'
+        : 'small';
+    const double = (x: number): number => x + x;
+    // @dts-jest:pass
+    R.pipe(double, double, shout);
+    // @dts-jest:pass
+    R.pipe(double, double, shout)(10);
+
+    // @dts-jest:pass
+    R.pipe(
+      R.split(''),
+      R.adjust(R.toUpper, 0),
+      R.join(''),
+    )('str');
+
+    const f = R.pipe(Math.pow, R.negate, R.inc);
+    // @dts-jest:pass
+    f(3, 4); // -(3^4) + 1
+
+    // test for type degeneration if the first function has generics
+    // @dts-jest:skip (x0: number) => number
+    R.pipe(R.identity, double);
+  }
+  {
+    const double = (x: number): number => x + x;
+    const triple = (x: number): number => x * 3;
+    const square = (x: number): number => x * x;
+    const squareThenDoubleThenTriple = R.pipe(square, double, triple);
+    // @dts-jest:pass
+    squareThenDoubleThenTriple(5); // => 150
+  }
 }
 
 // @dts-jest:group:skip pipeP

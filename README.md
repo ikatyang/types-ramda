@@ -162,68 +162,68 @@ source version: v0.24.1
 - [x] isEmpty
 - [ ] isNil
 - [x] join
-- [ ] juxt
-- [ ] keys
-- [ ] keysIn
-- [ ] last
-- [ ] lastIndexOf
+- [x] juxt
+- [x] keys
+- [x] keysIn
+- [x] last
+- [x] lastIndexOf
 - [x] length
-- [ ] lens
-- [ ] lensIndex
-- [ ] lensPath
-- [ ] lensProp
+- [x] lens
+- [x] lensIndex
+- [x] lensPath
+- [x] lensProp
 - [ ] lift
 - [ ] liftN
-- [ ] lt
-- [ ] lte
-- [ ] map
-- [ ] mapAccum
-- [ ] mapAccumRight
-- [ ] mapObjIndexed
+- [x] lt
+- [x] lte
+- [x] map
+- [x] mapAccum
+- [x] mapAccumRight
+- [x] mapObjIndexed
 - [x] match
-- [ ] mathMod
-- [ ] max
+- [x] mathMod
+- [x] max
 - [x] maxBy
 - [x] mean
 - [x] median
 - [x] memoize
 - [ ] memoizeWith
-- [ ] merge
-- [ ] mergeAll
+- [x] merge
+- [x] mergeAll
 - [ ] mergeDeepLeft
 - [ ] mergeDeepRight
 - [ ] mergeDeepWith
 - [ ] mergeDeepWithKey
-- [ ] mergeWith
-- [ ] mergeWithKey
-- [ ] min
-- [ ] minBy
-- [ ] modulo
+- [x] mergeWith
+- [x] mergeWithKey
+- [x] min
+- [x] minBy
+- [x] modulo
 - [x] multiply
 - [ ] nAry
 - [x] negate
-- [ ] none
+- [x] none
 - [x] not
-- [ ] nth
-- [ ] nthArg
+- [x] nth
+- [x] nthArg
 - [ ] o
-- [ ] objOf
+- [x] objOf
 - [x] of
-- [ ] omit
+- [x] omit
 - [x] once
-- [ ] or
+- [x] or
 - [ ] over
-- [ ] pair
+- [x] pair
 - [x] partial
 - [ ] partialRight
 - [ ] partition
-- [ ] path
-- [ ] pathEq
-- [ ] pathOr
+- [x] path
+- [x] pathEq
+- [x] pathOr
 - [x] pathSatisfies
-- [ ] pick
-- [ ] pickAll
-- [ ] pickBy
+- [x] pick
+- [x] pickAll
+- [x] pickBy
 - [x] pipe
 - [ ] pipeK
 - [ ] pipeP
