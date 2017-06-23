@@ -134,15 +134,15 @@ source version: v0.24.1
 - [x] forEach
 - [x] forEachObjIndexed
 - [x] fromPairs
-- [ ] groupBy
+- [x] groupBy
 - [x] groupWith
-- [ ] gt
-- [ ] gte
-- [ ] has
-- [ ] hasIn
-- [ ] head
+- [x] gt
+- [x] gte
+- [x] has
+- [x] hasIn
+- [x] head
 - [x] identical
-- [ ] identity
+- [x] identity
 - [x] ifElse
 - [ ] inc
 - [ ] indexBy

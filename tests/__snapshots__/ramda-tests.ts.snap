@@ -395,11 +395,15 @@ exports[`forEachObjIndexed R.forEachObjIndexed(printKeyConcatValue, {x: 1, y: 2}
 
 exports[`fromPairs R.fromPairs([['a', 1], ['b', 2], ['c', 3]]) 1`] = `"Dictionary<number>"`;
 
+exports[`groupBy byGrade(students) 1`] = `"Dictionary<{ score: number; name: string; }[]>"`;
+
 exports[`groupWith R.groupWith((a: number, b: number) => a % 2 === b % 2, [0, 1, 1, 2, 3, 5, 8, 13, 21]) 1`] = `"number[][]"`;
 
 exports[`groupWith R.groupWith(R.eqBy<string>(isVowel), 'aestiou') 1`] = `"string[]"`;
 
 exports[`groupWith R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21]) 1`] = `"number[][]"`;
+
+exports[`gt R.flip(R.gt<'11'>())(2)(10) 1`] = `"boolean"`;
 
 exports[`gt R.gt(2, 0) 1`] = `"boolean"`;
 
@@ -407,11 +411,17 @@ exports[`gt R.gt(2, 2) 1`] = `"boolean"`;
 
 exports[`gt R.gt(2, 6) 1`] = `"boolean"`;
 
+exports[`gt R.gt<number>(2)(10) 1`] = `"boolean"`;
+
+exports[`gte R.flip(R.gte<'11'>())(2)(10) 1`] = `"boolean"`;
+
 exports[`gte R.gte(2, 0) 1`] = `"boolean"`;
 
 exports[`gte R.gte(2, 2) 1`] = `"boolean"`;
 
 exports[`gte R.gte(2, 6) 1`] = `"boolean"`;
+
+exports[`gte R.gte<number>(2)(10) 1`] = `"boolean"`;
 
 exports[`has hasName({}) 1`] = `"boolean"`;
 
@@ -419,9 +429,23 @@ exports[`has hasName({name: 'alice'}) 1`] = `"boolean"`;
 
 exports[`has hasName({name: 'bob'}) 1`] = `"boolean"`;
 
+exports[`has pointHas('x') 1`] = `"boolean"`;
+
+exports[`has pointHas('y') 1`] = `"boolean"`;
+
+exports[`has pointHas('z') 1`] = `"boolean"`;
+
+exports[`hasIn R.flip(R.hasIn<'11'>())(square)('area') 1`] = `"boolean"`;
+
 exports[`hasIn R.hasIn('area', square) 1`] = `"boolean"`;
 
 exports[`hasIn R.hasIn('width', square) 1`] = `"boolean"`;
+
+exports[`head R.head(['10', 10]) 1`] = `"string | number | undefined"`;
+
+exports[`head R.head(['fi', 'fo', 'fum']) 1`] = `"string | undefined"`;
+
+exports[`head R.head([10, 'ten']) 1`] = `"string | number | undefined"`;
 
 exports[`identical R.identical('2', '1') 1`] = `"boolean"`;
 
@@ -438,6 +462,8 @@ exports[`identical R.identical(o, o) 1`] = `"boolean"`;
 exports[`identity R.identity(['a', 'b', 'c']) 1`] = `"string[]"`;
 
 exports[`identity R.identity([1, 2, 3]) 1`] = `"number[]"`;
+
+exports[`identity R.identity(1) 1`] = `"1"`;
 
 exports[`identity R.identity(obj) === obj 1`] = `"boolean"`;
 

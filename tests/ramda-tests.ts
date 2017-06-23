@@ -901,7 +901,7 @@ import * as R from 'ramda';
   R.fromPairs([['a', 1], ['b', 2], ['c', 3]]); // => {a: 1, b: 2, c: 3}
 }
 
-// @dts-jest:group:skip groupBy
+// @dts-jest:group groupBy
 {
   const byGrade = R.groupBy((student: {score: number; name: string}) => {
     const score = student.score;
@@ -913,7 +913,7 @@ import * as R from 'ramda';
   const students = [{name: 'Abby', score: 84},
                     {name: 'Eddy', score: 58},
                     {name: 'Jack', score: 69}];
-  // @dts-jest:show Dictionary<Object[]>
+  // @dts-jest:pass
   byGrade(students);
 }
 
@@ -933,7 +933,7 @@ import * as R from 'ramda';
   // ['ae', 'st', 'iou']
 }
 
-// @dts-jest:group:skip gt
+// @dts-jest:group gt
 {
   // @dts-jest:pass
   R.gt(2, 6); // => false
@@ -941,13 +941,13 @@ import * as R from 'ramda';
   R.gt(2, 0); // => true
   // @dts-jest:pass
   R.gt(2, 2); // => false
-  // @dts-jest:show boolean
-  R.flip(R.gt)(2)(10); // => true
-  // @dts-jest:show boolean
-  R.gt(2)(10); // => false
+  // @dts-jest:pass
+  R.flip(R.gt<'11'>())(2)(10); // => true
+  // @dts-jest:pass
+  R.gt<number>(2)(10); // => false
 }
 
-// @dts-jest:group:skip gte
+// @dts-jest:group gte
 {
   // @dts-jest:pass
   R.gte(2, 6); // => false
@@ -955,13 +955,13 @@ import * as R from 'ramda';
   R.gte(2, 0); // => true
   // @dts-jest:pass
   R.gte(2, 2); // => false
-  // @dts-jest:show boolean
-  R.flip(R.gte)(2)(10); // => true
-  // @dts-jest:show boolean
-  R.gte(2)(10); // => false
+  // @dts-jest:pass
+  R.flip(R.gte<'11'>())(2)(10); // => true
+  // @dts-jest:pass
+  R.gte<number>(2)(10); // => false
 }
 
-// @dts-jest:group:skip has
+// @dts-jest:group has
 {
   const hasName = R.has('name');
   // @dts-jest:pass
@@ -972,16 +972,16 @@ import * as R from 'ramda';
   hasName({}); // => false
 
   const point = {x: 0, y: 0};
-  const pointHas = R.flip(R.has)(point);
-  // @dts-jest:show boolean
+  const pointHas = R.flip(R.has<'11'>())(point);
+  // @dts-jest:pass
   pointHas('x'); // => true
-  // @dts-jest:show boolean
+  // @dts-jest:pass
   pointHas('y'); // => true
-  // @dts-jest:show boolean
+  // @dts-jest:pass
   pointHas('z'); // => false
 }
 
-// @dts-jest:group:skip hasIn
+// @dts-jest:group hasIn
 {
   class Rectangle {
     public width: number;
@@ -999,17 +999,17 @@ import * as R from 'ramda';
   R.hasIn('width', square); // => true
   // @dts-jest:pass
   R.hasIn('area', square); // => true
-  // @dts-jest:show boolean
-  R.flip(R.hasIn)(square)('area'); // => true
+  // @dts-jest:pass
+  R.flip(R.hasIn<'11'>())(square)('area'); // => true
 }
 
-// @dts-jest:group:skip head
+// @dts-jest:group head
 {
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.head(['fi', 'fo', 'fum']); // => 'fi'
-  // @dts-jest:show number
+  // @dts-jest:pass
   R.head([10, 'ten']); // => 10
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.head(['10', 10]); // => '10'
 }
 
@@ -1030,13 +1030,13 @@ import * as R from 'ramda';
   R.identical(NaN, NaN); // => true
 }
 
-// @dts-jest:group:skip identity
+// @dts-jest:group identity
 {
   const obj = {};
 
   // @dts-jest:pass
   R.identity(obj) === obj; // => true
-  // @dts-jest:show number
+  // @dts-jest:pass
   R.identity(1); // => 1
   // @dts-jest:pass
   R.identity([1, 2, 3]);
