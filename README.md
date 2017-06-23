@@ -63,7 +63,9 @@ source version: v0.24.1
 
 #### Integration tests
 
-- [ ] __
+- __242__/__246__ done
+
+- [x] __
 - [x] add
 - [x] addIndex
 - [x] adjust
@@ -113,17 +115,17 @@ source version: v0.24.1
 - [x] drop
 - [x] dropLast
 - [x] dropLastWhile
-- [ ] dropRepeats
-- [ ] dropRepeatsWith
+- [x] dropRepeats
+- [x] dropRepeatsWith
 - [x] dropWhile
 - [x] either
 - [x] empty
-- [ ] endsWith
+- [x] endsWith
 - [x] eqBy
 - [x] eqProps
 - [x] equals
 - [x] evolve
-- [ ] F
+- [x] F
 - [x] filter
 - [x] find
 - [x] findIndex
@@ -148,7 +150,7 @@ source version: v0.24.1
 - [x] indexBy
 - [x] indexOf
 - [x] init
-- [ ] innerJoin
+- [x] innerJoin
 - [x] insert
 - [x] insertAll
 - [x] intersection
@@ -160,7 +162,7 @@ source version: v0.24.1
 - [x] invoker
 - [x] is
 - [x] isEmpty
-- [ ] isNil
+- [x] isNil
 - [x] join
 - [x] juxt
 - [x] keys
@@ -172,8 +174,8 @@ source version: v0.24.1
 - [x] lensIndex
 - [x] lensPath
 - [x] lensProp
-- [ ] lift
-- [ ] liftN
+- [x] lift
+- [x] liftN
 - [x] lt
 - [x] lte
 - [x] map
@@ -187,13 +189,13 @@ source version: v0.24.1
 - [x] mean
 - [x] median
 - [x] memoize
-- [ ] memoizeWith
+- [x] memoizeWith
 - [x] merge
 - [x] mergeAll
-- [ ] mergeDeepLeft
-- [ ] mergeDeepRight
-- [ ] mergeDeepWith
-- [ ] mergeDeepWithKey
+- [x] mergeDeepLeft
+- [x] mergeDeepRight
+- [x] mergeDeepWith
+- [x] mergeDeepWithKey
 - [x] mergeWith
 - [x] mergeWithKey
 - [x] min
@@ -206,7 +208,7 @@ source version: v0.24.1
 - [x] not
 - [x] nth
 - [x] nthArg
-- [ ] o
+- [x] o
 - [x] objOf
 - [x] of
 - [x] omit
@@ -215,7 +217,7 @@ source version: v0.24.1
 - [x] over
 - [x] pair
 - [x] partial
-- [ ] partialRight
+- [x] partialRight
 - [x] partition
 - [x] path
 - [x] pathEq
@@ -240,7 +242,7 @@ source version: v0.24.1
 - [x] range
 - [x] reduce
 - [x] reduceBy
-- [ ] reduced
+- [x] reduced
 - [x] reduceRight
 - [x] reduceWhile
 - [x] reject
@@ -255,16 +257,16 @@ source version: v0.24.1
 - [x] sort
 - [x] sortBy
 - [x] sortWith
-- [ ] split
+- [x] split
 - [x] splitAt
-- [ ] splitEvery
+- [x] splitEvery
 - [x] splitWhen
-- [ ] startsWith
+- [x] startsWith
 - [x] subtract
 - [x] sum
 - [x] symmetricDifference
 - [x] symmetricDifferenceWith
-- [ ] T
+- [x] T
 - [x] tail
 - [x] take
 - [x] takeLast
@@ -273,35 +275,35 @@ source version: v0.24.1
 - [x] tap
 - [x] test
 - [x] times
-- [ ] toLower
+- [x] toLower
 - [x] toPairs
 - [x] toPairsIn
 - [x] toString
-- [ ] toUpper
+- [x] toUpper
 - [x] transduce
 - [x] transpose
 - [ ] traverse
-- [ ] trim
+- [x] trim
 - [x] tryCatch
 - [x] type
 - [x] unapply
 - [x] unary
 - [x] uncurryN
 - [x] unfold
-- [ ] union
-- [ ] unionWith
+- [x] union
+- [x] unionWith
 - [x] uniq
-- [ ] uniqBy
+- [x] uniqBy
 - [x] uniqWith
 - [x] unless
 - [x] unnest
 - [x] until
-- [ ] update
-- [ ] useWith
+- [x] update
+- [x] useWith
 - [x] values
 - [x] valuesIn
 - [x] view
-- [ ] when
+- [x] when
 - [x] where
 - [x] whereEq
 - [x] without

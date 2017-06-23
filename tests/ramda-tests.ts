@@ -4,6 +4,13 @@ import * as R from 'ramda';
 
 // tslint:disable max-file-line-count
 
+// @dts-jest:group __
+{
+  const greet = R.replace('{name}', R.__, 'Hello, {name}!');
+  // @dts-jest:pass
+  greet('Alice'); // => 'Hello, Alice!'
+}
+
 // @dts-jest:group add
 {
   // @dts-jest:pass
@@ -418,6 +425,11 @@ import * as R from 'ramda';
   }
 }
 
+// @dts-jest:group:skip composeK
+{
+  // TODO
+}
+
 // @dts-jest:group composeP
 {
   interface User {
@@ -708,6 +720,19 @@ import * as R from 'ramda';
   R.dropLastWhile(lteThree, [1, 2, 3, 4, 3, 2, 1]); // => [1, 2, 3, 4]
 }
 
+// @dts-jest:group dropRepeats
+{
+  // @dts-jest:pass
+  R.dropRepeats([1, 1, 1, 2, 3, 4, 4, 2, 2]); // => [1, 2, 3, 4, 2]
+}
+
+// @dts-jest:group dropRepeatsWith
+{
+  const l = [1, -1, 1, 3, 4, -4, -4, -5, 5, 3, 3];
+  // @dts-jest:pass
+  R.dropRepeatsWith(R.eqBy(Math.abs), l); // => [1, 3, 4, -5, 3]
+}
+
 // @dts-jest:group dropWhile
 {
   const lteTwo = (x: number) =>
@@ -738,6 +763,18 @@ import * as R from 'ramda';
   R.empty('unicorns'); // => ''
   // @dts-jest:pass
   R.empty({x: 1, y: 2}); // => {}
+}
+
+// @dts-jest:group endsWith
+{
+  // @dts-jest:pass
+  R.endsWith('c', 'abc'); // => true
+  // @dts-jest:pass
+  R.endsWith('b', 'abc'); // => false
+  // @dts-jest:pass
+  R.endsWith(['c'], ['a', 'b', 'c']); // => true
+  // @dts-jest:pass
+  R.endsWith(['b'], ['a', 'b', 'c']); // => false
 }
 
 // @dts-jest:group eqBy
@@ -791,6 +828,12 @@ import * as R from 'ramda';
   R.evolve(transformations, tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
   // @dts-jest:pass
   R.evolve(transformations)(tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
+}
+
+// @dts-jest:group F
+{
+  // @dts-jest:pass
+  R.F();
 }
 
 // @dts-jest:group filter
@@ -1087,6 +1130,26 @@ import * as R from 'ramda';
   R.init(['fi', 'fo', 'fum']); // => ['fi', 'fo']
 }
 
+// @dts-jest:group innerJoin
+{
+  interface Data {
+    id: number;
+    name: string;
+  }
+  // @dts-jest:pass
+  R.innerJoin(
+    (data: Data, id: number) => data.id === id,
+    [
+      {id: 824, name: 'Richie Furay'},
+      {id: 956, name: 'Dewey Martin'},
+      {id: 313, name: 'Bruce Palmer'},
+      {id: 456, name: 'Stephen Stills'},
+      {id: 177, name: 'Neil Young'},
+    ],
+    [177, 456, 999],
+  ); // => [{id: 456, name: 'Stephen Stills'}, {id: 177, name: 'Neil Young'}]
+}
+
 // @dts-jest:group insert
 {
   // @dts-jest:pass
@@ -1273,6 +1336,18 @@ import * as R from 'ramda';
   R.isEmpty({a: 1}); // => false
 }
 
+// @dts-jest:group isNil
+{
+  // @dts-jest:pass
+  R.isNil(null); // => true
+  // @dts-jest:pass
+  R.isNil(undefined); // => true
+  // @dts-jest:pass
+  R.isNil(0); // => false
+  // @dts-jest:pass
+  R.isNil([]); // => false
+}
+
 // @dts-jest:group join
 {
   const spacer = R.join(' ');
@@ -1403,6 +1478,24 @@ import * as R from 'ramda';
   R.view(phraseLens, obj2); // => 'What's all this, then?'
   // @dts-jest:pass
   R.set(phraseLens, 'Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
+}
+
+// @dts-jest:group lift
+{
+  const madd3 = R.lift((a: number, b: number, c: number) => a + b + c);
+  const madd5 = R.lift((a: number, b: number, c: number, d: number, e: number) => a + b + c + d + e);
+
+  // @dts-jest:pass
+  madd3([1, 2, 3], [1, 2, 3], [1]); // => [3, 4, 5, 4, 5, 6, 5, 6, 7]
+  // @dts-jest:pass
+  madd5([1, 2], [3], [4, 5], [6], [7, 8]); // => [21, 22, 22, 23, 22, 23, 23, 24]
+}
+
+// @dts-jest:group liftN
+{
+  const madd3 = R.liftN(3, (...args: number[]) => R.sum(args));
+  // @dts-jest:pass
+  madd3([1, 2, 3], [1, 2, 3], [1]); // => [3, 4, 5, 4, 5, 6, 5, 6, 7]
 }
 
 // @dts-jest:group lt
@@ -1605,6 +1698,23 @@ import * as R from 'ramda';
   numberOfCalls; // => 3
 }
 
+// @dts-jest:group memoizeWith
+{
+  let count = 0;
+  const factorial = R.memoizeWith(R.identity, (n: number) => {
+    count += 1;
+    return R.product(R.range(1, n + 1));
+  });
+  // @dts-jest:pass
+  factorial(5); // => 120
+  // @dts-jest:pass
+  factorial(5); // => 120
+  // @dts-jest:pass
+  factorial(5); // => 120
+  // @dts-jest:pass
+  count; // => 1
+}
+
 // @dts-jest:group merge
 {
   // @dts-jest:pass
@@ -1621,6 +1731,45 @@ import * as R from 'ramda';
   R.mergeAll<Record<string, number>>([{foo: 1}, {bar: 2}, {baz: 3}]); // => {foo: 1,bar: 2,baz: 3}
   // @dts-jest:pass
   R.mergeAll<Record<string, number>>([{foo: 1}, {foo: 2}, {bar: 2}]); // => {foo: 2,bar: 2}
+}
+
+// @dts-jest:group mergeDeepLeft
+{
+  // @dts-jest:pass
+  R.mergeDeepLeft<Record<string, any>>(
+    {name: 'fred', age: 10, contact: {email: 'moo@example.com'}},
+    {age: 40, contact: {email: 'baa@example.com'}},
+  ); // => { name: 'fred', age: 10, contact: { email: 'moo@example.com' }}
+}
+
+// @dts-jest:group mergeDeepRight
+{
+  // @dts-jest:pass
+  R.mergeDeepRight<Record<string, any>>(
+    {name: 'fred', age: 10, contact: {email: 'moo@example.com'}},
+    {age: 40, contact: {email: 'baa@example.com'}},
+  ); // => { name: 'fred', age: 40, contact: { email: 'baa@example.com' }}
+}
+
+// @dts-jest:group mergeDeepWith
+{
+  // @dts-jest:pass
+  R.mergeDeepWith<any, Record<string, any>>(
+    R.concat,
+    {a: true, c: {values: [10, 20]}},
+    {b: true, c: {values: [15, 35]}},
+  ); // => { a: true, b: true, c: { values: [10, 20, 15, 35] }}
+}
+
+// @dts-jest:group mergeDeepWithKey
+{
+  const concatValues = (k: string, l: number[], r: number[]) => k === 'values' ? R.concat(l, r) : r;
+  // @dts-jest:pass
+  R.mergeDeepWithKey<any, Record<string, any>>(
+    concatValues,
+    {a: true, c: {thing: 'foo', values: [10, 20]}},
+    {b: true, c: {thing: 'bar', values: [15, 35]}},
+  ); // => { a: true, b: true, c: { thing: 'bar', values: [10, 20, 15, 35] }}
 }
 
 // @dts-jest:group mergeWith
@@ -1768,6 +1917,21 @@ import * as R from 'ramda';
   R.nthArg(-1)('a', 'b', 'c'); // => 'c'
 }
 
+// @dts-jest:group o
+{
+  interface Name {
+    first: string;
+    last: string;
+  }
+  const classyGreeting = (name: Name) => `The name's ${name.last}, ${name.first} ${name.last}`;
+  const yellGreeting = R.o(R.toUpper, classyGreeting);
+
+  // @dts-jest:pass
+  yellGreeting({first: 'James', last: 'Bond'}); // => "THE NAME'S BOND, JAMES BOND"
+  // @dts-jest:pass
+  R.o(R.multiply(10), R.add(10))(-4); // => 60
+}
+
 // @dts-jest:group objOf
 {
   const matchPhrases = R.compose(
@@ -1843,10 +2007,17 @@ import * as R from 'ramda';
     `${salutation}, ${title} ${firstName} ${lastName}!`;
   const sayHello = R.partial(greet, ['Hello']);
   const sayHelloToMs = R.partial(sayHello, ['Ms.']);
+
   // @dts-jest:pass
   sayHelloToMs('Jane', 'Jones'); // => 'Hello, Ms. Jane Jones!'
+}
 
+// @dts-jest:group partialRight
+{
+  const greet = (salutation: string, title: string, firstName: string, lastName: string) =>
+    `${salutation}, ${title} ${firstName} ${lastName}!`;
   const greetMsJaneJones = R.partialRight(greet, ['Ms.', 'Jane', 'Jones']);
+
   // @dts-jest:pass
   greetMsJaneJones('Hello'); // => 'Hello, Ms. Jane Jones!'
 }
@@ -1996,6 +2167,11 @@ import * as R from 'ramda';
   }
 }
 
+// @dts-jest:group:skip pipeK
+{
+  // TODO
+}
+
 // @dts-jest:group pipeP
 {
   // @dts-jest:pass
@@ -2124,22 +2300,6 @@ import * as R from 'ramda';
 
 // @dts-jest:group propSatisfies
 {
-  const truncate = R.when<string, string>(
-    R.propSatisfies(
-      R.gt(R.__, 10),
-      'length',
-    ),
-    R.pipe(
-      R.take(10),
-      R.append('…'),
-      R.join(''),
-    ),
-  );
-  // @dts-jest:pass
-  truncate('12345'); // => '12345'
-  // @dts-jest:pass
-  truncate('0123456789ABC'); // => '0123456789…'
-
   interface XY {
     x: number;
     y: number;
@@ -2226,6 +2386,12 @@ import * as R from 'ramda';
   //   'B': ['Drew']
   //   'F': ['Bart']
   // }
+}
+
+// @dts-jest:group reduced
+{
+  // @dts-jest:pass
+  R.reduced(123);
 }
 
 // @dts-jest:group reduceRight
@@ -2333,6 +2499,11 @@ import * as R from 'ramda';
   R.scan(R.multiply)(1, numbers); // => [1, 1, 2, 6, 24]
 }
 
+// @dts-jest:group:skip sequence
+{
+  // TODO
+}
+
 // @dts-jest:group set
 {
   const headLens = R.lensIndex<string, string[]>(0);
@@ -2434,6 +2605,16 @@ import * as R from 'ramda';
   // => [alice, clara, bob]
 }
 
+// @dts-jest:group split
+{
+  const pathComponents = R.split('/');
+
+  // @dts-jest:pass
+  R.tail(pathComponents('/usr/local/bin/node')); // => ['usr', 'local', 'bin', 'node']
+  // @dts-jest:pass
+  R.split('.', 'a.b.c.xyz.d'); // => ['a', 'b', 'c', 'xyz', 'd']
+}
+
 // @dts-jest:group splitAt
 {
   // @dts-jest:pass
@@ -2446,12 +2627,32 @@ import * as R from 'ramda';
   R.splitAt(-1, 'foobar'); // => ['fooba', 'r']
 }
 
+// @dts-jest:group splitEvery
+{
+  // @dts-jest:pass
+  R.splitEvery(3, [1, 2, 3, 4, 5, 6, 7]); // => [[1, 2, 3], [4, 5, 6], [7]]
+  // @dts-jest:pass
+  R.splitEvery(3, 'foobarbaz'); // => ['foo', 'bar', 'baz']
+}
+
 // @dts-jest:group splitWhen
 {
   // @dts-jest:pass
   R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
   // @dts-jest:pass
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
+}
+
+// @dts-jest:group startsWith
+{
+  // @dts-jest:pass
+  R.startsWith('a', 'abc'); // => true
+  // @dts-jest:pass
+  R.startsWith('b', 'abc'); // => false
+  // @dts-jest:pass
+  R.startsWith(['a'], ['a', 'b', 'c']); // => true
+  // @dts-jest:pass
+  R.startsWith(['b'], ['a', 'b', 'c']); // => false
 }
 
 // @dts-jest:group subtract
@@ -2498,6 +2699,12 @@ import * as R from 'ramda';
   R.symmetricDifferenceWith<A>(eqA)(l1, l2); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
   // @dts-jest:pass
   R.symmetricDifferenceWith<A>(eqA)(l1); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
+}
+
+// @dts-jest:group T
+{
+  // @dts-jest:pass
+  R.T();
 }
 
 // @dts-jest:group tail
@@ -2580,14 +2787,16 @@ import * as R from 'ramda';
   const i = (x: number) => x;
   // @dts-jest:pass
   R.times(i, 5);
-}
-
-// @dts-jest:group times
-{
   // @dts-jest:pass
   R.times(R.identity, 5); // => [0, 1, 2, 3, 4]
   // @dts-jest:pass
   R.times(R.identity)(5); // => [0, 1, 2, 3, 4]
+}
+
+// @dts-jest:group toLower
+{
+  // @dts-jest:pass
+  R.toLower('XYZ'); // => 'xyz'
 }
 
 // @dts-jest:group toPairs
@@ -2636,6 +2845,12 @@ import * as R from 'ramda';
   R.toString(new Date('2001-02-03T04: 05: 06Z')); // => 'new Date('2001-02-03T04: 05: 06.000Z')'
 }
 
+// @dts-jest:group toUpper
+{
+  // @dts-jest:pass
+  R.toUpper('abc'); // => 'ABC'
+}
+
 // @dts-jest:group transduce
 {
   const numbers = [1, 2, 3, 4];
@@ -2662,6 +2877,19 @@ import * as R from 'ramda';
   R.transpose<string | number>([[1, 2, 3], ['a', 'b', 'c']]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
   // @dts-jest:pass
   R.transpose([[10, 11], [20], [], [30, 31, 32]]); // => [[10, 20, 30], [11, 31], [32]]
+}
+
+// @dts-jest:group:skip traverse
+{
+  // TODO
+}
+
+// @dts-jest:group trim
+{
+  // @dts-jest:pass
+  R.trim('   xyz  '); // => 'xyz'
+  // @dts-jest:pass
+  R.map(R.trim, R.split(',', 'x, y, z')); // => ['x', 'y', 'z']
 }
 
 // @dts-jest:group tryCatch
@@ -2730,6 +2958,23 @@ import * as R from 'ramda';
   b(10);
 }
 
+// @dts-jest:group union
+{
+  // @dts-jest:pass
+  R.union([1, 2, 3], [2, 3, 4]); // => [1, 2, 3, 4]
+}
+
+// @dts-jest:group unionWith
+{
+  interface A {
+    a: number;
+  }
+  const l1 = [{a: 1}, {a: 2}];
+  const l2 = [{a: 1}, {a: 4}];
+  // @dts-jest:pass
+  R.unionWith<A>(R.eqBy(R.prop('a')), l1, l2); // => [{a: 1}, {a: 2}, {a: 4}]
+}
+
 // @dts-jest:group uniq
 {
   // @dts-jest:pass
@@ -2738,6 +2983,12 @@ import * as R from 'ramda';
   R.uniq([{}, {}]); // => [{}, {}]
   // @dts-jest:pass
   R.uniq([1, '1']); // => [1, '1']
+}
+
+// @dts-jest:group uniqBy
+{
+  // @dts-jest:pass
+  R.uniqBy(Math.abs, [-1, -5, 2, 10, 1, 2]); // => [-1, -5, 2, 10]
 }
 
 // @dts-jest:group uniqWith
@@ -2775,6 +3026,26 @@ import * as R from 'ramda';
   R.until(R.gt(R.__, 100), R.multiply(2))(1); // => 128
 }
 
+// @dts-jest:group update
+{
+  // @dts-jest:pass
+  R.update(1, 11, [0, 1, 2]); // => [0, 11, 2]
+  // @dts-jest:pass
+  R.update(1)(11)([0, 1, 2]); // => [0, 11, 2]
+}
+
+// @dts-jest:group useWith
+{
+  // @dts-jest:pass
+  R.useWith(Math.pow, [R.identity, R.identity])(3, 4); // => 81
+  // @dts-jest:pass
+  R.useWith<'11', '2arity'>()(Math.pow, [R.identity, R.identity])(3)(4); // => 81
+  // @dts-jest:pass
+  R.useWith(Math.pow, [R.dec, R.inc])(3, 4); // => 32
+  // @dts-jest:pass
+  R.useWith(Math.pow, [R.dec, R.inc])(3)(4); // => 32
+}
+
 // @dts-jest:group values
 {
   // @dts-jest:pass
@@ -2797,6 +3068,25 @@ import * as R from 'ramda';
   const headLens = R.lensIndex<string, string[]>(0);
   // @dts-jest:pass
   R.view(headLens, ['a', 'b', 'c']); // => 'a'
+}
+
+// @dts-jest:group when
+{
+  const truncate = R.when<string, string>(
+    R.propSatisfies(
+      R.gt(R.__, 10),
+      'length',
+    ),
+    R.pipe(
+      R.take(10),
+      R.append('…'),
+      R.join(''),
+    ),
+  );
+  // @dts-jest:pass
+  truncate('12345'); // => '12345'
+  // @dts-jest:pass
+  truncate('0123456789ABC'); // => '0123456789…'
 }
 
 // @dts-jest:group where

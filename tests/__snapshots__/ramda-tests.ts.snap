@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`__ greet('Alice') 1`] = `"string"`;
+
+exports[`F R.F() 1`] = `"false"`;
+
+exports[`T R.T() 1`] = `"true"`;
+
 exports[`add R.add(2, 3) 1`] = `"number"`;
 
 exports[`add R.add(7)(10) 1`] = `"number"`;
@@ -292,6 +298,10 @@ exports[`dropLast R.dropLast(3, 'ramda') 1`] = `"string"`;
 
 exports[`dropLastWhile R.dropLastWhile(lteThree, [1, 2, 3, 4, 3, 2, 1]) 1`] = `"number[]"`;
 
+exports[`dropRepeats R.dropRepeats([1, 1, 1, 2, 3, 4, 4, 2, 2]) 1`] = `"number[]"`;
+
+exports[`dropRepeatsWith R.dropRepeatsWith(R.eqBy(Math.abs), l) 1`] = `"number[]"`;
+
 exports[`dropWhile R.dropWhile(lteTwo)([1, 2, 3, 4]) 1`] = `"number[]"`;
 
 exports[`dropWhile R.dropWhile(lteTwo, [1, 2, 3, 4]) 1`] = `"number[]"`;
@@ -307,6 +317,14 @@ exports[`empty R.empty([1, 2, 3, 4, 5]) 1`] = `"number[]"`;
 exports[`empty R.empty([1, 2, 3]) 1`] = `"number[]"`;
 
 exports[`empty R.empty({x: 1, y: 2}) 1`] = `"{}"`;
+
+exports[`endsWith R.endsWith('b', 'abc') 1`] = `"boolean"`;
+
+exports[`endsWith R.endsWith('c', 'abc') 1`] = `"boolean"`;
+
+exports[`endsWith R.endsWith(['b'], ['a', 'b', 'c']) 1`] = `"boolean"`;
+
+exports[`endsWith R.endsWith(['c'], ['a', 'b', 'c']) 1`] = `"boolean"`;
 
 exports[`eqBy R.eqBy(Math.abs)(5, -5) 1`] = `"boolean"`;
 
@@ -470,6 +488,18 @@ exports[`indexOf R.indexOf(10)([1, 2, 3, 4]) 1`] = `"number"`;
 
 exports[`init R.init(['fi', 'fo', 'fum']) 1`] = `"string[]"`;
 
+exports[`innerJoin R.innerJoin(
+        (data: Data, id: number) => data.id === id,
+        [
+          {id: 824, name: 'Richie Furay'},
+          {id: 956, name: 'Dewey Martin'},
+          {id: 313, name: 'Bruce Palmer'},
+          {id: 456, name: 'Stephen Stills'},
+          {id: 177, name: 'Neil Young'},
+        ],
+        [177, 456, 999],
+      ) 1`] = `"Data[]"`;
+
 exports[`insert R.insert(2)(5)([1, 2, 3, 4]) 1`] = `"number[]"`;
 
 exports[`insert R.insert(2)(5, [1, 2, 3, 4]) 1`] = `"number[]"`;
@@ -570,6 +600,14 @@ exports[`isEmpty R.isEmpty({a: 1}) 1`] = `"boolean"`;
 
 exports[`isEmpty R.isEmpty(null) 1`] = `"boolean"`;
 
+exports[`isNil R.isNil([]) 1`] = `"boolean"`;
+
+exports[`isNil R.isNil(0) 1`] = `"boolean"`;
+
+exports[`isNil R.isNil(null) 1`] = `"boolean"`;
+
+exports[`isNil R.isNil(undefined) 1`] = `"boolean"`;
+
 exports[`join R.join('|', [1, 2, 3]) 1`] = `"string"`;
 
 exports[`join spacer(['a', 2, 3.4]) 1`] = `"string"`;
@@ -629,6 +667,12 @@ exports[`lensProp R.set(phraseLens, 'Ooh Betty', obj1) 1`] = `"{ phrase: string;
 exports[`lensProp R.view(phraseLens, obj1) 1`] = `"string"`;
 
 exports[`lensProp R.view(phraseLens, obj2) 1`] = `"string"`;
+
+exports[`lift madd3([1, 2, 3], [1, 2, 3], [1]) 1`] = `"number[]"`;
+
+exports[`lift madd5([1, 2], [3], [4, 5], [6], [7, 8]) 1`] = `"number[]"`;
+
+exports[`liftN madd3([1, 2, 3], [1, 2, 3], [1]) 1`] = `"number[]"`;
 
 exports[`lt R.flip(R.lt<'11'>())(5)(10) 1`] = `"boolean"`;
 
@@ -740,11 +784,41 @@ exports[`memoize numberOfCalls 3`] = `"number"`;
 
 exports[`memoize numberOfCalls 4`] = `"number"`;
 
+exports[`memoizeWith count 1`] = `"number"`;
+
+exports[`memoizeWith factorial(5) 1`] = `"number"`;
+
+exports[`memoizeWith factorial(5) 2`] = `"number"`;
+
+exports[`memoizeWith factorial(5) 3`] = `"number"`;
+
 exports[`merge R.merge({name: 'fred', age: 10}, {age: 40}) 1`] = `"{ name: string; age: number; } & { age: number; }"`;
 
 exports[`mergeAll R.mergeAll<Record<string, number>>([{foo: 1}, {bar: 2}, {baz: 3}]) 1`] = `"Record<string, number>"`;
 
 exports[`mergeAll R.mergeAll<Record<string, number>>([{foo: 1}, {foo: 2}, {bar: 2}]) 1`] = `"Record<string, number>"`;
+
+exports[`mergeDeepLeft R.mergeDeepLeft<Record<string, any>>(
+        {name: 'fred', age: 10, contact: {email: 'moo@example.com'}},
+        {age: 40, contact: {email: 'baa@example.com'}},
+      ) 1`] = `"Record<string, any>"`;
+
+exports[`mergeDeepRight R.mergeDeepRight<Record<string, any>>(
+        {name: 'fred', age: 10, contact: {email: 'moo@example.com'}},
+        {age: 40, contact: {email: 'baa@example.com'}},
+      ) 1`] = `"Record<string, any>"`;
+
+exports[`mergeDeepWith R.mergeDeepWith<any, Record<string, any>>(
+        R.concat,
+        {a: true, c: {values: [10, 20]}},
+        {b: true, c: {values: [15, 35]}},
+      ) 1`] = `"Record<string, any>"`;
+
+exports[`mergeDeepWithKey R.mergeDeepWithKey<any, Record<string, any>>(
+        concatValues,
+        {a: true, c: {thing: 'foo', values: [10, 20]}},
+        {b: true, c: {thing: 'bar', values: [15, 35]}},
+      ) 1`] = `"Record<string, any>"`;
 
 exports[`mergeWith R.mergeWith<'111'>()<any, {a: boolean, b: boolean, values: number[]}>(
         R.concat,
@@ -824,6 +898,10 @@ exports[`nthArg R.nthArg(-1)('a', 'b', 'c') 1`] = `"\\"a\\" | \\"b\\" | \\"c\\""
 
 exports[`nthArg R.nthArg(1)('a', 'b', 'c') 1`] = `"\\"a\\" | \\"b\\" | \\"c\\""`;
 
+exports[`o R.o(R.multiply(10), R.add(10))(-4) 1`] = `"number"`;
+
+exports[`o yellGreeting({first: 'James', last: 'Bond'}) 1`] = `"string"`;
+
 exports[`objOf matchPhrases(['foo', 'bar', 'baz']) 1`] = `"Record<\\"must\\", {}>"`;
 
 exports[`of R.of([1]) 1`] = `"number[][]"`;
@@ -854,9 +932,9 @@ exports[`pair p[1] 1`] = `"number"`;
 
 exports[`partial R.partial(multiply, [2])(2) 1`] = `"number"`;
 
-exports[`partial greetMsJaneJones('Hello') 1`] = `"string"`;
-
 exports[`partial sayHelloToMs('Jane', 'Jones') 1`] = `"string"`;
+
+exports[`partialRight greetMsJaneJones('Hello') 1`] = `"string"`;
 
 exports[`partition R.partition((x: number) => x > 2)([1, 2, 3, 4]) 1`] = `"[number[], number[]]"`;
 
@@ -991,10 +1069,6 @@ exports[`propSatisfies R.propSatisfies<'x', XY>((x: number) => x > 0)('x')({x: 1
 
 exports[`propSatisfies R.propSatisfies<'x', XY>((x: number) => x > 0, 'x')({x: 1, y: 2}) 1`] = `"boolean"`;
 
-exports[`propSatisfies truncate('0123456789ABC') 1`] = `"string"`;
-
-exports[`propSatisfies truncate('12345') 1`] = `"string"`;
-
 exports[`props R.props(['x', 'y'], {x: 1, y: 2}) 1`] = `"number[]"`;
 
 exports[`props R.props<number | undefined>(['c', 'a', 'b'], {b: 2, a: 1}) 1`] = `"(number | undefined)[]"`;
@@ -1024,6 +1098,8 @@ exports[`reduceRight R.reduceRight(flattenPairs, [], pairs) 1`] = `"KeyValuePair
 exports[`reduceWhile R.reduceWhile(isOdd, R.add, 0, xs) 1`] = `"number"`;
 
 exports[`reduceWhile R.reduceWhile(isOdd, R.add, 111, ys) 1`] = `"number"`;
+
+exports[`reduced R.reduced(123) 1`] = `"Reduced<number>"`;
 
 exports[`reject R.reject(isOdd)([1, 2, 3, 4]) 1`] = `"number[]"`;
 
@@ -1105,6 +1181,10 @@ exports[`sortWith R.sortWith<Person>(
 
 exports[`sortWith ageNameSort(people) 1`] = `"Person[]"`;
 
+exports[`split R.split('.', 'a.b.c.xyz.d') 1`] = `"string[]"`;
+
+exports[`split R.tail(pathComponents('/usr/local/bin/node')) 1`] = `"string[]"`;
+
 exports[`splitAt R.splitAt(-1, 'foobar') 1`] = `"string[]"`;
 
 exports[`splitAt R.splitAt(1)([1, 2, 3]) 1`] = `"number[][]"`;
@@ -1113,9 +1193,21 @@ exports[`splitAt R.splitAt(1, [1, 2, 3]) 1`] = `"number[][]"`;
 
 exports[`splitAt R.splitAt(5, 'hello world') 1`] = `"string[]"`;
 
+exports[`splitEvery R.splitEvery(3, 'foobarbaz') 1`] = `"string[]"`;
+
+exports[`splitEvery R.splitEvery(3, [1, 2, 3, 4, 5, 6, 7]) 1`] = `"number[][]"`;
+
 exports[`splitWhen R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]) 1`] = `"number[][]"`;
 
 exports[`splitWhen R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]) 1`] = `"number[][]"`;
+
+exports[`startsWith R.startsWith('a', 'abc') 1`] = `"boolean"`;
+
+exports[`startsWith R.startsWith('b', 'abc') 1`] = `"boolean"`;
+
+exports[`startsWith R.startsWith(['a'], ['a', 'b', 'c']) 1`] = `"boolean"`;
+
+exports[`startsWith R.startsWith(['b'], ['a', 'b', 'c']) 1`] = `"boolean"`;
 
 exports[`subtract R.subtract(10, 8) 1`] = `"number"`;
 
@@ -1177,6 +1269,8 @@ exports[`times R.times(R.identity, 5) 1`] = `"number[]"`;
 
 exports[`times R.times(i, 5) 1`] = `"number[]"`;
 
+exports[`toLower R.toLower('XYZ') 1`] = `"string"`;
+
 exports[`toPairs R.toPairs({a: 1, b: 2, c: 3}) 1`] = `"[\\"a\\" | \\"b\\" | \\"c\\", number][]"`;
 
 exports[`toPairsIn R.toPairsIn(f) 1`] = `"[\\"x\\" | \\"y\\", string][]"`;
@@ -1195,6 +1289,8 @@ exports[`toString R.toString(new Date('2001-02-03T04: 05: 06Z')) 1`] = `"string"
 
 exports[`toString R.toString(new Point(1, 2)) 1`] = `"string"`;
 
+exports[`toUpper R.toUpper('abc') 1`] = `"string"`;
+
 exports[`transduce R.transduce(transducer)(fn, [] as number[], numbers) 1`] = `"number[]"`;
 
 exports[`transduce R.transduce(transducer, fn)([] as number[], numbers) 1`] = `"number[]"`;
@@ -1208,6 +1304,10 @@ exports[`transpose R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]) 1`] = `"(string |
 exports[`transpose R.transpose([[10, 11], [20], [], [30, 31, 32]]) 1`] = `"number[][]"`;
 
 exports[`transpose R.transpose<string | number>([[1, 2, 3], ['a', 'b', 'c']]) 1`] = `"(string | number)[][]"`;
+
+exports[`trim R.map(R.trim, R.split(',', 'x, y, z')) 1`] = `"string[]"`;
+
+exports[`trim R.trim('   xyz  ') 1`] = `"string"`;
 
 exports[`tryCatch R.tryCatch(R.prop('x'), R.F)({x: true}) 1`] = `"boolean"`;
 
@@ -1243,11 +1343,17 @@ exports[`unfold R.unfold(f, 10) 1`] = `"number[]"`;
 
 exports[`unfold b(10) 1`] = `"number[]"`;
 
+exports[`union R.union([1, 2, 3], [2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`unionWith R.unionWith<A>(R.eqBy(R.prop('a')), l1, l2) 1`] = `"A[]"`;
+
 exports[`uniq R.uniq([{}, {}]) 1`] = `"{}[]"`;
 
 exports[`uniq R.uniq([1, '1']) 1`] = `"(string | number)[]"`;
 
 exports[`uniq R.uniq([1, 1, 2, 1]) 1`] = `"number[]"`;
+
+exports[`uniqBy R.uniqBy(Math.abs, [-1, -5, 2, 10, 1, 2]) 1`] = `"number[]"`;
 
 exports[`uniqWith R.uniqWith<{}>(strEq)([{}, {}]) 1`] = `"{}[]"`;
 
@@ -1267,11 +1373,27 @@ exports[`unnest R.equals(R.unnest([1, [2], [[3]]]), [1, 2, [3]]) 1`] = `"boolean
 
 exports[`until R.until(R.gt(R.__, 100), R.multiply(2))(1) 1`] = `"number"`;
 
+exports[`update R.update(1)(11)([0, 1, 2]) 1`] = `"number[]"`;
+
+exports[`update R.update(1, 11, [0, 1, 2]) 1`] = `"number[]"`;
+
+exports[`useWith R.useWith(Math.pow, [R.dec, R.inc])(3)(4) 1`] = `"number"`;
+
+exports[`useWith R.useWith(Math.pow, [R.dec, R.inc])(3, 4) 1`] = `"number"`;
+
+exports[`useWith R.useWith(Math.pow, [R.identity, R.identity])(3, 4) 1`] = `"number"`;
+
+exports[`useWith R.useWith<'11', '2arity'>()(Math.pow, [R.identity, R.identity])(3)(4) 1`] = `"number"`;
+
 exports[`values R.values({a: 1, b: 2, c: 3}) 1`] = `"number[]"`;
 
 exports[`valuesIn R.valuesIn(f) 1`] = `"string[]"`;
 
 exports[`view R.view(headLens, ['a', 'b', 'c']) 1`] = `"string"`;
+
+exports[`when truncate('0123456789ABC') 1`] = `"string"`;
+
+exports[`when truncate('12345') 1`] = `"string"`;
 
 exports[`where R.filter(R.where({x: R.equals(10)}))(xs) 1`] = `"Dictionary<number>[]"`;
 
