@@ -32,14 +32,3 @@ export default create_n_ary_declarations(
     ): CurriedFunction2<Variadic<U>, V, ${args.return_type}>;
   `,
 );
-
-// export declare function $0<T1, U, V, R>(fn: (
-//   fn: (v1: T1) => U, target: V) => R,
-// ): CurriedFunction2<(v1: T1, index: number, target: V) => U, V, R>;
-
-// export declare function $1<T1, T2, U, V, R>(fn: (
-//   fn: (v1: T1, v2: T2) => U, target: V) => R,
-// ): CurriedFunction2<(v1: T1, v2: T2, index: number, target: V) => U, V, R>;
-// export declare function $2<T1, T2 T3, U, V, R>(fn: (
-//   fn: (v1: T1, v2: T2, v3: T3) => U, target: V) => R,
-// ): CurriedFunction2<(v1: T1, v2: T2, v3: T3, index: number, target: V) => U, V, R>;
