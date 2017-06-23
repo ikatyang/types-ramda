@@ -27,28 +27,6 @@ yarn add --dev ikatyang/types-ramda
 - support snapshot testing ( via [`dts-jest`](https://github.com/ikatyang/dts-jest), see `./tests/*.ts` )
 - support functions auto-currying ( via [`dts-element`](https://github.com/ikatyang/dts-element), see `./templates/*.d.ts` )
 
-## Development
-
-```sh
-# linting
-yarn run lint
-
-# migrate jsdoc (ramda-repo -> ./templates/*.md)
-yarn run jsdoc
-
-# build types (./index.d.ts, ./src/*.d.ts)
-yarn run build
-
-# build types with watching mode
-yarn run build-watch
-
-# snapshot test
-yarn run test
-
-# snapshot test with watching mode
-yarn run test -- --watch
-```
-
 ## Progress
 
 source version: v0.24.1
@@ -62,8 +40,6 @@ source version: v0.24.1
 - __246__/__246__ done
 
 #### Integration tests
-
-- __242__/__246__ done
 
 - [x] __
 - [x] add
@@ -311,6 +287,32 @@ source version: v0.24.1
 - [x] zip
 - [x] zipObj
 - [x] zipWith
+
+## Development
+
+```sh
+# linting
+yarn run lint
+
+# migrate jsdoc (ramda-repo -> ./templates/*.md)
+yarn run jsdoc
+
+# build types (./index.d.ts, ./src/*.d.ts)
+yarn run build
+
+# build types with watching mode
+yarn run build-watch
+
+# snapshot test
+yarn run test
+
+# snapshot test with watching mode
+yarn run test -- --watch
+
+# NOTE: test files
+#   unit tests -> ./tests/*.ts
+#   integration tests -> ./tests/ramda-tests.ts
+```
 
 ## Related
 
