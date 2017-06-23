@@ -1055,14 +1055,14 @@ import * as R from 'ramda';
   flattenArrays([[[10], 123], [8, [10]], 'hello']); // => [[10, 123], [8, 10], 'hello']
 }
 
-// @dts-jest:group:skip indexBy
+// @dts-jest:group indexBy
 {
   const list = [{id: 'xyz', title: 'A'}, {id: 'abc', title: 'B'}];
-  // @dts-jest:show Dictionary<Object>
+  // @dts-jest:pass
   R.indexBy(R.prop('id'), list);
-  // @dts-jest:show Dictionary<Object>
+  // @dts-jest:pass
   R.indexBy(R.prop('id'))(list);
-  // @dts-jest:show Dictionary<Object>
+  // @dts-jest:pass
   R.indexBy<{id: string}>(R.prop('id'))(list);
 }
 

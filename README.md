@@ -145,7 +145,7 @@ source version: v0.24.1
 - [x] identity
 - [x] ifElse
 - [ ] inc
-- [ ] indexBy
+- [x] indexBy
 - [x] indexOf
 - [x] init
 - [ ] innerJoin
