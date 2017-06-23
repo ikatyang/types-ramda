@@ -201,5 +201,5 @@ type reduceBy_1011<T, U, K extends string> = {
 type reduceBy_0111<T, U, K extends string> = {
     (valueFn: (accumulator: U, value: T) => Reduced<U> | U): reduceBy_1111<T, U, K>;
 };
-type reduceBy_1111<T, U, K extends string> = Record<K, U>;
+type reduceBy_1111<T, U, K extends string> = Partial<Record<K, U>>;
 export = reduceBy;

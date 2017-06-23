@@ -1012,6 +1012,8 @@ exports[`reduce R.reduce(add, 10, numbers) 1`] = `"number"`;
 
 exports[`reduce R.reduce(add, 10, numbers) 2`] = `"number"`;
 
+exports[`reduceBy namesByGrade(students) 1`] = `"Partial<Record<\\"F\\" | \\"D\\" | \\"C\\" | \\"B\\" | \\"A\\", string[]>>"`;
+
 exports[`reduceWhile R.reduceWhile(isOdd, R.add, 0, xs) 1`] = `"number"`;
 
 exports[`reduceWhile R.reduceWhile(isOdd, R.add, 111, ys) 1`] = `"number"`;

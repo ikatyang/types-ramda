@@ -2150,7 +2150,7 @@ import * as R from 'ramda';
   R.reduce(add, 10)(numbers); // => 16
 }
 
-// @dts-jest:group:skip reduceBy
+// @dts-jest:group reduceBy
 {
   interface Student {
     name: string;
@@ -2174,7 +2174,7 @@ import * as R from 'ramda';
     {name: 'Drew', score: 85},
     {name: 'Bart', score: 62},
   ];
-  // @dts-jest:show Dictionary<string[]>
+  // @dts-jest:pass
   namesByGrade(students);
   // {
   //   'A': ['Lucy'],

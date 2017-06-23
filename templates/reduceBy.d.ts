@@ -5,4 +5,4 @@ export function $<T, U, K extends string>(
     initial: U,
     keyFn: Morphism<T, K>,
     values: List<T>,
-): Record<K, U>;
+): Partial<Record<K, U>>;

@@ -239,7 +239,7 @@ source version: v0.24.1
 - [x] propSatisfies
 - [x] range
 - [x] reduce
-- [ ] reduceBy
+- [x] reduceBy
 - [ ] reduced
 - [ ] reduceRight
 - [x] reduceWhile
