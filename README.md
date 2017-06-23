@@ -154,7 +154,7 @@ source version: v0.24.1
 - [x] intersection
 - [ ] intersectionWith
 - [x] intersperse
-- [ ] into
+- [x] into
 - [x] invert
 - [x] invertObj
 - [ ] invoker

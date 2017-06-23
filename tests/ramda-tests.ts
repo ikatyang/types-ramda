@@ -1154,22 +1154,25 @@ import * as R from 'ramda';
   R.intersperse(0, [1]); // => [1]
 }
 
-// @dts-jest:group:skip into
+// @dts-jest:group into
 {
   const numbers = [1, 2, 3, 4];
-  const transducer = R.compose(R.map(R.add(1)), R.take(2));
+  const transducer = R.compose<number[], number[], number[]>(
+    R.map(R.add(1))<'1', 'list'>(),
+    R.take(2),
+  );
 
-  // @dts-jest:show number[]
+  // @dts-jest:pass
   R.into([], transducer, numbers); // => [2, 3]
-  // @dts-jest:show number[]
-  R.into([])(transducer, numbers); // => [2, 3]
-  // @dts-jest:show number[]
+  // @dts-jest:pass
+  R.into<number[]>([])(transducer, numbers); // => [2, 3]
+  // @dts-jest:pass
   R.into([], transducer)(numbers); // => [2, 3]
 
-  const intoArray = R.into([]);
-  // @dts-jest:show number[]
+  const intoArray = R.into<number[]>([]);
+  // @dts-jest:pass
   intoArray(transducer, numbers); // => [2, 3]
-  // @dts-jest:show number[]
+  // @dts-jest:pass
   intoArray(transducer)(numbers); // => [2, 3]
 }
 

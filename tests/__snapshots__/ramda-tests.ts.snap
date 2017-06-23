@@ -513,6 +513,16 @@ exports[`intersperse R.intersperse(0, [1, 2]) 1`] = `"number[]"`;
 
 exports[`intersperse R.intersperse(0, [1]) 1`] = `"number[]"`;
 
+exports[`into R.into([], transducer)(numbers) 1`] = `"number[]"`;
+
+exports[`into R.into([], transducer, numbers) 1`] = `"number[]"`;
+
+exports[`into R.into<number[]>([])(transducer, numbers) 1`] = `"number[]"`;
+
+exports[`into intoArray(transducer)(numbers) 1`] = `"number[]"`;
+
+exports[`into intoArray(transducer, numbers) 1`] = `"number[]"`;
+
 exports[`invert R.invert(raceResultsByFirstName) 1`] = `"Dictionary<string[]>"`;
 
 exports[`invertObj R.invertObj(raceResults0) 1`] = `"Dictionary<string>"`;
