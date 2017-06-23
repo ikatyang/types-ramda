@@ -801,6 +801,14 @@ exports[`multiply R.multiply(2, 5) 1`] = `"number"`;
 
 exports[`multiply R.multiply(3)(4) 1`] = `"number"`;
 
+exports[`nAry R.nAry(0, takesNoArg) 1`] = `"() => boolean"`;
+
+exports[`nAry R.nAry(0, takesOneArg) 1`] = `"() => number[]"`;
+
+exports[`nAry R.nAry(1, takesThreeArgs) 1`] = `"(v1: number) => number[]"`;
+
+exports[`nAry R.nAry(1, takesTwoArgs) 1`] = `"(v1: number) => number[]"`;
+
 exports[`negate R.negate(42) 1`] = `"number"`;
 
 exports[`none boolean 1`] = `"boolean"`;
@@ -1224,35 +1232,11 @@ exports[`unapply R.unapply(JSON.stringify) 1`] = `"(...args: any[]) => string"`;
 
 exports[`unapply R.unapply(JSON.stringify)(1, 2, 3) 1`] = `"string"`;
 
-exports[`unary, binary, nAry R.binary(takesThreeArgs) 1`] = `"(a: number, b: number) => number[]"`;
+exports[`unary R.unary(takesOneArg) 1`] = `"(a: number) => number[]"`;
 
-exports[`unary, binary, nAry R.binary(takesTwoArgs) 1`] = `"(a: number, b: number) => number[]"`;
+exports[`unary R.unary(takesThreeArgs) 1`] = `"(a: number) => number[]"`;
 
-exports[`unary, binary, nAry R.nAry(0, takesNoArg) 1`] = `"() => boolean"`;
-
-exports[`unary, binary, nAry R.nAry(0, takesOneArg) 1`] = `"() => number[]"`;
-
-exports[`unary, binary, nAry R.unary(takesOneArg) 1`] = `"(a: number) => number[]"`;
-
-exports[`unary, binary, nAry R.unary(takesThreeArgs) 1`] = `"(a: number) => number[]"`;
-
-exports[`unary, binary, nAry R.unary(takesTwoArgs) 1`] = `"(a: number) => number[]"`;
-
-exports[`unary, binary, nAry addTwoNumbersCurried(2, 3) 1`] = `"number"`;
-
-exports[`unary, binary, nAry curriedFourNumbers 1`] = `"CurriedFunction4<number, number, number, number, number>"`;
-
-exports[`unary, binary, nAry curriedFourNumbers(1) 1`] = `"CurriedFunction3<number, number, number, number>"`;
-
-exports[`unary, binary, nAry curriedFourNumbers(1)(2) 1`] = `"CurriedFunction2<number, number, number>"`;
-
-exports[`unary, binary, nAry curriedFourNumbers(1)(2)(3)(4) 1`] = `"number"`;
-
-exports[`unary, binary, nAry curriedFourNumbers(1, 2)(3, 4) 1`] = `"number"`;
-
-exports[`unary, binary, nAry curriedFourNumbers(1, 2, 3)(4) 1`] = `"number"`;
-
-exports[`unary, binary, nAry inc(2) 1`] = `"number"`;
+exports[`unary R.unary(takesTwoArgs) 1`] = `"(a: number) => number[]"`;
 
 exports[`uncurryN uncurriedAddFour(1, 2, 3, 4) 1`] = `"number"`;
 

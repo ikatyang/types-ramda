@@ -1695,6 +1695,23 @@ import * as R from 'ramda';
   R.multiply(2, 5); // => 10
 }
 
+// @dts-jest:group nAry
+{
+  const takesNoArg = () => true;
+  const takesOneArg = (a: number) => [a];
+  const takesTwoArgs = (a: number, b: number) => [a, b];
+  const takesThreeArgs = (a: number, b: number, c: number) => [a, b, c];
+
+  // @dts-jest:pass
+  R.nAry(0, takesNoArg);
+  // @dts-jest:pass
+  R.nAry(0, takesOneArg);
+  // @dts-jest:pass
+  R.nAry(1, takesTwoArgs);
+  // @dts-jest:pass
+  R.nAry(1, takesThreeArgs);
+}
+
 // @dts-jest:group negate
 {
   // @dts-jest:pass
@@ -2644,6 +2661,20 @@ import * as R from 'ramda';
   R.unapply(JSON.stringify)(1, 2, 3); // => '[1,2,3]'
 }
 
+// @dts-jest:group unary
+{
+  const takesOneArg = (a: number) => [a];
+  const takesTwoArgs = (a: number, b: number) => [a, b];
+  const takesThreeArgs = (a: number, b: number, c: number) => [a, b, c];
+
+  // @dts-jest:pass
+  R.unary(takesOneArg);
+  // @dts-jest:pass
+  R.unary(takesTwoArgs);
+  // @dts-jest:pass
+  R.unary(takesThreeArgs);
+}
+
 // @dts-jest:group uncurryN
 {
   const addFour = (a: number) => (b: number) => (c: number) => (d: number) => a + b + c + d;
@@ -2800,66 +2831,6 @@ import * as R from 'ramda';
 }
 
 // ---------------------------------------------------------------------
-
-// @dts-jest:group:skip unary, binary, nAry
-{
-  const takesNoArg = () => true;
-  const takesOneArg = (a: number) => [a];
-  const takesTwoArgs = (a: number, b: number) => [a, b];
-  const takesThreeArgs = (a: number, b: number, c: number) => [a, b, c];
-
-  const addFourNumbers = (a: number, b: number, c: number, d: number): number =>
-    a + b + c + d;
-
-  const curriedFourNumbers = R.curry(addFourNumbers);
-  // @dts-jest:pass
-  curriedFourNumbers;
-  // @dts-jest:pass
-  curriedFourNumbers(1);
-  // @dts-jest:pass
-  curriedFourNumbers(1)(2);
-  // @dts-jest:show <T1,R>(v1: T1) => R
-  curriedFourNumbers(1)(2)(3);
-  // @dts-jest:show <T1,R>(v1: T1) => R
-  curriedFourNumbers(1, 2, 4);
-  // @dts-jest:pass
-  curriedFourNumbers(1)(2)(3)(4);
-  // @dts-jest:pass
-  curriedFourNumbers(1, 2)(3, 4);
-  // @dts-jest:pass
-  curriedFourNumbers(1, 2, 3)(4);
-
-  // @dts-jest:pass
-  R.nAry(0, takesNoArg);
-  // @dts-jest:pass
-  R.nAry(0, takesOneArg);
-  // @dts-jest:show (a: number) => number[]
-  R.nAry(1, takesTwoArgs);
-  // @dts-jest:show (a: number) => number[]
-  R.nAry(1, takesThreeArgs);
-
-  // @dts-jest:pass
-  R.unary(takesOneArg);
-  // @dts-jest:pass
-  R.unary(takesTwoArgs);
-  // @dts-jest:pass
-  R.unary(takesThreeArgs);
-
-  // @dts-jest:pass
-  R.binary(takesTwoArgs);
-  // @dts-jest:pass
-  R.binary(takesThreeArgs);
-
-  const addTwoNumbers = (a: number, b: number) => a + b;
-  // @dts-jest:show CurriedFunction2<number, number, number>
-  const addTwoNumbersCurried = R.curry(addTwoNumbers);
-
-  const inc = addTwoNumbersCurried(1);
-  // @dts-jest:pass
-  inc(2);
-  // @dts-jest:pass
-  addTwoNumbersCurried(2, 3);
-}
 
 // @dts-jest:group:skip TODO: pipeK
 

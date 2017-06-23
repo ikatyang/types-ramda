@@ -200,7 +200,7 @@ source version: v0.24.1
 - [x] minBy
 - [x] modulo
 - [x] multiply
-- [ ] nAry
+- [x] nAry
 - [x] negate
 - [x] none
 - [x] not
@@ -285,7 +285,7 @@ source version: v0.24.1
 - [x] tryCatch
 - [x] type
 - [x] unapply
-- [ ] unary
+- [x] unary
 - [x] uncurryN
 - [x] unfold
 - [ ] union
