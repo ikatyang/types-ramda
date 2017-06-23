@@ -1055,6 +1055,13 @@ import * as R from 'ramda';
   flattenArrays([[[10], 123], [8, [10]], 'hello']); // => [[10, 123], [8, 10], 'hello']
 }
 
+// @dts-jest:group inc
+{
+  const f = R.pipe(Math.pow, R.negate, R.inc);
+  // @dts-jest:pass
+  f(3, 4); // -(3^4) + 1
+}
+
 // @dts-jest:group indexBy
 {
   const list = [{id: 'xyz', title: 'A'}, {id: 'abc', title: 'B'}];
@@ -1842,6 +1849,20 @@ import * as R from 'ramda';
   const greetMsJaneJones = R.partialRight(greet, ['Ms.', 'Jane', 'Jones']);
   // @dts-jest:pass
   greetMsJaneJones('Hello'); // => 'Hello, Ms. Jane Jones!'
+}
+
+// @dts-jest:group partition
+{
+  // @dts-jest:pass
+  R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']);
+  // @dts-jest:pass
+  R.partition(R.contains('s'))(['sss', 'ttt', 'foo', 'bars']);
+  // @dts-jest:pass
+  R.partition((x: number) => x > 2, [1, 2, 3, 4]);
+  // @dts-jest:pass
+  R.partition((x: number) => x > 2)([1, 2, 3, 4]);
+  // @dts-jest:pass
+  R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}); // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' } ]
 }
 
 // @dts-jest:group path
@@ -2737,6 +2758,14 @@ import * as R from 'ramda';
   R.unless(R.gt(R.__, 100), R.multiply(2))(1); // => 2
 }
 
+// @dts-jest:group unnest
+{
+  // @dts-jest:pass
+  R.equals(R.unnest([1, [2], [[3]]]), [1, 2, [3]]); // => true
+  // @dts-jest:pass
+  R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6]); // => true
+}
+
 // @dts-jest:group until
 {
   // @dts-jest:pass
@@ -2848,251 +2877,4 @@ import * as R from 'ramda';
   R.zipWith(f)([1, 2, 3], ['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
   // @dts-jest:pass
   R.zipWith(f, [1, 2, 3])(['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
-}
-
-// ---------------------------------------------------------------------
-
-// @dts-jest:group:skip partition, contains
-{
-  // @dts-jest:show [string[], string[]]
-  R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']);
-  // @dts-jest:show [string[], string[]]
-  R.partition(R.contains('s'))(['sss', 'ttt', 'foo', 'bars']);
-  // @dts-jest:pass
-  R.partition((x: number) => x > 2, [1, 2, 3, 4]);
-  // @dts-jest:pass
-  R.partition((x: number) => x > 2)([1, 2, 3, 4]);
-  // @dts-jest:show Object[]
-  R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}); // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' } ]
-}
-
-// // traverse
-// () => {
-//   // Returns `Nothing` if the given divisor is `0`
-//   safeDiv = n => d => d === 0 ? Nothing() : Just(n / d)
-//
-//   R.traverse(Maybe.of, safeDiv(10), [2, 4, 5]); // => Just([5, 2.5, 2])
-//   R.traverse(Maybe.of, safeDiv(10), [2, 0, 5]); // => Nothing
-// }
-
-// @dts-jest:group:skip unnest, equals
-{
-  // @dts-jest:pass
-  R.equals(R.unnest([1, [2], [[3]]]), [1, 2, [3]]); // => true
-  // @dts-jest:pass
-  R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6]); // => true
-}
-
-/*****************************************************************
- * Object category
- */
-
-// @dts-jest:group:skip over, lensIndex
-{
-  const headLens = R.lensIndex(0);
-  // @dts-jest:show string[]
-  R.over(headLens, R.toUpper, ['foo', 'bar', 'baz']); // => ['FOO', 'bar', 'baz']
-}
-
-// @dts-jest:group:skip mapIndexed, addIndex
-{
-  class Rectangle {
-    public width: number;
-    public height: number;
-    constructor(width: number, height: number) {
-      this.width = width;
-      this.height = height;
-    }
-    public area(): number {
-      return this.width * this.height;
-    }
-  }
-  const mapIndexed = R.addIndex<string, string>(R.map);
-  // @dts-jest:show string[]
-  mapIndexed((val: string, idx: number) => `${idx}-${val}`)(['f', 'o', 'o', 'b', 'a', 'r']);
-  // @dts-jest:show string[]
-  R.mapIndexed((val: string, idx: number) => `${idx}-${val}`)(['f', 'o', 'o', 'b', 'a', 'r']);
-  // => ['0-f', '1-o', '2-o', '3-b', '4-a', '5-r']
-  // @dts-jest:show number[]
-  R.mapIndexed(
-    (rectangle: Rectangle, idx: number) => rectangle.area() * idx,
-    [new Rectangle(1, 2), new Rectangle(4, 7)],
-  ); // => [2, 56]
-}
-
-// @dts-jest:group:skip pipe, inc, negate
-{
-  const f = R.pipe(Math.pow, R.negate, R.inc);
-  // @dts-jest:pass
-  f(3, 4); // -(3^4) + 1
-}
-
-// @dts-jest:group:skip TODO: composeP
-
-// @dts-jest:group:skip TODO: composeK
-
-/*****************************************************************
- * Relation category
- */
-
-/*****************************************************************
- * String category
- */
-
-/*****************************************************************
- * Is category
- */
-
-/*****************************************************************
- * Logic category
- */
-
-// ISSUES:
-
-// RESOLVED ISSUES:
-
-// @dts-jest:group:skip #issues
-
-{
-  // #65, evolve issue
-  const test = {a: 1, b: 2};
-  // @dts-jest:show { a: number, b: number }
-  R.evolve({a: R.add(1)}, test);
-}
-
-{
-  // #73
-  const filterMatrix = (v: number, m: number[][]): number[] =>
-    R.chain(R.filter((c: number) => c === v), m); // return R.chain(R.filter(R.equals(v)), m)
-  const b = [
-    [0, 1],
-    [1, 0],
-  ];
-  // @dts-jest:pass
-  filterMatrix(1, b); // --> [1, 1]
-}
-
-// UNRESOLVED ISSUES:
-
-{
-  // #29
-  // @dts-jest:show string[]
-  R.pipe(R.append('a'), R.uniq)(['a', 'b', 'c']);
-  // @dts-jest:show string[][]
-  R.pipe(
-    R.split(''),
-    R.map((letter: string) => ([letter])),
-  )('dave');
-
-  // @dts-jest:pass
-  R.pipe(
-    R.prop<string>('name'),
-    R.length,
-  )({name: 'dave'});
-}
-
-{
-  // #69: lens composition
-  const sectioneditems = { sections: [
-    {items: []},
-    {items: []},
-  ]};
-  const elem = 'Hello';
-  R.over(
-    R.compose(
-      R.lensProp('sections'),
-      R.lensIndex(sectioneditems.sections.length - 1),
-      R.lensProp('items'),
-    ),
-    R.append(elem),
-    sectioneditems,
-  );
-}
-
-{
-  // #78: curry loses generics
-  // : <T>R.CurriedFunction3<R.Pred<T>, T, T[], T[]>
-  // : R.CurriedFunction3<R.Pred<any>, any, any[], any[]>
-  const updateBy = R.curry(<T>(pred: (v: T) => boolean, val: T, array: T[]): T[] => {
-    const i = R.findIndex(pred, array);
-    if (i >= 0) {
-      return R.update(i, val, array);
-    } else {
-      return array;
-    }
-  });
-  // @dts-jest:show number[]
-  updateBy((n: number) => n > 1, 0, [1, 2, 3]);
-}
-
-{
-  // #86: lose generics in compose
-  const pairs = [['1', 'A'], ['2', 'B'], ['3', 'C']];
-  // @dts-jest:show { [index: string]: string }
-  R.fromPairs([['1', 'A'], ['2', 'B'], ['3', 'C']]);
-  // @dts-jest:show { [index: string]: string }
-  R.fromPairs(pairs); // fails -- variable reduced to string[][], killing tuples
-  // @dts-jest:show { [index: string]: string }
-  R.pipe(R.fromPairs)([['1', 'A'], ['2', 'B'], ['3', 'C']]);
-  // @dts-jest:show { [index: string]: string }
-  R.compose(R.fromPairs)([['1', 'A'], ['2', 'B'], ['3', 'C']]);
-
-  // generics in pipe loses generics
-  R.pipe(R.identity);
-}
-
-{
-  // #90: curried function loses generics
-  const map = (func: (some: string) => (x: number) => 1) =>
-    func('xx')(1);
-  const map2 = (func: (some: string, other: string) => '1') =>
-    func('xx', 'x');
-  // will work only with proposed changes
-  map(R.assoc('xxx'));
-  map2(R.assoc('xxx'));
-}
-
-{
-  // #92: lose generics in compose
-
-  // can't infer cond paths, must annotate:
-  // @dts-jest:show <T>(v: T) => T
-  const x = R.cond([
-    [R.F, R.F],
-    [R.T, R.identity],
-  ]);
-  // argument order matters for some reason...
-  // @dts-jest:show (v: number) => number
-  R.pipe(R.inc, x); // ok
-  // @dts-jest:show (v: number) => number
-  R.compose(x, R.inc); // boom
-
-  // don't use generics in pipe/compose/curry if it can't resolve them right away:
-  // const pipeF0 = R.pipe(R.identity); // : (v: {}) => {}
-  // const compF0 = R.compose(R.identity); // : (v: {}) => {}
-
-  // argument order matters too:
-  // const pipeF1 = R.pipe(R.inc, R.identity); // : (v: number) => number
-  const compF1 = R.compose(R.identity, R.inc); // : (v: number) => {}
-  // @dts-jest:show number
-  compF1(1); // uh-oh, fails
-
-  // also can't reason backward:
-  const compF2 = R.compose(R.inc, R.identity); // : (v: {}) => number
-  // @dts-jest:pass
-  compF2('foo'); // uh-oh, passes
-  const pipeF2 = R.pipe(R.identity, R.inc); // : (v: {}) => number
-  // @dts-jest:pass
-  pipeF2('foo'); // uh-oh, passes
-}
-
-{
-  // #119: path
-  // @dts-jest:show number
-  R.path(['a', 'b', 'c'], {a: {b: {c: 2}}});
-  // @dts-jest:show null
-  R.path(['a', 'b', 'c'], {a: {b: 2}}); // still fails
-  // let n = R.path(['a', '0', 'c'], {a: [{c: 2}] })
-  // @dts-jest:show number
-  R.path(['a', 0, 'c'], {a: [{c: 2}]});
 }

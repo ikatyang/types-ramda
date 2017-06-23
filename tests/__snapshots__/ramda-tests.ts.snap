@@ -1,16 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#issues R.pipe(
-        R.prop<string>('name'),
-        R.length,
-      )({name: 'dave'}) 1`] = `"number"`;
-
-exports[`#issues compF2('foo') 1`] = `"number"`;
-
-exports[`#issues filterMatrix(1, b) 1`] = `"number[]"`;
-
-exports[`#issues pipeF2('foo') 1`] = `"number"`;
-
 exports[`add R.add(2, 3) 1`] = `"number"`;
 
 exports[`add R.add(7)(10) 1`] = `"number"`;
@@ -467,6 +456,8 @@ exports[`ifElse flattenArrays([[[10], 123], [8, [10]], 'hello']) 1`] = `"any[]"`
 
 exports[`ifElse flattenArrays([[0], [[10], [8]], 1234, {}]) 1`] = `"any[]"`;
 
+exports[`inc f(3, 4) 1`] = `"number"`;
+
 exports[`indexBy R.indexBy(R.prop('id'))(list) 1`] = `"Dictionary<{}>"`;
 
 exports[`indexBy R.indexBy(R.prop('id'), list) 1`] = `"Dictionary<{}>"`;
@@ -867,9 +858,15 @@ exports[`partial greetMsJaneJones('Hello') 1`] = `"string"`;
 
 exports[`partial sayHelloToMs('Jane', 'Jones') 1`] = `"string"`;
 
-exports[`partition, contains R.partition((x: number) => x > 2)([1, 2, 3, 4]) 1`] = `"[number[], number[]]"`;
+exports[`partition R.partition((x: number) => x > 2)([1, 2, 3, 4]) 1`] = `"[number[], number[]]"`;
 
-exports[`partition, contains R.partition((x: number) => x > 2, [1, 2, 3, 4]) 1`] = `"[number[], number[]]"`;
+exports[`partition R.partition((x: number) => x > 2, [1, 2, 3, 4]) 1`] = `"[number[], number[]]"`;
+
+exports[`partition R.partition(R.contains('s'))(['sss', 'ttt', 'foo', 'bars']) 1`] = `"[(string[] | ArrayLike<string>)[], (string[] | ArrayLike<string>)[]]"`;
+
+exports[`partition R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']) 1`] = `"[(string[] | ArrayLike<string>)[], (string[] | ArrayLike<string>)[]]"`;
+
+exports[`partition R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}) 1`] = `"[Record<string, string[] | ArrayLike<string>>, Record<string, string[] | ArrayLike<string>>]"`;
 
 exports[`path R.path(['a', 'b'])<number>({a: {b: 2}}) 1`] = `"number"`;
 
@@ -928,8 +925,6 @@ exports[`pipe R.pipe(double, double, shout)(10) 1`] = `"string"`;
 exports[`pipe f(3, 4) 1`] = `"number"`;
 
 exports[`pipe squareThenDoubleThenTriple(5) 1`] = `"number"`;
-
-exports[`pipe, inc, negate f(3, 4) 1`] = `"number"`;
 
 exports[`pipeP R.pipeP(
         (m: number) => Promise.resolve(R.multiply(2, m)),
@@ -1258,9 +1253,9 @@ exports[`uniqWith R.uniqWith<string | number>(strEq, [1, '1', 2, 1]) 1`] = `"(st
 
 exports[`unless R.unless(R.gt(R.__, 100), R.multiply(2))(1) 1`] = `"number"`;
 
-exports[`unnest, equals R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6]) 1`] = `"boolean"`;
+exports[`unnest R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6]) 1`] = `"boolean"`;
 
-exports[`unnest, equals R.equals(R.unnest([1, [2], [[3]]]), [1, 2, [3]]) 1`] = `"boolean"`;
+exports[`unnest R.equals(R.unnest([1, [2], [[3]]]), [1, 2, [3]]) 1`] = `"boolean"`;
 
 exports[`until R.until(R.gt(R.__, 100), R.multiply(2))(1) 1`] = `"number"`;
 

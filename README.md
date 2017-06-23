@@ -144,7 +144,7 @@ source version: v0.24.1
 - [x] identical
 - [x] identity
 - [x] ifElse
-- [ ] inc
+- [x] inc
 - [x] indexBy
 - [x] indexOf
 - [x] init
@@ -216,7 +216,7 @@ source version: v0.24.1
 - [x] pair
 - [x] partial
 - [ ] partialRight
-- [ ] partition
+- [x] partition
 - [x] path
 - [x] pathEq
 - [x] pathOr
@@ -294,7 +294,7 @@ source version: v0.24.1
 - [ ] uniqBy
 - [x] uniqWith
 - [x] unless
-- [ ] unnest
+- [x] unnest
 - [x] until
 - [ ] update
 - [ ] useWith
