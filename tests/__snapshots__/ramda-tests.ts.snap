@@ -37,10 +37,6 @@ exports[`addIndex reduceIndexed(objectify, {})(['a', 'b', 'c']) 1`] = `"Record<s
 
 exports[`addIndex reduceIndexed(objectify, {}, ['a', 'b', 'c']) 1`] = `"Record<string, number>"`;
 
-exports[`addIndex, filter, reject R.filter(isEven, [1, 2, 3, 4]) 1`] = `"number[]"`;
-
-exports[`addIndex, filter, reject R.reject(isOdd, [1, 2, 3, 4]) 1`] = `"number[]"`;
-
 exports[`adjust R.adjust(R.add(10))(1)([1, 2, 3]) 1`] = `"number[]"`;
 
 exports[`adjust R.adjust(R.add(10), 1, [1, 2, 3]) 1`] = `"number[]"`;
@@ -1153,10 +1149,6 @@ exports[`take R.take(3, [1, 2, 3, 4, 5]) 1`] = `"number[]"`;
 exports[`take takeFive(members) 1`] = `"string[]"`;
 
 exports[`take takeThree('Example') 1`] = `"string"`;
-
-exports[`take, takeWhile R.take(2, [1, 2, 3, 4]) 1`] = `"number[]"`;
-
-exports[`take, takeWhile R.takeWhile(isNotFour, [1, 2, 3, 4]) 1`] = `"number[]"`;
 
 exports[`takeLast R.takeLast(1, ['foo', 'bar', 'baz']) 1`] = `"string[]"`;
 

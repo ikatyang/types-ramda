@@ -2518,8 +2518,7 @@ import * as R from 'ramda';
 
 // @dts-jest:group takeWhile
 {
-  const isNotFour = (x: number) =>
-    !(x === 4);
+  const isNotFour = (x: number) => !(x === 4);
   // @dts-jest:pass
   R.takeWhile(isNotFour, [1, 2, 3, 4]); // => [1, 2, 3]
   // @dts-jest:pass
@@ -2831,61 +2830,6 @@ import * as R from 'ramda';
 }
 
 // ---------------------------------------------------------------------
-
-// @dts-jest:group:skip TODO: pipeK
-
-// forEach
-// (() => {
-//   let printXPlusFive = function(x, i) { console.log(i + 5); };
-//   R.forEach.idx(printXPlusFive, [{name: 1}, {name: 2}, {name: 3}]);
-// }
-
-// @dts-jest:group:skip addIndex, filter, reject
-{
-  const isEven = (n: number) =>
-    n % 2 === 0;
-  const filterIndexed = R.addIndex(R.filter);
-
-  // @dts-jest:pass
-  R.filter(isEven, [1, 2, 3, 4]); // => [2, 4]
-
-  const lastTwo = (val: number, idx: number, list: number[]) =>
-    list.length - idx <= 2;
-  // @dts-jest:show number[]
-  filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [0, 9]
-
-  const isOdd = (n: number) =>
-    n % 2 === 1;
-  // @dts-jest:pass
-  R.reject(isOdd, [1, 2, 3, 4]); // => [2, 4]
-}
-
-// @dts-jest:group:skip take, takeWhile
-{
-  const isNotFour = (x: number) =>
-    !(x === 4);
-  // @dts-jest:pass
-  R.takeWhile(isNotFour, [1, 2, 3, 4]); // => [1, 2, 3]
-  // @dts-jest:pass
-  R.take(2, [1, 2, 3, 4]); // => [1, 2]
-}
-
-/*****************************************************************
- * Function category
- */
-
-/*********************
- * List category
- ********************/
-
-// @dts-jest:group:skip find, propEq
-{
-  const xs = [{a: 1}, {a: 2}, {a: 3}];
-  // @dts-jest:show Dictionary<number>
-  R.find(R.propEq('a', 2))(xs); // => {a: 2}
-  // @dts-jest:show undefined
-  R.find(R.propEq('a', 4))(xs); // => undefined
-}
 
 // @dts-jest:group:skip lensIndex, set, view, over
 {
