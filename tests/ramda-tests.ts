@@ -2183,28 +2183,18 @@ import * as R from 'ramda';
   // }
 }
 
-// @dts-jest:group:skip reduceRight
+// @dts-jest:group reduceRight
 {
   interface KeyValuePair<K, V> extends Array<K | V> { 0: K; 1: V; }
   type Pair = KeyValuePair<string, number>;
   const pairs: Pair[] = [['a', 1], ['b', 2], ['c', 3]];
-  const flattenPairs = (pair: Pair, acc: Pair[]): Pair[] =>
-    acc.concat(pair);
-  // @dts-jest:show Array<string[]|string>
+  const flattenPairs = (pair: Pair, acc: Pair[]): Pair[] => acc.concat(pair);
+  // @dts-jest:pass
   R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
-  // @dts-jest:show Array<string[]|string>
+  // @dts-jest:pass
   R.reduceRight(flattenPairs, [])(pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
-  // @dts-jest:show Array<string[]|string>
+  // @dts-jest:pass
   R.reduceRight(flattenPairs)([], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
-}
-
-// @dts-jest:group:skip reduceRight
-{
-  const pairs = [['a', 1], ['b', 2], ['c', 3]];
-  const flattenPairs = (acc: [string, number], pair: [string, number]) =>
-    acc.concat(pair);
-  // @dts-jest:show Array<number|string>
-  R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 }
 
 // @dts-jest:group reduceWhile
@@ -2226,16 +2216,12 @@ import * as R from 'ramda';
   R.reject(isOdd, [1, 2, 3, 4]); // => [2, 4]
   // @dts-jest:pass
   R.reject(isOdd)([1, 2, 3, 4]); // => [2, 4]
-}
 
-// @dts-jest:group:skip rejectIndexed
-{
-  const lastTwo = (val: number, idx: number, list: number[]) =>
-    list.length - idx <= 2;
-  const rejectIndexed = R.addIndex(R.reject);
-  // @dts-jest:show number[]
+  const lastTwo = (val: number, idx: number, list: number[]) => list.length - idx <= 2;
+  const rejectIndexed = R.addIndex<boolean, number[], number[]>(R.reject<'11', 'list'>());
+  // @dts-jest:pass
   rejectIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [8, 6, 7, 5, 3]
-  // @dts-jest:show number[]
+  // @dts-jest:pass
   rejectIndexed(lastTwo)([8, 6, 7, 5, 3, 0, 9]); // => [8, 6, 7, 5, 3]
 }
 
@@ -2279,7 +2265,7 @@ import * as R from 'ramda';
   R.replace(/foo/g)('bar')('foo foo foo'); // => 'bar bar bar'
 }
 
-// @dts-jest:group:skip reverse
+// @dts-jest:group reverse
 {
   // @dts-jest:pass
   R.reverse([1, 2, 3]); // => [3, 2, 1]
@@ -2287,7 +2273,7 @@ import * as R from 'ramda';
   R.reverse([1, 2]); // => [2, 1]
   // @dts-jest:pass
   R.reverse([1]); // => [1]
-  // @dts-jest:show number[]
+  // @dts-jest:pass
   R.reverse([]); // => []
 }
 
@@ -2330,11 +2316,15 @@ import * as R from 'ramda';
   R.sort(diff)([4, 2, 7, 5]); // => [2, 4, 5, 7]
 }
 
-// @dts-jest:group:skip sortBy
+// @dts-jest:group sortBy
 {
-  const sortByNameCaseInsensitive = R.sortBy(R.compose(R.toLower, R.prop('name')));
-  const sortByAgeDescending = R.sortBy(R.compose(R.negate, R.prop('age')));
-  const sortByAgeAscending = R.sortBy(R.prop('age'));
+  interface Person {
+    name: string;
+    age: number;
+  }
+  const sortByNameCaseInsensitive = R.sortBy<Person>(R.compose(R.toLower, R.prop('name')));
+  const sortByAgeDescending = R.sortBy<Person>(R.compose(R.negate, R.prop('age')));
+  const sortByAgeAscending = R.sortBy<Person>(R.prop('age'));
   const alice = {
     name: 'ALICE',
     age: 101,
@@ -2348,16 +2338,20 @@ import * as R from 'ramda';
     age: 314.159,
   };
   const people = [clara, bob, alice];
-  // @dts-jest:show { name: string, age: number }[]
+  // @dts-jest:pass
   sortByAgeDescending(people); // => [alice, bob, clara]
-  // @dts-jest:show { name: string, age: number }[]
+  // @dts-jest:pass
   sortByNameCaseInsensitive(people); // => [alice, bob, clara]
-  // @dts-jest:show { name: string, age: number }[]
+  // @dts-jest:pass
   sortByAgeAscending(people); // => [bob, alice, clara]
 }
 
-// @dts-jest:group:skip sortWith
+// @dts-jest:group sortWith
 {
+  interface Person {
+    name: string;
+    age: number;
+  }
   const alice = {
     name: 'alice',
     age: 40,
@@ -2371,19 +2365,19 @@ import * as R from 'ramda';
     age: 40,
   };
   const people = [clara, bob, alice];
-  // @dts-jest:show typeof people
-  R.sortWith(
+  // @dts-jest:pass
+  R.sortWith<Person>(
     [
       R.descend(R.prop('age')),
       R.ascend(R.prop('name')),
     ],
     people,
   );
-  const ageNameSort = R.sortWith([
+  const ageNameSort = R.sortWith<Person>([
     R.descend(R.prop('age')),
     R.ascend(R.prop('name')),
   ]);
-  // @dts-jest:show typeof people
+  // @dts-jest:pass
   ageNameSort(people);
   // => [alice, clara, bob]
 }
@@ -2408,13 +2402,13 @@ import * as R from 'ramda';
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]); // => [[1], [2, 3, 1, 2, 3]]
 }
 
-// @dts-jest:group:skip subtract
+// @dts-jest:group subtract
 {
   // @dts-jest:pass
   R.subtract(10, 8); // => 2
 
-  const minus5 = R.flip(R.subtract)(5);
-  // @dts-jest:show number
+  const minus5 = R.flip(R.subtract<'11'>())(5);
+  // @dts-jest:pass
   minus5(17); // => 12
 
   const complementaryAngle = R.subtract(90);
@@ -2438,17 +2432,20 @@ import * as R from 'ramda';
   R.symmetricDifference([7, 6, 5, 4, 3])([1, 2, 3, 4]); // => [7,6,5,1,2]
 }
 
-// @dts-jest:group:skip symmetricDifferenceWith
+// @dts-jest:group symmetricDifferenceWith
 {
+  interface A {
+    a: number;
+  }
   const eqA = R.eqBy(R.prop('a'));
   const l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}];
   const l2 = [{a: 3}, {a: 4}, {a: 5}, {a: 6}];
-  // @dts-jest:show { a: number }[]
-  R.symmetricDifferenceWith(eqA, l1, l2); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
-  // @dts-jest:show { a: number }[]
-  R.symmetricDifferenceWith(eqA)(l1, l2); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
-  // @dts-jest:show (a: any[]) => any[]
-  R.symmetricDifferenceWith(eqA)(l1); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
+  // @dts-jest:pass
+  R.symmetricDifferenceWith<A>(eqA, l1, l2); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
+  // @dts-jest:pass
+  R.symmetricDifferenceWith<A>(eqA)(l1, l2); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
+  // @dts-jest:pass
+  R.symmetricDifferenceWith<A>(eqA)(l1); // => [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
 }
 
 // @dts-jest:group tail
@@ -2542,22 +2539,22 @@ import * as R from 'ramda';
   R.times(R.identity)(5); // => [0, 1, 2, 3, 4]
 }
 
-// @dts-jest:group:skip toPairs
+// @dts-jest:group toPairs
 {
-  // @dts-jest:show [string, number][]
+  // @dts-jest:pass
   R.toPairs({a: 1, b: 2, c: 3}); // => [['a', 1], ['b', 2], ['c', 3]]
 }
 
-// @dts-jest:group:skip toPairsIn
+// @dts-jest:group toPairsIn
 {
   class F {
     public x = 'X';
     public y = 'Y';
   }
   const f = new F();
-  // @dts-jest:show [string, string][]
+  // @dts-jest:pass
   R.toPairsIn(f); // => [['x','X'], ['y','Y']]
-  // @dts-jest:show [string, string][]
+  // @dts-jest:pass
   R.toPairsIn(f); // => [['x','X'], ['y','Y']]
 }
 
@@ -2603,35 +2600,35 @@ import * as R from 'ramda';
   R.transduce(transducer)(fn, [] as number[], numbers); // => [2, 3]
 }
 
-// @dts-jest:group:skip transpose
+// @dts-jest:group transpose
 {
-  // @dts-jest:show any[][]
+  // @dts-jest:pass
   R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]); // => [[1, 2, 3], ['a', 'b', 'c']]
-  // @dts-jest:show any[][]
-  R.transpose([[1, 2, 3], ['a', 'b', 'c']]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
+  // @dts-jest:pass
+  R.transpose<string | number>([[1, 2, 3], ['a', 'b', 'c']]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
   // @dts-jest:pass
   R.transpose([[10, 11], [20], [], [30, 31, 32]]); // => [[10, 20, 30], [11, 31], [32]]
 }
 
-// @dts-jest:group:skip tryCatch
+// @dts-jest:group tryCatch
 {
-  // @dts-jest:show boolean
-  R.tryCatch<boolean>(R.prop('x'), R.F)({x: true}); // => true
-  // @dts-jest:show boolean
-  R.tryCatch<boolean>(R.prop('x'), R.F)(null); // => false
+  // @dts-jest:pass
+  R.tryCatch(R.prop('x'), R.F)({x: true}); // => true
+  // @dts-jest:pass
+  R.tryCatch<any>(R.prop('x'), R.F)(null); // => false
 }
 
-// @dts-jest:group:skip type
+// @dts-jest:group type
 {
   // @dts-jest:pass
   R.type({}); // => 'Object'
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.type(1); // => 'Number'
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.type(false); // => 'Boolean'
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.type('s'); // => 'String'
-  // @dts-jest:show string
+  // @dts-jest:pass
   R.type(null); // => 'Null'
   // @dts-jest:pass
   R.type([]); // => 'Array'
@@ -2639,9 +2636,9 @@ import * as R from 'ramda';
   R.type(/[A-z]/); // => 'RegExp'
 }
 
-// @dts-jest:group:skip unapply
+// @dts-jest:group unapply
 {
-  // @dts-jest:show (...args: string[])=>string
+  // @dts-jest:pass
   R.unapply(JSON.stringify);
   // @dts-jest:pass
   R.unapply(JSON.stringify)(1, 2, 3); // => '[1,2,3]'
@@ -2655,55 +2652,51 @@ import * as R from 'ramda';
   uncurriedAddFour(1, 2, 3, 4); // => 10
 }
 
-// @dts-jest:group:skip unfold
+// @dts-jest:group unfold
 {
-  const f = (n: number) => n > 50 ? false : [-n, n + 10];
-  // @dts-jest:show number[]
+  const f = (n: number) => n > 50 ? false : [-n, n + 10] as [number, number];
+  // @dts-jest:pass
   R.unfold(f, 10); // => [-10, -20, -30, -40, -50]
   const b = R.unfold(f); // => [-10, -20, -30, -40, -50]
-  // @dts-jest:show number[]
+  // @dts-jest:pass
   b(10);
 }
 
-// @dts-jest:group:skip uniq
+// @dts-jest:group uniq
 {
   // @dts-jest:pass
   R.uniq([1, 1, 2, 1]); // => [1, 2]
-  // @dts-jest:show Object[]
+  // @dts-jest:pass
   R.uniq([{}, {}]); // => [{}, {}]
-  // @dts-jest:show any[]
+  // @dts-jest:pass
   R.uniq([1, '1']); // => [1, '1']
 }
 
-// @dts-jest:group:skip uniqWith
+// @dts-jest:group uniqWith
 {
   const strEq = (a: any, b: any) => String(a) === String(b);
-  // @dts-jest:show number[]
-  R.uniqWith(strEq, [1, '1', 2, 1]); // => [1, 2]
-  // @dts-jest:show number[]
-  R.uniqWith(strEq)([1, '1', 2, 1]); // => [1, 2]
-  // @dts-jest:show Object[]
-  R.uniqWith(strEq)([{}, {}]); // => [{}]
-  // @dts-jest:show number[]
-  R.uniqWith(strEq)([1, '1', 1]); // => [1]
-  // @dts-jest:show string[]
-  R.uniqWith(strEq)(['1', 1, 1]); // => ['1']
+  // @dts-jest:pass
+  R.uniqWith<string | number>(strEq, [1, '1', 2, 1]); // => [1, 2]
+  // @dts-jest:pass
+  R.uniqWith<string | number>(strEq)([1, '1', 2, 1]); // => [1, 2]
+  // @dts-jest:pass
+  R.uniqWith<{}>(strEq)([{}, {}]); // => [{}]
+  // @dts-jest:pass
+  R.uniqWith<string | number>(strEq)([1, '1', 1]); // => [1]
+  // @dts-jest:pass
+  R.uniqWith<string | number>(strEq)(['1', 1, 1]); // => ['1']
 }
 
-// @dts-jest:group:skip unless
+// @dts-jest:group unless
 {
-  // @dts-jest:show <a>(v: a|[a]) => [a]
-  const coerceArray = R.unless(R.isArrayLike, R.of);
-  // @dts-jest:show number[]
-  coerceArray([1, 2, 3]); // => [1, 2, 3]
-  // @dts-jest:show number[]
-  coerceArray(1); // => [1]
+  // @dts-jest:pass
+  R.unless(R.gt(R.__, 100), R.multiply(2))(1); // => 2
 }
 
-// @dts-jest:group:skip until
+// @dts-jest:group until
 {
-  // @dts-jest:show number
-  R.until(R.flip(R.gt)(100), R.multiply(2))(1); // => 128
+  // @dts-jest:pass
+  R.until(R.gt(R.__, 100), R.multiply(2))(1); // => 128
 }
 
 // @dts-jest:group values
@@ -2723,44 +2716,36 @@ import * as R from 'ramda';
   R.valuesIn(f); // => ['X', 'Y']
 }
 
-// @dts-jest:group:skip where
+// @dts-jest:group where
 {
-  const spec = {x: 2};
-  // @dts-jest:show boolean
+  const spec = {x: R.equals(2)};
+  // @dts-jest:pass
   R.where(spec, {w: 10, x: 2, y: 300}); // => true
-  // @dts-jest:show boolean
+  // @dts-jest:pass
   R.where(spec, {x: 1, y: 'moo', z: true}); // => false
-  // @dts-jest:show boolean
+  // @dts-jest:pass
   R.where(spec)({w: 10, x: 2, y: 300}); // => true
-  // @dts-jest:show boolean
-  R.where(spec)({x: 1, y: 'moo', z: true}); // => false
+  // @dts-jest:pass
+  R.where<any>(spec)({x: 1, y: 'moo', z: true}); // => false
 
-  // There's no way to represent the below functionality in typescript
-  // per http: //stackoverflow.com/a/29803848/632495
-  // will need a work around.
-
-  interface XY {
-    x: number;
-    y: number;
-  }
-
-  const spec2 = {x(val: number, obj: XY) { return val + obj.y > 10; }};
-  // @dts-jest:show boolean
+  const spec2 = {x: (val: number) => val > 10};
+  // @dts-jest:pass
   R.where(spec2, {x: 2, y: 7}); // => false
-  // @dts-jest:show boolean
+  // @dts-jest:pass
   R.where(spec2, {x: 3, y: 8}); // => true
 
   const xs = [{x: 2, y: 1}, {x: 10, y: 2}, {x: 8, y: 3}, {x: 10, y: 4}];
-  // @dts-jest:show { x: number, y: number }[]
-  R.filter(R.where({x: 10}), xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
-  // @dts-jest:show { x: number, y: number }[]
-  R.filter(R.where({x: 10}))(xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
+  // @dts-jest:pass
+  R.filter(R.where({x: R.equals(10)}), xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
+  // @dts-jest:pass
+  R.filter(R.where({x: R.equals(10)}))(xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
 }
 
-// @dts-jest:group:skip whereEq
+// @dts-jest:group whereEq
 {
-  // @dts-jest:show (v: Object) => Boolean
   const pred = R.whereEq({a: 1, b: 2});
+  // @dts-jest:pass
+  pred;
   // @dts-jest:pass
   pred({a: 1}); // => false
   // @dts-jest:pass
@@ -2795,24 +2780,22 @@ import * as R from 'ramda';
   R.zip([1, 2, 3])(['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
 }
 
-// @dts-jest:group:skip zipObj
+// @dts-jest:group zipObj
 {
-  // @dts-jest:show Dictionary<number>
+  // @dts-jest:pass
   R.zipObj(['a', 'b', 'c'], [1, 2, 3]); // => {a: 1, b: 2, c: 3}
-  // @dts-jest:show Dictionary<number>
+  // @dts-jest:pass
   R.zipObj(['a', 'b', 'c'])([1, 2, 3]); // => {a: 1, b: 2, c: 3}
 }
 
-// @dts-jest:group:skip zipWith
+// @dts-jest:group zipWith
 {
-  const f = (x: number, y: string) => {
-  // ...
-  };
-  // @dts-jest:show any[]
+  const f = (x: number, y: string) => { /* ... */ };
+  // @dts-jest:pass
   R.zipWith(f, [1, 2, 3], ['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
-  // @dts-jest:show any[]
+  // @dts-jest:pass
   R.zipWith(f)([1, 2, 3], ['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
-  // @dts-jest:show any[]
+  // @dts-jest:pass
   R.zipWith(f, [1, 2, 3])(['a', 'b', 'c']); // => [f(1, 'a'), f(2, 'b'), f(3, 'c')]
 }
 

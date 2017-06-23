@@ -1014,6 +1014,12 @@ exports[`reduce R.reduce(add, 10, numbers) 2`] = `"number"`;
 
 exports[`reduceBy namesByGrade(students) 1`] = `"Partial<Record<\\"F\\" | \\"D\\" | \\"C\\" | \\"B\\" | \\"A\\", string[]>>"`;
 
+exports[`reduceRight R.reduceRight(flattenPairs)([], pairs) 1`] = `"KeyValuePair<string, number>[]"`;
+
+exports[`reduceRight R.reduceRight(flattenPairs, [])(pairs) 1`] = `"KeyValuePair<string, number>[]"`;
+
+exports[`reduceRight R.reduceRight(flattenPairs, [], pairs) 1`] = `"KeyValuePair<string, number>[]"`;
+
 exports[`reduceWhile R.reduceWhile(isOdd, R.add, 0, xs) 1`] = `"number"`;
 
 exports[`reduceWhile R.reduceWhile(isOdd, R.add, 111, ys) 1`] = `"number"`;
@@ -1021,6 +1027,10 @@ exports[`reduceWhile R.reduceWhile(isOdd, R.add, 111, ys) 1`] = `"number"`;
 exports[`reject R.reject(isOdd)([1, 2, 3, 4]) 1`] = `"number[]"`;
 
 exports[`reject R.reject(isOdd, [1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`reject rejectIndexed(lastTwo)([8, 6, 7, 5, 3, 0, 9]) 1`] = `"number[]"`;
+
+exports[`reject rejectIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]) 1`] = `"number[]"`;
 
 exports[`remove R.remove(2)(3, [1, 2, 3, 4, 5, 6, 7, 8]) 1`] = `"number[]"`;
 
@@ -1045,6 +1055,8 @@ exports[`replace R.replace(/foo/g)('bar')('foo foo foo') 1`] = `"string"`;
 exports[`replace R.replace(/foo/g, 'bar')('foo foo foo') 1`] = `"string"`;
 
 exports[`replace R.replace(/foo/g, 'bar', 'foo foo foo') 1`] = `"string"`;
+
+exports[`reverse R.reverse([]) 1`] = `"never[]"`;
 
 exports[`reverse R.reverse([1, 2, 3]) 1`] = `"number[]"`;
 
@@ -1074,6 +1086,22 @@ exports[`sort R.sort(diff)([4, 2, 7, 5]) 1`] = `"number[]"`;
 
 exports[`sort R.sort(diff, [4, 2, 7, 5]) 1`] = `"number[]"`;
 
+exports[`sortBy sortByAgeAscending(people) 1`] = `"Person[]"`;
+
+exports[`sortBy sortByAgeDescending(people) 1`] = `"Person[]"`;
+
+exports[`sortBy sortByNameCaseInsensitive(people) 1`] = `"Person[]"`;
+
+exports[`sortWith R.sortWith<Person>(
+        [
+          R.descend(R.prop('age')),
+          R.ascend(R.prop('name')),
+        ],
+        people,
+      ) 1`] = `"Person[]"`;
+
+exports[`sortWith ageNameSort(people) 1`] = `"Person[]"`;
+
 exports[`splitAt R.splitAt(-1, 'foobar') 1`] = `"string[]"`;
 
 exports[`splitAt R.splitAt(1)([1, 2, 3]) 1`] = `"number[][]"`;
@@ -1092,11 +1120,19 @@ exports[`subtract complementaryAngle(30) 1`] = `"number"`;
 
 exports[`subtract complementaryAngle(72) 1`] = `"number"`;
 
+exports[`subtract minus5(17) 1`] = `"number"`;
+
 exports[`sum R.sum([2, 4, 6, 8, 100, 1]) 1`] = `"number"`;
 
 exports[`symmetricDifference R.symmetricDifference([1, 2, 3, 4], [7, 6, 5, 4, 3]) 1`] = `"number[]"`;
 
 exports[`symmetricDifference R.symmetricDifference([7, 6, 5, 4, 3])([1, 2, 3, 4]) 1`] = `"number[]"`;
+
+exports[`symmetricDifferenceWith R.symmetricDifferenceWith<A>(eqA)(l1) 1`] = `"(b: A[] | ArrayLike<A>) => A[]"`;
+
+exports[`symmetricDifferenceWith R.symmetricDifferenceWith<A>(eqA)(l1, l2) 1`] = `"A[]"`;
+
+exports[`symmetricDifferenceWith R.symmetricDifferenceWith<A>(eqA, l1, l2) 1`] = `"A[]"`;
 
 exports[`tail R.tail(['fi', 'fo', 'fum']) 1`] = `"string[]"`;
 
@@ -1142,6 +1178,12 @@ exports[`times R.times(R.identity, 5) 1`] = `"number[]"`;
 
 exports[`times R.times(i, 5) 1`] = `"number[]"`;
 
+exports[`toPairs R.toPairs({a: 1, b: 2, c: 3}) 1`] = `"[\\"a\\" | \\"b\\" | \\"c\\", number][]"`;
+
+exports[`toPairsIn R.toPairsIn(f) 1`] = `"[\\"x\\" | \\"y\\", string][]"`;
+
+exports[`toPairsIn R.toPairsIn(f) 2`] = `"[\\"x\\" | \\"y\\", string][]"`;
+
 exports[`toString R.toString('abc') 1`] = `"string"`;
 
 exports[`toString R.toString([1, 2, 3]) 1`] = `"string"`;
@@ -1154,13 +1196,31 @@ exports[`toString R.toString(new Date('2001-02-03T04: 05: 06Z')) 1`] = `"string"
 
 exports[`toString R.toString(new Point(1, 2)) 1`] = `"string"`;
 
+exports[`transpose R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]) 1`] = `"(string | number)[][]"`;
+
 exports[`transpose R.transpose([[10, 11], [20], [], [30, 31, 32]]) 1`] = `"number[][]"`;
+
+exports[`transpose R.transpose<string | number>([[1, 2, 3], ['a', 'b', 'c']]) 1`] = `"(string | number)[][]"`;
+
+exports[`tryCatch R.tryCatch(R.prop('x'), R.F)({x: true}) 1`] = `"boolean"`;
+
+exports[`tryCatch R.tryCatch<any>(R.prop('x'), R.F)(null) 1`] = `"any"`;
+
+exports[`type R.type('s') 1`] = `"\\"String\\""`;
 
 exports[`type R.type(/[A-z]/) 1`] = `"string"`;
 
 exports[`type R.type([]) 1`] = `"string"`;
 
 exports[`type R.type({}) 1`] = `"string"`;
+
+exports[`type R.type(1) 1`] = `"\\"Number\\""`;
+
+exports[`type R.type(false) 1`] = `"\\"Boolean\\""`;
+
+exports[`type R.type(null) 1`] = `"\\"Null\\""`;
+
+exports[`unapply R.unapply(JSON.stringify) 1`] = `"(...args: any[]) => string"`;
 
 exports[`unapply R.unapply(JSON.stringify)(1, 2, 3) 1`] = `"string"`;
 
@@ -1196,17 +1256,57 @@ exports[`unary, binary, nAry inc(2) 1`] = `"number"`;
 
 exports[`uncurryN uncurriedAddFour(1, 2, 3, 4) 1`] = `"number"`;
 
+exports[`unfold R.unfold(f, 10) 1`] = `"number[]"`;
+
+exports[`unfold b(10) 1`] = `"number[]"`;
+
+exports[`uniq R.uniq([{}, {}]) 1`] = `"{}[]"`;
+
+exports[`uniq R.uniq([1, '1']) 1`] = `"(string | number)[]"`;
+
 exports[`uniq R.uniq([1, 1, 2, 1]) 1`] = `"number[]"`;
+
+exports[`uniqWith R.uniqWith<{}>(strEq)([{}, {}]) 1`] = `"{}[]"`;
+
+exports[`uniqWith R.uniqWith<string | number>(strEq)(['1', 1, 1]) 1`] = `"(string | number)[]"`;
+
+exports[`uniqWith R.uniqWith<string | number>(strEq)([1, '1', 1]) 1`] = `"(string | number)[]"`;
+
+exports[`uniqWith R.uniqWith<string | number>(strEq)([1, '1', 2, 1]) 1`] = `"(string | number)[]"`;
+
+exports[`uniqWith R.uniqWith<string | number>(strEq, [1, '1', 2, 1]) 1`] = `"(string | number)[]"`;
+
+exports[`unless R.unless(R.gt(R.__, 100), R.multiply(2))(1) 1`] = `"number"`;
 
 exports[`unnest, equals R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6]) 1`] = `"boolean"`;
 
 exports[`unnest, equals R.equals(R.unnest([1, [2], [[3]]]), [1, 2, [3]]) 1`] = `"boolean"`;
 
+exports[`until R.until(R.gt(R.__, 100), R.multiply(2))(1) 1`] = `"number"`;
+
 exports[`values R.values({a: 1, b: 2, c: 3}) 1`] = `"number[]"`;
 
 exports[`valuesIn R.valuesIn(f) 1`] = `"string[]"`;
 
+exports[`where R.filter(R.where({x: R.equals(10)}))(xs) 1`] = `"Dictionary<number>[]"`;
+
+exports[`where R.filter(R.where({x: R.equals(10)}), xs) 1`] = `"Dictionary<number>[]"`;
+
+exports[`where R.where(spec)({w: 10, x: 2, y: 300}) 1`] = `"boolean"`;
+
+exports[`where R.where(spec, {w: 10, x: 2, y: 300}) 1`] = `"boolean"`;
+
+exports[`where R.where(spec, {x: 1, y: 'moo', z: true}) 1`] = `"boolean"`;
+
+exports[`where R.where(spec2, {x: 2, y: 7}) 1`] = `"boolean"`;
+
+exports[`where R.where(spec2, {x: 3, y: 8}) 1`] = `"boolean"`;
+
+exports[`where R.where<any>(spec)({x: 1, y: 'moo', z: true}) 1`] = `"boolean"`;
+
 exports[`whereEq R.whereEq({a: 'one'}, {a: 'one'}) 1`] = `"boolean"`;
+
+exports[`whereEq pred 1`] = `"(object: Dictionary<number>) => boolean"`;
 
 exports[`whereEq pred({a: 1, b: 1}) 1`] = `"boolean"`;
 
@@ -1225,3 +1325,13 @@ exports[`xprod R.xprod([1, 2], ['a', 'b']) 1`] = `"[number, string][]"`;
 exports[`zip R.zip([1, 2, 3])(['a', 'b', 'c']) 1`] = `"[number, string][]"`;
 
 exports[`zip R.zip([1, 2, 3], ['a', 'b', 'c']) 1`] = `"[number, string][]"`;
+
+exports[`zipObj R.zipObj(['a', 'b', 'c'])([1, 2, 3]) 1`] = `"Record<\\"a\\" | \\"b\\" | \\"c\\", number>"`;
+
+exports[`zipObj R.zipObj(['a', 'b', 'c'], [1, 2, 3]) 1`] = `"Record<\\"a\\" | \\"b\\" | \\"c\\", number>"`;
+
+exports[`zipWith R.zipWith(f)([1, 2, 3], ['a', 'b', 'c']) 1`] = `"void[]"`;
+
+exports[`zipWith R.zipWith(f, [1, 2, 3])(['a', 'b', 'c']) 1`] = `"void[]"`;
+
+exports[`zipWith R.zipWith(f, [1, 2, 3], ['a', 'b', 'c']) 1`] = `"void[]"`;

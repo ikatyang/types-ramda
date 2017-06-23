@@ -241,29 +241,29 @@ source version: v0.24.1
 - [x] reduce
 - [x] reduceBy
 - [ ] reduced
-- [ ] reduceRight
+- [x] reduceRight
 - [x] reduceWhile
 - [x] reject
 - [x] remove
 - [x] repeat
 - [x] replace
-- [ ] reverse
+- [x] reverse
 - [x] scan
 - [ ] sequence
 - [ ] set
 - [x] slice
 - [x] sort
-- [ ] sortBy
-- [ ] sortWith
+- [x] sortBy
+- [x] sortWith
 - [ ] split
 - [x] splitAt
 - [ ] splitEvery
 - [x] splitWhen
 - [ ] startsWith
-- [ ] subtract
+- [x] subtract
 - [x] sum
 - [x] symmetricDifference
-- [ ] symmetricDifferenceWith
+- [x] symmetricDifferenceWith
 - [ ] T
 - [x] tail
 - [x] take
@@ -274,41 +274,41 @@ source version: v0.24.1
 - [x] test
 - [x] times
 - [ ] toLower
-- [ ] toPairs
-- [ ] toPairsIn
+- [x] toPairs
+- [x] toPairsIn
 - [x] toString
 - [ ] toUpper
 - [ ] transduce
-- [ ] transpose
+- [x] transpose
 - [ ] traverse
 - [ ] trim
-- [ ] tryCatch
-- [ ] type
-- [ ] unapply
+- [x] tryCatch
+- [x] type
+- [x] unapply
 - [ ] unary
 - [x] uncurryN
-- [ ] unfold
+- [x] unfold
 - [ ] union
 - [ ] unionWith
-- [ ] uniq
+- [x] uniq
 - [ ] uniqBy
-- [ ] uniqWith
-- [ ] unless
+- [x] uniqWith
+- [x] unless
 - [ ] unnest
-- [ ] until
+- [x] until
 - [ ] update
 - [ ] useWith
 - [x] values
 - [x] valuesIn
 - [ ] view
 - [ ] when
-- [ ] where
-- [ ] whereEq
+- [x] where
+- [x] whereEq
 - [x] without
 - [x] xprod
 - [x] zip
-- [ ] zipObj
-- [ ] zipWith
+- [x] zipObj
+- [x] zipWith
 
 ## Related
 
