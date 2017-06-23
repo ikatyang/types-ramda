@@ -195,9 +195,9 @@ exports[`compose g([1, 2, 10, 13]) 1`] = `"boolean"`;
 
 exports[`compose gn('Hello', 4, 'world') 1`] = `"number"`;
 
-exports[`composeP R.composeP(lookupFollowers, lookupUser) 1`] = `"(v1: string) => PromiseLike<{}>"`;
+exports[`composeP R.composeP(lookupFollowers, lookupUser) 1`] = `"(v1: string) => PromiseLike<string[]>"`;
 
-exports[`composeP R.composeP<string, User, string[]>(lookupFollowers, lookupUser) 1`] = `"(v1: string) => PromiseLike<string[]>"`;
+exports[`composeP R.composeP(lookupFollowers, lookupUser)('JOE') 1`] = `"PromiseLike<string[]>"`;
 
 exports[`concat R.concat('ABC')('DEF') 1`] = `"string"`;
 
@@ -924,6 +924,11 @@ exports[`pipe f(3, 4) 1`] = `"number"`;
 exports[`pipe squareThenDoubleThenTriple(5) 1`] = `"number"`;
 
 exports[`pipe, inc, negate f(3, 4) 1`] = `"number"`;
+
+exports[`pipeP R.pipeP(
+        (m: number) => Promise.resolve(R.multiply(2, m)),
+        (m: number) => Promise.resolve(m / 2),
+      )(10) 1`] = `"PromiseLike<number>"`;
 
 exports[`pluck R.pluck('a')([{a: 1}, {a: 2}]) 1`] = `"number[]"`;
 

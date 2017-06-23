@@ -444,7 +444,7 @@ import * as R from 'ramda';
   // @dts-jest:pass
   R.composeP(lookupFollowers, lookupUser);
   // @dts-jest:pass
-  R.composeP<string, User, string[]>(lookupFollowers, lookupUser);
+  R.composeP(lookupFollowers, lookupUser)('JOE');
 }
 
 // @dts-jest:group concat
@@ -1951,13 +1951,12 @@ import * as R from 'ramda';
   }
 }
 
-// @dts-jest:group:skip pipeP
+// @dts-jest:group pipeP
 {
-  // @dts-jest:show Promise<number>
+  // @dts-jest:pass
   R.pipeP(
     (m: number) => Promise.resolve(R.multiply(2, m)),
     (m: number) => Promise.resolve(m / 2),
-    R.multiply(2),
   )(10);
 }
 

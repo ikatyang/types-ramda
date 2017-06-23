@@ -226,7 +226,7 @@ source version: v0.24.1
 - [x] pickBy
 - [x] pipe
 - [ ] pipeK
-- [ ] pipeP
+- [x] pipeP
 - [ ] pluck
 - [x] prepend
 - [x] product
