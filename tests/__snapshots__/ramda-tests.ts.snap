@@ -944,7 +944,11 @@ exports[`prepend R.prepend('fee', ['fi', 'fo', 'fum']) 1`] = `"string[]"`;
 
 exports[`product R.product([2, 4, 6, 8, 100, 1]) 1`] = `"number"`;
 
+exports[`project R.project(['name', 'grade'], kids) 1`] = `"Pick<{ name: string; age: number; hair: string; grade: number; }, \\"name\\" | \\"grade\\">[]"`;
+
 exports[`prop R.prop('x', {x: 100}) 1`] = `"number"`;
+
+exports[`prop R.prop<undefined>('x', {}) 1`] = `"undefined"`;
 
 exports[`propEq R.propEq('a', '1', xs) 1`] = `"boolean"`;
 
@@ -978,9 +982,21 @@ exports[`propIs R.propIs(Number, 'x', {x: 'foo'}) 1`] = `"boolean"`;
 
 exports[`propIs R.propIs(Number, 'x', {x: 1, y: 2}) 1`] = `"boolean"`;
 
+exports[`propOr R.prop('favoriteLibrary', alice) 1`] = `"string | undefined"`;
+
 exports[`propSatisfies R.propSatisfies((x: number) => x > 0, 'x', {x: 1, y: 2}) 1`] = `"boolean"`;
 
+exports[`propSatisfies R.propSatisfies<'x', XY>((x: number) => x > 0)('x')({x: 1, y: 2}) 1`] = `"boolean"`;
+
+exports[`propSatisfies R.propSatisfies<'x', XY>((x: number) => x > 0, 'x')({x: 1, y: 2}) 1`] = `"boolean"`;
+
+exports[`propSatisfies truncate('0123456789ABC') 1`] = `"string"`;
+
+exports[`propSatisfies truncate('12345') 1`] = `"string"`;
+
 exports[`props R.props(['x', 'y'], {x: 1, y: 2}) 1`] = `"number[]"`;
+
+exports[`props R.props<number | undefined>(['c', 'a', 'b'], {b: 2, a: 1}) 1`] = `"(number | undefined)[]"`;
 
 exports[`props fullName({last: 'Bullet-Tooth', age: 33, first: 'Tony'}) 1`] = `"string"`;
 

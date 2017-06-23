@@ -1986,21 +1986,21 @@ import * as R from 'ramda';
   R.product([2, 4, 6, 8, 100, 1]); // => 38400
 }
 
-// @dts-jest:group:skip project
+// @dts-jest:group project
 {
   const abby = {name: 'Abby', age: 7, hair: 'blond', grade: 2};
   const fred = {name: 'Fred', age: 12, hair: 'brown', grade: 7};
   const kids = [abby, fred];
-  // @dts-jest:show { name: string, grade: number }[]
+  // @dts-jest:pass
   R.project(['name', 'grade'], kids); // => [{name: 'Abby', grade: 2}, {name: 'Fred', grade: 7}]
 }
 
-// @dts-jest:group:skip prop
+// @dts-jest:group prop
 {
   // @dts-jest:pass
   R.prop('x', {x: 100}); // => 100
-  // @dts-jest:show:skip Argument of type 'x' is not assignable to parameter of type 'never'.
-  R.prop('x', {}); // => undefined
+  // @dts-jest:pass
+  R.prop<undefined>('x', {}); // => undefined
 }
 
 // @dts-jest:group propEq
@@ -2059,49 +2059,61 @@ import * as R from 'ramda';
   R.propIs(Number, 'x', {}); // => false
 }
 
-// @dts-jest:group:skip propOr
+// @dts-jest:group propOr
 {
-  const alice = {
+  interface Person {
+    name: string;
+    age: number;
+    favoriteLibrary?: string;
+  }
+  const alice: Person = {
     name: 'ALICE',
     age: 101,
   };
-  const favorite = R.prop('favoriteLibrary');
-  const favoriteWithDefault = R.propOr('Ramda', 'favoriteLibrary');
 
-  // @dts-jest:show undefined
-  favorite(alice); // => undefined
-  // @dts-jest:show string
-  favoriteWithDefault(alice); // => 'Ramda'
+  // @dts-jest:pass
+  R.prop('favoriteLibrary', alice); // => undefined
+  // @dts-jest:skip string
+  R.propOr('Ramda', 'favoriteLibrary', alice); // => 'Ramda'
 }
 
-// @dts-jest:group:skip propSatisfies
+// @dts-jest:group propSatisfies
 {
-  const truncate = R.when(
-    R.propSatisfies(R.flip(R.gt)(10), 'length'),
-    R.pipe(R.take(10), R.append('…'), R.join('')),
-    );
-  // @dts-jest:show string
+  const truncate = R.when<string, string>(
+    R.propSatisfies(
+      R.gt(R.__, 10),
+      'length',
+    ),
+    R.pipe(
+      R.take(10),
+      R.append('…'),
+      R.join(''),
+    ),
+  );
+  // @dts-jest:pass
   truncate('12345'); // => '12345'
-  // @dts-jest:show string
+  // @dts-jest:pass
   truncate('0123456789ABC'); // => '0123456789…'
-}
 
-// @dts-jest:group:skip propSatisfies
-{
+  interface XY {
+    x: number;
+    y: number;
+  }
+
   // @dts-jest:pass
   R.propSatisfies((x: number) => x > 0, 'x', {x: 1, y: 2}); // => true
-  // @dts-jest:show boolean
-  R.propSatisfies((x: number) => x > 0, 'x')({x: 1, y: 2}); // => true
-  // @dts-jest:show boolean
-  R.propSatisfies((x: number) => x > 0)('x')({x: 1, y: 2}); // => true
+  // @dts-jest:pass
+  R.propSatisfies<'x', XY>((x: number) => x > 0, 'x')({x: 1, y: 2}); // => true
+  // @dts-jest:pass
+  R.propSatisfies<'x', XY>((x: number) => x > 0)('x')({x: 1, y: 2}); // => true
 }
 
-// @dts-jest:group:skip props
+// @dts-jest:group props
 {
   // @dts-jest:pass
   R.props(['x', 'y'], {x: 1, y: 2}); // => [1, 2]
-  // @dts-jest:show Array<number|undefined>
-  R.props(['c', 'a', 'b'], {b: 2, a: 1}); // => [undefined, 1, 2]
+  // @dts-jest:pass
+  R.props<number | undefined>(['c', 'a', 'b'], {b: 2, a: 1}); // => [undefined, 1, 2]
 
   const fullName = R.compose(R.join(' '), R.props(['first', 'last']));
   // @dts-jest:pass

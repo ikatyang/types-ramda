@@ -230,13 +230,13 @@ source version: v0.24.1
 - [x] pluck
 - [x] prepend
 - [x] product
-- [ ] project
-- [ ] prop
+- [x] project
+- [x] prop
 - [x] propEq
 - [x] propIs
-- [ ] propOr
-- [ ] props
-- [ ] propSatisfies
+- [x] propOr
+- [x] props
+- [x] propSatisfies
 - [x] range
 - [x] reduce
 - [ ] reduceBy
