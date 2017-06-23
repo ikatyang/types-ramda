@@ -855,6 +855,8 @@ exports[`or R.or(false, true) 1`] = `"boolean"`;
 
 exports[`or R.or(null, '') 1`] = `"\\"\\" | null"`;
 
+exports[`over R.over(headLens, R.toUpper, ['a', 'b', 'c']) 1`] = `"string[]"`;
+
 exports[`pair p[0] 1`] = `"\\"foo\\""`;
 
 exports[`pair p[1] 1`] = `"number"`;
@@ -1074,6 +1076,8 @@ exports[`scan R.scan(R.multiply, 1)(numbers) 1`] = `"number[]"`;
 
 exports[`scan R.scan(R.multiply, 1, numbers) 1`] = `"number[]"`;
 
+exports[`set R.set(headLens, 'x', ['a', 'b', 'c']) 1`] = `"string[]"`;
+
 exports[`slice R.slice(2)(5, str) 1`] = `"string"`;
 
 exports[`slice R.slice(2)(5, xs) 1`] = `"number[]"`;
@@ -1263,6 +1267,8 @@ exports[`until R.until(R.gt(R.__, 100), R.multiply(2))(1) 1`] = `"number"`;
 exports[`values R.values({a: 1, b: 2, c: 3}) 1`] = `"number[]"`;
 
 exports[`valuesIn R.valuesIn(f) 1`] = `"string[]"`;
+
+exports[`view R.view(headLens, ['a', 'b', 'c']) 1`] = `"string"`;
 
 exports[`where R.filter(R.where({x: R.equals(10)}))(xs) 1`] = `"Dictionary<number>[]"`;
 

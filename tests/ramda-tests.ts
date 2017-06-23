@@ -1808,6 +1808,13 @@ import * as R from 'ramda';
   R.or(null, ''); // => ''
 }
 
+// @dts-jest:group over
+{
+  const headLens = R.lensIndex<string, string[]>(0);
+  // @dts-jest:pass
+  R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
+}
+
 // @dts-jest:group pair
 {
   R.pair('foo', 'bar'); // => ['foo', 'bar']
@@ -2305,6 +2312,13 @@ import * as R from 'ramda';
   R.scan(R.multiply)(1, numbers); // => [1, 1, 2, 6, 24]
 }
 
+// @dts-jest:group set
+{
+  const headLens = R.lensIndex<string, string[]>(0);
+  // @dts-jest:pass
+  R.set(headLens, 'x', ['a', 'b', 'c']); // => ['x', 'b', 'c']
+}
+
 // @dts-jest:group slice
 {
   const xs = R.range(0, 10);
@@ -2746,6 +2760,13 @@ import * as R from 'ramda';
   R.valuesIn(f); // => ['X', 'Y']
 }
 
+// @dts-jest:group view
+{
+  const headLens = R.lensIndex<string, string[]>(0);
+  // @dts-jest:pass
+  R.view(headLens, ['a', 'b', 'c']); // => 'a'
+}
+
 // @dts-jest:group where
 {
   const spec = {x: R.equals(2)};
@@ -2830,21 +2851,6 @@ import * as R from 'ramda';
 }
 
 // ---------------------------------------------------------------------
-
-// @dts-jest:group:skip lensIndex, set, view, over
-{
-  const headLens = R.lensIndex(0);
-  // @dts-jest:show number
-  headLens([10, 20, 30, 40]); // => 10
-  // @dts-jest:show Array<number|string>
-  headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
-  // @dts-jest:show string
-  R.view(headLens, ['a', 'b', 'c']); // => 'a'
-  // @dts-jest:show string[]
-  R.set(headLens, 'x', ['a', 'b', 'c']); // => ['x', 'b', 'c']
-  // @dts-jest:show string[]
-  R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
-}
 
 // @dts-jest:group:skip partition, contains
 {

@@ -212,7 +212,7 @@ source version: v0.24.1
 - [x] omit
 - [x] once
 - [x] or
-- [ ] over
+- [x] over
 - [x] pair
 - [x] partial
 - [ ] partialRight
@@ -250,7 +250,7 @@ source version: v0.24.1
 - [x] reverse
 - [x] scan
 - [ ] sequence
-- [ ] set
+- [x] set
 - [x] slice
 - [x] sort
 - [x] sortBy
@@ -300,7 +300,7 @@ source version: v0.24.1
 - [ ] useWith
 - [x] values
 - [x] valuesIn
-- [ ] view
+- [x] view
 - [ ] when
 - [x] where
 - [x] whereEq
