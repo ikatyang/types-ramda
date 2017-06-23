@@ -1116,32 +1116,33 @@ import * as R from 'ramda';
   R.intersection([1, 2, 4])([1, 2, 3]); // => [1,2]
 }
 
-// @dts-jest:group:skip intersectionWith
+// @dts-jest:group intersectionWith
 {
+  interface Field {
+    id: number;
+    name: string;
+  }
   const buffaloSpringfield = [
-      {id: 824, name: 'Richie Furay'},
-      {id: 956, name: 'Dewey Martin'},
-      {id: 313, name: 'Bruce Palmer'},
-      {id: 456, name: 'Stephen Stills'},
-      {id: 177, name: 'Neil Young'},
+    {id: 824, name: 'Richie Furay'},
+    {id: 956, name: 'Dewey Martin'},
+    {id: 313, name: 'Bruce Palmer'},
+    {id: 456, name: 'Stephen Stills'},
+    {id: 177, name: 'Neil Young'},
   ];
   const csny = [
-      {id: 204, name: 'David Crosby'},
-      {id: 456, name: 'Stephen Stills'},
-      {id: 539, name: 'Graham Nash'},
-      {id: 177, name: 'Neil Young'},
+    {id: 204, name: 'David Crosby'},
+    {id: 456, name: 'Stephen Stills'},
+    {id: 539, name: 'Graham Nash'},
+    {id: 177, name: 'Neil Young'},
   ];
 
-  // @dts-jest:show { id: number, name: string }[]
-  R.intersectionWith(R.eqBy(R.prop('id')), buffaloSpringfield, csny);
+  // @dts-jest:pass
+  R.intersectionWith<Field>(R.eqBy(R.prop('id')), buffaloSpringfield, csny);
+  // @dts-jest:pass
+  R.intersectionWith<Field>(R.eqBy(R.prop('id')))(buffaloSpringfield, csny);
+  // @dts-jest:pass
+  R.intersectionWith<Field>(R.eqBy(R.prop('id')))(buffaloSpringfield)(csny);
   // => [{id: 456, name: 'Stephen Stills'}, {id: 177, name: 'Neil Young'}]
-  // @dts-jest:show { id: number, name: string }[]
-  R.intersectionWith(R.eqBy(R.prop('id')), buffaloSpringfield, csny);
-  // => [{id: 456, name: 'Stephen Stills'}, {id: 177, name: 'Neil Young'}]
-  // @dts-jest:show { id: number, name: string }[]
-  R.intersectionWith(R.eqBy(R.prop('id')))(buffaloSpringfield, csny);
-  // @dts-jest:show { id: number, name: string }[]
-  R.intersectionWith(R.eqBy(R.prop('id')))(buffaloSpringfield)(csny);
 }
 
 // @dts-jest:group intersperse
@@ -1205,12 +1206,12 @@ import * as R from 'ramda';
   // => { 'alice': '0', 'jake': '1' }
 }
 
-// @dts-jest:group:skip invoker
+// @dts-jest:group invoker
 {
-  // @dts-jest:show string
-  R.invoker(0, 'toUpperCase', 'foo');
-  // @dts-jest:show string
-  R.invoker(1, 'charAt', 'foo', 1);
+  // @dts-jest:pass
+  R.invoker<'toUpperCase', string, string>(0, 'toUpperCase')('foo'); // => 'FOO'
+  // @dts-jest:pass
+  R.invoker<'charAt', string, number, string>(1, 'charAt')(1, 'foo'); // => 'o'
 }
 
 // @dts-jest:group is

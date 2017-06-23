@@ -152,12 +152,12 @@ source version: v0.24.1
 - [x] insert
 - [x] insertAll
 - [x] intersection
-- [ ] intersectionWith
+- [x] intersectionWith
 - [x] intersperse
 - [x] into
 - [x] invert
 - [x] invertObj
-- [ ] invoker
+- [x] invoker
 - [x] is
 - [x] isEmpty
 - [ ] isNil

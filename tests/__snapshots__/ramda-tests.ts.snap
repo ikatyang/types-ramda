@@ -507,6 +507,12 @@ exports[`intersection R.intersection([1, 2, 4])([1, 2, 3]) 1`] = `"number[]"`;
 
 exports[`intersection R.intersection([1, 2, 4], [1, 2, 3]) 1`] = `"number[]"`;
 
+exports[`intersectionWith R.intersectionWith<Field>(R.eqBy(R.prop('id')))(buffaloSpringfield)(csny) 1`] = `"Field[]"`;
+
+exports[`intersectionWith R.intersectionWith<Field>(R.eqBy(R.prop('id')))(buffaloSpringfield, csny) 1`] = `"Field[]"`;
+
+exports[`intersectionWith R.intersectionWith<Field>(R.eqBy(R.prop('id')), buffaloSpringfield, csny) 1`] = `"Field[]"`;
+
 exports[`intersperse R.intersperse(',', ['foo', 'bar']) 1`] = `"string[]"`;
 
 exports[`intersperse R.intersperse(0, [1, 2]) 1`] = `"number[]"`;
@@ -528,6 +534,10 @@ exports[`invert R.invert(raceResultsByFirstName) 1`] = `"Dictionary<string[]>"`;
 exports[`invertObj R.invertObj(raceResults0) 1`] = `"Dictionary<string>"`;
 
 exports[`invertObj R.invertObj(raceResults1) 1`] = `"Dictionary<string>"`;
+
+exports[`invoker R.invoker<'charAt', string, number, string>(1, 'charAt')(1, 'foo') 1`] = `"string"`;
+
+exports[`invoker R.invoker<'toUpperCase', string, string>(0, 'toUpperCase')('foo') 1`] = `"string"`;
 
 exports[`is R.is(Number)({}) 1`] = `"boolean"`;
 
