@@ -1266,16 +1266,6 @@ import * as R from 'ramda';
   R.isEmpty({a: 1}); // => false
 }
 
-// @dts-jest:group:skip isNaN
-{
-  // @dts-jest:show boolean
-  R.isNaN(NaN); // => true
-  // @dts-jest:show boolean
-  R.isNaN(undefined); // => false
-  // @dts-jest:show boolean
-  R.isNaN({}); // => false
-}
-
 // @dts-jest:group join
 {
   const spacer = R.join(' ');
