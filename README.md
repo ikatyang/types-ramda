@@ -1,11 +1,13 @@
 # types-ramda
 
+[![release](https://img.shields.io/github/release/ikatyang/types-ramda.svg)](https://github.com/ikatyang/types-ramda/releases)
 [![build](https://travis-ci.org/ikatyang/types-ramda.svg)](https://travis-ci.org/ikatyang/types-ramda)
 
 TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 
 [Changelog](https://github.com/ikatyang/types-ramda/blob/master/CHANGELOG.md)
 
+- [Version](#version)
 - [Usage](#usage)
 - [Features](#features)
 - [Build your own version](#build-your-own-version)
@@ -14,7 +16,13 @@ TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 - [Related](#related)
 - [License](#license)
 
+## Version
+
+This project uses the same MAJOR.MINOR version as [Ramda](https://github.com/ramda/ramda).
+
 ## Usage
+
+The following command install the types from the `master` branch.
 
 ```sh
 # using npm
@@ -23,6 +31,8 @@ npm install --save-dev ikatyang/types-ramda
 # using yarn
 yarn add --dev ikatyang/types-ramda
 ```
+
+**NOTE**: You can also choose which release version to install using `#<branch/commit/tag>`, for example: `yarn add --dev ikatyang/types-ramda#v0.24.0`.
 
 ## Features
 
