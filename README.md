@@ -32,7 +32,11 @@ npm install --save-dev ikatyang/types-ramda
 yarn add --dev ikatyang/types-ramda
 ```
 
-**NOTE**: You can also choose which release version to install using `#<branch/commit/tag>`, for example: `yarn add --dev ikatyang/types-ramda#v0.24.0`.
+**NOTE**: You can also choose which release version to install using `#<branch/commit/tag>`, for example:
+
+```sh
+yarn add --dev ikatyang/types-ramda#v0.24.0
+```
 
 ## Features
 
