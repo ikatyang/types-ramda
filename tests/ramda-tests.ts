@@ -1496,8 +1496,8 @@ import * as R from 'ramda';
 
 // @dts-jest:group lt
 (() => {
-  // // @dts-jest:pass
-  // R.lt(2, 6); //=> true
+  // @dts-jest:pass
+  R.lt(2, 6); //=> true
   // @dts-jest:pass
   R.lt(2, 0); //=> false
   // @dts-jest:pass

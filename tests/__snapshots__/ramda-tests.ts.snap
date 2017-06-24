@@ -524,7 +524,9 @@ exports[`intersection R.intersection([1, 2, 4])([1, 2, 3]) 1`] = `"number[]"`;
 
 exports[`intersection R.intersection([1, 2, 4], [1, 2, 3]) 1`] = `"number[]"`;
 
-exports[`intersectionWith R.intersectionWith<Field>(R.eqBy(R.prop('id')))(buffaloSpringfield)(csny) 1`] = `"Field[]"`;
+exports[`intersectionWith R.intersectionWith<Field>(
+        R.eqBy(R.prop('id')),
+      )(buffaloSpringfield)(csny) 1`] = `"Field[]"`;
 
 exports[`intersectionWith R.intersectionWith<Field>(R.eqBy(R.prop('id')))(buffaloSpringfield, csny) 1`] = `"Field[]"`;
 
@@ -546,7 +548,9 @@ exports[`into intoArray(transducer)(numbers) 1`] = `"number[]"`;
 
 exports[`into intoArray(transducer, numbers) 1`] = `"number[]"`;
 
-exports[`invert R.invert(raceResultsByFirstName) 1`] = `"Dictionary<string[]>"`;
+exports[`invert R.invert(
+        raceResultsByFirstName,
+      ) 1`] = `"Dictionary<string[]>"`;
 
 exports[`invertObj R.invertObj(raceResults0) 1`] = `"Dictionary<string>"`;
 
@@ -926,6 +930,8 @@ exports[`or R.or(null, '') 1`] = `"\\"\\" | null"`;
 
 exports[`over R.over(headLens, R.toUpper, ['a', 'b', 'c']) 1`] = `"string[]"`;
 
+exports[`pair R.pair('foo', 'bar') 1`] = `"KeyValuePair<\\"foo\\", string>"`;
+
 exports[`pair p[0] 1`] = `"\\"foo\\""`;
 
 exports[`pair p[1] 1`] = `"number"`;
@@ -1116,6 +1122,8 @@ exports[`remove R.remove(2, 3)([1, 2, 3, 4, 5, 6, 7, 8]) 1`] = `"number[]"`;
 exports[`remove R.remove(2, 3, [1, 2, 3, 4, 5, 6, 7, 8]) 1`] = `"number[]"`;
 
 exports[`repeat R.repeat('hi', 5) 1`] = `"string[]"`;
+
+exports[`repeat repeatedObjs 1`] = `"{}[]"`;
 
 exports[`repeat repeatedObjs[0] === repeatedObjs[1] 1`] = `"boolean"`;
 
@@ -1340,6 +1348,8 @@ exports[`unary R.unary(takesTwoArgs) 1`] = `"(a: number) => number[]"`;
 exports[`uncurryN uncurriedAddFour(1, 2, 3, 4) 1`] = `"number"`;
 
 exports[`unfold R.unfold(f, 10) 1`] = `"number[]"`;
+
+exports[`unfold b 1`] = `"(initial: number) => number[]"`;
 
 exports[`unfold b(10) 1`] = `"number[]"`;
 
