@@ -4,6 +4,16 @@
 
 TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 
+[Changelog](https://github.com/ikatyang/types-ramda/blob/master/CHANGELOG.md)
+
+- [Usage](#usage)
+- [Features](#features)
+- [Build your own version](#build-your-own-version)
+- [Progress](#progress)
+- [Development](#development)
+- [Related](#related)
+- [License](#license)
+
 ## Usage
 
 ```sh
@@ -26,6 +36,24 @@ yarn add --dev ikatyang/types-ramda
 
 - support snapshot testing ( via [`dts-jest`](https://github.com/ikatyang/dts-jest), see `./tests/*.ts` )
 - support functions auto-currying ( via [`dts-element`](https://github.com/ikatyang/dts-element), see `./templates/*.d.ts` )
+
+## Build your own version
+
+The typings you installed directly from `ikatyang/types-ramda` is the full-typed version (selectable + placeholder), if you'd like to use selecable or placeholder only, or even just the normal types, you can build it yourself using one of the following commands.
+
+```sh
+# normal
+npm run build-normal
+
+# selectable only
+npm run build-selectable
+
+# placeholder only
+npm run build-placeholder
+
+# full-typed (selectable + placeholder)
+npm run build
+```
 
 ## Progress
 

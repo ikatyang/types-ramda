@@ -22,6 +22,9 @@
     "test-actual": "jest --config ./jest.actual.json",
     "build": "gulp build",
     "build-watch": "gulp build-watch",
+    "build-normal": "gulp build-normal",
+    "build-selectable": "gulp build-selectable",
+    "build-placeholder": "gulp build-placeholder",
     "link": "ln -sf $PWD $PWD/node_modules/@types/ramda",
     "jsdoc": "ts-node ./scripts/migrate-jsdoc.ts v0.24.1 ./templates"
   },

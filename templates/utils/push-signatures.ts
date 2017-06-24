@@ -20,13 +20,15 @@ export const push_signatures = (
       [...used_parameters, rest_parameters[0]],
       return_parameters.filter(parameter => parameter !== rest_parameters[0]),
     );
-    push_signatures(
-      next_rest_parameters,
-      next_rest_placeholders,
-      fn,
-      [...used_parameters, rest_placeholders[0]],
-      return_parameters,
-    );
+    if (rest_placeholders.length > 0) {
+      push_signatures(
+        next_rest_parameters,
+        next_rest_placeholders,
+        fn,
+        [...used_parameters, rest_placeholders[0]],
+        return_parameters,
+      );
+    }
   }
   if (used_parameters.length > 0 &&
       (used_parameters[used_parameters.length - 1].type as dts.IGeneralType).name !== placeholder_name_abbr) {

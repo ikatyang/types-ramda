@@ -12,7 +12,7 @@ import {push_signatures} from './push-signatures';
 const is_type_predicate = (element?: dts.IElement<any>): element is dts.ITypePredicate =>
   (element !== undefined) && (element.kind === dts.ElementKind.TypePredicate);
 
-export const create_curried_types = (name: string, type: dts.IFunctionType, selectable = true) => {
+export const create_curried_types = (name: string, type: dts.IFunctionType, selectable = true, placeholder = true) => {
   const {
     generics = [],
     parameters = [],
@@ -112,7 +112,9 @@ export const create_curried_types = (name: string, type: dts.IFunctionType, sele
     const members = (type_declaration.type as dts.IObjectType).members as dts.IObjectMember[];
     push_signatures(
       parameters.filter((_, param_index) => masks[index][param_index] === '0'),
-      placeholders.filter((_, param_index) => masks[index][param_index] === '0'),
+      placeholder
+        ? placeholders.filter((_, param_index) => masks[index][param_index] === '0')
+        : [],
       (used_parameters, return_parameters) => {
         const return_mask = parameters
             .map(parameter =>

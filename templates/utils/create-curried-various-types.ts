@@ -9,7 +9,7 @@ const is_object_type = (element: any): element is dts.IObjectType =>
 const is_object_member = (element: any): element is dts.IObjectMember =>
   (element.kind === dts.ElementKind.ObjectMember);
 
-export const create_various_curried_types = (name: string, types: {[kind: string]: dts.IFunctionType}) => {
+export const create_various_curried_types = (name: string, types: {[kind: string]: dts.IFunctionType}, selectable = true, placeholder = true) => {
   const keys = Object.keys(types);
 
   const parameters_length = keys.reduce<number>(
@@ -23,7 +23,7 @@ export const create_various_curried_types = (name: string, types: {[kind: string
   );
 
   const curried_types_declarations = keys.reduce<dts.ITypeDeclaration[][]>(
-    (reduced, key) => [...reduced, create_curried_types(`${name}_${key}`, types[key], false)],
+    (reduced, key) => [...reduced, create_curried_types(`${name}_${key}`, types[key], false, placeholder)],
     [],
   );
 
@@ -116,7 +116,7 @@ export const create_various_curried_types = (name: string, types: {[kind: string
         members.push(
           member,
           ...(
-            (origin_members.length > 1)
+            (selectable && origin_members.length > 1)
               ? [mixed_type_declarations_selectables[index][member_index]]
               : []
           ),
@@ -139,10 +139,10 @@ export const create_various_curried_types = (name: string, types: {[kind: string
         }),
       });
     });
-    members.push(
-      ...non_conflict_merged_members,
-      ...create_selectable_signatures(non_conflict_merged_members),
-    );
+    members.push(...non_conflict_merged_members);
+    if (selectable) {
+      members.push(...create_selectable_signatures(non_conflict_merged_members));
+    }
     object_type.members = members;
     return type_declaration;
   });

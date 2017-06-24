@@ -27,8 +27,11 @@ const output_index_basename_full = `${output_index_basename}${output_extname}`;
 const output_index_filename = `${output_index_relative_dirname}/${output_index_basename_full}`;
 
 gulp.task('clean', async () => del([output_relative_dirname, output_index_filename]));
-gulp.task('build-files', () => generate_files(glob_templates));
 gulp.task('build-index', generate_index);
+gulp.task('build-files', () => generate_files(glob_templates, true, true));
+gulp.task('build-normal', () => generate_files(glob_templates, false, false));
+gulp.task('build-selectable', () => generate_files(glob_templates, true, false));
+gulp.task('build-placeholder', () => generate_files(glob_templates, false, true));
 
 gulp.task('build', ['clean'], (callback: (error?: any) => void) =>
   gulp_run(['build-index', 'build-files'], callback));
@@ -44,13 +47,13 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
 
     switch (event.type) {
       case 'changed':
-        generate_files(input_relative_filename, on_error, on_end);
+        generate_files(input_relative_filename, true, true, on_error, on_end);
         break;
       case 'added':
       case 'deleted':
       case 'renamed':
         generate_index();
-        generate_files(input_relative_filename, on_error, on_end);
+        generate_files(input_relative_filename, true, true, on_error, on_end);
         break;
       default:
         throw new Error(`Unexpected event type '${event.type}'`);
@@ -75,10 +78,12 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
 
 function generate_files(
     glob: string,
+    selectable?: boolean,
+    placeholder?: boolean,
     on_error: (error: Error) => void = error => { throw error; },
     on_end: () => void = () => { /* do nothing */ }) {
   return gulp.src(glob_templates)
-    .pipe(gulp_generate(generate_file_content))
+    .pipe(gulp_generate(filename => generate_file_content(filename, selectable, placeholder)))
     .on('error', on_error)
     .on('end', on_end)
     .pipe(gulp_rename(the_path => {
@@ -95,7 +100,7 @@ function generate_index() {
     .pipe(gulp.dest(output_index_relative_dirname));
 }
 
-function get_top_level_members(filename: string): dts.ITopLevelMember[] {
+function get_top_level_members(filename: string, selectable?: boolean, placeholder?: boolean): dts.ITopLevelMember[] {
   const members: dts.ITopLevelMember[] = [];
   const basename = path.basename(filename);
 
@@ -196,6 +201,8 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
           }),
           {},
         ),
+      selectable,
+      placeholder,
     );
 
     members.push(
@@ -227,8 +234,8 @@ function emit_declarations(members: dts.ITopLevelMember[]) {
   return dts.emit(dts.create_top_level_element({members}));
 }
 
-function generate_file_content(filename: string) {
-  return emit_declarations(get_top_level_members(filename));
+function generate_file_content(filename: string, selectable?: boolean, placeholder?: boolean) {
+  return emit_declarations(get_top_level_members(filename, selectable, placeholder));
 }
 
 function generate_index_content() {
