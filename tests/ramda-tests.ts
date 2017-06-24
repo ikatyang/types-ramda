@@ -21,7 +21,7 @@ import * as R from 'ramda';
 
 // @dts-jest:group addIndex
 (() => {
-  {
+  (() => {
     const lastTwo = (val: number, idx: number, list: number[]) => list.length - idx <= 2;
     const filterIndexed = R.addIndex<number, boolean, number[], number[]>(R.filter);
 
@@ -29,14 +29,14 @@ import * as R from 'ramda';
     filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); //=> [0, 9]
     // @dts-jest:pass
     filterIndexed(lastTwo)([8, 6, 7, 5, 3, 0, 9]); //=> [0, 9]
-  }
-  {
+  })();
+  (() => {
     const plusFive = (num: number, idx: number, list: number[]) => { list[idx] = num + 5; };
 
     // @dts-jest:pass
     R.addIndex<number, void, number[], number[]>(R.forEach)(plusFive)([1, 2, 3]); //=> [6, 7, 8]
-  }
-  {
+  })();
+  (() => {
     const squareEnds = (elt: number, idx: number, list: number[]) =>
       (idx === 0 || idx === list.length - 1)
         ? elt * elt
@@ -46,8 +46,8 @@ import * as R from 'ramda';
     R.addIndex<number, number, number[], number[]>(R.map)(squareEnds, [8, 5, 3, 0, 9]); //=> [64, 5, 3, 0, 81]
     // @dts-jest:pass
     R.addIndex<number, number, number[], number[]>(R.map)(squareEnds)([8, 5, 3, 0, 9]); //=> [64, 5, 3, 0, 81]
-  }
-  {
+  })();
+  (() => {
     const reduceIndexed = R.addIndex<
       Record<string, number>, string, Record<string, number>,
       Record<string, number>,
@@ -64,8 +64,8 @@ import * as R from 'ramda';
     reduceIndexed(objectify)({}, ['a', 'b', 'c']); //=> {a: 0, b: 1, c: 2}
     // @dts-jest:pass
     reduceIndexed(objectify, {})(['a', 'b', 'c']); //=> {a: 0, b: 1, c: 2}
-  }
-  {
+  })();
+  (() => {
     const reduceIndexed = R.addIndex<'1', 'v2x1'>()(R.reduce<'111'>());
 
     // @dts-jest:pass
@@ -74,7 +74,7 @@ import * as R from 'ramda';
       '',
       ['f', 'o', 'o', 'b', 'a', 'r'],
     ); //=> ',0-f,1-o,2-o,3-b,4-a,5-r'
-  }
+  })();
 })();
 
 // @dts-jest:group adjust
@@ -372,7 +372,7 @@ import * as R from 'ramda';
 // @dts-jest:group compose
 (() => {
   const double = (x: number): number => x + x;
-  {
+  (() => {
     const f0 = R.compose(Math.pow);
     const f1 = R.compose(R.negate, Math.pow);
     const f2 = R.compose(R.inc, R.negate, Math.pow);
@@ -392,19 +392,19 @@ import * as R from 'ramda';
     f4(3, 4); // -(3^4) + 1
     // @dts-jest:pass
     f5(3, 4); // -(3^4) + 1
-  }
-  {
+  })();
+  (() => {
     // @dts-jest:pass
     R.compose<number, number, number>(double, R.identity);
-  }
-  {
+  })();
+  (() => {
     const fn = (a: string, b: number, c: string) => [a, b, c];
     const gn = R.compose(R.length, fn);
 
     // @dts-jest:pass
     gn('Hello', 4, 'world');
-  }
-  {
+  })();
+  (() => {
     const limit10 = (x: number): boolean => x >= 10;
     // @dts-jest:pass
     R.compose(limit10, double);
@@ -422,7 +422,7 @@ import * as R from 'ramda';
     g;
     // @dts-jest:pass
     g([1, 2, 10, 13]);
-  }
+  })();
 })();
 
 // @dts-jest:group:skip composeK
@@ -500,15 +500,16 @@ import * as R from 'ramda';
     }
   }
   // @dts-jest:group construct
-  {
+  (() => {
     // @dts-jest:pass
     R.construct<'1', 'variadic'>()(Circle)(1, 'red');
-  }
+  })();
   // @dts-jest:group constructN
-  {
+  (() => {
+
     // @dts-jest:pass
     R.constructN(2, Circle)(1, 'red');
-  }
+  })();
 })();
 
 // @dts-jest:group contains
@@ -1471,7 +1472,7 @@ import * as R from 'ramda';
   // @dts-jest:pass
   R.view(phraseLens, obj1); //=> 'Absolute filth . . . and I LOVED it!'
   // @dts-jest:pass
-  R.view(phraseLens, obj2); //=> 'What's all this, then?'
+  R.view(phraseLens, obj2); //=> "What's all this, then?"
   // @dts-jest:pass
   R.set(phraseLens, 'Ooh Betty', obj1); //=> { phrase: 'Ooh Betty'}
 })();
@@ -1482,7 +1483,7 @@ import * as R from 'ramda';
   const madd5 = R.lift((a: number, b: number, c: number, d: number, e: number) => a + b + c + d + e);
 
   // @dts-jest:pass
-  madd3([1, 2, 3], [1, 2, 3], [1]); //=> [3, 4, 5, 4, 5, 6, 5, 6, 5, 6, 7]
+  madd3([1, 2, 3], [1, 2, 3], [1]); //=> [3, 4, 5, 4, 5, 6, 5, 6, 7]
   // @dts-jest:pass
   madd5([1, 2], [3], [4, 5], [6], [7, 8]); //=> [21, 22, 22, 23, 22, 23, 23, 24]
 })();
@@ -1505,7 +1506,7 @@ import * as R from 'ramda';
   // @dts-jest:pass
   R.lt<number>(5)(10); //=> true
   // @dts-jest:pass
-  R.flip(R.lt<'11'>())(5)(10); //=> false // right-sectioned currying
+  R.flip(R.lt<'11'>())(5)(10); //=> false
 })();
 
 // @dts-jest:group lte
@@ -1570,13 +1571,13 @@ import * as R from 'ramda';
   const append = (a: string, b: string): [string, string] =>
     [a + b, a + b];
   // @dts-jest:pass
-  R.mapAccumRight(append, '0', digits); //=> ['04321', ['04321', '0432', '043', '04']]
+  R.mapAccumRight(append, '0', digits); //=> [["12340", "2340", "340", "40"], "12340"]
   // @dts-jest:pass
-  R.mapAccumRight(append)('0', digits); //=> ['04321', ['04321', '0432', '043', '04']]
+  R.mapAccumRight(append)('0', digits); //=> [["12340", "2340", "340", "40"], "12340"]
   // @dts-jest:pass
-  R.mapAccumRight(append, '0')(digits); //=> ['04321', ['04321', '0432', '043', '04']]
+  R.mapAccumRight(append, '0')(digits); //=> [["12340", "2340", "340", "40"], "12340"]
   // @dts-jest:pass
-  R.mapAccumRight(append)('0')(digits); //=> ['04321', ['04321', '0432', '043', '04']]
+  R.mapAccumRight(append)('0')(digits); //=> [["12340", "2340", "340", "40"], "12340"]
 })();
 
 // @dts-jest:group mapObjIndexed
@@ -1594,7 +1595,7 @@ import * as R from 'ramda';
   // @dts-jest:pass
   R.match(/a/, 'b'); //=> []
   // @dts-jest:fail
-  R.match(/a/, null); // error with strict null checks
+  R.match(/a/, null); //=> error with strict null checks
 })();
 
 // @dts-jest:group mathMod
@@ -1966,7 +1967,7 @@ import * as R from 'ramda';
 // @dts-jest:group or
 (() => {
   // @dts-jest:pass
-  R.or(false, true); //=> false
+  R.or(false, true); //=> true
   // @dts-jest:pass
   R.or(0, []); //=> []
   // @dts-jest:pass
@@ -2129,7 +2130,7 @@ import * as R from 'ramda';
 
 // @dts-jest:group pipe
 (() => {
-  {
+  (() => {
     const shout = (x: number): string =>
       x >= 10
         ? 'big'
@@ -2154,15 +2155,15 @@ import * as R from 'ramda';
     // test for type degeneration if the first function has generics
     // @dts-jest:skip (x0: number) => number
     R.pipe(R.identity, double);
-  }
-  {
+  })();
+  (() => {
     const double = (x: number): number => x + x;
     const triple = (x: number): number => x * 3;
     const square = (x: number): number => x * x;
     const squareThenDoubleThenTriple = R.pipe(square, double, triple);
     // @dts-jest:pass
     squareThenDoubleThenTriple(5); //=> 150
-  }
+  })();
 })();
 
 // @dts-jest:group:skip pipeK
@@ -2224,42 +2225,42 @@ import * as R from 'ramda';
 
 // @dts-jest:group propEq
 (() => {
-  {
+  (() => {
     const xs: {[key: string]: string} = {a: '1', b: '0'};
     // @dts-jest:pass
     R.propEq('a', '1', xs); //=> true
     // @dts-jest:pass
     R.propEq('a', '4', xs); //=> false
-  }
-  {
+  })();
+  (() => {
     const xs: {[key: string]: number} = {a: 1, b: 0};
     // @dts-jest:pass
     R.propEq('a', 1, xs); //=> true
     // @dts-jest:pass
     R.propEq('a', 4, xs); //=> false
-  }
-  {
+  })();
+  (() => {
     const xs = {a: '1', b: '0'};
     // @dts-jest:pass
     R.propEq('a', '1', xs); //=> true
     // @dts-jest:pass
     R.propEq('a', '4', xs); //=> false
-  }
-  {
+  })();
+  (() => {
     const xs = {a: 1, b: 0};
     // @dts-jest:pass
     R.propEq('a', 1, xs); //=> true
     // @dts-jest:pass
     R.propEq('a', 4, xs); //=> false
-  }
-  {
+  })();
+  (() => {
     interface Obj { a: number; b: number; }
     const xs: Obj = {a: 1, b: 0};
     // @dts-jest:pass
     R.propEq('a', 1, xs); //=> true
     // @dts-jest:pass
     R.propEq('a', 4, xs); //=> false
-  }
+  })();
 })();
 
 // @dts-jest:group propIs
@@ -2334,17 +2335,15 @@ import * as R from 'ramda';
 // @dts-jest:group reduce
 (() => {
   const numbers = [1, 2, 3];
-  const add = (a: number, b: number) =>
-    a + b;
+  const add = (a: number, b: number) => a + b;
   // @dts-jest:pass
-  R.reduce(add, 10, numbers); //=> 16;
+  R.reduce(add, 10, numbers); //=> 16
 })();
 
 // @dts-jest:group reduce
 (() => {
   const numbers = [1, 2, 3];
-  const add = (a: number, b: number) =>
-    a + b;
+  const add = (a: number, b: number) => a + b;
   // @dts-jest:pass
   R.reduce(add, 10, numbers); //=> 16
   // @dts-jest:pass
@@ -2408,7 +2407,7 @@ import * as R from 'ramda';
 
 // @dts-jest:group reduceWhile
 (() => {
-  const isOdd = (x: number, acc: number) => x % 2 === 1;
+  const isOdd = (acc: number, x: number) => x % 2 === 1;
   const xs = [1, 3, 5, 60, 777, 800];
   // @dts-jest:pass
   R.reduceWhile(isOdd, R.add, 0, xs); //=> 9
@@ -2562,7 +2561,7 @@ import * as R from 'ramda';
   };
   const people = [clara, bob, alice];
   // @dts-jest:pass
-  sortByAgeDescending(people); //=> [alice, bob, clara]
+  sortByAgeDescending(people); //=> [clara, alice, bob]
   // @dts-jest:pass
   sortByNameCaseInsensitive(people); //=> [alice, bob, clara]
   // @dts-jest:pass
@@ -2697,7 +2696,7 @@ import * as R from 'ramda';
   // @dts-jest:pass
   R.symmetricDifferenceWith<A>(eqA)(l1, l2); //=> [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
   // @dts-jest:pass
-  R.symmetricDifferenceWith<A>(eqA)(l1); //=> [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
+  R.symmetricDifferenceWith<A>(eqA)(l1)(l2); //=> [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
 })();
 
 // @dts-jest:group T
@@ -2768,7 +2767,7 @@ import * as R from 'ramda';
 
 // @dts-jest:group tap
 (() => {
-  const sayX = (x: number) => console.log(`x is ${x}`);
+  const sayX = (x: number) => { /* console.log(`x is ${x}` */ };
   // @dts-jest:pass
   R.tap(sayX, 100); //=> 100
 })();
@@ -2835,13 +2834,13 @@ import * as R from 'ramda';
   // @dts-jest:pass
   R.toString(42); //=> '42'
   // @dts-jest:pass
-  R.toString('abc'); //=> ''abc''
+  R.toString('abc'); //=> 'abc'
   // @dts-jest:pass
   R.toString([1, 2, 3]); //=> '[1, 2, 3]'
   // @dts-jest:pass
-  R.toString({foo: 1, bar: 2, baz: 3}); //=> '{'bar': 2, 'baz': 3, 'foo': 1}'
+  R.toString({foo: 1, bar: 2, baz: 3}); //=> '{"bar": 2, "baz": 3, "foo": 1}'
   // @dts-jest:pass
-  R.toString(new Date('2001-02-03T04: 05: 06Z')); //=> `new Date('2001-02-03T04: 05: 06.000Z')`
+  R.toString(new Date('2001-02-03T04: 05: 06Z')); //=> "new Date('2001-02-03T04: 05: 06.000Z')""
 })();
 
 // @dts-jest:group toUpper

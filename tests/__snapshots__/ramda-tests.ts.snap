@@ -1231,7 +1231,7 @@ exports[`symmetricDifference R.symmetricDifference([1, 2, 3, 4], [7, 6, 5, 4, 3]
 
 exports[`symmetricDifference R.symmetricDifference([7, 6, 5, 4, 3])([1, 2, 3, 4]) 1`] = `"number[]"`;
 
-exports[`symmetricDifferenceWith R.symmetricDifferenceWith<A>(eqA)(l1) 1`] = `"(b: A[] | ArrayLike<A>) => A[]"`;
+exports[`symmetricDifferenceWith R.symmetricDifferenceWith<A>(eqA)(l1)(l2) 1`] = `"A[]"`;
 
 exports[`symmetricDifferenceWith R.symmetricDifferenceWith<A>(eqA)(l1, l2) 1`] = `"A[]"`;
 
