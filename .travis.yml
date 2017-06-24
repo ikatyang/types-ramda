@@ -3,10 +3,9 @@ language: node_js
 node_js:
   - "stable"
 
-before_script:
-  - yarn run lint
-
 script:
+  - if [ "$JOB" = "lint" ]; then yarn run lint; fi
+  - if [ "$JOB" = "actual" ]; then yarn run test-actual -- --verbose -u; fi
   - if [ "$JOB" = "unit-a-to-m" ]; then yarn run test -- --verbose --testPathPattern=\\\\/[a-m][a-z]*\\\\.ts$; fi
   - if [ "$JOB" = "unit-n-to-z" ]; then yarn run test -- --verbose --testPathPattern=\\\\/[n-z][a-z]*\\\\.ts$; fi
   - if [ "$JOB" = "integration" ]; then yarn run test -- --verbose --testPathPattern=ramda-tests; fi
@@ -19,6 +18,10 @@ cache:
 matrix:
   fast_finish: true
   include:
+    - node_js: "stable"
+      env: JOB=lint
+    - node_js: "stable"
+      env: JOB=actual
     - node_js: "stable"
       env: JOB=unit-a-to-m
     - node_js: "stable"
