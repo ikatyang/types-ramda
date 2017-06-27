@@ -104,7 +104,9 @@ function get_top_level_members(filename: string, selectable?: boolean, placehold
   const members: dts.ITopLevelMember[] = [];
   const basename = path.basename(filename);
 
-  if (basename.endsWith('.d.ts')) {
+  if (basename === '$curried-functions.ts') {
+    push_curried_functions_members();
+  } else if (basename.endsWith('.d.ts')) {
     if (basename.startsWith('$')) {
       push_r_ts_members();
     } else {
@@ -154,13 +156,19 @@ function get_top_level_members(filename: string, selectable?: boolean, placehold
   }
 
   function push_ts_members() {
-    const declarations = get_ts_members();
+    const declarations = get_ts_default();
     members.push(...declarations);
   }
 
   function push_c_ts_members() {
-    const declarations = get_ts_members();
+    const declarations = get_ts_default();
     push_curry_members(declarations);
+  }
+
+  function push_curried_functions_members() {
+    const curried_functions_generator = get_ts_default(true);
+    const declarations = curried_functions_generator(selectable, placeholder);
+    members.push(...declarations);
   }
 
   function push_curry_members(the_members: dts.ITopLevelMember[]) {
@@ -212,13 +220,13 @@ function get_top_level_members(filename: string, selectable?: boolean, placehold
     );
   }
 
-  function get_ts_members() {
+  function get_ts_default(special_case = false) {
     // tslint:disable-next-line:no-require-imports
     const required: any = require(filename);
     delete require.cache[require.resolve(filename)];
     const declarations = required.default;
 
-    if (!is_valid_export_default(declarations)) {
+    if (!special_case && !is_valid_export_default(declarations)) {
       throw new Error(`Template.ts should default-export an array of declarations: ${filename}`);
     }
 

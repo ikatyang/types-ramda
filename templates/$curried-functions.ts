@@ -4,7 +4,7 @@ import {create_curried_interfaces} from './utils/create-curried-interfaces';
 
 export const max_curry_level = 6;
 
-export default [
+export default (selectable: boolean, placeholder: boolean) => [
   dts.create_import_named({
     members: [
       dts.create_import_member({
@@ -15,7 +15,7 @@ export default [
     from: './$placeholder',
   }),
   ...dts.parse(`export type CurriedFunction0<R> = () => R;`).members,
-  ...create_curried_interfaces(max_curry_level).map(
+  ...create_curried_interfaces(max_curry_level, selectable, placeholder).map(
     the_interface => ({
       ...the_interface,
       export: true,
