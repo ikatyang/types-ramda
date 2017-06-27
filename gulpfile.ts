@@ -18,15 +18,12 @@ const input_relative_dirname = 'templates';
 const glob_index = `${input_relative_dirname}/README.md`;
 const glob_templates = `${input_relative_dirname}/*.ts`;
 
-const output_relative_dirname = 'src';
+const output_sub_dirname = 'src';
+const output_relative_dirname = '.';
+const output_relative_sub_dirname = `${output_relative_dirname}/${output_sub_dirname}`;
 const output_extname = '.d.ts';
 
-const output_index_relative_dirname = '.';
-const output_index_basename = `index`;
-const output_index_basename_full = `${output_index_basename}${output_extname}`;
-const output_index_filename = `${output_index_relative_dirname}/${output_index_basename_full}`;
-
-gulp.task('clean', async () => del([output_relative_dirname, output_index_filename]));
+gulp.task('clean', async () => del([output_sub_dirname, `${output_relative_dirname}/index${output_extname}`]));
 gulp.task('build-index', generate_index);
 gulp.task('build-files', () => generate_files(glob_templates, true, true));
 gulp.task('build-normal', () => generate_files(glob_templates, false, false));
@@ -42,7 +39,7 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
     gulp_util.log(`Detected '${gulp_util.colors.cyan(input_relative_filename)}' ${event.type}`);
 
     const output_relative_filename = input_relative_filename
-      .replace(input_relative_dirname, output_relative_dirname)
+      .replace(input_relative_dirname, output_relative_sub_dirname)
       .replace(/(\.[a-z])?\.ts$/, '.d.ts');
 
     switch (event.type) {
@@ -90,14 +87,14 @@ function generate_files(
       the_path.basename = the_path.basename!.replace(/\.[a-z]$/, '');
       the_path.extname = output_extname;
     }))
-    .pipe(gulp.dest(output_relative_dirname));
+    .pipe(gulp.dest(output_relative_sub_dirname));
 }
 
 function generate_index() {
   return gulp.src(glob_index)
     .pipe(gulp_generate(generate_index_content))
-    .pipe(gulp_rename({basename: output_index_basename, extname: output_extname}))
-    .pipe(gulp.dest(output_index_relative_dirname));
+    .pipe(gulp_rename({basename: 'index', extname: output_extname}))
+    .pipe(gulp.dest(output_relative_dirname));
 }
 
 function get_top_level_members(filename: string, selectable?: boolean, placeholder?: boolean): dts.ITopLevelMember[] {
@@ -248,7 +245,7 @@ function generate_file_content(filename: string, selectable?: boolean, placehold
 
 function generate_index_content() {
   const filenames = glob.sync(glob_templates).map(filename =>
-    `./${output_relative_dirname}/${path.relative(input_relative_dirname, filename).replace(/(\.[a-z])?\.ts$/, '')}`,
+    `./${output_sub_dirname}/${path.relative(input_relative_dirname, filename).replace(/(\.[a-z])?\.ts$/, '')}`,
   );
 
   const jsdoc_binded_filenames: string[] = [];
