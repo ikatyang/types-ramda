@@ -12,23 +12,24 @@ import {bind_jsdoc} from './templates/utils/bind-jsdoc';
 import {placeholder_name, placeholder_name_abbr} from './templates/utils/constants';
 import {create_curried_declarations} from './templates/utils/create-curried-declarations';
 
+// tslint:disable max-file-line-count
+
 const namespace_ramda = 'R';
 
 const input_relative_dirname = 'templates';
 const glob_index = `${input_relative_dirname}/README.md`;
 const glob_templates = `${input_relative_dirname}/*.ts`;
 
+const {selectable, placeholder, output_dirname_postfix} = get_options();
+
 const output_sub_dirname = 'src';
-const output_relative_dirname = '.';
+const output_relative_dirname = `./ramda/dist${output_dirname_postfix}`;
 const output_relative_sub_dirname = `${output_relative_dirname}/${output_sub_dirname}`;
 const output_extname = '.d.ts';
 
-gulp.task('clean', async () => del([output_sub_dirname, `${output_relative_dirname}/index${output_extname}`]));
+gulp.task('clean', async () => del(`${output_relative_dirname}/`));
 gulp.task('build-index', generate_index);
-gulp.task('build-files', () => generate_files(glob_templates, true, true));
-gulp.task('build-normal', () => generate_files(glob_templates, false, false));
-gulp.task('build-selectable', () => generate_files(glob_templates, true, false));
-gulp.task('build-placeholder', () => generate_files(glob_templates, false, true));
+gulp.task('build-files', () => generate_files(glob_templates));
 
 gulp.task('build', ['clean'], (callback: (error?: any) => void) =>
   gulp_run(['build-index', 'build-files'], callback));
@@ -44,13 +45,13 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
 
     switch (event.type) {
       case 'changed':
-        generate_files(input_relative_filename, true, true, on_error, on_end);
+        generate_files(input_relative_filename, on_error, on_end);
         break;
       case 'added':
       case 'deleted':
       case 'renamed':
         generate_index();
-        generate_files(input_relative_filename, true, true, on_error, on_end);
+        generate_files(input_relative_filename, on_error, on_end);
         break;
       default:
         throw new Error(`Unexpected event type '${event.type}'`);
@@ -75,12 +76,10 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
 
 function generate_files(
     glob: string,
-    selectable?: boolean,
-    placeholder?: boolean,
     on_error: (error: Error) => void = error => { throw error; },
     on_end: () => void = () => { /* do nothing */ }) {
   return gulp.src(glob_templates)
-    .pipe(gulp_generate(filename => generate_file_content(filename, selectable, placeholder)))
+    .pipe(gulp_generate(generate_file_content))
     .on('error', on_error)
     .on('end', on_end)
     .pipe(gulp_rename(the_path => {
@@ -97,7 +96,7 @@ function generate_index() {
     .pipe(gulp.dest(output_relative_dirname));
 }
 
-function get_top_level_members(filename: string, selectable?: boolean, placeholder?: boolean): dts.ITopLevelMember[] {
+function get_top_level_members(filename: string): dts.ITopLevelMember[] {
   const members: dts.ITopLevelMember[] = [];
   const basename = path.basename(filename);
 
@@ -239,8 +238,8 @@ function emit_declarations(members: dts.ITopLevelMember[]) {
   return dts.emit(dts.create_top_level_element({members}));
 }
 
-function generate_file_content(filename: string, selectable?: boolean, placeholder?: boolean) {
-  return emit_declarations(get_top_level_members(filename, selectable, placeholder));
+function generate_file_content(filename: string) {
+  return emit_declarations(get_top_level_members(filename));
 }
 
 function generate_index_content() {
@@ -291,4 +290,23 @@ function gulp_generate(fn: (filename: string) => string) {
       callback(new Error('Support buffer only.'));
     }
   });
+}
+
+function get_options(): {output_dirname_postfix: string, selectable: boolean, placeholder: boolean} {
+  const kind_index = process.argv.indexOf('--kind');
+  const kind = (kind_index === -1)
+    ? undefined
+    : process.argv[kind_index + 1];
+  switch (kind) {
+    case undefined:
+      return {selectable: true, placeholder: true, output_dirname_postfix: ''};
+    case 'normal':
+      return {selectable: false, placeholder: false, output_dirname_postfix: `-${kind}`};
+    case 'selectable':
+      return {selectable: true, placeholder: false, output_dirname_postfix: `-${kind}`};
+    case 'placeholder':
+      return {selectable: false, placeholder: true, output_dirname_postfix: `-${kind}`};
+    default:
+      throw new Error(`Unexpected kind: '${kind}'`);
+  }
 }
