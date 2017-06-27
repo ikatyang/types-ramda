@@ -53,10 +53,10 @@ yarn add --dev ikatyang/types-ramda#v0.24.0
 
 ## Build your own version
 
-The typings you installed directly from `ikatyang/types-ramda` is the full-typed version (selectable + placeholder), if you'd like to use selecable or placeholder only, or even just the normal types, you can build it yourself using one of the following commands.
+The typings you installed directly from `ikatyang/types-ramda` is the full-typed version (selectable + placeholder), if you'd like to use selecable or placeholder only, or even just the simple types, you can build it yourself using one of the following commands.
 
 ```sh
-# all (selectable + placeholder)
+# selectable + placeholder
 npm run build
 
 # selectable only
@@ -65,8 +65,8 @@ npm run build -- --kind selectable
 # placeholder only
 npm run build -- --kind placeholder
 
-# normal
-npm run build -- --kind normal
+# simple
+npm run build -- --kind simple
 ```
 
 ## Progress

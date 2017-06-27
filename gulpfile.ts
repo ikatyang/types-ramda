@@ -300,7 +300,7 @@ function get_options(): {output_dirname_postfix: string, selectable: boolean, pl
   switch (kind) {
     case undefined:
       return {selectable: true, placeholder: true, output_dirname_postfix: ''};
-    case 'normal':
+    case 'simple':
       return {selectable: false, placeholder: false, output_dirname_postfix: `-${kind}`};
     case 'selectable':
       return {selectable: true, placeholder: false, output_dirname_postfix: `-${kind}`};
