@@ -1,7 +1,9 @@
 {
   "extends": "tslint-config-ikatyang",
   "rules": {
+    "deprecation": false,
     "no-default-export": false,
+    "no-inferred-empty-object-type": false,
     "no-unnecessary-type-assertion": false
   }
 }
