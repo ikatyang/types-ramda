@@ -1,4 +1,4 @@
-import * as R_curry from 'ramda/src/curry';
+import * as R_curry from '../ramda/dist/src/curry';
 
 declare const string_to_object: (x: string) => object;
 declare const number_boolean_to_string: (x: number, y: boolean) => string;

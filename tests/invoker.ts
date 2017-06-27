@@ -1,4 +1,4 @@
-import * as R_invoker from 'ramda/src/invoker';
+import * as R_invoker from '../ramda/dist/src/invoker';
 
 // @dts-jest:pass
 R_invoker(0);

@@ -1,4 +1,4 @@
-import * as R_groupBy from 'ramda/src/groupBy';
+import * as R_groupBy from '../ramda/dist/src/groupBy';
 
 declare const object_to_string: (x: object) => string;
 declare const object_array: object[];

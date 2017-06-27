@@ -1,5 +1,5 @@
-import {CurriedFunction3} from 'ramda/src/$curried-functions';
-import * as R___ from 'ramda/src/__';
+import {CurriedFunction3} from '../ramda/dist/src/$curried-functions';
+import * as R___ from '../ramda/dist/src/__';
 
 declare const boolean: boolean;
 declare const number: number;

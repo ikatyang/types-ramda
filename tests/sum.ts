@@ -1,4 +1,4 @@
-import * as R_sum from 'ramda/src/sum';
+import * as R_sum from '../ramda/dist/src/sum';
 
 declare const number_array: number[];
 

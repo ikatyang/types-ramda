@@ -1,4 +1,4 @@
-import * as R_partial from 'ramda/src/partial';
+import * as R_partial from '../ramda/dist/src/partial';
 
 declare const number_string_to_object: (a: number, b: string) => object;
 declare const number: number;

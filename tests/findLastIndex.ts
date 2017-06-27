@@ -1,5 +1,5 @@
-import {Predicate} from 'ramda/src/$types';
-import * as R_findLastIndex from 'ramda/src/findLastIndex';
+import {Predicate} from '../ramda/dist/src/$types';
+import * as R_findLastIndex from '../ramda/dist/src/findLastIndex';
 
 declare const string_predicate: Predicate<string>;
 declare const string_array: string[];

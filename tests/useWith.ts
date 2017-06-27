@@ -1,4 +1,4 @@
-import * as R_useWith from 'ramda/src/useWith';
+import * as R_useWith from '../ramda/dist/src/useWith';
 
 declare const any_args_to_object: (...args: any[]) => object;
 declare const string_number_boolean_to_object: (x: string, y: number, z: boolean) => object;

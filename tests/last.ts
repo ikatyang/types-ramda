@@ -1,4 +1,4 @@
-import * as R_last from 'ramda/src/last';
+import * as R_last from '../ramda/dist/src/last';
 
 declare const string: string;
 declare const string_array: string[];

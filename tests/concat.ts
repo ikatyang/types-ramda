@@ -1,4 +1,4 @@
-import * as R_concat from 'ramda/src/concat';
+import * as R_concat from '../ramda/dist/src/concat';
 
 declare const string: string;
 declare const number_array: number[];

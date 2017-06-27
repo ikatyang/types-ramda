@@ -1,4 +1,4 @@
-import * as R_intersectionWith from 'ramda/src/intersectionWith';
+import * as R_intersectionWith from '../ramda/dist/src/intersectionWith';
 
 declare const number_number_to_boolean: (a: number, b: number) => boolean;
 declare const number_array: number[];

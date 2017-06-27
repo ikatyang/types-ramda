@@ -1,5 +1,5 @@
-import {Path} from 'ramda/src/$types';
-import * as R_pathOr from 'ramda/src/pathOr';
+import {Path} from '../ramda/dist/src/$types';
+import * as R_pathOr from '../ramda/dist/src/pathOr';
 
 declare const path: Path;
 declare const number: number;

@@ -1,4 +1,4 @@
-import * as R_equals from 'ramda/src/equals';
+import * as R_equals from '../ramda/dist/src/equals';
 
 declare const string: string;
 

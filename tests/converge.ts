@@ -1,4 +1,4 @@
-import * as R_converge from 'ramda/src/converge';
+import * as R_converge from '../ramda/dist/src/converge';
 
 declare const any_args_to_object: (...args: any[]) => object;
 declare const string_number_boolean_to_object: (x: string, y: number, z: boolean) => object;

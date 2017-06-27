@@ -1,4 +1,4 @@
-import * as R_innerJoin from 'ramda/src/innerJoin';
+import * as R_innerJoin from '../ramda/dist/src/innerJoin';
 
 declare const object_number_to_boolean: (x: object, y: number) => boolean;
 declare const object_array: object[];

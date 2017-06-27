@@ -1,5 +1,5 @@
-import {Path} from 'ramda/src/$types';
-import * as R_lensPath from 'ramda/src/lensPath';
+import {Path} from '../ramda/dist/src/$types';
+import * as R_lensPath from '../ramda/dist/src/lensPath';
 
 declare const path: Path;
 

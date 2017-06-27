@@ -1,5 +1,5 @@
-import {Dictionary} from 'ramda/src/$types';
-import * as R_whereEq from 'ramda/src/whereEq';
+import {Dictionary} from '../ramda/dist/src/$types';
+import * as R_whereEq from '../ramda/dist/src/whereEq';
 
 declare const number_dictionary: Dictionary<number>;
 declare const a_1_b_2_c_3: {

@@ -1,4 +1,4 @@
-import * as R_prepend from 'ramda/src/prepend';
+import * as R_prepend from '../ramda/dist/src/prepend';
 
 declare const string: string;
 declare const number_array: number[];

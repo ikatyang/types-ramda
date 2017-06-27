@@ -1,5 +1,5 @@
-import {ListMapper, Morphism, ObjectMapper} from 'ramda/src/$types';
-import * as R_addIndex from 'ramda/src/addIndex';
+import {ListMapper, Morphism, ObjectMapper} from '../ramda/dist/src/$types';
+import * as R_addIndex from '../ramda/dist/src/addIndex';
 
 declare const string_to_number_list_mapper: ListMapper<string, number>;
 declare const string_to_number_object_mapper: ObjectMapper<string, number, string>;

@@ -1,4 +1,4 @@
-import * as R_subtract from 'ramda/src/subtract';
+import * as R_subtract from '../ramda/dist/src/subtract';
 
 declare const number: number;
 

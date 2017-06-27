@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import * as R from '../ramda/dist/index';
 
 // https://github.com/types/npm-ramda/blob/master/tests/test.ts
 

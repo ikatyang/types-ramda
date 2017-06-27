@@ -1,4 +1,4 @@
-import * as R_composeP from 'ramda/src/composeP';
+import * as R_composeP from '../ramda/dist/src/composeP';
 
 declare const boolean_to_number_promise: (x: boolean) => Promise<number>;
 declare const boolean_to_string_promise: (x: boolean) => Promise<string>;

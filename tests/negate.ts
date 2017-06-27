@@ -1,4 +1,4 @@
-import * as R_negate from 'ramda/src/negate';
+import * as R_negate from '../ramda/dist/src/negate';
 
 declare const number: number;
 

@@ -1,4 +1,4 @@
-import * as R_head from 'ramda/src/head';
+import * as R_head from '../ramda/dist/src/head';
 
 declare const string: string;
 declare const string_array: string[];

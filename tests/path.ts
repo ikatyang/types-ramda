@@ -1,5 +1,5 @@
-import {Path} from 'ramda/src/$types';
-import * as R_path from 'ramda/src/path';
+import {Path} from '../ramda/dist/src/$types';
+import * as R_path from '../ramda/dist/src/path';
 
 declare const path: Path;
 declare const object: object;

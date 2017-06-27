@@ -1,5 +1,5 @@
-import {Chain} from 'ramda/src/$types';
-import * as R_pipeK from 'ramda/src/pipeK';
+import {Chain} from '../ramda/dist/src/$types';
+import * as R_pipeK from '../ramda/dist/src/pipeK';
 
 declare const chain_boolean_to_chain_number: (x: Chain<boolean>) => Chain<number>;
 declare const chain_boolean_to_chain_string: (x: Chain<boolean>) => Chain<string>;

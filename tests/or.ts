@@ -1,4 +1,4 @@
-import * as R_or from 'ramda/src/or';
+import * as R_or from '../ramda/dist/src/or';
 
 declare const string: string;
 declare const number: number;

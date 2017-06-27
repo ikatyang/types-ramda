@@ -1,4 +1,4 @@
-import * as R_difference from 'ramda/src/difference';
+import * as R_difference from '../ramda/dist/src/difference';
 
 declare const number_array: number[];
 

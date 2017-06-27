@@ -1,5 +1,5 @@
-import {Predicate} from 'ramda/src/$types';
-import * as R_allPass from 'ramda/src/allPass';
+import {Predicate} from '../ramda/dist/src/$types';
+import * as R_allPass from '../ramda/dist/src/allPass';
 
 declare const string_predicate: Predicate<string>;
 declare const number_preficate: Predicate<number>;

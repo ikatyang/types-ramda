@@ -1,5 +1,5 @@
-import {Dictionary, Morphism, NestedDictionary} from 'ramda/src/$types';
-import * as R_evolve from 'ramda/src/evolve';
+import {Dictionary, Morphism, NestedDictionary} from '../ramda/dist/src/$types';
+import * as R_evolve from '../ramda/dist/src/evolve';
 
 declare const nested_string_to_number: NestedDictionary<Morphism<string, number>>;
 declare const nested_string_dictionary: Dictionary<string>;

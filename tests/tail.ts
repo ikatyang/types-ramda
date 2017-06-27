@@ -1,4 +1,4 @@
-import * as R_tail from 'ramda/src/tail';
+import * as R_tail from '../ramda/dist/src/tail';
 
 declare const string: string;
 declare const string_array: string[];

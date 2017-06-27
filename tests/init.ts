@@ -1,4 +1,4 @@
-import * as R_init from 'ramda/src/init';
+import * as R_init from '../ramda/dist/src/init';
 
 declare const string: string;
 declare const string_array: string[];

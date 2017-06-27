@@ -1,4 +1,4 @@
-import * as R_match from 'ramda/src/match';
+import * as R_match from '../ramda/dist/src/match';
 
 declare const regex: RegExp;
 declare const string: string;

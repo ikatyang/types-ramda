@@ -1,4 +1,4 @@
-import * as R_multiply from 'ramda/src/multiply';
+import * as R_multiply from '../ramda/dist/src/multiply';
 
 declare const number: number;
 

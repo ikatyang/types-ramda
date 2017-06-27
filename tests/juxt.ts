@@ -1,4 +1,4 @@
-import * as R_juxt from 'ramda/src/juxt';
+import * as R_juxt from '../ramda/dist/src/juxt';
 
 declare const string_string_to_number: (x: string, y: string) => number;
 declare const string: string;

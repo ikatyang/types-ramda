@@ -1,4 +1,4 @@
-import * as R_uniq from 'ramda/src/uniq';
+import * as R_uniq from '../ramda/dist/src/uniq';
 
 declare const number_array: number[];
 declare const string_array: string[];

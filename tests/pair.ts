@@ -1,4 +1,4 @@
-import * as R_pair from 'ramda/src/pair';
+import * as R_pair from '../ramda/dist/src/pair';
 
 declare const number: number;
 declare const object: object;

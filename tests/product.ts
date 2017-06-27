@@ -1,4 +1,4 @@
-import * as R_product from 'ramda/src/product';
+import * as R_product from '../ramda/dist/src/product';
 
 declare const number_array: number[];
 

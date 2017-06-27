@@ -1,4 +1,4 @@
-import * as R_symmetricDifference from 'ramda/src/symmetricDifference';
+import * as R_symmetricDifference from '../ramda/dist/src/symmetricDifference';
 
 declare const number_array: number[];
 

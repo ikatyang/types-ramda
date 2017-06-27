@@ -1,4 +1,4 @@
-import * as R_lensIndex from 'ramda/src/lensIndex';
+import * as R_lensIndex from '../ramda/dist/src/lensIndex';
 
 // @dts-jest:pass
 R_lensIndex(0);

@@ -1,5 +1,5 @@
-import {List} from 'ramda/src/$types';
-import * as R_reverse from 'ramda/src/reverse';
+import {List} from '../ramda/dist/src/$types';
+import * as R_reverse from '../ramda/dist/src/reverse';
 
 declare const string: string;
 declare const number_list: List<number>;

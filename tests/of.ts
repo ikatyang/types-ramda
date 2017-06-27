@@ -1,4 +1,4 @@
-import * as R_of from 'ramda/src/of';
+import * as R_of from '../ramda/dist/src/of';
 
 declare const object: object;
 

@@ -1,4 +1,4 @@
-import * as R_insert from 'ramda/src/insert';
+import * as R_insert from '../ramda/dist/src/insert';
 
 declare const object_array: object[];
 declare const string: string;

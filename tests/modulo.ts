@@ -1,4 +1,4 @@
-import * as R_modulo from 'ramda/src/modulo';
+import * as R_modulo from '../ramda/dist/src/modulo';
 
 declare const number: number;
 

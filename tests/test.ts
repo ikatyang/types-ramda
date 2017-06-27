@@ -1,4 +1,4 @@
-import * as R_test from 'ramda/src/test';
+import * as R_test from '../ramda/dist/src/test';
 
 declare const regex: RegExp;
 declare const string: string;

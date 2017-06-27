@@ -1,4 +1,4 @@
-import * as R_mergeWithKey from 'ramda/src/mergeWithKey';
+import * as R_mergeWithKey from '../ramda/dist/src/mergeWithKey';
 
 declare const string_string_string_to_number: (key: string, a: string, b: string) => number;
 declare const a_1: {a: 1};

@@ -1,5 +1,5 @@
-import {Dictionary, Filterable, Predicate} from 'ramda/src/$types';
-import * as R_filter from 'ramda/src/filter';
+import {Dictionary, Filterable, Predicate} from '../ramda/dist/src/$types';
+import * as R_filter from '../ramda/dist/src/filter';
 
 declare const string_predicate: Predicate<string>;
 declare const string_array: string[];

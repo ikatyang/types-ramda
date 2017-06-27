@@ -1,4 +1,4 @@
-import * as R_mean from 'ramda/src/mean';
+import * as R_mean from '../ramda/dist/src/mean';
 
 declare const number_array: number[];
 

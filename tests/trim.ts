@@ -1,4 +1,4 @@
-import * as R_trim from 'ramda/src/trim';
+import * as R_trim from '../ramda/dist/src/trim';
 
 declare const string: string;
 

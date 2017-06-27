@@ -1,4 +1,4 @@
-import * as R_unless from 'ramda/src/unless';
+import * as R_unless from '../ramda/dist/src/unless';
 
 declare const number_to_boolean: (x: number) => boolean;
 declare const number_to_string: (x: number) => string;

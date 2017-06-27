@@ -1,4 +1,4 @@
-import * as R_indexOf from 'ramda/src/indexOf';
+import * as R_indexOf from '../ramda/dist/src/indexOf';
 
 declare const string: string;
 declare const string_array: string[];

@@ -1,4 +1,4 @@
-import * as R_ifElse from 'ramda/src/ifElse';
+import * as R_ifElse from '../ramda/dist/src/ifElse';
 
 declare const string_to_boolean: (x: string) => boolean;
 declare const string_to_number: (x: string) => number;

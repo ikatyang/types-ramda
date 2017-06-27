@@ -1,4 +1,4 @@
-import * as R_replace from 'ramda/src/replace';
+import * as R_replace from '../ramda/dist/src/replace';
 
 declare const regex: RegExp;
 declare const string: string;

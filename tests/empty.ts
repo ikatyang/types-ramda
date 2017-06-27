@@ -1,4 +1,4 @@
-import * as R_empty from 'ramda/src/empty';
+import * as R_empty from '../ramda/dist/src/empty';
 
 declare const object: object;
 declare const string: string;

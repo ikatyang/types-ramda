@@ -1,5 +1,5 @@
-import {Dictionary, KeyedObjectTap} from 'ramda/src/$types';
-import * as R_forEachObjIndexed from 'ramda/src/forEachObjIndexed';
+import {Dictionary, KeyedObjectTap} from '../ramda/dist/src/$types';
+import * as R_forEachObjIndexed from '../ramda/dist/src/forEachObjIndexed';
 
 declare const number_dictionary: Dictionary<number>;
 declare const keyed_number_dictionary_tap: KeyedObjectTap<number, Dictionary<number>>;

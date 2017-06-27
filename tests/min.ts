@@ -1,4 +1,4 @@
-import * as R_min from 'ramda/src/min';
+import * as R_min from '../ramda/dist/src/min';
 
 declare const number: number;
 declare const string: string;

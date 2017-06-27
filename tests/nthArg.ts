@@ -1,4 +1,4 @@
-import * as R_nthArg from 'ramda/src/nthArg';
+import * as R_nthArg from '../ramda/dist/src/nthArg';
 
 declare const number: number;
 declare const object_array: object[];

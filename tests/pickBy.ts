@@ -1,4 +1,4 @@
-import * as R_pickBy from 'ramda/src/pickBy';
+import * as R_pickBy from '../ramda/dist/src/pickBy';
 
 declare const string_string_object_to_boolean: (x: string, k: string, o: object) => boolean;
 declare const object: object;

@@ -1,4 +1,4 @@
-import * as R_always from 'ramda/src/always';
+import * as R_always from '../ramda/dist/src/always';
 
 declare const string: string;
 

@@ -1,4 +1,4 @@
-import * as R_reduceRight from 'ramda/src/reduceRight';
+import * as R_reduceRight from '../ramda/dist/src/reduceRight';
 
 declare const number_array: number[];
 declare const object: object;

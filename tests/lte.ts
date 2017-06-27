@@ -1,4 +1,4 @@
-import * as R_lte from 'ramda/src/lte';
+import * as R_lte from '../ramda/dist/src/lte';
 
 declare const string: string;
 declare const number: number;

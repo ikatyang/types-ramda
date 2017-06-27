@@ -1,5 +1,5 @@
-import {List} from 'ramda/src/$types';
-import * as R_splitAt from 'ramda/src/splitAt';
+import {List} from '../ramda/dist/src/$types';
+import * as R_splitAt from '../ramda/dist/src/splitAt';
 
 declare const number: number;
 declare const string: string;

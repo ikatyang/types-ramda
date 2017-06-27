@@ -1,4 +1,4 @@
-import * as R_unnest from 'ramda/src/unnest';
+import * as R_unnest from '../ramda/dist/src/unnest';
 
 declare const number_array: number[];
 declare const number_array_array: number[][];

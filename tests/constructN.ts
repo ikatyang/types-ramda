@@ -1,4 +1,4 @@
-import * as R_constructN from 'ramda/src/constructN';
+import * as R_constructN from '../ramda/dist/src/constructN';
 
 declare const new_string_to_object: new (x: string) => object;
 declare const new_number_boolean_to_string: new (x: number, y: boolean) => string;

@@ -1,4 +1,4 @@
-import * as R_median from 'ramda/src/median';
+import * as R_median from '../ramda/dist/src/median';
 
 declare const number_array: number[];
 

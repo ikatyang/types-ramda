@@ -1,5 +1,5 @@
-import {Property} from 'ramda/src/$types';
-import * as R_eqProps from 'ramda/src/eqProps';
+import {Property} from '../ramda/dist/src/$types';
+import * as R_eqProps from '../ramda/dist/src/eqProps';
 
 declare const property: Property;
 declare const string: string;

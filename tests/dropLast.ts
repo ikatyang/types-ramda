@@ -1,4 +1,4 @@
-import * as R_dropLast from 'ramda/src/dropLast';
+import * as R_dropLast from '../ramda/dist/src/dropLast';
 
 declare const number: number;
 declare const string: string;

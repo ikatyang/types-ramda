@@ -1,4 +1,4 @@
-import * as R_toPairsIn from 'ramda/src/toPairsIn';
+import * as R_toPairsIn from '../ramda/dist/src/toPairsIn';
 
 declare const a_1_b_2_c_3: {
   a: 1;

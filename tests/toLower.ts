@@ -1,4 +1,4 @@
-import * as R_toLower from 'ramda/src/toLower';
+import * as R_toLower from '../ramda/dist/src/toLower';
 
 declare const string: string;
 

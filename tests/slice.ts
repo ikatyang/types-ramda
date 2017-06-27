@@ -1,5 +1,5 @@
-import {List} from 'ramda/src/$types';
-import * as R_slice from 'ramda/src/slice';
+import {List} from '../ramda/dist/src/$types';
+import * as R_slice from '../ramda/dist/src/slice';
 
 declare const number: number;
 declare const string: string;

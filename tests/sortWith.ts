@@ -1,5 +1,5 @@
-import {List} from 'ramda/src/$types';
-import * as R_sortWith from 'ramda/src/sortWith';
+import {List} from '../ramda/dist/src/$types';
+import * as R_sortWith from '../ramda/dist/src/sortWith';
 
 declare const string: string;
 declare const string_string_to_number: (x: string, y: string) => number;

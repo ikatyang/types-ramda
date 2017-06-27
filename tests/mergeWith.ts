@@ -1,4 +1,4 @@
-import * as R_mergeWith from 'ramda/src/mergeWith';
+import * as R_mergeWith from '../ramda/dist/src/mergeWith';
 
 declare const string_string_to_number: (a: string, b: string) => number;
 declare const a_1: {a: 1};

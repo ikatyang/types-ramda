@@ -1,4 +1,4 @@
-import * as R_once from 'ramda/src/once';
+import * as R_once from '../ramda/dist/src/once';
 
 declare const T_to_T: <T>(value: T) => T;
 

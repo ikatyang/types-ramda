@@ -1,4 +1,4 @@
-import * as R_scan from 'ramda/src/scan';
+import * as R_scan from '../ramda/dist/src/scan';
 
 declare const number_array: number[];
 declare const object: object;

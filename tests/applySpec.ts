@@ -1,4 +1,4 @@
-import * as R_applySpec from 'ramda/src/applySpec';
+import * as R_applySpec from '../ramda/dist/src/applySpec';
 
 interface Name {
   firstname: string;

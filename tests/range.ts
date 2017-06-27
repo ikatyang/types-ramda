@@ -1,4 +1,4 @@
-import * as R_range from 'ramda/src/range';
+import * as R_range from '../ramda/dist/src/range';
 
 declare const number: number;
 

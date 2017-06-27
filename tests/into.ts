@@ -1,5 +1,5 @@
-import {Transformer} from 'ramda/src/$types';
-import * as R_into from 'ramda/src/into';
+import {Transformer} from '../ramda/dist/src/$types';
+import * as R_into from '../ramda/dist/src/into';
 
 declare const object: object;
 declare const str_obj_transformer: Transformer<string, object, object>;

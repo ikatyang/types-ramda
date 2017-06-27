@@ -1,4 +1,4 @@
-import * as R_divide from 'ramda/src/divide';
+import * as R_divide from '../ramda/dist/src/divide';
 
 declare const number: number;
 

@@ -1,4 +1,4 @@
-import * as R_zip from 'ramda/src/zip';
+import * as R_zip from '../ramda/dist/src/zip';
 
 declare const number_array: number[];
 declare const string_array: string[];

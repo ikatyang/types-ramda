@@ -1,4 +1,4 @@
-import * as R_toString from 'ramda/src/toString';
+import * as R_toString from '../ramda/dist/src/toString';
 
 declare const number: number;
 declare const object: object;

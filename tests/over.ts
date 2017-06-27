@@ -1,5 +1,5 @@
-import {Lens} from 'ramda/src/$types';
-import * as R_over from 'ramda/src/over';
+import {Lens} from '../ramda/dist/src/$types';
+import * as R_over from '../ramda/dist/src/over';
 
 declare const number_object_lens: Lens<number, object>;
 declare const number_to_number: (x: number) => number;

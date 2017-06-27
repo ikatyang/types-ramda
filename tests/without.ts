@@ -1,4 +1,4 @@
-import * as R_without from 'ramda/src/without';
+import * as R_without from '../ramda/dist/src/without';
 
 declare const number_array: number[];
 
