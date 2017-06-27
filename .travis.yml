@@ -8,6 +8,9 @@ script:
   - yarn run test -- --verbose
   - yarn run test-actual -- --verbose -u
 
+after_success:
+  - if [ "$TRAVIS_BRANCH" = "master" ] && [ "TRAVIS_PULL_REQUEST" = "false" ]; then bash ./deploy.sh; fi
+
 cache:
   yarn: true
   directories:
@@ -15,3 +18,7 @@ cache:
 
 matrix:
   fast_finish: true
+
+env:
+  global:
+    secure: pAbSAUG5vO8ctbt8qy2PPZLgqylfenCbzWjKr7prHUgXpWfnAXtdQ8hL3u44yClmO2/J2aGLHkc/XHSBmmQNFINF+nzzjpqtBz/UM2VdQIqYklz3j9J0eNWSVmzPMC/Sa+KY41NtANyt+iFDHgCX1rB3cGHY/eNkBoRZikb6Ymbu9kuXkiSFQCWLiA/G0Fjr4vghxnSG69rmzmat6a2L2BT49womhvGKxvSqPn8fRBr9amHSSkT8Q07mpjT3/k92rUungrb4tOKyLxubs6fybym0c8jJF0xJwQCUWpaNEj4Cagg0scmtVwL5SC+Z7qw8wgJIquxY2aLD3htB2EMSqkBAZiYYyzoeHtrivzopGY3tBYcaspN4uyYLO9smzpescDQYq48fs2sTqBnVU4pVgdzdN7VvJiT2Ue9CYGh0e5aV9s1BPpMKG9bwY0ZMT9A27rkOeNkBz/asO3TTWztOQyndsbKjZvxD4zD8z8sixxdNNaJT/DEFO/GfLXS+LYi2lxQ5OUOcv//+ltm9qLCcelxbjHHEeSNa610CbbyREr8xNjVXs5nryzi19vtKbLC2TixmELBJr78KlBZ6jJo8TBxjqPB3hiJmZJnAQgpt4v7Ychssxif8hxPLPNfeFKiAXe1zrRlvhnfWpIfOZ7eUwC64fdv+N1LlN48XQU1MGas=
