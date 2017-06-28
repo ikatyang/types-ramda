@@ -47,7 +47,7 @@
     "ramda": "0.24.1",
     "run-sequence": "1.2.2",
     "through2": "2.0.3",
-    "ts-node": "3.0.6",
+    "ts-node": "3.1.0",
     "tslint": "5.4.3",
     "tslint-config-ikatyang": "0.8.0",
     "typescript": "2.4.0"

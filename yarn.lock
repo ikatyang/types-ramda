@@ -2643,9 +2643,9 @@ ts-comment@^1.0.1:
   dependencies:
     typescript "^2.4.0"
 
-ts-node@3.0.6:
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-3.0.6.tgz#55127ff790c7eebf6ba68c1e6dde94b09aaa21e0"
+ts-node@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-3.1.0.tgz#a75ec5aeb48f3058b1b945dba765f1150ba88f8c"
   dependencies:
     arrify "^1.0.0"
     chalk "^1.1.1"
