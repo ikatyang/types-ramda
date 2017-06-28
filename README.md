@@ -1,5 +1,7 @@
 # types-ramda
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ikatyang/types-ramda.svg)](https://greenkeeper.io/)
+
 [![release](https://img.shields.io/github/release/ikatyang/types-ramda.svg)](https://github.com/ikatyang/types-ramda/releases)
 [![build](https://travis-ci.org/ikatyang/types-ramda.svg)](https://travis-ci.org/ikatyang/types-ramda)
 
