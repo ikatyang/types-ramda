@@ -21,7 +21,9 @@ import { List } from "./$types";
  */
 declare const last: last_0;
 type last_0 = {
-    <T>(list: List<T>): last_1<T>;
+    (str: string): last_string_1;
+    <T>(list: List<T>): last_list_1<T>;
 };
-type last_1<T> = T | undefined;
+type last_string_1 = string;
+type last_list_1<T> = T | undefined;
 export = last;
