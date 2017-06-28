@@ -1,4 +1,4 @@
 {
   "tslint.ignoreDefinitionFiles": false,
-  "tslint.exclude": "{**/src/**/*,**/index.d.ts}"
+  "tslint.exclude": "**/{node_modules,ramda}/**/*"
 }
