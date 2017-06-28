@@ -9,7 +9,7 @@ script:
   - yarn run test-actual -- --verbose -u
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./deploy.sh; fi
+  - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/deploy.sh; fi
 
 cache:
   yarn: true
