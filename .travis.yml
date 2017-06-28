@@ -3,10 +3,19 @@ language: node_js
 node_js:
   - "stable"
 
+before_install:
+  - yarn global add greenkeeper-lockfile@1
+
+before_script:
+  - greenkeeper-lockfile-update
+
 script:
   - yarn run lint
   - yarn run test -- --verbose
   - yarn run test-actual -- --verbose -u
+
+after_script:
+  - greenkeeper-lockfile-upload
 
 after_success:
   - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/deploy.sh; fi
