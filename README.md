@@ -2,7 +2,7 @@
 
 [![release](https://img.shields.io/github/release/ikatyang/types-ramda.svg)](https://github.com/ikatyang/types-ramda/releases)
 [![build](https://travis-ci.org/ikatyang/types-ramda.svg)](https://travis-ci.org/ikatyang/types-ramda)
-[![greenkeepe](https://badges.greenkeeper.io/ikatyang/types-ramda.svg)](https://greenkeeper.io/)
+[![greenkeeper](https://badges.greenkeeper.io/ikatyang/types-ramda.svg)](https://greenkeeper.io/)
 
 TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
 
