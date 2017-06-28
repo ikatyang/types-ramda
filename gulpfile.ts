@@ -255,7 +255,7 @@ function generate_index_content() {
       filename => dts.create_export_named({from: filename}),
     ),
     ...jsdoc_binded_filenames.map(
-      filename => dts.create_import_namespace({
+      filename => dts.create_import_equal({
         name: path.basename(filename),
         from: filename,
       }),
