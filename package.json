@@ -22,7 +22,8 @@
     "test-actual": "jest --config ./jest.actual.json",
     "build": "gulp build",
     "build-watch": "gulp build-watch",
-    "jsdoc": "ts-node ./scripts/migrate-jsdoc.ts v0.24.1 ./templates"
+    "jsdoc": "ts-node ./scripts/migrate-jsdoc.ts v0.24.1 ./templates",
+    "release-tags": "bash ./scripts/release-tags.sh"
   },
   "devDependencies": {
     "@types/del": "2.2.32",
