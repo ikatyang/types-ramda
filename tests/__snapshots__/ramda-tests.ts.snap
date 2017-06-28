@@ -128,9 +128,9 @@ exports[`chain R.chain(duplicate)([1, 2, 3]) 1`] = `"number[]"`;
 
 exports[`chain R.chain(duplicate, [1, 2, 3]) 1`] = `"number[]"`;
 
-exports[`chain R.chain<number, number[], number>(R.append)(R.head)([1, 2, 3]) 1`] = `"number[]"`;
+exports[`chain R.chain<number, number[], number | undefined>(R.append)(R.head)([1, 2, 3]) 1`] = `"number[]"`;
 
-exports[`chain R.chain<number, number[], number>(R.append, R.head)([1, 2, 3]) 1`] = `"number[]"`;
+exports[`chain R.chain<number, number[], number | undefined>(R.append, R.head)([1, 2, 3]) 1`] = `"number[]"`;
 
 exports[`clamp R.clamp('a', 'd', 'e') 1`] = `"\\"a\\" | \\"d\\" | \\"e\\""`;
 

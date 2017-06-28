@@ -302,9 +302,9 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.chain(duplicate)([1, 2, 3]); //=> [1, 1, 2, 2, 3, 3]
   // @dts-jest:pass
-  R.chain<number, number[], number>(R.append, R.head)([1, 2, 3]); //=> [1, 2, 3, 1]
+  R.chain<number, number[], number | undefined>(R.append, R.head)([1, 2, 3]); //=> [1, 2, 3, 1]
   // @dts-jest:pass
-  R.chain<number, number[], number>(R.append)(R.head)([1, 2, 3]); //=> [1, 2, 3, 1]
+  R.chain<number, number[], number | undefined>(R.append)(R.head)([1, 2, 3]); //=> [1, 2, 3, 1]
 })();
 
 // @dts-jest:group clamp
