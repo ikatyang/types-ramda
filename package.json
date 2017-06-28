@@ -50,7 +50,7 @@
     "ts-node": "3.1.0",
     "tslint": "5.4.3",
     "tslint-config-ikatyang": "0.8.0",
-    "typescript": "2.4.0"
+    "typescript": "2.4.1"
   },
   "files": [
     "/src/**/*",
