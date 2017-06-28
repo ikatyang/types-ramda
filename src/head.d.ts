@@ -22,7 +22,11 @@ import { List } from "./$types";
  */
 declare const head: head_0;
 type head_0 = {
-    <T>(list: List<T>): head_1<T>;
+    (str: string): head_string_1;
+    <$SEL extends "1", $KIND extends "string">(): (str: string) => head_string_1;
+    <$SEL extends "1", $KIND extends "list">(): <T>(list: List<T>) => head_list_1<T>;
+    <T>(list: List<T>): head_list_1<T>;
 };
-type head_1<T> = T | undefined;
+type head_string_1 = string;
+type head_list_1<T> = T | undefined;
 export = head;

@@ -1,4 +1,3 @@
-import { PromiseLike } from "./$types";
 /**
  * Performs right-to-left composition of one or more Promise-returning
  * functions. The rightmost function may have any arity; the remaining
