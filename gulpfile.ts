@@ -171,7 +171,7 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
     const imports = the_members.filter(
       (member): member is dts.IImportNamed => (member.kind === dts.ElementKind.ImportNamed),
     );
-    const functions = the_members.filter(
+    const functions = the_members.filter<dts.IFunctionDeclaration>(
       (member): member is dts.IFunctionDeclaration => (member.kind === dts.ElementKind.FunctionDeclaration),
     );
 

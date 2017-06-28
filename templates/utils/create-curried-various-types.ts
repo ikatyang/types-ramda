@@ -129,13 +129,13 @@ export const create_various_curried_types = (name: string, types: {[kind: string
       return dts.create_object_member({
         owned: dts.create_function_declaration({
           name: undefined,
-          type: dts.create_function_type({
+          type: {
             ...function_type,
             return: dts.create_general_type({
               name: key,
               generics: function_return_type.generics,
             }),
-          }),
+          },
         }),
       });
     });
