@@ -179,20 +179,11 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
       throw new Error(`Exported functions in ${filename} should be prefixed with $`);
     }
 
-    const placeholder_imports =
-      (functions[0].type!.parameters!.length <= 1)
-        ? []
-        : [
-          dts.create_import_named({
-            from: './$placeholder',
-            members: [
-              dts.create_import_member({
-                name: placeholder_name_abbr,
-                property: placeholder_name,
-              }),
-            ],
-          }),
-        ];
+    const placeholder_imports = (!placeholder || functions[0].type!.parameters!.length <= 1)
+      ? []
+      : dts.parse(`
+        import {${placeholder_name} as ${placeholder_name_abbr}} from './$placeholder';
+      `).members;
 
     const curried_declarations = create_curried_declarations(
       filename,
