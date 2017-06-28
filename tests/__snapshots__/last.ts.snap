@@ -2,6 +2,6 @@
 
 exports[`R_last(number_array) 1`] = `"number | undefined"`;
 
-exports[`R_last(string) 1`] = `"string | undefined"`;
+exports[`R_last(string) 1`] = `"string"`;
 
 exports[`R_last(string_array) 1`] = `"string | undefined"`;

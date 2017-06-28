@@ -1,3 +1,4 @@
 import {List} from './$types';
 
-export function $<T>(list: List<T>): T | undefined;
+export function $string(str: string): string;
+export function $list<T>(list: List<T>): T | undefined;

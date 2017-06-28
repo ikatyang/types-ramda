@@ -2,6 +2,6 @@
 
 exports[`R_head(number_array) 1`] = `"number | undefined"`;
 
-exports[`R_head(string) 1`] = `"string | undefined"`;
+exports[`R_head(string) 1`] = `"string"`;
 
 exports[`R_head(string_array) 1`] = `"string | undefined"`;
