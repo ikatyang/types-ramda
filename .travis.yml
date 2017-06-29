@@ -1,29 +1,33 @@
 language: node_js
 
 node_js:
-  - "stable"
+- stable
 
 before_install:
-  - yarn global add greenkeeper-lockfile@1
+- yarn global add greenkeeper-lockfile@1
 
 before_script:
-  - greenkeeper-lockfile-update
+- greenkeeper-lockfile-update
 
 script:
-  - yarn run lint
-  - yarn run test -- --verbose
-  - yarn run test-actual -- --verbose -u
+- yarn run lint
+- yarn run test -- --verbose
+- yarn run test-actual -- --verbose -u
 
 after_script:
-  - greenkeeper-lockfile-upload
+- greenkeeper-lockfile-upload
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/deploy.sh; fi
+- if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/deploy.sh; fi
 
 cache:
   yarn: true
   directories:
-    - node_modules
+  - node_modules
 
 matrix:
   fast_finish: true
+
+branches:
+  except:
+  - /^greenkeeper\//

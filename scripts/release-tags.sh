@@ -1,3 +1,5 @@
+#!/bin/bash
+
 git fetch --all
 
 git tag "v$npm_package_version-dist" origin/dist
