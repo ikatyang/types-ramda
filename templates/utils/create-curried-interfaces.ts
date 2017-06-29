@@ -11,7 +11,13 @@ import {create_selectable_signatures} from './create-selectable-signatures';
 import {push_signatures} from './push-signatures';
 import {sort_signatures} from './sort-signatures';
 
-export const create_curried_interfaces = (max_curry_level: number, selectable = true, placeholder = true) => {
+export const create_curried_interfaces = (
+  max_curry_level: number,
+  // istanbul ignore next
+  selectable = true,
+  // istanbul ignore next
+  placeholder = true,
+  ) => {
   const generics = [...new Array(max_curry_level)].map((_, index) =>
     dts.create_generic_declaration({
       name: get_curried_interface_generic_name(index),
