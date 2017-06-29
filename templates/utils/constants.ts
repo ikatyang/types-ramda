@@ -12,5 +12,4 @@ export const get_curried_interface_generic_return_name = () => 'R';
 export const get_curried_function_parameter_placeholder_name = (name: string) => `_${name}`;
 export const get_curried_function_selectable_name = () => '$SEL';
 export const get_curried_function_selectable_group_name = () => '$KIND';
-export const get_curried_function_selectable_type = (mask: string) => mask;
 export const get_curried_function_type_name = (name: string, mask: string) => `${name}_${mask}`;
