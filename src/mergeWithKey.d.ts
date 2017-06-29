@@ -25,30 +25,30 @@
  */
 declare const mergeWithKey: mergeWithKey_000;
 type mergeWithKey_000 = {
-    <V, T>(fn: (key: string, a: V, b: V) => any, left: object, right: object): mergeWithKey_111<V, T>;
+    <V, T>(fn: (key: string, a: V, b: V) => any, left: object, right: object): mergeWithKey_111<T>;
     <V>(fn: (key: string, a: V, b: V) => any, left: object): mergeWithKey_110<V>;
     <V>(fn: (key: string, a: V, b: V) => any): mergeWithKey_100<V>;
 };
 type mergeWithKey_100<V> = {
-    <T>(left: object, right: object): mergeWithKey_111<V, T>;
+    <T>(left: object, right: object): mergeWithKey_111<T>;
     (left: object): mergeWithKey_110<V>;
 };
 type mergeWithKey_010 = {
-    <V, T>(fn: (key: string, a: V, b: V) => any, right: object): mergeWithKey_111<V, T>;
+    <V, T>(fn: (key: string, a: V, b: V) => any, right: object): mergeWithKey_111<T>;
     <V>(fn: (key: string, a: V, b: V) => any): mergeWithKey_110<V>;
 };
 type mergeWithKey_110<V> = {
-    <T>(right: object): mergeWithKey_111<V, T>;
+    <T>(right: object): mergeWithKey_111<T>;
 };
 type mergeWithKey_001 = {
-    <V, T>(fn: (key: string, a: V, b: V) => any, left: object): mergeWithKey_111<V, T>;
+    <V, T>(fn: (key: string, a: V, b: V) => any, left: object): mergeWithKey_111<T>;
     <V>(fn: (key: string, a: V, b: V) => any): mergeWithKey_101<V>;
 };
 type mergeWithKey_101<V> = {
-    <T>(left: object): mergeWithKey_111<V, T>;
+    <T>(left: object): mergeWithKey_111<T>;
 };
 type mergeWithKey_011 = {
-    <V, T>(fn: (key: string, a: V, b: V) => any): mergeWithKey_111<V, T>;
+    <V, T>(fn: (key: string, a: V, b: V) => any): mergeWithKey_111<T>;
 };
-type mergeWithKey_111<V, T> = T;
+type mergeWithKey_111<T> = T;
 export = mergeWithKey;

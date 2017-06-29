@@ -23,30 +23,30 @@ import { Morphism, Ordered } from "./$types";
  */
 declare const descend: descend_000;
 type descend_000 = {
-    <T, U extends Ordered>(fn: Morphism<T, U>, a: T, b: T): descend_111<T, U>;
+    <T, U extends Ordered>(fn: Morphism<T, U>, a: T, b: T): descend_111;
     <T, U extends Ordered>(fn: Morphism<T, U>, a: T): descend_110<T, U>;
     <T, U extends Ordered>(fn: Morphism<T, U>): descend_100<T, U>;
 };
 type descend_100<T, U extends Ordered> = {
-    (a: T, b: T): descend_111<T, U>;
+    (a: T, b: T): descend_111;
     (a: T): descend_110<T, U>;
 };
 type descend_010<T> = {
-    <U extends Ordered>(fn: Morphism<T, U>, b: T): descend_111<T, U>;
+    <U extends Ordered>(fn: Morphism<T, U>, b: T): descend_111;
     <U extends Ordered>(fn: Morphism<T, U>): descend_110<T, U>;
 };
 type descend_110<T, U extends Ordered> = {
-    (b: T): descend_111<T, U>;
+    (b: T): descend_111;
 };
 type descend_001<T> = {
-    <U extends Ordered>(fn: Morphism<T, U>, a: T): descend_111<T, U>;
+    <U extends Ordered>(fn: Morphism<T, U>, a: T): descend_111;
     <U extends Ordered>(fn: Morphism<T, U>): descend_101<T, U>;
 };
 type descend_101<T, U extends Ordered> = {
-    (a: T): descend_111<T, U>;
+    (a: T): descend_111;
 };
 type descend_011<T> = {
-    <U extends Ordered>(fn: Morphism<T, U>): descend_111<T, U>;
+    <U extends Ordered>(fn: Morphism<T, U>): descend_111;
 };
-type descend_111<T, U extends Ordered> = number;
+type descend_111 = number;
 export = descend;

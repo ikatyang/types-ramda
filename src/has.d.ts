@@ -25,14 +25,14 @@ import { Property } from "./$types";
  */
 declare const has: has_00;
 type has_00 = {
-    <T>(property: Property, object: T): has_11<T>;
+    <T>(property: Property, object: T): has_11;
     (property: Property): has_10;
 };
 type has_10 = {
-    <T>(object: T): has_11<T>;
+    <T>(object: T): has_11;
 };
 type has_01<T> = {
-    (property: Property): has_11<T>;
+    (property: Property): has_11;
 };
-type has_11<T> = boolean;
+type has_11 = boolean;
 export = has;

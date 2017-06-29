@@ -24,9 +24,9 @@ declare const empty: empty_0;
 type empty_0 = {
     <T>(container: T[]): empty_array_1<T>;
     (container: string): empty_string_1;
-    <R, U = any>(container: U): empty_manual_1<R, U>;
+    <R, U = any>(container: U): empty_manual_1<R>;
 };
 type empty_array_1<T> = T[];
 type empty_string_1 = string;
-type empty_manual_1<R, U = any> = R;
+type empty_manual_1<R> = R;
 export = empty;
