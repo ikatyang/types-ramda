@@ -90,6 +90,9 @@ yarn run build
 # build types with watching mode
 yarn run build-watch
 
+# test utils
+yarn run test-utils
+
 # actual test
 yarn run test-actual
 
