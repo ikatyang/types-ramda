@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a list of numbers from `from` (inclusive) to `to` (exclusive).
  *

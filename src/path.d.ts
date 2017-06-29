@@ -1,5 +1,4 @@
 import { Path } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Retrieve the value at a given path.
  *

@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Multiplies two numbers. Equivalent to `a * b` but curried.
  *

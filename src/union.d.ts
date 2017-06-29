@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Combines two lists into a set (i.e. no duplicates) composed of the elements
  * of each list.

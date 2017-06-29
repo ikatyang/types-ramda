@@ -1,5 +1,4 @@
 import { List, Property } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Acts as multiple `prop`: array of keys in, array of values out. Preserves
  * order.

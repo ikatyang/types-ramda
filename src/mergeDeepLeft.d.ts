@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Creates a new object with the own properties of the first object merged with
  * the own properties of the second object. If a key exists in both objects:

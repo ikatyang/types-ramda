@@ -1,5 +1,4 @@
 import { List, Property } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a function that when supplied an object returns the indicated
  * property of that object, if it exists.

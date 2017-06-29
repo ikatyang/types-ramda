@@ -1,5 +1,4 @@
 import { Morphism, Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Tests the final argument by passing it to the given predicate function. If
  * the predicate is satisfied, the function will return the result of calling

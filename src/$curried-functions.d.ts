@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 export type CurriedFunction0<R> = () => R;
 export interface CurriedFunction1<T1, R> {
     (v1: T1): R;

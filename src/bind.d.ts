@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Creates a function that is bound to a context.
  * Note: `R.bind` does not provide the additional argument-binding capabilities of

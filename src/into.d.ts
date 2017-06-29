@@ -1,5 +1,4 @@
 import { Morphism, Reduced, Transformer } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Transforms the items of the list with the transducer and appends the
  * transformed items to the accumulator using an appropriate iterator function

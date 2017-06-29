@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a new list without values in the first argument.
  * [`R.equals`](#equals) is used to determine equality.

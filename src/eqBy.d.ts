@@ -1,5 +1,4 @@
 import { Morphism } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Takes a function and two values in its domain and returns `true` if the
  * values map to the same value in the codomain; `false` otherwise.

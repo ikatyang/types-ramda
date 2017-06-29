@@ -1,5 +1,4 @@
 import { Property } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a new object that does not contain a `prop` property.
  *

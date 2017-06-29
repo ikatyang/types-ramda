@@ -1,5 +1,4 @@
 import { Morphism, Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Creates a function that will process either the `onTrue` or the `onFalse`
  * function depending upon the result of the `condition` predicate.

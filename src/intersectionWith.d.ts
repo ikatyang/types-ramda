@@ -1,5 +1,4 @@
 import { Comparator, List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Combines two lists into a set (i.e. no duplicates) composed of those
  * elements common to both lists. Duplication is determined according to the

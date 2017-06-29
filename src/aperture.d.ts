@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a new list, composed of n-tuples of consecutive elements. If `n` is
  * greater than the length of the list, an empty list is returned.

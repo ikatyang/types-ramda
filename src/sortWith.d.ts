@@ -1,5 +1,4 @@
 import { Comparator, List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Sorts a list according to a list of comparators.
  *

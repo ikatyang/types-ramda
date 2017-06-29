@@ -1,5 +1,4 @@
 import { List, Tap } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Iterate over an input `list`, calling a provided function `fn` for each
  * element in the list.

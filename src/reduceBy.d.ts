@@ -1,5 +1,4 @@
 import { List, Morphism, Reduced } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Groups the elements of the list according to the result of calling
  * the String-returning function `keyFn` on each element and reduces the elements

@@ -1,5 +1,4 @@
 import { Comparator, List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Finds the set (i.e. no duplicates) of all elements in the first list not
  * contained in the second list. Duplication is determined according to the

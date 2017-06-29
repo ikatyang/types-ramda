@@ -1,6 +1,5 @@
 import { CurriedFunction0, CurriedFunction1, CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curried-functions";
 import { Variadic } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a function of arity `n` from a (manually) curried function.
  *

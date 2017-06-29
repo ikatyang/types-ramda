@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns true if its arguments are identical, false otherwise. Values are
  * identical if they reference the same memory. `NaN` is identical to `NaN`;

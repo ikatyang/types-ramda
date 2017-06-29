@@ -1,5 +1,4 @@
 import { Constructor, Property } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns `true` if the specified object property is of the given type;
  * `false` otherwise.

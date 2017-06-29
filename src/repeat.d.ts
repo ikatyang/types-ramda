@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a fixed list of size `n` containing a specified identical value.
  *

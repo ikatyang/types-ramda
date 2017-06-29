@@ -1,5 +1,4 @@
 import { Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * A function which calls the two provided functions and returns the `&&`
  * of the results.

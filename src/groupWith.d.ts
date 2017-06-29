@@ -1,5 +1,4 @@
 import { Comparator, List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Takes a list and returns a list of lists where each sublist's elements are
  * all satisfied pairwise comparison according to the provided function.

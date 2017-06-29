@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * The `mapAccum` function behaves like a combination of map and reduce; it
  * applies a function to each element of a list, passing an accumulating

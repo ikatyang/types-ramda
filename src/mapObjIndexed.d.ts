@@ -1,5 +1,4 @@
 import { KeyedObjectMorphism } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * An Object-specific version of [`map`](#map). The function is applied to three
  * arguments: *(value, key, obj)*. If only the value is significant, use

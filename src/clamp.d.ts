@@ -1,5 +1,4 @@
 import { Ordered } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Restricts a number to be within a range.
  *

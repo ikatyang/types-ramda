@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 /**
  * `mathMod` behaves like the modulo operator should mathematically, unlike the
  * `%` operator (and by extension, [`R.modulo`](#modulo)). So while

@@ -1,5 +1,4 @@
 import { List, Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns `true` if no elements of the list match the predicate, `false`
  * otherwise.

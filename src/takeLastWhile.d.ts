@@ -1,5 +1,4 @@
 import { List, Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a new list containing the last `n` elements of a given list, passing
  * each value to the supplied predicate function, and terminating when the

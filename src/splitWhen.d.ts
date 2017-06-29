@@ -1,5 +1,4 @@
 import { List, Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Takes a list and a predicate and returns a pair of lists with the following properties:
  *

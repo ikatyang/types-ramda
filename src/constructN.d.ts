@@ -1,6 +1,5 @@
 import { CurriedFunction0, CurriedFunction1, CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curried-functions";
 import { Constructor, Variadic } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Wraps a constructor function inside a curried function that can be called
  * with the same arguments and returns the same type. The arity of the function

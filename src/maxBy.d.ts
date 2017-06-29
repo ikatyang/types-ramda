@@ -1,5 +1,4 @@
 import { Morphism, Ordered } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Takes a function and two values, and returns whichever value produces the
  * larger result when passed to the provided function.

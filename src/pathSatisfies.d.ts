@@ -1,5 +1,4 @@
 import { Path, Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns `true` if the specified object property at given path satisfies the
  * given predicate; `false` otherwise.

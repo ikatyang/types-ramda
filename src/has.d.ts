@@ -1,5 +1,4 @@
 import { Property } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns whether or not an object has an own property with the specified name
  *

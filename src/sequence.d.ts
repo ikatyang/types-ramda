@@ -1,5 +1,4 @@
 import { Applicative, List, Morphism, Traversable } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Transforms a [Traversable](https://github.com/fantasyland/fantasy-land#traversable)
  * of [Applicative](https://github.com/fantasyland/fantasy-land#applicative) into an

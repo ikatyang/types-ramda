@@ -1,5 +1,4 @@
 import { List, Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns the last element of the list which matches the predicate, or
  * `undefined` if no element matches.

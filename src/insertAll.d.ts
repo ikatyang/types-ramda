@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Inserts the sub-list into the list, at the specified `index`. _Note that this is not
  * destructive_: it returns a copy of the list with the changes.

@@ -1,5 +1,4 @@
 import { Path } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Makes a shallow clone of an object, setting or overriding the nodes required
  * to create the given path, and placing the specific value at the tail end of

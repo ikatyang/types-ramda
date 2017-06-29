@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Inserts the supplied element into the list, at the specified `index`. _Note that
  *

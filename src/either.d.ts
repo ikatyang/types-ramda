@@ -1,5 +1,4 @@
 import { Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * A function wrapping calls to the two functions in an `||` operation,
  * returning the result of the first function if it is truth-y and the result

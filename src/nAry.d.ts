@@ -1,5 +1,4 @@
 import { Variadic } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Wraps a function of any arity (including nullary) in a function that accepts
  * exactly `n` parameters. Any extraneous parameters will not be passed to the

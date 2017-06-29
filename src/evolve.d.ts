@@ -1,5 +1,4 @@
 import { Morphism, NestedDictionary } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Creates a new object by recursively evolving a shallow copy of `object`,
  * according to the `transformation` functions. All non-primitive properties

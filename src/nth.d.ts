@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns the nth element of the given list or string. If n is negative the
  * element at index length + n is returned.

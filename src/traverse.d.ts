@@ -1,5 +1,4 @@
 import { Applicative, List, Morphism, Traversable } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Maps an [Applicative](https://github.com/fantasyland/fantasy-land#applicative)-returning
  * function over a [Traversable](https://github.com/fantasyland/fantasy-land#traversable),
