@@ -16,6 +16,13 @@ const test_cases: Record<string, string> = {
   `,
 };
 
+it('should throw error if those function types have different length', () => {
+  expect(() => create_various_curried_types('$', parse_types(`
+    function $1(a: any): any;
+    function $2(a: any, b: any): any;
+  `))).toThrowError();
+});
+
 Object.keys(test_cases).forEach(case_name => {
 
   describe(case_name, () => {
@@ -46,14 +53,7 @@ Object.keys(test_cases).forEach(case_name => {
 
   function emit_curried_types(options: {selectable?: boolean, placeholder?: boolean} = {}) {
     const test_case = test_cases[case_name];
-    const function_declarations = dts.parse(test_case).members as dts.IFunctionDeclaration[];
-    const function_types = function_declarations.reduce<Record<string, dts.IFunctionType>>(
-      (current, function_declaration) => ({
-        ...current,
-        [function_declaration.name!]: function_declaration.type!,
-      }),
-      {},
-    );
+    const function_types = parse_types(test_case);
 
     const {
       selectable = false,
@@ -65,3 +65,14 @@ Object.keys(test_cases).forEach(case_name => {
     return dts.emit(top_level_element);
   }
 });
+
+function parse_types(types_string: string) {
+  const function_declarations = dts.parse(types_string).members as dts.IFunctionDeclaration[];
+  return function_declarations.reduce<Record<string, dts.IFunctionType>>(
+    (current, function_declaration) => ({
+      ...current,
+      [function_declaration.name!]: function_declaration.type!,
+    }),
+    {},
+  );
+}
