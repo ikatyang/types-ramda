@@ -2,6 +2,7 @@
 
 [![release](https://img.shields.io/github/release/ikatyang/types-ramda.svg)](https://github.com/ikatyang/types-ramda/releases)
 [![build](https://travis-ci.org/ikatyang/types-ramda.svg?branch=master)](https://travis-ci.org/ikatyang/types-ramda)
+[![coverage](https://img.shields.io/codecov/c/github/ikatyang/types-ramda/master.svg)](https://codecov.io/gh/ikatyang/types-ramda)
 [![greenkeeper](https://badges.greenkeeper.io/ikatyang/types-ramda.svg)](https://greenkeeper.io/)
 
 TypeScript's type definitions for [Ramda](https://github.com/ramda/ramda)
@@ -88,6 +89,9 @@ yarn run build
 
 # build types with watching mode
 yarn run build-watch
+
+# test utils
+yarn run test-utils
 
 # actual test
 yarn run test-actual
