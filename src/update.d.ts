@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a new copy of the array with the element at the provided index
  * replaced with the given value.

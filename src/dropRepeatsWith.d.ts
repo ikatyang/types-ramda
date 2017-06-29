@@ -1,5 +1,4 @@
 import { List, Morphism } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a new list without any consecutively repeating elements. Equality is
  * determined by applying the supplied predicate to each pair of consecutive elements. The

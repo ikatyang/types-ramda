@@ -1,5 +1,4 @@
 import { Ordered } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns the smaller of its two arguments.
  *

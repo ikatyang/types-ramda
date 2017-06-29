@@ -1,5 +1,4 @@
 import { Lens } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a lens for the given getter and setter functions. The getter "gets"
  * the value of the focus; the setter "sets" the value of the focus. The setter

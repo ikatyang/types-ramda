@@ -1,5 +1,4 @@
 import { List, Morphism } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * ap applies a list of functions to a list of values.
  *

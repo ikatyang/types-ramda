@@ -1,5 +1,4 @@
 import { Path } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Determines whether a nested path on an object has a specific value, in
  * [`R.equals`](#equals) terms. Most likely used to filter a list.

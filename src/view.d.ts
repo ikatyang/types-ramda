@@ -1,5 +1,4 @@
 import { Lens } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a "view" of the given data structure, determined by the given lens.
  * The lens's focus determines which portion of the data structure is visible.

@@ -1,5 +1,4 @@
 import { Path } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Makes a shallow clone of an object, omitting the property at the given path.
  * Note that this copies and flattens prototype properties onto the new object

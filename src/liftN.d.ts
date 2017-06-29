@@ -1,6 +1,5 @@
 import { CurriedFunction0, CurriedFunction1, CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curried-functions";
 import { List, Variadic } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * "lifts" a function to be the specified arity, so that it may "map over" that
  * many lists, Functions or other objects that satisfy the [FantasyLand Apply spec](https://github.com/fantasyland/fantasy-land#apply).

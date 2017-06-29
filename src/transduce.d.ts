@@ -1,5 +1,4 @@
 import { Morphism, Reduced, Transformer } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Initializes a transducer using supplied iterator function. Returns a single
  * item by iterating through the list, successively calling the transformed

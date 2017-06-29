@@ -1,5 +1,4 @@
 import { Dictionary, List, Morphism, Property } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Given a function that generates a key, turns a list of objects into an
  * object indexing the objects by the given key. Note that if multiple

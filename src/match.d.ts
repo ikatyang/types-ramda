@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Tests a regular expression against a String. Note that this function will
  * return an empty array when there are no matches. This differs from

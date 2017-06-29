@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns the elements of the given list or string (or object with a `slice`
  * method) from `fromIndex` (inclusive) to `toIndex` (exclusive).

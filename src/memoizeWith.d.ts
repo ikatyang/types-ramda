@@ -1,5 +1,4 @@
 import { Property, Variadic } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * A customisable version of [`R.memoize`](#memoize). `memoizeWith` takes an
  * additional function that will be applied to a given argument set and used to

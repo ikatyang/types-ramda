@@ -1,5 +1,4 @@
 import { Dictionary, Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Takes a spec object and a test object; returns true if the test satisfies
  * the spec. Each of the spec's own properties must be a predicate function.

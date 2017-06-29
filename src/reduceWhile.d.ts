@@ -1,5 +1,4 @@
 import { List, Reduced } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Like [`reduce`](#reduce), `reduceWhile` returns a single item by iterating
  * through the list, successively calling the iterator function. `reduceWhile`

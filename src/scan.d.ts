@@ -1,5 +1,4 @@
 import { List, Reduced } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Scan is similar to [`reduce`](#reduce), but returns a list of successively
  * reduced values from the left

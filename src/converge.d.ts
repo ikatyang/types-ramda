@@ -1,6 +1,5 @@
 import { CurriedFunction1, CurriedFunction2, CurriedFunction3 } from "./$curried-functions";
 import { List, Variadic } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Accepts a converging function and a list of branching functions and returns
  * a new function. When invoked, this new function is applied to some

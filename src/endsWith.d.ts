@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Checks if a list ends with the provided values
  *

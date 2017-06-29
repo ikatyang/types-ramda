@@ -1,6 +1,5 @@
 import { CurriedFunction0, CurriedFunction1, CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curried-functions";
 import { Morphism, Variadic } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Accepts a function `fn` and a list of transformer functions and returns a
  * new curried function. When the new function is invoked, it calls the

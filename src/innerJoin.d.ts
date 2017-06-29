@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Takes a predicate `pred`, a list `xs`, and a list `ys`, and returns a list
  * `xs'` comprising each of the elements of `xs` which is equal to one or more

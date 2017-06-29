@@ -1,5 +1,4 @@
 import { Morphism } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * `o` is a curried composition function that returns a unary function.
  * Like [`compose`](#compose), `o` performs right-to-left function composition.

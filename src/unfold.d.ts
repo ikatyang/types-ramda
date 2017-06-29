@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Builds a list from a seed value. Accepts an iterator function, which returns
  * either false to stop iteration or an array of length 2 containing the value

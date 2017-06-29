@@ -1,5 +1,4 @@
 import { List, Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns the index of the first element of the list which matches the
  * predicate, or `-1` if no element matches.

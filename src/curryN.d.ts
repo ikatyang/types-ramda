@@ -1,6 +1,5 @@
 import { CurriedFunction0, CurriedFunction1, CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curried-functions";
 import { Variadic } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a curried equivalent of the provided function, with the specified
  * arity. The curried function has two unusual capabilities. First, its

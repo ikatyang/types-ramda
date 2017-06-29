@@ -1,5 +1,4 @@
 import { List, Property } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Reasonable analog to SQL `select` statement.
  *

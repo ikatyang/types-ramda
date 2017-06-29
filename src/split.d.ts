@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Splits a string into an array of strings based on the given
  * separator.

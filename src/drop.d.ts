@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns all but the first `n` elements of the given list, string, or
  * transducer/transformer (or object with a `drop` method).

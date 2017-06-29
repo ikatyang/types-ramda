@@ -1,5 +1,4 @@
 import { Functor, List, Morphism } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Takes a function and
  * a [functor](https://github.com/fantasyland/fantasy-land#functor),

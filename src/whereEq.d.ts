@@ -1,5 +1,4 @@
 import { Dictionary } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Takes a spec object and a test object; returns true if the test satisfies
  * the spec, false otherwise. An object satisfies the spec if, for each of the

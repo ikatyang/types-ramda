@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns the position of the last occurrence of an item in an array, or -1 if
  * the item is not included in the array. [`R.equals`](#equals) is used to

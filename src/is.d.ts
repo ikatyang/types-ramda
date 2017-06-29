@@ -1,5 +1,4 @@
 import { Constructor } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * See if an object (`val`) is an instance of the supplied constructor. This
  * function will check up the inheritance chain, if any.

@@ -1,5 +1,4 @@
 import { Dictionary, Filterable, List, Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Takes a predicate and a `Filterable`, and returns a new filterable of the
  * same type containing the members of the given filterable which satisfy the

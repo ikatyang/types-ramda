@@ -1,5 +1,4 @@
 import { Variadic } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Applies function `fn` to the argument list `args`. This is useful for
  * creating a fixed-arity function from a variadic function. `fn` should be a

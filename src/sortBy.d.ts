@@ -1,5 +1,4 @@
 import { List, Morphism, Ordered } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Sorts the list according to the supplied function.
  *

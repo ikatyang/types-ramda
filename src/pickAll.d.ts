@@ -1,5 +1,4 @@
 import { List, Property } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Similar to `pick` except that this one includes a `key: undefined` pair for
  * properties that don't exist.

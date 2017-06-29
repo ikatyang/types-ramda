@@ -1,5 +1,4 @@
 import { Dictionary, List, Morphism, Property } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Splits a list into sub-lists stored in an object, based on the result of
  * calling a String-returning function on each element, and grouping the

@@ -1,5 +1,4 @@
 import { Tap } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Runs the given function with the supplied object, then returns the object.
  *

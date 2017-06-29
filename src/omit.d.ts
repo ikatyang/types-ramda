@@ -1,5 +1,4 @@
 import { List, Property } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a partial copy of an object omitting the keys specified.
  *

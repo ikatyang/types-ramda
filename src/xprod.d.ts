@@ -1,5 +1,4 @@
 import { List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Creates a new list out of the two supplied by creating each possible pair
  * from the lists.

@@ -1,5 +1,4 @@
 import { List, Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a new list excluding the leading elements of a given list which
  * satisfy the supplied predicate function. It passes each value to the supplied

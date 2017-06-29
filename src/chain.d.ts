@@ -1,5 +1,4 @@
 import { Chain, List, Morphism, NestedMorphism } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * `chain` maps a function over a list and concatenates the results. `chain`
  * is also known as `flatMap` in some libraries

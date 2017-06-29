@@ -1,5 +1,4 @@
 import { KeyValuePair, Property } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Takes two arguments, `fst` and `snd`, and returns `[fst, snd]`.
  *

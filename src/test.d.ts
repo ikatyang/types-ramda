@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Determines whether a given string matches a given regular expression.
  *

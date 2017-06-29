@@ -1,5 +1,4 @@
 import { KeyedObjectMorphism } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a partial copy of an object containing only the keys that satisfy
  * the supplied predicate.

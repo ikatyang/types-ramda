@@ -1,5 +1,4 @@
 import { Dictionary, Filterable, List, Predicate } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * The complement of [`filter`](#filter).
  *

@@ -1,4 +1,3 @@
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns the second argument if it is not `null`, `undefined` or `NaN`;
  * otherwise the first argument is returned.

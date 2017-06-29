@@ -1,5 +1,4 @@
 import { Comparator, List } from "./$types";
-import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a copy of the list, sorted according to the comparator function,
  * which should accept two values at a time and return a negative number if the
