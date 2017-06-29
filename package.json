@@ -34,7 +34,7 @@
     "@types/gulp-util": "3.0.31",
     "@types/jest": "20.0.2",
     "@types/lodash": "4.14.67",
-    "@types/node": "8.0.5",
+    "@types/node": "8.0.6",
     "@types/run-sequence": "0.0.29",
     "@types/through2": "2.0.33",
     "del": "3.0.0",
