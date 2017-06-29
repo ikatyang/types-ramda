@@ -29,10 +29,10 @@ type mergeWithKey_000 = {
     <V>(fn: (key: string, a: V, b: V) => any, _left: PH, right: object): mergeWithKey_101<V>;
     (_fn: PH, left: object, right: object): mergeWithKey_011;
     (_fn: PH, _left: PH, right: object): mergeWithKey_001;
-    <V, T>(fn: (key: string, a: V, b: V) => any, left: object, right: object): mergeWithKey_111<V, T>;
+    <V, T>(fn: (key: string, a: V, b: V) => any, left: object, right: object): mergeWithKey_111<T>;
     (_fn: PH, left: object): mergeWithKey_010;
     <V>(fn: (key: string, a: V, b: V) => any, left: object): mergeWithKey_110<V>;
-    <$SEL extends "111">(): <V, T>(fn: (key: string, a: V, b: V) => any, left: object, right: object) => mergeWithKey_111<V, T>;
+    <$SEL extends "111">(): <V, T>(fn: (key: string, a: V, b: V) => any, left: object, right: object) => mergeWithKey_111<T>;
     <$SEL extends "11">(): <V>(fn: (key: string, a: V, b: V) => any, left: object) => mergeWithKey_110<V>;
     <$SEL extends "101">(): <V>(fn: (key: string, a: V, b: V) => any, _left: PH, right: object) => mergeWithKey_101<V>;
     <$SEL extends "1">(): <V>(fn: (key: string, a: V, b: V) => any) => mergeWithKey_100<V>;
@@ -43,36 +43,36 @@ type mergeWithKey_000 = {
 };
 type mergeWithKey_100<V> = {
     (_left: PH, right: object): mergeWithKey_101<V>;
-    <T>(left: object, right: object): mergeWithKey_111<V, T>;
-    <$SEL extends "11">(): <T>(left: object, right: object) => mergeWithKey_111<V, T>;
+    <T>(left: object, right: object): mergeWithKey_111<T>;
+    <$SEL extends "11">(): <T>(left: object, right: object) => mergeWithKey_111<T>;
     <$SEL extends "1">(): (left: object) => mergeWithKey_110<V>;
     <$SEL extends "01">(): (_left: PH, right: object) => mergeWithKey_101<V>;
     (left: object): mergeWithKey_110<V>;
 };
 type mergeWithKey_010 = {
     (_fn: PH, right: object): mergeWithKey_011;
-    <V, T>(fn: (key: string, a: V, b: V) => any, right: object): mergeWithKey_111<V, T>;
-    <$SEL extends "11">(): <V, T>(fn: (key: string, a: V, b: V) => any, right: object) => mergeWithKey_111<V, T>;
+    <V, T>(fn: (key: string, a: V, b: V) => any, right: object): mergeWithKey_111<T>;
+    <$SEL extends "11">(): <V, T>(fn: (key: string, a: V, b: V) => any, right: object) => mergeWithKey_111<T>;
     <$SEL extends "1">(): <V>(fn: (key: string, a: V, b: V) => any) => mergeWithKey_110<V>;
     <$SEL extends "01">(): (_fn: PH, right: object) => mergeWithKey_011;
     <V>(fn: (key: string, a: V, b: V) => any): mergeWithKey_110<V>;
 };
 type mergeWithKey_110<V> = {
-    <T>(right: object): mergeWithKey_111<V, T>;
+    <T>(right: object): mergeWithKey_111<T>;
 };
 type mergeWithKey_001 = {
     (_fn: PH, left: object): mergeWithKey_011;
-    <V, T>(fn: (key: string, a: V, b: V) => any, left: object): mergeWithKey_111<V, T>;
-    <$SEL extends "11">(): <V, T>(fn: (key: string, a: V, b: V) => any, left: object) => mergeWithKey_111<V, T>;
+    <V, T>(fn: (key: string, a: V, b: V) => any, left: object): mergeWithKey_111<T>;
+    <$SEL extends "11">(): <V, T>(fn: (key: string, a: V, b: V) => any, left: object) => mergeWithKey_111<T>;
     <$SEL extends "1">(): <V>(fn: (key: string, a: V, b: V) => any) => mergeWithKey_101<V>;
     <$SEL extends "01">(): (_fn: PH, left: object) => mergeWithKey_011;
     <V>(fn: (key: string, a: V, b: V) => any): mergeWithKey_101<V>;
 };
 type mergeWithKey_101<V> = {
-    <T>(left: object): mergeWithKey_111<V, T>;
+    <T>(left: object): mergeWithKey_111<T>;
 };
 type mergeWithKey_011 = {
-    <V, T>(fn: (key: string, a: V, b: V) => any): mergeWithKey_111<V, T>;
+    <V, T>(fn: (key: string, a: V, b: V) => any): mergeWithKey_111<T>;
 };
-type mergeWithKey_111<V, T> = T;
+type mergeWithKey_111<T> = T;
 export = mergeWithKey;

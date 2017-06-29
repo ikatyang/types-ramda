@@ -89,18 +89,18 @@ export const create_curried_types = (name: string, type: dts.IFunctionType, sele
 
   const type_declarations = target_types.map((target_type, index) => {
     const type_generics = sort_generics(
-      parameters_generics
-        .filter((_, generics_index) => masks[index][generics_index] === '1')
-        .reduce(
-          // tslint:disable-next-line:ter-indent
-          (current_type_generics, filtered_parameter_generics) =>
-            unique(current_type_generics.concat(filtered_parameter_generics)),
-          // tslint:disable-next-line:ter-indent
-          (index === target_types.length - 1)
-            ? return_generics
-            : [],
-        ),
-      );
+      (index === target_types.length - 1)
+        ? return_generics
+        : parameters_generics
+          .filter((_, generics_index) => masks[index][generics_index] === '1')
+          .reduce(
+            // tslint:disable-next-line:ter-indent
+            (current_type_generics, filtered_parameter_generics) =>
+              unique(current_type_generics.concat(filtered_parameter_generics)),
+            // tslint:disable-next-line:ter-indent
+            [],
+          ),
+        );
     return dts.create_type_declaration({
       name: get_curried_function_type_name(name, masks[index]),
       generics: type_generics,
@@ -125,13 +125,22 @@ export const create_curried_types = (name: string, type: dts.IFunctionType, sele
         const return_type_declaration = type_declarations[reverse_masks[return_mask]];
         const return_type_generics = return_type_declaration.generics!
           .map(generic => dts.create_general_type({name: generic.name}));
+        const used_parameters_generics = sort_generics(unique(used_parameters.reduce(
+          (current, parameter) => [
+            ...current,
+            ...(parameter_index => (parameter_index === -1)
+              ? []
+              : parameters_generics[parameter_index]
+            )(parameters.indexOf(parameter)),
+          ],
+          return_type_declaration.generics!,
+        ))).filter(generic => type_declaration.generics!.indexOf(generic) === -1);
         members.push(
           dts.create_object_member({
             owned: dts.create_function_declaration({
               name: undefined,
               type: dts.create_function_type({
-                generics: return_type_declaration.generics!.filter(generic =>
-                  type_declaration.generics!.indexOf(generic) === -1),
+                generics: used_parameters_generics,
                 parameters: used_parameters,
                 return: return_mask.split('').every(x => x === '1')
                   && (type_predicate_parameter !== null)
