@@ -8,9 +8,8 @@ import {
 export const create_selectable_signatures = (signatures: dts.IObjectMember[], group?: string) =>
   signatures.map(signature => {
     const function_type = (signature.owned as dts.IFunctionDeclaration).type as dts.IFunctionType;
-    const {
-      parameters = [],
-    } = function_type;
+    // istanbul ignore next
+    const {parameters = []} = function_type;
     const selectable_type = parameters
       .map(parameter =>
         ((parameter.type! as dts.IGeneralType).name === placeholder_name_abbr)
