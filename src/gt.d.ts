@@ -22,16 +22,16 @@ import { Ordered } from "./$types";
  */
 declare const gt: gt_00;
 type gt_00 = {
-    <T extends Ordered>(a: T, b: T): gt_11<T>;
-    <$SEL extends "11">(): <T extends Ordered>(a: T, b: T) => gt_11<T>;
+    <T extends Ordered>(a: T, b: T): gt_11;
+    <$SEL extends "11">(): <T extends Ordered>(a: T, b: T) => gt_11;
     <$SEL extends "1">(): <T extends Ordered>(a: T) => gt_10<T>;
     <T extends Ordered>(a: T): gt_10<T>;
 };
 type gt_10<T extends Ordered> = {
-    (b: T): gt_11<T>;
+    (b: T): gt_11;
 };
 type gt_01<T extends Ordered> = {
-    (a: T): gt_11<T>;
+    (a: T): gt_11;
 };
-type gt_11<T extends Ordered> = boolean;
+type gt_11 = boolean;
 export = gt;
