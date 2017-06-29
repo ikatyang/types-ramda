@@ -24,39 +24,39 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const differenceWith: differenceWith_000;
 type differenceWith_000 = {
-    <T>(fn: Comparator<T, boolean>, _a: PH, b: List<T>): differenceWith_101<T>;
-    <T>(_fn: PH, a: List<T>, b: List<T>): differenceWith_011<T>;
+    <T$1, T$2 extends T$1 = T$1>(fn: Comparator<T$1, boolean>, _a: PH, b: List<T$2>): differenceWith_101<T$2>;
+    <T$1, T$2 extends T$1 = T$1>(_fn: PH, a: List<T$1>, b: List<T$2>): differenceWith_011<T$2>;
     <T>(_fn: PH, _a: PH, b: List<T>): differenceWith_001<T>;
-    <T>(fn: Comparator<T, boolean>, a: List<T>, b: List<T>): differenceWith_111<T>;
+    <T$1, T$2 extends T$1 = T$1, T$3 extends T$2 = T$2>(fn: Comparator<T$1, boolean>, a: List<T$2>, b: List<T$3>): differenceWith_111<T$3>;
     <T>(_fn: PH, a: List<T>): differenceWith_010<T>;
-    <T>(fn: Comparator<T, boolean>, a: List<T>): differenceWith_110<T>;
-    <$SEL extends "111">(): <T>(fn: Comparator<T, boolean>, a: List<T>, b: List<T>) => differenceWith_111<T>;
-    <$SEL extends "11">(): <T>(fn: Comparator<T, boolean>, a: List<T>) => differenceWith_110<T>;
-    <$SEL extends "101">(): <T>(fn: Comparator<T, boolean>, _a: PH, b: List<T>) => differenceWith_101<T>;
+    <T$1, T$2 extends T$1 = T$1>(fn: Comparator<T$1, boolean>, a: List<T$2>): differenceWith_110<T$2>;
+    <$SEL extends "111">(): <T$1, T$2 extends T$1 = T$1, T$3 extends T$2 = T$2>(fn: Comparator<T$1, boolean>, a: List<T$2>, b: List<T$3>) => differenceWith_111<T$3>;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(fn: Comparator<T$1, boolean>, a: List<T$2>) => differenceWith_110<T$2>;
+    <$SEL extends "101">(): <T$1, T$2 extends T$1 = T$1>(fn: Comparator<T$1, boolean>, _a: PH, b: List<T$2>) => differenceWith_101<T$2>;
     <$SEL extends "1">(): <T>(fn: Comparator<T, boolean>) => differenceWith_100<T>;
-    <$SEL extends "011">(): <T>(_fn: PH, a: List<T>, b: List<T>) => differenceWith_011<T>;
+    <$SEL extends "011">(): <T$1, T$2 extends T$1 = T$1>(_fn: PH, a: List<T$1>, b: List<T$2>) => differenceWith_011<T$2>;
     <$SEL extends "01">(): <T>(_fn: PH, a: List<T>) => differenceWith_010<T>;
     <$SEL extends "001">(): <T>(_fn: PH, _a: PH, b: List<T>) => differenceWith_001<T>;
     <T>(fn: Comparator<T, boolean>): differenceWith_100<T>;
 };
 type differenceWith_100<T> = {
-    (_a: PH, b: List<T>): differenceWith_101<T>;
-    (a: List<T>, b: List<T>): differenceWith_111<T>;
-    <$SEL extends "11">(): (a: List<T>, b: List<T>) => differenceWith_111<T>;
-    <$SEL extends "1">(): (a: List<T>) => differenceWith_110<T>;
-    <$SEL extends "01">(): (_a: PH, b: List<T>) => differenceWith_101<T>;
-    (a: List<T>): differenceWith_110<T>;
+    <T$1 extends T = T>(_a: PH, b: List<T$1>): differenceWith_101<T$1>;
+    <T$1 extends T = T, T$2 extends T$1 = T$1>(a: List<T$1>, b: List<T$2>): differenceWith_111<T$2>;
+    <$SEL extends "11">(): <T$1 extends T = T, T$2 extends T$1 = T$1>(a: List<T$1>, b: List<T$2>) => differenceWith_111<T$2>;
+    <$SEL extends "1">(): <T$1 extends T = T>(a: List<T$1>) => differenceWith_110<T$1>;
+    <$SEL extends "01">(): <T$1 extends T = T>(_a: PH, b: List<T$1>) => differenceWith_101<T$1>;
+    <T$1 extends T = T>(a: List<T$1>): differenceWith_110<T$1>;
 };
 type differenceWith_010<T> = {
-    (_fn: PH, b: List<T>): differenceWith_011<T>;
-    (fn: Comparator<T, boolean>, b: List<T>): differenceWith_111<T>;
-    <$SEL extends "11">(): (fn: Comparator<T, boolean>, b: List<T>) => differenceWith_111<T>;
+    <T$1 extends T = T>(_fn: PH, b: List<T$1>): differenceWith_011<T$1>;
+    <T$1 extends T = T>(fn: Comparator<T$1, boolean>, b: List<T>): differenceWith_111<T$1>;
+    <$SEL extends "11">(): <T$1 extends T = T>(fn: Comparator<T$1, boolean>, b: List<T>) => differenceWith_111<T$1>;
     <$SEL extends "1">(): (fn: Comparator<T, boolean>) => differenceWith_110<T>;
-    <$SEL extends "01">(): (_fn: PH, b: List<T>) => differenceWith_011<T>;
+    <$SEL extends "01">(): <T$1 extends T = T>(_fn: PH, b: List<T$1>) => differenceWith_011<T$1>;
     (fn: Comparator<T, boolean>): differenceWith_110<T>;
 };
 type differenceWith_110<T> = {
-    (b: List<T>): differenceWith_111<T>;
+    <T$1 extends T = T>(b: List<T$1>): differenceWith_111<T$1>;
 };
 type differenceWith_001<T> = {
     (_fn: PH, a: List<T>): differenceWith_011<T>;

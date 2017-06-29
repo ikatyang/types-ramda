@@ -24,14 +24,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const view: view_00;
 type view_00 = {
     <U>(_lens: PH, target: U): view_01<U>;
-    <T, U>(lens: Lens<T, U>, target: U): view_11<T>;
-    <$SEL extends "11">(): <T, U>(lens: Lens<T, U>, target: U) => view_11<T>;
+    <T, U$1, U$2 extends U$1 = U$1>(lens: Lens<T, U$1>, target: U$2): view_11<T>;
+    <$SEL extends "11">(): <T, U$1, U$2 extends U$1 = U$1>(lens: Lens<T, U$1>, target: U$2) => view_11<T>;
     <$SEL extends "1">(): <T, U>(lens: Lens<T, U>) => view_10<T, U>;
     <$SEL extends "01">(): <U>(_lens: PH, target: U) => view_01<U>;
     <T, U>(lens: Lens<T, U>): view_10<T, U>;
 };
 type view_10<T, U> = {
-    (target: U): view_11<T>;
+    <U$1 extends U = U>(target: U$1): view_11<T>;
 };
 type view_01<U> = {
     <T>(lens: Lens<T, U>): view_11<T>;

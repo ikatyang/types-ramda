@@ -26,39 +26,39 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const unless: unless_000;
 type unless_000 = {
-    <T>(pred: Predicate<T>, _whenFalseFn: PH, value: T): unless_101<T>;
-    <T, U>(_pred: PH, whenFalseFn: Morphism<T, U>, value: T): unless_011<T, U>;
+    <T$1, T$2 extends T$1 = T$1>(pred: Predicate<T$1>, _whenFalseFn: PH, value: T$2): unless_101<T$2>;
+    <T$1, U, T$2 extends T$1 = T$1>(_pred: PH, whenFalseFn: Morphism<T$1, U>, value: T$2): unless_011<T$2, U>;
     <T>(_pred: PH, _whenFalseFn: PH, value: T): unless_001<T>;
-    <T, U>(pred: Predicate<T>, whenFalseFn: Morphism<T, U>, value: T): unless_111<T, U>;
+    <T$1, U, T$2 extends T$1 = T$1, T$3 extends T$2 = T$2>(pred: Predicate<T$1>, whenFalseFn: Morphism<T$2, U>, value: T$3): unless_111<T$3, U>;
     <T, U>(_pred: PH, whenFalseFn: Morphism<T, U>): unless_010<T, U>;
-    <T, U>(pred: Predicate<T>, whenFalseFn: Morphism<T, U>): unless_110<T, U>;
-    <$SEL extends "111">(): <T, U>(pred: Predicate<T>, whenFalseFn: Morphism<T, U>, value: T) => unless_111<T, U>;
-    <$SEL extends "11">(): <T, U>(pred: Predicate<T>, whenFalseFn: Morphism<T, U>) => unless_110<T, U>;
-    <$SEL extends "101">(): <T>(pred: Predicate<T>, _whenFalseFn: PH, value: T) => unless_101<T>;
+    <T$1, U, T$2 extends T$1 = T$1>(pred: Predicate<T$1>, whenFalseFn: Morphism<T$2, U>): unless_110<T$2, U>;
+    <$SEL extends "111">(): <T$1, U, T$2 extends T$1 = T$1, T$3 extends T$2 = T$2>(pred: Predicate<T$1>, whenFalseFn: Morphism<T$2, U>, value: T$3) => unless_111<T$3, U>;
+    <$SEL extends "11">(): <T$1, U, T$2 extends T$1 = T$1>(pred: Predicate<T$1>, whenFalseFn: Morphism<T$2, U>) => unless_110<T$2, U>;
+    <$SEL extends "101">(): <T$1, T$2 extends T$1 = T$1>(pred: Predicate<T$1>, _whenFalseFn: PH, value: T$2) => unless_101<T$2>;
     <$SEL extends "1">(): <T>(pred: Predicate<T>) => unless_100<T>;
-    <$SEL extends "011">(): <T, U>(_pred: PH, whenFalseFn: Morphism<T, U>, value: T) => unless_011<T, U>;
+    <$SEL extends "011">(): <T$1, U, T$2 extends T$1 = T$1>(_pred: PH, whenFalseFn: Morphism<T$1, U>, value: T$2) => unless_011<T$2, U>;
     <$SEL extends "01">(): <T, U>(_pred: PH, whenFalseFn: Morphism<T, U>) => unless_010<T, U>;
     <$SEL extends "001">(): <T>(_pred: PH, _whenFalseFn: PH, value: T) => unless_001<T>;
     <T>(pred: Predicate<T>): unless_100<T>;
 };
 type unless_100<T> = {
-    (_whenFalseFn: PH, value: T): unless_101<T>;
-    <U>(whenFalseFn: Morphism<T, U>, value: T): unless_111<T, U>;
-    <$SEL extends "11">(): <U>(whenFalseFn: Morphism<T, U>, value: T) => unless_111<T, U>;
-    <$SEL extends "1">(): <U>(whenFalseFn: Morphism<T, U>) => unless_110<T, U>;
-    <$SEL extends "01">(): (_whenFalseFn: PH, value: T) => unless_101<T>;
-    <U>(whenFalseFn: Morphism<T, U>): unless_110<T, U>;
+    <T$1 extends T = T>(_whenFalseFn: PH, value: T$1): unless_101<T$1>;
+    <U, T$1 extends T = T, T$2 extends T$1 = T$1>(whenFalseFn: Morphism<T$1, U>, value: T$2): unless_111<T$2, U>;
+    <$SEL extends "11">(): <U, T$1 extends T = T, T$2 extends T$1 = T$1>(whenFalseFn: Morphism<T$1, U>, value: T$2) => unless_111<T$2, U>;
+    <$SEL extends "1">(): <U, T$1 extends T = T>(whenFalseFn: Morphism<T$1, U>) => unless_110<T$1, U>;
+    <$SEL extends "01">(): <T$1 extends T = T>(_whenFalseFn: PH, value: T$1) => unless_101<T$1>;
+    <U, T$1 extends T = T>(whenFalseFn: Morphism<T$1, U>): unless_110<T$1, U>;
 };
 type unless_010<T, U> = {
-    (_pred: PH, value: T): unless_011<T, U>;
-    (pred: Predicate<T>, value: T): unless_111<T, U>;
-    <$SEL extends "11">(): (pred: Predicate<T>, value: T) => unless_111<T, U>;
+    <T$1 extends T = T>(_pred: PH, value: T$1): unless_011<T$1, U>;
+    <T$1 extends T = T>(pred: Predicate<T$1>, value: T): unless_111<T$1, U>;
+    <$SEL extends "11">(): <T$1 extends T = T>(pred: Predicate<T$1>, value: T) => unless_111<T$1, U>;
     <$SEL extends "1">(): (pred: Predicate<T>) => unless_110<T, U>;
-    <$SEL extends "01">(): (_pred: PH, value: T) => unless_011<T, U>;
+    <$SEL extends "01">(): <T$1 extends T = T>(_pred: PH, value: T$1) => unless_011<T$1, U>;
     (pred: Predicate<T>): unless_110<T, U>;
 };
 type unless_110<T, U> = {
-    (value: T): unless_111<T, U>;
+    <T$1 extends T = T>(value: T$1): unless_111<T$1, U>;
 };
 type unless_001<T> = {
     <U>(_pred: PH, whenFalseFn: Morphism<T, U>): unless_011<T, U>;

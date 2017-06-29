@@ -31,14 +31,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const whereEq: whereEq_00;
 type whereEq_00 = {
     <T>(_spec: PH, object: Dictionary<T>): whereEq_01<T>;
-    <T>(spec: Dictionary<T>, object: Dictionary<T>): whereEq_11;
-    <$SEL extends "11">(): <T>(spec: Dictionary<T>, object: Dictionary<T>) => whereEq_11;
+    <T$1, T$2 extends T$1 = T$1>(spec: Dictionary<T$1>, object: Dictionary<T$2>): whereEq_11;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(spec: Dictionary<T$1>, object: Dictionary<T$2>) => whereEq_11;
     <$SEL extends "1">(): <T>(spec: Dictionary<T>) => whereEq_10<T>;
     <$SEL extends "01">(): <T>(_spec: PH, object: Dictionary<T>) => whereEq_01<T>;
     <T>(spec: Dictionary<T>): whereEq_10<T>;
 };
 type whereEq_10<T> = {
-    (object: Dictionary<T>): whereEq_11;
+    <T$1 extends T = T>(object: Dictionary<T$1>): whereEq_11;
 };
 type whereEq_01<T> = {
     (spec: Dictionary<T>): whereEq_11;

@@ -49,24 +49,24 @@ type converge_00 = {
     <T1, T2, T3, U1, U2, U3, U4, U5>(_after: PH, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4, (v1: T1, v2: T2, v3: T3) => U5]): converge_i3f5_01<T1, T2, T3, U1, U2, U3, U4, U5>;
     <T1, T2, T3, U1, U2, U3, U4, U5, U6>(_after: PH, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4, (v1: T1, v2: T2, v3: T3) => U5, (v1: T1, v2: T2, v3: T3) => U6]): converge_i3f6_01<T1, T2, T3, U1, U2, U3, U4, U5, U6>;
     (_after: PH, fns: List<Variadic<any>>): converge_variadic_01;
-    <T1, U1, R>(after: (v1: U1) => R, fns: [(v1: T1) => U1]): converge_i1f1_11<T1, R>;
-    <T1, U1, U2, R>(after: (v1: U1, v2: U2) => R, fns: [(v1: T1) => U1, (v1: T1) => U2]): converge_i1f2_11<T1, R>;
-    <T1, U1, U2, U3, R>(after: (v1: U1, v2: U2, v3: U3) => R, fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3]): converge_i1f3_11<T1, R>;
-    <T1, U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R, fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3, (v1: T1) => U4]): converge_i1f4_11<T1, R>;
-    <T1, U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R, fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3, (v1: T1) => U4, (v1: T1) => U5]): converge_i1f5_11<T1, R>;
-    <T1, U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R, fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3, (v1: T1) => U4, (v1: T1) => U5, (v1: T1) => U6]): converge_i1f6_11<T1, R>;
-    <T1, T2, U1, R>(after: (v1: U1) => R, fns: [(v1: T1, v2: T2) => U1]): converge_i2f1_11<T1, T2, R>;
-    <T1, T2, U1, U2, R>(after: (v1: U1, v2: U2) => R, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2]): converge_i2f2_11<T1, T2, R>;
-    <T1, T2, U1, U2, U3, R>(after: (v1: U1, v2: U2, v3: U3) => R, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3]): converge_i2f3_11<T1, T2, R>;
-    <T1, T2, U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3, (v1: T1, v2: T2) => U4]): converge_i2f4_11<T1, T2, R>;
-    <T1, T2, U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3, (v1: T1, v2: T2) => U4, (v1: T1, v2: T2) => U5]): converge_i2f5_11<T1, T2, R>;
-    <T1, T2, U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3, (v1: T1, v2: T2) => U4, (v1: T1, v2: T2) => U5, (v1: T1, v2: T2) => U6]): converge_i2f6_11<T1, T2, R>;
-    <T1, T2, T3, U1, R>(after: (v1: U1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1]): converge_i3f1_11<T1, T2, T3, R>;
-    <T1, T2, T3, U1, U2, R>(after: (v1: U1, v2: U2) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2]): converge_i3f2_11<T1, T2, T3, R>;
-    <T1, T2, T3, U1, U2, U3, R>(after: (v1: U1, v2: U2, v3: U3) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3]): converge_i3f3_11<T1, T2, T3, R>;
-    <T1, T2, T3, U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4]): converge_i3f4_11<T1, T2, T3, R>;
-    <T1, T2, T3, U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4, (v1: T1, v2: T2, v3: T3) => U5]): converge_i3f5_11<T1, T2, T3, R>;
-    <T1, T2, T3, U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4, (v1: T1, v2: T2, v3: T3) => U5, (v1: T1, v2: T2, v3: T3) => U6]): converge_i3f6_11<T1, T2, T3, R>;
+    <T1, U1$1, R, U1$2 extends U1$1 = U1$1>(after: (v1: U1$1) => R, fns: [(v1: T1) => U1$2]): converge_i1f1_11<T1, R>;
+    <T1, U1$1, U2$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1>(after: (v1: U1$1, v2: U2$1) => R, fns: [(v1: T1) => U1$2, (v1: T1) => U2$2]): converge_i1f2_11<T1, R>;
+    <T1, U1$1, U2$1, U3$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1) => R, fns: [(v1: T1) => U1$2, (v1: T1) => U2$2, (v1: T1) => U3$2]): converge_i1f3_11<T1, R>;
+    <T1, U1$1, U2$1, U3$1, U4$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1) => R, fns: [(v1: T1) => U1$2, (v1: T1) => U2$2, (v1: T1) => U3$2, (v1: T1) => U4$2]): converge_i1f4_11<T1, R>;
+    <T1, U1$1, U2$1, U3$1, U4$1, U5$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1, U5$2 extends U5$1 = U5$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1, v5: U5$1) => R, fns: [(v1: T1) => U1$2, (v1: T1) => U2$2, (v1: T1) => U3$2, (v1: T1) => U4$2, (v1: T1) => U5$2]): converge_i1f5_11<T1, R>;
+    <T1, U1$1, U2$1, U3$1, U4$1, U5$1, U6$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1, U5$2 extends U5$1 = U5$1, U6$2 extends U6$1 = U6$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1, v5: U5$1, v6: U6$1) => R, fns: [(v1: T1) => U1$2, (v1: T1) => U2$2, (v1: T1) => U3$2, (v1: T1) => U4$2, (v1: T1) => U5$2, (v1: T1) => U6$2]): converge_i1f6_11<T1, R>;
+    <T1, T2, U1$1, R, U1$2 extends U1$1 = U1$1>(after: (v1: U1$1) => R, fns: [(v1: T1, v2: T2) => U1$2]): converge_i2f1_11<T1, T2, R>;
+    <T1, T2, U1$1, U2$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1>(after: (v1: U1$1, v2: U2$1) => R, fns: [(v1: T1, v2: T2) => U1$2, (v1: T1, v2: T2) => U2$2]): converge_i2f2_11<T1, T2, R>;
+    <T1, T2, U1$1, U2$1, U3$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1) => R, fns: [(v1: T1, v2: T2) => U1$2, (v1: T1, v2: T2) => U2$2, (v1: T1, v2: T2) => U3$2]): converge_i2f3_11<T1, T2, R>;
+    <T1, T2, U1$1, U2$1, U3$1, U4$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1) => R, fns: [(v1: T1, v2: T2) => U1$2, (v1: T1, v2: T2) => U2$2, (v1: T1, v2: T2) => U3$2, (v1: T1, v2: T2) => U4$2]): converge_i2f4_11<T1, T2, R>;
+    <T1, T2, U1$1, U2$1, U3$1, U4$1, U5$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1, U5$2 extends U5$1 = U5$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1, v5: U5$1) => R, fns: [(v1: T1, v2: T2) => U1$2, (v1: T1, v2: T2) => U2$2, (v1: T1, v2: T2) => U3$2, (v1: T1, v2: T2) => U4$2, (v1: T1, v2: T2) => U5$2]): converge_i2f5_11<T1, T2, R>;
+    <T1, T2, U1$1, U2$1, U3$1, U4$1, U5$1, U6$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1, U5$2 extends U5$1 = U5$1, U6$2 extends U6$1 = U6$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1, v5: U5$1, v6: U6$1) => R, fns: [(v1: T1, v2: T2) => U1$2, (v1: T1, v2: T2) => U2$2, (v1: T1, v2: T2) => U3$2, (v1: T1, v2: T2) => U4$2, (v1: T1, v2: T2) => U5$2, (v1: T1, v2: T2) => U6$2]): converge_i2f6_11<T1, T2, R>;
+    <T1, T2, T3, U1$1, R, U1$2 extends U1$1 = U1$1>(after: (v1: U1$1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1$2]): converge_i3f1_11<T1, T2, T3, R>;
+    <T1, T2, T3, U1$1, U2$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1>(after: (v1: U1$1, v2: U2$1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1$2, (v1: T1, v2: T2, v3: T3) => U2$2]): converge_i3f2_11<T1, T2, T3, R>;
+    <T1, T2, T3, U1$1, U2$1, U3$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1$2, (v1: T1, v2: T2, v3: T3) => U2$2, (v1: T1, v2: T2, v3: T3) => U3$2]): converge_i3f3_11<T1, T2, T3, R>;
+    <T1, T2, T3, U1$1, U2$1, U3$1, U4$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1$2, (v1: T1, v2: T2, v3: T3) => U2$2, (v1: T1, v2: T2, v3: T3) => U3$2, (v1: T1, v2: T2, v3: T3) => U4$2]): converge_i3f4_11<T1, T2, T3, R>;
+    <T1, T2, T3, U1$1, U2$1, U3$1, U4$1, U5$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1, U5$2 extends U5$1 = U5$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1, v5: U5$1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1$2, (v1: T1, v2: T2, v3: T3) => U2$2, (v1: T1, v2: T2, v3: T3) => U3$2, (v1: T1, v2: T2, v3: T3) => U4$2, (v1: T1, v2: T2, v3: T3) => U5$2]): converge_i3f5_11<T1, T2, T3, R>;
+    <T1, T2, T3, U1$1, U2$1, U3$1, U4$1, U5$1, U6$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1, U5$2 extends U5$1 = U5$1, U6$2 extends U6$1 = U6$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1, v5: U5$1, v6: U6$1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1$2, (v1: T1, v2: T2, v3: T3) => U2$2, (v1: T1, v2: T2, v3: T3) => U3$2, (v1: T1, v2: T2, v3: T3) => U4$2, (v1: T1, v2: T2, v3: T3) => U5$2, (v1: T1, v2: T2, v3: T3) => U6$2]): converge_i3f6_11<T1, T2, T3, R>;
     <R>(after: Variadic<R>, fns: List<Variadic<any>>): converge_variadic_11<R>;
     <U1, R>(after: (v1: U1) => R): converge_i1f1_10<U1, R>;
     <U1, U2, R>(after: (v1: U1, v2: U2) => R): converge_i1f2_10<U1, U2, R>;
@@ -86,58 +86,58 @@ type converge_00 = {
     <U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R): converge_i3f4_10<U1, U2, U3, U4, R>;
     <U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R): converge_i3f5_10<U1, U2, U3, U4, U5, R>;
     <U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R): converge_i3f6_10<U1, U2, U3, U4, U5, U6, R>;
-    <$SEL extends "11", $KIND extends "i1f1">(): <T1, U1, R>(after: (v1: U1) => R, fns: [(v1: T1) => U1]) => converge_i1f1_11<T1, R>;
+    <$SEL extends "11", $KIND extends "i1f1">(): <T1, U1$1, R, U1$2 extends U1$1 = U1$1>(after: (v1: U1$1) => R, fns: [(v1: T1) => U1$2]) => converge_i1f1_11<T1, R>;
     <$SEL extends "1", $KIND extends "i1f1">(): <U1, R>(after: (v1: U1) => R) => converge_i1f1_10<U1, R>;
     <$SEL extends "01", $KIND extends "i1f1">(): <T1, U1>(_after: PH, fns: [(v1: T1) => U1]) => converge_i1f1_01<T1, U1>;
-    <$SEL extends "11", $KIND extends "i1f2">(): <T1, U1, U2, R>(after: (v1: U1, v2: U2) => R, fns: [(v1: T1) => U1, (v1: T1) => U2]) => converge_i1f2_11<T1, R>;
+    <$SEL extends "11", $KIND extends "i1f2">(): <T1, U1$1, U2$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1>(after: (v1: U1$1, v2: U2$1) => R, fns: [(v1: T1) => U1$2, (v1: T1) => U2$2]) => converge_i1f2_11<T1, R>;
     <$SEL extends "1", $KIND extends "i1f2">(): <U1, U2, R>(after: (v1: U1, v2: U2) => R) => converge_i1f2_10<U1, U2, R>;
     <$SEL extends "01", $KIND extends "i1f2">(): <T1, U1, U2>(_after: PH, fns: [(v1: T1) => U1, (v1: T1) => U2]) => converge_i1f2_01<T1, U1, U2>;
-    <$SEL extends "11", $KIND extends "i1f3">(): <T1, U1, U2, U3, R>(after: (v1: U1, v2: U2, v3: U3) => R, fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3]) => converge_i1f3_11<T1, R>;
+    <$SEL extends "11", $KIND extends "i1f3">(): <T1, U1$1, U2$1, U3$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1) => R, fns: [(v1: T1) => U1$2, (v1: T1) => U2$2, (v1: T1) => U3$2]) => converge_i1f3_11<T1, R>;
     <$SEL extends "1", $KIND extends "i1f3">(): <U1, U2, U3, R>(after: (v1: U1, v2: U2, v3: U3) => R) => converge_i1f3_10<U1, U2, U3, R>;
     <$SEL extends "01", $KIND extends "i1f3">(): <T1, U1, U2, U3>(_after: PH, fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3]) => converge_i1f3_01<T1, U1, U2, U3>;
-    <$SEL extends "11", $KIND extends "i1f4">(): <T1, U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R, fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3, (v1: T1) => U4]) => converge_i1f4_11<T1, R>;
+    <$SEL extends "11", $KIND extends "i1f4">(): <T1, U1$1, U2$1, U3$1, U4$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1) => R, fns: [(v1: T1) => U1$2, (v1: T1) => U2$2, (v1: T1) => U3$2, (v1: T1) => U4$2]) => converge_i1f4_11<T1, R>;
     <$SEL extends "1", $KIND extends "i1f4">(): <U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R) => converge_i1f4_10<U1, U2, U3, U4, R>;
     <$SEL extends "01", $KIND extends "i1f4">(): <T1, U1, U2, U3, U4>(_after: PH, fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3, (v1: T1) => U4]) => converge_i1f4_01<T1, U1, U2, U3, U4>;
-    <$SEL extends "11", $KIND extends "i1f5">(): <T1, U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R, fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3, (v1: T1) => U4, (v1: T1) => U5]) => converge_i1f5_11<T1, R>;
+    <$SEL extends "11", $KIND extends "i1f5">(): <T1, U1$1, U2$1, U3$1, U4$1, U5$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1, U5$2 extends U5$1 = U5$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1, v5: U5$1) => R, fns: [(v1: T1) => U1$2, (v1: T1) => U2$2, (v1: T1) => U3$2, (v1: T1) => U4$2, (v1: T1) => U5$2]) => converge_i1f5_11<T1, R>;
     <$SEL extends "1", $KIND extends "i1f5">(): <U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R) => converge_i1f5_10<U1, U2, U3, U4, U5, R>;
     <$SEL extends "01", $KIND extends "i1f5">(): <T1, U1, U2, U3, U4, U5>(_after: PH, fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3, (v1: T1) => U4, (v1: T1) => U5]) => converge_i1f5_01<T1, U1, U2, U3, U4, U5>;
-    <$SEL extends "11", $KIND extends "i1f6">(): <T1, U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R, fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3, (v1: T1) => U4, (v1: T1) => U5, (v1: T1) => U6]) => converge_i1f6_11<T1, R>;
+    <$SEL extends "11", $KIND extends "i1f6">(): <T1, U1$1, U2$1, U3$1, U4$1, U5$1, U6$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1, U5$2 extends U5$1 = U5$1, U6$2 extends U6$1 = U6$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1, v5: U5$1, v6: U6$1) => R, fns: [(v1: T1) => U1$2, (v1: T1) => U2$2, (v1: T1) => U3$2, (v1: T1) => U4$2, (v1: T1) => U5$2, (v1: T1) => U6$2]) => converge_i1f6_11<T1, R>;
     <$SEL extends "1", $KIND extends "i1f6">(): <U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R) => converge_i1f6_10<U1, U2, U3, U4, U5, U6, R>;
     <$SEL extends "01", $KIND extends "i1f6">(): <T1, U1, U2, U3, U4, U5, U6>(_after: PH, fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3, (v1: T1) => U4, (v1: T1) => U5, (v1: T1) => U6]) => converge_i1f6_01<T1, U1, U2, U3, U4, U5, U6>;
-    <$SEL extends "11", $KIND extends "i2f1">(): <T1, T2, U1, R>(after: (v1: U1) => R, fns: [(v1: T1, v2: T2) => U1]) => converge_i2f1_11<T1, T2, R>;
+    <$SEL extends "11", $KIND extends "i2f1">(): <T1, T2, U1$1, R, U1$2 extends U1$1 = U1$1>(after: (v1: U1$1) => R, fns: [(v1: T1, v2: T2) => U1$2]) => converge_i2f1_11<T1, T2, R>;
     <$SEL extends "1", $KIND extends "i2f1">(): <U1, R>(after: (v1: U1) => R) => converge_i2f1_10<U1, R>;
     <$SEL extends "01", $KIND extends "i2f1">(): <T1, T2, U1>(_after: PH, fns: [(v1: T1, v2: T2) => U1]) => converge_i2f1_01<T1, T2, U1>;
-    <$SEL extends "11", $KIND extends "i2f2">(): <T1, T2, U1, U2, R>(after: (v1: U1, v2: U2) => R, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2]) => converge_i2f2_11<T1, T2, R>;
+    <$SEL extends "11", $KIND extends "i2f2">(): <T1, T2, U1$1, U2$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1>(after: (v1: U1$1, v2: U2$1) => R, fns: [(v1: T1, v2: T2) => U1$2, (v1: T1, v2: T2) => U2$2]) => converge_i2f2_11<T1, T2, R>;
     <$SEL extends "1", $KIND extends "i2f2">(): <U1, U2, R>(after: (v1: U1, v2: U2) => R) => converge_i2f2_10<U1, U2, R>;
     <$SEL extends "01", $KIND extends "i2f2">(): <T1, T2, U1, U2>(_after: PH, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2]) => converge_i2f2_01<T1, T2, U1, U2>;
-    <$SEL extends "11", $KIND extends "i2f3">(): <T1, T2, U1, U2, U3, R>(after: (v1: U1, v2: U2, v3: U3) => R, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3]) => converge_i2f3_11<T1, T2, R>;
+    <$SEL extends "11", $KIND extends "i2f3">(): <T1, T2, U1$1, U2$1, U3$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1) => R, fns: [(v1: T1, v2: T2) => U1$2, (v1: T1, v2: T2) => U2$2, (v1: T1, v2: T2) => U3$2]) => converge_i2f3_11<T1, T2, R>;
     <$SEL extends "1", $KIND extends "i2f3">(): <U1, U2, U3, R>(after: (v1: U1, v2: U2, v3: U3) => R) => converge_i2f3_10<U1, U2, U3, R>;
     <$SEL extends "01", $KIND extends "i2f3">(): <T1, T2, U1, U2, U3>(_after: PH, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3]) => converge_i2f3_01<T1, T2, U1, U2, U3>;
-    <$SEL extends "11", $KIND extends "i2f4">(): <T1, T2, U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3, (v1: T1, v2: T2) => U4]) => converge_i2f4_11<T1, T2, R>;
+    <$SEL extends "11", $KIND extends "i2f4">(): <T1, T2, U1$1, U2$1, U3$1, U4$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1) => R, fns: [(v1: T1, v2: T2) => U1$2, (v1: T1, v2: T2) => U2$2, (v1: T1, v2: T2) => U3$2, (v1: T1, v2: T2) => U4$2]) => converge_i2f4_11<T1, T2, R>;
     <$SEL extends "1", $KIND extends "i2f4">(): <U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R) => converge_i2f4_10<U1, U2, U3, U4, R>;
     <$SEL extends "01", $KIND extends "i2f4">(): <T1, T2, U1, U2, U3, U4>(_after: PH, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3, (v1: T1, v2: T2) => U4]) => converge_i2f4_01<T1, T2, U1, U2, U3, U4>;
-    <$SEL extends "11", $KIND extends "i2f5">(): <T1, T2, U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3, (v1: T1, v2: T2) => U4, (v1: T1, v2: T2) => U5]) => converge_i2f5_11<T1, T2, R>;
+    <$SEL extends "11", $KIND extends "i2f5">(): <T1, T2, U1$1, U2$1, U3$1, U4$1, U5$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1, U5$2 extends U5$1 = U5$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1, v5: U5$1) => R, fns: [(v1: T1, v2: T2) => U1$2, (v1: T1, v2: T2) => U2$2, (v1: T1, v2: T2) => U3$2, (v1: T1, v2: T2) => U4$2, (v1: T1, v2: T2) => U5$2]) => converge_i2f5_11<T1, T2, R>;
     <$SEL extends "1", $KIND extends "i2f5">(): <U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R) => converge_i2f5_10<U1, U2, U3, U4, U5, R>;
     <$SEL extends "01", $KIND extends "i2f5">(): <T1, T2, U1, U2, U3, U4, U5>(_after: PH, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3, (v1: T1, v2: T2) => U4, (v1: T1, v2: T2) => U5]) => converge_i2f5_01<T1, T2, U1, U2, U3, U4, U5>;
-    <$SEL extends "11", $KIND extends "i2f6">(): <T1, T2, U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3, (v1: T1, v2: T2) => U4, (v1: T1, v2: T2) => U5, (v1: T1, v2: T2) => U6]) => converge_i2f6_11<T1, T2, R>;
+    <$SEL extends "11", $KIND extends "i2f6">(): <T1, T2, U1$1, U2$1, U3$1, U4$1, U5$1, U6$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1, U5$2 extends U5$1 = U5$1, U6$2 extends U6$1 = U6$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1, v5: U5$1, v6: U6$1) => R, fns: [(v1: T1, v2: T2) => U1$2, (v1: T1, v2: T2) => U2$2, (v1: T1, v2: T2) => U3$2, (v1: T1, v2: T2) => U4$2, (v1: T1, v2: T2) => U5$2, (v1: T1, v2: T2) => U6$2]) => converge_i2f6_11<T1, T2, R>;
     <$SEL extends "1", $KIND extends "i2f6">(): <U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R) => converge_i2f6_10<U1, U2, U3, U4, U5, U6, R>;
     <$SEL extends "01", $KIND extends "i2f6">(): <T1, T2, U1, U2, U3, U4, U5, U6>(_after: PH, fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3, (v1: T1, v2: T2) => U4, (v1: T1, v2: T2) => U5, (v1: T1, v2: T2) => U6]) => converge_i2f6_01<T1, T2, U1, U2, U3, U4, U5, U6>;
-    <$SEL extends "11", $KIND extends "i3f1">(): <T1, T2, T3, U1, R>(after: (v1: U1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1]) => converge_i3f1_11<T1, T2, T3, R>;
+    <$SEL extends "11", $KIND extends "i3f1">(): <T1, T2, T3, U1$1, R, U1$2 extends U1$1 = U1$1>(after: (v1: U1$1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1$2]) => converge_i3f1_11<T1, T2, T3, R>;
     <$SEL extends "1", $KIND extends "i3f1">(): <U1, R>(after: (v1: U1) => R) => converge_i3f1_10<U1, R>;
     <$SEL extends "01", $KIND extends "i3f1">(): <T1, T2, T3, U1>(_after: PH, fns: [(v1: T1, v2: T2, v3: T3) => U1]) => converge_i3f1_01<T1, T2, T3, U1>;
-    <$SEL extends "11", $KIND extends "i3f2">(): <T1, T2, T3, U1, U2, R>(after: (v1: U1, v2: U2) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2]) => converge_i3f2_11<T1, T2, T3, R>;
+    <$SEL extends "11", $KIND extends "i3f2">(): <T1, T2, T3, U1$1, U2$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1>(after: (v1: U1$1, v2: U2$1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1$2, (v1: T1, v2: T2, v3: T3) => U2$2]) => converge_i3f2_11<T1, T2, T3, R>;
     <$SEL extends "1", $KIND extends "i3f2">(): <U1, U2, R>(after: (v1: U1, v2: U2) => R) => converge_i3f2_10<U1, U2, R>;
     <$SEL extends "01", $KIND extends "i3f2">(): <T1, T2, T3, U1, U2>(_after: PH, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2]) => converge_i3f2_01<T1, T2, T3, U1, U2>;
-    <$SEL extends "11", $KIND extends "i3f3">(): <T1, T2, T3, U1, U2, U3, R>(after: (v1: U1, v2: U2, v3: U3) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3]) => converge_i3f3_11<T1, T2, T3, R>;
+    <$SEL extends "11", $KIND extends "i3f3">(): <T1, T2, T3, U1$1, U2$1, U3$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1$2, (v1: T1, v2: T2, v3: T3) => U2$2, (v1: T1, v2: T2, v3: T3) => U3$2]) => converge_i3f3_11<T1, T2, T3, R>;
     <$SEL extends "1", $KIND extends "i3f3">(): <U1, U2, U3, R>(after: (v1: U1, v2: U2, v3: U3) => R) => converge_i3f3_10<U1, U2, U3, R>;
     <$SEL extends "01", $KIND extends "i3f3">(): <T1, T2, T3, U1, U2, U3>(_after: PH, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3]) => converge_i3f3_01<T1, T2, T3, U1, U2, U3>;
-    <$SEL extends "11", $KIND extends "i3f4">(): <T1, T2, T3, U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4]) => converge_i3f4_11<T1, T2, T3, R>;
+    <$SEL extends "11", $KIND extends "i3f4">(): <T1, T2, T3, U1$1, U2$1, U3$1, U4$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1$2, (v1: T1, v2: T2, v3: T3) => U2$2, (v1: T1, v2: T2, v3: T3) => U3$2, (v1: T1, v2: T2, v3: T3) => U4$2]) => converge_i3f4_11<T1, T2, T3, R>;
     <$SEL extends "1", $KIND extends "i3f4">(): <U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R) => converge_i3f4_10<U1, U2, U3, U4, R>;
     <$SEL extends "01", $KIND extends "i3f4">(): <T1, T2, T3, U1, U2, U3, U4>(_after: PH, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4]) => converge_i3f4_01<T1, T2, T3, U1, U2, U3, U4>;
-    <$SEL extends "11", $KIND extends "i3f5">(): <T1, T2, T3, U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4, (v1: T1, v2: T2, v3: T3) => U5]) => converge_i3f5_11<T1, T2, T3, R>;
+    <$SEL extends "11", $KIND extends "i3f5">(): <T1, T2, T3, U1$1, U2$1, U3$1, U4$1, U5$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1, U5$2 extends U5$1 = U5$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1, v5: U5$1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1$2, (v1: T1, v2: T2, v3: T3) => U2$2, (v1: T1, v2: T2, v3: T3) => U3$2, (v1: T1, v2: T2, v3: T3) => U4$2, (v1: T1, v2: T2, v3: T3) => U5$2]) => converge_i3f5_11<T1, T2, T3, R>;
     <$SEL extends "1", $KIND extends "i3f5">(): <U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R) => converge_i3f5_10<U1, U2, U3, U4, U5, R>;
     <$SEL extends "01", $KIND extends "i3f5">(): <T1, T2, T3, U1, U2, U3, U4, U5>(_after: PH, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4, (v1: T1, v2: T2, v3: T3) => U5]) => converge_i3f5_01<T1, T2, T3, U1, U2, U3, U4, U5>;
-    <$SEL extends "11", $KIND extends "i3f6">(): <T1, T2, T3, U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4, (v1: T1, v2: T2, v3: T3) => U5, (v1: T1, v2: T2, v3: T3) => U6]) => converge_i3f6_11<T1, T2, T3, R>;
+    <$SEL extends "11", $KIND extends "i3f6">(): <T1, T2, T3, U1$1, U2$1, U3$1, U4$1, U5$1, U6$1, R, U1$2 extends U1$1 = U1$1, U2$2 extends U2$1 = U2$1, U3$2 extends U3$1 = U3$1, U4$2 extends U4$1 = U4$1, U5$2 extends U5$1 = U5$1, U6$2 extends U6$1 = U6$1>(after: (v1: U1$1, v2: U2$1, v3: U3$1, v4: U4$1, v5: U5$1, v6: U6$1) => R, fns: [(v1: T1, v2: T2, v3: T3) => U1$2, (v1: T1, v2: T2, v3: T3) => U2$2, (v1: T1, v2: T2, v3: T3) => U3$2, (v1: T1, v2: T2, v3: T3) => U4$2, (v1: T1, v2: T2, v3: T3) => U5$2, (v1: T1, v2: T2, v3: T3) => U6$2]) => converge_i3f6_11<T1, T2, T3, R>;
     <$SEL extends "1", $KIND extends "i3f6">(): <U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R) => converge_i3f6_10<U1, U2, U3, U4, U5, U6, R>;
     <$SEL extends "01", $KIND extends "i3f6">(): <T1, T2, T3, U1, U2, U3, U4, U5, U6>(_after: PH, fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4, (v1: T1, v2: T2, v3: T3) => U5, (v1: T1, v2: T2, v3: T3) => U6]) => converge_i3f6_01<T1, T2, T3, U1, U2, U3, U4, U5, U6>;
     <$SEL extends "11", $KIND extends "variadic">(): <R>(after: Variadic<R>, fns: List<Variadic<any>>) => converge_variadic_11<R>;
@@ -146,58 +146,58 @@ type converge_00 = {
     <R>(after: Variadic<R>): converge_variadic_10<R>;
 };
 type converge_i1f1_10<U1, R> = {
-    <T1>(fns: [(v1: T1) => U1]): converge_i1f1_11<T1, R>;
+    <T1, U1$1 extends U1 = U1>(fns: [(v1: T1) => U1$1]): converge_i1f1_11<T1, R>;
 };
 type converge_i1f2_10<U1, U2, R> = {
-    <T1>(fns: [(v1: T1) => U1, (v1: T1) => U2]): converge_i1f2_11<T1, R>;
+    <T1, U1$1 extends U1 = U1, U2$1 extends U2 = U2>(fns: [(v1: T1) => U1$1, (v1: T1) => U2$1]): converge_i1f2_11<T1, R>;
 };
 type converge_i1f3_10<U1, U2, U3, R> = {
-    <T1>(fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3]): converge_i1f3_11<T1, R>;
+    <T1, U1$1 extends U1 = U1, U2$1 extends U2 = U2, U3$1 extends U3 = U3>(fns: [(v1: T1) => U1$1, (v1: T1) => U2$1, (v1: T1) => U3$1]): converge_i1f3_11<T1, R>;
 };
 type converge_i1f4_10<U1, U2, U3, U4, R> = {
-    <T1>(fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3, (v1: T1) => U4]): converge_i1f4_11<T1, R>;
+    <T1, U1$1 extends U1 = U1, U2$1 extends U2 = U2, U3$1 extends U3 = U3, U4$1 extends U4 = U4>(fns: [(v1: T1) => U1$1, (v1: T1) => U2$1, (v1: T1) => U3$1, (v1: T1) => U4$1]): converge_i1f4_11<T1, R>;
 };
 type converge_i1f5_10<U1, U2, U3, U4, U5, R> = {
-    <T1>(fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3, (v1: T1) => U4, (v1: T1) => U5]): converge_i1f5_11<T1, R>;
+    <T1, U1$1 extends U1 = U1, U2$1 extends U2 = U2, U3$1 extends U3 = U3, U4$1 extends U4 = U4, U5$1 extends U5 = U5>(fns: [(v1: T1) => U1$1, (v1: T1) => U2$1, (v1: T1) => U3$1, (v1: T1) => U4$1, (v1: T1) => U5$1]): converge_i1f5_11<T1, R>;
 };
 type converge_i1f6_10<U1, U2, U3, U4, U5, U6, R> = {
-    <T1>(fns: [(v1: T1) => U1, (v1: T1) => U2, (v1: T1) => U3, (v1: T1) => U4, (v1: T1) => U5, (v1: T1) => U6]): converge_i1f6_11<T1, R>;
+    <T1, U1$1 extends U1 = U1, U2$1 extends U2 = U2, U3$1 extends U3 = U3, U4$1 extends U4 = U4, U5$1 extends U5 = U5, U6$1 extends U6 = U6>(fns: [(v1: T1) => U1$1, (v1: T1) => U2$1, (v1: T1) => U3$1, (v1: T1) => U4$1, (v1: T1) => U5$1, (v1: T1) => U6$1]): converge_i1f6_11<T1, R>;
 };
 type converge_i2f1_10<U1, R> = {
-    <T1, T2>(fns: [(v1: T1, v2: T2) => U1]): converge_i2f1_11<T1, T2, R>;
+    <T1, T2, U1$1 extends U1 = U1>(fns: [(v1: T1, v2: T2) => U1$1]): converge_i2f1_11<T1, T2, R>;
 };
 type converge_i2f2_10<U1, U2, R> = {
-    <T1, T2>(fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2]): converge_i2f2_11<T1, T2, R>;
+    <T1, T2, U1$1 extends U1 = U1, U2$1 extends U2 = U2>(fns: [(v1: T1, v2: T2) => U1$1, (v1: T1, v2: T2) => U2$1]): converge_i2f2_11<T1, T2, R>;
 };
 type converge_i2f3_10<U1, U2, U3, R> = {
-    <T1, T2>(fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3]): converge_i2f3_11<T1, T2, R>;
+    <T1, T2, U1$1 extends U1 = U1, U2$1 extends U2 = U2, U3$1 extends U3 = U3>(fns: [(v1: T1, v2: T2) => U1$1, (v1: T1, v2: T2) => U2$1, (v1: T1, v2: T2) => U3$1]): converge_i2f3_11<T1, T2, R>;
 };
 type converge_i2f4_10<U1, U2, U3, U4, R> = {
-    <T1, T2>(fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3, (v1: T1, v2: T2) => U4]): converge_i2f4_11<T1, T2, R>;
+    <T1, T2, U1$1 extends U1 = U1, U2$1 extends U2 = U2, U3$1 extends U3 = U3, U4$1 extends U4 = U4>(fns: [(v1: T1, v2: T2) => U1$1, (v1: T1, v2: T2) => U2$1, (v1: T1, v2: T2) => U3$1, (v1: T1, v2: T2) => U4$1]): converge_i2f4_11<T1, T2, R>;
 };
 type converge_i2f5_10<U1, U2, U3, U4, U5, R> = {
-    <T1, T2>(fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3, (v1: T1, v2: T2) => U4, (v1: T1, v2: T2) => U5]): converge_i2f5_11<T1, T2, R>;
+    <T1, T2, U1$1 extends U1 = U1, U2$1 extends U2 = U2, U3$1 extends U3 = U3, U4$1 extends U4 = U4, U5$1 extends U5 = U5>(fns: [(v1: T1, v2: T2) => U1$1, (v1: T1, v2: T2) => U2$1, (v1: T1, v2: T2) => U3$1, (v1: T1, v2: T2) => U4$1, (v1: T1, v2: T2) => U5$1]): converge_i2f5_11<T1, T2, R>;
 };
 type converge_i2f6_10<U1, U2, U3, U4, U5, U6, R> = {
-    <T1, T2>(fns: [(v1: T1, v2: T2) => U1, (v1: T1, v2: T2) => U2, (v1: T1, v2: T2) => U3, (v1: T1, v2: T2) => U4, (v1: T1, v2: T2) => U5, (v1: T1, v2: T2) => U6]): converge_i2f6_11<T1, T2, R>;
+    <T1, T2, U1$1 extends U1 = U1, U2$1 extends U2 = U2, U3$1 extends U3 = U3, U4$1 extends U4 = U4, U5$1 extends U5 = U5, U6$1 extends U6 = U6>(fns: [(v1: T1, v2: T2) => U1$1, (v1: T1, v2: T2) => U2$1, (v1: T1, v2: T2) => U3$1, (v1: T1, v2: T2) => U4$1, (v1: T1, v2: T2) => U5$1, (v1: T1, v2: T2) => U6$1]): converge_i2f6_11<T1, T2, R>;
 };
 type converge_i3f1_10<U1, R> = {
-    <T1, T2, T3>(fns: [(v1: T1, v2: T2, v3: T3) => U1]): converge_i3f1_11<T1, T2, T3, R>;
+    <T1, T2, T3, U1$1 extends U1 = U1>(fns: [(v1: T1, v2: T2, v3: T3) => U1$1]): converge_i3f1_11<T1, T2, T3, R>;
 };
 type converge_i3f2_10<U1, U2, R> = {
-    <T1, T2, T3>(fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2]): converge_i3f2_11<T1, T2, T3, R>;
+    <T1, T2, T3, U1$1 extends U1 = U1, U2$1 extends U2 = U2>(fns: [(v1: T1, v2: T2, v3: T3) => U1$1, (v1: T1, v2: T2, v3: T3) => U2$1]): converge_i3f2_11<T1, T2, T3, R>;
 };
 type converge_i3f3_10<U1, U2, U3, R> = {
-    <T1, T2, T3>(fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3]): converge_i3f3_11<T1, T2, T3, R>;
+    <T1, T2, T3, U1$1 extends U1 = U1, U2$1 extends U2 = U2, U3$1 extends U3 = U3>(fns: [(v1: T1, v2: T2, v3: T3) => U1$1, (v1: T1, v2: T2, v3: T3) => U2$1, (v1: T1, v2: T2, v3: T3) => U3$1]): converge_i3f3_11<T1, T2, T3, R>;
 };
 type converge_i3f4_10<U1, U2, U3, U4, R> = {
-    <T1, T2, T3>(fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4]): converge_i3f4_11<T1, T2, T3, R>;
+    <T1, T2, T3, U1$1 extends U1 = U1, U2$1 extends U2 = U2, U3$1 extends U3 = U3, U4$1 extends U4 = U4>(fns: [(v1: T1, v2: T2, v3: T3) => U1$1, (v1: T1, v2: T2, v3: T3) => U2$1, (v1: T1, v2: T2, v3: T3) => U3$1, (v1: T1, v2: T2, v3: T3) => U4$1]): converge_i3f4_11<T1, T2, T3, R>;
 };
 type converge_i3f5_10<U1, U2, U3, U4, U5, R> = {
-    <T1, T2, T3>(fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4, (v1: T1, v2: T2, v3: T3) => U5]): converge_i3f5_11<T1, T2, T3, R>;
+    <T1, T2, T3, U1$1 extends U1 = U1, U2$1 extends U2 = U2, U3$1 extends U3 = U3, U4$1 extends U4 = U4, U5$1 extends U5 = U5>(fns: [(v1: T1, v2: T2, v3: T3) => U1$1, (v1: T1, v2: T2, v3: T3) => U2$1, (v1: T1, v2: T2, v3: T3) => U3$1, (v1: T1, v2: T2, v3: T3) => U4$1, (v1: T1, v2: T2, v3: T3) => U5$1]): converge_i3f5_11<T1, T2, T3, R>;
 };
 type converge_i3f6_10<U1, U2, U3, U4, U5, U6, R> = {
-    <T1, T2, T3>(fns: [(v1: T1, v2: T2, v3: T3) => U1, (v1: T1, v2: T2, v3: T3) => U2, (v1: T1, v2: T2, v3: T3) => U3, (v1: T1, v2: T2, v3: T3) => U4, (v1: T1, v2: T2, v3: T3) => U5, (v1: T1, v2: T2, v3: T3) => U6]): converge_i3f6_11<T1, T2, T3, R>;
+    <T1, T2, T3, U1$1 extends U1 = U1, U2$1 extends U2 = U2, U3$1 extends U3 = U3, U4$1 extends U4 = U4, U5$1 extends U5 = U5, U6$1 extends U6 = U6>(fns: [(v1: T1, v2: T2, v3: T3) => U1$1, (v1: T1, v2: T2, v3: T3) => U2$1, (v1: T1, v2: T2, v3: T3) => U3$1, (v1: T1, v2: T2, v3: T3) => U4$1, (v1: T1, v2: T2, v3: T3) => U5$1, (v1: T1, v2: T2, v3: T3) => U6$1]): converge_i3f6_11<T1, T2, T3, R>;
 };
 type converge_variadic_10<R> = {
     (fns: List<Variadic<any>>): converge_variadic_11<R>;

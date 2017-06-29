@@ -31,14 +31,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const both: both_00;
 type both_00 = {
     <T>(_fn1: PH, fn2: Predicate<T>): both_01<T>;
-    <T>(fn1: Predicate<T>, fn2: Predicate<T>): both_11<T>;
-    <$SEL extends "11">(): <T>(fn1: Predicate<T>, fn2: Predicate<T>) => both_11<T>;
+    <T$1, T$2 extends T$1 = T$1>(fn1: Predicate<T$1>, fn2: Predicate<T$2>): both_11<T$2>;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(fn1: Predicate<T$1>, fn2: Predicate<T$2>) => both_11<T$2>;
     <$SEL extends "1">(): <T>(fn1: Predicate<T>) => both_10<T>;
     <$SEL extends "01">(): <T>(_fn1: PH, fn2: Predicate<T>) => both_01<T>;
     <T>(fn1: Predicate<T>): both_10<T>;
 };
 type both_10<T> = {
-    (fn2: Predicate<T>): both_11<T>;
+    <T$1 extends T = T>(fn2: Predicate<T$1>): both_11<T$1>;
 };
 type both_01<T> = {
     (fn1: Predicate<T>): both_11<T>;

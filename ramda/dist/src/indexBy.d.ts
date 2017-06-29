@@ -25,14 +25,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const indexBy: indexBy_00;
 type indexBy_00 = {
     <T>(_fn: PH, list: List<T>): indexBy_01<T>;
-    <T>(fn: Morphism<T, Property>, list: List<T>): indexBy_11<T>;
-    <$SEL extends "11">(): <T>(fn: Morphism<T, Property>, list: List<T>) => indexBy_11<T>;
+    <T$1, T$2 extends T$1 = T$1>(fn: Morphism<T$1, Property>, list: List<T$2>): indexBy_11<T$2>;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(fn: Morphism<T$1, Property>, list: List<T$2>) => indexBy_11<T$2>;
     <$SEL extends "1">(): <T>(fn: Morphism<T, Property>) => indexBy_10<T>;
     <$SEL extends "01">(): <T>(_fn: PH, list: List<T>) => indexBy_01<T>;
     <T>(fn: Morphism<T, Property>): indexBy_10<T>;
 };
 type indexBy_10<T> = {
-    (list: List<T>): indexBy_11<T>;
+    <T$1 extends T = T>(list: List<T$1>): indexBy_11<T$1>;
 };
 type indexBy_01<T> = {
     (fn: Morphism<T, Property>): indexBy_11<T>;

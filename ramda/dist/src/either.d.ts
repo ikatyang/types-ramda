@@ -30,14 +30,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const either: either_00;
 type either_00 = {
     <T>(_fn1: PH, fn2: Predicate<T>): either_01<T>;
-    <T>(fn1: Predicate<T>, fn2: Predicate<T>): either_11<T>;
-    <$SEL extends "11">(): <T>(fn1: Predicate<T>, fn2: Predicate<T>) => either_11<T>;
+    <T$1, T$2 extends T$1 = T$1>(fn1: Predicate<T$1>, fn2: Predicate<T$2>): either_11<T$2>;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(fn1: Predicate<T$1>, fn2: Predicate<T$2>) => either_11<T$2>;
     <$SEL extends "1">(): <T>(fn1: Predicate<T>) => either_10<T>;
     <$SEL extends "01">(): <T>(_fn1: PH, fn2: Predicate<T>) => either_01<T>;
     <T>(fn1: Predicate<T>): either_10<T>;
 };
 type either_10<T> = {
-    (fn2: Predicate<T>): either_11<T>;
+    <T$1 extends T = T>(fn2: Predicate<T$1>): either_11<T$1>;
 };
 type either_01<T> = {
     (fn1: Predicate<T>): either_11<T>;

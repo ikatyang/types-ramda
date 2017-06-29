@@ -27,14 +27,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const equals: equals_00;
 type equals_00 = {
     <T>(_a: PH, b: T): equals_01<T>;
-    <T>(a: T, b: T): equals_11;
-    <$SEL extends "11">(): <T>(a: T, b: T) => equals_11;
+    <T$1, T$2 extends T$1 = T$1>(a: T$1, b: T$2): equals_11;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(a: T$1, b: T$2) => equals_11;
     <$SEL extends "1">(): <T>(a: T) => equals_10<T>;
     <$SEL extends "01">(): <T>(_a: PH, b: T) => equals_01<T>;
     <T>(a: T): equals_10<T>;
 };
 type equals_10<T> = {
-    (b: T): equals_11;
+    <T$1 extends T = T>(b: T$1): equals_11;
 };
 type equals_01<T> = {
     (a: T): equals_11;

@@ -25,14 +25,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const findLast: findLast_00;
 type findLast_00 = {
     <T>(_fn: PH, list: List<T>): findLast_01<T>;
-    <T>(fn: Predicate<T>, list: List<T>): findLast_11<T>;
-    <$SEL extends "11">(): <T>(fn: Predicate<T>, list: List<T>) => findLast_11<T>;
+    <T$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1>, list: List<T$2>): findLast_11<T$2>;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1>, list: List<T$2>) => findLast_11<T$2>;
     <$SEL extends "1">(): <T>(fn: Predicate<T>) => findLast_10<T>;
     <$SEL extends "01">(): <T>(_fn: PH, list: List<T>) => findLast_01<T>;
     <T>(fn: Predicate<T>): findLast_10<T>;
 };
 type findLast_10<T> = {
-    (list: List<T>): findLast_11<T>;
+    <T$1 extends T = T>(list: List<T$1>): findLast_11<T$1>;
 };
 type findLast_01<T> = {
     (fn: Predicate<T>): findLast_11<T>;

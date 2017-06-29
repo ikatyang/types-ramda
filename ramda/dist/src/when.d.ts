@@ -30,39 +30,39 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const when: when_000;
 type when_000 = {
-    <T>(pred: Predicate<T>, _whenTrueFn: PH, value: T): when_101<T>;
-    <T, U>(_pred: PH, whenTrueFn: Morphism<T, U>, value: T): when_011<T, U>;
+    <T$1, T$2 extends T$1 = T$1>(pred: Predicate<T$1>, _whenTrueFn: PH, value: T$2): when_101<T$2>;
+    <T$1, U, T$2 extends T$1 = T$1>(_pred: PH, whenTrueFn: Morphism<T$1, U>, value: T$2): when_011<T$2, U>;
     <T>(_pred: PH, _whenTrueFn: PH, value: T): when_001<T>;
-    <T, U>(pred: Predicate<T>, whenTrueFn: Morphism<T, U>, value: T): when_111<T, U>;
+    <T$1, U, T$2 extends T$1 = T$1, T$3 extends T$2 = T$2>(pred: Predicate<T$1>, whenTrueFn: Morphism<T$2, U>, value: T$3): when_111<T$3, U>;
     <T, U>(_pred: PH, whenTrueFn: Morphism<T, U>): when_010<T, U>;
-    <T, U>(pred: Predicate<T>, whenTrueFn: Morphism<T, U>): when_110<T, U>;
-    <$SEL extends "111">(): <T, U>(pred: Predicate<T>, whenTrueFn: Morphism<T, U>, value: T) => when_111<T, U>;
-    <$SEL extends "11">(): <T, U>(pred: Predicate<T>, whenTrueFn: Morphism<T, U>) => when_110<T, U>;
-    <$SEL extends "101">(): <T>(pred: Predicate<T>, _whenTrueFn: PH, value: T) => when_101<T>;
+    <T$1, U, T$2 extends T$1 = T$1>(pred: Predicate<T$1>, whenTrueFn: Morphism<T$2, U>): when_110<T$2, U>;
+    <$SEL extends "111">(): <T$1, U, T$2 extends T$1 = T$1, T$3 extends T$2 = T$2>(pred: Predicate<T$1>, whenTrueFn: Morphism<T$2, U>, value: T$3) => when_111<T$3, U>;
+    <$SEL extends "11">(): <T$1, U, T$2 extends T$1 = T$1>(pred: Predicate<T$1>, whenTrueFn: Morphism<T$2, U>) => when_110<T$2, U>;
+    <$SEL extends "101">(): <T$1, T$2 extends T$1 = T$1>(pred: Predicate<T$1>, _whenTrueFn: PH, value: T$2) => when_101<T$2>;
     <$SEL extends "1">(): <T>(pred: Predicate<T>) => when_100<T>;
-    <$SEL extends "011">(): <T, U>(_pred: PH, whenTrueFn: Morphism<T, U>, value: T) => when_011<T, U>;
+    <$SEL extends "011">(): <T$1, U, T$2 extends T$1 = T$1>(_pred: PH, whenTrueFn: Morphism<T$1, U>, value: T$2) => when_011<T$2, U>;
     <$SEL extends "01">(): <T, U>(_pred: PH, whenTrueFn: Morphism<T, U>) => when_010<T, U>;
     <$SEL extends "001">(): <T>(_pred: PH, _whenTrueFn: PH, value: T) => when_001<T>;
     <T>(pred: Predicate<T>): when_100<T>;
 };
 type when_100<T> = {
-    (_whenTrueFn: PH, value: T): when_101<T>;
-    <U>(whenTrueFn: Morphism<T, U>, value: T): when_111<T, U>;
-    <$SEL extends "11">(): <U>(whenTrueFn: Morphism<T, U>, value: T) => when_111<T, U>;
-    <$SEL extends "1">(): <U>(whenTrueFn: Morphism<T, U>) => when_110<T, U>;
-    <$SEL extends "01">(): (_whenTrueFn: PH, value: T) => when_101<T>;
-    <U>(whenTrueFn: Morphism<T, U>): when_110<T, U>;
+    <T$1 extends T = T>(_whenTrueFn: PH, value: T$1): when_101<T$1>;
+    <U, T$1 extends T = T, T$2 extends T$1 = T$1>(whenTrueFn: Morphism<T$1, U>, value: T$2): when_111<T$2, U>;
+    <$SEL extends "11">(): <U, T$1 extends T = T, T$2 extends T$1 = T$1>(whenTrueFn: Morphism<T$1, U>, value: T$2) => when_111<T$2, U>;
+    <$SEL extends "1">(): <U, T$1 extends T = T>(whenTrueFn: Morphism<T$1, U>) => when_110<T$1, U>;
+    <$SEL extends "01">(): <T$1 extends T = T>(_whenTrueFn: PH, value: T$1) => when_101<T$1>;
+    <U, T$1 extends T = T>(whenTrueFn: Morphism<T$1, U>): when_110<T$1, U>;
 };
 type when_010<T, U> = {
-    (_pred: PH, value: T): when_011<T, U>;
-    (pred: Predicate<T>, value: T): when_111<T, U>;
-    <$SEL extends "11">(): (pred: Predicate<T>, value: T) => when_111<T, U>;
+    <T$1 extends T = T>(_pred: PH, value: T$1): when_011<T$1, U>;
+    <T$1 extends T = T>(pred: Predicate<T$1>, value: T): when_111<T$1, U>;
+    <$SEL extends "11">(): <T$1 extends T = T>(pred: Predicate<T$1>, value: T) => when_111<T$1, U>;
     <$SEL extends "1">(): (pred: Predicate<T>) => when_110<T, U>;
-    <$SEL extends "01">(): (_pred: PH, value: T) => when_011<T, U>;
+    <$SEL extends "01">(): <T$1 extends T = T>(_pred: PH, value: T$1) => when_011<T$1, U>;
     (pred: Predicate<T>): when_110<T, U>;
 };
 type when_110<T, U> = {
-    (value: T): when_111<T, U>;
+    <T$1 extends T = T>(value: T$1): when_111<T$1, U>;
 };
 type when_001<T> = {
     <U>(_pred: PH, whenTrueFn: Morphism<T, U>): when_011<T, U>;

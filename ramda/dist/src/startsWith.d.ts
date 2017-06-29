@@ -22,14 +22,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const startsWith: startsWith_00;
 type startsWith_00 = {
     <T extends List<any>>(_prefix: PH, list: T): startsWith_01<T>;
-    <T extends List<any>>(prefix: T, list: T): startsWith_11;
-    <$SEL extends "11">(): <T extends List<any>>(prefix: T, list: T) => startsWith_11;
+    <T$1 extends List<any>, T$2 extends T$1 = T$1>(prefix: T$1, list: T$2): startsWith_11;
+    <$SEL extends "11">(): <T$1 extends List<any>, T$2 extends T$1 = T$1>(prefix: T$1, list: T$2) => startsWith_11;
     <$SEL extends "1">(): <T extends List<any>>(prefix: T) => startsWith_10<T>;
     <$SEL extends "01">(): <T extends List<any>>(_prefix: PH, list: T) => startsWith_01<T>;
     <T extends List<any>>(prefix: T): startsWith_10<T>;
 };
 type startsWith_10<T extends List<any>> = {
-    (list: T): startsWith_11;
+    <T$1 extends T = T>(list: T$1): startsWith_11;
 };
 type startsWith_01<T extends List<any>> = {
     (prefix: T): startsWith_11;

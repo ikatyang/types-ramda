@@ -24,14 +24,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const gt: gt_00;
 type gt_00 = {
     <T extends Ordered>(_a: PH, b: T): gt_01<T>;
-    <T extends Ordered>(a: T, b: T): gt_11;
-    <$SEL extends "11">(): <T extends Ordered>(a: T, b: T) => gt_11;
+    <T$1 extends Ordered, T$2 extends T$1 = T$1>(a: T$1, b: T$2): gt_11;
+    <$SEL extends "11">(): <T$1 extends Ordered, T$2 extends T$1 = T$1>(a: T$1, b: T$2) => gt_11;
     <$SEL extends "1">(): <T extends Ordered>(a: T) => gt_10<T>;
     <$SEL extends "01">(): <T extends Ordered>(_a: PH, b: T) => gt_01<T>;
     <T extends Ordered>(a: T): gt_10<T>;
 };
 type gt_10<T extends Ordered> = {
-    (b: T): gt_11;
+    <T$1 extends T = T>(b: T$1): gt_11;
 };
 type gt_01<T extends Ordered> = {
     (a: T): gt_11;

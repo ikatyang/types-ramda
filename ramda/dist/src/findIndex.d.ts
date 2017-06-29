@@ -25,14 +25,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const findIndex: findIndex_00;
 type findIndex_00 = {
     <T>(_fn: PH, list: List<T>): findIndex_01<T>;
-    <T>(fn: Predicate<T>, list: List<T>): findIndex_11;
-    <$SEL extends "11">(): <T>(fn: Predicate<T>, list: List<T>) => findIndex_11;
+    <T$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1>, list: List<T$2>): findIndex_11;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1>, list: List<T$2>) => findIndex_11;
     <$SEL extends "1">(): <T>(fn: Predicate<T>) => findIndex_10<T>;
     <$SEL extends "01">(): <T>(_fn: PH, list: List<T>) => findIndex_01<T>;
     <T>(fn: Predicate<T>): findIndex_10<T>;
 };
 type findIndex_10<T> = {
-    (list: List<T>): findIndex_11;
+    <T$1 extends T = T>(list: List<T$1>): findIndex_11;
 };
 type findIndex_01<T> = {
     (fn: Predicate<T>): findIndex_11;

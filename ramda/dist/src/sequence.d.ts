@@ -28,20 +28,20 @@ declare const sequence: sequence_00;
 type sequence_00 = {
     <T>(_of: PH, traversable: List<Applicative<T>>): sequence_list_01<T>;
     <T>(_of: PH, traversable: Traversable<Applicative<T>>): sequence_traversable_01<T>;
-    <T>(of: Morphism<T, Applicative<T>>, traversable: List<Applicative<T>>): sequence_list_11<T>;
-    <T>(of: Morphism<T, Applicative<T>>, traversable: Traversable<Applicative<T>>): sequence_traversable_11<T>;
-    <$SEL extends "11", $KIND extends "list">(): <T>(of: Morphism<T, Applicative<T>>, traversable: List<Applicative<T>>) => sequence_list_11<T>;
+    <T$1, T$2 extends T$1 = T$1>(of: Morphism<T$1, Applicative<T$1>>, traversable: List<Applicative<T$2>>): sequence_list_11<T$2>;
+    <T$1, T$2 extends T$1 = T$1>(of: Morphism<T$1, Applicative<T$1>>, traversable: Traversable<Applicative<T$2>>): sequence_traversable_11<T$2>;
+    <$SEL extends "11", $KIND extends "list">(): <T$1, T$2 extends T$1 = T$1>(of: Morphism<T$1, Applicative<T$1>>, traversable: List<Applicative<T$2>>) => sequence_list_11<T$2>;
     <$SEL extends "01", $KIND extends "list">(): <T>(_of: PH, traversable: List<Applicative<T>>) => sequence_list_01<T>;
-    <$SEL extends "11", $KIND extends "traversable">(): <T>(of: Morphism<T, Applicative<T>>, traversable: Traversable<Applicative<T>>) => sequence_traversable_11<T>;
+    <$SEL extends "11", $KIND extends "traversable">(): <T$1, T$2 extends T$1 = T$1>(of: Morphism<T$1, Applicative<T$1>>, traversable: Traversable<Applicative<T$2>>) => sequence_traversable_11<T$2>;
     <$SEL extends "01", $KIND extends "traversable">(): <T>(_of: PH, traversable: Traversable<Applicative<T>>) => sequence_traversable_01<T>;
     <$SEL extends "1">(): <T>(of: Morphism<T, Applicative<T>>) => sequence_10<T>;
     <T>(of: Morphism<T, Applicative<T>>): sequence_10<T>;
 };
 type sequence_10<T> = {
-    (traversable: List<Applicative<T>>): sequence_list_11<T>;
-    <$SEL extends "1", $KIND extends "list">(): (traversable: List<Applicative<T>>) => sequence_list_11<T>;
-    <$SEL extends "1", $KIND extends "traversable">(): (traversable: Traversable<Applicative<T>>) => sequence_traversable_11<T>;
-    (traversable: Traversable<Applicative<T>>): sequence_traversable_11<T>;
+    <T$1 extends T = T>(traversable: List<Applicative<T$1>>): sequence_list_11<T$1>;
+    <$SEL extends "1", $KIND extends "list">(): <T$1 extends T = T>(traversable: List<Applicative<T$1>>) => sequence_list_11<T$1>;
+    <$SEL extends "1", $KIND extends "traversable">(): <T$1 extends T = T>(traversable: Traversable<Applicative<T$1>>) => sequence_traversable_11<T$1>;
+    <T$1 extends T = T>(traversable: Traversable<Applicative<T$1>>): sequence_traversable_11<T$1>;
 };
 type sequence_list_01<T> = {
     (of: Morphism<T, Applicative<T>>): sequence_list_11<T>;

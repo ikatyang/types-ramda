@@ -24,14 +24,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const mapObjIndexed: mapObjIndexed_00;
 type mapObjIndexed_00 = {
     <T, K extends string>(_fn: PH, object: Record<K, T>): mapObjIndexed_01<T, K>;
-    <T, U, K extends string>(fn: KeyedObjectMorphism<T, U, K>, object: Record<K, T>): mapObjIndexed_11<U, K>;
-    <$SEL extends "11">(): <T, U, K extends string>(fn: KeyedObjectMorphism<T, U, K>, object: Record<K, T>) => mapObjIndexed_11<U, K>;
+    <T$1, U, K$1 extends string, T$2 extends T$1 = T$1, K$2 extends K$1 = K$1>(fn: KeyedObjectMorphism<T$1, U, K$1>, object: Record<K$2, T$2>): mapObjIndexed_11<U, K$2>;
+    <$SEL extends "11">(): <T$1, U, K$1 extends string, T$2 extends T$1 = T$1, K$2 extends K$1 = K$1>(fn: KeyedObjectMorphism<T$1, U, K$1>, object: Record<K$2, T$2>) => mapObjIndexed_11<U, K$2>;
     <$SEL extends "1">(): <T, U, K extends string>(fn: KeyedObjectMorphism<T, U, K>) => mapObjIndexed_10<T, U, K>;
     <$SEL extends "01">(): <T, K extends string>(_fn: PH, object: Record<K, T>) => mapObjIndexed_01<T, K>;
     <T, U, K extends string>(fn: KeyedObjectMorphism<T, U, K>): mapObjIndexed_10<T, U, K>;
 };
 type mapObjIndexed_10<T, U, K extends string> = {
-    (object: Record<K, T>): mapObjIndexed_11<U, K>;
+    <T$1 extends T = T, K$1 extends K = K>(object: Record<K$1, T$1>): mapObjIndexed_11<U, K$1>;
 };
 type mapObjIndexed_01<T, K extends string> = {
     <U>(fn: KeyedObjectMorphism<T, U, K>): mapObjIndexed_11<U, K>;

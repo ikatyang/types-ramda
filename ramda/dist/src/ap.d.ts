@@ -24,14 +24,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const ap: ap_00;
 type ap_00 = {
     <T>(_fns: PH, list: List<T>): ap_01<T>;
-    <T, U>(fns: Morphism<T, U>[], list: List<T>): ap_11<U>;
-    <$SEL extends "11">(): <T, U>(fns: Morphism<T, U>[], list: List<T>) => ap_11<U>;
+    <T$1, U, T$2 extends T$1 = T$1>(fns: Morphism<T$1, U>[], list: List<T$2>): ap_11<U>;
+    <$SEL extends "11">(): <T$1, U, T$2 extends T$1 = T$1>(fns: Morphism<T$1, U>[], list: List<T$2>) => ap_11<U>;
     <$SEL extends "1">(): <T, U>(fns: Morphism<T, U>[]) => ap_10<T, U>;
     <$SEL extends "01">(): <T>(_fns: PH, list: List<T>) => ap_01<T>;
     <T, U>(fns: Morphism<T, U>[]): ap_10<T, U>;
 };
 type ap_10<T, U> = {
-    (list: List<T>): ap_11<U>;
+    <T$1 extends T = T>(list: List<T$1>): ap_11<U>;
 };
 type ap_01<T> = {
     <U>(fns: Morphism<T, U>[]): ap_11<U>;

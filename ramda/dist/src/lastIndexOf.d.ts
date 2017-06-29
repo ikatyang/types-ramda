@@ -22,14 +22,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const lastIndexOf: lastIndexOf_00;
 type lastIndexOf_00 = {
     <T>(_target: PH, list: List<T>): lastIndexOf_01<T>;
-    <T>(target: T, list: List<T>): lastIndexOf_11;
-    <$SEL extends "11">(): <T>(target: T, list: List<T>) => lastIndexOf_11;
+    <T$1, T$2 extends T$1 = T$1>(target: T$1, list: List<T$2>): lastIndexOf_11;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(target: T$1, list: List<T$2>) => lastIndexOf_11;
     <$SEL extends "1">(): <T>(target: T) => lastIndexOf_10<T>;
     <$SEL extends "01">(): <T>(_target: PH, list: List<T>) => lastIndexOf_01<T>;
     <T>(target: T): lastIndexOf_10<T>;
 };
 type lastIndexOf_10<T> = {
-    (list: List<T>): lastIndexOf_11;
+    <T$1 extends T = T>(list: List<T$1>): lastIndexOf_11;
 };
 type lastIndexOf_01<T> = {
     (target: T): lastIndexOf_11;

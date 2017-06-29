@@ -41,7 +41,7 @@ type project_00 = {
     (keys: Property[]): project_manual_10;
 };
 type project_keyof_10<T, K extends keyof T> = {
-    (list: List<T>): project_keyof_11<T, K>;
+    <T$1 extends T = T>(list: List<T$1>): project_keyof_11<T$1, K>;
 };
 type project_record_10<K extends string> = {
     <T extends Record<K, any>>(list: List<T>): project_record_11<K, T>;

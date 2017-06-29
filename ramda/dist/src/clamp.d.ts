@@ -22,39 +22,39 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const clamp: clamp_000;
 type clamp_000 = {
-    <T extends Ordered>(min: T, _max: PH, value: T): clamp_101<T>;
-    <T extends Ordered>(_min: PH, max: T, value: T): clamp_011<T>;
+    <T$1 extends Ordered, T$2 extends T$1 = T$1>(min: T$1, _max: PH, value: T$2): clamp_101<T$2>;
+    <T$1 extends Ordered, T$2 extends T$1 = T$1>(_min: PH, max: T$1, value: T$2): clamp_011<T$2>;
     <T extends Ordered>(_min: PH, _max: PH, value: T): clamp_001<T>;
-    <T extends Ordered>(min: T, max: T, value: T): clamp_111<T>;
+    <T$1 extends Ordered, T$2 extends T$1 = T$1, T$3 extends T$2 = T$2>(min: T$1, max: T$2, value: T$3): clamp_111<T$3>;
     <T extends Ordered>(_min: PH, max: T): clamp_010<T>;
-    <T extends Ordered>(min: T, max: T): clamp_110<T>;
-    <$SEL extends "111">(): <T extends Ordered>(min: T, max: T, value: T) => clamp_111<T>;
-    <$SEL extends "11">(): <T extends Ordered>(min: T, max: T) => clamp_110<T>;
-    <$SEL extends "101">(): <T extends Ordered>(min: T, _max: PH, value: T) => clamp_101<T>;
+    <T$1 extends Ordered, T$2 extends T$1 = T$1>(min: T$1, max: T$2): clamp_110<T$2>;
+    <$SEL extends "111">(): <T$1 extends Ordered, T$2 extends T$1 = T$1, T$3 extends T$2 = T$2>(min: T$1, max: T$2, value: T$3) => clamp_111<T$3>;
+    <$SEL extends "11">(): <T$1 extends Ordered, T$2 extends T$1 = T$1>(min: T$1, max: T$2) => clamp_110<T$2>;
+    <$SEL extends "101">(): <T$1 extends Ordered, T$2 extends T$1 = T$1>(min: T$1, _max: PH, value: T$2) => clamp_101<T$2>;
     <$SEL extends "1">(): <T extends Ordered>(min: T) => clamp_100<T>;
-    <$SEL extends "011">(): <T extends Ordered>(_min: PH, max: T, value: T) => clamp_011<T>;
+    <$SEL extends "011">(): <T$1 extends Ordered, T$2 extends T$1 = T$1>(_min: PH, max: T$1, value: T$2) => clamp_011<T$2>;
     <$SEL extends "01">(): <T extends Ordered>(_min: PH, max: T) => clamp_010<T>;
     <$SEL extends "001">(): <T extends Ordered>(_min: PH, _max: PH, value: T) => clamp_001<T>;
     <T extends Ordered>(min: T): clamp_100<T>;
 };
 type clamp_100<T extends Ordered> = {
-    (_max: PH, value: T): clamp_101<T>;
-    (max: T, value: T): clamp_111<T>;
-    <$SEL extends "11">(): (max: T, value: T) => clamp_111<T>;
-    <$SEL extends "1">(): (max: T) => clamp_110<T>;
-    <$SEL extends "01">(): (_max: PH, value: T) => clamp_101<T>;
-    (max: T): clamp_110<T>;
+    <T$1 extends T = T>(_max: PH, value: T$1): clamp_101<T$1>;
+    <T$1 extends T = T, T$2 extends T$1 = T$1>(max: T$1, value: T$2): clamp_111<T$2>;
+    <$SEL extends "11">(): <T$1 extends T = T, T$2 extends T$1 = T$1>(max: T$1, value: T$2) => clamp_111<T$2>;
+    <$SEL extends "1">(): <T$1 extends T = T>(max: T$1) => clamp_110<T$1>;
+    <$SEL extends "01">(): <T$1 extends T = T>(_max: PH, value: T$1) => clamp_101<T$1>;
+    <T$1 extends T = T>(max: T$1): clamp_110<T$1>;
 };
 type clamp_010<T extends Ordered> = {
-    (_min: PH, value: T): clamp_011<T>;
-    (min: T, value: T): clamp_111<T>;
-    <$SEL extends "11">(): (min: T, value: T) => clamp_111<T>;
+    <T$1 extends T = T>(_min: PH, value: T$1): clamp_011<T$1>;
+    <T$1 extends T = T>(min: T$1, value: T): clamp_111<T$1>;
+    <$SEL extends "11">(): <T$1 extends T = T>(min: T$1, value: T) => clamp_111<T$1>;
     <$SEL extends "1">(): (min: T) => clamp_110<T>;
-    <$SEL extends "01">(): (_min: PH, value: T) => clamp_011<T>;
+    <$SEL extends "01">(): <T$1 extends T = T>(_min: PH, value: T$1) => clamp_011<T$1>;
     (min: T): clamp_110<T>;
 };
 type clamp_110<T extends Ordered> = {
-    (value: T): clamp_111<T>;
+    <T$1 extends T = T>(value: T$1): clamp_111<T$1>;
 };
 type clamp_001<T extends Ordered> = {
     (_min: PH, max: T): clamp_011<T>;

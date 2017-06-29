@@ -25,14 +25,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const takeLastWhile: takeLastWhile_00;
 type takeLastWhile_00 = {
     <T>(_fn: PH, list: List<T>): takeLastWhile_01<T>;
-    <T>(fn: Predicate<T>, list: List<T>): takeLastWhile_11<T>;
-    <$SEL extends "11">(): <T>(fn: Predicate<T>, list: List<T>) => takeLastWhile_11<T>;
+    <T$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1>, list: List<T$2>): takeLastWhile_11<T$2>;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1>, list: List<T$2>) => takeLastWhile_11<T$2>;
     <$SEL extends "1">(): <T>(fn: Predicate<T>) => takeLastWhile_10<T>;
     <$SEL extends "01">(): <T>(_fn: PH, list: List<T>) => takeLastWhile_01<T>;
     <T>(fn: Predicate<T>): takeLastWhile_10<T>;
 };
 type takeLastWhile_10<T> = {
-    (list: List<T>): takeLastWhile_11<T>;
+    <T$1 extends T = T>(list: List<T$1>): takeLastWhile_11<T$1>;
 };
 type takeLastWhile_01<T> = {
     (fn: Predicate<T>): takeLastWhile_11<T>;

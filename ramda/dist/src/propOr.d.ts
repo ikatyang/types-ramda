@@ -88,11 +88,11 @@ type propOr_100<D> = {
     (key: Property): propOr_manual_110<D>;
 };
 type propOr_keyof_010<T, K extends keyof T> = {
-    (_defaults: PH, object: T): propOr_keyof_011<T, K>;
-    <D>(defaults: D, object: T): propOr_keyof_111<D, T, K>;
-    <$SEL extends "11">(): <D>(defaults: D, object: T) => propOr_keyof_111<D, T, K>;
+    <T$1 extends T = T>(_defaults: PH, object: T$1): propOr_keyof_011<T$1, K>;
+    <D, T$1 extends T = T>(defaults: D, object: T$1): propOr_keyof_111<D, T$1, K>;
+    <$SEL extends "11">(): <D, T$1 extends T = T>(defaults: D, object: T$1) => propOr_keyof_111<D, T$1, K>;
     <$SEL extends "1">(): <D>(defaults: D) => propOr_keyof_110<D, T, K>;
-    <$SEL extends "01">(): (_defaults: PH, object: T) => propOr_keyof_011<T, K>;
+    <$SEL extends "01">(): <T$1 extends T = T>(_defaults: PH, object: T$1) => propOr_keyof_011<T$1, K>;
     <D>(defaults: D): propOr_keyof_110<D, T, K>;
 };
 type propOr_record_010<K extends string> = {
@@ -112,7 +112,7 @@ type propOr_manual_010 = {
     <D>(defaults: D): propOr_manual_110<D>;
 };
 type propOr_keyof_110<D, T, K extends keyof T> = {
-    (object: T): propOr_keyof_111<D, T, K>;
+    <T$1 extends T = T>(object: T$1): propOr_keyof_111<D, T$1, K>;
 };
 type propOr_record_110<D, K extends string> = {
     <T extends Record<K, any>>(object: T): propOr_record_111<D, K, T>;

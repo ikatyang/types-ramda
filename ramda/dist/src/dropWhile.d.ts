@@ -28,14 +28,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const dropWhile: dropWhile_00;
 type dropWhile_00 = {
     <T>(_fn: PH, list: List<T>): dropWhile_01<T>;
-    <T>(fn: Predicate<T>, list: List<T>): dropWhile_11<T>;
-    <$SEL extends "11">(): <T>(fn: Predicate<T>, list: List<T>) => dropWhile_11<T>;
+    <T$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1>, list: List<T$2>): dropWhile_11<T$2>;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1>, list: List<T$2>) => dropWhile_11<T$2>;
     <$SEL extends "1">(): <T>(fn: Predicate<T>) => dropWhile_10<T>;
     <$SEL extends "01">(): <T>(_fn: PH, list: List<T>) => dropWhile_01<T>;
     <T>(fn: Predicate<T>): dropWhile_10<T>;
 };
 type dropWhile_10<T> = {
-    (list: List<T>): dropWhile_11<T>;
+    <T$1 extends T = T>(list: List<T$1>): dropWhile_11<T$1>;
 };
 type dropWhile_01<T> = {
     (fn: Predicate<T>): dropWhile_11<T>;

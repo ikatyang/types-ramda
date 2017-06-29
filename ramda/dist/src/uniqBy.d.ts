@@ -21,14 +21,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const uniqBy: uniqBy_00;
 type uniqBy_00 = {
     <T>(_fn: PH, list: List<T>): uniqBy_01<T>;
-    <T>(fn: Morphism<T, any>, list: List<T>): uniqBy_11<T>;
-    <$SEL extends "11">(): <T>(fn: Morphism<T, any>, list: List<T>) => uniqBy_11<T>;
+    <T$1, T$2 extends T$1 = T$1>(fn: Morphism<T$1, any>, list: List<T$2>): uniqBy_11<T$2>;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(fn: Morphism<T$1, any>, list: List<T$2>) => uniqBy_11<T$2>;
     <$SEL extends "1">(): <T>(fn: Morphism<T, any>) => uniqBy_10<T>;
     <$SEL extends "01">(): <T>(_fn: PH, list: List<T>) => uniqBy_01<T>;
     <T>(fn: Morphism<T, any>): uniqBy_10<T>;
 };
 type uniqBy_10<T> = {
-    (list: List<T>): uniqBy_11<T>;
+    <T$1 extends T = T>(list: List<T$1>): uniqBy_11<T$1>;
 };
 type uniqBy_01<T> = {
     (fn: Morphism<T, any>): uniqBy_11<T>;

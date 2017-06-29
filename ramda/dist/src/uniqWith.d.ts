@@ -25,14 +25,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const uniqWith: uniqWith_00;
 type uniqWith_00 = {
     <T>(_fn: PH, list: List<T>): uniqWith_01<T>;
-    <T>(fn: Comparator<T, boolean>, list: List<T>): uniqWith_11<T>;
-    <$SEL extends "11">(): <T>(fn: Comparator<T, boolean>, list: List<T>) => uniqWith_11<T>;
+    <T$1, T$2 extends T$1 = T$1>(fn: Comparator<T$1, boolean>, list: List<T$2>): uniqWith_11<T$2>;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(fn: Comparator<T$1, boolean>, list: List<T$2>) => uniqWith_11<T$2>;
     <$SEL extends "1">(): <T>(fn: Comparator<T, boolean>) => uniqWith_10<T>;
     <$SEL extends "01">(): <T>(_fn: PH, list: List<T>) => uniqWith_01<T>;
     <T>(fn: Comparator<T, boolean>): uniqWith_10<T>;
 };
 type uniqWith_10<T> = {
-    (list: List<T>): uniqWith_11<T>;
+    <T$1 extends T = T>(list: List<T$1>): uniqWith_11<T$1>;
 };
 type uniqWith_01<T> = {
     (fn: Comparator<T, boolean>): uniqWith_11<T>;

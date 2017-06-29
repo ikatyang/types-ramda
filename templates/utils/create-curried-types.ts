@@ -4,6 +4,7 @@ import {
   get_curried_function_type_name,
   placeholder_name_abbr,
 } from './constants';
+import {create_lazy_inference} from './create-lazy-inference';
 import {create_masks} from './create-masks';
 import {create_selectable_signatures} from './create-selectable-signatures';
 import {has} from './has';
@@ -156,6 +157,12 @@ export const create_curried_types = (name: string, type: dts.IFunctionType, sele
         );
       },
     );
+
+    members.forEach(member => {
+      const owned = member.owned as dts.IFunctionDeclaration;
+      owned.type = create_lazy_inference(masks[index], generics, parameters_generics, type_declaration.generics!, owned.type!);
+    });
+
     if (selectable && members.length > 1) {
       members.splice(-1, 0, ...create_selectable_signatures(members));
     }

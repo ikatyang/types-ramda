@@ -20,14 +20,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const union: union_00;
 type union_00 = {
     <T>(_a: PH, b: List<T>): union_01<T>;
-    <T>(a: List<T>, b: List<T>): union_11<T>;
-    <$SEL extends "11">(): <T>(a: List<T>, b: List<T>) => union_11<T>;
+    <T$1, T$2 extends T$1 = T$1>(a: List<T$1>, b: List<T$2>): union_11<T$2>;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(a: List<T$1>, b: List<T$2>) => union_11<T$2>;
     <$SEL extends "1">(): <T>(a: List<T>) => union_10<T>;
     <$SEL extends "01">(): <T>(_a: PH, b: List<T>) => union_01<T>;
     <T>(a: List<T>): union_10<T>;
 };
 type union_10<T> = {
-    (b: List<T>): union_11<T>;
+    <T$1 extends T = T>(b: List<T$1>): union_11<T$1>;
 };
 type union_01<T> = {
     (a: List<T>): union_11<T>;

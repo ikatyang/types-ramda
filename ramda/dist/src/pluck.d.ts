@@ -56,7 +56,7 @@ type pluck_list_10 = {
     <U>(list: List<List<U>>): pluck_list_11<U>;
 };
 type pluck_keyof_10<T, K extends keyof T> = {
-    (list: List<T>): pluck_keyof_11<T, K>;
+    <T$1 extends T = T>(list: List<T$1>): pluck_keyof_11<T$1, K>;
 };
 type pluck_record_10<K extends string> = {
     <V, T extends Record<K, V>>(list: List<T>): pluck_record_11<K, V, T>;

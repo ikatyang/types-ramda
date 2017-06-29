@@ -37,14 +37,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const where: where_00;
 type where_00 = {
     <T>(_spec: PH, object: Dictionary<T>): where_01<T>;
-    <T>(spec: Dictionary<Predicate<T>>, object: Dictionary<T>): where_11;
-    <$SEL extends "11">(): <T>(spec: Dictionary<Predicate<T>>, object: Dictionary<T>) => where_11;
+    <T$1, T$2 extends T$1 = T$1>(spec: Dictionary<Predicate<T$1>>, object: Dictionary<T$2>): where_11;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(spec: Dictionary<Predicate<T$1>>, object: Dictionary<T$2>) => where_11;
     <$SEL extends "1">(): <T>(spec: Dictionary<Predicate<T>>) => where_10<T>;
     <$SEL extends "01">(): <T>(_spec: PH, object: Dictionary<T>) => where_01<T>;
     <T>(spec: Dictionary<Predicate<T>>): where_10<T>;
 };
 type where_10<T> = {
-    (object: Dictionary<T>): where_11;
+    <T$1 extends T = T>(object: Dictionary<T$1>): where_11;
 };
 type where_01<T> = {
     (spec: Dictionary<Predicate<T>>): where_11;

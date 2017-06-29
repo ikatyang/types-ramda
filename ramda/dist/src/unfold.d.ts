@@ -27,14 +27,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const unfold: unfold_00;
 type unfold_00 = {
     <T>(_fn: PH, initial: T): unfold_01<T>;
-    <T, R>(fn: (seed: T) => [R, T] | false, initial: T): unfold_11<R>;
-    <$SEL extends "11">(): <T, R>(fn: (seed: T) => [R, T] | false, initial: T) => unfold_11<R>;
+    <T$1, R, T$2 extends T$1 = T$1>(fn: (seed: T$1) => [R, T$1] | false, initial: T$2): unfold_11<R>;
+    <$SEL extends "11">(): <T$1, R, T$2 extends T$1 = T$1>(fn: (seed: T$1) => [R, T$1] | false, initial: T$2) => unfold_11<R>;
     <$SEL extends "1">(): <T, R>(fn: (seed: T) => [R, T] | false) => unfold_10<T, R>;
     <$SEL extends "01">(): <T>(_fn: PH, initial: T) => unfold_01<T>;
     <T, R>(fn: (seed: T) => [R, T] | false): unfold_10<T, R>;
 };
 type unfold_10<T, R> = {
-    (initial: T): unfold_11<R>;
+    <T$1 extends T = T>(initial: T$1): unfold_11<R>;
 };
 type unfold_01<T> = {
     <R>(fn: (seed: T) => [R, T] | false): unfold_11<R>;

@@ -29,14 +29,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const concat: concat_00;
 type concat_00 = {
     <T extends List<any>>(_a: PH, b: T): concat_01<T>;
-    <T extends List<any>>(a: T, b: T): concat_11<T>;
-    <$SEL extends "11">(): <T extends List<any>>(a: T, b: T) => concat_11<T>;
+    <T$1 extends List<any>, T$2 extends T$1 = T$1>(a: T$1, b: T$2): concat_11<T$2>;
+    <$SEL extends "11">(): <T$1 extends List<any>, T$2 extends T$1 = T$1>(a: T$1, b: T$2) => concat_11<T$2>;
     <$SEL extends "1">(): <T extends List<any>>(a: T) => concat_10<T>;
     <$SEL extends "01">(): <T extends List<any>>(_a: PH, b: T) => concat_01<T>;
     <T extends List<any>>(a: T): concat_10<T>;
 };
 type concat_10<T extends List<any>> = {
-    (b: T): concat_11<T>;
+    <T$1 extends T = T>(b: T$1): concat_11<T$1>;
 };
 type concat_01<T extends List<any>> = {
     (a: T): concat_11<T>;

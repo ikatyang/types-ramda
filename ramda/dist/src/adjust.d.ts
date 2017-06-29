@@ -27,15 +27,15 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const adjust: adjust_000;
 type adjust_000 = {
-    <T, U>(fn: Morphism<T, U>, _index: PH, list: List<T>): adjust_101<T, U>;
+    <T$1, U, T$2 extends T$1 = T$1>(fn: Morphism<T$1, U>, _index: PH, list: List<T$2>): adjust_101<T$2, U>;
     <T>(_fn: PH, index: number, list: List<T>): adjust_011<T>;
     <T>(_fn: PH, _index: PH, list: List<T>): adjust_001<T>;
-    <T, U>(fn: Morphism<T, U>, index: number, list: List<T>): adjust_111<T, U>;
+    <T$1, U, T$2 extends T$1 = T$1>(fn: Morphism<T$1, U>, index: number, list: List<T$2>): adjust_111<T$2, U>;
     (_fn: PH, index: number): adjust_010;
     <T, U>(fn: Morphism<T, U>, index: number): adjust_110<T, U>;
-    <$SEL extends "111">(): <T, U>(fn: Morphism<T, U>, index: number, list: List<T>) => adjust_111<T, U>;
+    <$SEL extends "111">(): <T$1, U, T$2 extends T$1 = T$1>(fn: Morphism<T$1, U>, index: number, list: List<T$2>) => adjust_111<T$2, U>;
     <$SEL extends "11">(): <T, U>(fn: Morphism<T, U>, index: number) => adjust_110<T, U>;
-    <$SEL extends "101">(): <T, U>(fn: Morphism<T, U>, _index: PH, list: List<T>) => adjust_101<T, U>;
+    <$SEL extends "101">(): <T$1, U, T$2 extends T$1 = T$1>(fn: Morphism<T$1, U>, _index: PH, list: List<T$2>) => adjust_101<T$2, U>;
     <$SEL extends "1">(): <T, U>(fn: Morphism<T, U>) => adjust_100<T, U>;
     <$SEL extends "011">(): <T>(_fn: PH, index: number, list: List<T>) => adjust_011<T>;
     <$SEL extends "01">(): (_fn: PH, index: number) => adjust_010;
@@ -43,23 +43,23 @@ type adjust_000 = {
     <T, U>(fn: Morphism<T, U>): adjust_100<T, U>;
 };
 type adjust_100<T, U> = {
-    (_index: PH, list: List<T>): adjust_101<T, U>;
-    (index: number, list: List<T>): adjust_111<T, U>;
-    <$SEL extends "11">(): (index: number, list: List<T>) => adjust_111<T, U>;
+    <T$1 extends T = T>(_index: PH, list: List<T$1>): adjust_101<T$1, U>;
+    <T$1 extends T = T>(index: number, list: List<T$1>): adjust_111<T$1, U>;
+    <$SEL extends "11">(): <T$1 extends T = T>(index: number, list: List<T$1>) => adjust_111<T$1, U>;
     <$SEL extends "1">(): (index: number) => adjust_110<T, U>;
-    <$SEL extends "01">(): (_index: PH, list: List<T>) => adjust_101<T, U>;
+    <$SEL extends "01">(): <T$1 extends T = T>(_index: PH, list: List<T$1>) => adjust_101<T$1, U>;
     (index: number): adjust_110<T, U>;
 };
 type adjust_010 = {
     <T>(_fn: PH, list: List<T>): adjust_011<T>;
-    <T, U>(fn: Morphism<T, U>, list: List<T>): adjust_111<T, U>;
-    <$SEL extends "11">(): <T, U>(fn: Morphism<T, U>, list: List<T>) => adjust_111<T, U>;
+    <T$1, U, T$2 extends T$1 = T$1>(fn: Morphism<T$1, U>, list: List<T$2>): adjust_111<T$2, U>;
+    <$SEL extends "11">(): <T$1, U, T$2 extends T$1 = T$1>(fn: Morphism<T$1, U>, list: List<T$2>) => adjust_111<T$2, U>;
     <$SEL extends "1">(): <T, U>(fn: Morphism<T, U>) => adjust_110<T, U>;
     <$SEL extends "01">(): <T>(_fn: PH, list: List<T>) => adjust_011<T>;
     <T, U>(fn: Morphism<T, U>): adjust_110<T, U>;
 };
 type adjust_110<T, U> = {
-    (list: List<T>): adjust_111<T, U>;
+    <T$1 extends T = T>(list: List<T$1>): adjust_111<T$1, U>;
 };
 type adjust_001<T> = {
     (_fn: PH, index: number): adjust_011<T>;

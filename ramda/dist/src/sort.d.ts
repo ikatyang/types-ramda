@@ -23,14 +23,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const sort: sort_00;
 type sort_00 = {
     <T>(_fn: PH, list: List<T>): sort_01<T>;
-    <T>(fn: Comparator<T, number>, list: List<T>): sort_11<T>;
-    <$SEL extends "11">(): <T>(fn: Comparator<T, number>, list: List<T>) => sort_11<T>;
+    <T$1, T$2 extends T$1 = T$1>(fn: Comparator<T$1, number>, list: List<T$2>): sort_11<T$2>;
+    <$SEL extends "11">(): <T$1, T$2 extends T$1 = T$1>(fn: Comparator<T$1, number>, list: List<T$2>) => sort_11<T$2>;
     <$SEL extends "1">(): <T>(fn: Comparator<T, number>) => sort_10<T>;
     <$SEL extends "01">(): <T>(_fn: PH, list: List<T>) => sort_01<T>;
     <T>(fn: Comparator<T, number>): sort_10<T>;
 };
 type sort_10<T> = {
-    (list: List<T>): sort_11<T>;
+    <T$1 extends T = T>(list: List<T$1>): sort_11<T$1>;
 };
 type sort_01<T> = {
     (fn: Comparator<T, number>): sort_11<T>;

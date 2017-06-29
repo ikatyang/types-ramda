@@ -42,7 +42,7 @@ type props_00 = {
     (keys: Property[]): props_manual_10;
 };
 type props_keyof_10<T, K extends keyof T> = {
-    (object: T): props_keyof_11<T, K>;
+    <T$1 extends T = T>(object: T$1): props_keyof_11<T$1, K>;
 };
 type props_record_10<K extends string> = {
     <T extends Record<K, any>>(object: T): props_record_11<K, T>;
