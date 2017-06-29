@@ -29,17 +29,17 @@ import { Placeholder as PH } from "./$placeholder";
 declare const hasIn: hasIn_00;
 type hasIn_00 = {
     <T>(_property: PH, object: T): hasIn_01<T>;
-    <T>(property: Property, object: T): hasIn_11<T>;
-    <$SEL extends "11">(): <T>(property: Property, object: T) => hasIn_11<T>;
+    <T>(property: Property, object: T): hasIn_11;
+    <$SEL extends "11">(): <T>(property: Property, object: T) => hasIn_11;
     <$SEL extends "1">(): (property: Property) => hasIn_10;
     <$SEL extends "01">(): <T>(_property: PH, object: T) => hasIn_01<T>;
     (property: Property): hasIn_10;
 };
 type hasIn_10 = {
-    <T>(object: T): hasIn_11<T>;
+    <T>(object: T): hasIn_11;
 };
 type hasIn_01<T> = {
-    (property: Property): hasIn_11<T>;
+    (property: Property): hasIn_11;
 };
-type hasIn_11<T> = boolean;
+type hasIn_11 = boolean;
 export = hasIn;

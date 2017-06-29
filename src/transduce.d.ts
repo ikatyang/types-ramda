@@ -56,14 +56,14 @@ type transduce_0000 = {
     <T, U>(_transducer: PH, fn: (accumulator: U, value: T) => U | Reduced<U>, _initial: PH, values: T[]): transduce_0101<T, U>;
     <T, U>(_transducer: PH, _fn: PH, initial: U, values: T[]): transduce_0011<T, U>;
     <T>(_transducer: PH, _fn: PH, _initial: PH, values: T[]): transduce_0001<T>;
-    <T, U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U, values: T[]): transduce_1111<T, U>;
+    <T, U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U, values: T[]): transduce_1111<U>;
     <T, U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, _fn: PH, initial: U): transduce_1010<T, U>;
     <T, U>(_transducer: PH, fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U): transduce_0110<T, U>;
     <U>(_transducer: PH, _fn: PH, initial: U): transduce_0010<U>;
     <T, U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U): transduce_1110<T, U>;
     <T, U>(_transducer: PH, fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_0100<T, U>;
     <T, U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_1100<T, U>;
-    <$SEL extends "1111">(): <T, U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U, values: T[]) => transduce_1111<T, U>;
+    <$SEL extends "1111">(): <T, U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U, values: T[]) => transduce_1111<U>;
     <$SEL extends "111">(): <T, U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U) => transduce_1110<T, U>;
     <$SEL extends "1101">(): <T, U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, _initial: PH, values: T[]) => transduce_1101<T, U>;
     <$SEL extends "11">(): <T, U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>) => transduce_1100<T, U>;
@@ -84,10 +84,10 @@ type transduce_1000<T, U> = {
     (fn: (accumulator: U, value: T) => U | Reduced<U>, _initial: PH, values: T[]): transduce_1101<T, U>;
     (_fn: PH, initial: U, values: T[]): transduce_1011<T, U>;
     (_fn: PH, _initial: PH, values: T[]): transduce_1001<T, U>;
-    (fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U, values: T[]): transduce_1111<T, U>;
+    (fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U, values: T[]): transduce_1111<U>;
     (_fn: PH, initial: U): transduce_1010<T, U>;
     (fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U): transduce_1110<T, U>;
-    <$SEL extends "111">(): (fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U, values: T[]) => transduce_1111<T, U>;
+    <$SEL extends "111">(): (fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U, values: T[]) => transduce_1111<U>;
     <$SEL extends "11">(): (fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U) => transduce_1110<T, U>;
     <$SEL extends "101">(): (fn: (accumulator: U, value: T) => U | Reduced<U>, _initial: PH, values: T[]) => transduce_1101<T, U>;
     <$SEL extends "1">(): (fn: (accumulator: U, value: T) => U | Reduced<U>) => transduce_1100<T, U>;
@@ -100,10 +100,10 @@ type transduce_0100<T, U> = {
     (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, _initial: PH, values: T[]): transduce_1101<T, U>;
     (_transducer: PH, initial: U, values: T[]): transduce_0111<T, U>;
     (_transducer: PH, _initial: PH, values: T[]): transduce_0101<T, U>;
-    (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, initial: U, values: T[]): transduce_1111<T, U>;
+    (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, initial: U, values: T[]): transduce_1111<U>;
     (_transducer: PH, initial: U): transduce_0110<T, U>;
     (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, initial: U): transduce_1110<T, U>;
-    <$SEL extends "111">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, initial: U, values: T[]) => transduce_1111<T, U>;
+    <$SEL extends "111">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, initial: U, values: T[]) => transduce_1111<U>;
     <$SEL extends "11">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, initial: U) => transduce_1110<T, U>;
     <$SEL extends "101">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, _initial: PH, values: T[]) => transduce_1101<T, U>;
     <$SEL extends "1">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>) => transduce_1100<T, U>;
@@ -114,8 +114,8 @@ type transduce_0100<T, U> = {
 };
 type transduce_1100<T, U> = {
     (_initial: PH, values: T[]): transduce_1101<T, U>;
-    (initial: U, values: T[]): transduce_1111<T, U>;
-    <$SEL extends "11">(): (initial: U, values: T[]) => transduce_1111<T, U>;
+    (initial: U, values: T[]): transduce_1111<U>;
+    <$SEL extends "11">(): (initial: U, values: T[]) => transduce_1111<U>;
     <$SEL extends "1">(): (initial: U) => transduce_1110<T, U>;
     <$SEL extends "01">(): (_initial: PH, values: T[]) => transduce_1101<T, U>;
     (initial: U): transduce_1110<T, U>;
@@ -124,10 +124,10 @@ type transduce_0010<U> = {
     <T>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, _fn: PH, values: T[]): transduce_1011<T, U>;
     <T>(_transducer: PH, fn: (accumulator: U, value: T) => U | Reduced<U>, values: T[]): transduce_0111<T, U>;
     <T>(_transducer: PH, _fn: PH, values: T[]): transduce_0011<T, U>;
-    <T>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, values: T[]): transduce_1111<T, U>;
+    <T>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, values: T[]): transduce_1111<U>;
     <T>(_transducer: PH, fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_0110<T, U>;
     <T>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_1110<T, U>;
-    <$SEL extends "111">(): <T>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, values: T[]) => transduce_1111<T, U>;
+    <$SEL extends "111">(): <T>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, values: T[]) => transduce_1111<U>;
     <$SEL extends "11">(): <T>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>) => transduce_1110<T, U>;
     <$SEL extends "101">(): <T>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, _fn: PH, values: T[]) => transduce_1011<T, U>;
     <$SEL extends "1">(): <T>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>) => transduce_1010<T, U>;
@@ -138,31 +138,31 @@ type transduce_0010<U> = {
 };
 type transduce_1010<T, U> = {
     (_fn: PH, values: T[]): transduce_1011<T, U>;
-    (fn: (accumulator: U, value: T) => U | Reduced<U>, values: T[]): transduce_1111<T, U>;
-    <$SEL extends "11">(): (fn: (accumulator: U, value: T) => U | Reduced<U>, values: T[]) => transduce_1111<T, U>;
+    (fn: (accumulator: U, value: T) => U | Reduced<U>, values: T[]): transduce_1111<U>;
+    <$SEL extends "11">(): (fn: (accumulator: U, value: T) => U | Reduced<U>, values: T[]) => transduce_1111<U>;
     <$SEL extends "1">(): (fn: (accumulator: U, value: T) => U | Reduced<U>) => transduce_1110<T, U>;
     <$SEL extends "01">(): (_fn: PH, values: T[]) => transduce_1011<T, U>;
     (fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_1110<T, U>;
 };
 type transduce_0110<T, U> = {
     (_transducer: PH, values: T[]): transduce_0111<T, U>;
-    (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, values: T[]): transduce_1111<T, U>;
-    <$SEL extends "11">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, values: T[]) => transduce_1111<T, U>;
+    (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, values: T[]): transduce_1111<U>;
+    <$SEL extends "11">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, values: T[]) => transduce_1111<U>;
     <$SEL extends "1">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>) => transduce_1110<T, U>;
     <$SEL extends "01">(): (_transducer: PH, values: T[]) => transduce_0111<T, U>;
     (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>): transduce_1110<T, U>;
 };
 type transduce_1110<T, U> = {
-    (values: T[]): transduce_1111<T, U>;
+    (values: T[]): transduce_1111<U>;
 };
 type transduce_0001<T> = {
     <U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, _fn: PH, initial: U): transduce_1011<T, U>;
     <U>(_transducer: PH, fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U): transduce_0111<T, U>;
     <U>(_transducer: PH, _fn: PH, initial: U): transduce_0011<T, U>;
-    <U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U): transduce_1111<T, U>;
+    <U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U): transduce_1111<U>;
     <U>(_transducer: PH, fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_0101<T, U>;
     <U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_1101<T, U>;
-    <$SEL extends "111">(): <U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U) => transduce_1111<T, U>;
+    <$SEL extends "111">(): <U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U) => transduce_1111<U>;
     <$SEL extends "11">(): <U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>) => transduce_1101<T, U>;
     <$SEL extends "101">(): <U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, _fn: PH, initial: U) => transduce_1011<T, U>;
     <$SEL extends "1">(): <U>(transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>) => transduce_1001<T, U>;
@@ -173,36 +173,36 @@ type transduce_0001<T> = {
 };
 type transduce_1001<T, U> = {
     (_fn: PH, initial: U): transduce_1011<T, U>;
-    (fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U): transduce_1111<T, U>;
-    <$SEL extends "11">(): (fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U) => transduce_1111<T, U>;
+    (fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U): transduce_1111<U>;
+    <$SEL extends "11">(): (fn: (accumulator: U, value: T) => U | Reduced<U>, initial: U) => transduce_1111<U>;
     <$SEL extends "1">(): (fn: (accumulator: U, value: T) => U | Reduced<U>) => transduce_1101<T, U>;
     <$SEL extends "01">(): (_fn: PH, initial: U) => transduce_1011<T, U>;
     (fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_1101<T, U>;
 };
 type transduce_0101<T, U> = {
     (_transducer: PH, initial: U): transduce_0111<T, U>;
-    (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, initial: U): transduce_1111<T, U>;
-    <$SEL extends "11">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, initial: U) => transduce_1111<T, U>;
+    (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, initial: U): transduce_1111<U>;
+    <$SEL extends "11">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, initial: U) => transduce_1111<U>;
     <$SEL extends "1">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>) => transduce_1101<T, U>;
     <$SEL extends "01">(): (_transducer: PH, initial: U) => transduce_0111<T, U>;
     (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>): transduce_1101<T, U>;
 };
 type transduce_1101<T, U> = {
-    (initial: U): transduce_1111<T, U>;
+    (initial: U): transduce_1111<U>;
 };
 type transduce_0011<T, U> = {
     (_transducer: PH, fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_0111<T, U>;
-    (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_1111<T, U>;
-    <$SEL extends "11">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>) => transduce_1111<T, U>;
+    (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_1111<U>;
+    <$SEL extends "11">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>, fn: (accumulator: U, value: T) => U | Reduced<U>) => transduce_1111<U>;
     <$SEL extends "1">(): (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>) => transduce_1011<T, U>;
     <$SEL extends "01">(): (_transducer: PH, fn: (accumulator: U, value: T) => U | Reduced<U>) => transduce_0111<T, U>;
     (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>): transduce_1011<T, U>;
 };
 type transduce_1011<T, U> = {
-    (fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_1111<T, U>;
+    (fn: (accumulator: U, value: T) => U | Reduced<U>): transduce_1111<U>;
 };
 type transduce_0111<T, U> = {
-    (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>): transduce_1111<T, U>;
+    (transducer: Morphism<T[], U> | Morphism<Transformer<T, U, U>, Transformer<T, U, U>>): transduce_1111<U>;
 };
-type transduce_1111<T, U> = U;
+type transduce_1111<U> = U;
 export = transduce;

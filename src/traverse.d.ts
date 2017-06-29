@@ -34,15 +34,15 @@ type traverse_000 = {
     <T>(_of: PH, _fn: PH, traversable: List<T>): traverse_list_001<T>;
     <T, U>(_of: PH, fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>): traverse_traversable_011<T, U>;
     <T>(_of: PH, _fn: PH, traversable: Traversable<T>): traverse_traversable_001<T>;
-    <T, U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>, traversable: List<T>): traverse_list_111<T, U>;
-    <T, U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>): traverse_traversable_111<T, U>;
+    <T, U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>, traversable: List<T>): traverse_list_111<U>;
+    <T, U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>): traverse_traversable_111<U>;
     <T, U>(_of: PH, fn: Morphism<T, Applicative<U>>): traverse_010<T, U>;
     <T, U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>): traverse_110<T, U>;
-    <$SEL extends "111", $KIND extends "list">(): <T, U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>, traversable: List<T>) => traverse_list_111<T, U>;
+    <$SEL extends "111", $KIND extends "list">(): <T, U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>, traversable: List<T>) => traverse_list_111<U>;
     <$SEL extends "101", $KIND extends "list">(): <T>(of: Morphism<T, Applicative<T>>, _fn: PH, traversable: List<T>) => traverse_list_101<T>;
     <$SEL extends "011", $KIND extends "list">(): <T, U>(_of: PH, fn: Morphism<T, Applicative<U>>, traversable: List<T>) => traverse_list_011<T, U>;
     <$SEL extends "001", $KIND extends "list">(): <T>(_of: PH, _fn: PH, traversable: List<T>) => traverse_list_001<T>;
-    <$SEL extends "111", $KIND extends "traversable">(): <T, U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>) => traverse_traversable_111<T, U>;
+    <$SEL extends "111", $KIND extends "traversable">(): <T, U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>) => traverse_traversable_111<U>;
     <$SEL extends "101", $KIND extends "traversable">(): <T>(of: Morphism<T, Applicative<T>>, _fn: PH, traversable: Traversable<T>) => traverse_traversable_101<T>;
     <$SEL extends "011", $KIND extends "traversable">(): <T, U>(_of: PH, fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>) => traverse_traversable_011<T, U>;
     <$SEL extends "001", $KIND extends "traversable">(): <T>(_of: PH, _fn: PH, traversable: Traversable<T>) => traverse_traversable_001<T>;
@@ -54,11 +54,11 @@ type traverse_000 = {
 type traverse_100<T> = {
     (_fn: PH, traversable: List<T>): traverse_list_101<T>;
     (_fn: PH, traversable: Traversable<T>): traverse_traversable_101<T>;
-    <U>(fn: Morphism<T, Applicative<U>>, traversable: List<T>): traverse_list_111<T, U>;
-    <U>(fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>): traverse_traversable_111<T, U>;
-    <$SEL extends "11", $KIND extends "list">(): <U>(fn: Morphism<T, Applicative<U>>, traversable: List<T>) => traverse_list_111<T, U>;
+    <U>(fn: Morphism<T, Applicative<U>>, traversable: List<T>): traverse_list_111<U>;
+    <U>(fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>): traverse_traversable_111<U>;
+    <$SEL extends "11", $KIND extends "list">(): <U>(fn: Morphism<T, Applicative<U>>, traversable: List<T>) => traverse_list_111<U>;
     <$SEL extends "01", $KIND extends "list">(): (_fn: PH, traversable: List<T>) => traverse_list_101<T>;
-    <$SEL extends "11", $KIND extends "traversable">(): <U>(fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>) => traverse_traversable_111<T, U>;
+    <$SEL extends "11", $KIND extends "traversable">(): <U>(fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>) => traverse_traversable_111<U>;
     <$SEL extends "01", $KIND extends "traversable">(): (_fn: PH, traversable: Traversable<T>) => traverse_traversable_101<T>;
     <$SEL extends "1">(): <U>(fn: Morphism<T, Applicative<U>>) => traverse_110<T, U>;
     <U>(fn: Morphism<T, Applicative<U>>): traverse_110<T, U>;
@@ -66,49 +66,49 @@ type traverse_100<T> = {
 type traverse_010<T, U> = {
     (_of: PH, traversable: List<T>): traverse_list_011<T, U>;
     (_of: PH, traversable: Traversable<T>): traverse_traversable_011<T, U>;
-    (of: Morphism<T, Applicative<T>>, traversable: List<T>): traverse_list_111<T, U>;
-    (of: Morphism<T, Applicative<T>>, traversable: Traversable<T>): traverse_traversable_111<T, U>;
-    <$SEL extends "11", $KIND extends "list">(): (of: Morphism<T, Applicative<T>>, traversable: List<T>) => traverse_list_111<T, U>;
+    (of: Morphism<T, Applicative<T>>, traversable: List<T>): traverse_list_111<U>;
+    (of: Morphism<T, Applicative<T>>, traversable: Traversable<T>): traverse_traversable_111<U>;
+    <$SEL extends "11", $KIND extends "list">(): (of: Morphism<T, Applicative<T>>, traversable: List<T>) => traverse_list_111<U>;
     <$SEL extends "01", $KIND extends "list">(): (_of: PH, traversable: List<T>) => traverse_list_011<T, U>;
-    <$SEL extends "11", $KIND extends "traversable">(): (of: Morphism<T, Applicative<T>>, traversable: Traversable<T>) => traverse_traversable_111<T, U>;
+    <$SEL extends "11", $KIND extends "traversable">(): (of: Morphism<T, Applicative<T>>, traversable: Traversable<T>) => traverse_traversable_111<U>;
     <$SEL extends "01", $KIND extends "traversable">(): (_of: PH, traversable: Traversable<T>) => traverse_traversable_011<T, U>;
     <$SEL extends "1">(): (of: Morphism<T, Applicative<T>>) => traverse_110<T, U>;
     (of: Morphism<T, Applicative<T>>): traverse_110<T, U>;
 };
 type traverse_110<T, U> = {
-    (traversable: List<T>): traverse_list_111<T, U>;
-    <$SEL extends "1", $KIND extends "list">(): (traversable: List<T>) => traverse_list_111<T, U>;
-    <$SEL extends "1", $KIND extends "traversable">(): (traversable: Traversable<T>) => traverse_traversable_111<T, U>;
-    (traversable: Traversable<T>): traverse_traversable_111<T, U>;
+    (traversable: List<T>): traverse_list_111<U>;
+    <$SEL extends "1", $KIND extends "list">(): (traversable: List<T>) => traverse_list_111<U>;
+    <$SEL extends "1", $KIND extends "traversable">(): (traversable: Traversable<T>) => traverse_traversable_111<U>;
+    (traversable: Traversable<T>): traverse_traversable_111<U>;
 };
 type traverse_list_001<T> = {
     <U>(_of: PH, fn: Morphism<T, Applicative<U>>): traverse_list_011<T, U>;
-    <U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>): traverse_list_111<T, U>;
-    <$SEL extends "11">(): <U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>) => traverse_list_111<T, U>;
+    <U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>): traverse_list_111<U>;
+    <$SEL extends "11">(): <U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>) => traverse_list_111<U>;
     <$SEL extends "1">(): (of: Morphism<T, Applicative<T>>) => traverse_list_101<T>;
     <$SEL extends "01">(): <U>(_of: PH, fn: Morphism<T, Applicative<U>>) => traverse_list_011<T, U>;
     (of: Morphism<T, Applicative<T>>): traverse_list_101<T>;
 };
 type traverse_traversable_001<T> = {
     <U>(_of: PH, fn: Morphism<T, Applicative<U>>): traverse_traversable_011<T, U>;
-    <U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>): traverse_traversable_111<T, U>;
-    <$SEL extends "11">(): <U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>) => traverse_traversable_111<T, U>;
+    <U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>): traverse_traversable_111<U>;
+    <$SEL extends "11">(): <U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>) => traverse_traversable_111<U>;
     <$SEL extends "1">(): (of: Morphism<T, Applicative<T>>) => traverse_traversable_101<T>;
     <$SEL extends "01">(): <U>(_of: PH, fn: Morphism<T, Applicative<U>>) => traverse_traversable_011<T, U>;
     (of: Morphism<T, Applicative<T>>): traverse_traversable_101<T>;
 };
 type traverse_list_101<T> = {
-    <U>(fn: Morphism<T, Applicative<U>>): traverse_list_111<T, U>;
+    <U>(fn: Morphism<T, Applicative<U>>): traverse_list_111<U>;
 };
 type traverse_traversable_101<T> = {
-    <U>(fn: Morphism<T, Applicative<U>>): traverse_traversable_111<T, U>;
+    <U>(fn: Morphism<T, Applicative<U>>): traverse_traversable_111<U>;
 };
 type traverse_list_011<T, U> = {
-    (of: Morphism<T, Applicative<T>>): traverse_list_111<T, U>;
+    (of: Morphism<T, Applicative<T>>): traverse_list_111<U>;
 };
 type traverse_traversable_011<T, U> = {
-    (of: Morphism<T, Applicative<T>>): traverse_traversable_111<T, U>;
+    (of: Morphism<T, Applicative<T>>): traverse_traversable_111<U>;
 };
-type traverse_list_111<T, U> = Applicative<U[]>;
-type traverse_traversable_111<T, U> = Applicative<Traversable<U>>;
+type traverse_list_111<U> = Applicative<U[]>;
+type traverse_traversable_111<U> = Applicative<Traversable<U>>;
 export = traverse;
