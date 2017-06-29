@@ -27,14 +27,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const all: all_00;
 type all_00 = {
     <T>(_fn: PH, list: List<T>): all_01<T>;
-    <T>(fn: Predicate<T>, list: List<T>): all_11<T>;
+    <T>(fn: Predicate<T>, list: List<T>): all_11;
     <T>(fn: Predicate<T>): all_10<T>;
 };
 type all_10<T> = {
-    (list: List<T>): all_11<T>;
+    (list: List<T>): all_11;
 };
 type all_01<T> = {
-    (fn: Predicate<T>): all_11<T>;
+    (fn: Predicate<T>): all_11;
 };
-type all_11<T> = boolean;
+type all_11 = boolean;
 export = all;

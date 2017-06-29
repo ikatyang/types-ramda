@@ -27,34 +27,34 @@ type ascend_000 = {
     <T, U extends Ordered>(fn: Morphism<T, U>, _a: PH, b: T): ascend_101<T, U>;
     <T>(_fn: PH, a: T, b: T): ascend_011<T>;
     <T>(_fn: PH, _a: PH, b: T): ascend_001<T>;
-    <T, U extends Ordered>(fn: Morphism<T, U>, a: T, b: T): ascend_111<T, U>;
+    <T, U extends Ordered>(fn: Morphism<T, U>, a: T, b: T): ascend_111;
     <T>(_fn: PH, a: T): ascend_010<T>;
     <T, U extends Ordered>(fn: Morphism<T, U>, a: T): ascend_110<T, U>;
     <T, U extends Ordered>(fn: Morphism<T, U>): ascend_100<T, U>;
 };
 type ascend_100<T, U extends Ordered> = {
     (_a: PH, b: T): ascend_101<T, U>;
-    (a: T, b: T): ascend_111<T, U>;
+    (a: T, b: T): ascend_111;
     (a: T): ascend_110<T, U>;
 };
 type ascend_010<T> = {
     (_fn: PH, b: T): ascend_011<T>;
-    <U extends Ordered>(fn: Morphism<T, U>, b: T): ascend_111<T, U>;
+    <U extends Ordered>(fn: Morphism<T, U>, b: T): ascend_111;
     <U extends Ordered>(fn: Morphism<T, U>): ascend_110<T, U>;
 };
 type ascend_110<T, U extends Ordered> = {
-    (b: T): ascend_111<T, U>;
+    (b: T): ascend_111;
 };
 type ascend_001<T> = {
     (_fn: PH, a: T): ascend_011<T>;
-    <U extends Ordered>(fn: Morphism<T, U>, a: T): ascend_111<T, U>;
+    <U extends Ordered>(fn: Morphism<T, U>, a: T): ascend_111;
     <U extends Ordered>(fn: Morphism<T, U>): ascend_101<T, U>;
 };
 type ascend_101<T, U extends Ordered> = {
-    (a: T): ascend_111<T, U>;
+    (a: T): ascend_111;
 };
 type ascend_011<T> = {
-    <U extends Ordered>(fn: Morphism<T, U>): ascend_111<T, U>;
+    <U extends Ordered>(fn: Morphism<T, U>): ascend_111;
 };
-type ascend_111<T, U extends Ordered> = number;
+type ascend_111 = number;
 export = ascend;

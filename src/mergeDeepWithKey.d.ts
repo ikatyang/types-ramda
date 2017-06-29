@@ -32,34 +32,34 @@ type mergeDeepWithKey_000 = {
     <V>(fn: (key: string, a: V, b: V) => any, _left: PH, right: object): mergeDeepWithKey_101<V>;
     (_fn: PH, left: object, right: object): mergeDeepWithKey_011;
     (_fn: PH, _left: PH, right: object): mergeDeepWithKey_001;
-    <V, T>(fn: (key: string, a: V, b: V) => any, left: object, right: object): mergeDeepWithKey_111<V, T>;
+    <V, T>(fn: (key: string, a: V, b: V) => any, left: object, right: object): mergeDeepWithKey_111<T>;
     (_fn: PH, left: object): mergeDeepWithKey_010;
     <V>(fn: (key: string, a: V, b: V) => any, left: object): mergeDeepWithKey_110<V>;
     <V>(fn: (key: string, a: V, b: V) => any): mergeDeepWithKey_100<V>;
 };
 type mergeDeepWithKey_100<V> = {
     (_left: PH, right: object): mergeDeepWithKey_101<V>;
-    <T>(left: object, right: object): mergeDeepWithKey_111<V, T>;
+    <T>(left: object, right: object): mergeDeepWithKey_111<T>;
     (left: object): mergeDeepWithKey_110<V>;
 };
 type mergeDeepWithKey_010 = {
     (_fn: PH, right: object): mergeDeepWithKey_011;
-    <V, T>(fn: (key: string, a: V, b: V) => any, right: object): mergeDeepWithKey_111<V, T>;
+    <V, T>(fn: (key: string, a: V, b: V) => any, right: object): mergeDeepWithKey_111<T>;
     <V>(fn: (key: string, a: V, b: V) => any): mergeDeepWithKey_110<V>;
 };
 type mergeDeepWithKey_110<V> = {
-    <T>(right: object): mergeDeepWithKey_111<V, T>;
+    <T>(right: object): mergeDeepWithKey_111<T>;
 };
 type mergeDeepWithKey_001 = {
     (_fn: PH, left: object): mergeDeepWithKey_011;
-    <V, T>(fn: (key: string, a: V, b: V) => any, left: object): mergeDeepWithKey_111<V, T>;
+    <V, T>(fn: (key: string, a: V, b: V) => any, left: object): mergeDeepWithKey_111<T>;
     <V>(fn: (key: string, a: V, b: V) => any): mergeDeepWithKey_101<V>;
 };
 type mergeDeepWithKey_101<V> = {
-    <T>(left: object): mergeDeepWithKey_111<V, T>;
+    <T>(left: object): mergeDeepWithKey_111<T>;
 };
 type mergeDeepWithKey_011 = {
-    <V, T>(fn: (key: string, a: V, b: V) => any): mergeDeepWithKey_111<V, T>;
+    <V, T>(fn: (key: string, a: V, b: V) => any): mergeDeepWithKey_111<T>;
 };
-type mergeDeepWithKey_111<V, T> = T;
+type mergeDeepWithKey_111<T> = T;
 export = mergeDeepWithKey;
