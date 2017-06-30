@@ -1,6 +1,5 @@
 // simple
 
-export type Ordered = string | number | boolean | Date;
 export type Property = string | number | symbol;
 export type Path = List<Property>;
 
@@ -39,6 +38,10 @@ export interface Dictionary<T> {
 }
 export interface NestedDictionary<T> {
   [key: string]: T | NestedDictionary<T>;
+}
+
+export interface Ordered {
+  valueOf(): string | number | boolean;
 }
 
 // ramda
