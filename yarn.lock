@@ -721,9 +721,9 @@ dts-element@2.0.5:
   dependencies:
     typescript "^2.4.0"
 
-dts-jest@20.5.0:
-  version "20.5.0"
-  resolved "https://registry.yarnpkg.com/dts-jest/-/dts-jest-20.5.0.tgz#0eb295d7ed57333a446252ac608731ee50b28104"
+dts-jest@20.5.1:
+  version "20.5.1"
+  resolved "https://registry.yarnpkg.com/dts-jest/-/dts-jest-20.5.1.tgz#deeb39da318f40d5ed20031baa91718438047e3d"
   dependencies:
     require-from-string "^1.2.1"
     ts-comment "^1.0.1"
