@@ -132,13 +132,25 @@ exports[`chain R.chain<number, number[], number | undefined>(R.append)(R.head)([
 
 exports[`chain R.chain<number, number[], number | undefined>(R.append, R.head)([1, 2, 3]) 1`] = `"number[]"`;
 
+exports[`clamp R.clamp('a')('d')('e') 1`] = `"string"`;
+
 exports[`clamp R.clamp('a', 'd', 'e') 1`] = `"\\"a\\" | \\"d\\" | \\"e\\""`;
+
+exports[`clamp R.clamp(1)('str')(true) 1`] = `"Argument of type '\\"str\\"' is not assignable to parameter of type 'number'."`;
+
+exports[`clamp R.clamp(1)(10)(-1) 1`] = `"number"`;
+
+exports[`clamp R.clamp(1)(10, 4) 1`] = `"number"`;
+
+exports[`clamp R.clamp(1, 'str', true) 1`] = `"Argument of type '\\"str\\"' is not assignable to parameter of type '1'."`;
+
+exports[`clamp R.clamp(1, 10)(11) 1`] = `"number"`;
 
 exports[`clamp R.clamp(1, 10, -1) 1`] = `"1 | 10 | -1"`;
 
-exports[`clamp R.clamp<number>(1)(10, 4) 1`] = `"number"`;
+exports[`clamp R.clamp(new Date(0))(new Date(1))(new Date(2)) 1`] = `"Date"`;
 
-exports[`clamp R.clamp<number>(1, 10)(11) 1`] = `"number"`;
+exports[`clamp R.clamp(new Date(0), new Date(1), new Date(2)) 1`] = `"Date"`;
 
 exports[`clone R.clone('foo') 1`] = `"\\"foo\\""`;
 
@@ -408,23 +420,23 @@ exports[`groupWith R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21]) 1`] = `"
 
 exports[`gt R.flip(R.gt<'11'>())(2)(10) 1`] = `"boolean"`;
 
+exports[`gt R.gt(2)(10) 1`] = `"boolean"`;
+
 exports[`gt R.gt(2, 0) 1`] = `"boolean"`;
 
 exports[`gt R.gt(2, 2) 1`] = `"boolean"`;
 
 exports[`gt R.gt(2, 6) 1`] = `"boolean"`;
 
-exports[`gt R.gt<number>(2)(10) 1`] = `"boolean"`;
-
 exports[`gte R.flip(R.gte<'11'>())(2)(10) 1`] = `"boolean"`;
+
+exports[`gte R.gte(2)(10) 1`] = `"boolean"`;
 
 exports[`gte R.gte(2, 0) 1`] = `"boolean"`;
 
 exports[`gte R.gte(2, 2) 1`] = `"boolean"`;
 
 exports[`gte R.gte(2, 6) 1`] = `"boolean"`;
-
-exports[`gte R.gte<number>(2)(10) 1`] = `"boolean"`;
 
 exports[`has hasName({}) 1`] = `"boolean"`;
 
@@ -686,17 +698,17 @@ exports[`lt R.lt(2, 2) 1`] = `"boolean"`;
 
 exports[`lt R.lt(2, 6) 1`] = `"boolean"`;
 
-exports[`lt R.lt<number>(5)(10) 1`] = `"boolean"`;
+exports[`lt R.lt(5)(10) 1`] = `"boolean"`;
 
 exports[`lte R.flip(R.lte<'11'>())(2)(1) 1`] = `"boolean"`;
+
+exports[`lte R.lte(2)(10) 1`] = `"boolean"`;
 
 exports[`lte R.lte(2, 0) 1`] = `"boolean"`;
 
 exports[`lte R.lte(2, 2) 1`] = `"boolean"`;
 
 exports[`lte R.lte(2, 6) 1`] = `"boolean"`;
-
-exports[`lte R.lte<number>(2)(10) 1`] = `"boolean"`;
 
 exports[`map R.map(double)([1, 2, 3]) 1`] = `"number[]"`;
 
