@@ -8,6 +8,7 @@ import * as gulp_util from 'gulp-util';
 import * as path from 'path';
 import * as gulp_run from 'run-sequence';
 import * as through from 'through2';
+import * as yargs from 'yargs';
 import {bind_jsdoc} from './templates/utils/bind-jsdoc';
 import {placeholder_name, placeholder_name_abbr} from './templates/utils/constants';
 import {create_curried_declarations} from './templates/utils/create-curried-declarations';
@@ -283,21 +284,41 @@ function gulp_generate(fn: (filename: string) => string) {
   });
 }
 
-function get_options(): {output_dirname_postfix: string, selectable: boolean, placeholder: boolean} {
-  const kind_index = process.argv.indexOf('--kind');
-  const kind = (kind_index === -1)
-    ? undefined
-    : process.argv[kind_index + 1];
-  switch (kind) {
-    case undefined:
-      return {selectable: true, placeholder: true, output_dirname_postfix: ''};
-    case 'simple':
-      return {selectable: false, placeholder: false, output_dirname_postfix: `-${kind}`};
-    case 'selectable':
-      return {selectable: true, placeholder: false, output_dirname_postfix: `-${kind}`};
-    case 'placeholder':
-      return {selectable: false, placeholder: true, output_dirname_postfix: `-${kind}`};
-    default:
-      throw new Error(`Unexpected kind: '${kind}'`);
-  }
+function get_options() {
+  const options = {
+    placeholder: false,
+    selectable: false,
+  };
+  type Kind = keyof typeof options;
+  const no_kind = 'simple';
+  const all_kinds: Kind[] = ['placeholder', 'selectable'];
+
+  const args: {kind: Kind[]} = yargs
+    .array('kind')
+    .default('kind', all_kinds)
+    .choices('kind', all_kinds)
+    .parse(process.argv.slice(1));
+
+  const kinds = args.kind.slice().sort();
+  kinds.forEach(kind => {
+    options[kind] = true;
+  });
+
+  gulp_util.log(`Features ${
+    (kinds.length === 0
+      ? [no_kind]
+      : kinds
+    ).map(kind => `'${gulp_util.colors.cyan(kind)}'`).join(', ')
+  }`);
+
+  const dirname_postfixes = (kinds.length === 0)
+    ? [no_kind]
+    : (kinds.length === all_kinds.length)
+      ? []
+      : kinds;
+
+  return {
+    ...options,
+    output_dirname_postfix: dirname_postfixes.map(x => `-${x}`).join(''),
+  };
 }

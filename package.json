@@ -37,6 +37,7 @@
     "@types/node": "8.0.6",
     "@types/run-sequence": "0.0.29",
     "@types/through2": "2.0.33",
+    "@types/yargs": "6.6.0",
     "del": "3.0.0",
     "dts-element": "2.0.5",
     "dts-jest": "20.4.1",
@@ -53,7 +54,8 @@
     "ts-node": "3.1.0",
     "tslint": "5.4.3",
     "tslint-config-ikatyang": "0.8.0",
-    "typescript": "2.4.1"
+    "typescript": "2.4.1",
+    "yargs": "8.0.2"
   },
   "files": [
     "/src/**/*",

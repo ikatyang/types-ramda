@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yarn run build -- --kind simple
+yarn run build -- --kind
 yarn run build -- --kind selectable
 yarn run build -- --kind placeholder
 
