@@ -1,5 +1,6 @@
 import * as del from 'del';
 import * as dts from 'dts-element';
+import {remap_snapshot} from 'dts-jest';
 import * as fs from 'fs';
 import * as glob from 'glob';
 import * as gulp from 'gulp';
@@ -75,6 +76,40 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
   });
 });
 
+gulp.task('clean-remap', async () => del('./snapshots/'));
+gulp.task('remap', ['clean-remap'], () =>
+  gulp.src('./tests/__snapshots__/*.ts.snap')
+    .pipe(gulp_generate(generate_remap_content))
+    .pipe(gulp_rename({extname: ''}))
+    .pipe(gulp.dest('./snapshots')),
+);
+gulp.task('remap-watch', ['remap'], () => {
+  gulp.watch('./tests/__snapshots__/*.ts.snap', event => {
+    const input_relative_filename = path.relative(process.cwd(), event.path);
+    gulp_util.log(`Detected '${gulp_util.colors.cyan(input_relative_filename)}' ${event.type}`);
+
+    const output_relative_filename = input_relative_filename
+      .replace('tests/__snapshots__/', 'snapshots/')
+      .replace(/\.snap$/, '');
+
+    switch (event.type) {
+      case 'added':
+      case 'changed':
+      case 'renamed':
+        const remapped_snapshot = generate_remap_content(input_relative_filename);
+        fs.writeFileSync(output_relative_filename, remapped_snapshot, 'utf8');
+        gulp_util.log(`Remapping '${gulp_util.colors.cyan(output_relative_filename)}' complete`);
+        break;
+      case 'deleted':
+        del(input_relative_filename);
+        gulp_util.log(`Deleting '${gulp_util.colors.cyan(output_relative_filename)}' complete`);
+        break;
+      default:
+        throw new Error(`Unexpected event type '${event.type}'`);
+    }
+  });
+});
+
 function generate_files(
     glob: string,
     on_error: (error: Error) => void = error => { throw error; },
@@ -95,6 +130,22 @@ function generate_index() {
     .pipe(gulp_generate(generate_index_content))
     .pipe(gulp_rename({basename: 'index', extname: output_extname}))
     .pipe(gulp.dest(output_relative_dirname));
+}
+
+function generate_remap_content(filename: string) {
+  const cache_filename = path.resolve(process.cwd(), filename.replace(/\.ts\.snap$/, '.js'));
+  delete require.cache[cache_filename];
+  return remap_snapshot(
+    fs.readFileSync(filename, 'utf8'),
+    fs.readFileSync(
+      path.resolve(
+        path.dirname(filename),
+        `../${path.basename(filename, '.snap')}`,
+      ),
+      'utf8',
+    ),
+    cache_filename,
+  );
 }
 
 function get_top_level_members(filename: string): dts.ITopLevelMember[] {
