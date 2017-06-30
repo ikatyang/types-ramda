@@ -420,23 +420,23 @@ exports[`groupWith R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21]) 1`] = `"
 
 exports[`gt R.flip(R.gt<'11'>())(2)(10) 1`] = `"boolean"`;
 
+exports[`gt R.gt(2)(10) 1`] = `"boolean"`;
+
 exports[`gt R.gt(2, 0) 1`] = `"boolean"`;
 
 exports[`gt R.gt(2, 2) 1`] = `"boolean"`;
 
 exports[`gt R.gt(2, 6) 1`] = `"boolean"`;
 
-exports[`gt R.gt<number>(2)(10) 1`] = `"boolean"`;
-
 exports[`gte R.flip(R.gte<'11'>())(2)(10) 1`] = `"boolean"`;
+
+exports[`gte R.gte(2)(10) 1`] = `"boolean"`;
 
 exports[`gte R.gte(2, 0) 1`] = `"boolean"`;
 
 exports[`gte R.gte(2, 2) 1`] = `"boolean"`;
 
 exports[`gte R.gte(2, 6) 1`] = `"boolean"`;
-
-exports[`gte R.gte<number>(2)(10) 1`] = `"boolean"`;
 
 exports[`has hasName({}) 1`] = `"boolean"`;
 
@@ -698,17 +698,17 @@ exports[`lt R.lt(2, 2) 1`] = `"boolean"`;
 
 exports[`lt R.lt(2, 6) 1`] = `"boolean"`;
 
-exports[`lt R.lt<number>(5)(10) 1`] = `"boolean"`;
+exports[`lt R.lt(5)(10) 1`] = `"boolean"`;
 
 exports[`lte R.flip(R.lte<'11'>())(2)(1) 1`] = `"boolean"`;
+
+exports[`lte R.lte(2)(10) 1`] = `"boolean"`;
 
 exports[`lte R.lte(2, 0) 1`] = `"boolean"`;
 
 exports[`lte R.lte(2, 2) 1`] = `"boolean"`;
 
 exports[`lte R.lte(2, 6) 1`] = `"boolean"`;
-
-exports[`lte R.lte<number>(2)(10) 1`] = `"boolean"`;
 
 exports[`map R.map(double)([1, 2, 3]) 1`] = `"number[]"`;
 

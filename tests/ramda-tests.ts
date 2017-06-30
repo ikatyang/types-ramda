@@ -425,7 +425,7 @@ import * as R from '../ramda/dist/index';
 
     // akward example that bounces types between number and string
     const g0 = (list: number[]) => R.map(R.inc, list);
-    const g1 = R.dropWhile(R.gt<number>(10));
+    const g1 = R.dropWhile(R.gt(10));
     const g2 = R.map((i: number) => i > 5 ? 'bigger' : 'smaller');
     const g3 = R.all((i: string) => i === 'smaller');
     const g = R.compose<number[], number[], number[], string[], boolean>(g3, g2, g1, g0);
@@ -996,7 +996,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.flip(R.gt<'11'>())(2)(10); //=> true
   // @dts-jest:pass
-  R.gt<number>(2)(10); //=> false
+  R.gt(2)(10); //=> false
 })();
 
 // @dts-jest:group gte
@@ -1010,7 +1010,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.flip(R.gte<'11'>())(2)(10); //=> true
   // @dts-jest:pass
-  R.gte<number>(2)(10); //=> false
+  R.gte(2)(10); //=> false
 })();
 
 // @dts-jest:group has
@@ -1516,7 +1516,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.lt(2, 2); //=> false
   // @dts-jest:pass
-  R.lt<number>(5)(10); //=> true
+  R.lt(5)(10); //=> true
   // @dts-jest:pass
   R.flip(R.lt<'11'>())(5)(10); //=> false
 })();
@@ -1530,7 +1530,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.lte(2, 2); //=> true
   // @dts-jest:pass
-  R.lte<number>(2)(10); //=> true
+  R.lte(2)(10); //=> true
   // @dts-jest:pass
   R.flip(R.lte<'11'>())(2)(1); //=> true
 })();
