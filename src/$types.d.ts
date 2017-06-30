@@ -1,4 +1,3 @@
-export type Ordered = string | number | boolean | Date;
 export type Property = string | number | symbol;
 export type Path = List<Property>;
 export type Constructor<T> = new (...args: any[]) => T;
@@ -26,6 +25,9 @@ export interface Dictionary<T> {
 }
 export interface NestedDictionary<T> {
     [key: string]: T | NestedDictionary<T>;
+}
+export interface Ordered {
+    valueOf(): string | number | boolean;
 }
 export interface Lens<T, U> {
     (toFunctorFn: (value: T) => Functor<T>): (target: U) => U;
