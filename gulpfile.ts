@@ -14,6 +14,9 @@ import {bind_jsdoc} from './templates/utils/bind-jsdoc';
 import {placeholder_name, placeholder_name_abbr} from './templates/utils/constants';
 import {create_curried_declarations} from './templates/utils/create-curried-declarations';
 
+// tslint:disable-next-line:no-require-imports no-var-requires
+const diff = require('gulp-diff');
+
 // tslint:disable max-file-line-count
 
 const namespace_ramda = 'R';
@@ -83,6 +86,18 @@ gulp.task('remap', ['clean-remap'], () =>
     .pipe(gulp_rename({extname: ''}))
     .pipe(gulp.dest('./snapshots')),
 );
+gulp.task('remap-check', () => {
+  function on_error() {
+    throw new Error('Detected outdated remapped-snapshots');
+  }
+  return gulp.src('./tests/__snapshots__/*.ts.snap')
+    .pipe(gulp_generate(generate_remap_content))
+    .pipe(gulp_rename({extname: ''}))
+    .pipe(diff('./snapshots'))
+    .on('error', on_error)
+    .pipe(diff.reporter({fail: true}))
+    .on('error', on_error);
+});
 gulp.task('remap-watch', ['remap'], (_callback: (error?: any) => void) => {
   gulp.watch('./tests/__snapshots__/*.ts.snap', event => {
     const input_relative_filename = path.relative(process.cwd(), event.path);
