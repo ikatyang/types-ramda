@@ -381,12 +381,14 @@ function get_options() {
     options[kind] = true;
   });
 
-  gulp_util.log(`Features ${
-    (kinds.length === 0
-      ? [no_kind]
-      : kinds
-    ).map(kind => `'${gulp_util.colors.cyan(kind)}'`).join(', ')
-  }`);
+  if (process.argv.some(x => x.startsWith('build'))) {
+    gulp_util.log(`Features ${
+      (kinds.length === 0
+        ? [no_kind]
+        : kinds
+      ).map(kind => `'${gulp_util.colors.cyan(kind)}'`).join(', ')
+    }`);
+  }
 
   const dirname_postfixes = (kinds.length === 0)
     ? [no_kind]
