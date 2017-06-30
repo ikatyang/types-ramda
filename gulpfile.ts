@@ -83,7 +83,7 @@ gulp.task('remap', ['clean-remap'], () =>
     .pipe(gulp_rename({extname: ''}))
     .pipe(gulp.dest('./snapshots')),
 );
-gulp.task('remap-watch', ['remap'], () => {
+gulp.task('remap-watch', ['remap'], (_callback: (error?: any) => void) => {
   gulp.watch('./tests/__snapshots__/*.ts.snap', event => {
     const input_relative_filename = path.relative(process.cwd(), event.path);
     gulp_util.log(`Detected '${gulp_util.colors.cyan(input_relative_filename)}' ${event.type}`);
@@ -97,12 +97,23 @@ gulp.task('remap-watch', ['remap'], () => {
       case 'changed':
       case 'renamed':
         const remapped_snapshot = generate_remap_content(input_relative_filename);
-        fs.writeFileSync(output_relative_filename, remapped_snapshot, 'utf8');
-        gulp_util.log(`Remapping '${gulp_util.colors.cyan(output_relative_filename)}' complete`);
+        fs.writeFile(output_relative_filename, remapped_snapshot, 'utf8', (error: any) => {
+          if (!error) {
+            gulp_util.log(`Remapping '${gulp_util.colors.cyan(output_relative_filename)}' complete`);
+          } else {
+            gulp_util.log(`Remapping '${gulp_util.colors.cyan(output_relative_filename)}' failed: ${error}`);
+          }
+          gulp_util.log('Watching for file changes.');
+        });
         break;
       case 'deleted':
-        del(input_relative_filename);
-        gulp_util.log(`Deleting '${gulp_util.colors.cyan(output_relative_filename)}' complete`);
+        del(input_relative_filename).then(() => {
+          gulp_util.log(`Deleting '${gulp_util.colors.cyan(output_relative_filename)}' complete`);
+          gulp_util.log('Watching for file changes.');
+        }).catch(error => {
+          gulp_util.log(`Deleting '${gulp_util.colors.cyan(output_relative_filename)}' failed: ${error}`);
+          gulp_util.log('Watching for file changes.');
+        });
         break;
       default:
         throw new Error(`Unexpected event type '${event.type}'`);
