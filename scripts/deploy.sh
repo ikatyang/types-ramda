@@ -1,8 +1,8 @@
 #!/bin/bash
 
-yarn run build -- --kind simple
-yarn run build -- --kind selectable
-yarn run build -- --kind placeholder
+yarn run build -- --simple
+yarn run build -- --selectable
+yarn run build -- --placeholder
 
 COMMITTER_NAME="$(git log -1 $TRAVIS_COMMIT --pretty="%aN")"
 COMMITTER_EMAIL="$(git log -1 $TRAVIS_COMMIT --pretty="%cE")"

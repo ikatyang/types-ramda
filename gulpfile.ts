@@ -283,21 +283,64 @@ function gulp_generate(fn: (filename: string) => string) {
   });
 }
 
-function get_options(): {output_dirname_postfix: string, selectable: boolean, placeholder: boolean} {
-  const kind_index = process.argv.indexOf('--kind');
-  const kind = (kind_index === -1)
-    ? undefined
-    : process.argv[kind_index + 1];
-  switch (kind) {
-    case undefined:
-      return {selectable: true, placeholder: true, output_dirname_postfix: ''};
-    case 'simple':
-      return {selectable: false, placeholder: false, output_dirname_postfix: `-${kind}`};
-    case 'selectable':
-      return {selectable: true, placeholder: false, output_dirname_postfix: `-${kind}`};
-    case 'placeholder':
-      return {selectable: false, placeholder: true, output_dirname_postfix: `-${kind}`};
-    default:
-      throw new Error(`Unexpected kind: '${kind}'`);
+const enum BuildFlag {
+  Simple = '--simple',
+  Selectable = '--selectable',
+  Placeholder = '--placeholder',
+}
+
+function get_options() {
+  let counter = 0;
+
+  const dirname_postfixes: string[] = [];
+  const options = {
+    selectable: true,
+    placeholder: true,
+  };
+
+  process.argv.slice(1).sort().forEach(arg => {
+    switch (arg) {
+      case BuildFlag.Simple: set_simple_options(); break;
+      case BuildFlag.Selectable: set_options('selectable'); break;
+      case BuildFlag.Placeholder: set_options('placeholder'); break;
+      default: /* do nothing */ break;
+    }
+  });
+
+  gulp_util.log(`Features ${
+    (
+      (dirname_postfixes.length === 0)
+        ? Object.keys(options)
+        : dirname_postfixes
+    ).map(x => `'${gulp_util.colors.cyan(x)}'`).join(', ')
+  }`);
+
+  return {
+    ...options,
+    output_dirname_postfix: dirname_postfixes.map(x => `-${x}`).join(''),
+  };
+
+  function set_simple_options(append_postfix: boolean = true) {
+    if (append_postfix) {
+      push_postfix('simple');
+    }
+    Object.keys(options).forEach((key: keyof typeof options) => {
+      options[key] = false;
+    });
+  }
+
+  function set_options(key: keyof typeof options) {
+    if (counter++ === 0) {
+      set_simple_options(false);
+    }
+    options[key] = true;
+    push_postfix(key);
+  }
+
+  function push_postfix(option: string) {
+    if (dirname_postfixes.indexOf(option) !== -1) {
+      throw new Error(`Duplicate option: ${option}`);
+    }
+    dirname_postfixes.push(option);
   }
 }
