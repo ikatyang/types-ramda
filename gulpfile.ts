@@ -8,6 +8,7 @@ import * as gulp_util from 'gulp-util';
 import * as path from 'path';
 import * as gulp_run from 'run-sequence';
 import * as through from 'through2';
+import * as yargs from 'yargs';
 import {bind_jsdoc} from './templates/utils/bind-jsdoc';
 import {placeholder_name, placeholder_name_abbr} from './templates/utils/constants';
 import {create_curried_declarations} from './templates/utils/create-curried-declarations';
@@ -283,64 +284,41 @@ function gulp_generate(fn: (filename: string) => string) {
   });
 }
 
-const enum BuildFlag {
-  Simple = '--simple',
-  Selectable = '--selectable',
-  Placeholder = '--placeholder',
-}
-
 function get_options() {
-  let counter = 0;
-
-  const dirname_postfixes: string[] = [];
   const options = {
-    selectable: true,
-    placeholder: true,
+    placeholder: false,
+    selectable: false,
   };
+  type Kind = keyof typeof options;
+  const no_kind = 'simple';
+  const all_kinds: Kind[] = ['placeholder', 'selectable'];
 
-  process.argv.slice(1).sort().forEach(arg => {
-    switch (arg) {
-      case BuildFlag.Simple: set_simple_options(); break;
-      case BuildFlag.Selectable: set_options('selectable'); break;
-      case BuildFlag.Placeholder: set_options('placeholder'); break;
-      default: /* do nothing */ break;
-    }
+  const args: {kind: Kind[]} = yargs
+    .array('kind')
+    .default('kind', all_kinds)
+    .choices('kind', all_kinds)
+    .parse(process.argv.slice(1));
+
+  const kinds = args.kind.slice().sort();
+  kinds.forEach(kind => {
+    options[kind] = true;
   });
 
   gulp_util.log(`Features ${
-    (
-      (dirname_postfixes.length === 0)
-        ? Object.keys(options)
-        : dirname_postfixes
-    ).map(x => `'${gulp_util.colors.cyan(x)}'`).join(', ')
+    (kinds.length === 0
+      ? [no_kind]
+      : kinds
+    ).map(kind => `'${gulp_util.colors.cyan(kind)}'`).join(', ')
   }`);
+
+  const dirname_postfixes = (kinds.length === 0)
+    ? [no_kind]
+    : (kinds.length === all_kinds.length)
+      ? []
+      : kinds;
 
   return {
     ...options,
     output_dirname_postfix: dirname_postfixes.map(x => `-${x}`).join(''),
   };
-
-  function set_simple_options(append_postfix: boolean = true) {
-    if (append_postfix) {
-      push_postfix('simple');
-    }
-    Object.keys(options).forEach((key: keyof typeof options) => {
-      options[key] = false;
-    });
-  }
-
-  function set_options(key: keyof typeof options) {
-    if (counter++ === 0) {
-      set_simple_options(false);
-    }
-    options[key] = true;
-    push_postfix(key);
-  }
-
-  function push_postfix(option: string) {
-    if (dirname_postfixes.indexOf(option) !== -1) {
-      throw new Error(`Duplicate option: ${option}`);
-    }
-    dirname_postfixes.push(option);
-  }
 }
