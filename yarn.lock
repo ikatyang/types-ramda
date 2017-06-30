@@ -721,10 +721,11 @@ dts-element@2.0.5:
   dependencies:
     typescript "^2.4.0"
 
-dts-jest@20.4.1:
-  version "20.4.1"
-  resolved "https://registry.yarnpkg.com/dts-jest/-/dts-jest-20.4.1.tgz#2cda691a3afad87e4147fccbbc84cdec5020243c"
+dts-jest@20.5.0:
+  version "20.5.0"
+  resolved "https://registry.yarnpkg.com/dts-jest/-/dts-jest-20.5.0.tgz#0eb295d7ed57333a446252ac608731ee50b28104"
   dependencies:
+    require-from-string "^1.2.1"
     ts-comment "^1.0.1"
     tsconfig-extends "^1.0.1"
     typescript "^2.4.0"
@@ -2562,6 +2563,10 @@ request@^2.79.0:
 require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
+
+require-from-string@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-1.2.1.tgz#529c9ccef27380adfec9a2f965b649bbee636418"
 
 require-main-filename@^1.0.1:
   version "1.0.1"
