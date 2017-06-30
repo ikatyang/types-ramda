@@ -40,7 +40,7 @@
     "@types/node": "8.0.6",
     "@types/run-sequence": "0.0.29",
     "@types/through2": "2.0.33",
-    "@types/yargs": "6.6.0",
+    "@types/yargs": "8.0.0",
     "del": "3.0.0",
     "dts-element": "2.0.5",
     "dts-jest": "20.5.1",
