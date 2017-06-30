@@ -12,6 +12,7 @@ before_script:
 
 script:
 - yarn run lint
+- yarn run remap-check
 - yarn run test-utils -- --verbose --coverage
 - yarn run test -- --verbose
 - yarn run test-actual -- --verbose -u

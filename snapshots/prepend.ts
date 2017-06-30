@@ -1,0 +1,9 @@
+import * as R_prepend from '../ramda/dist/src/prepend';
+
+declare const string: string;
+declare const number_array: number[];
+
+// @dts-jest:pass -> (string | number)[]
+R_prepend(string)(number_array);
+// @dts-jest:pass -> (string | number)[]
+R_prepend(string, number_array);
