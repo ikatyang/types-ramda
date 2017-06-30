@@ -312,11 +312,23 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.clamp(1, 10, -1); //=> 1
   // @dts-jest:pass
-  R.clamp<number>(1, 10)(11); //=> 10
+  R.clamp(1)(10)(-1); //=> 1
   // @dts-jest:pass
-  R.clamp<number>(1)(10, 4); //=> 4
+  R.clamp(1, 10)(11); //=> 10
+  // @dts-jest:pass
+  R.clamp(1)(10, 4); //=> 4
   // @dts-jest:pass
   R.clamp('a', 'd', 'e'); //=> 'd'
+  // @dts-jest:pass
+  R.clamp('a')('d')('e'); //=> 'd'
+  // @dts-jest:fail
+  R.clamp(1, 'str', true);
+  // @dts-jest:fail
+  R.clamp(1)('str')(true);
+  // @dts-jest:pass
+  R.clamp(new Date(0), new Date(1), new Date(2)); //=> new Date(1)
+  // @dts-jest:pass
+  R.clamp(new Date(0))(new Date(1))(new Date(2)); //=> new Date(1)
 })();
 
 // @dts-jest:group clone
