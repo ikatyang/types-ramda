@@ -27,16 +27,27 @@ import { List } from "./$types";
  */
 declare const concat: concat_00;
 type concat_00 = {
-    <T extends List<any>>(a: T, b: T): concat_11<T>;
-    <$SEL extends "11">(): <T extends List<any>>(a: T, b: T) => concat_11<T>;
-    <$SEL extends "1">(): <T extends List<any>>(a: T) => concat_10<T>;
-    <T extends List<any>>(a: T): concat_10<T>;
+    (a: string, b: string): concat_string_11;
+    <T>(a: T[], b: T[]): concat__11<T>;
+    (a: string): concat_string_10;
+    <$SEL extends "11", $KIND extends "string">(): (a: string, b: string) => concat_string_11;
+    <$SEL extends "1", $KIND extends "string">(): (a: string) => concat_string_10;
+    <$SEL extends "11", $KIND extends "">(): <T>(a: T[], b: T[]) => concat__11<T>;
+    <$SEL extends "1", $KIND extends "">(): <T>(a: T[]) => concat__10<T>;
+    <T>(a: T[]): concat__10<T>;
 };
-type concat_10<T extends List<any>> = {
-    (b: T): concat_11<T>;
+type concat_string_10 = {
+    (b: string): concat_string_11;
 };
-type concat_01<T extends List<any>> = {
-    (a: T): concat_11<T>;
+type concat__10<T> = {
+    (b: T[]): concat__11<T>;
 };
-type concat_11<T extends List<any>> = T;
+type concat_string_01 = {
+    (a: string): concat_string_11;
+};
+type concat__01<T> = {
+    (a: T[]): concat__11<T>;
+};
+type concat_string_11 = string;
+type concat__11<T> = T[];
 export = concat;
