@@ -22,7 +22,7 @@ export const sort_signatures = (signatures: dts.IObjectMember[]) => {
     return (parameters_1.length !== parameters_2.length)
       ? get_length_order(parameters_2.length) - get_length_order(parameters_1.length)
       // tslint:disable-next-line:strict-boolean-expressions
-      : (parameters_2.findIndex(is_placeholder) - parameters_1.findIndex(is_placeholder)) || (normal1.index - normal2.index);
+      : get_function_order(parameters_2) - get_function_order(parameters_1) || (normal1.index - normal2.index);
   }).map(normal => normal.value);
   return [
     ...members.slice(0, -1),
@@ -30,6 +30,18 @@ export const sort_signatures = (signatures: dts.IObjectMember[]) => {
     ...members.slice(-1),
   ];
 
+  function get_function_order(parameters: dts.IParameterDeclaration[]) {
+    let point = 0;
+
+    parameters.forEach((parameter, index) => {
+      if (!is_placeholder(parameter)) {
+        // tslint:disable-next-line:no-bitwise
+        point += 1 << (parameters.length - index);
+      }
+    });
+
+    return -point;
+  }
   function is_placeholder(parameter: dts.IParameterDeclaration) {
     return ((parameter.type as dts.IGeneralType).name === placeholder_name_abbr);
   }

@@ -6,9 +6,9 @@ exports[`should generate correctly with curried types 1`] = `
  */
 declare const $: $_000;
 type $_000 = {
-    (a: boolean, _b: PH, c: string): $_101;
-    (_a: PH, b: number, c: string): $_011;
     (_a: PH, _b: PH, c: string): $_001;
+    (_a: PH, b: number, c: string): $_011;
+    (a: boolean, _b: PH, c: string): $_101;
     (a: boolean, b: number, c: string): $_111;
     (_a: PH, b: number): $_010;
     (a: boolean, b: number): $_110;
