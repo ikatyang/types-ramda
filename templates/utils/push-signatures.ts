@@ -1,5 +1,7 @@
 import * as dts from 'dts-element';
+import * as R from 'ramda';
 import {placeholder_name_abbr} from './constants';
+import {is_placeholder} from './is-element';
 
 export const push_signatures = (
     rest_parameters: dts.IParameterDeclaration[],
@@ -30,8 +32,7 @@ export const push_signatures = (
       );
     }
   }
-  if (used_parameters.length > 0 &&
-      (used_parameters[used_parameters.length - 1].type as dts.IGeneralType).name !== placeholder_name_abbr) {
+  if (used_parameters.length > 0 && !is_placeholder(R.last(used_parameters)!.type)) {
     fn(used_parameters, return_parameters);
   }
 };
