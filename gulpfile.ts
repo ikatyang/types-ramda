@@ -370,13 +370,13 @@ function get_options() {
   const no_kind = 'simple';
   const all_kinds: Kind[] = ['placeholder', 'selectable'];
 
-  const args: {kind: Kind[]} = yargs
+  const args = yargs
     .array('kind')
     .default('kind', all_kinds)
     .choices('kind', all_kinds)
     .parse(process.argv.slice(1));
 
-  const kinds = args.kind.slice().sort();
+  const kinds = (args.kind as Kind[]).slice().sort();
   kinds.forEach(kind => {
     options[kind] = true;
   });
