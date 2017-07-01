@@ -21,9 +21,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const pathOr: pathOr_000;
 type pathOr_000 = {
-    <T>(defaults: T, _path: PH, object: any): pathOr_101<T>;
-    (_defaults: PH, path: Path, object: any): pathOr_011;
     (_defaults: PH, _path: PH, object: any): pathOr_001;
+    (_defaults: PH, path: Path, object: any): pathOr_011;
+    <T>(defaults: T, _path: PH, object: any): pathOr_101<T>;
     <T, U>(defaults: T, path: Path, object: any): pathOr_111<T, U>;
     (_defaults: PH, path: Path): pathOr_010;
     <T>(defaults: T, path: Path): pathOr_110<T>;

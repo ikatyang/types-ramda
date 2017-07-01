@@ -21,9 +21,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const replace: replace_000;
 type replace_000 = {
-    (pattern: RegExp | string, _replacement: PH, str: string): replace_101;
-    (_pattern: PH, replacement: string, str: string): replace_011;
     (_pattern: PH, _replacement: PH, str: string): replace_001;
+    (_pattern: PH, replacement: string, str: string): replace_011;
+    (pattern: RegExp | string, _replacement: PH, str: string): replace_101;
     (pattern: RegExp | string, replacement: string, str: string): replace_111;
     (_pattern: PH, replacement: string): replace_010;
     (pattern: RegExp | string, replacement: string): replace_110;

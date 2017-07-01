@@ -30,9 +30,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const when: when_000;
 type when_000 = {
-    <T>(pred: Predicate<T>, _whenTrueFn: PH, value: T): when_101<T>;
-    <T, U>(_pred: PH, whenTrueFn: Morphism<T, U>, value: T): when_011<T, U>;
     <T>(_pred: PH, _whenTrueFn: PH, value: T): when_001<T>;
+    <T, U>(_pred: PH, whenTrueFn: Morphism<T, U>, value: T): when_011<T, U>;
+    <T>(pred: Predicate<T>, _whenTrueFn: PH, value: T): when_101<T>;
     <T, U>(pred: Predicate<T>, whenTrueFn: Morphism<T, U>, value: T): when_111<T, U>;
     <T, U>(_pred: PH, whenTrueFn: Morphism<T, U>): when_010<T, U>;
     <T, U>(pred: Predicate<T>, whenTrueFn: Morphism<T, U>): when_110<T, U>;

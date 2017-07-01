@@ -21,9 +21,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const pathSatisfies: pathSatisfies_000;
 type pathSatisfies_000 = {
-    <T>(fn: Predicate<T>, _path: PH, object: any): pathSatisfies_101<T>;
-    (_fn: PH, path: Path, object: any): pathSatisfies_011;
     (_fn: PH, _path: PH, object: any): pathSatisfies_001;
+    (_fn: PH, path: Path, object: any): pathSatisfies_011;
+    <T>(fn: Predicate<T>, _path: PH, object: any): pathSatisfies_101<T>;
     <T>(fn: Predicate<T>, path: Path, object: any): pathSatisfies_111;
     (_fn: PH, path: Path): pathSatisfies_010;
     <T>(fn: Predicate<T>, path: Path): pathSatisfies_110<T>;

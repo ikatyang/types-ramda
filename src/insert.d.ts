@@ -21,9 +21,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const insert: insert_000;
 type insert_000 = {
-    <U>(index: number, _value: PH, list: List<U>): insert_101<U>;
-    <T, U>(_index: PH, value: T, list: List<U>): insert_011<T, U>;
     <U>(_index: PH, _value: PH, list: List<U>): insert_001<U>;
+    <T, U>(_index: PH, value: T, list: List<U>): insert_011<T, U>;
+    <U>(index: number, _value: PH, list: List<U>): insert_101<U>;
     <T, U>(index: number, value: T, list: List<U>): insert_111<T, U>;
     <T>(_index: PH, value: T): insert_010<T>;
     <T>(index: number, value: T): insert_110<T>;

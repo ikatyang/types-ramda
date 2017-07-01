@@ -39,9 +39,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const mapAccumRight: mapAccumRight_000;
 type mapAccumRight_000 = {
-    <T, U, R>(fn: (value: T, accumulator: U) => [R, U], _initial: PH, list: List<T>): mapAccumRight_101<T, U, R>;
-    <T, U>(_fn: PH, initial: U, list: List<T>): mapAccumRight_011<T, U>;
     <T>(_fn: PH, _initial: PH, list: List<T>): mapAccumRight_001<T>;
+    <T, U>(_fn: PH, initial: U, list: List<T>): mapAccumRight_011<T, U>;
+    <T, U, R>(fn: (value: T, accumulator: U) => [R, U], _initial: PH, list: List<T>): mapAccumRight_101<T, U, R>;
     <T, U, R>(fn: (value: T, accumulator: U) => [R, U], initial: U, list: List<T>): mapAccumRight_111<U, R>;
     <U>(_fn: PH, initial: U): mapAccumRight_010<U>;
     <T, U, R>(fn: (value: T, accumulator: U) => [R, U], initial: U): mapAccumRight_110<T, U, R>;

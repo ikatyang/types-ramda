@@ -24,9 +24,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const over: over_000;
 type over_000 = {
-    <T, U>(lens: Lens<T, U>, _fn: PH, target: U): over_101<T, U>;
-    <T, U>(_lens: PH, fn: Morphism<T, T>, target: U): over_011<T, U>;
     <U>(_lens: PH, _fn: PH, target: U): over_001<U>;
+    <T, U>(_lens: PH, fn: Morphism<T, T>, target: U): over_011<T, U>;
+    <T, U>(lens: Lens<T, U>, _fn: PH, target: U): over_101<T, U>;
     <T, U>(lens: Lens<T, U>, fn: Morphism<T, T>, target: U): over_111<U>;
     <T>(_lens: PH, fn: Morphism<T, T>): over_010<T>;
     <T, U>(lens: Lens<T, U>, fn: Morphism<T, T>): over_110<T, U>;

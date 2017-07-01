@@ -26,9 +26,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const zipWith: zipWith_000;
 type zipWith_000 = {
-    <T, U, R>(fn: (x: T, y: U) => R, _a: PH, b: List<U>): zipWith_101<T, U, R>;
-    <T, U>(_fn: PH, a: List<T>, b: List<U>): zipWith_011<T, U>;
     <U>(_fn: PH, _a: PH, b: List<U>): zipWith_001<U>;
+    <T, U>(_fn: PH, a: List<T>, b: List<U>): zipWith_011<T, U>;
+    <T, U, R>(fn: (x: T, y: U) => R, _a: PH, b: List<U>): zipWith_101<T, U, R>;
     <T, U, R>(fn: (x: T, y: U) => R, a: List<T>, b: List<U>): zipWith_111<R>;
     <T>(_fn: PH, a: List<T>): zipWith_010<T>;
     <T, U, R>(fn: (x: T, y: U) => R, a: List<T>): zipWith_110<T, U, R>;

@@ -24,9 +24,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const symmetricDifferenceWith: symmetricDifferenceWith_000;
 type symmetricDifferenceWith_000 = {
-    <T>(fn: Comparator<T, boolean>, _a: PH, b: List<T>): symmetricDifferenceWith_101<T>;
-    <T>(_fn: PH, a: List<T>, b: List<T>): symmetricDifferenceWith_011<T>;
     <T>(_fn: PH, _a: PH, b: List<T>): symmetricDifferenceWith_001<T>;
+    <T>(_fn: PH, a: List<T>, b: List<T>): symmetricDifferenceWith_011<T>;
+    <T>(fn: Comparator<T, boolean>, _a: PH, b: List<T>): symmetricDifferenceWith_101<T>;
     <T>(fn: Comparator<T, boolean>, a: List<T>, b: List<T>): symmetricDifferenceWith_111<T>;
     <T>(_fn: PH, a: List<T>): symmetricDifferenceWith_010<T>;
     <T>(fn: Comparator<T, boolean>, a: List<T>): symmetricDifferenceWith_110<T>;

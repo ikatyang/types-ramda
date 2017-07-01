@@ -22,11 +22,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const assoc: assoc_000;
 type assoc_000 = {
-    <K extends string, T>(property: K, _value: PH, object: T): assoc_extend_101<K, T>;
-    <T>(property: Property, _value: PH, object: T): assoc_remain_101<T>;
+    <T>(_property: PH, _value: PH, object: T): assoc_001<T>;
     <V, T>(_property: PH, value: V, object: T): assoc_extend_011<V, T>;
     <T>(_property: PH, value: any, object: T): assoc_remain_011<T>;
-    <T>(_property: PH, _value: PH, object: T): assoc_001<T>;
+    <K extends string, T>(property: K, _value: PH, object: T): assoc_extend_101<K, T>;
+    <T>(property: Property, _value: PH, object: T): assoc_remain_101<T>;
     <K extends string, V, T>(property: K, value: V, object: T): assoc_extend_111<K, V, T>;
     <T>(property: Property, value: any, object: T): assoc_remain_111<T>;
     <V>(_property: PH, value: V): assoc_extend_010<V>;

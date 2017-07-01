@@ -26,9 +26,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const assocPath: assocPath_000;
 type assocPath_000 = {
-    <T>(path: Path, _value: PH, object: T): assocPath_101<T>;
-    <T>(_path: PH, value: any, object: T): assocPath_011<T>;
     <T>(_path: PH, _value: PH, object: T): assocPath_001<T>;
+    <T>(_path: PH, value: any, object: T): assocPath_011<T>;
+    <T>(path: Path, _value: PH, object: T): assocPath_101<T>;
     <T>(path: Path, value: any, object: T): assocPath_111<T>;
     (_path: PH, value: any): assocPath_010;
     (path: Path, value: any): assocPath_110;

@@ -26,9 +26,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const mergeWithKey: mergeWithKey_000;
 type mergeWithKey_000 = {
-    <V>(fn: (key: string, a: V, b: V) => any, _left: PH, right: object): mergeWithKey_101<V>;
-    (_fn: PH, left: object, right: object): mergeWithKey_011;
     (_fn: PH, _left: PH, right: object): mergeWithKey_001;
+    (_fn: PH, left: object, right: object): mergeWithKey_011;
+    <V>(fn: (key: string, a: V, b: V) => any, _left: PH, right: object): mergeWithKey_101<V>;
     <V, T>(fn: (key: string, a: V, b: V) => any, left: object, right: object): mergeWithKey_111<T>;
     (_fn: PH, left: object): mergeWithKey_010;
     <V>(fn: (key: string, a: V, b: V) => any, left: object): mergeWithKey_110<V>;

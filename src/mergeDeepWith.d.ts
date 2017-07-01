@@ -28,9 +28,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const mergeDeepWith: mergeDeepWith_000;
 type mergeDeepWith_000 = {
-    <V>(fn: (a: V, b: V) => any, _left: PH, right: object): mergeDeepWith_101<V>;
-    (_fn: PH, left: object, right: object): mergeDeepWith_011;
     (_fn: PH, _left: PH, right: object): mergeDeepWith_001;
+    (_fn: PH, left: object, right: object): mergeDeepWith_011;
+    <V>(fn: (a: V, b: V) => any, _left: PH, right: object): mergeDeepWith_101<V>;
     <V, T>(fn: (a: V, b: V) => any, left: object, right: object): mergeDeepWith_111<T>;
     (_fn: PH, left: object): mergeDeepWith_010;
     <V>(fn: (a: V, b: V) => any, left: object): mergeDeepWith_110<V>;

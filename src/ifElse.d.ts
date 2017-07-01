@@ -27,9 +27,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const ifElse: ifElse_000;
 type ifElse_000 = {
-    <T, V>(pred: Predicate<T>, _onTrue: PH, onFalse: Morphism<T, V>): ifElse_101<T, V>;
-    <T, U, V>(_pred: PH, onTrue: Morphism<T, U>, onFalse: Morphism<T, V>): ifElse_011<T, U, V>;
     <T, V>(_pred: PH, _onTrue: PH, onFalse: Morphism<T, V>): ifElse_001<T, V>;
+    <T, U, V>(_pred: PH, onTrue: Morphism<T, U>, onFalse: Morphism<T, V>): ifElse_011<T, U, V>;
+    <T, V>(pred: Predicate<T>, _onTrue: PH, onFalse: Morphism<T, V>): ifElse_101<T, V>;
     <T, U, V>(pred: Predicate<T>, onTrue: Morphism<T, U>, onFalse: Morphism<T, V>): ifElse_111<T, U, V>;
     <T, U>(_pred: PH, onTrue: Morphism<T, U>): ifElse_010<T, U>;
     <T, U>(pred: Predicate<T>, onTrue: Morphism<T, U>): ifElse_110<T, U>;

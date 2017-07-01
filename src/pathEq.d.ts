@@ -26,9 +26,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const pathEq: pathEq_000;
 type pathEq_000 = {
-    (path: Path, _value: PH, object: any): pathEq_101;
-    (_path: PH, value: any, object: any): pathEq_011;
     (_path: PH, _value: PH, object: any): pathEq_001;
+    (_path: PH, value: any, object: any): pathEq_011;
+    (path: Path, _value: PH, object: any): pathEq_101;
     (path: Path, value: any, object: any): pathEq_111;
     (_path: PH, value: any): pathEq_010;
     (path: Path, value: any): pathEq_110;
