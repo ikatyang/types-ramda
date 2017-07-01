@@ -24,7 +24,7 @@ exports[`addIndex reduceIndexed(
         (acc: string, val: string, idx: number) => \`\${acc},\${idx}-\${val}\`,
         '',
         ['f', 'o', 'o', 'b', 'a', 'r'],
-      ) 1`] = `"{}"`;
+      ) 1`] = `"any"`;
 
 exports[`addIndex reduceIndexed(objectify)({}, ['a', 'b', 'c']) 1`] = `"Record<string, number>"`;
 
@@ -290,7 +290,7 @@ exports[`divide R.divide(1)(4) 1`] = `"number"`;
 
 exports[`divide R.divide(71, 100) 1`] = `"number"`;
 
-exports[`divide R.flip(R.divide<'11'>())(2)(42) 1`] = `"number"`;
+exports[`divide R.flip(R.divide)(2)(42) 1`] = `"number"`;
 
 exports[`drop R.drop(3)('ramda') 1`] = `"string"`;
 
@@ -418,7 +418,7 @@ exports[`groupWith R.groupWith(R.eqBy<string>(isVowel), 'aestiou') 1`] = `"strin
 
 exports[`groupWith R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21]) 1`] = `"number[][]"`;
 
-exports[`gt R.flip(R.gt<'11'>())(2)(10) 1`] = `"boolean"`;
+exports[`gt R.flip(R.gt)(2)(10) 1`] = `"boolean"`;
 
 exports[`gt R.gt(2)(10) 1`] = `"boolean"`;
 
@@ -428,7 +428,7 @@ exports[`gt R.gt(2, 2) 1`] = `"boolean"`;
 
 exports[`gt R.gt(2, 6) 1`] = `"boolean"`;
 
-exports[`gte R.flip(R.gte<'11'>())(2)(10) 1`] = `"boolean"`;
+exports[`gte R.flip(R.gte)(2)(10) 1`] = `"boolean"`;
 
 exports[`gte R.gte(2)(10) 1`] = `"boolean"`;
 
@@ -450,7 +450,7 @@ exports[`has pointHas('y') 1`] = `"boolean"`;
 
 exports[`has pointHas('z') 1`] = `"boolean"`;
 
-exports[`hasIn R.flip(R.hasIn<'11'>())(square)('area') 1`] = `"boolean"`;
+exports[`hasIn R.flip(R.hasIn)(square)('area') 1`] = `"boolean"`;
 
 exports[`hasIn R.hasIn('area', square) 1`] = `"boolean"`;
 
@@ -690,7 +690,7 @@ exports[`lift madd5([1, 2], [3], [4, 5], [6], [7, 8]) 1`] = `"number[]"`;
 
 exports[`liftN madd3([1, 2, 3], [1, 2, 3], [1]) 1`] = `"number[]"`;
 
-exports[`lt R.flip(R.lt<'11'>())(5)(10) 1`] = `"boolean"`;
+exports[`lt R.flip(R.lt)(5)(10) 1`] = `"boolean"`;
 
 exports[`lt R.lt(2, 0) 1`] = `"boolean"`;
 
@@ -700,7 +700,7 @@ exports[`lt R.lt(2, 6) 1`] = `"boolean"`;
 
 exports[`lt R.lt(5)(10) 1`] = `"boolean"`;
 
-exports[`lte R.flip(R.lte<'11'>())(2)(1) 1`] = `"boolean"`;
+exports[`lte R.flip(R.lte)(2)(1) 1`] = `"boolean"`;
 
 exports[`lte R.lte(2)(10) 1`] = `"boolean"`;
 
@@ -836,7 +836,7 @@ exports[`mergeDeepWithKey R.mergeDeepWithKey<any, Record<string, any>>(
         {b: true, c: {thing: 'bar', values: [15, 35]}},
       ) 1`] = `"Record<string, any>"`;
 
-exports[`mergeWith R.mergeWith<'111'>()<any, {a: boolean, b: boolean, values: number[]}>(
+exports[`mergeWith R.mergeWith<any, {a: boolean, b: boolean, values: number[]}>(
         R.concat,
         {a: true, values: [10, 20]},
         {b: true, values: [15, 35]},

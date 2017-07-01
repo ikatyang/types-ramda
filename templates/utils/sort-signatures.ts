@@ -46,8 +46,6 @@ export const sort_signatures = (signatures: dts.IObjectMember[]) => {
     return ((parameter.type as dts.IGeneralType).name === placeholder_name_abbr);
   }
   function get_length_order(length: number) {
-    return (length === 1)
-      ? -1
-      : length;
+    return -length;
   }
 };
