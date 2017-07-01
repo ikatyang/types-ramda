@@ -22,8 +22,8 @@ import { List, Morphism } from "./$types";
  */
 declare const ap: ap_00;
 type ap_00 = {
-    <T, U>(fns: Morphism<T, U>[], list: List<T>): ap_11<U>;
     <T, U>(fns: Morphism<T, U>[]): ap_10<T, U>;
+    <T, U>(fns: Morphism<T, U>[], list: List<T>): ap_11<U>;
 };
 type ap_10<T, U> = {
     (list: List<T>): ap_11<U>;

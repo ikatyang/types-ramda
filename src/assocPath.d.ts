@@ -25,24 +25,24 @@ import { Path } from "./$types";
  */
 declare const assocPath: assocPath_000;
 type assocPath_000 = {
-    <T>(path: Path, value: any, object: T): assocPath_111<T>;
-    (path: Path, value: any): assocPath_110;
     (path: Path): assocPath_100;
+    (path: Path, value: any): assocPath_110;
+    <T>(path: Path, value: any, object: T): assocPath_111<T>;
 };
 type assocPath_100 = {
-    <T>(value: any, object: T): assocPath_111<T>;
     (value: any): assocPath_110;
+    <T>(value: any, object: T): assocPath_111<T>;
 };
 type assocPath_010 = {
-    <T>(path: Path, object: T): assocPath_111<T>;
     (path: Path): assocPath_110;
+    <T>(path: Path, object: T): assocPath_111<T>;
 };
 type assocPath_110 = {
     <T>(object: T): assocPath_111<T>;
 };
 type assocPath_001<T> = {
-    (path: Path, value: any): assocPath_111<T>;
     (path: Path): assocPath_101<T>;
+    (path: Path, value: any): assocPath_111<T>;
 };
 type assocPath_101<T> = {
     (value: any): assocPath_111<T>;

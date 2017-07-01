@@ -28,10 +28,10 @@ import { Dictionary, Filterable, List, Predicate } from "./$types";
  */
 declare const filter: filter_00;
 type filter_00 = {
+    <T>(fn: Predicate<T>): filter_10<T>;
     <T>(fn: Predicate<T>, list: List<T>): filter_list_11<T>;
     <T, U extends Filterable<T>>(fn: Predicate<T>, filterable: U): filter_filterable_11<T, U>;
     <T>(fn: Predicate<T>, object: Dictionary<T>): filter_dictionary_11<T>;
-    <T>(fn: Predicate<T>): filter_10<T>;
 };
 type filter_10<T> = {
     (list: List<T>): filter_list_11<T>;

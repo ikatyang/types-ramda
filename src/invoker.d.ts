@@ -29,13 +29,6 @@ import { Property, Variadic } from "./$types";
  */
 declare const invoker: invoker_00;
 type invoker_00 = {
-    <N extends string, V extends Record<N, Function>, R>(arity: 0, method: N): invoker_0arity_11<N, V, R>;
-    <N extends string, V extends Record<N, Function>, T1, R>(arity: 1, method: N): invoker_1arity_11<N, V, T1, R>;
-    <N extends string, V extends Record<N, Function>, T1, T2, R>(arity: 2, method: N): invoker_2arity_11<N, V, T1, T2, R>;
-    <N extends string, V extends Record<N, Function>, T1, T2, T3, R>(arity: 3, method: N): invoker_3arity_11<N, V, T1, T2, T3, R>;
-    <N extends string, V extends Record<N, Function>, T1, T2, T3, T4, R>(arity: 4, method: N): invoker_4arity_11<N, V, T1, T2, T3, T4, R>;
-    <N extends string, V extends Record<N, Function>, T1, T2, T3, T4, T5, R>(arity: 5, method: N): invoker_5arity_11<N, V, T1, T2, T3, T4, T5, R>;
-    <N extends string, R>(arity: number, method: N): invoker_variadic_11<R>;
     (arity: 0): invoker_0arity_10;
     (arity: 1): invoker_1arity_10;
     (arity: 2): invoker_2arity_10;
@@ -43,6 +36,13 @@ type invoker_00 = {
     (arity: 4): invoker_4arity_10;
     (arity: 5): invoker_5arity_10;
     (arity: number): invoker_variadic_10;
+    <N extends string, V extends Record<N, Function>, R>(arity: 0, method: N): invoker_0arity_11<N, V, R>;
+    <N extends string, V extends Record<N, Function>, T1, R>(arity: 1, method: N): invoker_1arity_11<N, V, T1, R>;
+    <N extends string, V extends Record<N, Function>, T1, T2, R>(arity: 2, method: N): invoker_2arity_11<N, V, T1, T2, R>;
+    <N extends string, V extends Record<N, Function>, T1, T2, T3, R>(arity: 3, method: N): invoker_3arity_11<N, V, T1, T2, T3, R>;
+    <N extends string, V extends Record<N, Function>, T1, T2, T3, T4, R>(arity: 4, method: N): invoker_4arity_11<N, V, T1, T2, T3, T4, R>;
+    <N extends string, V extends Record<N, Function>, T1, T2, T3, T4, T5, R>(arity: 5, method: N): invoker_5arity_11<N, V, T1, T2, T3, T4, T5, R>;
+    <N extends string, R>(arity: number, method: N): invoker_variadic_11<R>;
 };
 type invoker_01<N extends string> = {
     <V extends Record<N, Function>, R>(arity: 0): invoker_0arity_11<N, V, R>;

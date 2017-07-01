@@ -21,8 +21,8 @@
  */
 declare const mergeDeepRight: mergeDeepRight_00;
 type mergeDeepRight_00 = {
-    <T>(left: object, right: object): mergeDeepRight_11<T>;
     (left: object): mergeDeepRight_10;
+    <T>(left: object, right: object): mergeDeepRight_11<T>;
 };
 type mergeDeepRight_10 = {
     <T>(right: object): mergeDeepRight_11<T>;

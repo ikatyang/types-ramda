@@ -25,10 +25,10 @@ import { Dictionary, List, Predicate } from "./$types";
  */
 declare const partition: partition_00;
 type partition_00 = {
+    <T>(fn: Predicate<T>): partition_10<T>;
     <T>(fn: Predicate<T>, list: List<T>): partition_list_11<T>;
     <T, KT extends string, KF extends string>(fn: Predicate<T>, object: Record<KT | KF, T>): partition_object_11<T, KT, KF>;
     <T>(fn: Predicate<T>, dictionary: Dictionary<T>): partition_dictionary_11<T>;
-    <T>(fn: Predicate<T>): partition_10<T>;
 };
 type partition_10<T> = {
     (list: List<T>): partition_list_11<T>;

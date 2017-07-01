@@ -18,8 +18,8 @@ import { List } from "./$types";
  */
 declare const intersperse: intersperse_00;
 type intersperse_00 = {
-    <T, U>(separator: T, list: List<U>): intersperse_11<T, U>;
     <T>(separator: T): intersperse_10<T>;
+    <T, U>(separator: T, list: List<U>): intersperse_11<T, U>;
 };
 type intersperse_10<T> = {
     <U>(list: List<U>): intersperse_11<T, U>;

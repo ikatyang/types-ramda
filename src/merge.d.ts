@@ -23,8 +23,8 @@
  */
 declare const merge: merge_00;
 type merge_00 = {
-    <T, U>(a: T, b: U): merge_11<T, U>;
     <T>(a: T): merge_10<T>;
+    <T, U>(a: T, b: U): merge_11<T, U>;
 };
 type merge_10<T> = {
     <U>(b: U): merge_11<T, U>;

@@ -17,9 +17,9 @@ import { Property } from "./$types";
  */
 declare const dissoc: dissoc_00;
 type dissoc_00 = {
+    (property: Property): dissoc_10;
     <T>(property: Property, object: T): dissoc_remain_11<T>;
     <T>(property: Property, object: object): dissoc_manual_11<T>;
-    (property: Property): dissoc_10;
 };
 type dissoc_10 = {
     <T>(object: T): dissoc_remain_11<T>;

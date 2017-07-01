@@ -19,9 +19,9 @@ import { List } from "./$types";
  */
 declare const splitAt: splitAt_00;
 type splitAt_00 = {
+    (index: number): splitAt_10;
     (index: number, str: string): splitAt_string_11;
     <T>(index: number, list: List<T>): splitAt_list_11<T>;
-    (index: number): splitAt_10;
 };
 type splitAt_10 = {
     (str: string): splitAt_string_11;

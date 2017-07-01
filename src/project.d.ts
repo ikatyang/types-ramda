@@ -20,12 +20,12 @@ import { List, Property } from "./$types";
  */
 declare const project: project_00;
 type project_00 = {
-    <T, K extends keyof T>(keys: List<K>, list: List<T>): project_keyof_11<T, K>;
-    <K extends string, T extends Record<K, any>>(keys: List<K>, list: List<T>): project_record_11<K, T>;
-    <V>(keys: Property[], object: any): project_manual_11<V>;
     <T, K extends keyof T>(keys: List<K>): project_keyof_10<T, K>;
     <K extends string>(keys: List<K>): project_record_10<K>;
     (keys: Property[]): project_manual_10;
+    <T, K extends keyof T>(keys: List<K>, list: List<T>): project_keyof_11<T, K>;
+    <K extends string, T extends Record<K, any>>(keys: List<K>, list: List<T>): project_record_11<K, T>;
+    <V>(keys: Property[], object: any): project_manual_11<V>;
 };
 type project_keyof_10<T, K extends keyof T> = {
     (list: List<T>): project_keyof_11<T, K>;

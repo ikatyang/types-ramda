@@ -28,24 +28,24 @@
  */
 declare const mergeDeepWithKey: mergeDeepWithKey_000;
 type mergeDeepWithKey_000 = {
-    <V, T>(fn: (key: string, a: V, b: V) => any, left: object, right: object): mergeDeepWithKey_111<T>;
-    <V>(fn: (key: string, a: V, b: V) => any, left: object): mergeDeepWithKey_110<V>;
     <V>(fn: (key: string, a: V, b: V) => any): mergeDeepWithKey_100<V>;
+    <V>(fn: (key: string, a: V, b: V) => any, left: object): mergeDeepWithKey_110<V>;
+    <V, T>(fn: (key: string, a: V, b: V) => any, left: object, right: object): mergeDeepWithKey_111<T>;
 };
 type mergeDeepWithKey_100<V> = {
-    <T>(left: object, right: object): mergeDeepWithKey_111<T>;
     (left: object): mergeDeepWithKey_110<V>;
+    <T>(left: object, right: object): mergeDeepWithKey_111<T>;
 };
 type mergeDeepWithKey_010 = {
-    <V, T>(fn: (key: string, a: V, b: V) => any, right: object): mergeDeepWithKey_111<T>;
     <V>(fn: (key: string, a: V, b: V) => any): mergeDeepWithKey_110<V>;
+    <V, T>(fn: (key: string, a: V, b: V) => any, right: object): mergeDeepWithKey_111<T>;
 };
 type mergeDeepWithKey_110<V> = {
     <T>(right: object): mergeDeepWithKey_111<T>;
 };
 type mergeDeepWithKey_001 = {
-    <V, T>(fn: (key: string, a: V, b: V) => any, left: object): mergeDeepWithKey_111<T>;
     <V>(fn: (key: string, a: V, b: V) => any): mergeDeepWithKey_101<V>;
+    <V, T>(fn: (key: string, a: V, b: V) => any, left: object): mergeDeepWithKey_111<T>;
 };
 type mergeDeepWithKey_101<V> = {
     <T>(left: object): mergeDeepWithKey_111<T>;

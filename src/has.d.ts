@@ -25,8 +25,8 @@ import { Property } from "./$types";
  */
 declare const has: has_00;
 type has_00 = {
-    <T>(property: Property, object: T): has_11;
     (property: Property): has_10;
+    <T>(property: Property, object: T): has_11;
 };
 type has_10 = {
     <T>(object: T): has_11;

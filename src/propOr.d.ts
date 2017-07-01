@@ -27,33 +27,33 @@ import { List, Property } from "./$types";
  */
 declare const propOr: propOr_000;
 type propOr_000 = {
-    <D, T, K extends keyof T>(defaults: D, key: K, object: T): propOr_keyof_111<D, T, K>;
-    <D, K extends string, T extends Record<K, any>>(defaults: D, key: K, object: T): propOr_record_111<D, K, T>;
-    <D, V>(defaults: D, key: Property, object: any): propOr_manual_111<D, V>;
+    <D>(defaults: D): propOr_100<D>;
     <D, T, K extends keyof T>(defaults: D, key: K): propOr_keyof_110<D, T, K>;
     <D, K extends string>(defaults: D, key: K): propOr_record_110<D, K>;
     <D>(defaults: D, key: Property): propOr_manual_110<D>;
-    <D>(defaults: D): propOr_100<D>;
+    <D, T, K extends keyof T>(defaults: D, key: K, object: T): propOr_keyof_111<D, T, K>;
+    <D, K extends string, T extends Record<K, any>>(defaults: D, key: K, object: T): propOr_record_111<D, K, T>;
+    <D, V>(defaults: D, key: Property, object: any): propOr_manual_111<D, V>;
 };
 type propOr_100<D> = {
-    <T, K extends keyof T>(key: K, object: T): propOr_keyof_111<D, T, K>;
-    <K extends string, T extends Record<K, any>>(key: K, object: T): propOr_record_111<D, K, T>;
-    <V>(key: Property, object: any): propOr_manual_111<D, V>;
     <T, K extends keyof T>(key: K): propOr_keyof_110<D, T, K>;
     <K extends string>(key: K): propOr_record_110<D, K>;
     (key: Property): propOr_manual_110<D>;
+    <T, K extends keyof T>(key: K, object: T): propOr_keyof_111<D, T, K>;
+    <K extends string, T extends Record<K, any>>(key: K, object: T): propOr_record_111<D, K, T>;
+    <V>(key: Property, object: any): propOr_manual_111<D, V>;
 };
 type propOr_keyof_010<T, K extends keyof T> = {
-    <D>(defaults: D, object: T): propOr_keyof_111<D, T, K>;
     <D>(defaults: D): propOr_keyof_110<D, T, K>;
+    <D>(defaults: D, object: T): propOr_keyof_111<D, T, K>;
 };
 type propOr_record_010<K extends string> = {
-    <D, T extends Record<K, any>>(defaults: D, object: T): propOr_record_111<D, K, T>;
     <D>(defaults: D): propOr_record_110<D, K>;
+    <D, T extends Record<K, any>>(defaults: D, object: T): propOr_record_111<D, K, T>;
 };
 type propOr_manual_010 = {
-    <D, V>(defaults: D, object: any): propOr_manual_111<D, V>;
     <D>(defaults: D): propOr_manual_110<D>;
+    <D, V>(defaults: D, object: any): propOr_manual_111<D, V>;
 };
 type propOr_keyof_110<D, T, K extends keyof T> = {
     (object: T): propOr_keyof_111<D, T, K>;
@@ -65,16 +65,16 @@ type propOr_manual_110<D> = {
     <V>(object: any): propOr_manual_111<D, V>;
 };
 type propOr_keyof_001<T> = {
-    <D, K extends keyof T>(defaults: D, key: K): propOr_keyof_111<D, T, K>;
     <D>(defaults: D): propOr_keyof_101<D, T>;
+    <D, K extends keyof T>(defaults: D, key: K): propOr_keyof_111<D, T, K>;
 };
 type propOr_record_001<K extends string, T extends Record<K, any>> = {
-    <D>(defaults: D, key: K): propOr_record_111<D, K, T>;
     <D>(defaults: D): propOr_record_101<D, K, T>;
+    <D>(defaults: D, key: K): propOr_record_111<D, K, T>;
 };
 type propOr_manual_001 = {
-    <D, V>(defaults: D, key: Property): propOr_manual_111<D, V>;
     <D>(defaults: D): propOr_manual_101<D>;
+    <D, V>(defaults: D, key: Property): propOr_manual_111<D, V>;
 };
 type propOr_keyof_101<D, T> = {
     <K extends keyof T>(key: K): propOr_keyof_111<D, T, K>;

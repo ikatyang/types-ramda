@@ -20,24 +20,24 @@ import { Path, Predicate } from "./$types";
  */
 declare const pathSatisfies: pathSatisfies_000;
 type pathSatisfies_000 = {
-    <T>(fn: Predicate<T>, path: Path, object: any): pathSatisfies_111;
-    <T>(fn: Predicate<T>, path: Path): pathSatisfies_110<T>;
     <T>(fn: Predicate<T>): pathSatisfies_100<T>;
+    <T>(fn: Predicate<T>, path: Path): pathSatisfies_110<T>;
+    <T>(fn: Predicate<T>, path: Path, object: any): pathSatisfies_111;
 };
 type pathSatisfies_100<T> = {
-    (path: Path, object: any): pathSatisfies_111;
     (path: Path): pathSatisfies_110<T>;
+    (path: Path, object: any): pathSatisfies_111;
 };
 type pathSatisfies_010 = {
-    <T>(fn: Predicate<T>, object: any): pathSatisfies_111;
     <T>(fn: Predicate<T>): pathSatisfies_110<T>;
+    <T>(fn: Predicate<T>, object: any): pathSatisfies_111;
 };
 type pathSatisfies_110<T> = {
     (object: any): pathSatisfies_111;
 };
 type pathSatisfies_001 = {
-    <T>(fn: Predicate<T>, path: Path): pathSatisfies_111;
     <T>(fn: Predicate<T>): pathSatisfies_101<T>;
+    <T>(fn: Predicate<T>, path: Path): pathSatisfies_111;
 };
 type pathSatisfies_101<T> = {
     (path: Path): pathSatisfies_111;

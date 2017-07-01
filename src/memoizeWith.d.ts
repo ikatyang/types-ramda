@@ -30,8 +30,8 @@ import { Property, Variadic } from "./$types";
  */
 declare const memoizeWith: memoizeWith_00;
 type memoizeWith_00 = {
-    <T extends Function>(cacheKey: Variadic<Property>, fn: T): memoizeWith_11<T>;
     (cacheKey: Variadic<Property>): memoizeWith_10;
+    <T extends Function>(cacheKey: Variadic<Property>, fn: T): memoizeWith_11<T>;
 };
 type memoizeWith_10 = {
     <T extends Function>(fn: T): memoizeWith_11<T>;

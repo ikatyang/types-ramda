@@ -18,9 +18,9 @@ import { List } from "./$types";
  */
 declare const splitEvery: splitEvery_00;
 type splitEvery_00 = {
+    (n: number): splitEvery_10;
     (n: number, str: string): splitEvery_string_11;
     <T>(n: number, list: List<T>): splitEvery_list_11<T>;
-    (n: number): splitEvery_10;
 };
 type splitEvery_10 = {
     (str: string): splitEvery_string_11;

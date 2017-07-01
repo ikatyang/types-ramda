@@ -16,8 +16,8 @@
  */
 declare const range: range_00;
 type range_00 = {
-    (from: number, to: number): range_11;
     (from: number): range_10;
+    (from: number, to: number): range_11;
 };
 type range_10 = {
     (to: number): range_11;
