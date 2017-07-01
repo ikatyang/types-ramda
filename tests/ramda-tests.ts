@@ -178,9 +178,9 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.append('tests', []); //=> ['tests']
   // @dts-jest:fail
-  R.append(['tests'], ['write', 'more']); //=> different types are not allowed // ['write', 'more', ['tests']]
+  R.append(['tests'], ['write', 'more']); //!=> different types are not allowed // ['write', 'more', ['tests']]
   // @dts-jest:fail
-  R.append(['tests'])(['write', 'more']); //=> different types are not allowed // ['write', 'more', ['tests']]
+  R.append(['tests'])(['write', 'more']); //!=> different types are not allowed // ['write', 'more', ['tests']]
 })();
 
 // @dts-jest:group apply
