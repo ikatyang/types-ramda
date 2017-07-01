@@ -43,9 +43,7 @@ function get_parameters(signature: dts.IObjectMember) {
  * 1-param should be the last, descending order for others
  */
 function get_length_point(parameters: dts.IParameterDeclaration[]) {
-  return (parameters.length === 1)
-    ? -1
-    : parameters.length;
+  return -parameters.length;
 }
 
 /**
