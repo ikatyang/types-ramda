@@ -24,9 +24,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const update: update_000;
 type update_000 = {
-    <U>(index: number, _value: PH, list: List<U>): update_101<U>;
-    <T, U>(_index: PH, value: T, list: List<U>): update_011<T, U>;
     <U>(_index: PH, _value: PH, list: List<U>): update_001<U>;
+    <T, U>(_index: PH, value: T, list: List<U>): update_011<T, U>;
+    <U>(index: number, _value: PH, list: List<U>): update_101<U>;
     <T, U>(index: number, value: T, list: List<U>): update_111<T, U>;
     <T>(_index: PH, value: T): update_010<T>;
     <T>(index: number, value: T): update_110<T>;

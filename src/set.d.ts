@@ -24,9 +24,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const set: set_000;
 type set_000 = {
-    <T, U>(lens: Lens<T, U>, _value: PH, target: U): set_101<T, U>;
-    <T, U>(_lens: PH, value: T, target: U): set_011<T, U>;
     <U>(_lens: PH, _value: PH, target: U): set_001<U>;
+    <T, U>(_lens: PH, value: T, target: U): set_011<T, U>;
+    <T, U>(lens: Lens<T, U>, _value: PH, target: U): set_101<T, U>;
     <T, U>(lens: Lens<T, U>, value: T, target: U): set_111<U>;
     <T>(_lens: PH, value: T): set_010<T>;
     <T, U>(lens: Lens<T, U>, value: T): set_110<T, U>;

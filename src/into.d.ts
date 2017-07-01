@@ -40,11 +40,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const into: into_000;
 type into_000 = {
-    <T, U>(initial: Transformer<T, U, U>, _transducer: PH, values: T[]): into_transformer_101<T, U>;
-    <T, V extends string | object>(initial: V, _transducer: PH, values: T[]): into_base_101<T, V>;
+    <T>(_initial: PH, _transducer: PH, values: T[]): into_001<T>;
     <T, U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>), values: T[]): into_transformer_011<T, U>;
     <T, V extends string | object>(_initial: PH, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>), values: T[]): into_base_011<T, V>;
-    <T>(_initial: PH, _transducer: PH, values: T[]): into_001<T>;
+    <T, U>(initial: Transformer<T, U, U>, _transducer: PH, values: T[]): into_transformer_101<T, U>;
+    <T, V extends string | object>(initial: V, _transducer: PH, values: T[]): into_base_101<T, V>;
     <T, U>(initial: Transformer<T, U, U>, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>), values: T[]): into_transformer_111<U>;
     <T, V extends string | object>(initial: V, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>), values: T[]): into_base_111<V>;
     <T, U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_transformer_010<T, U>;

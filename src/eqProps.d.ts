@@ -23,9 +23,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const eqProps: eqProps_000;
 type eqProps_000 = {
-    <T>(property: Property, _a: PH, b: T): eqProps_101<T>;
-    <T>(_property: PH, a: T, b: T): eqProps_011<T>;
     <T>(_property: PH, _a: PH, b: T): eqProps_001<T>;
+    <T>(_property: PH, a: T, b: T): eqProps_011<T>;
+    <T>(property: Property, _a: PH, b: T): eqProps_101<T>;
     <T>(property: Property, a: T, b: T): eqProps_111;
     <T>(_property: PH, a: T): eqProps_010<T>;
     <T>(property: Property, a: T): eqProps_110<T>;

@@ -22,12 +22,12 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const propIs: propIs_000;
 type propIs_000 = {
+    <U>(_constructor: PH, _key: PH, object: U): propIs_record_001<U>;
+    (_constructor: PH, _key: PH, object: any): propIs_general_001;
+    <U, K extends string>(_constructor: PH, key: K, object: U): propIs_record_011<U, K>;
+    (_constructor: PH, key: Property, object: any): propIs_general_011;
     <T, U>(constructor: Constructor<T>, _key: PH, object: U): propIs_record_101<T, U>;
     (constructor: Constructor<any>, _key: PH, object: any): propIs_general_101;
-    <U, K extends string>(_constructor: PH, key: K, object: U): propIs_record_011<U, K>;
-    <U>(_constructor: PH, _key: PH, object: U): propIs_record_001<U>;
-    (_constructor: PH, key: Property, object: any): propIs_general_011;
-    (_constructor: PH, _key: PH, object: any): propIs_general_001;
     <T, U, K extends string>(constructor: Constructor<T>, key: K, object: U): object is U & Record<K, T>;
     (constructor: Constructor<any>, key: Property, object: any): propIs_general_111;
     <K extends string>(_constructor: PH, key: K): propIs_record_010<K>;

@@ -26,12 +26,12 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const slice: slice_000;
 type slice_000 = {
+    (_from: PH, _to: PH, str: string): slice_string_001;
+    <T>(_from: PH, _to: PH, list: List<T>): slice_list_001<T>;
+    (_from: PH, to: number, str: string): slice_string_011;
+    <T>(_from: PH, to: number, list: List<T>): slice_list_011<T>;
     (from: number, _to: PH, str: string): slice_string_101;
     <T>(from: number, _to: PH, list: List<T>): slice_list_101<T>;
-    (_from: PH, to: number, str: string): slice_string_011;
-    (_from: PH, _to: PH, str: string): slice_string_001;
-    <T>(_from: PH, to: number, list: List<T>): slice_list_011<T>;
-    <T>(_from: PH, _to: PH, list: List<T>): slice_list_001<T>;
     (from: number, to: number, str: string): slice_string_111;
     <T>(from: number, to: number, list: List<T>): slice_list_111<T>;
     (_from: PH, to: number): slice_010;

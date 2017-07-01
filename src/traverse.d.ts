@@ -28,12 +28,12 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const traverse: traverse_000;
 type traverse_000 = {
+    <T>(_of: PH, _fn: PH, traversable: List<T>): traverse_list_001<T>;
+    <T>(_of: PH, _fn: PH, traversable: Traversable<T>): traverse_traversable_001<T>;
+    <T, U>(_of: PH, fn: Morphism<T, Applicative<U>>, traversable: List<T>): traverse_list_011<T, U>;
+    <T, U>(_of: PH, fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>): traverse_traversable_011<T, U>;
     <T>(of: Morphism<T, Applicative<T>>, _fn: PH, traversable: List<T>): traverse_list_101<T>;
     <T>(of: Morphism<T, Applicative<T>>, _fn: PH, traversable: Traversable<T>): traverse_traversable_101<T>;
-    <T, U>(_of: PH, fn: Morphism<T, Applicative<U>>, traversable: List<T>): traverse_list_011<T, U>;
-    <T>(_of: PH, _fn: PH, traversable: List<T>): traverse_list_001<T>;
-    <T, U>(_of: PH, fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>): traverse_traversable_011<T, U>;
-    <T>(_of: PH, _fn: PH, traversable: Traversable<T>): traverse_traversable_001<T>;
     <T, U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>, traversable: List<T>): traverse_list_111<U>;
     <T, U>(of: Morphism<T, Applicative<T>>, fn: Morphism<T, Applicative<U>>, traversable: Traversable<T>): traverse_traversable_111<U>;
     <T, U>(_of: PH, fn: Morphism<T, Applicative<U>>): traverse_010<T, U>;

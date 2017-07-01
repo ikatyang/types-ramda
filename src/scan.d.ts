@@ -23,9 +23,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const scan: scan_000;
 type scan_000 = {
-    <T, U>(fn: (accumulator: U, value: T) => Reduced<U> | U, _initial: PH, values: List<T>): scan_101<T, U>;
-    <T, U>(_fn: PH, initial: U, values: List<T>): scan_011<T, U>;
     <T>(_fn: PH, _initial: PH, values: List<T>): scan_001<T>;
+    <T, U>(_fn: PH, initial: U, values: List<T>): scan_011<T, U>;
+    <T, U>(fn: (accumulator: U, value: T) => Reduced<U> | U, _initial: PH, values: List<T>): scan_101<T, U>;
     <T, U>(fn: (accumulator: U, value: T) => Reduced<U> | U, initial: U, values: List<T>): scan_111<U>;
     <U>(_fn: PH, initial: U): scan_010<U>;
     <T, U>(fn: (accumulator: U, value: T) => Reduced<U> | U, initial: U): scan_110<T, U>;

@@ -44,9 +44,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const reduceRight: reduceRight_000;
 type reduceRight_000 = {
-    <T, U>(fn: (value: T, accumulator: U) => Reduced<U> | U, _initial: PH, values: List<T>): reduceRight_101<T, U>;
-    <T, U>(_fn: PH, initial: U, values: List<T>): reduceRight_011<T, U>;
     <T>(_fn: PH, _initial: PH, values: List<T>): reduceRight_001<T>;
+    <T, U>(_fn: PH, initial: U, values: List<T>): reduceRight_011<T, U>;
+    <T, U>(fn: (value: T, accumulator: U) => Reduced<U> | U, _initial: PH, values: List<T>): reduceRight_101<T, U>;
     <T, U>(fn: (value: T, accumulator: U) => Reduced<U> | U, initial: U, values: List<T>): reduceRight_111<U>;
     <U>(_fn: PH, initial: U): reduceRight_010<U>;
     <T, U>(fn: (value: T, accumulator: U) => Reduced<U> | U, initial: U): reduceRight_110<T, U>;

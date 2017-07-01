@@ -22,9 +22,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const clamp: clamp_000;
 type clamp_000 = {
-    <T extends Ordered>(min: T, _max: PH, value: T): clamp_101<T>;
-    <T extends Ordered>(_min: PH, max: T, value: T): clamp_011<T>;
     <T extends Ordered>(_min: PH, _max: PH, value: T): clamp_001<T>;
+    <T extends Ordered>(_min: PH, max: T, value: T): clamp_011<T>;
+    <T extends Ordered>(min: T, _max: PH, value: T): clamp_101<T>;
     <T extends Ordered>(min: T, max: T, value: T): clamp_111<T>;
     <T extends Ordered>(_min: PH, max: T): clamp_010<T>;
     <T extends Ordered>(min: T, max: T): clamp_110<T>;
