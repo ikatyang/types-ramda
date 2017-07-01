@@ -5,13 +5,14 @@ import * as R from 'ramda';
  *
  * Returns `true` if `object` matches `target`, `false` otherwise.
  */
-export const match = R.curry((target: any, object: any): boolean =>
-  R.pipe(
-    R.keys,
-    R.ifElse(
-      R.pipe(R.length, R.identical(0)),
-      () => R.equals(target, object),
-      R.all(R.tryCatch((key: string) => match(target[key], object[key]), R.F)),
-    ),
-  )(target),
-);
+export const match = R.curry((target: any, object: any): boolean => {
+  const keys = R.keys(target);
+  return (keys.length === 0)
+    ? R.equals(target, object)
+    : R.all(R.__, keys)(
+      R.tryCatch(
+        (key: string) => match(target[key], object[key]),
+        R.F,
+      ),
+    );
+});

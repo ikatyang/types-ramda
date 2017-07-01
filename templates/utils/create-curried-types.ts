@@ -7,10 +7,8 @@ import {
 import {create_masks} from './create-masks';
 import {create_selectable_signatures} from './create-selectable-signatures';
 import {has} from './has';
+import {is_type_predicate} from './is-element';
 import {push_signatures} from './push-signatures';
-
-const is_type_predicate = (element?: dts.IElement<any>): element is dts.ITypePredicate =>
-  (element !== undefined) && (element.kind === dts.ElementKind.TypePredicate);
 
 export const create_curried_types = (
   name: string,

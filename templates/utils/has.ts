@@ -10,7 +10,7 @@ export const has = R.curry(_has)(R.__, R.__, []);
 
 function _has(object: any, target: any, path: any[]): boolean {
   return R.cond([
-    [R.contains(R.__, path), R.F],
+    [/* is cyclic */ R.contains(R.__, path), R.F],
     [match(target), R.T],
     [R.isNil, R.F],
     [R.T, R.pipe(R.keys, R.any<string>(key => _has(object[key], target, R.append(object, path))))],

@@ -1,6 +1,6 @@
 import * as dts from 'dts-element';
 import * as R from 'ramda';
-import {is_placeholder} from './is-placeholder';
+import {ensure, is_function_declaration, is_placeholder} from './is-element';
 
 export const sort_signatures = (signatures: dts.IObjectMember[]) => {
   interface SignatureData {
@@ -32,15 +32,12 @@ function get_signatures_order(signature1: dts.IObjectMember, signature2: dts.IOb
 }
 
 function get_parameters(signature: dts.IObjectMember) {
-  // istanbul ignore next
-  if (signature.owned.kind !== dts.ElementKind.FunctionDeclaration) {
-    throw new Error(`Invalid signature`);
-  }
-  return signature.owned.type!.parameters!;
+  const function_declaration = ensure(signature.owned, is_function_declaration);
+  return function_declaration.type!.parameters!;
 }
 
 /**
- * 1-param should be the last, descending order for others
+ * ascending order
  */
 function get_length_point(parameters: dts.IParameterDeclaration[]) {
   return -parameters.length;
