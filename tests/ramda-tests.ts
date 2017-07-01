@@ -177,10 +177,10 @@ import * as R from '../ramda/dist/index';
   R.append('tests')(['write', 'more']); //=> ['write', 'more', 'tests']
   // @dts-jest:pass
   R.append('tests', []); //=> ['tests']
-  // @dts-jest:pass
-  R.append(['tests'], ['write', 'more']); //=> ['write', 'more', ['tests']]
-  // @dts-jest:pass
-  R.append(['tests'])(['write', 'more']); //=> ['write', 'more', ['tests']]
+  // @dts-jest:fail
+  R.append(['tests'], ['write', 'more']); //=> different types are not allowed // ['write', 'more', ['tests']]
+  // @dts-jest:fail
+  R.append(['tests'])(['write', 'more']); //=> different types are not allowed // ['write', 'more', ['tests']]
 })();
 
 // @dts-jest:group apply

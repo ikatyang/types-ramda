@@ -175,12 +175,12 @@ import * as R from '../ramda/dist/index';
   R.append('tests', ['write', 'more']); //=> ['write', 'more', 'tests']
   // @dts-jest:pass -> string[]
   R.append('tests')(['write', 'more']); //=> ['write', 'more', 'tests']
-  // @dts-jest:pass -> string[]
+  // @dts-jest:pass -> "tests"[]
   R.append('tests', []); //=> ['tests']
-  // @dts-jest:pass -> (string | string[])[]
-  R.append(['tests'], ['write', 'more']); //=> ['write', 'more', ['tests']]
-  // @dts-jest:pass -> (string | string[])[]
-  R.append(['tests'])(['write', 'more']); //=> ['write', 'more', ['tests']]
+  // @dts-jest:fail -> Argument of type 'string[]' is not assignable to parameter of type 'List<string[]>'.
+  R.append(['tests'], ['write', 'more']); //=> different types are not allowed // ['write', 'more', ['tests']]
+  // @dts-jest:fail -> Argument of type 'string[]' is not assignable to parameter of type 'List<string[]>'.
+  R.append(['tests'])(['write', 'more']); //=> different types are not allowed // ['write', 'more', ['tests']]
 })();
 
 // @dts-jest:group apply
