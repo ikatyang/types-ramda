@@ -1,7 +1,11 @@
-export const left_pad = (str: string, char: string, length: number) => {
-  let result = str;
-  while (result.length < length) {
-    result = char + result;
-  }
-  return result;
-};
+import * as R from 'ramda';
+
+/**
+ * (str: string, char: string, max_length: number) => string
+ */
+export const left_pad = R.curry((str: string, char: string, max_length: number) =>
+  R.concat(
+    R.join('', R.repeat(char, max_length - str.length)),
+    str,
+  ),
+);
