@@ -14,7 +14,10 @@ export const sort_signatures = (signatures: dts.IObjectMember[]) => {
 
   const sorted_normals = R.sort(
     (data1: SignatureData, data2: SignatureData) =>
-      get_signatures_order(data1.signature, data2.signature) || (data1.index - data2.index),
+      R.when(
+        R.equals(0),
+        R.always(data1.index - data2.index),
+      )(get_signatures_order(data1.signature, data2.signature)),
   )(normals);
 
   return [
