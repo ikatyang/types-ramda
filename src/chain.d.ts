@@ -24,6 +24,10 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const chain: chain_00;
 type chain_00 = {
+    <T, U>(fn: Morphism<T, List<U>>): chain_list_10<T, U>;
+    <T, U>(fn: Morphism<T, Chain<U>>): chain_chain_10<T, U>;
+    <T, U, V>(fn: NestedMorphism<V, List<T>, U>): chain_listFn_10<T, U, V>;
+    <T, U, V>(fn: NestedMorphism<V, Chain<T>, Chain<U>>): chain_chainFn_10<T, U, V>;
     <T>(_fn: PH, list: List<T>): chain_list_01<T>;
     <T>(_fn: PH, list: Chain<T>): chain_chain_01<T>;
     <T, V>(_fn: PH, monad: Morphism<List<T>, V>): chain_listFn_01<T, V>;
@@ -32,10 +36,6 @@ type chain_00 = {
     <T, U>(fn: Morphism<T, Chain<U>>, list: Chain<T>): chain_chain_11<U>;
     <T, U, V>(fn: NestedMorphism<V, List<T>, U>, monad: Morphism<List<T>, V>): chain_listFn_11<T, U>;
     <T, U, V>(fn: NestedMorphism<V, Chain<T>, Chain<U>>, monad: Morphism<Chain<T>, V>): chain_chainFn_11<T, U>;
-    <T, U>(fn: Morphism<T, List<U>>): chain_list_10<T, U>;
-    <T, U>(fn: Morphism<T, Chain<U>>): chain_chain_10<T, U>;
-    <T, U, V>(fn: NestedMorphism<V, List<T>, U>): chain_listFn_10<T, U, V>;
-    <T, U, V>(fn: NestedMorphism<V, Chain<T>, Chain<U>>): chain_chainFn_10<T, U, V>;
 };
 type chain_list_10<T, U> = {
     (list: List<T>): chain_list_11<U>;

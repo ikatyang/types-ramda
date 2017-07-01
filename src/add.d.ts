@@ -18,9 +18,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const add: add_00;
 type add_00 = {
+    (a: number): add_10;
     (_a: PH, b: number): add_01;
     (a: number, b: number): add_11;
-    (a: number): add_10;
 };
 type add_10 = {
     (b: number): add_11;

@@ -28,9 +28,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const hasIn: hasIn_00;
 type hasIn_00 = {
+    (property: Property): hasIn_10;
     <T>(_property: PH, object: T): hasIn_01<T>;
     <T>(property: Property, object: T): hasIn_11;
-    (property: Property): hasIn_10;
 };
 type hasIn_10 = {
     <T>(object: T): hasIn_11;

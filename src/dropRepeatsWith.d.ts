@@ -23,9 +23,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const dropRepeatsWith: dropRepeatsWith_00;
 type dropRepeatsWith_00 = {
+    <T>(fn: Morphism<T, any>): dropRepeatsWith_10<T>;
     <T>(_fn: PH, list: List<T>): dropRepeatsWith_01<T>;
     <T>(fn: Morphism<T, any>, list: List<T>): dropRepeatsWith_11<T>;
-    <T>(fn: Morphism<T, any>): dropRepeatsWith_10<T>;
 };
 type dropRepeatsWith_10<T> = {
     (list: List<T>): dropRepeatsWith_11<T>;

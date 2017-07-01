@@ -25,9 +25,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const is: is_00;
 type is_00 = {
+    <T>(constructor: Constructor<T>): is_10<T>;
     (_constructor: PH, value: any): is_01;
     <T>(constructor: Constructor<T>, value: any): value is T;
-    <T>(constructor: Constructor<T>): is_10<T>;
 };
 type is_10<T> = {
     (value: any): value is T;

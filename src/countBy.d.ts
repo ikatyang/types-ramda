@@ -26,9 +26,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const countBy: countBy_00;
 type countBy_00 = {
+    <T>(fn: Morphism<T, Property>): countBy_10<T>;
     <T>(_fn: PH, list: List<T>): countBy_01<T>;
     <T>(fn: Morphism<T, Property>, list: List<T>): countBy_11;
-    <T>(fn: Morphism<T, Property>): countBy_10<T>;
 };
 type countBy_10<T> = {
     (list: List<T>): countBy_11;

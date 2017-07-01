@@ -28,12 +28,12 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const concat: concat_00;
 type concat_00 = {
+    (a: string): concat_string_10;
+    <T>(a: T[]): concat__10<T>;
     (_a: PH, b: string): concat_string_01;
     <T>(_a: PH, b: T[]): concat__01<T>;
     (a: string, b: string): concat_string_11;
     <T>(a: T[], b: T[]): concat__11<T>;
-    (a: string): concat_string_10;
-    <T>(a: T[]): concat__10<T>;
 };
 type concat_string_10 = {
     (b: string): concat_string_11;

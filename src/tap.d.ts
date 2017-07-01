@@ -20,9 +20,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const tap: tap_00;
 type tap_00 = {
+    <T>(fn: Tap<T>): tap_10<T>;
     <T>(_fn: PH, value: T): tap_01<T>;
     <T>(fn: Tap<T>, value: T): tap_11<T>;
-    <T>(fn: Tap<T>): tap_10<T>;
 };
 type tap_10<T> = {
     (value: T): tap_11<T>;

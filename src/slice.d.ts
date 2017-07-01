@@ -26,6 +26,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const slice: slice_000;
 type slice_000 = {
+    (from: number): slice_100;
+    (_from: PH, to: number): slice_010;
+    (from: number, to: number): slice_110;
     (_from: PH, _to: PH, str: string): slice_string_001;
     <T>(_from: PH, _to: PH, list: List<T>): slice_list_001<T>;
     (_from: PH, to: number, str: string): slice_string_011;
@@ -34,37 +37,34 @@ type slice_000 = {
     <T>(from: number, _to: PH, list: List<T>): slice_list_101<T>;
     (from: number, to: number, str: string): slice_string_111;
     <T>(from: number, to: number, list: List<T>): slice_list_111<T>;
-    (_from: PH, to: number): slice_010;
-    (from: number, to: number): slice_110;
-    (from: number): slice_100;
 };
 type slice_100 = {
+    (to: number): slice_110;
     (_to: PH, str: string): slice_string_101;
     <T>(_to: PH, list: List<T>): slice_list_101<T>;
     (to: number, str: string): slice_string_111;
     <T>(to: number, list: List<T>): slice_list_111<T>;
-    (to: number): slice_110;
 };
 type slice_010 = {
+    (from: number): slice_110;
     (_from: PH, str: string): slice_string_011;
     <T>(_from: PH, list: List<T>): slice_list_011<T>;
     (from: number, str: string): slice_string_111;
     <T>(from: number, list: List<T>): slice_list_111<T>;
-    (from: number): slice_110;
 };
 type slice_110 = {
     (str: string): slice_string_111;
     <T>(list: List<T>): slice_list_111<T>;
 };
 type slice_string_001 = {
+    (from: number): slice_string_101;
     (_from: PH, to: number): slice_string_011;
     (from: number, to: number): slice_string_111;
-    (from: number): slice_string_101;
 };
 type slice_list_001<T> = {
+    (from: number): slice_list_101<T>;
     (_from: PH, to: number): slice_list_011<T>;
     (from: number, to: number): slice_list_111<T>;
-    (from: number): slice_list_101<T>;
 };
 type slice_string_101 = {
     (to: number): slice_string_111;

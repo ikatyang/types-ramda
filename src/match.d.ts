@@ -22,9 +22,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const match: match_00;
 type match_00 = {
+    (regex: RegExp): match_10;
     (_regex: PH, str: string): match_01;
     (regex: RegExp, str: string): match_11;
-    (regex: RegExp): match_10;
 };
 type match_10 = {
     (str: string): match_11;

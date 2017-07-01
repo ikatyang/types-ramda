@@ -20,9 +20,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const join: join_00;
 type join_00 = {
+    (separator: string): join_10;
     (_separator: PH, list: any[]): join_01;
     (separator: string, list: any[]): join_11;
-    (separator: string): join_10;
 };
 type join_10 = {
     (list: any[]): join_11;

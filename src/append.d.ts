@@ -22,9 +22,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const append: append_00;
 type append_00 = {
+    <T>(value: T): append_10<T>;
     <U>(_value: PH, list: List<U>): append_01<U>;
     <T, U>(value: T, list: List<U>): append_11<T, U>;
-    <T>(value: T): append_10<T>;
 };
 type append_10<T> = {
     <U>(list: List<U>): append_11<T, U>;

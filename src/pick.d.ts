@@ -20,11 +20,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const pick: pick_00;
 type pick_00 = {
+    (keys: List<Property>): pick_10;
     <T>(_keys: PH, object: T): pick_remain_01<T>;
     (_keys: PH, object: any): pick_manual_01;
     <T>(keys: List<Property>, object: T): pick_remain_11<T>;
     <V>(keys: List<Property>, object: any): pick_manual_11<V>;
-    (keys: List<Property>): pick_10;
 };
 type pick_10 = {
     <T>(object: T): pick_remain_11<T>;

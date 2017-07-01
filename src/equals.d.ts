@@ -26,9 +26,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const equals: equals_00;
 type equals_00 = {
+    <T>(a: T): equals_10<T>;
     <T>(_a: PH, b: T): equals_01<T>;
     <T>(a: T, b: T): equals_11;
-    <T>(a: T): equals_10<T>;
 };
 type equals_10<T> = {
     (b: T): equals_11;

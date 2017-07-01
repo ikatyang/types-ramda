@@ -24,9 +24,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const none: none_00;
 type none_00 = {
+    <T>(fn: Predicate<T>): none_10<T>;
     <T>(_fn: PH, list: List<T>): none_01<T>;
     <T>(fn: Predicate<T>, list: List<T>): none_11;
-    <T>(fn: Predicate<T>): none_10<T>;
 };
 type none_10<T> = {
     (list: List<T>): none_11;

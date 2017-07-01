@@ -20,9 +20,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const uniqBy: uniqBy_00;
 type uniqBy_00 = {
+    <T>(fn: Morphism<T, any>): uniqBy_10<T>;
     <T>(_fn: PH, list: List<T>): uniqBy_01<T>;
     <T>(fn: Morphism<T, any>, list: List<T>): uniqBy_11<T>;
-    <T>(fn: Morphism<T, any>): uniqBy_10<T>;
 };
 type uniqBy_10<T> = {
     (list: List<T>): uniqBy_11<T>;

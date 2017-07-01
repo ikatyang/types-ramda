@@ -20,6 +20,14 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const liftN: liftN_00;
 type liftN_00 = {
+    (n: 0): liftN_0arity_10;
+    (n: 1): liftN_1arity_10;
+    (n: 2): liftN_2arity_10;
+    (n: 3): liftN_3arity_10;
+    (n: 4): liftN_4arity_10;
+    (n: 5): liftN_5arity_10;
+    (n: 6): liftN_6arity_10;
+    (n: number): liftN_variadic_10;
     <R>(_n: PH, fn: (...args: any[]) => R): liftN_0arity_01<R>;
     <T1, R>(_n: PH, fn: (v1: T1, ...args: any[]) => R): liftN_1arity_01<T1, R>;
     <T1, T2, R>(_n: PH, fn: (v1: T1, v2: T2, ...args: any[]) => R): liftN_2arity_01<T1, T2, R>;
@@ -36,14 +44,6 @@ type liftN_00 = {
     <T1, T2, T3, T4, T5, R>(n: 5, fn: (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, ...args: any[]) => R): liftN_5arity_11<T1, T2, T3, T4, T5, R>;
     <T1, T2, T3, T4, T5, T6, R>(n: 6, fn: (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, v6: T6, ...args: any[]) => R): liftN_6arity_11<T1, T2, T3, T4, T5, T6, R>;
     <R>(n: number, fn: Variadic<R>): liftN_variadic_11<R>;
-    (n: 0): liftN_0arity_10;
-    (n: 1): liftN_1arity_10;
-    (n: 2): liftN_2arity_10;
-    (n: 3): liftN_3arity_10;
-    (n: 4): liftN_4arity_10;
-    (n: 5): liftN_5arity_10;
-    (n: 6): liftN_6arity_10;
-    (n: number): liftN_variadic_10;
 };
 type liftN_0arity_10 = {
     <R>(fn: (...args: any[]) => R): liftN_0arity_11<R>;

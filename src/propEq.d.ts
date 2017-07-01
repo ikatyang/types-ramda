@@ -26,31 +26,31 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const propEq: propEq_000;
 type propEq_000 = {
+    (key: Property): propEq_100;
+    (_key: PH, value: any): propEq_010;
+    (key: Property, value: any): propEq_110;
     (_key: PH, _value: PH, object: any): propEq_001;
     (_key: PH, value: any, object: any): propEq_011;
     (key: Property, _value: PH, object: any): propEq_101;
     (key: Property, value: any, object: any): propEq_111;
-    (_key: PH, value: any): propEq_010;
-    (key: Property, value: any): propEq_110;
-    (key: Property): propEq_100;
 };
 type propEq_100 = {
+    (value: any): propEq_110;
     (_value: PH, object: any): propEq_101;
     (value: any, object: any): propEq_111;
-    (value: any): propEq_110;
 };
 type propEq_010 = {
+    (key: Property): propEq_110;
     (_key: PH, object: any): propEq_011;
     (key: Property, object: any): propEq_111;
-    (key: Property): propEq_110;
 };
 type propEq_110 = {
     (object: any): propEq_111;
 };
 type propEq_001 = {
+    (key: Property): propEq_101;
     (_key: PH, value: any): propEq_011;
     (key: Property, value: any): propEq_111;
-    (key: Property): propEq_101;
 };
 type propEq_101 = {
     (value: any): propEq_111;

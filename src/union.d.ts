@@ -19,9 +19,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const union: union_00;
 type union_00 = {
+    <T>(a: List<T>): union_10<T>;
     <T>(_a: PH, b: List<T>): union_01<T>;
     <T>(a: List<T>, b: List<T>): union_11<T>;
-    <T>(a: List<T>): union_10<T>;
 };
 type union_10<T> = {
     (b: List<T>): union_11<T>;

@@ -23,9 +23,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const divide: divide_00;
 type divide_00 = {
+    (a: number): divide_10;
     (_a: PH, b: number): divide_01;
     (a: number, b: number): divide_11;
-    (a: number): divide_10;
 };
 type divide_10 = {
     (b: number): divide_11;

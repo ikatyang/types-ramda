@@ -19,11 +19,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const zipObj: zipObj_00;
 type zipObj_00 = {
+    <T extends string>(a: List<T>): zipObj_string_10<T>;
+    (a: List<Property>): zipObj_property_10;
     <U>(_a: PH, b: List<U>): zipObj_01<U>;
     <T extends string, U>(a: List<T>, b: List<U>): zipObj_string_11<T, U>;
     <U>(a: List<Property>, b: List<U>): zipObj_property_11<U>;
-    <T extends string>(a: List<T>): zipObj_string_10<T>;
-    (a: List<Property>): zipObj_property_10;
 };
 type zipObj_01<U> = {
     <T extends string>(a: List<T>): zipObj_string_11<T, U>;

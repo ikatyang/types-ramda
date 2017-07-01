@@ -45,11 +45,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const take: take_00;
 type take_00 = {
+    (n: number): take_10;
     (_n: PH, str: string): take_string_01;
     <T>(_n: PH, list: List<T>): take_list_01<T>;
     (n: number, str: string): take_string_11;
     <T>(n: number, list: List<T>): take_list_11<T>;
-    (n: number): take_10;
 };
 type take_10 = {
     (str: string): take_string_11;

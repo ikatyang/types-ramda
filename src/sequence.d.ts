@@ -26,11 +26,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const sequence: sequence_00;
 type sequence_00 = {
+    <T>(of: Morphism<T, Applicative<T>>): sequence_10<T>;
     <T>(_of: PH, traversable: List<Applicative<T>>): sequence_list_01<T>;
     <T>(_of: PH, traversable: Traversable<Applicative<T>>): sequence_traversable_01<T>;
     <T>(of: Morphism<T, Applicative<T>>, traversable: List<Applicative<T>>): sequence_list_11<T>;
     <T>(of: Morphism<T, Applicative<T>>, traversable: Traversable<Applicative<T>>): sequence_traversable_11<T>;
-    <T>(of: Morphism<T, Applicative<T>>): sequence_10<T>;
 };
 type sequence_10<T> = {
     (traversable: List<Applicative<T>>): sequence_list_11<T>;

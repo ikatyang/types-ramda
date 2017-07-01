@@ -22,11 +22,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const pickBy: pickBy_00;
 type pickBy_00 = {
+    (fn: KeyedObjectMorphism<any, boolean, string>): pickBy_10;
     <T>(_fn: PH, object: T): pickBy_remain_01<T>;
     (_fn: PH, object: any): pickBy_manual_01;
     <T>(fn: KeyedObjectMorphism<any, boolean, string>, object: T): pickBy_remain_11<T>;
     <V>(fn: KeyedObjectMorphism<any, boolean, string>, object: any): pickBy_manual_11<V>;
-    (fn: KeyedObjectMorphism<any, boolean, string>): pickBy_10;
 };
 type pickBy_10 = {
     <T>(object: T): pickBy_remain_11<T>;

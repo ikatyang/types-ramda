@@ -23,9 +23,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const aperture: aperture_00;
 type aperture_00 = {
+    (n: number): aperture_10;
     <T>(_n: PH, list: List<T>): aperture_01<T>;
     <T>(n: number, list: List<T>): aperture_11<T>;
-    (n: number): aperture_10;
 };
 type aperture_10 = {
     <T>(list: List<T>): aperture_11<T>;

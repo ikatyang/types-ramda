@@ -21,11 +21,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const dissocPath: dissocPath_00;
 type dissocPath_00 = {
+    (path: Path): dissocPath_10;
     <T>(_path: PH, object: T): dissocPath_remain_01<T>;
     (_path: PH, object: object): dissocPath_manual_01;
     <T>(path: Path, object: T): dissocPath_remain_11<T>;
     <T>(path: Path, object: object): dissocPath_manual_11<T>;
-    (path: Path): dissocPath_10;
 };
 type dissocPath_10 = {
     <T>(object: T): dissocPath_remain_11<T>;

@@ -18,11 +18,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const dissoc: dissoc_00;
 type dissoc_00 = {
+    (property: Property): dissoc_10;
     <T>(_property: PH, object: T): dissoc_remain_01<T>;
     (_property: PH, object: object): dissoc_manual_01;
     <T>(property: Property, object: T): dissoc_remain_11<T>;
     <T>(property: Property, object: object): dissoc_manual_11<T>;
-    (property: Property): dissoc_10;
 };
 type dissoc_10 = {
     <T>(object: T): dissoc_remain_11<T>;

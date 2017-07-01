@@ -22,9 +22,9 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const mergeDeepLeft: mergeDeepLeft_00;
 type mergeDeepLeft_00 = {
+    (left: object): mergeDeepLeft_10;
     (_left: PH, right: object): mergeDeepLeft_01;
     <T>(left: object, right: object): mergeDeepLeft_11<T>;
-    (left: object): mergeDeepLeft_10;
 };
 type mergeDeepLeft_10 = {
     <T>(right: object): mergeDeepLeft_11<T>;

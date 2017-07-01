@@ -18,11 +18,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const omit: omit_00;
 type omit_00 = {
+    (keys: List<Property>): omit_10;
     <T>(_keys: PH, object: T): omit_remain_01<T>;
     (_keys: PH, object: any): omit_manual_01;
     <T>(keys: List<Property>, object: T): omit_remain_11<T>;
     <V>(keys: List<Property>, object: any): omit_manual_11<V>;
-    (keys: List<Property>): omit_10;
 };
 type omit_10 = {
     <T>(object: T): omit_remain_11<T>;

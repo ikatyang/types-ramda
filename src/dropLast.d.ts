@@ -23,11 +23,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const dropLast: dropLast_00;
 type dropLast_00 = {
+    (n: number): dropLast_10;
     (_n: PH, str: string): dropLast_string_01;
     <T>(_n: PH, list: List<T>): dropLast_list_01<T>;
     (n: number, str: string): dropLast_string_11;
     <T>(n: number, list: List<T>): dropLast_list_11<T>;
-    (n: number): dropLast_10;
 };
 type dropLast_10 = {
     (str: string): dropLast_string_11;

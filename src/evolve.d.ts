@@ -29,11 +29,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const evolve: evolve_00;
 type evolve_00 = {
+    (transformations: NestedDictionary<Morphism<any, any>>): evolve_10;
     <T>(_transformations: PH, object: T): evolve_remain_01<T>;
     (_transformations: PH, object: object): evolve_manual_01;
     <T>(transformations: NestedDictionary<Morphism<any, any>>, object: T): evolve_remain_11<T>;
     <T>(transformations: NestedDictionary<Morphism<any, any>>, object: object): evolve_manual_11<T>;
-    (transformations: NestedDictionary<Morphism<any, any>>): evolve_10;
 };
 type evolve_10 = {
     <T>(object: T): evolve_remain_11<T>;

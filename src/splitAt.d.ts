@@ -20,11 +20,11 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const splitAt: splitAt_00;
 type splitAt_00 = {
+    (index: number): splitAt_10;
     (_index: PH, str: string): splitAt_string_01;
     <T>(_index: PH, list: List<T>): splitAt_list_01<T>;
     (index: number, str: string): splitAt_string_11;
     <T>(index: number, list: List<T>): splitAt_list_11<T>;
-    (index: number): splitAt_10;
 };
 type splitAt_10 = {
     (str: string): splitAt_string_11;
