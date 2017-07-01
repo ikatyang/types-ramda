@@ -45,6 +45,14 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const curryN: curryN_00;
 type curryN_00 = {
+    (n: 0): curryN_0arity_10;
+    (n: 1): curryN_1arity_10;
+    (n: 2): curryN_2arity_10;
+    (n: 3): curryN_3arity_10;
+    (n: 4): curryN_4arity_10;
+    (n: 5): curryN_5arity_10;
+    (n: 6): curryN_6arity_10;
+    (n: number): curryN_variadic_10;
     <R>(_n: PH, fn: (...args: any[]) => R): curryN_0arity_01<R>;
     <T1, R>(_n: PH, fn: (v1: T1, ...args: any[]) => R): curryN_1arity_01<T1, R>;
     <T1, T2, R>(_n: PH, fn: (v1: T1, v2: T2, ...args: any[]) => R): curryN_2arity_01<T1, T2, R>;
@@ -60,14 +68,6 @@ type curryN_00 = {
     <T1, T2, T3, T4, R>(n: 4, fn: (v1: T1, v2: T2, v3: T3, v4: T4, ...args: any[]) => R): curryN_4arity_11<T1, T2, T3, T4, R>;
     <T1, T2, T3, T4, T5, R>(n: 5, fn: (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, ...args: any[]) => R): curryN_5arity_11<T1, T2, T3, T4, T5, R>;
     <T1, T2, T3, T4, T5, T6, R>(n: 6, fn: (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, v6: T6, ...args: any[]) => R): curryN_6arity_11<T1, T2, T3, T4, T5, T6, R>;
-    <R>(n: number, fn: Variadic<R>): curryN_variadic_11<R>;
-    (n: 0): curryN_0arity_10;
-    (n: 1): curryN_1arity_10;
-    (n: 2): curryN_2arity_10;
-    (n: 3): curryN_3arity_10;
-    (n: 4): curryN_4arity_10;
-    (n: 5): curryN_5arity_10;
-    (n: 6): curryN_6arity_10;
     <$SEL extends "11", $KIND extends "0arity">(): <R>(n: 0, fn: (...args: any[]) => R) => curryN_0arity_11<R>;
     <$SEL extends "1", $KIND extends "0arity">(): (n: 0) => curryN_0arity_10;
     <$SEL extends "01", $KIND extends "0arity">(): <R>(_n: PH, fn: (...args: any[]) => R) => curryN_0arity_01<R>;
@@ -92,7 +92,7 @@ type curryN_00 = {
     <$SEL extends "11", $KIND extends "variadic">(): <R>(n: number, fn: Variadic<R>) => curryN_variadic_11<R>;
     <$SEL extends "1", $KIND extends "variadic">(): (n: number) => curryN_variadic_10;
     <$SEL extends "01", $KIND extends "variadic">(): <R>(_n: PH, fn: Variadic<R>) => curryN_variadic_01<R>;
-    (n: number): curryN_variadic_10;
+    <R>(n: number, fn: Variadic<R>): curryN_variadic_11<R>;
 };
 type curryN_0arity_10 = {
     <R>(fn: (...args: any[]) => R): curryN_0arity_11<R>;

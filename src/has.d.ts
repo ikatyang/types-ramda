@@ -26,12 +26,12 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const has: has_00;
 type has_00 = {
+    (property: Property): has_10;
     <T>(_property: PH, object: T): has_01<T>;
-    <T>(property: Property, object: T): has_11;
     <$SEL extends "11">(): <T>(property: Property, object: T) => has_11;
     <$SEL extends "1">(): (property: Property) => has_10;
     <$SEL extends "01">(): <T>(_property: PH, object: T) => has_01<T>;
-    (property: Property): has_10;
+    <T>(property: Property, object: T): has_11;
 };
 type has_10 = {
     <T>(object: T): has_11;

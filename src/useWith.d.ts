@@ -32,6 +32,14 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const useWith: useWith_00;
 type useWith_00 = {
+    <R>(after: () => R): useWith_0arity_10<R>;
+    <U1, R>(after: (v1: U1) => R): useWith_1arity_10<U1, R>;
+    <U1, U2, R>(after: (v1: U1, v2: U2) => R): useWith_2arity_10<U1, U2, R>;
+    <U1, U2, U3, R>(after: (v1: U1, v2: U2, v3: U3) => R): useWith_3arity_10<U1, U2, U3, R>;
+    <U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R): useWith_4arity_10<U1, U2, U3, U4, R>;
+    <U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R): useWith_5arity_10<U1, U2, U3, U4, U5, R>;
+    <U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R): useWith_6arity_10<U1, U2, U3, U4, U5, U6, R>;
+    <R>(after: Variadic<R>): useWith_variadic_10<R>;
     (_after: PH, fns: never[]): useWith_0arity_01;
     <T1, U1>(_after: PH, fns: [Morphism<T1, U1>]): useWith_1arity_01<T1, U1>;
     <T1, T2, U1, U2>(_after: PH, fns: [Morphism<T1, U1>, Morphism<T2, U2>]): useWith_2arity_01<T1, T2, U1, U2>;
@@ -47,14 +55,6 @@ type useWith_00 = {
     <T1, T2, T3, T4, U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R, fns: [Morphism<T1, U1>, Morphism<T2, U2>, Morphism<T3, U3>, Morphism<T4, U4>]): useWith_4arity_11<T1, T2, T3, T4, R>;
     <T1, T2, T3, T4, T5, U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R, fns: [Morphism<T1, U1>, Morphism<T2, U2>, Morphism<T3, U3>, Morphism<T4, U4>, Morphism<T5, U5>]): useWith_5arity_11<T1, T2, T3, T4, T5, R>;
     <T1, T2, T3, T4, T5, T6, U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R, fns: [Morphism<T1, U1>, Morphism<T2, U2>, Morphism<T3, U3>, Morphism<T4, U4>, Morphism<T5, U5>, Morphism<T6, U6>]): useWith_6arity_11<T1, T2, T3, T4, T5, T6, R>;
-    <R>(after: Variadic<R>, fns: Function[]): useWith_variadic_11<R>;
-    <R>(after: () => R): useWith_0arity_10<R>;
-    <U1, R>(after: (v1: U1) => R): useWith_1arity_10<U1, R>;
-    <U1, U2, R>(after: (v1: U1, v2: U2) => R): useWith_2arity_10<U1, U2, R>;
-    <U1, U2, U3, R>(after: (v1: U1, v2: U2, v3: U3) => R): useWith_3arity_10<U1, U2, U3, R>;
-    <U1, U2, U3, U4, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4) => R): useWith_4arity_10<U1, U2, U3, U4, R>;
-    <U1, U2, U3, U4, U5, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5) => R): useWith_5arity_10<U1, U2, U3, U4, U5, R>;
-    <U1, U2, U3, U4, U5, U6, R>(after: (v1: U1, v2: U2, v3: U3, v4: U4, v5: U5, v6: U6) => R): useWith_6arity_10<U1, U2, U3, U4, U5, U6, R>;
     <$SEL extends "11", $KIND extends "0arity">(): <R>(after: () => R, fns: never[]) => useWith_0arity_11<R>;
     <$SEL extends "1", $KIND extends "0arity">(): <R>(after: () => R) => useWith_0arity_10<R>;
     <$SEL extends "01", $KIND extends "0arity">(): (_after: PH, fns: never[]) => useWith_0arity_01;
@@ -79,7 +79,7 @@ type useWith_00 = {
     <$SEL extends "11", $KIND extends "variadic">(): <R>(after: Variadic<R>, fns: Function[]) => useWith_variadic_11<R>;
     <$SEL extends "1", $KIND extends "variadic">(): <R>(after: Variadic<R>) => useWith_variadic_10<R>;
     <$SEL extends "01", $KIND extends "variadic">(): (_after: PH, fns: Function[]) => useWith_variadic_01;
-    <R>(after: Variadic<R>): useWith_variadic_10<R>;
+    <R>(after: Variadic<R>, fns: Function[]): useWith_variadic_11<R>;
 };
 type useWith_0arity_10<R> = {
     (fns: never[]): useWith_0arity_11<R>;

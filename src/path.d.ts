@@ -20,12 +20,12 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const path: path_00;
 type path_00 = {
+    (path: Path): path_10;
     (_path: PH, object: any): path_01;
-    <R>(path: Path, object: any): path_11<R>;
     <$SEL extends "11">(): <R>(path: Path, object: any) => path_11<R>;
     <$SEL extends "1">(): (path: Path) => path_10;
     <$SEL extends "01">(): (_path: PH, object: any) => path_01;
-    (path: Path): path_10;
+    <R>(path: Path, object: any): path_11<R>;
 };
 type path_10 = {
     <R>(object: any): path_11<R>;

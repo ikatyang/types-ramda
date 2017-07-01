@@ -38,6 +38,14 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const constructN: constructN_00;
 type constructN_00 = {
+    (n: 0): constructN_0arity_10;
+    (n: 1): constructN_1arity_10;
+    (n: 2): constructN_2arity_10;
+    (n: 3): constructN_3arity_10;
+    (n: 4): constructN_4arity_10;
+    (n: 5): constructN_5arity_10;
+    (n: 6): constructN_6arity_10;
+    (n: number): constructN_variadic_10;
     <R>(_n: PH, constructor: new (...args: any[]) => R): constructN_0arity_01<R>;
     <T1, R>(_n: PH, constructor: new (v1: T1, ...args: any[]) => R): constructN_1arity_01<T1, R>;
     <T1, T2, R>(_n: PH, constructor: new (v1: T1, v2: T2, ...args: any[]) => R): constructN_2arity_01<T1, T2, R>;
@@ -53,14 +61,6 @@ type constructN_00 = {
     <T1, T2, T3, T4, R>(n: 4, constructor: new (v1: T1, v2: T2, v3: T3, v4: T4, ...args: any[]) => R): constructN_4arity_11<T1, T2, T3, T4, R>;
     <T1, T2, T3, T4, T5, R>(n: 5, constructor: new (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, ...args: any[]) => R): constructN_5arity_11<T1, T2, T3, T4, T5, R>;
     <T1, T2, T3, T4, T5, T6, R>(n: 6, constructor: new (v1: T1, v2: T2, v3: T3, v4: T4, v5: T5, v6: T6, ...args: any[]) => R): constructN_6arity_11<T1, T2, T3, T4, T5, T6, R>;
-    <R>(n: number, constructor: Constructor<R>): constructN_variadic_11<R>;
-    (n: 0): constructN_0arity_10;
-    (n: 1): constructN_1arity_10;
-    (n: 2): constructN_2arity_10;
-    (n: 3): constructN_3arity_10;
-    (n: 4): constructN_4arity_10;
-    (n: 5): constructN_5arity_10;
-    (n: 6): constructN_6arity_10;
     <$SEL extends "11", $KIND extends "0arity">(): <R>(n: 0, constructor: new (...args: any[]) => R) => constructN_0arity_11<R>;
     <$SEL extends "1", $KIND extends "0arity">(): (n: 0) => constructN_0arity_10;
     <$SEL extends "01", $KIND extends "0arity">(): <R>(_n: PH, constructor: new (...args: any[]) => R) => constructN_0arity_01<R>;
@@ -85,7 +85,7 @@ type constructN_00 = {
     <$SEL extends "11", $KIND extends "variadic">(): <R>(n: number, constructor: Constructor<R>) => constructN_variadic_11<R>;
     <$SEL extends "1", $KIND extends "variadic">(): (n: number) => constructN_variadic_10;
     <$SEL extends "01", $KIND extends "variadic">(): <R>(_n: PH, constructor: Constructor<R>) => constructN_variadic_01<R>;
-    (n: number): constructN_variadic_10;
+    <R>(n: number, constructor: Constructor<R>): constructN_variadic_11<R>;
 };
 type constructN_0arity_10 = {
     <R>(constructor: new (...args: any[]) => R): constructN_0arity_11<R>;

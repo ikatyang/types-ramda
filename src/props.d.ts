@@ -22,14 +22,14 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const props: props_00;
 type props_00 = {
+    <T, K extends keyof T>(keys: List<K>): props_keyof_10<T, K>;
+    <K extends string>(keys: List<K>): props_record_10<K>;
+    (keys: Property[]): props_manual_10;
     <T>(_keys: PH, object: T): props_keyof_01<T>;
     <K extends string, T extends Record<K, any>>(_keys: PH, object: T): props_record_01<K, T>;
     (_keys: PH, object: any): props_manual_01;
     <T, K extends keyof T>(keys: List<K>, object: T): props_keyof_11<T, K>;
     <K extends string, T extends Record<K, any>>(keys: List<K>, object: T): props_record_11<K, T>;
-    <V>(keys: Property[], object: any): props_manual_11<V>;
-    <T, K extends keyof T>(keys: List<K>): props_keyof_10<T, K>;
-    <K extends string>(keys: List<K>): props_record_10<K>;
     <$SEL extends "11", $KIND extends "keyof">(): <T, K extends keyof T>(keys: List<K>, object: T) => props_keyof_11<T, K>;
     <$SEL extends "1", $KIND extends "keyof">(): <T, K extends keyof T>(keys: List<K>) => props_keyof_10<T, K>;
     <$SEL extends "01", $KIND extends "keyof">(): <T>(_keys: PH, object: T) => props_keyof_01<T>;
@@ -39,7 +39,7 @@ type props_00 = {
     <$SEL extends "11", $KIND extends "manual">(): <V>(keys: Property[], object: any) => props_manual_11<V>;
     <$SEL extends "1", $KIND extends "manual">(): (keys: Property[]) => props_manual_10;
     <$SEL extends "01", $KIND extends "manual">(): (_keys: PH, object: any) => props_manual_01;
-    (keys: Property[]): props_manual_10;
+    <V>(keys: Property[], object: any): props_manual_11<V>;
 };
 type props_keyof_10<T, K extends keyof T> = {
     (object: T): props_keyof_11<T, K>;
