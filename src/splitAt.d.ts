@@ -19,12 +19,12 @@ import { List } from "./$types";
  */
 declare const splitAt: splitAt_00;
 type splitAt_00 = {
+    (index: number): splitAt_10;
     (index: number, str: string): splitAt_string_11;
-    <T>(index: number, list: List<T>): splitAt_list_11<T>;
     <$SEL extends "11", $KIND extends "string">(): (index: number, str: string) => splitAt_string_11;
     <$SEL extends "11", $KIND extends "list">(): <T>(index: number, list: List<T>) => splitAt_list_11<T>;
     <$SEL extends "1">(): (index: number) => splitAt_10;
-    (index: number): splitAt_10;
+    <T>(index: number, list: List<T>): splitAt_list_11<T>;
 };
 type splitAt_10 = {
     (str: string): splitAt_string_11;

@@ -17,10 +17,10 @@ import { KeyValuePair, Property } from "./$types";
  */
 declare const pair: pair_00;
 type pair_00 = {
-    <K extends Property, V>(key: K, value: V): pair_11<K, V>;
+    <K extends Property>(key: K): pair_10<K>;
     <$SEL extends "11">(): <K extends Property, V>(key: K, value: V) => pair_11<K, V>;
     <$SEL extends "1">(): <K extends Property>(key: K) => pair_10<K>;
-    <K extends Property>(key: K): pair_10<K>;
+    <K extends Property, V>(key: K, value: V): pair_11<K, V>;
 };
 type pair_10<K extends Property> = {
     <V>(value: V): pair_11<K, V>;

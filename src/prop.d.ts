@@ -19,18 +19,18 @@ import { List, Property } from "./$types";
  */
 declare const prop: prop_00;
 type prop_00 = {
-    <T, K extends keyof T>(key: K, object: T): prop_keyof_11<T, K>;
-    <K extends string, T extends Record<K, any>>(key: K, object: T): prop_record_11<K, T>;
-    <V>(key: Property, object: any): prop_manual_11<V>;
     <T, K extends keyof T>(key: K): prop_keyof_10<T, K>;
     <K extends string>(key: K): prop_record_10<K>;
+    (key: Property): prop_manual_10;
+    <T, K extends keyof T>(key: K, object: T): prop_keyof_11<T, K>;
+    <K extends string, T extends Record<K, any>>(key: K, object: T): prop_record_11<K, T>;
     <$SEL extends "11", $KIND extends "keyof">(): <T, K extends keyof T>(key: K, object: T) => prop_keyof_11<T, K>;
     <$SEL extends "1", $KIND extends "keyof">(): <T, K extends keyof T>(key: K) => prop_keyof_10<T, K>;
     <$SEL extends "11", $KIND extends "record">(): <K extends string, T extends Record<K, any>>(key: K, object: T) => prop_record_11<K, T>;
     <$SEL extends "1", $KIND extends "record">(): <K extends string>(key: K) => prop_record_10<K>;
     <$SEL extends "11", $KIND extends "manual">(): <V>(key: Property, object: any) => prop_manual_11<V>;
     <$SEL extends "1", $KIND extends "manual">(): (key: Property) => prop_manual_10;
-    (key: Property): prop_manual_10;
+    <V>(key: Property, object: any): prop_manual_11<V>;
 };
 type prop_keyof_10<T, K extends keyof T> = {
     (object: T): prop_keyof_11<T, K>;

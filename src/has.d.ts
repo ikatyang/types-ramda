@@ -25,10 +25,10 @@ import { Property } from "./$types";
  */
 declare const has: has_00;
 type has_00 = {
-    <T>(property: Property, object: T): has_11;
+    (property: Property): has_10;
     <$SEL extends "11">(): <T>(property: Property, object: T) => has_11;
     <$SEL extends "1">(): (property: Property) => has_10;
-    (property: Property): has_10;
+    <T>(property: Property, object: T): has_11;
 };
 type has_10 = {
     <T>(object: T): has_11;

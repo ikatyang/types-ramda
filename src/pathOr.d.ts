@@ -20,33 +20,33 @@ import { Path } from "./$types";
  */
 declare const pathOr: pathOr_000;
 type pathOr_000 = {
-    <T, U>(defaults: T, path: Path, object: any): pathOr_111<T, U>;
+    <T>(defaults: T): pathOr_100<T>;
     <T>(defaults: T, path: Path): pathOr_110<T>;
     <$SEL extends "111">(): <T, U>(defaults: T, path: Path, object: any) => pathOr_111<T, U>;
     <$SEL extends "11">(): <T>(defaults: T, path: Path) => pathOr_110<T>;
     <$SEL extends "1">(): <T>(defaults: T) => pathOr_100<T>;
-    <T>(defaults: T): pathOr_100<T>;
+    <T, U>(defaults: T, path: Path, object: any): pathOr_111<T, U>;
 };
 type pathOr_100<T> = {
-    <U>(path: Path, object: any): pathOr_111<T, U>;
+    (path: Path): pathOr_110<T>;
     <$SEL extends "11">(): <U>(path: Path, object: any) => pathOr_111<T, U>;
     <$SEL extends "1">(): (path: Path) => pathOr_110<T>;
-    (path: Path): pathOr_110<T>;
+    <U>(path: Path, object: any): pathOr_111<T, U>;
 };
 type pathOr_010 = {
-    <T, U>(defaults: T, object: any): pathOr_111<T, U>;
+    <T>(defaults: T): pathOr_110<T>;
     <$SEL extends "11">(): <T, U>(defaults: T, object: any) => pathOr_111<T, U>;
     <$SEL extends "1">(): <T>(defaults: T) => pathOr_110<T>;
-    <T>(defaults: T): pathOr_110<T>;
+    <T, U>(defaults: T, object: any): pathOr_111<T, U>;
 };
 type pathOr_110<T> = {
     <U>(object: any): pathOr_111<T, U>;
 };
 type pathOr_001 = {
-    <T, U>(defaults: T, path: Path): pathOr_111<T, U>;
+    <T>(defaults: T): pathOr_101<T>;
     <$SEL extends "11">(): <T, U>(defaults: T, path: Path) => pathOr_111<T, U>;
     <$SEL extends "1">(): <T>(defaults: T) => pathOr_101<T>;
-    <T>(defaults: T): pathOr_101<T>;
+    <T, U>(defaults: T, path: Path): pathOr_111<T, U>;
 };
 type pathOr_101<T> = {
     <U>(path: Path): pathOr_111<T, U>;

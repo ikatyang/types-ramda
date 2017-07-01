@@ -23,12 +23,12 @@ import { List } from "./$types";
  */
 declare const takeLast: takeLast_00;
 type takeLast_00 = {
+    (n: number): takeLast_10;
     (n: number, str: string): takeLast_string_11;
-    <T>(n: number, list: List<T>): takeLast_list_11<T>;
     <$SEL extends "11", $KIND extends "string">(): (n: number, str: string) => takeLast_string_11;
     <$SEL extends "11", $KIND extends "list">(): <T>(n: number, list: List<T>) => takeLast_list_11<T>;
     <$SEL extends "1">(): (n: number) => takeLast_10;
-    (n: number): takeLast_10;
+    <T>(n: number, list: List<T>): takeLast_list_11<T>;
 };
 type takeLast_10 = {
     (str: string): takeLast_string_11;

@@ -21,12 +21,12 @@ import { KeyedObjectMorphism } from "./$types";
  */
 declare const pickBy: pickBy_00;
 type pickBy_00 = {
+    (fn: KeyedObjectMorphism<any, boolean, string>): pickBy_10;
     <T>(fn: KeyedObjectMorphism<any, boolean, string>, object: T): pickBy_remain_11<T>;
-    <V>(fn: KeyedObjectMorphism<any, boolean, string>, object: any): pickBy_manual_11<V>;
     <$SEL extends "11", $KIND extends "remain">(): <T>(fn: KeyedObjectMorphism<any, boolean, string>, object: T) => pickBy_remain_11<T>;
     <$SEL extends "11", $KIND extends "manual">(): <V>(fn: KeyedObjectMorphism<any, boolean, string>, object: any) => pickBy_manual_11<V>;
     <$SEL extends "1">(): (fn: KeyedObjectMorphism<any, boolean, string>) => pickBy_10;
-    (fn: KeyedObjectMorphism<any, boolean, string>): pickBy_10;
+    <V>(fn: KeyedObjectMorphism<any, boolean, string>, object: any): pickBy_manual_11<V>;
 };
 type pickBy_10 = {
     <T>(object: T): pickBy_remain_11<T>;

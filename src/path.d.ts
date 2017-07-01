@@ -19,10 +19,10 @@ import { Path } from "./$types";
  */
 declare const path: path_00;
 type path_00 = {
-    <R>(path: Path, object: any): path_11<R>;
+    (path: Path): path_10;
     <$SEL extends "11">(): <R>(path: Path, object: any) => path_11<R>;
     <$SEL extends "1">(): (path: Path) => path_10;
-    (path: Path): path_10;
+    <R>(path: Path, object: any): path_11<R>;
 };
 type path_10 = {
     <R>(object: any): path_11<R>;

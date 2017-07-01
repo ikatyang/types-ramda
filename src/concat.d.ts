@@ -27,14 +27,14 @@ import { List } from "./$types";
  */
 declare const concat: concat_00;
 type concat_00 = {
-    (a: string, b: string): concat_string_11;
-    <T>(a: T[], b: T[]): concat__11<T>;
     (a: string): concat_string_10;
+    <T>(a: T[]): concat__10<T>;
+    (a: string, b: string): concat_string_11;
     <$SEL extends "11", $KIND extends "string">(): (a: string, b: string) => concat_string_11;
     <$SEL extends "1", $KIND extends "string">(): (a: string) => concat_string_10;
     <$SEL extends "11", $KIND extends "">(): <T>(a: T[], b: T[]) => concat__11<T>;
     <$SEL extends "1", $KIND extends "">(): <T>(a: T[]) => concat__10<T>;
-    <T>(a: T[]): concat__10<T>;
+    <T>(a: T[], b: T[]): concat__11<T>;
 };
 type concat_string_10 = {
     (b: string): concat_string_11;

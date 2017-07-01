@@ -18,12 +18,12 @@ import { List } from "./$types";
  */
 declare const splitEvery: splitEvery_00;
 type splitEvery_00 = {
+    (n: number): splitEvery_10;
     (n: number, str: string): splitEvery_string_11;
-    <T>(n: number, list: List<T>): splitEvery_list_11<T>;
     <$SEL extends "11", $KIND extends "string">(): (n: number, str: string) => splitEvery_string_11;
     <$SEL extends "11", $KIND extends "list">(): <T>(n: number, list: List<T>) => splitEvery_list_11<T>;
     <$SEL extends "1">(): (n: number) => splitEvery_10;
-    (n: number): splitEvery_10;
+    <T>(n: number, list: List<T>): splitEvery_list_11<T>;
 };
 type splitEvery_10 = {
     (str: string): splitEvery_string_11;
