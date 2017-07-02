@@ -464,11 +464,13 @@ exports[`hasIn R.hasIn('area', square) 1`] = `"boolean"`;
 
 exports[`hasIn R.hasIn('width', square) 1`] = `"boolean"`;
 
-exports[`head R.head(['10', 10]) 1`] = `"string | number | undefined"`;
+exports[`head R.head(['10', 10]) 1`] = `"string"`;
 
-exports[`head R.head(['fi', 'fo', 'fum']) 1`] = `"string | undefined"`;
+exports[`head R.head(['fi', 'fo', 'fum']) 1`] = `"string"`;
 
-exports[`head R.head([10, 'ten']) 1`] = `"string | number | undefined"`;
+exports[`head R.head([10, 'ten']) 1`] = `"number"`;
+
+exports[`head R.head(ids) 1`] = `"string | undefined"`;
 
 exports[`identical R.identical('2', '1') 1`] = `"boolean"`;
 
