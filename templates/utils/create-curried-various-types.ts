@@ -1,13 +1,9 @@
 import * as dts from 'dts-element';
-import {isEqual} from 'lodash';
+import * as R from 'ramda';
 import {create_curried_types} from './create-curried-types';
 import {create_masks} from './create-masks';
 import {create_selectable_signatures} from './create-selectable-signatures';
-
-const is_object_type = (element: any): element is dts.IObjectType =>
-  (element.kind === dts.ElementKind.ObjectType);
-const is_object_member = (element: any): element is dts.IObjectMember =>
-  (element.kind === dts.ElementKind.ObjectMember);
+import {is_object_member, is_object_type} from './is-element';
 
 export const create_various_curried_types = (name: string, types: {[kind: string]: dts.IFunctionType}, selectable = true, placeholder = true) => {
   const keys = Object.keys(types);
@@ -37,7 +33,7 @@ export const create_various_curried_types = (name: string, types: {[kind: string
   const non_conflicts = [...new Array(parameters_length)].map(
     (_, index) => {
       const parameter = types_parameters[0][index];
-      return types_parameters.slice(1).every(type_parameters => isEqual(type_parameters[index], parameter));
+      return types_parameters.slice(1).every(type_parameters => R.equals(type_parameters[index], parameter));
     },
   );
 
