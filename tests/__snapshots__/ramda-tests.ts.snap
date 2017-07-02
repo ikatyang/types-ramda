@@ -24,7 +24,7 @@ exports[`addIndex reduceIndexed(
         (acc: string, val: string, idx: number) => \`\${acc},\${idx}-\${val}\`,
         '',
         ['f', 'o', 'o', 'b', 'a', 'r'],
-      ) 1`] = `"{}"`;
+      ) 1`] = `"any"`;
 
 exports[`addIndex reduceIndexed(objectify)({}, ['a', 'b', 'c']) 1`] = `"Record<string, number>"`;
 
@@ -80,11 +80,19 @@ exports[`append R.append('tests')(['write', 'more']) 1`] = `"string[]"`;
 
 exports[`append R.append('tests', ['write', 'more']) 1`] = `"string[]"`;
 
-exports[`append R.append('tests', []) 1`] = `"string[]"`;
+exports[`append R.append('tests', []) 1`] = `"\\"tests\\"[]"`;
 
-exports[`append R.append(['tests'])(['write', 'more']) 1`] = `"(string | string[])[]"`;
+exports[`append R.append(['tests'])(['write', 'more']) 1`] = `
+"Argument of type 'string[]' is not assignable to parameter of type 'List<string[]>'.
+  Type 'string[]' is not assignable to type 'ArrayLike<string[]>'."
+`;
 
-exports[`append R.append(['tests'], ['write', 'more']) 1`] = `"(string | string[])[]"`;
+exports[`append R.append(['tests'], ['write', 'more']) 1`] = `
+"Argument of type 'string[]' is not assignable to parameter of type 'List<string[]>'.
+  Type 'string[]' is not assignable to type 'ArrayLike<string[]>'.
+    Index signatures are incompatible.
+      Type 'string' is not assignable to type 'string[]'."
+`;
 
 exports[`apply R.apply(Math.max)(nums) 1`] = `"number"`;
 
@@ -132,13 +140,25 @@ exports[`chain R.chain<number, number[], number | undefined>(R.append)(R.head)([
 
 exports[`chain R.chain<number, number[], number | undefined>(R.append, R.head)([1, 2, 3]) 1`] = `"number[]"`;
 
+exports[`clamp R.clamp('a')('d')('e') 1`] = `"string"`;
+
 exports[`clamp R.clamp('a', 'd', 'e') 1`] = `"\\"a\\" | \\"d\\" | \\"e\\""`;
+
+exports[`clamp R.clamp(1)('str')(true) 1`] = `"Argument of type '\\"str\\"' is not assignable to parameter of type 'number'."`;
+
+exports[`clamp R.clamp(1)(10)(-1) 1`] = `"number"`;
+
+exports[`clamp R.clamp(1)(10, 4) 1`] = `"number"`;
+
+exports[`clamp R.clamp(1, 'str', true) 1`] = `"Argument of type '\\"str\\"' is not assignable to parameter of type '1'."`;
+
+exports[`clamp R.clamp(1, 10)(11) 1`] = `"number"`;
 
 exports[`clamp R.clamp(1, 10, -1) 1`] = `"1 | 10 | -1"`;
 
-exports[`clamp R.clamp<number>(1)(10, 4) 1`] = `"number"`;
+exports[`clamp R.clamp(new Date(0))(new Date(1))(new Date(2)) 1`] = `"Date"`;
 
-exports[`clamp R.clamp<number>(1, 10)(11) 1`] = `"number"`;
+exports[`clamp R.clamp(new Date(0), new Date(1), new Date(2)) 1`] = `"Date"`;
 
 exports[`clone R.clone('foo') 1`] = `"\\"foo\\""`;
 
@@ -278,7 +298,7 @@ exports[`divide R.divide(1)(4) 1`] = `"number"`;
 
 exports[`divide R.divide(71, 100) 1`] = `"number"`;
 
-exports[`divide R.flip(R.divide<'11'>())(2)(42) 1`] = `"number"`;
+exports[`divide R.flip(R.divide)(2)(42) 1`] = `"number"`;
 
 exports[`drop R.drop(3)('ramda') 1`] = `"string"`;
 
@@ -406,7 +426,9 @@ exports[`groupWith R.groupWith(R.eqBy<string>(isVowel), 'aestiou') 1`] = `"strin
 
 exports[`groupWith R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21]) 1`] = `"number[][]"`;
 
-exports[`gt R.flip(R.gt<'11'>())(2)(10) 1`] = `"boolean"`;
+exports[`gt R.flip(R.gt)(2)(10) 1`] = `"boolean"`;
+
+exports[`gt R.gt(2)(10) 1`] = `"boolean"`;
 
 exports[`gt R.gt(2, 0) 1`] = `"boolean"`;
 
@@ -414,17 +436,15 @@ exports[`gt R.gt(2, 2) 1`] = `"boolean"`;
 
 exports[`gt R.gt(2, 6) 1`] = `"boolean"`;
 
-exports[`gt R.gt<number>(2)(10) 1`] = `"boolean"`;
+exports[`gte R.flip(R.gte)(2)(10) 1`] = `"boolean"`;
 
-exports[`gte R.flip(R.gte<'11'>())(2)(10) 1`] = `"boolean"`;
+exports[`gte R.gte(2)(10) 1`] = `"boolean"`;
 
 exports[`gte R.gte(2, 0) 1`] = `"boolean"`;
 
 exports[`gte R.gte(2, 2) 1`] = `"boolean"`;
 
 exports[`gte R.gte(2, 6) 1`] = `"boolean"`;
-
-exports[`gte R.gte<number>(2)(10) 1`] = `"boolean"`;
 
 exports[`has hasName({}) 1`] = `"boolean"`;
 
@@ -438,17 +458,19 @@ exports[`has pointHas('y') 1`] = `"boolean"`;
 
 exports[`has pointHas('z') 1`] = `"boolean"`;
 
-exports[`hasIn R.flip(R.hasIn<'11'>())(square)('area') 1`] = `"boolean"`;
+exports[`hasIn R.flip(R.hasIn)(square)('area') 1`] = `"boolean"`;
 
 exports[`hasIn R.hasIn('area', square) 1`] = `"boolean"`;
 
 exports[`hasIn R.hasIn('width', square) 1`] = `"boolean"`;
 
-exports[`head R.head(['10', 10]) 1`] = `"string | number | undefined"`;
+exports[`head R.head(['10', 10]) 1`] = `"string"`;
 
-exports[`head R.head(['fi', 'fo', 'fum']) 1`] = `"string | undefined"`;
+exports[`head R.head(['fi', 'fo', 'fum']) 1`] = `"string"`;
 
-exports[`head R.head([10, 'ten']) 1`] = `"string | number | undefined"`;
+exports[`head R.head([10, 'ten']) 1`] = `"number"`;
+
+exports[`head R.head(ids) 1`] = `"string | undefined"`;
 
 exports[`identical R.identical('2', '1') 1`] = `"boolean"`;
 
@@ -678,7 +700,7 @@ exports[`lift madd5([1, 2], [3], [4, 5], [6], [7, 8]) 1`] = `"number[]"`;
 
 exports[`liftN madd3([1, 2, 3], [1, 2, 3], [1]) 1`] = `"number[]"`;
 
-exports[`lt R.flip(R.lt<'11'>())(5)(10) 1`] = `"boolean"`;
+exports[`lt R.flip(R.lt)(5)(10) 1`] = `"boolean"`;
 
 exports[`lt R.lt(2, 0) 1`] = `"boolean"`;
 
@@ -686,17 +708,17 @@ exports[`lt R.lt(2, 2) 1`] = `"boolean"`;
 
 exports[`lt R.lt(2, 6) 1`] = `"boolean"`;
 
-exports[`lt R.lt<number>(5)(10) 1`] = `"boolean"`;
+exports[`lt R.lt(5)(10) 1`] = `"boolean"`;
 
-exports[`lte R.flip(R.lte<'11'>())(2)(1) 1`] = `"boolean"`;
+exports[`lte R.flip(R.lte)(2)(1) 1`] = `"boolean"`;
+
+exports[`lte R.lte(2)(10) 1`] = `"boolean"`;
 
 exports[`lte R.lte(2, 0) 1`] = `"boolean"`;
 
 exports[`lte R.lte(2, 2) 1`] = `"boolean"`;
 
 exports[`lte R.lte(2, 6) 1`] = `"boolean"`;
-
-exports[`lte R.lte<number>(2)(10) 1`] = `"boolean"`;
 
 exports[`map R.map(double)([1, 2, 3]) 1`] = `"number[]"`;
 
@@ -824,7 +846,7 @@ exports[`mergeDeepWithKey R.mergeDeepWithKey<any, Record<string, any>>(
         {b: true, c: {thing: 'bar', values: [15, 35]}},
       ) 1`] = `"Record<string, any>"`;
 
-exports[`mergeWith R.mergeWith<'111'>()<any, {a: boolean, b: boolean, values: number[]}>(
+exports[`mergeWith R.mergeWith<any, {a: boolean, b: boolean, values: number[]}>(
         R.concat,
         {a: true, values: [10, 20]},
         {b: true, values: [15, 35]},

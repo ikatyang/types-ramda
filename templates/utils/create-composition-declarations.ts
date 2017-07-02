@@ -5,7 +5,9 @@ export const create_composition_declarations = (
     kind: 'compose' | 'pipe',
     max_function_count: number,
     max_parameter_count: number,
+    // istanbul ignore next
     generate_parameter_type: (generic: string) => string = x => x,
+    // istanbul ignore next
     generate_return_type: (generic: string) => string = x => x,
     ) => {
   const function_names = [...new Array(max_function_count)].map((_, index) => `fn${index + 1}`);

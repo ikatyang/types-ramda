@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should generate correctly with curried types 1`] = `
+"/**
+ * markdown content from '$.md'
+ */
+declare const $: $_000;
+type $_000 = {
+    (a: boolean): $_100;
+    (_a: PH, b: number): $_010;
+    (a: boolean, b: number): $_110;
+    (_a: PH, _b: PH, c: string): $_001;
+    (_a: PH, b: number, c: string): $_011;
+    (a: boolean, _b: PH, c: string): $_101;
+    <$SEL extends \\"1\\">(): (a: boolean) => $_100;
+    <$SEL extends \\"01\\">(): (_a: PH, b: number) => $_010;
+    <$SEL extends \\"11\\">(): (a: boolean, b: number) => $_110;
+    <$SEL extends \\"001\\">(): (_a: PH, _b: PH, c: string) => $_001;
+    <$SEL extends \\"011\\">(): (_a: PH, b: number, c: string) => $_011;
+    <$SEL extends \\"101\\">(): (a: boolean, _b: PH, c: string) => $_101;
+    <$SEL extends \\"111\\">(): (a: boolean, b: number, c: string) => $_111;
+    (a: boolean, b: number, c: string): $_111;
+};
+type $_100 = {
+    (b: number): $_110;
+    (_b: PH, c: string): $_101;
+    <$SEL extends \\"1\\">(): (b: number) => $_110;
+    <$SEL extends \\"01\\">(): (_b: PH, c: string) => $_101;
+    <$SEL extends \\"11\\">(): (b: number, c: string) => $_111;
+    (b: number, c: string): $_111;
+};
+type $_010 = {
+    (a: boolean): $_110;
+    (_a: PH, c: string): $_011;
+    <$SEL extends \\"1\\">(): (a: boolean) => $_110;
+    <$SEL extends \\"01\\">(): (_a: PH, c: string) => $_011;
+    <$SEL extends \\"11\\">(): (a: boolean, c: string) => $_111;
+    (a: boolean, c: string): $_111;
+};
+type $_110 = {
+    (c: string): $_111;
+};
+type $_001 = {
+    (a: boolean): $_101;
+    (_a: PH, b: number): $_011;
+    <$SEL extends \\"1\\">(): (a: boolean) => $_101;
+    <$SEL extends \\"01\\">(): (_a: PH, b: number) => $_011;
+    <$SEL extends \\"11\\">(): (a: boolean, b: number) => $_111;
+    (a: boolean, b: number): $_111;
+};
+type $_101 = {
+    (b: number): $_111;
+};
+type $_011 = {
+    (a: boolean): $_111;
+};
+type $_111 = object;
+"
+`;
+
+exports[`should generate correctly with various curried types 1`] = `
+"/**
+ * markdown content from '$.md'
+ */
+declare const $: $_00;
+type $_00 = {
+    (a: number): $_x_10;
+    (a: string): $_y_10;
+    (_a: PH, b: number): $_x_01;
+    (_a: PH, b: string): $_y_01;
+    (a: number, b: number): $_x_11;
+    <$SEL extends \\"1\\", $KIND extends \\"x\\">(): (a: number) => $_x_10;
+    <$SEL extends \\"1\\", $KIND extends \\"y\\">(): (a: string) => $_y_10;
+    <$SEL extends \\"01\\", $KIND extends \\"x\\">(): (_a: PH, b: number) => $_x_01;
+    <$SEL extends \\"01\\", $KIND extends \\"y\\">(): (_a: PH, b: string) => $_y_01;
+    <$SEL extends \\"11\\", $KIND extends \\"x\\">(): (a: number, b: number) => $_x_11;
+    <$SEL extends \\"11\\", $KIND extends \\"y\\">(): (a: string, b: string) => $_y_11;
+    (a: string, b: string): $_y_11;
+};
+type $_x_10 = {
+    (b: number): $_x_11;
+};
+type $_y_10 = {
+    (b: string): $_y_11;
+};
+type $_x_01 = {
+    (a: number): $_x_11;
+};
+type $_y_01 = {
+    (a: string): $_y_11;
+};
+type $_x_11 = number;
+type $_y_11 = {};
+"
+`;

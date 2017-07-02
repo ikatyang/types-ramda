@@ -3,16 +3,8 @@ import * as path from 'path';
 import {bind_jsdoc} from './bind-jsdoc';
 import {create_curried_types} from './create-curried-types';
 import {create_various_curried_types} from './create-curried-various-types';
+import {is_function_type, is_object_member, is_object_type} from './is-element';
 import {sort_signatures} from './sort-signatures';
-
-const is_object_type = (value: any): value is dts.IObjectType =>
-  (value.kind === dts.ElementKind.ObjectType);
-
-const is_function_type = (value: any): value is dts.IFunctionType =>
-  (value.kind === dts.ElementKind.FunctionType);
-
-const is_object_member = (value: any): value is dts.IObjectMember =>
-  (value.kind === dts.ElementKind.ObjectMember);
 
 export const create_curried_declarations = (
     filename: string, type: dts.IFunctionType | {[kind: string]: dts.IFunctionType}, selectable?: boolean, placeholder?: boolean) => {
@@ -32,8 +24,7 @@ export const create_curried_declarations = (
     variable_declaration,
     ...members.map(member => {
       const member_type = member.type!;
-      // tslint:disable-next-line:strict-boolean-expressions
-      if (is_object_type(member_type) && (member_type.members || []).every(is_object_member)) {
+      if (is_object_type(member_type) && member_type.members!.every(is_object_member)) {
         member_type.members = sort_signatures(member_type.members! as dts.IObjectMember[]);
       }
       return member;

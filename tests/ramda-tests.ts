@@ -66,7 +66,7 @@ import * as R from '../ramda/dist/index';
     reduceIndexed(objectify, {})(['a', 'b', 'c']); //=> {a: 0, b: 1, c: 2}
   })();
   (() => {
-    const reduceIndexed = R.addIndex<'1', 'v2x1'>()(R.reduce<'111'>());
+    const reduceIndexed = R.addIndex<'1', 'v2x1'>()(R.reduce);
 
     // @dts-jest:pass
     reduceIndexed(
@@ -87,8 +87,8 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group all
 (() => {
-  const lessThan2 = R.flip(R.lt<'11'>())(2);
-  const lessThan3 = R.flip(R.lt<'11'>())(3);
+  const lessThan2 = R.flip(R.lt)(2);
+  const lessThan3 = R.flip(R.lt)(3);
 
   // @dts-jest:pass
   R.all(lessThan2)([1, 2]); //=> false
@@ -127,8 +127,8 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group any
 (() => {
-  const lessThan0 = R.flip(R.lt<'11'>())(0);
-  const lessThan2 = R.flip(R.lt<'11'>())(2);
+  const lessThan0 = R.flip(R.lt)(0);
+  const lessThan2 = R.flip(R.lt)(2);
 
   // @dts-jest:pass
   R.any(lessThan0)([1, 2]); //=> false
@@ -177,10 +177,10 @@ import * as R from '../ramda/dist/index';
   R.append('tests')(['write', 'more']); //=> ['write', 'more', 'tests']
   // @dts-jest:pass
   R.append('tests', []); //=> ['tests']
-  // @dts-jest:pass
-  R.append(['tests'], ['write', 'more']); //=> ['write', 'more', ['tests']]
-  // @dts-jest:pass
-  R.append(['tests'])(['write', 'more']); //=> ['write', 'more', ['tests']]
+  // @dts-jest:fail
+  R.append(['tests'], ['write', 'more']); //!=> different types are not allowed // ['write', 'more', ['tests']]
+  // @dts-jest:fail
+  R.append(['tests'])(['write', 'more']); //!=> different types are not allowed // ['write', 'more', ['tests']]
 })();
 
 // @dts-jest:group apply
@@ -312,11 +312,23 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.clamp(1, 10, -1); //=> 1
   // @dts-jest:pass
-  R.clamp<number>(1, 10)(11); //=> 10
+  R.clamp(1)(10)(-1); //=> 1
   // @dts-jest:pass
-  R.clamp<number>(1)(10, 4); //=> 4
+  R.clamp(1, 10)(11); //=> 10
+  // @dts-jest:pass
+  R.clamp(1)(10, 4); //=> 4
   // @dts-jest:pass
   R.clamp('a', 'd', 'e'); //=> 'd'
+  // @dts-jest:pass
+  R.clamp('a')('d')('e'); //=> 'd'
+  // @dts-jest:fail
+  R.clamp(1, 'str', true);
+  // @dts-jest:fail
+  R.clamp(1)('str')(true);
+  // @dts-jest:pass
+  R.clamp(new Date(0), new Date(1), new Date(2)); //=> new Date(1)
+  // @dts-jest:pass
+  R.clamp(new Date(0))(new Date(1))(new Date(2)); //=> new Date(1)
 })();
 
 // @dts-jest:group clone
@@ -413,7 +425,7 @@ import * as R from '../ramda/dist/index';
 
     // akward example that bounces types between number and string
     const g0 = (list: number[]) => R.map(R.inc, list);
-    const g1 = R.dropWhile(R.gt<number>(10));
+    const g1 = R.dropWhile(R.gt(10));
     const g2 = R.map((i: number) => i > 5 ? 'bigger' : 'smaller');
     const g3 = R.all((i: string) => i === 'smaller');
     const g = R.compose<number[], number[], number[], string[], boolean>(g3, g2, g1, g0);
@@ -685,7 +697,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.divide(71, 100); //=> 0.71
   // @dts-jest:pass
-  R.flip(R.divide<'11'>())(2)(42); //=> 21
+  R.flip(R.divide)(2)(42); //=> 21
   // @dts-jest:pass
   R.divide(1)(4); //=> 0.25
 })();
@@ -982,9 +994,9 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.gt(2, 2); //=> false
   // @dts-jest:pass
-  R.flip(R.gt<'11'>())(2)(10); //=> true
+  R.flip(R.gt)(2)(10); //=> true
   // @dts-jest:pass
-  R.gt<number>(2)(10); //=> false
+  R.gt(2)(10); //=> false
 })();
 
 // @dts-jest:group gte
@@ -996,9 +1008,9 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.gte(2, 2); //=> true
   // @dts-jest:pass
-  R.flip(R.gte<'11'>())(2)(10); //=> true
+  R.flip(R.gte)(2)(10); //=> true
   // @dts-jest:pass
-  R.gte<number>(2)(10); //=> false
+  R.gte(2)(10); //=> false
 })();
 
 // @dts-jest:group has
@@ -1012,7 +1024,7 @@ import * as R from '../ramda/dist/index';
   hasName({}); //=> false
 
   const point = {x: 0, y: 0};
-  const pointHas = R.flip(R.has<'11'>())(point);
+  const pointHas = R.flip(R.has)(point);
   // @dts-jest:pass
   pointHas('x'); //=> true
   // @dts-jest:pass
@@ -1040,7 +1052,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.hasIn('area', square); //=> true
   // @dts-jest:pass
-  R.flip(R.hasIn<'11'>())(square)('area'); //=> true
+  R.flip(R.hasIn)(square)('area'); //=> true
 })();
 
 // @dts-jest:group head
@@ -1051,6 +1063,10 @@ import * as R from '../ramda/dist/index';
   R.head([10, 'ten']); //=> 10
   // @dts-jest:pass
   R.head(['10', 10]); //=> '10'
+
+  const ids = ['id1', 'id2', 'id3'];
+  // @dts-jest:pass
+  R.head(ids); //=> 'id1'
 })();
 
 // @dts-jest:group identical
@@ -1504,9 +1520,9 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.lt(2, 2); //=> false
   // @dts-jest:pass
-  R.lt<number>(5)(10); //=> true
+  R.lt(5)(10); //=> true
   // @dts-jest:pass
-  R.flip(R.lt<'11'>())(5)(10); //=> false
+  R.flip(R.lt)(5)(10); //=> false
 })();
 
 // @dts-jest:group lte
@@ -1518,9 +1534,9 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.lte(2, 2); //=> true
   // @dts-jest:pass
-  R.lte<number>(2)(10); //=> true
+  R.lte(2)(10); //=> true
   // @dts-jest:pass
-  R.flip(R.lte<'11'>())(2)(1); //=> true
+  R.flip(R.lte)(2)(1); //=> true
 })();
 
 // @dts-jest:group map
@@ -1613,7 +1629,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.mathMod(17, 5.3); //=> NaN
 
-  const clock = R.flip(R.mathMod<'11'>())(12);
+  const clock = R.flip(R.mathMod)(12);
   // @dts-jest:pass
   clock(15); //=> 3
   // @dts-jest:pass
@@ -1717,7 +1733,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.merge({name: 'fred', age: 10}, {age: 40}); //=> { 'name': 'fred', 'age': 40 }
 
-  const resetToDefault = R.flip(R.merge<'11'>())({x: 0});
+  const resetToDefault = R.flip(R.merge)({x: 0});
   // @dts-jest:skip Dictionary<number>
   resetToDefault({x: 5, y: 2}); //=> {x: 0, y: 2}
 })();
@@ -1772,7 +1788,7 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group mergeWith
 (() => {
   // @dts-jest:pass
-  R.mergeWith<'111'>()<any, {a: boolean, b: boolean, values: number[]}>(
+  R.mergeWith<any, {a: boolean, b: boolean, values: number[]}>(
     R.concat,
     {a: true, values: [10, 20]},
     {b: true, values: [15, 35]},
@@ -1831,7 +1847,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.modulo(17, -3); //=> 2
 
-  const isOdd = R.flip(R.modulo<'11'>())(2);
+  const isOdd = R.flip(R.modulo)(2);
   // @dts-jest:pass
   isOdd(42); //=> 0
   // @dts-jest:pass
@@ -2658,7 +2674,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.subtract(10, 8); //=> 2
 
-  const minus5 = R.flip(R.subtract<'11'>())(5);
+  const minus5 = R.flip(R.subtract)(5);
   // @dts-jest:pass
   minus5(17); //=> 12
 

@@ -8,12 +8,17 @@ import {create_lazy_inference} from './create-lazy-inference';
 import {create_masks} from './create-masks';
 import {create_selectable_signatures} from './create-selectable-signatures';
 import {has} from './has';
+import {is_type_predicate} from './is-element';
 import {push_signatures} from './push-signatures';
 
-const is_type_predicate = (element?: dts.IElement<any>): element is dts.ITypePredicate =>
-  (element !== undefined) && (element.kind === dts.ElementKind.TypePredicate);
-
-export const create_curried_types = (name: string, type: dts.IFunctionType, selectable = true, placeholder = true) => {
+export const create_curried_types = (
+  name: string,
+  type: dts.IFunctionType,
+  // istanbul ignore next
+  selectable = true,
+  // istanbul ignore next
+  placeholder = true,
+  ) => {
   const {
     generics = [],
     parameters = [],

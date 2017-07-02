@@ -1,5 +1,6 @@
 import * as del from 'del';
 import * as dts from 'dts-element';
+import {remap_snapshot} from 'dts-jest';
 import * as fs from 'fs';
 import * as glob from 'glob';
 import * as gulp from 'gulp';
@@ -8,9 +9,13 @@ import * as gulp_util from 'gulp-util';
 import * as path from 'path';
 import * as gulp_run from 'run-sequence';
 import * as through from 'through2';
+import * as yargs from 'yargs';
 import {bind_jsdoc} from './templates/utils/bind-jsdoc';
 import {placeholder_name, placeholder_name_abbr} from './templates/utils/constants';
 import {create_curried_declarations} from './templates/utils/create-curried-declarations';
+
+// tslint:disable-next-line:no-require-imports no-var-requires
+const diff = require('gulp-diff');
 
 // tslint:disable max-file-line-count
 
@@ -74,6 +79,63 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
   });
 });
 
+gulp.task('clean-remap', async () => del('./snapshots/'));
+gulp.task('remap', ['clean-remap'], () =>
+  gulp.src('./tests/__snapshots__/*.ts.snap')
+    .pipe(gulp_generate(generate_remap_content))
+    .pipe(gulp_rename({extname: ''}))
+    .pipe(gulp.dest('./snapshots')),
+);
+gulp.task('remap-check', () => {
+  function on_error() {
+    throw new Error('Detected outdated remapped-snapshots');
+  }
+  return gulp.src('./tests/__snapshots__/*.ts.snap')
+    .pipe(gulp_generate(generate_remap_content))
+    .pipe(gulp_rename({extname: ''}))
+    .pipe(diff('./snapshots'))
+    .on('error', on_error)
+    .pipe(diff.reporter({fail: true}))
+    .on('error', on_error);
+});
+gulp.task('remap-watch', ['remap'], (_callback: (error?: any) => void) => {
+  gulp.watch('./tests/__snapshots__/*.ts.snap', event => {
+    const input_relative_filename = path.relative(process.cwd(), event.path);
+    gulp_util.log(`Detected '${gulp_util.colors.cyan(input_relative_filename)}' ${event.type}`);
+
+    const output_relative_filename = input_relative_filename
+      .replace('tests/__snapshots__/', 'snapshots/')
+      .replace(/\.snap$/, '');
+
+    switch (event.type) {
+      case 'added':
+      case 'changed':
+      case 'renamed':
+        const remapped_snapshot = generate_remap_content(input_relative_filename);
+        fs.writeFile(output_relative_filename, remapped_snapshot, 'utf8', (error: any) => {
+          if (!error) {
+            gulp_util.log(`Remapping '${gulp_util.colors.cyan(output_relative_filename)}' complete`);
+          } else {
+            gulp_util.log(`Remapping '${gulp_util.colors.cyan(output_relative_filename)}' failed: ${error}`);
+          }
+          gulp_util.log('Watching for file changes.');
+        });
+        break;
+      case 'deleted':
+        del(input_relative_filename).then(() => {
+          gulp_util.log(`Deleting '${gulp_util.colors.cyan(output_relative_filename)}' complete`);
+          gulp_util.log('Watching for file changes.');
+        }).catch(error => {
+          gulp_util.log(`Deleting '${gulp_util.colors.cyan(output_relative_filename)}' failed: ${error}`);
+          gulp_util.log('Watching for file changes.');
+        });
+        break;
+      default:
+        throw new Error(`Unexpected event type '${event.type}'`);
+    }
+  });
+});
+
 function generate_files(
     glob: string,
     on_error: (error: Error) => void = error => { throw error; },
@@ -94,6 +156,22 @@ function generate_index() {
     .pipe(gulp_generate(generate_index_content))
     .pipe(gulp_rename({basename: 'index', extname: output_extname}))
     .pipe(gulp.dest(output_relative_dirname));
+}
+
+function generate_remap_content(filename: string) {
+  const cache_filename = path.resolve(process.cwd(), filename.replace(/\.ts\.snap$/, '.js'));
+  delete require.cache[cache_filename];
+  return remap_snapshot(
+    fs.readFileSync(filename, 'utf8'),
+    fs.readFileSync(
+      path.resolve(
+        path.dirname(filename),
+        `../${path.basename(filename, '.snap')}`,
+      ),
+      'utf8',
+    ),
+    cache_filename,
+  );
 }
 
 function get_top_level_members(filename: string): dts.ITopLevelMember[] {
@@ -283,21 +361,43 @@ function gulp_generate(fn: (filename: string) => string) {
   });
 }
 
-function get_options(): {output_dirname_postfix: string, selectable: boolean, placeholder: boolean} {
-  const kind_index = process.argv.indexOf('--kind');
-  const kind = (kind_index === -1)
-    ? undefined
-    : process.argv[kind_index + 1];
-  switch (kind) {
-    case undefined:
-      return {selectable: true, placeholder: true, output_dirname_postfix: ''};
-    case 'simple':
-      return {selectable: false, placeholder: false, output_dirname_postfix: `-${kind}`};
-    case 'selectable':
-      return {selectable: true, placeholder: false, output_dirname_postfix: `-${kind}`};
-    case 'placeholder':
-      return {selectable: false, placeholder: true, output_dirname_postfix: `-${kind}`};
-    default:
-      throw new Error(`Unexpected kind: '${kind}'`);
+function get_options() {
+  const options = {
+    placeholder: false,
+    selectable: false,
+  };
+  type Kind = keyof typeof options;
+  const no_kind = 'simple';
+  const all_kinds: Kind[] = ['placeholder', 'selectable'];
+
+  const args = yargs
+    .array('kind')
+    .default('kind', all_kinds)
+    .choices('kind', all_kinds)
+    .parse(process.argv.slice(1));
+
+  const kinds = (args.kind as Kind[]).slice().sort();
+  kinds.forEach(kind => {
+    options[kind] = true;
+  });
+
+  if (process.argv.some(x => x.startsWith('build'))) {
+    gulp_util.log(`Features ${
+      (kinds.length === 0
+        ? [no_kind]
+        : kinds
+      ).map(kind => `'${gulp_util.colors.cyan(kind)}'`).join(', ')
+    }`);
   }
+
+  const dirname_postfixes = (kinds.length === 0)
+    ? [no_kind]
+    : (kinds.length === all_kinds.length)
+      ? []
+      : kinds;
+
+  return {
+    ...options,
+    output_dirname_postfix: dirname_postfixes.map(x => `-${x}`).join(''),
+  };
 }

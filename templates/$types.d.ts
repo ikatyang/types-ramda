@@ -1,6 +1,5 @@
 // simple
 
-export type Ordered = string | number | boolean | Date;
 export type Property = string | number | symbol;
 export type Path = List<Property>;
 
@@ -41,6 +40,10 @@ export interface NestedDictionary<T> {
   [key: string]: T | NestedDictionary<T>;
 }
 
+export interface Ordered {
+  valueOf(): string | number | boolean;
+}
+
 // ramda
 
 export interface Lens<T, U> {
@@ -79,14 +82,14 @@ export interface Chain<T> extends Apply<T> {
   chain<U>(fn: Morphism<T, Chain<U>>): Chain<U>;
 }
 
-interface Applicative<T> extends Apply<T> {
+export interface Applicative<T> extends Apply<T> {
   of<U>(value: U): Applicative<U>;
 }
 
-interface Foldable<T> {
+export interface Foldable<T> {
   reduce<U>(fn: (accumulator: U, value: T) => U, initial: U): U;
 }
 
-interface Traversable<T> extends Functor<T>, Foldable<T> {
+export interface Traversable<T> extends Functor<T>, Foldable<T> {
   traverse<U, V>(fn: Morphism<T, Applicative<U>>, of: Morphism<V, Applicative<V>>): Applicative<Traversable<U>>;
 }

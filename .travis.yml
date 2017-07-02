@@ -5,17 +5,21 @@ node_js:
 
 before_install:
 - yarn global add greenkeeper-lockfile@1
+- yarn global add codecov
 
 before_script:
 - greenkeeper-lockfile-update
 
 script:
 - yarn run lint
+- yarn run remap-check
+- yarn run test-utils -- --verbose --coverage
 - yarn run test -- --verbose
 - yarn run test-actual -- --verbose -u
 
 after_script:
 - greenkeeper-lockfile-upload
+- codecov
 
 after_success:
 - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/deploy.sh; fi
@@ -27,7 +31,3 @@ cache:
 
 matrix:
   fast_finish: true
-
-branches:
-  except:
-  - /^greenkeeper\//
