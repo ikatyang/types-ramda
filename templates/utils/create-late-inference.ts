@@ -2,17 +2,6 @@ import * as dts from 'dts-element';
 import * as R from 'ramda';
 import {match} from './match';
 
-// TODO: improve while generic is not used in return typec
-// ● eqProps › R.eqProps('c')(o1)
-
-//     expect(value).toMatchSnapshot()
-
-//     Received value does not match stored snapshot 1.
-
-//     - "(b: { a: number; b: number; c: number; d: number; }) => boolean"
-//     + "<T$1 extends { a: number; b: number; c: number; d: number; } = { a: number; b: number; c
-// : number; d: number; }>(b: T$1) => boolean"
-
 export const create_late_inference = (
   mask: string,
   generics: dts.IGenericDeclaration[],
@@ -77,7 +66,6 @@ function replace_generic(function_type: dts.IFunctionType, generic: dts.IGeneric
     name: generic.name,
   };
   const matches = get_matches(function_type.parameters!, target);
-  // TODO: index + 00101010 consider those used, offset
   const grouped_matches = matches.reduce<{[index: number]: typeof matches}>(
     (current_grouped_matches, matched) => {
       const parameter = matched.path[matched.path.length - 2];
@@ -131,16 +119,6 @@ function replace_generic(function_type: dts.IFunctionType, generic: dts.IGeneric
   }
 
   const return_matches = get_matches(function_type.return, target);
-  // if (return_matches.length === 0) {
-  //   console.log('return_matches.length === 0');
-  //   if (new_generics.length === 1) {
-  //     console.log('new_generics.length === 1');
-  //     new_generics.pop();
-  //   } else {
-  //     console.log('new_generics.length > 1');
-  //     new_generics[new_generics.length - 1].name = new_generics[new_generics.length - 2].name;
-  //   }
-  // }
 
   get_matches(function_type.generics, target).forEach(matched => {
     const parent = matched.path[0];
@@ -206,107 +184,3 @@ function for_each_matched(source: any, target: any, callback: (matched: any, key
   }
   Object.keys(source).forEach(key => for_each_matched(source[key], target, callback, [key, ...keys], [source, ...path]));
 }
-
-// interface PH { joi123: any; }
-// type Comparator<T, U> = (v: T) => U;
-// type List<T> = ArrayLike<T>;
-
-// declare function sort<T>(fn: Comparator<T, number>, list: List<T>): T[];
-// // declare function sort<T$1, T$2 extends T$1>(fn: Comparator<T$1, number>, list: List<T$2>): T$2[];
-
-// declare function sort<T>(_fn: PH, list: List<T>): (fn: Comparator<T, number>) => T[];
-// declare function sort<T>(fn: Comparator<T, number>, list: List<T>): T[];
-// declare function sort<T>(fn: Comparator<T, number>): (list: List<T>) => T[];
-
-// declare function sort<T>(_fn: PH, list: List<T>): <U extends T>(fn: Comparator<U, number>) => T[];
-// declare function sort<T, U extends T>(fn: Comparator<U, number>, list: List<T>): T[];
-// declare function sort<U>(fn: Comparator<U, number>): <T extends U>(list: List<T>) => T[];
-
-// declare function sort<T>(fn: Comparator<T, number>, list: List<T>): T[];
-// declare function sort<T>(fn: Comparator<T, number>): <T$2 extends T>(list: List<T$2>) => T$2[];
-// declare function sort<T>(_fn: PH, list: List<T>): <T$2 extends T>(fn: Comparator<T$2, number>) => T$2[];
-
-// tslint:disable
-/*
-type sort_00 = {
-  <T>(_fn: PH, list: List<T>): sort_01<T>;
-  <T>(fn: Comparator<T, number>, list: List<T>): sort_11<T>;
-  <T>(fn: Comparator<T, number>): sort_10<T>;
-};
-type sort_01<T$> = {
-  <T extends T$>(fn: Comparator<T, number>): sort_11<T>;
-};
-type sort_10<T$> = {
-  <T extends T$>(list: List<T>): sort_11<T>;
-};
-type sort_11<T> = T[];
-*/
-
-// prototype
-// declare function x<T>(a: T, b: T, c: T): T;
-
-// type x_000 = {
-//   <T>(_a: PH, _b: PH, c: T): x_001<T>;
-//   <T$1, T$2 extends T$1>(_a: PH, b: T$1, c: T$2): x_011<T$2>;
-//   <T$1, T$2 extends T$1>(a: T$1, _b: PH, c: T$2): x_101<T$2>;
-//   <T$1, T$2 extends T$1, T$3 extends T$2>(a: T$1, b: T$2, c: T$3): x_111<T$3>;
-//   <T>(_a: PH, b: T): x_010<T>;
-//   <T$1, T$2 extends T$1>(a: T$1, b: T$2): x_110<T$2>;
-//   <T>(a: T): x_100<T>;
-// };
-// type x_100<T> = {
-//   <T$1 extends T>(_b: PH, c: T$1): x_101<T$1>;
-//   <T$1 extends T, T$2 extends T$1>(b: T$1, c: T$2): x_111<T$2>;
-//   <T$1 extends T>(b: T$1): x_110<T$1>;
-// };
-// type x_010<T> = {
-//   <T$1 extends T>(_a: PH, c: T$1): x_011<T$1>;
-//   <T$1 extends T>(a: T, c: T$1): x_111<T$1>;
-//   (a: T): x_110<T>;
-// };
-// type x_001<T> = {
-//   (_a: PH, b: T): x_011<T>;
-//   (a: T, b: T): x_111<T>;
-//   (a: T): x_101<T>;
-// };
-// type x_110<T> = {
-//   <T$1 extends T>(c: T$1): x_111<T$1>;
-// };
-// type x_011<T> = {
-//   (a: T): x_111<T>;
-// };
-// type x_101<T> = {
-//   (b: T): x_111<T>;
-// };
-// type x_111<T> = T;
-
-// declare const p: PH;
-// declare const x_: x_000;
-
-// declare const aa: {a: any};
-// declare const bb: {a: any, b: any};
-// declare const cc: {a: any, b: any, c: any};
-
-// const x111 = x_(aa, bb, cc);
-// const x110_1 = x_(aa, bb)(cc);
-// const x101_1 = x_(aa, p, cc)(bb);
-// const x011_1 = x_(p, bb, cc)(aa);
-// const x100_11 = x_(aa)(bb, cc);
-// const x100_01_1 = x_(aa)(p, cc)(bb as typeof cc);
-// const x100_1_1 = x_(aa)(bb)(cc);
-// const x010_11 = x_(p, bb)(aa, cc);
-// const x010_01_1 = x_(p, bb)(p, cc)(aa);
-// const x010_1_1 = x_(p, bb)(aa)(cc);
-// const x001_11 = x_(p, p, cc)(aa, bb);
-// const x001_01_1 = x_(p, p, cc)(p, bb)(aa);
-// const x001_1_1 = x_(p, p, cc)(aa)(bb);
-
-// declare const abc: {
-//   <T extends number = 1>(a: T): T;
-// }
-// declare const aas: {
-//   <T>(fn: (v: T) => any): T;
-// }
-
-// abc(2);
-// aas(abc);
