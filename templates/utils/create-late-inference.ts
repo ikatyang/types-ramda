@@ -45,8 +45,27 @@ export const create_late_inference = (
     );
     replace_generic(new_function_type, generic, unused_parameter_indexes, last_parameter_index_of_generic, false);
   });
+
+  const replace_map: Record<string, string> = {};
   target_function.generics!.forEach(generic => {
-    replace_generic(new_function_type, generic, unused_parameter_indexes, -1, true);
+    const new_generic_name_0 = replace_generic(new_function_type, generic, unused_parameter_indexes, -1, true);
+    if (new_generic_name_0 !== undefined) {
+      replace_map[generic.name] = new_generic_name_0;
+    }
+  });
+
+  R.keys(replace_map).forEach(generic_name => {
+    const new_generic_name_0 = replace_map[generic_name];
+    get_matches(new_function_type.generics, {
+      kind: dts.ElementKind.GeneralType,
+      name: generic_name,
+    }).forEach(matched => {
+      const parent = matched.path[0];
+      const key = matched.keys[0];
+      parent[key] = dts.create_general_type({
+        name: new_generic_name_0,
+      });
+    });
   });
 
   return new_function_type;
@@ -83,7 +102,7 @@ function replace_generic(function_type: dts.IFunctionType, generic: dts.IGeneric
       (index === 0)
         ? is_inside
           ? {
-            ...generic,
+            ...R.clone(generic),
             name: `${generic.name}$${index + 1}`,
           }
           : dts.create_generic_declaration({
@@ -123,6 +142,14 @@ function replace_generic(function_type: dts.IFunctionType, generic: dts.IGeneric
   //   }
   // }
 
+  get_matches(function_type.generics, target).forEach(matched => {
+    const parent = matched.path[0];
+    const key = matched.keys[0];
+    parent[key] = dts.create_general_type({
+      name: new_generics[0].name,
+    });
+  });
+
   if (is_inside) {
 
     const inside_generic_index = function_type.generics!.findIndex(current_generic => generic.name === current_generic.name);
@@ -151,6 +178,8 @@ function replace_generic(function_type: dts.IFunctionType, generic: dts.IGeneric
       name: new_generics[new_generics.length - 1].name,
     });
   });
+
+  return new_generics[0].name;
 }
 
 function get_matches(source: any, target: any) {

@@ -2,14 +2,14 @@
 
 exports[`generic-dependencies + multi-parameters + return-generics should transform correctly with every option 1`] = `
 "type propSatisfies_000 = {
-    <K$1 extends string, T$1 extends Record<K, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_111;
-    <K$1 extends string, T extends Record<K, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_110<K$2, T>;
+    <K$1 extends string, T$1 extends Record<K$1, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_111;
+    <K$1 extends string, T extends Record<K$1, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_110<K$2, T>;
     <K extends string, T$1 extends Record<K, any>, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K]>, _key: PH, object: T$2): propSatisfies_101<K, T$2>;
     <K extends string, T extends Record<K, any>>(fn: Predicate<T[K]>): propSatisfies_100<K, T>;
     <K extends string, T extends Record<K, any>>(_fn: PH, key: K, object: T): propSatisfies_011<K, T>;
     <K extends string>(_fn: PH, key: K): propSatisfies_010<K>;
-    <$SEL extends \\"111\\">(): <K$1 extends string, T$1 extends Record<K, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2) => propSatisfies_111;
-    <$SEL extends \\"11\\">(): <K$1 extends string, T extends Record<K, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2) => propSatisfies_110<K$2, T>;
+    <$SEL extends \\"111\\">(): <K$1 extends string, T$1 extends Record<K$1, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2) => propSatisfies_111;
+    <$SEL extends \\"11\\">(): <K$1 extends string, T extends Record<K$1, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2) => propSatisfies_110<K$2, T>;
     <$SEL extends \\"101\\">(): <K extends string, T$1 extends Record<K, any>, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K]>, _key: PH, object: T$2) => propSatisfies_101<K, T$2>;
     <$SEL extends \\"1\\">(): <K extends string, T extends Record<K, any>>(fn: Predicate<T[K]>) => propSatisfies_100<K, T>;
     <$SEL extends \\"011\\">(): <K extends string, T extends Record<K, any>>(_fn: PH, key: K, object: T) => propSatisfies_011<K, T>;
@@ -56,8 +56,8 @@ type propSatisfies_111 = boolean;
 
 exports[`generic-dependencies + multi-parameters + return-generics should transform correctly with late-inference 1`] = `
 "type propSatisfies_000 = {
-    <K$1 extends string, T$1 extends Record<K, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_111;
-    <K$1 extends string, T extends Record<K, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_110<K$2, T>;
+    <K$1 extends string, T$1 extends Record<K$1, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_111;
+    <K$1 extends string, T extends Record<K$1, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_110<K$2, T>;
     <K extends string, T extends Record<K, any>>(fn: Predicate<T[K]>): propSatisfies_100<K, T>;
 };
 type propSatisfies_100<K extends string, T extends Record<K, any>> = {
@@ -87,8 +87,8 @@ type propSatisfies_111 = boolean;
 
 exports[`generic-dependencies + multi-parameters + return-generics should transform correctly with placeholder 1`] = `
 "type propSatisfies_000 = {
-    <K$1 extends string, T$1 extends Record<K, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_111;
-    <K$1 extends string, T extends Record<K, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_110<K$2, T>;
+    <K$1 extends string, T$1 extends Record<K$1, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_111;
+    <K$1 extends string, T extends Record<K$1, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_110<K$2, T>;
     <K extends string, T$1 extends Record<K, any>, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K]>, _key: PH, object: T$2): propSatisfies_101<K, T$2>;
     <K extends string, T extends Record<K, any>>(fn: Predicate<T[K]>): propSatisfies_100<K, T>;
     <K extends string, T extends Record<K, any>>(_fn: PH, key: K, object: T): propSatisfies_011<K, T>;
@@ -125,10 +125,10 @@ type propSatisfies_111 = boolean;
 
 exports[`generic-dependencies + multi-parameters + return-generics should transform correctly with selectable 1`] = `
 "type propSatisfies_000 = {
-    <K$1 extends string, T$1 extends Record<K, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_111;
-    <K$1 extends string, T extends Record<K, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_110<K$2, T>;
-    <$SEL extends \\"111\\">(): <K$1 extends string, T$1 extends Record<K, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2) => propSatisfies_111;
-    <$SEL extends \\"11\\">(): <K$1 extends string, T extends Record<K, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2) => propSatisfies_110<K$2, T>;
+    <K$1 extends string, T$1 extends Record<K$1, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_111;
+    <K$1 extends string, T extends Record<K$1, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_110<K$2, T>;
+    <$SEL extends \\"111\\">(): <K$1 extends string, T$1 extends Record<K$1, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2) => propSatisfies_111;
+    <$SEL extends \\"11\\">(): <K$1 extends string, T extends Record<K$1, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2) => propSatisfies_110<K$2, T>;
     <$SEL extends \\"1\\">(): <K extends string, T extends Record<K, any>>(fn: Predicate<T[K]>) => propSatisfies_100<K, T>;
     <K extends string, T extends Record<K, any>>(fn: Predicate<T[K]>): propSatisfies_100<K, T>;
 };
@@ -165,8 +165,8 @@ type propSatisfies_111 = boolean;
 
 exports[`generic-dependencies + multi-parameters + return-generics should transform correctly without any options 1`] = `
 "type propSatisfies_000 = {
-    <K$1 extends string, T$1 extends Record<K, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_111;
-    <K$1 extends string, T extends Record<K, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_110<K$2, T>;
+    <K$1 extends string, T$1 extends Record<K$1, any>, K$2 extends K$1 = K$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_111;
+    <K$1 extends string, T extends Record<K$1, any>, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_110<K$2, T>;
     <K extends string, T extends Record<K, any>>(fn: Predicate<T[K]>): propSatisfies_100<K, T>;
 };
 type propSatisfies_100<K extends string, T extends Record<K, any>> = {
@@ -191,6 +191,200 @@ type propSatisfies_011<K extends string, T extends Record<K, any>> = {
     (fn: Predicate<T[K]>): propSatisfies_111;
 };
 type propSatisfies_111 = boolean;
+"
+`;
+
+exports[`generic-dependencies-2 + multi-parameters + return-generics should transform correctly with every option 1`] = `
+"type propSatisfies_keyof_000 = {
+    <T$1, K$1 extends keyof T$1, T$2 extends T$1 = T$1, K$2 extends K$1 = K$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_keyof_111;
+    <T, K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_keyof_110<T, K$2>;
+    <T$1, K extends keyof T$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K]>, _key: PH, object: T$2): propSatisfies_keyof_101<T$2, K>;
+    <T, K extends keyof T>(fn: Predicate<T[K]>): propSatisfies_keyof_100<T, K>;
+    <T, K extends keyof T>(_fn: PH, key: K, object: T): propSatisfies_keyof_011<T, K>;
+    <T, K extends keyof T>(_fn: PH, key: K): propSatisfies_keyof_010<T, K>;
+    <$SEL extends \\"111\\">(): <T$1, K$1 extends keyof T$1, T$2 extends T$1 = T$1, K$2 extends K$1 = K$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2) => propSatisfies_keyof_111;
+    <$SEL extends \\"11\\">(): <T, K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2) => propSatisfies_keyof_110<T, K$2>;
+    <$SEL extends \\"101\\">(): <T$1, K extends keyof T$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K]>, _key: PH, object: T$2) => propSatisfies_keyof_101<T$2, K>;
+    <$SEL extends \\"1\\">(): <T, K extends keyof T>(fn: Predicate<T[K]>) => propSatisfies_keyof_100<T, K>;
+    <$SEL extends \\"011\\">(): <T, K extends keyof T>(_fn: PH, key: K, object: T) => propSatisfies_keyof_011<T, K>;
+    <$SEL extends \\"01\\">(): <T, K extends keyof T>(_fn: PH, key: K) => propSatisfies_keyof_010<T, K>;
+    <$SEL extends \\"001\\">(): <T>(_fn: PH, _key: PH, object: T) => propSatisfies_keyof_001<T>;
+    <T>(_fn: PH, _key: PH, object: T): propSatisfies_keyof_001<T>;
+};
+type propSatisfies_keyof_100<T, K extends keyof T> = {
+    <T$1 extends T = T, K$1 extends K = K>(key: K$1, object: T$1): propSatisfies_keyof_111;
+    <K$1 extends K = K>(key: K$1): propSatisfies_keyof_110<T, K$1>;
+    <$SEL extends \\"11\\">(): <T$1 extends T = T, K$1 extends K = K>(key: K$1, object: T$1) => propSatisfies_keyof_111;
+    <$SEL extends \\"1\\">(): <K$1 extends K = K>(key: K$1) => propSatisfies_keyof_110<T, K$1>;
+    <$SEL extends \\"01\\">(): <T$1 extends T = T>(_key: PH, object: T$1) => propSatisfies_keyof_101<T$1, K>;
+    <T$1 extends T = T>(_key: PH, object: T$1): propSatisfies_keyof_101<T$1, K>;
+};
+type propSatisfies_keyof_010<T, K extends keyof T> = {
+    <T$1 extends T = T>(fn: Predicate<T$1[K]>, object: T): propSatisfies_keyof_111;
+    (fn: Predicate<T[K]>): propSatisfies_keyof_110<T, K>;
+    <$SEL extends \\"11\\">(): <T$1 extends T = T>(fn: Predicate<T$1[K]>, object: T) => propSatisfies_keyof_111;
+    <$SEL extends \\"1\\">(): (fn: Predicate<T[K]>) => propSatisfies_keyof_110<T, K>;
+    <$SEL extends \\"01\\">(): <T$1 extends T = T>(_fn: PH, object: T$1) => propSatisfies_keyof_011<T$1, K>;
+    <T$1 extends T = T>(_fn: PH, object: T$1): propSatisfies_keyof_011<T$1, K>;
+};
+type propSatisfies_keyof_110<T, K extends keyof T> = {
+    <T$1 extends T = T>(object: T$1): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_001<T> = {
+    <K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_keyof_111;
+    <K extends keyof T>(fn: Predicate<T[K]>): propSatisfies_keyof_101<T, K>;
+    <$SEL extends \\"11\\">(): <K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2) => propSatisfies_keyof_111;
+    <$SEL extends \\"1\\">(): <K extends keyof T>(fn: Predicate<T[K]>) => propSatisfies_keyof_101<T, K>;
+    <$SEL extends \\"01\\">(): <K extends keyof T>(_fn: PH, key: K) => propSatisfies_keyof_011<T, K>;
+    <K extends keyof T>(_fn: PH, key: K): propSatisfies_keyof_011<T, K>;
+};
+type propSatisfies_keyof_101<T, K extends keyof T> = {
+    <K$1 extends K = K>(key: K$1): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_011<T, K extends keyof T> = {
+    (fn: Predicate<T[K]>): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_111 = boolean;
+"
+`;
+
+exports[`generic-dependencies-2 + multi-parameters + return-generics should transform correctly with late-inference 1`] = `
+"type propSatisfies_keyof_000 = {
+    <T$1, K$1 extends keyof T$1, T$2 extends T$1 = T$1, K$2 extends K$1 = K$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_keyof_111;
+    <T, K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_keyof_110<T, K$2>;
+    <T, K extends keyof T>(fn: Predicate<T[K]>): propSatisfies_keyof_100<T, K>;
+};
+type propSatisfies_keyof_100<T, K extends keyof T> = {
+    <T$1 extends T = T, K$1 extends K = K>(key: K$1, object: T$1): propSatisfies_keyof_111;
+    <K$1 extends K = K>(key: K$1): propSatisfies_keyof_110<T, K$1>;
+};
+type propSatisfies_keyof_010<T, K extends keyof T> = {
+    <T$1 extends T = T>(fn: Predicate<T$1[K]>, object: T): propSatisfies_keyof_111;
+    (fn: Predicate<T[K]>): propSatisfies_keyof_110<T, K>;
+};
+type propSatisfies_keyof_110<T, K extends keyof T> = {
+    <T$1 extends T = T>(object: T$1): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_001<T> = {
+    <K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_keyof_111;
+    <K extends keyof T>(fn: Predicate<T[K]>): propSatisfies_keyof_101<T, K>;
+};
+type propSatisfies_keyof_101<T, K extends keyof T> = {
+    <K$1 extends K = K>(key: K$1): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_011<T, K extends keyof T> = {
+    (fn: Predicate<T[K]>): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_111 = boolean;
+"
+`;
+
+exports[`generic-dependencies-2 + multi-parameters + return-generics should transform correctly with placeholder 1`] = `
+"type propSatisfies_keyof_000 = {
+    <T$1, K$1 extends keyof T$1, T$2 extends T$1 = T$1, K$2 extends K$1 = K$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_keyof_111;
+    <T, K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_keyof_110<T, K$2>;
+    <T$1, K extends keyof T$1, T$2 extends T$1 = T$1>(fn: Predicate<T$1[K]>, _key: PH, object: T$2): propSatisfies_keyof_101<T$2, K>;
+    <T, K extends keyof T>(fn: Predicate<T[K]>): propSatisfies_keyof_100<T, K>;
+    <T, K extends keyof T>(_fn: PH, key: K, object: T): propSatisfies_keyof_011<T, K>;
+    <T, K extends keyof T>(_fn: PH, key: K): propSatisfies_keyof_010<T, K>;
+    <T>(_fn: PH, _key: PH, object: T): propSatisfies_keyof_001<T>;
+};
+type propSatisfies_keyof_100<T, K extends keyof T> = {
+    <T$1 extends T = T, K$1 extends K = K>(key: K$1, object: T$1): propSatisfies_keyof_111;
+    <K$1 extends K = K>(key: K$1): propSatisfies_keyof_110<T, K$1>;
+    <T$1 extends T = T>(_key: PH, object: T$1): propSatisfies_keyof_101<T$1, K>;
+};
+type propSatisfies_keyof_010<T, K extends keyof T> = {
+    <T$1 extends T = T>(fn: Predicate<T$1[K]>, object: T): propSatisfies_keyof_111;
+    (fn: Predicate<T[K]>): propSatisfies_keyof_110<T, K>;
+    <T$1 extends T = T>(_fn: PH, object: T$1): propSatisfies_keyof_011<T$1, K>;
+};
+type propSatisfies_keyof_110<T, K extends keyof T> = {
+    <T$1 extends T = T>(object: T$1): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_001<T> = {
+    <K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_keyof_111;
+    <K extends keyof T>(fn: Predicate<T[K]>): propSatisfies_keyof_101<T, K>;
+    <K extends keyof T>(_fn: PH, key: K): propSatisfies_keyof_011<T, K>;
+};
+type propSatisfies_keyof_101<T, K extends keyof T> = {
+    <K$1 extends K = K>(key: K$1): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_011<T, K extends keyof T> = {
+    (fn: Predicate<T[K]>): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_111 = boolean;
+"
+`;
+
+exports[`generic-dependencies-2 + multi-parameters + return-generics should transform correctly with selectable 1`] = `
+"type propSatisfies_keyof_000 = {
+    <T$1, K$1 extends keyof T$1, T$2 extends T$1 = T$1, K$2 extends K$1 = K$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_keyof_111;
+    <T, K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_keyof_110<T, K$2>;
+    <$SEL extends \\"111\\">(): <T$1, K$1 extends keyof T$1, T$2 extends T$1 = T$1, K$2 extends K$1 = K$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2) => propSatisfies_keyof_111;
+    <$SEL extends \\"11\\">(): <T, K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2) => propSatisfies_keyof_110<T, K$2>;
+    <$SEL extends \\"1\\">(): <T, K extends keyof T>(fn: Predicate<T[K]>) => propSatisfies_keyof_100<T, K>;
+    <T, K extends keyof T>(fn: Predicate<T[K]>): propSatisfies_keyof_100<T, K>;
+};
+type propSatisfies_keyof_100<T, K extends keyof T> = {
+    <T$1 extends T = T, K$1 extends K = K>(key: K$1, object: T$1): propSatisfies_keyof_111;
+    <$SEL extends \\"11\\">(): <T$1 extends T = T, K$1 extends K = K>(key: K$1, object: T$1) => propSatisfies_keyof_111;
+    <$SEL extends \\"1\\">(): <K$1 extends K = K>(key: K$1) => propSatisfies_keyof_110<T, K$1>;
+    <K$1 extends K = K>(key: K$1): propSatisfies_keyof_110<T, K$1>;
+};
+type propSatisfies_keyof_010<T, K extends keyof T> = {
+    <T$1 extends T = T>(fn: Predicate<T$1[K]>, object: T): propSatisfies_keyof_111;
+    <$SEL extends \\"11\\">(): <T$1 extends T = T>(fn: Predicate<T$1[K]>, object: T) => propSatisfies_keyof_111;
+    <$SEL extends \\"1\\">(): (fn: Predicate<T[K]>) => propSatisfies_keyof_110<T, K>;
+    (fn: Predicate<T[K]>): propSatisfies_keyof_110<T, K>;
+};
+type propSatisfies_keyof_110<T, K extends keyof T> = {
+    <T$1 extends T = T>(object: T$1): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_001<T> = {
+    <K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_keyof_111;
+    <$SEL extends \\"11\\">(): <K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2) => propSatisfies_keyof_111;
+    <$SEL extends \\"1\\">(): <K extends keyof T>(fn: Predicate<T[K]>) => propSatisfies_keyof_101<T, K>;
+    <K extends keyof T>(fn: Predicate<T[K]>): propSatisfies_keyof_101<T, K>;
+};
+type propSatisfies_keyof_101<T, K extends keyof T> = {
+    <K$1 extends K = K>(key: K$1): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_011<T, K extends keyof T> = {
+    (fn: Predicate<T[K]>): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_111 = boolean;
+"
+`;
+
+exports[`generic-dependencies-2 + multi-parameters + return-generics should transform correctly without any options 1`] = `
+"type propSatisfies_keyof_000 = {
+    <T$1, K$1 extends keyof T$1, T$2 extends T$1 = T$1, K$2 extends K$1 = K$1>(fn: Predicate<T$1[K$1]>, key: K$2, object: T$2): propSatisfies_keyof_111;
+    <T, K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_keyof_110<T, K$2>;
+    <T, K extends keyof T>(fn: Predicate<T[K]>): propSatisfies_keyof_100<T, K>;
+};
+type propSatisfies_keyof_100<T, K extends keyof T> = {
+    <T$1 extends T = T, K$1 extends K = K>(key: K$1, object: T$1): propSatisfies_keyof_111;
+    <K$1 extends K = K>(key: K$1): propSatisfies_keyof_110<T, K$1>;
+};
+type propSatisfies_keyof_010<T, K extends keyof T> = {
+    <T$1 extends T = T>(fn: Predicate<T$1[K]>, object: T): propSatisfies_keyof_111;
+    (fn: Predicate<T[K]>): propSatisfies_keyof_110<T, K>;
+};
+type propSatisfies_keyof_110<T, K extends keyof T> = {
+    <T$1 extends T = T>(object: T$1): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_001<T> = {
+    <K$1 extends keyof T, K$2 extends K$1 = K$1>(fn: Predicate<T[K$1]>, key: K$2): propSatisfies_keyof_111;
+    <K extends keyof T>(fn: Predicate<T[K]>): propSatisfies_keyof_101<T, K>;
+};
+type propSatisfies_keyof_101<T, K extends keyof T> = {
+    <K$1 extends K = K>(key: K$1): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_011<T, K extends keyof T> = {
+    (fn: Predicate<T[K]>): propSatisfies_keyof_111;
+};
+type propSatisfies_keyof_111 = boolean;
 "
 `;
 

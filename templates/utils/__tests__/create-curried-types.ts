@@ -17,6 +17,9 @@ const test_cases: Record<string, string> = {
   'generic-dependencies + multi-parameters + return-generics': `
     function propSatisfies<K extends string, T extends Record<K, any>>(fn: Predicate<T[K]>, key: K, object: T): boolean;
   `,
+  'generic-dependencies-2 + multi-parameters + return-generics': `
+    function propSatisfies_keyof<T, K extends keyof T>(fn: Predicate<T[K]>, key: K, object: T): boolean;
+  `,
 };
 
 Object.keys(test_cases).forEach(case_name => {
