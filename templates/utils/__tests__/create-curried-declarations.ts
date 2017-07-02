@@ -15,6 +15,7 @@ it('should generate correctly with curried types', () => {
     parse_type('(a: boolean, b: number, c: string) => object'),
     true,
     true,
+    true,
   ))).toMatchSnapshot();
 });
 
@@ -25,6 +26,7 @@ it('should generate correctly with various curried types', () => {
       x: parse_type('(a: number, b: number) => number'),
       y: parse_type('(a: string, b: string) => {}'),
     },
+    true,
     true,
     true,
   ))).toMatchSnapshot();

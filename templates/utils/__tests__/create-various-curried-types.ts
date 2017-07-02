@@ -43,24 +43,32 @@ Object.keys(test_cases).forEach(case_name => {
       })).toMatchSnapshot();
     });
 
+    it('should transform correctly with late-inference', () => {
+      expect(emit_curried_types({
+        late_inference: true,
+      })).toMatchSnapshot();
+    });
+
     it('should transform correctly with every option', () => {
       expect(emit_curried_types({
         selectable: true,
         placeholder: true,
+        late_inference: true,
       })).toMatchSnapshot();
     });
   });
 
-  function emit_curried_types(options: {selectable?: boolean, placeholder?: boolean} = {}) {
+  function emit_curried_types(options: {selectable?: boolean, placeholder?: boolean, late_inference?: boolean} = {}) {
     const test_case = test_cases[case_name];
     const function_types = parse_types(test_case);
 
     const {
       selectable = false,
       placeholder = false,
+      late_inference = false,
     } = options;
 
-    const curried_types = create_various_curried_types('$', function_types, selectable, placeholder);
+    const curried_types = create_various_curried_types('$', function_types, selectable, placeholder, late_inference);
     const top_level_element = dts.create_top_level_element({members: curried_types});
     return dts.emit(top_level_element);
   }
