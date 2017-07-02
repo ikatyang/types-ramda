@@ -1063,6 +1063,10 @@ import * as R from '../ramda/dist/index';
   R.head([10, 'ten']); //=> 10
   // @dts-jest:pass
   R.head(['10', 10]); //=> '10'
+
+  const ids = ['id1', 'id2', 'id3'];
+  // @dts-jest:pass
+  R.head(ids); //=> 'id1'
 })();
 
 // @dts-jest:group identical

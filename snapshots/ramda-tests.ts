@@ -1057,12 +1057,16 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group head
 (() => {
-  // @dts-jest:pass -> string | undefined
+  // @dts-jest:pass -> string
   R.head(['fi', 'fo', 'fum']); //=> 'fi'
-  // @dts-jest:pass -> string | number | undefined
+  // @dts-jest:pass -> number
   R.head([10, 'ten']); //=> 10
-  // @dts-jest:pass -> string | number | undefined
+  // @dts-jest:pass -> string
   R.head(['10', 10]); //=> '10'
+
+  const ids = ['id1', 'id2', 'id3'];
+  // @dts-jest:pass -> string | undefined
+  R.head(ids); //=> 'id1'
 })();
 
 // @dts-jest:group identical
