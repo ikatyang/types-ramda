@@ -24,11 +24,11 @@ type pick_00 = {
     <T>(_keys: PH, object: T): pick_remain_01<T>;
     (_keys: PH, object: any): pick_manual_01;
     <T>(keys: List<Property>, object: T): pick_remain_11<T>;
-    <$SEL extends "11", $KIND extends "remain">(): <T>(keys: List<Property>, object: T) => pick_remain_11<T>;
-    <$SEL extends "01", $KIND extends "remain">(): <T>(_keys: PH, object: T) => pick_remain_01<T>;
-    <$SEL extends "11", $KIND extends "manual">(): <V>(keys: List<Property>, object: any) => pick_manual_11<V>;
-    <$SEL extends "01", $KIND extends "manual">(): (_keys: PH, object: any) => pick_manual_01;
     <$SEL extends "1">(): (keys: List<Property>) => pick_10;
+    <$SEL extends "01", $KIND extends "remain">(): <T>(_keys: PH, object: T) => pick_remain_01<T>;
+    <$SEL extends "01", $KIND extends "manual">(): (_keys: PH, object: any) => pick_manual_01;
+    <$SEL extends "11", $KIND extends "remain">(): <T>(keys: List<Property>, object: T) => pick_remain_11<T>;
+    <$SEL extends "11", $KIND extends "manual">(): <V>(keys: List<Property>, object: any) => pick_manual_11<V>;
     <V>(keys: List<Property>, object: any): pick_manual_11<V>;
 };
 type pick_10 = {

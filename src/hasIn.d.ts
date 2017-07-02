@@ -30,9 +30,9 @@ declare const hasIn: hasIn_00;
 type hasIn_00 = {
     (property: Property): hasIn_10;
     <T>(_property: PH, object: T): hasIn_01<T>;
-    <$SEL extends "11">(): <T>(property: Property, object: T) => hasIn_11;
     <$SEL extends "1">(): (property: Property) => hasIn_10;
     <$SEL extends "01">(): <T>(_property: PH, object: T) => hasIn_01<T>;
+    <$SEL extends "11">(): <T>(property: Property, object: T) => hasIn_11;
     <T>(property: Property, object: T): hasIn_11;
 };
 type hasIn_10 = {

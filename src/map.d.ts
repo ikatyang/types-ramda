@@ -43,13 +43,13 @@ type map_00 = {
     <T, K extends string>(_fn: PH, object: Record<K, T>): map_object_01<T, K>;
     <T, U>(fn: Morphism<T, U>, list: List<T>): map_list_11<U>;
     <T, U>(fn: Morphism<T, U>, functor: Functor<T>): map_functor_11<U>;
-    <$SEL extends "11", $KIND extends "list">(): <T, U>(fn: Morphism<T, U>, list: List<T>) => map_list_11<U>;
-    <$SEL extends "01", $KIND extends "list">(): <T>(_fn: PH, list: List<T>) => map_list_01<T>;
-    <$SEL extends "11", $KIND extends "functor">(): <T, U>(fn: Morphism<T, U>, functor: Functor<T>) => map_functor_11<U>;
-    <$SEL extends "01", $KIND extends "functor">(): <T>(_fn: PH, functor: Functor<T>) => map_functor_01<T>;
-    <$SEL extends "11", $KIND extends "object">(): <T, U, K extends string>(fn: Morphism<T, U>, object: Record<K, T>) => map_object_11<U, K>;
-    <$SEL extends "01", $KIND extends "object">(): <T, K extends string>(_fn: PH, object: Record<K, T>) => map_object_01<T, K>;
     <$SEL extends "1">(): <T, U>(fn: Morphism<T, U>) => map_10<T, U>;
+    <$SEL extends "01", $KIND extends "list">(): <T>(_fn: PH, list: List<T>) => map_list_01<T>;
+    <$SEL extends "01", $KIND extends "functor">(): <T>(_fn: PH, functor: Functor<T>) => map_functor_01<T>;
+    <$SEL extends "01", $KIND extends "object">(): <T, K extends string>(_fn: PH, object: Record<K, T>) => map_object_01<T, K>;
+    <$SEL extends "11", $KIND extends "list">(): <T, U>(fn: Morphism<T, U>, list: List<T>) => map_list_11<U>;
+    <$SEL extends "11", $KIND extends "functor">(): <T, U>(fn: Morphism<T, U>, functor: Functor<T>) => map_functor_11<U>;
+    <$SEL extends "11", $KIND extends "object">(): <T, U, K extends string>(fn: Morphism<T, U>, object: Record<K, T>) => map_object_11<U, K>;
     <T, U, K extends string>(fn: Morphism<T, U>, object: Record<K, T>): map_object_11<U, K>;
 };
 type map_10<T, U> = {

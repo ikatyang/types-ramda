@@ -25,9 +25,9 @@ declare const view: view_00;
 type view_00 = {
     <T, U>(lens: Lens<T, U>): view_10<T, U>;
     <U>(_lens: PH, target: U): view_01<U>;
-    <$SEL extends "11">(): <T, U>(lens: Lens<T, U>, target: U) => view_11<T>;
     <$SEL extends "1">(): <T, U>(lens: Lens<T, U>) => view_10<T, U>;
     <$SEL extends "01">(): <U>(_lens: PH, target: U) => view_01<U>;
+    <$SEL extends "11">(): <T, U>(lens: Lens<T, U>, target: U) => view_11<T>;
     <T, U>(lens: Lens<T, U>, target: U): view_11<T>;
 };
 type view_10<T, U> = {

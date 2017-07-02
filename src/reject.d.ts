@@ -32,13 +32,13 @@ type reject_00 = {
     <T, U extends Dictionary<T>>(_fn: PH, object: U): reject_object_01<T, U>;
     <T>(fn: Predicate<T>, list: List<T>): reject_list_11<T>;
     <T, U extends Filterable<T>>(fn: Predicate<T>, filterable: U): reject_filterable_11<T, U>;
-    <$SEL extends "11", $KIND extends "list">(): <T>(fn: Predicate<T>, list: List<T>) => reject_list_11<T>;
-    <$SEL extends "01", $KIND extends "list">(): <T>(_fn: PH, list: List<T>) => reject_list_01<T>;
-    <$SEL extends "11", $KIND extends "filterable">(): <T, U extends Filterable<T>>(fn: Predicate<T>, filterable: U) => reject_filterable_11<T, U>;
-    <$SEL extends "01", $KIND extends "filterable">(): <T, U extends Filterable<T>>(_fn: PH, filterable: U) => reject_filterable_01<T, U>;
-    <$SEL extends "11", $KIND extends "object">(): <T, U extends Dictionary<T>>(fn: Predicate<T>, object: U) => reject_object_11<T, U>;
-    <$SEL extends "01", $KIND extends "object">(): <T, U extends Dictionary<T>>(_fn: PH, object: U) => reject_object_01<T, U>;
     <$SEL extends "1">(): <T>(fn: Predicate<T>) => reject_10<T>;
+    <$SEL extends "01", $KIND extends "list">(): <T>(_fn: PH, list: List<T>) => reject_list_01<T>;
+    <$SEL extends "01", $KIND extends "filterable">(): <T, U extends Filterable<T>>(_fn: PH, filterable: U) => reject_filterable_01<T, U>;
+    <$SEL extends "01", $KIND extends "object">(): <T, U extends Dictionary<T>>(_fn: PH, object: U) => reject_object_01<T, U>;
+    <$SEL extends "11", $KIND extends "list">(): <T>(fn: Predicate<T>, list: List<T>) => reject_list_11<T>;
+    <$SEL extends "11", $KIND extends "filterable">(): <T, U extends Filterable<T>>(fn: Predicate<T>, filterable: U) => reject_filterable_11<T, U>;
+    <$SEL extends "11", $KIND extends "object">(): <T, U extends Dictionary<T>>(fn: Predicate<T>, object: U) => reject_object_11<T, U>;
     <T, U extends Dictionary<T>>(fn: Predicate<T>, object: U): reject_object_11<T, U>;
 };
 type reject_10<T> = {

@@ -36,9 +36,9 @@ declare const sortBy: sortBy_00;
 type sortBy_00 = {
     <T>(fn: Morphism<T, Ordered>): sortBy_10<T>;
     <T>(_fn: PH, list: List<T>): sortBy_01<T>;
-    <$SEL extends "11">(): <T>(fn: Morphism<T, Ordered>, list: List<T>) => sortBy_11<T>;
     <$SEL extends "1">(): <T>(fn: Morphism<T, Ordered>) => sortBy_10<T>;
     <$SEL extends "01">(): <T>(_fn: PH, list: List<T>) => sortBy_01<T>;
+    <$SEL extends "11">(): <T>(fn: Morphism<T, Ordered>, list: List<T>) => sortBy_11<T>;
     <T>(fn: Morphism<T, Ordered>, list: List<T>): sortBy_11<T>;
 };
 type sortBy_10<T> = {

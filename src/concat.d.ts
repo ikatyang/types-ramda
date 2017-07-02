@@ -33,12 +33,12 @@ type concat_00 = {
     (_a: PH, b: string): concat_string_01;
     <T>(_a: PH, b: T[]): concat__01<T>;
     (a: string, b: string): concat_string_11;
-    <$SEL extends "11", $KIND extends "string">(): (a: string, b: string) => concat_string_11;
     <$SEL extends "1", $KIND extends "string">(): (a: string) => concat_string_10;
-    <$SEL extends "01", $KIND extends "string">(): (_a: PH, b: string) => concat_string_01;
-    <$SEL extends "11", $KIND extends "">(): <T>(a: T[], b: T[]) => concat__11<T>;
     <$SEL extends "1", $KIND extends "">(): <T>(a: T[]) => concat__10<T>;
+    <$SEL extends "01", $KIND extends "string">(): (_a: PH, b: string) => concat_string_01;
     <$SEL extends "01", $KIND extends "">(): <T>(_a: PH, b: T[]) => concat__01<T>;
+    <$SEL extends "11", $KIND extends "string">(): (a: string, b: string) => concat_string_11;
+    <$SEL extends "11", $KIND extends "">(): <T>(a: T[], b: T[]) => concat__11<T>;
     <T>(a: T[], b: T[]): concat__11<T>;
 };
 type concat_string_10 = {

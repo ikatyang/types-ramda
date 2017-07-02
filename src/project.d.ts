@@ -29,15 +29,15 @@ type project_00 = {
     (_keys: PH, object: any): project_manual_01;
     <T, K extends keyof T>(keys: List<K>, list: List<T>): project_keyof_11<T, K>;
     <K extends string, T extends Record<K, any>>(keys: List<K>, list: List<T>): project_record_11<K, T>;
-    <$SEL extends "11", $KIND extends "keyof">(): <T, K extends keyof T>(keys: List<K>, list: List<T>) => project_keyof_11<T, K>;
     <$SEL extends "1", $KIND extends "keyof">(): <T, K extends keyof T>(keys: List<K>) => project_keyof_10<T, K>;
-    <$SEL extends "01", $KIND extends "keyof">(): <T>(_keys: PH, list: List<T>) => project_keyof_01<T>;
-    <$SEL extends "11", $KIND extends "record">(): <K extends string, T extends Record<K, any>>(keys: List<K>, list: List<T>) => project_record_11<K, T>;
     <$SEL extends "1", $KIND extends "record">(): <K extends string>(keys: List<K>) => project_record_10<K>;
-    <$SEL extends "01", $KIND extends "record">(): <K extends string, T extends Record<K, any>>(_keys: PH, list: List<T>) => project_record_01<K, T>;
-    <$SEL extends "11", $KIND extends "manual">(): <V>(keys: Property[], object: any) => project_manual_11<V>;
     <$SEL extends "1", $KIND extends "manual">(): (keys: Property[]) => project_manual_10;
+    <$SEL extends "01", $KIND extends "keyof">(): <T>(_keys: PH, list: List<T>) => project_keyof_01<T>;
+    <$SEL extends "01", $KIND extends "record">(): <K extends string, T extends Record<K, any>>(_keys: PH, list: List<T>) => project_record_01<K, T>;
     <$SEL extends "01", $KIND extends "manual">(): (_keys: PH, object: any) => project_manual_01;
+    <$SEL extends "11", $KIND extends "keyof">(): <T, K extends keyof T>(keys: List<K>, list: List<T>) => project_keyof_11<T, K>;
+    <$SEL extends "11", $KIND extends "record">(): <K extends string, T extends Record<K, any>>(keys: List<K>, list: List<T>) => project_record_11<K, T>;
+    <$SEL extends "11", $KIND extends "manual">(): <V>(keys: Property[], object: any) => project_manual_11<V>;
     <V>(keys: Property[], object: any): project_manual_11<V>;
 };
 type project_keyof_10<T, K extends keyof T> = {

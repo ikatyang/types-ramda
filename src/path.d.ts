@@ -22,9 +22,9 @@ declare const path: path_00;
 type path_00 = {
     (path: Path): path_10;
     (_path: PH, object: any): path_01;
-    <$SEL extends "11">(): <R>(path: Path, object: any) => path_11<R>;
     <$SEL extends "1">(): (path: Path) => path_10;
     <$SEL extends "01">(): (_path: PH, object: any) => path_01;
+    <$SEL extends "11">(): <R>(path: Path, object: any) => path_11<R>;
     <R>(path: Path, object: any): path_11<R>;
 };
 type path_10 = {
