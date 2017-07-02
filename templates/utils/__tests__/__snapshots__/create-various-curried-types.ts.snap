@@ -2,22 +2,43 @@
 
 exports[`generics + multi-parameters + return-generics should transform correctly with every option 1`] = `
 "type $_00 = {
-    <T, U>(fn: Morphism<T, U>, list: List<T>): $_list_11<U>;
-    <$SEL extends \\"11\\", $KIND extends \\"list\\">(): <T, U>(fn: Morphism<T, U>, list: List<T>) => $_list_11<U>;
+    <T$1, U, T$2 extends T$1 = T$1>(fn: Morphism<T$1, U>, list: List<T$2>): $_list_11<U>;
+    <$SEL extends \\"11\\", $KIND extends \\"list\\">(): <T$1, U, T$2 extends T$1 = T$1>(fn: Morphism<T$1, U>, list: List<T$2>) => $_list_11<U>;
     <T>(_fn: PH, list: List<T>): $_list_01<T>;
     <$SEL extends \\"01\\", $KIND extends \\"list\\">(): <T>(_fn: PH, list: List<T>) => $_list_01<T>;
-    <T, U>(fn: Morphism<T, U>, functor: Functor<T>): $_functor_11<U>;
-    <$SEL extends \\"11\\", $KIND extends \\"functor\\">(): <T, U>(fn: Morphism<T, U>, functor: Functor<T>) => $_functor_11<U>;
+    <T$1, U, T$2 extends T$1 = T$1>(fn: Morphism<T$1, U>, functor: Functor<T$2>): $_functor_11<U>;
+    <$SEL extends \\"11\\", $KIND extends \\"functor\\">(): <T$1, U, T$2 extends T$1 = T$1>(fn: Morphism<T$1, U>, functor: Functor<T$2>) => $_functor_11<U>;
     <T>(_fn: PH, functor: Functor<T>): $_functor_01<T>;
     <$SEL extends \\"01\\", $KIND extends \\"functor\\">(): <T>(_fn: PH, functor: Functor<T>) => $_functor_01<T>;
     <T, U>(fn: Morphism<T, U>): $_10<T, U>;
     <$SEL extends \\"1\\">(): <T, U>(fn: Morphism<T, U>) => $_10<T, U>;
 };
 type $_10<T, U> = {
-    (list: List<T>): $_list_11<U>;
-    <$SEL extends \\"1\\", $KIND extends \\"list\\">(): (list: List<T>) => $_list_11<U>;
-    (functor: Functor<T>): $_functor_11<U>;
-    <$SEL extends \\"1\\", $KIND extends \\"functor\\">(): (functor: Functor<T>) => $_functor_11<U>;
+    <T$1 extends T = T>(list: List<T$1>): $_list_11<U>;
+    <$SEL extends \\"1\\", $KIND extends \\"list\\">(): <T$1 extends T = T>(list: List<T$1>) => $_list_11<U>;
+    <T$1 extends T = T>(functor: Functor<T$1>): $_functor_11<U>;
+    <$SEL extends \\"1\\", $KIND extends \\"functor\\">(): <T$1 extends T = T>(functor: Functor<T$1>) => $_functor_11<U>;
+};
+type $_list_01<T> = {
+    <U>(fn: Morphism<T, U>): $_list_11<U>;
+};
+type $_functor_01<T> = {
+    <U>(fn: Morphism<T, U>): $_functor_11<U>;
+};
+type $_list_11<U> = U[];
+type $_functor_11<U> = Functor<U>;
+"
+`;
+
+exports[`generics + multi-parameters + return-generics should transform correctly with late-inference 1`] = `
+"type $_00 = {
+    <T$1, U, T$2 extends T$1 = T$1>(fn: Morphism<T$1, U>, list: List<T$2>): $_list_11<U>;
+    <T$1, U, T$2 extends T$1 = T$1>(fn: Morphism<T$1, U>, functor: Functor<T$2>): $_functor_11<U>;
+    <T, U>(fn: Morphism<T, U>): $_10<T, U>;
+};
+type $_10<T, U> = {
+    <T$1 extends T = T>(list: List<T$1>): $_list_11<U>;
+    <T$1 extends T = T>(functor: Functor<T$1>): $_functor_11<U>;
 };
 type $_list_01<T> = {
     <U>(fn: Morphism<T, U>): $_list_11<U>;
@@ -112,6 +133,16 @@ type $_list_1<T> = T | undefined;
 "
 `;
 
+exports[`generics + multi-parameters should transform correctly with late-inference 1`] = `
+"type $_0 = {
+    (str: string): $_string_1;
+    <T>(list: List<T>): $_list_1<T>;
+};
+type $_string_1 = string;
+type $_list_1<T> = T | undefined;
+"
+`;
+
 exports[`generics + multi-parameters should transform correctly with placeholder 1`] = `
 "type $_0 = {
     (str: string): $_string_1;
@@ -158,6 +189,30 @@ exports[`non-generics should transform correctly with every option 1`] = `
     <$SEL extends \\"1\\", $KIND extends \\"string\\">(): (a: string) => $_string_10;
     (_a: PH, b: string): $_string_01;
     <$SEL extends \\"01\\", $KIND extends \\"string\\">(): (_a: PH, b: string) => $_string_01;
+};
+type $_number_10 = {
+    (b: number): $_number_11;
+};
+type $_string_10 = {
+    (b: string): $_string_11;
+};
+type $_number_01 = {
+    (a: number): $_number_11;
+};
+type $_string_01 = {
+    (a: string): $_string_11;
+};
+type $_number_11 = boolean;
+type $_string_11 = boolean;
+"
+`;
+
+exports[`non-generics should transform correctly with late-inference 1`] = `
+"type $_00 = {
+    (a: number, b: number): $_number_11;
+    (a: number): $_number_10;
+    (a: string, b: string): $_string_11;
+    (a: string): $_string_10;
 };
 type $_number_10 = {
     (b: number): $_number_11;

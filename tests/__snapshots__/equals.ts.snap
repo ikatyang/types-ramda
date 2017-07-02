@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_equals(string) 1`] = `"(b: string) => boolean"`;
+exports[`R_equals(string) 1`] = `"<T$1 extends string = string>(b: T$1) => boolean"`;
 
 exports[`R_equals(string)(string) 1`] = `"boolean"`;
 

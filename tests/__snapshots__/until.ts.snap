@@ -2,6 +2,6 @@
 
 exports[`R_until(number_to_boolean)(number_to_number)(number) 1`] = `"number"`;
 
-exports[`R_until(number_to_boolean, number_to_number) 1`] = `"(initial: number) => number"`;
+exports[`R_until(number_to_boolean, number_to_number) 1`] = `"<T$1 extends number = number>(initial: T$1) => T$1"`;
 
 exports[`R_until(number_to_boolean, number_to_number, number) 1`] = `"number"`;

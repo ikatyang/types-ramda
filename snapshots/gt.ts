@@ -3,7 +3,7 @@ import * as R_gt from '../ramda/dist/src/gt';
 declare const string: string;
 declare const number: number;
 
-// @dts-jest:pass -> (b: string) => boolean
+// @dts-jest:pass -> <T$1 extends string = string>(b: T$1) => boolean
 R_gt(string);
 // @dts-jest:pass -> boolean
 R_gt(string, string);

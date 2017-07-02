@@ -2,6 +2,6 @@
 
 exports[`R_ifElse(string_to_boolean)(string_to_number)(string_to_object) 1`] = `"(value: string) => number | object"`;
 
-exports[`R_ifElse(string_to_boolean, string_to_number) 1`] = `"<V>(onFalse: (value: string) => V) => (value: string) => number | V"`;
+exports[`R_ifElse(string_to_boolean, string_to_number) 1`] = `"<V, T$1 extends string = string>(onFalse: (value: T$1) => V) => (value: T$1) => number | V"`;
 
 exports[`R_ifElse(string_to_boolean, string_to_number, string_to_object) 1`] = `"(value: string) => number | object"`;

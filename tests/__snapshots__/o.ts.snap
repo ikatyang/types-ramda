@@ -2,6 +2,6 @@
 
 exports[`R_o(number_to_string)(boolean_to_number)(boolean) 1`] = `"string"`;
 
-exports[`R_o(number_to_string, boolean_to_number) 1`] = `"(value: boolean) => string"`;
+exports[`R_o(number_to_string, boolean_to_number) 1`] = `"<T1$1 extends boolean = boolean>(value: T1$1) => string"`;
 
 exports[`R_o(number_to_string, boolean_to_number, boolean) 1`] = `"string"`;

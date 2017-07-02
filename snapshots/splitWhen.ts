@@ -7,14 +7,14 @@ declare const string_to_boolean: (x: string) => boolean;
 declare const object_list: List<object>;
 declare const object_to_boolean: (x: object) => boolean;
 
-// @dts-jest:pass -> (list: List<string>) => string[][]
+// @dts-jest:pass -> <T$1 extends string = string>(list: List<T$1>) => T$1[][]
 R_splitWhen(string_to_boolean);
 // @dts-jest:pass -> string[][]
 R_splitWhen(string_to_boolean)(string);
 // @dts-jest:pass -> string[][]
 R_splitWhen(string_to_boolean, string);
 
-// @dts-jest:pass -> (list: List<object>) => object[][]
+// @dts-jest:pass -> <T$1 extends object = object>(list: List<T$1>) => T$1[][]
 R_splitWhen(object_to_boolean);
 // @dts-jest:pass -> object[][]
 R_splitWhen(object_to_boolean)(object_list);

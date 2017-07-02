@@ -5,16 +5,16 @@ declare const any_applicative: Applicative<any>;
 declare const number_applicative: Applicative<number>;
 declare const any_applicative_traverable: Traversable<Applicative<any>>;
 
-// @dts-jest:pass -> Applicative<{}[]>
+// @dts-jest:pass -> Applicative<number[]>
 R_sequence(number_applicative.of, [number_applicative]);
-// @dts-jest:pass -> Applicative<{}[]>
+// @dts-jest:pass -> Applicative<any[]>
 R_sequence(any_applicative.of, [any_applicative]);
 // @dts-jest:pass -> Applicative<number[]>
 R_sequence<number>(any_applicative.of, [any_applicative]);
 
-// @dts-jest:pass -> Applicative<Traversable<{}>>
+// @dts-jest:pass -> Applicative<Traversable<any>>
 R_sequence(number_applicative.of, any_applicative_traverable);
-// @dts-jest:pass -> Applicative<Traversable<{}>>
+// @dts-jest:pass -> Applicative<Traversable<any>>
 R_sequence(any_applicative.of, any_applicative_traverable);
 // @dts-jest:pass -> Applicative<Traversable<number>>
 R_sequence<number>(any_applicative.of, any_applicative_traverable);

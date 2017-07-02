@@ -2,6 +2,6 @@
 
 exports[`R_set(number_object_lens)(number)(object) 1`] = `"object"`;
 
-exports[`R_set(number_object_lens, number) 1`] = `"(target: object) => object"`;
+exports[`R_set(number_object_lens, number) 1`] = `"<U$1 extends object = object>(target: U$1) => U$1"`;
 
 exports[`R_set(number_object_lens, number, object) 1`] = `"object"`;

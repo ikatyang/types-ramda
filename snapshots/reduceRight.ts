@@ -4,7 +4,7 @@ declare const number_array: number[];
 declare const object: object;
 declare const number_object_to_object: (val: number, acc: object) => object;
 
-// @dts-jest:pass -> (values: number[] | ArrayLike<number>) => object
+// @dts-jest:pass -> <T$1 extends number = number>(values: T$1[] | ArrayLike<T$1>) => object
 R_reduceRight(number_object_to_object, object);
 // @dts-jest:pass -> object
 R_reduceRight(number_object_to_object)(object)(number_array);

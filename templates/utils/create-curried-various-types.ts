@@ -5,7 +5,13 @@ import {create_masks} from './create-masks';
 import {create_selectable_signatures} from './create-selectable-signatures';
 import {is_object_member, is_object_type} from './is-element';
 
-export const create_various_curried_types = (name: string, types: {[kind: string]: dts.IFunctionType}, selectable = true, placeholder = true) => {
+export const create_various_curried_types = (
+    name: string,
+    types: {[kind: string]: dts.IFunctionType},
+    selectable = true,
+    placeholder = true,
+    late_inference = true,
+    ) => {
   const keys = Object.keys(types);
 
   const parameters_length = keys.reduce<number>(
@@ -19,7 +25,7 @@ export const create_various_curried_types = (name: string, types: {[kind: string
   );
 
   const curried_types_declarations = keys.reduce<dts.ITypeDeclaration[][]>(
-    (reduced, key) => [...reduced, create_curried_types(`${name}_${key}`, types[key], false, placeholder)],
+    (reduced, key) => [...reduced, create_curried_types(`${name}_${key}`, types[key], false, placeholder, late_inference)],
     [],
   );
 

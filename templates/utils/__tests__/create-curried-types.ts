@@ -14,6 +14,12 @@ const test_cases: Record<string, string> = {
   'type-predicate': `
     function is<T>(constructor: Constructor<T>, value: any): value is T;
   `,
+  'generic-dependencies + multi-parameters + return-generics': `
+    function propSatisfies<K extends string, T extends Record<K, any>>(fn: Predicate<T[K]>, key: K, object: T): boolean;
+  `,
+  'generic-dependencies-2 + multi-parameters + return-generics': `
+    function propSatisfies_keyof<T, K extends keyof T>(fn: Predicate<T[K]>, key: K, object: T): boolean;
+  `,
 };
 
 Object.keys(test_cases).forEach(case_name => {
@@ -36,15 +42,22 @@ Object.keys(test_cases).forEach(case_name => {
       })).toMatchSnapshot();
     });
 
+    it('should transform correctly with late-inference', () => {
+      expect(emit_curried_types({
+        late_inference: true,
+      })).toMatchSnapshot();
+    });
+
     it('should transform correctly with every option', () => {
       expect(emit_curried_types({
         selectable: true,
         placeholder: true,
+        late_inference: true,
       })).toMatchSnapshot();
     });
   });
 
-  function emit_curried_types(options: {selectable?: boolean, placeholder?: boolean} = {}) {
+  function emit_curried_types(options: {selectable?: boolean, placeholder?: boolean, late_inference?: boolean} = {}) {
     const test_case = test_cases[case_name];
     const function_declaration = dts.parse(test_case).members[0] as dts.IFunctionDeclaration;
     const function_name = function_declaration.name!;
@@ -53,6 +66,7 @@ Object.keys(test_cases).forEach(case_name => {
     const {
       selectable = false,
       placeholder = false,
+      late_inference = false,
     } = options;
 
     const curried_types = create_curried_types(function_name, function_type, selectable, placeholder);

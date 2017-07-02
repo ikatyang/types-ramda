@@ -4,7 +4,7 @@ import * as R_view from '../ramda/dist/src/view';
 declare const number_object_lens: Lens<number, object>;
 declare const object: object;
 
-// @dts-jest:pass -> (target: object) => number
+// @dts-jest:pass -> <U$1 extends object = object>(target: U$1) => number
 R_view(number_object_lens);
 // @dts-jest:pass -> number
 R_view(number_object_lens)(object);
