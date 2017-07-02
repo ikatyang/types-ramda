@@ -1,7 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_insert(number)(string)(object_array) 1`] = `"(string | object)[]"`;
+exports[`R_insert(number)(object)(object_array) 1`] = `"object[]"`;
 
-exports[`R_insert(number, string) 1`] = `"<U>(list: U[] | ArrayLike<U>) => (string | U)[]"`;
+exports[`R_insert(number)(string)(object_array) 1`] = `
+"Argument of type 'object[]' is not assignable to parameter of type 'List<string>'.
+  Type 'object[]' is not assignable to type 'ArrayLike<string>'."
+`;
 
-exports[`R_insert(number, string, object_array) 1`] = `"(string | object)[]"`;
+exports[`R_insert(number, object) 1`] = `"(list: object[] | ArrayLike<object>) => object[]"`;
+
+exports[`R_insert(number, object, object_array) 1`] = `"object[]"`;
+
+exports[`R_insert(number, string) 1`] = `"(list: string[] | ArrayLike<string>) => string[]"`;
+
+exports[`R_insert(number, string, object_array) 1`] = `
+"Argument of type 'object[]' is not assignable to parameter of type 'List<string>'.
+  Type 'object[]' is not assignable to type 'ArrayLike<string>'.
+    Index signatures are incompatible.
+      Type 'object' is not assignable to type 'string'."
+`;
