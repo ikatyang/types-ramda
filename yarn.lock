@@ -95,9 +95,9 @@
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-0.0.34.tgz#e5d3a54e7a56309d904cdf1dc34f61ac595fae2e"
 
-"@types/ramda@ikatyang/types-ramda#f13b28b6c232f32e780480ca68031e2508e4a2e6":
+"@types/ramda@ikatyang/types-ramda#33f8e0e31d9afeb683e226dd647e10f4d3b69f30":
   version "0.24.0"
-  resolved "https://codeload.github.com/ikatyang/types-ramda/tar.gz/f13b28b6c232f32e780480ca68031e2508e4a2e6"
+  resolved "https://codeload.github.com/ikatyang/types-ramda/tar.gz/33f8e0e31d9afeb683e226dd647e10f4d3b69f30"
 
 "@types/run-sequence@0.0.29":
   version "0.0.29"
