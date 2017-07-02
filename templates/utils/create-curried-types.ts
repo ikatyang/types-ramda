@@ -18,6 +18,8 @@ export const create_curried_types = (
   selectable = true,
   // istanbul ignore next
   placeholder = true,
+  // istanbul ignore next
+  late_inference = true,
   ) => {
   const {
     generics = [],
@@ -163,10 +165,12 @@ export const create_curried_types = (
       },
     );
 
-    members.forEach(member => {
-      const owned = member.owned as dts.IFunctionDeclaration;
-      owned.type = create_late_inference(masks[index], generics, parameters_generics, type_declaration.generics!, owned.type!);
-    });
+    if (late_inference) {
+      members.forEach(member => {
+        const owned = member.owned as dts.IFunctionDeclaration;
+        owned.type = create_late_inference(masks[index], generics, parameters_generics, type_declaration.generics!, owned.type!);
+      });
+    }
 
     if (selectable && members.length > 1) {
       members.splice(-1, 0, ...create_selectable_signatures(members));

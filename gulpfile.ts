@@ -25,7 +25,9 @@ const input_relative_dirname = 'templates';
 const glob_index = `${input_relative_dirname}/README.md`;
 const glob_templates = `${input_relative_dirname}/*.ts`;
 
-const {selectable, placeholder, output_dirname_postfix} = get_options();
+const build_options = get_options();
+const {selectable, placeholder, output_dirname_postfix} = build_options;
+const late_inference = build_options['late-inference'];
 
 const output_sub_dirname = 'src';
 const output_relative_dirname = `./ramda/dist${output_dirname_postfix}`;
@@ -276,6 +278,7 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
         ),
       selectable,
       placeholder,
+      late_inference,
     );
 
     members.push(
@@ -363,12 +366,13 @@ function gulp_generate(fn: (filename: string) => string) {
 
 function get_options() {
   const options = {
-    placeholder: false,
-    selectable: false,
+    'placeholder': false,
+    'selectable': false,
+    'late-inference': false,
   };
   type Kind = keyof typeof options;
   const no_kind = 'simple';
-  const all_kinds: Kind[] = ['placeholder', 'selectable'];
+  const all_kinds: Kind[] = ['placeholder', 'selectable', 'late-inference'];
 
   const args = yargs
     .array('kind')

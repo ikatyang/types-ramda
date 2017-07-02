@@ -7,11 +7,16 @@ import {is_function_type, is_object_member, is_object_type} from './is-element';
 import {sort_signatures} from './sort-signatures';
 
 export const create_curried_declarations = (
-    filename: string, type: dts.IFunctionType | {[kind: string]: dts.IFunctionType}, selectable?: boolean, placeholder?: boolean) => {
+    filename: string,
+    type: dts.IFunctionType | {[kind: string]: dts.IFunctionType},
+    selectable?: boolean,
+    placeholder?: boolean,
+    late_inference?: boolean,
+    ) => {
   const name = path.basename(filename).replace(/(\.[a-z])?\.ts$/, '');
   const members = is_function_type(type)
-    ? create_curried_types(name, type, selectable, placeholder)
-    : create_various_curried_types(name, type, selectable, placeholder);
+    ? create_curried_types(name, type, selectable, placeholder, late_inference)
+    : create_various_curried_types(name, type, selectable, placeholder, late_inference);
   const variable_declaration = dts.create_variable_declaration({
     name,
     const: true,
