@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_unfold(string_to_object_string_tuple_or_false) 1`] = `"(initial: string) => object[]"`;
+exports[`R_unfold(string_to_object_string_tuple_or_false) 1`] = `"<T$1 extends string = string>(initial: T$1) => object[]"`;
 
 exports[`R_unfold(string_to_object_string_tuple_or_false)(string) 1`] = `"object[]"`;
 

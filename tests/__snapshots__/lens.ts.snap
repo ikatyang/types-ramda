@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_lens(object_to_string) 1`] = `"(setter: (focus: string, target: object) => object) => Lens<string, object>"`;
+exports[`R_lens(object_to_string) 1`] = `"<T$1 extends string = string, U$1 extends object = object>(setter: (focus: T$1, target: U$1) => U$1) => Lens<T$1, U$1>"`;
 
 exports[`R_lens(object_to_string)(string_object_to_object) 1`] = `"Lens<string, object>"`;
 

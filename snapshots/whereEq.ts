@@ -8,7 +8,7 @@ declare const a_1_b_2_c_3: {
   c: 3,
 };
 
-// @dts-jest:pass -> (object: Dictionary<number>) => boolean
+// @dts-jest:pass -> <T$1 extends number = number>(object: Dictionary<T$1>) => boolean
 R_whereEq(number_dictionary);
 // @dts-jest:pass -> boolean
 R_whereEq(number_dictionary)(a_1_b_2_c_3);

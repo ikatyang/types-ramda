@@ -2,6 +2,6 @@
 
 exports[`R_maxBy(object_to_number)(object)(object) 1`] = `"object"`;
 
-exports[`R_maxBy(object_to_number, object) 1`] = `"(b: object) => object"`;
+exports[`R_maxBy(object_to_number, object) 1`] = `"<T$1 extends object = object>(b: T$1) => T$1"`;
 
 exports[`R_maxBy(object_to_number, object, object) 1`] = `"object"`;

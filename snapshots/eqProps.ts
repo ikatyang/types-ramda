@@ -4,7 +4,7 @@ import * as R_eqProps from '../ramda/dist/src/eqProps';
 declare const property: Property;
 declare const string: string;
 
-// @dts-jest:pass -> (b: string) => boolean
+// @dts-jest:pass -> <T$1 extends string = string>(b: T$1) => boolean
 R_eqProps(property, string);
 // @dts-jest:pass -> boolean
 R_eqProps(property)(string, string);

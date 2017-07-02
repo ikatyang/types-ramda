@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_differenceWith(number_number_to_boolean, number_array) 1`] = `"(b: number[] | ArrayLike<number>) => number[]"`;
+exports[`R_differenceWith(number_number_to_boolean, number_array) 1`] = `"<T$1 extends number = number>(b: T$1[] | ArrayLike<T$1>) => T$1[]"`;
 
 exports[`R_differenceWith(number_number_to_boolean, number_array, number_array) 1`] = `"number[]"`;

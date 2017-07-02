@@ -8,7 +8,7 @@ declare const number_array: number[];
 declare const object: object;
 declare const object_number_to_object: (acc: object, val: number) => object;
 
-// @dts-jest:pass -> (values: number[]) => object
+// @dts-jest:pass -> <T$1 extends number = number>(values: T$1[]) => object
 R_transduce(number_object_transformer_identity, object_number_to_object, object);
 // @dts-jest:pass -> object
 R_transduce(number_object_transformer_identity)(object_number_to_object)(object)(number_array);

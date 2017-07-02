@@ -9,7 +9,7 @@ exports[`R_update(number)(boolean)(string_array) 1`] = `
 
 exports[`R_update(number)(string)(string_array) 1`] = `"string[]"`;
 
-exports[`R_update(number, boolean) 1`] = `"(list: boolean[] | ArrayLike<boolean>) => boolean[]"`;
+exports[`R_update(number, boolean) 1`] = `"<T$1 extends boolean = boolean>(list: T$1[] | ArrayLike<T$1>) => T$1[]"`;
 
 exports[`R_update(number, boolean, string_array) 1`] = `
 "Argument of type 'string[]' is not assignable to parameter of type 'List<boolean>'.

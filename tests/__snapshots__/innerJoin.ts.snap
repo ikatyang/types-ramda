@@ -2,6 +2,6 @@
 
 exports[`R_innerJoin(object_number_to_boolean)(object_array)(number_array) 1`] = `"object[]"`;
 
-exports[`R_innerJoin(object_number_to_boolean, object_array) 1`] = `"(ys: number[] | ArrayLike<number>) => object[]"`;
+exports[`R_innerJoin(object_number_to_boolean, object_array) 1`] = `"<U$1 extends number = number>(ys: U$1[] | ArrayLike<U$1>) => object[]"`;
 
 exports[`R_innerJoin(object_number_to_boolean, object_array, number_array) 1`] = `"object[]"`;

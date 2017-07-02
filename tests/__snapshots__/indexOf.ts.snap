@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_indexOf(string) 1`] = `"(list: string[] | ArrayLike<string>) => number"`;
+exports[`R_indexOf(string) 1`] = `"<T$1 extends string = string>(list: T$1[] | ArrayLike<T$1>) => number"`;
 
 exports[`R_indexOf(string, string) 1`] = `"number"`;
 

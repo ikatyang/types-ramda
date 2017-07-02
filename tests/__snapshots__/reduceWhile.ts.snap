@@ -2,6 +2,6 @@
 
 exports[`R_reduceWhile(object_number_to_boolean)(object_number_to_object)(object)(number_array) 1`] = `"object"`;
 
-exports[`R_reduceWhile(object_number_to_boolean, object_number_to_object, object) 1`] = `"(values: number[] | ArrayLike<number>) => object"`;
+exports[`R_reduceWhile(object_number_to_boolean, object_number_to_object, object) 1`] = `"<T$1 extends number = number>(values: T$1[] | ArrayLike<T$1>) => object"`;
 
 exports[`R_reduceWhile(object_number_to_boolean, object_number_to_object, object, number_array) 1`] = `"object"`;
