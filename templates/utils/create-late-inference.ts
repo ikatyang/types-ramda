@@ -1,5 +1,6 @@
 import * as dts from 'dts-element';
-import {cloneDeep, defaultTo, isMatch} from 'lodash';
+import * as R from 'ramda';
+import {match} from './match';
 
 // TODO: improve while generic is not used in return typec
 // ● eqProps › R.eqProps('c')(o1)
@@ -12,14 +13,14 @@ import {cloneDeep, defaultTo, isMatch} from 'lodash';
 //     + "<T$1 extends { a: number; b: number; c: number; d: number; } = { a: number; b: number; c
 // : number; d: number; }>(b: T$1) => boolean"
 
-export const create_lazy_inference = (
+export const create_late_inference = (
   mask: string,
   generics: dts.IGenericDeclaration[],
   parameters_generics: dts.IGenericDeclaration[][],
   current_generics: dts.IGenericDeclaration[],
   target_function: dts.IFunctionType,
   ) => {
-  const new_function_type = cloneDeep(target_function);
+  const new_function_type = R.clone(target_function);
 
   const unused_parameter_indexes = mask.split('').map((x, index) => x === '1' ? -1 : index).filter(x => x !== -1);
 
@@ -33,7 +34,15 @@ export const create_lazy_inference = (
       },
       {},
     );
-    const last_parameter_index_of_generic = defaultTo<number>(Object.keys(filtered_parameters_generics).map(Number).reverse().find(key => filtered_parameters_generics[key].indexOf(generic) !== -1), -1);
+    const last_parameter_index_of_generic = R.defaultTo(
+      -1,
+      R.pipe(
+        R.keys,
+        R.map(Number),
+        R.reverse,
+        R.find(key => filtered_parameters_generics[key].indexOf(generic) !== -1),
+      )(filtered_parameters_generics),
+    );
     replace_generic(new_function_type, generic, unused_parameter_indexes, last_parameter_index_of_generic, false);
   });
   target_function.generics!.forEach(generic => {
@@ -160,7 +169,7 @@ function for_each_matched(source: any, target: any, callback: (matched: any, key
   if (path.indexOf(source) !== -1) {
     return;
   }
-  if (isMatch(source, target)) {
+  if (match(source, target)) {
     callback(source, keys, path);
   }
   if (source === undefined || source === null) {
