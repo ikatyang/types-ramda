@@ -41,8 +41,8 @@ type reduceWhile_0000 = {
     <T>(_pred: PH, _fn: PH, _initial: PH, values: List<T>): reduceWhile_0001<T>;
     <T, U>(_pred: PH, _fn: PH, initial: U, values: List<T>): reduceWhile_0011<T, U>;
     <T, U>(_pred: PH, fn: (accumulator: U, value: T) => Reduced<U> | U, _initial: PH, values: List<T>): reduceWhile_0101<T, U>;
-    <T, U>(_pred: PH, fn: (accumulator: U, value: T) => Reduced<U> | U, initial: U, values: List<T>): reduceWhile_0111<T, U>;
     <T, U>(pred: (accumulator: U, value: T) => boolean, _fn: PH, _initial: PH, values: List<T>): reduceWhile_1001<T, U>;
+    <T, U>(_pred: PH, fn: (accumulator: U, value: T) => Reduced<U> | U, initial: U, values: List<T>): reduceWhile_0111<T, U>;
     <T, U>(pred: (accumulator: U, value: T) => boolean, _fn: PH, initial: U, values: List<T>): reduceWhile_1011<T, U>;
     <T, U>(pred: (accumulator: U, value: T) => boolean, fn: (accumulator: U, value: T) => Reduced<U> | U, _initial: PH, values: List<T>): reduceWhile_1101<T, U>;
     <T, U>(pred: (accumulator: U, value: T) => boolean, fn: (accumulator: U, value: T) => Reduced<U> | U, initial: U, values: List<T>): reduceWhile_1111<U>;

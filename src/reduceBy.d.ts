@@ -56,8 +56,8 @@ type reduceBy_0000 = {
     <T>(_valueFn: PH, _initial: PH, _keyFn: PH, values: List<T>): reduceBy_0001<T>;
     <T, K extends string>(_valueFn: PH, _initial: PH, keyFn: Morphism<T, K>, values: List<T>): reduceBy_0011<T, K>;
     <T, U>(_valueFn: PH, initial: U, _keyFn: PH, values: List<T>): reduceBy_0101<T, U>;
-    <T, U, K extends string>(_valueFn: PH, initial: U, keyFn: Morphism<T, K>, values: List<T>): reduceBy_0111<T, U, K>;
     <T, U>(valueFn: (accumulator: U, value: T) => Reduced<U> | U, _initial: PH, _keyFn: PH, values: List<T>): reduceBy_1001<T, U>;
+    <T, U, K extends string>(_valueFn: PH, initial: U, keyFn: Morphism<T, K>, values: List<T>): reduceBy_0111<T, U, K>;
     <T, U, K extends string>(valueFn: (accumulator: U, value: T) => Reduced<U> | U, _initial: PH, keyFn: Morphism<T, K>, values: List<T>): reduceBy_1011<T, U, K>;
     <T, U>(valueFn: (accumulator: U, value: T) => Reduced<U> | U, initial: U, _keyFn: PH, values: List<T>): reduceBy_1101<T, U>;
     <T, U, K extends string>(valueFn: (accumulator: U, value: T) => Reduced<U> | U, initial: U, keyFn: Morphism<T, K>, values: List<T>): reduceBy_1111<U, K>;
