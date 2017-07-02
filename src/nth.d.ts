@@ -30,20 +30,20 @@ declare const nth: nth_00;
 type nth_00 = {
     (n: number): nth_10;
     (_n: PH, str: string): nth_string_01;
-    <T>(_n: PH, list: List<T>): nth_general_01<T>;
+    <T>(_n: PH, list: List<T>): nth_list_01<T>;
     (n: number, str: string): nth_string_11;
-    <T>(n: number, list: List<T>): nth_general_11<T>;
+    <T>(n: number, list: List<T>): nth_list_11<T>;
 };
 type nth_10 = {
     (str: string): nth_string_11;
-    <T>(list: List<T>): nth_general_11<T>;
+    <T>(list: List<T>): nth_list_11<T>;
 };
 type nth_string_01 = {
     (n: number): nth_string_11;
 };
-type nth_general_01<T> = {
-    (n: number): nth_general_11<T>;
+type nth_list_01<T> = {
+    (n: number): nth_list_11<T>;
 };
 type nth_string_11 = string;
-type nth_general_11<T> = T | undefined;
+type nth_list_11<T> = T | undefined;
 export = nth;
