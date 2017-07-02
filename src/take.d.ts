@@ -46,9 +46,9 @@ declare const take: take_00;
 type take_00 = {
     (n: number): take_10;
     (n: number, str: string): take_string_11;
+    <$SEL extends "1">(): (n: number) => take_10;
     <$SEL extends "11", $KIND extends "string">(): (n: number, str: string) => take_string_11;
     <$SEL extends "11", $KIND extends "list">(): <T>(n: number, list: List<T>) => take_list_11<T>;
-    <$SEL extends "1">(): (n: number) => take_10;
     <T>(n: number, list: List<T>): take_list_11<T>;
 };
 type take_10 = {

@@ -21,21 +21,21 @@ declare const insertAll: insertAll_000;
 type insertAll_000 = {
     (index: number): insertAll_100;
     <T>(index: number, values: List<T>): insertAll_110<T>;
-    <$SEL extends "111">(): <T>(index: number, values: List<T>, list: List<T>) => insertAll_111<T>;
-    <$SEL extends "11">(): <T>(index: number, values: List<T>) => insertAll_110<T>;
     <$SEL extends "1">(): (index: number) => insertAll_100;
+    <$SEL extends "11">(): <T>(index: number, values: List<T>) => insertAll_110<T>;
+    <$SEL extends "111">(): <T>(index: number, values: List<T>, list: List<T>) => insertAll_111<T>;
     <T>(index: number, values: List<T>, list: List<T>): insertAll_111<T>;
 };
 type insertAll_100 = {
     <T>(values: List<T>): insertAll_110<T>;
-    <$SEL extends "11">(): <T>(values: List<T>, list: List<T>) => insertAll_111<T>;
     <$SEL extends "1">(): <T>(values: List<T>) => insertAll_110<T>;
+    <$SEL extends "11">(): <T>(values: List<T>, list: List<T>) => insertAll_111<T>;
     <T>(values: List<T>, list: List<T>): insertAll_111<T>;
 };
 type insertAll_010<T> = {
     (index: number): insertAll_110<T>;
-    <$SEL extends "11">(): (index: number, list: List<T>) => insertAll_111<T>;
     <$SEL extends "1">(): (index: number) => insertAll_110<T>;
+    <$SEL extends "11">(): (index: number, list: List<T>) => insertAll_111<T>;
     (index: number, list: List<T>): insertAll_111<T>;
 };
 type insertAll_110<T> = {
@@ -43,8 +43,8 @@ type insertAll_110<T> = {
 };
 type insertAll_001<T> = {
     (index: number): insertAll_101<T>;
-    <$SEL extends "11">(): (index: number, values: List<T>) => insertAll_111<T>;
     <$SEL extends "1">(): (index: number) => insertAll_101<T>;
+    <$SEL extends "11">(): (index: number, values: List<T>) => insertAll_111<T>;
     (index: number, values: List<T>): insertAll_111<T>;
 };
 type insertAll_101<T> = {

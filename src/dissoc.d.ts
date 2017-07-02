@@ -19,9 +19,9 @@ declare const dissoc: dissoc_00;
 type dissoc_00 = {
     (property: Property): dissoc_10;
     <T>(property: Property, object: T): dissoc_remain_11<T>;
+    <$SEL extends "1">(): (property: Property) => dissoc_10;
     <$SEL extends "11", $KIND extends "remain">(): <T>(property: Property, object: T) => dissoc_remain_11<T>;
     <$SEL extends "11", $KIND extends "manual">(): <T>(property: Property, object: object) => dissoc_manual_11<T>;
-    <$SEL extends "1">(): (property: Property) => dissoc_10;
     <T>(property: Property, object: object): dissoc_manual_11<T>;
 };
 type dissoc_10 = {

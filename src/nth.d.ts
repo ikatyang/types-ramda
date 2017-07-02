@@ -29,9 +29,9 @@ declare const nth: nth_00;
 type nth_00 = {
     (n: number): nth_10;
     (n: number, str: string): nth_string_11;
+    <$SEL extends "1">(): (n: number) => nth_10;
     <$SEL extends "11", $KIND extends "string">(): (n: number, str: string) => nth_string_11;
     <$SEL extends "11", $KIND extends "list">(): <T>(n: number, list: List<T>) => nth_list_11<T>;
-    <$SEL extends "1">(): (n: number) => nth_10;
     <T>(n: number, list: List<T>): nth_list_11<T>;
 };
 type nth_10 = {

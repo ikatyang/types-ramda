@@ -19,8 +19,8 @@ import { List } from "./$types";
 declare const prepend: prepend_00;
 type prepend_00 = {
     <T>(value: T): prepend_10<T>;
-    <$SEL extends "11">(): <T>(value: T, list: List<T>) => prepend_11<T>;
     <$SEL extends "1">(): <T>(value: T) => prepend_10<T>;
+    <$SEL extends "11">(): <T>(value: T, list: List<T>) => prepend_11<T>;
     <T>(value: T, list: List<T>): prepend_11<T>;
 };
 type prepend_10<T> = {

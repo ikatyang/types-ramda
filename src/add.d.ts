@@ -18,8 +18,8 @@
 declare const add: add_00;
 type add_00 = {
     (a: number): add_10;
-    <$SEL extends "11">(): (a: number, b: number) => add_11;
     <$SEL extends "1">(): (a: number) => add_10;
+    <$SEL extends "11">(): (a: number, b: number) => add_11;
     (a: number, b: number): add_11;
 };
 type add_10 = {

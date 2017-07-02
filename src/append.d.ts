@@ -22,8 +22,8 @@ import { List } from "./$types";
 declare const append: append_00;
 type append_00 = {
     <T>(value: T): append_10<T>;
-    <$SEL extends "11">(): <T>(value: T, list: List<T>) => append_11<T>;
     <$SEL extends "1">(): <T>(value: T) => append_10<T>;
+    <$SEL extends "11">(): <T>(value: T, list: List<T>) => append_11<T>;
     <T>(value: T, list: List<T>): append_11<T>;
 };
 type append_10<T> = {

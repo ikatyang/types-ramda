@@ -30,9 +30,9 @@ declare const evolve: evolve_00;
 type evolve_00 = {
     (transformations: NestedDictionary<Morphism<any, any>>): evolve_10;
     <T>(transformations: NestedDictionary<Morphism<any, any>>, object: T): evolve_remain_11<T>;
+    <$SEL extends "1">(): (transformations: NestedDictionary<Morphism<any, any>>) => evolve_10;
     <$SEL extends "11", $KIND extends "remain">(): <T>(transformations: NestedDictionary<Morphism<any, any>>, object: T) => evolve_remain_11<T>;
     <$SEL extends "11", $KIND extends "manual">(): <T>(transformations: NestedDictionary<Morphism<any, any>>, object: object) => evolve_manual_11<T>;
-    <$SEL extends "1">(): (transformations: NestedDictionary<Morphism<any, any>>) => evolve_10;
     <T>(transformations: NestedDictionary<Morphism<any, any>>, object: object): evolve_manual_11<T>;
 };
 type evolve_10 = {

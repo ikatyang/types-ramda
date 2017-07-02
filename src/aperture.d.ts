@@ -23,8 +23,8 @@ import { List } from "./$types";
 declare const aperture: aperture_00;
 type aperture_00 = {
     (n: number): aperture_10;
-    <$SEL extends "11">(): <T>(n: number, list: List<T>) => aperture_11<T>;
     <$SEL extends "1">(): (n: number) => aperture_10;
+    <$SEL extends "11">(): <T>(n: number, list: List<T>) => aperture_11<T>;
     <T>(n: number, list: List<T>): aperture_11<T>;
 };
 type aperture_10 = {

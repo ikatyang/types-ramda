@@ -27,21 +27,21 @@ declare const maxBy: maxBy_000;
 type maxBy_000 = {
     <T>(fn: Morphism<T, Ordered>): maxBy_100<T>;
     <T>(fn: Morphism<T, Ordered>, a: T): maxBy_110<T>;
-    <$SEL extends "111">(): <T>(fn: Morphism<T, Ordered>, a: T, b: T) => maxBy_111<T>;
-    <$SEL extends "11">(): <T>(fn: Morphism<T, Ordered>, a: T) => maxBy_110<T>;
     <$SEL extends "1">(): <T>(fn: Morphism<T, Ordered>) => maxBy_100<T>;
+    <$SEL extends "11">(): <T>(fn: Morphism<T, Ordered>, a: T) => maxBy_110<T>;
+    <$SEL extends "111">(): <T>(fn: Morphism<T, Ordered>, a: T, b: T) => maxBy_111<T>;
     <T>(fn: Morphism<T, Ordered>, a: T, b: T): maxBy_111<T>;
 };
 type maxBy_100<T> = {
     (a: T): maxBy_110<T>;
-    <$SEL extends "11">(): (a: T, b: T) => maxBy_111<T>;
     <$SEL extends "1">(): (a: T) => maxBy_110<T>;
+    <$SEL extends "11">(): (a: T, b: T) => maxBy_111<T>;
     (a: T, b: T): maxBy_111<T>;
 };
 type maxBy_010<T> = {
     (fn: Morphism<T, Ordered>): maxBy_110<T>;
-    <$SEL extends "11">(): (fn: Morphism<T, Ordered>, b: T) => maxBy_111<T>;
     <$SEL extends "1">(): (fn: Morphism<T, Ordered>) => maxBy_110<T>;
+    <$SEL extends "11">(): (fn: Morphism<T, Ordered>, b: T) => maxBy_111<T>;
     (fn: Morphism<T, Ordered>, b: T): maxBy_111<T>;
 };
 type maxBy_110<T> = {
@@ -49,8 +49,8 @@ type maxBy_110<T> = {
 };
 type maxBy_001<T> = {
     (fn: Morphism<T, Ordered>): maxBy_101<T>;
-    <$SEL extends "11">(): (fn: Morphism<T, Ordered>, a: T) => maxBy_111<T>;
     <$SEL extends "1">(): (fn: Morphism<T, Ordered>) => maxBy_101<T>;
+    <$SEL extends "11">(): (fn: Morphism<T, Ordered>, a: T) => maxBy_111<T>;
     (fn: Morphism<T, Ordered>, a: T): maxBy_111<T>;
 };
 type maxBy_101<T> = {

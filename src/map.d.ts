@@ -39,10 +39,10 @@ type map_00 = {
     <T, U>(fn: Morphism<T, U>): map_10<T, U>;
     <T, U>(fn: Morphism<T, U>, list: List<T>): map_list_11<U>;
     <T, U>(fn: Morphism<T, U>, functor: Functor<T>): map_functor_11<U>;
+    <$SEL extends "1">(): <T, U>(fn: Morphism<T, U>) => map_10<T, U>;
     <$SEL extends "11", $KIND extends "list">(): <T, U>(fn: Morphism<T, U>, list: List<T>) => map_list_11<U>;
     <$SEL extends "11", $KIND extends "functor">(): <T, U>(fn: Morphism<T, U>, functor: Functor<T>) => map_functor_11<U>;
     <$SEL extends "11", $KIND extends "object">(): <T, U, K extends string>(fn: Morphism<T, U>, object: Record<K, T>) => map_object_11<U, K>;
-    <$SEL extends "1">(): <T, U>(fn: Morphism<T, U>) => map_10<T, U>;
     <T, U, K extends string>(fn: Morphism<T, U>, object: Record<K, T>): map_object_11<U, K>;
 };
 type map_10<T, U> = {

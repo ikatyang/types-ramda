@@ -19,9 +19,9 @@ declare const omit: omit_00;
 type omit_00 = {
     (keys: List<Property>): omit_10;
     <T>(keys: List<Property>, object: T): omit_remain_11<T>;
+    <$SEL extends "1">(): (keys: List<Property>) => omit_10;
     <$SEL extends "11", $KIND extends "remain">(): <T>(keys: List<Property>, object: T) => omit_remain_11<T>;
     <$SEL extends "11", $KIND extends "manual">(): <V>(keys: List<Property>, object: any) => omit_manual_11<V>;
-    <$SEL extends "1">(): (keys: List<Property>) => omit_10;
     <V>(keys: List<Property>, object: any): omit_manual_11<V>;
 };
 type omit_10 = {

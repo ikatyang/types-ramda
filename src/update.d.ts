@@ -25,21 +25,21 @@ declare const update: update_000;
 type update_000 = {
     (index: number): update_100;
     <T>(index: number, value: T): update_110<T>;
-    <$SEL extends "111">(): <T>(index: number, value: T, list: List<T>) => update_111<T>;
-    <$SEL extends "11">(): <T>(index: number, value: T) => update_110<T>;
     <$SEL extends "1">(): (index: number) => update_100;
+    <$SEL extends "11">(): <T>(index: number, value: T) => update_110<T>;
+    <$SEL extends "111">(): <T>(index: number, value: T, list: List<T>) => update_111<T>;
     <T>(index: number, value: T, list: List<T>): update_111<T>;
 };
 type update_100 = {
     <T>(value: T): update_110<T>;
-    <$SEL extends "11">(): <T>(value: T, list: List<T>) => update_111<T>;
     <$SEL extends "1">(): <T>(value: T) => update_110<T>;
+    <$SEL extends "11">(): <T>(value: T, list: List<T>) => update_111<T>;
     <T>(value: T, list: List<T>): update_111<T>;
 };
 type update_010<T> = {
     (index: number): update_110<T>;
-    <$SEL extends "11">(): (index: number, list: List<T>) => update_111<T>;
     <$SEL extends "1">(): (index: number) => update_110<T>;
+    <$SEL extends "11">(): (index: number, list: List<T>) => update_111<T>;
     (index: number, list: List<T>): update_111<T>;
 };
 type update_110<T> = {
@@ -47,8 +47,8 @@ type update_110<T> = {
 };
 type update_001<T> = {
     (index: number): update_101<T>;
-    <$SEL extends "11">(): (index: number, value: T) => update_111<T>;
     <$SEL extends "1">(): (index: number) => update_101<T>;
+    <$SEL extends "11">(): (index: number, value: T) => update_111<T>;
     (index: number, value: T): update_111<T>;
 };
 type update_101<T> = {

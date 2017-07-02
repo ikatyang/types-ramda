@@ -23,8 +23,8 @@
 declare const divide: divide_00;
 type divide_00 = {
     (a: number): divide_10;
-    <$SEL extends "11">(): (a: number, b: number) => divide_11;
     <$SEL extends "1">(): (a: number) => divide_10;
+    <$SEL extends "11">(): (a: number, b: number) => divide_11;
     (a: number, b: number): divide_11;
 };
 type divide_10 = {

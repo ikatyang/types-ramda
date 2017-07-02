@@ -21,8 +21,8 @@
 declare const objOf: objOf_00;
 type objOf_00 = {
     <K extends string>(key: K): objOf_10<K>;
-    <$SEL extends "11">(): <K extends string, V>(key: K, value: V) => objOf_11<K, V>;
     <$SEL extends "1">(): <K extends string>(key: K) => objOf_10<K>;
+    <$SEL extends "11">(): <K extends string, V>(key: K, value: V) => objOf_11<K, V>;
     <K extends string, V>(key: K, value: V): objOf_11<K, V>;
 };
 type objOf_10<K extends string> = {

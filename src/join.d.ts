@@ -20,8 +20,8 @@
 declare const join: join_00;
 type join_00 = {
     (separator: string): join_10;
-    <$SEL extends "11">(): (separator: string, list: any[]) => join_11;
     <$SEL extends "1">(): (separator: string) => join_10;
+    <$SEL extends "11">(): (separator: string, list: any[]) => join_11;
     (separator: string, list: any[]): join_11;
 };
 type join_10 = {

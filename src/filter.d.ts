@@ -31,10 +31,10 @@ type filter_00 = {
     <T>(fn: Predicate<T>): filter_10<T>;
     <T>(fn: Predicate<T>, list: List<T>): filter_list_11<T>;
     <T, U extends Filterable<T>>(fn: Predicate<T>, filterable: U): filter_filterable_11<T, U>;
+    <$SEL extends "1">(): <T>(fn: Predicate<T>) => filter_10<T>;
     <$SEL extends "11", $KIND extends "list">(): <T>(fn: Predicate<T>, list: List<T>) => filter_list_11<T>;
     <$SEL extends "11", $KIND extends "filterable">(): <T, U extends Filterable<T>>(fn: Predicate<T>, filterable: U) => filter_filterable_11<T, U>;
     <$SEL extends "11", $KIND extends "dictionary">(): <T>(fn: Predicate<T>, object: Dictionary<T>) => filter_dictionary_11<T>;
-    <$SEL extends "1">(): <T>(fn: Predicate<T>) => filter_10<T>;
     <T>(fn: Predicate<T>, object: Dictionary<T>): filter_dictionary_11<T>;
 };
 type filter_10<T> = {

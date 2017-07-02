@@ -19,8 +19,8 @@ import { List } from "./$types";
 declare const union: union_00;
 type union_00 = {
     <T>(a: List<T>): union_10<T>;
-    <$SEL extends "11">(): <T>(a: List<T>, b: List<T>) => union_11<T>;
     <$SEL extends "1">(): <T>(a: List<T>) => union_10<T>;
+    <$SEL extends "11">(): <T>(a: List<T>, b: List<T>) => union_11<T>;
     <T>(a: List<T>, b: List<T>): union_11<T>;
 };
 type union_10<T> = {

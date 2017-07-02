@@ -27,9 +27,9 @@ declare const drop: drop_00;
 type drop_00 = {
     (n: number): drop_10;
     (n: number, str: string): drop_string_11;
+    <$SEL extends "1">(): (n: number) => drop_10;
     <$SEL extends "11", $KIND extends "string">(): (n: number, str: string) => drop_string_11;
     <$SEL extends "11", $KIND extends "list">(): <T>(n: number, list: List<T>) => drop_list_11<T>;
-    <$SEL extends "1">(): (n: number) => drop_10;
     <T>(n: number, list: List<T>): drop_list_11<T>;
 };
 type drop_10 = {

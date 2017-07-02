@@ -24,9 +24,9 @@ declare const dropLast: dropLast_00;
 type dropLast_00 = {
     (n: number): dropLast_10;
     (n: number, str: string): dropLast_string_11;
+    <$SEL extends "1">(): (n: number) => dropLast_10;
     <$SEL extends "11", $KIND extends "string">(): (n: number, str: string) => dropLast_string_11;
     <$SEL extends "11", $KIND extends "list">(): <T>(n: number, list: List<T>) => dropLast_list_11<T>;
-    <$SEL extends "1">(): (n: number) => dropLast_10;
     <T>(n: number, list: List<T>): dropLast_list_11<T>;
 };
 type dropLast_10 = {
