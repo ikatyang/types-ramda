@@ -106,6 +106,15 @@ yarn run test -- --watch
 #   unit tests -> ./tests/*.ts
 #   actual tests -> ./tests/ramda-tests.ts
 #   integration tests -> ./tests/ramda-tests.ts
+
+# remap snapshots (./tests/__snapshots__/*.ts.snap -> ./snapshots/*.ts)
+yarn run remap
+
+# remap snapshots with watching mode
+yarn run remap-watch
+
+# check if snapshot is outdated
+yarn run remap-check
 ```
 
 ## Related
