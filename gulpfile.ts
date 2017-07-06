@@ -137,10 +137,10 @@ gulp.task('remap-watch', ['remap'], (_callback: (error?: any) => void) => {
 });
 
 function generate_files(
-    glob: string,
+    glob_files: string,
     on_error: (error: Error) => void = error => { throw error; },
     on_end: () => void = () => { /* do nothing */ }) {
-  return gulp.src(glob_templates)
+  return gulp.src(glob_files)
     .pipe(gulp_generate(generate_file_content))
     .on('error', on_error)
     .on('end', on_end)
