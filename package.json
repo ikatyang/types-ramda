@@ -54,7 +54,7 @@
     "run-sequence": "2.0.0",
     "through2": "2.0.3",
     "ts-jest": "20.0.6",
-    "ts-node": "3.1.0",
+    "ts-node": "3.2.0",
     "tslint": "5.4.3",
     "tslint-config-ikatyang": "0.8.0",
     "typescript": "2.4.1",
