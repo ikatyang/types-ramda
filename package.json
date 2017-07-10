@@ -1,6 +1,6 @@
 {
   "name": "@types/ramda",
-  "version": "0.24.0",
+  "version": "0.24.1",
   "description": "TypeScript's type definitions for Ramda",
   "keywords": [
     "ramda",
