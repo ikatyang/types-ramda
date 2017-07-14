@@ -1,0 +1,1468 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`$ExpectError Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }' 1`] = `
+"Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'.
+  Types of property 'x' are incompatible.
+    Type 'string' is not assignable to type 'number'."
+`;
+
+exports[`$ExpectError Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }' 2`] = `
+"Argument of type '{ x: string; }' is not assignable to parameter of type '{ x: number; }'.
+  Types of property 'x' are incompatible.
+    Type 'string' is not assignable to type 'number'."
+`;
+
+exports[`$ExpectError Argument of type 'null' is not assignable to parameter of type 'string'. 1`] = `"Argument of type 'null' is not assignable to parameter of type 'string'."`;
+
+exports[`$ExpectError Argument of type 'x' is not assignable to parameter of type 'never'. 1`] = `"{}"`;
+
+exports[`$ExpectError Argument of type 'x' is not assignable to parameter of type 'never'.\`, because 'x' is not in \`{}\`. 1`] = `"boolean"`;
+
+exports[`$ExpectError Supplied parameters do not match any signature of call target. 1`] = `"Expected 2 arguments, but got 3."`;
+
+exports[`$ExpectError not keys 1`] = `"any"`;
+
+exports[`$ExpectError not keys 2`] = `"any"`;
+
+exports[`$ExpectError not keys 3`] = `"any"`;
+
+exports[`$ExpectType "foo" 1`] = `"\\"foo\\""`;
+
+exports[`$ExpectType () => boolean 1`] = `"R.Variadic<boolean>"`;
+
+exports[`$ExpectType () => number[] 1`] = `"R.Variadic<number[]>"`;
+
+exports[`$ExpectType (...args: string[])=>string 1`] = `"R.Variadic<string>"`;
+
+exports[`$ExpectType (a: any[]) => any[] 1`] = `"(list2: R.List<any>) => any[]"`;
+
+exports[`$ExpectType (a: number) => number[] 1`] = `"R.Variadic<number[]>"`;
+
+exports[`$ExpectType (a: number) => number[] 2`] = `"R.Variadic<number[]>"`;
+
+exports[`$ExpectType (a: number) => number[] 3`] = `"(a: number) => number[]"`;
+
+exports[`$ExpectType (a: number) => number[] 4`] = `"(a: number) => number[]"`;
+
+exports[`$ExpectType (a: number) => number[] 5`] = `"(a: number) => number[]"`;
+
+exports[`$ExpectType (a: number, b: number) => number[] 1`] = `"(a: any, b: any) => number[]"`;
+
+exports[`$ExpectType (a: number, b: number) => number[] 2`] = `"(a: any, b: any) => number[]"`;
+
+exports[`$ExpectType (list: number[]) => boolean 1`] = `"any"`;
+
+exports[`$ExpectType (v: Object) => Boolean 1`] = `"any"`;
+
+exports[`$ExpectType (v: number) => number 1`] = `"(x0: number) => {}"`;
+
+exports[`$ExpectType (v: number) => number 2`] = `"(x0: number) => {}"`;
+
+exports[`$ExpectType (v2: number) => number 1`] = `"(v2: number) => number"`;
+
+exports[`$ExpectType (v2: number) => number 2`] = `"(v2: number) => number"`;
+
+exports[`$ExpectType (v3: number) => number 1`] = `"(v3: number) => number"`;
+
+exports[`$ExpectType (x0: number) => boolean 1`] = `"(x0: number) => boolean"`;
+
+exports[`$ExpectType (x0: number) => number 1`] = `"(x0: {}) => number"`;
+
+exports[`$ExpectType (x0: number) => number 2`] = `"(x0: {}) => number"`;
+
+exports[`$ExpectType (x0: number) => string 1`] = `"(x0: number) => string"`;
+
+exports[`$ExpectType <T>(v: T) => T 1`] = `"any"`;
+
+exports[`$ExpectType <T1,R>(v1: T1) => R 1`] = `"(v2: number) => number"`;
+
+exports[`$ExpectType <T1,R>(v1: T1) => R 2`] = `"(v4: number) => number"`;
+
+exports[`$ExpectType <Y, Z>(v2: Y, v3: Z) => ({ x: number; y: Y; z: Z; }) 1`] = `"R.CurriedFunction2<{}, {}, { x: {}; y: {}; z: {}; }>"`;
+
+exports[`$ExpectType <Y>(v2: Y) => { x: number; y: Y; } 1`] = `"(v2: {}) => { x: {}; y: {}; }"`;
+
+exports[`$ExpectType <Z>(v3: Z) => ({ x: number; y: number; z: Z; }) 1`] = `"(v3: {}) => { x: {}; y: {}; z: {}; }"`;
+
+exports[`$ExpectType <Z>(v3: Z) => ({ x: number; y: number; z: Z; }) 2`] = `"(v2: {}) => { x: {}; y: {}; z: {}; }"`;
+
+exports[`$ExpectType <a>(v: a|[a]) => [a] 1`] = `"any"`;
+
+exports[`$ExpectType [1, 2] 1`] = `"number[]"`;
+
+exports[`$ExpectType [1, 2] 2`] = `"any"`;
+
+exports[`$ExpectType [number, string][] 1`] = `"R.KeyValuePair<number, string>[]"`;
+
+exports[`$ExpectType [number, string][] 2`] = `"R.KeyValuePair<number, string>[]"`;
+
+exports[`$ExpectType [number, string][] 3`] = `"R.KeyValuePair<number, string>[]"`;
+
+exports[`$ExpectType [number, string][] 4`] = `"R.KeyValuePair<number, string>[]"`;
+
+exports[`$ExpectType [number[], number[]] 1`] = `"[number[], number[]]"`;
+
+exports[`$ExpectType [number[], number[]] 2`] = `"[number[], number[]]"`;
+
+exports[`$ExpectType [number[], string[]] 1`] = `"{}[][]"`;
+
+exports[`$ExpectType [number[], string[]] 2`] = `"R.Functor<{}[]>"`;
+
+exports[`$ExpectType [string, number][] 1`] = `"[string, number][]"`;
+
+exports[`$ExpectType [string, string][] 1`] = `"[string, any][]"`;
+
+exports[`$ExpectType [string, string][] 2`] = `"[string, any][]"`;
+
+exports[`$ExpectType [string[], string[]] 1`] = `"[string[], string[]]"`;
+
+exports[`$ExpectType [string[], string[]] 2`] = `"[string[], string[]]"`;
+
+exports[`$ExpectType { [index: string]: string } 1`] = `"R.Dictionary<string>"`;
+
+exports[`$ExpectType { [index: string]: string } 2`] = `
+"Argument of type 'string[][]' is not assignable to parameter of type 'List<KeyValuePair<Prop, string>>'.
+  Type 'string[][]' is not assignable to type 'ArrayLike<KeyValuePair<Prop, string>>'.
+    Index signatures are incompatible.
+      Type 'string[]' is not assignable to type 'KeyValuePair<Prop, string>'.
+        Property '0' is missing in type 'string[]'."
+`;
+
+exports[`$ExpectType { [index: string]: string } 3`] = `"R.Dictionary<{}>"`;
+
+exports[`$ExpectType { [index: string]: string } 4`] = `"R.Dictionary<{}>"`;
+
+exports[`$ExpectType { [s: string]: { [s: string]: number } } 1`] = `"any"`;
+
+exports[`$ExpectType { [s: string]: { [s: string]: number } } 2`] = `"any"`;
+
+exports[`$ExpectType { 2: R.Dictionary<string> } 1`] = `"Partial<{ 1: { color: string; }; 2: { color: string; bgcolor: string; }; }>"`;
+
+exports[`$ExpectType { a: boolean, b: boolean, values: number[] } 1`] = `"{ a: boolean; values: number[]; } & { b: boolean; values: number[]; }"`;
+
+exports[`$ExpectType { a: boolean, b: boolean, values: number[], thing: string } 1`] = `"{ a: boolean; thing: string; values: number[]; } & { b: boolean; thing: string; values: number[]; }"`;
+
+exports[`$ExpectType { a: number }[] 1`] = `"any[]"`;
+
+exports[`$ExpectType { a: number }[] 2`] = `"any[]"`;
+
+exports[`$ExpectType { a: number, b: number } 1`] = `"{ a: number; b: number; }"`;
+
+exports[`$ExpectType { a: number[], b: string[] } 1`] = `"R.Dictionary<{}[]>"`;
+
+exports[`$ExpectType { a: number[], b: string[] } 2`] = `"R.Dictionary<{}[]>"`;
+
+exports[`$ExpectType { age: number, name: string }[] 1`] = `"{ age: number; }[]"`;
+
+exports[`$ExpectType { id: number, name: string }[] 1`] = `"any[]"`;
+
+exports[`$ExpectType { id: number, name: string }[] 2`] = `"any[]"`;
+
+exports[`$ExpectType { id: number, name: string }[] 3`] = `"any[]"`;
+
+exports[`$ExpectType { id: number, name: string }[] 4`] = `"any[]"`;
+
+exports[`$ExpectType { must: { match_phrase: string }[] } 1`] = `"R.Dictionary<{}>"`;
+
+exports[`$ExpectType { name: string, age: number }[] 1`] = `"R.Struct<any>[]"`;
+
+exports[`$ExpectType { name: string, age: number }[] 2`] = `"R.Struct<any>[]"`;
+
+exports[`$ExpectType { name: string, age: number }[] 3`] = `"R.Struct<any>[]"`;
+
+exports[`$ExpectType { name: string, grade: number }[] 1`] = `"Pick<{ name: string; age: number; hair: string; grade: number; }, \\"name\\" | \\"grade\\">[]"`;
+
+exports[`$ExpectType { x: number } 1`] = `"{ x: number; }"`;
+
+exports[`$ExpectType { x: number } 2`] = `"{ x: number; }"`;
+
+exports[`$ExpectType { x: number } 3`] = `"{ x: number; }"`;
+
+exports[`$ExpectType { x: number, y: number } 1`] = `"any"`;
+
+exports[`$ExpectType { x: number, y: number } 2`] = `"any"`;
+
+exports[`$ExpectType { x: number, y: number } 3`] = `"any"`;
+
+exports[`$ExpectType { x: number, y: number } 4`] = `"any"`;
+
+exports[`$ExpectType { x: number, y: number } 5`] = `"any"`;
+
+exports[`$ExpectType { x: number, y: number } 6`] = `"any"`;
+
+exports[`$ExpectType { x: number, y: number }[] 1`] = `"{}[]"`;
+
+exports[`$ExpectType { x: number, y: number }[] 2`] = `"{}[]"`;
+
+exports[`$ExpectType { x: number; } 1`] = `"{ x: number; }"`;
+
+exports[`$ExpectType { x: number; } 2`] = `"{ x: number; }"`;
+
+exports[`$ExpectType { x: number; } 3`] = `"{ x: number; }"`;
+
+exports[`$ExpectType { x: number; y: number; } 1`] = `"{ x: {}; y: {}; }"`;
+
+exports[`$ExpectType { x: number; y: number; z: number; } 1`] = `"{ x: {}; y: {}; z: {}; }"`;
+
+exports[`$ExpectType { x: number; y: number; z: number; } 2`] = `"{ x: {}; y: {}; z: {}; }"`;
+
+exports[`$ExpectType {<T,U>(obj1: T, obj2: U): boolean} 1`] = `"{ <T, U>(obj1: T, obj2: U): boolean; <T>(obj1: T): <U>(obj2: U) => boolean; }"`;
+
+exports[`$ExpectType {<U>(obj2: U): boolean} 1`] = `"<U>(obj2: U) => boolean"`;
+
+exports[`$ExpectType {} 1`] = `"{ x: number; y: number; }"`;
+
+exports[`$ExpectType {a: {b: {}}} 1`] = `"{}"`;
+
+exports[`$ExpectType {a: {b: {}}} 2`] = `"{ a: { b: number; }; }"`;
+
+exports[`$ExpectType {a: {b: {}}} 3`] = `"{}"`;
+
+exports[`$ExpectType {a: {b: {c: number}}} 1`] = `"{ a: { b: { c: number; }; }; }"`;
+
+exports[`$ExpectType {a: {b: {c: number}}} 2`] = `"{ a: { b: { c: number; }; }; }"`;
+
+exports[`$ExpectType {a: {b: {c: number}}} 3`] = `"{ a: { b: { c: number; }; }; }"`;
+
+exports[`$ExpectType {a: number}[] 1`] = `"{ a: number; }[]"`;
+
+exports[`$ExpectType {a: number}[] 2`] = `"any[]"`;
+
+exports[`$ExpectType {a: number}[] 3`] = `"any[]"`;
+
+exports[`$ExpectType {a: number}[] 4`] = `"any[]"`;
+
+exports[`$ExpectType {x: 1, y: 2} 1`] = `"{ x: number; y: number; }"`;
+
+exports[`$ExpectType {x: 1, y: 2} 2`] = `"any"`;
+
+exports[`$ExpectType 10 1`] = `"10"`;
+
+exports[`$ExpectType Array<number|string> 1`] = `"[string, number]"`;
+
+exports[`$ExpectType Array<number|string> 2`] = `"number[]"`;
+
+exports[`$ExpectType Array<number|undefined> 1`] = `"number[]"`;
+
+exports[`$ExpectType Array<string[]|string> 1`] = `"(string & string[])[]"`;
+
+exports[`$ExpectType Array<string[]|string> 2`] = `"(string & string[])[]"`;
+
+exports[`$ExpectType Array<string[]|string> 3`] = `"(string & string[])[]"`;
+
+exports[`$ExpectType Array<string[]|string> 4`] = `"(string & string[])[]"`;
+
+exports[`$ExpectType Array<string[]|string> 5`] = `"[string, string[]]"`;
+
+exports[`$ExpectType Array<string[]|string> 6`] = `"[string, string[]]"`;
+
+exports[`$ExpectType Array<string[]|string> 7`] = `"[string, string[]]"`;
+
+exports[`$ExpectType Array<string[]|string> 8`] = `"[string, string[]]"`;
+
+exports[`$ExpectType Array<string[]|string> 9`] = `"KeyValuePair<string, number>[]"`;
+
+exports[`$ExpectType Array<string[]|string> 10`] = `"KeyValuePair<string, number>[]"`;
+
+exports[`$ExpectType Array<string[]|string> 11`] = `"KeyValuePair<string, number>[]"`;
+
+exports[`$ExpectType Array<string|string[]> 1`] = `"[string[], string]"`;
+
+exports[`$ExpectType Array<string|string[]> 2`] = `"[string[], string]"`;
+
+exports[`$ExpectType Array<string|string[]> 3`] = `"[string[], string]"`;
+
+exports[`$ExpectType Array<string|string[]> 4`] = `"[string[], string]"`;
+
+exports[`$ExpectType CurriedFunction2<number, number, number> 1`] = `"R.CurriedFunction2<number, number, number>"`;
+
+exports[`$ExpectType CurriedFunction2<number, number, number> 2`] = `"R.CurriedFunction2<number, number, number>"`;
+
+exports[`$ExpectType CurriedFunction2<number, number, number> 3`] = `"any"`;
+
+exports[`$ExpectType CurriedFunction3<number, number, number, number> 1`] = `"R.CurriedFunction3<number, number, number, number>"`;
+
+exports[`$ExpectType CurriedFunction4<number, number, number, number, number> 1`] = `"R.CurriedFunction4<number, number, number, number, number>"`;
+
+exports[`$ExpectType Dictionary<Object> 1`] = `"R.Dictionary<R.Struct<any>>"`;
+
+exports[`$ExpectType Dictionary<Object> 2`] = `"R.Dictionary<R.Struct<any>>"`;
+
+exports[`$ExpectType Dictionary<Object> 3`] = `"R.Dictionary<{ id: string; }>"`;
+
+exports[`$ExpectType Dictionary<Object[]> 1`] = `"R.Dictionary<{ score: number; name: string; }[]>"`;
+
+exports[`$ExpectType Dictionary<any> 1`] = `"{ 'name': string; 'age': number; } & { 'age': number; }"`;
+
+exports[`$ExpectType Dictionary<number> 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
+
+exports[`$ExpectType Dictionary<number> 2`] = `
+"Argument of type 'Partial<{ a: number; b: number; c: number; d: number; }>' is not assignable to parameter of type '{ [key: string]: number; }'.
+  Property 'a' is incompatible with index signature.
+    Type 'number | undefined' is not assignable to type 'number'.
+      Type 'undefined' is not assignable to type 'number'."
+`;
+
+exports[`$ExpectType Dictionary<number> 3`] = `"{}"`;
+
+exports[`$ExpectType Dictionary<number> 4`] = `"{}"`;
+
+exports[`$ExpectType Dictionary<number> 5`] = `"R.Dictionary<number>"`;
+
+exports[`$ExpectType Dictionary<number> 6`] = `"R.Dictionary<number>"`;
+
+exports[`$ExpectType Dictionary<number> 7`] = `"any"`;
+
+exports[`$ExpectType Dictionary<number> 8`] = `"any"`;
+
+exports[`$ExpectType Dictionary<number> 9`] = `"any"`;
+
+exports[`$ExpectType Dictionary<number> 10`] = `"R.Dictionary<number>"`;
+
+exports[`$ExpectType Dictionary<number> 11`] = `"R.Dictionary<number>"`;
+
+exports[`$ExpectType Dictionary<number> 12`] = `"{ a: number; b: number; }"`;
+
+exports[`$ExpectType Dictionary<number> 13`] = `"R.Struct<{}>"`;
+
+exports[`$ExpectType Dictionary<number> 14`] = `"{ a: number; b: number; }"`;
+
+exports[`$ExpectType Dictionary<number> 15`] = `"{ a: number; c: number; }"`;
+
+exports[`$ExpectType Dictionary<number> 16`] = `"{}"`;
+
+exports[`$ExpectType Dictionary<number> 17`] = `
+"Argument of type '{ a: number; b: number; c: number; }' is not assignable to parameter of type '{ a: number; c: number; }'.
+  Object literal may only specify known properties, and 'b' does not exist in type '{ a: number; c: number; }'."
+`;
+
+exports[`$ExpectType Dictionary<number> 18`] = `"any"`;
+
+exports[`$ExpectType Dictionary<number> 19`] = `"any"`;
+
+exports[`$ExpectType Dictionary<number> 20`] = `"any"`;
+
+exports[`$ExpectType Dictionary<number> 21`] = `"{}"`;
+
+exports[`$ExpectType Dictionary<number> 22`] = `"{}"`;
+
+exports[`$ExpectType Dictionary<number> 23`] = `"Partial<{ a: number; b: number; c: number; d: number; e: number; }>"`;
+
+exports[`$ExpectType Dictionary<number> 24`] = `"Partial<{ a: number; b: number; A: number; B: number; }>"`;
+
+exports[`$ExpectType Dictionary<number> 25`] = `"{ a: number; b: number; c: number; d: number; }"`;
+
+exports[`$ExpectType Dictionary<number> 26`] = `"{ a: number; b: number; c: number; d: number; }"`;
+
+exports[`$ExpectType Dictionary<number> 27`] = `"{ a: number; b: number; c: number; d: number; }"`;
+
+exports[`$ExpectType Dictionary<number> 28`] = `"R.Dictionary<number>"`;
+
+exports[`$ExpectType Dictionary<number> 29`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
+
+exports[`$ExpectType Dictionary<number> 30`] = `"Partial<{}>"`;
+
+exports[`$ExpectType Dictionary<number> 31`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
+
+exports[`$ExpectType Dictionary<number> 32`] = `"Partial<{}>"`;
+
+exports[`$ExpectType Dictionary<number> 33`] = `"Partial<{ a: number; b: number; A: number; B: number; }>"`;
+
+exports[`$ExpectType Dictionary<number> 34`] = `"R.Dictionary<number>"`;
+
+exports[`$ExpectType Dictionary<number> 35`] = `"R.Dictionary<number>"`;
+
+exports[`$ExpectType Dictionary<string> 1`] = `"R.Dictionary<string>"`;
+
+exports[`$ExpectType Dictionary<string> 2`] = `"R.Dictionary<string>"`;
+
+exports[`$ExpectType Dictionary<string> 3`] = `"R.Dictionary<string>"`;
+
+exports[`$ExpectType Dictionary<string> 4`] = `"{ phrase: string; }"`;
+
+exports[`$ExpectType Dictionary<string> 5`] = `"{ phrase: string; }"`;
+
+exports[`$ExpectType Dictionary<string[]> 1`] = `"string[]"`;
+
+exports[`$ExpectType Dictionary<string[]> 2`] = `"R.Dictionary<R.List<string>>"`;
+
+exports[`$ExpectType Object 1`] = `"{}"`;
+
+exports[`$ExpectType Object[] 1`] = `"{}[]"`;
+
+exports[`$ExpectType Object[] 2`] = `"any[]"`;
+
+exports[`$ExpectType Object[] 3`] = `"[R.Dictionary<string>, R.Dictionary<string>]"`;
+
+exports[`$ExpectType Object[] 4`] = `"{}[]"`;
+
+exports[`$ExpectType Object[] 5`] = `"any[]"`;
+
+exports[`$ExpectType Promise<number> 1`] = `"Promise<number>"`;
+
+exports[`$ExpectType T 1`] = `"{ sum: number; nested: { mul: number; }; }"`;
+
+exports[`$ExpectType Task 1`] = `"{ id: number; }"`;
+
+exports[`$ExpectType Why|boolean 1`] = `"false | Why"`;
+
+exports[`$ExpectType any[] 1`] = `"R.Index[]"`;
+
+exports[`$ExpectType any[] 2`] = `"void[]"`;
+
+exports[`$ExpectType any[] 3`] = `"void[]"`;
+
+exports[`$ExpectType any[] 4`] = `"void[]"`;
+
+exports[`$ExpectType any[] 5`] = `"{}[]"`;
+
+exports[`$ExpectType any[] 6`] = `"R.Dictionary<any>"`;
+
+exports[`$ExpectType any[] 7`] = `"R.Dictionary<any>"`;
+
+exports[`$ExpectType any[][] 1`] = `"R.Index[][]"`;
+
+exports[`$ExpectType any[][] 2`] = `"any[][]"`;
+
+exports[`$ExpectType boolean 1`] = `"boolean"`;
+
+exports[`$ExpectType boolean 2`] = `"boolean"`;
+
+exports[`$ExpectType boolean 3`] = `"boolean"`;
+
+exports[`$ExpectType boolean 4`] = `"boolean"`;
+
+exports[`$ExpectType boolean 5`] = `"boolean"`;
+
+exports[`$ExpectType boolean 6`] = `"boolean"`;
+
+exports[`$ExpectType boolean 7`] = `"boolean"`;
+
+exports[`$ExpectType boolean 8`] = `"boolean"`;
+
+exports[`$ExpectType boolean 9`] = `"boolean"`;
+
+exports[`$ExpectType boolean 10`] = `"boolean"`;
+
+exports[`$ExpectType boolean 11`] = `"boolean"`;
+
+exports[`$ExpectType boolean 12`] = `"boolean"`;
+
+exports[`$ExpectType boolean 13`] = `"boolean"`;
+
+exports[`$ExpectType boolean 14`] = `"boolean"`;
+
+exports[`$ExpectType boolean 15`] = `"boolean"`;
+
+exports[`$ExpectType boolean 16`] = `"boolean"`;
+
+exports[`$ExpectType boolean 17`] = `"boolean"`;
+
+exports[`$ExpectType boolean 18`] = `"boolean"`;
+
+exports[`$ExpectType boolean 19`] = `"boolean"`;
+
+exports[`$ExpectType boolean 20`] = `"boolean"`;
+
+exports[`$ExpectType boolean 21`] = `"boolean"`;
+
+exports[`$ExpectType boolean 22`] = `"boolean"`;
+
+exports[`$ExpectType boolean 23`] = `"boolean"`;
+
+exports[`$ExpectType boolean 24`] = `"boolean"`;
+
+exports[`$ExpectType boolean 25`] = `"boolean"`;
+
+exports[`$ExpectType boolean 26`] = `"boolean"`;
+
+exports[`$ExpectType boolean 27`] = `"boolean"`;
+
+exports[`$ExpectType boolean 28`] = `"boolean"`;
+
+exports[`$ExpectType boolean 29`] = `"boolean"`;
+
+exports[`$ExpectType boolean 30`] = `"boolean"`;
+
+exports[`$ExpectType boolean 31`] = `"boolean"`;
+
+exports[`$ExpectType boolean 32`] = `"boolean"`;
+
+exports[`$ExpectType boolean 33`] = `"boolean"`;
+
+exports[`$ExpectType boolean 34`] = `"boolean"`;
+
+exports[`$ExpectType boolean 35`] = `"boolean"`;
+
+exports[`$ExpectType boolean 36`] = `"boolean"`;
+
+exports[`$ExpectType boolean 37`] = `"boolean"`;
+
+exports[`$ExpectType boolean 38`] = `"boolean"`;
+
+exports[`$ExpectType boolean 39`] = `"boolean"`;
+
+exports[`$ExpectType boolean 40`] = `"boolean"`;
+
+exports[`$ExpectType boolean 41`] = `"boolean"`;
+
+exports[`$ExpectType boolean 42`] = `"boolean"`;
+
+exports[`$ExpectType boolean 43`] = `"boolean"`;
+
+exports[`$ExpectType boolean 44`] = `"boolean"`;
+
+exports[`$ExpectType boolean 45`] = `"boolean"`;
+
+exports[`$ExpectType boolean 46`] = `"boolean"`;
+
+exports[`$ExpectType boolean 47`] = `"boolean"`;
+
+exports[`$ExpectType boolean 48`] = `"boolean"`;
+
+exports[`$ExpectType boolean 49`] = `"boolean"`;
+
+exports[`$ExpectType boolean 50`] = `"boolean"`;
+
+exports[`$ExpectType boolean 51`] = `"boolean"`;
+
+exports[`$ExpectType boolean 52`] = `"boolean"`;
+
+exports[`$ExpectType boolean 53`] = `"boolean"`;
+
+exports[`$ExpectType boolean 54`] = `"boolean"`;
+
+exports[`$ExpectType boolean 55`] = `"boolean"`;
+
+exports[`$ExpectType boolean 56`] = `"boolean"`;
+
+exports[`$ExpectType boolean 57`] = `"boolean"`;
+
+exports[`$ExpectType boolean 58`] = `"boolean"`;
+
+exports[`$ExpectType boolean 59`] = `"boolean"`;
+
+exports[`$ExpectType boolean 60`] = `"boolean"`;
+
+exports[`$ExpectType boolean 61`] = `"boolean"`;
+
+exports[`$ExpectType boolean 62`] = `"boolean"`;
+
+exports[`$ExpectType boolean 63`] = `"boolean"`;
+
+exports[`$ExpectType boolean 64`] = `"boolean"`;
+
+exports[`$ExpectType boolean 65`] = `"boolean"`;
+
+exports[`$ExpectType boolean 66`] = `"boolean"`;
+
+exports[`$ExpectType boolean 67`] = `"boolean"`;
+
+exports[`$ExpectType boolean 68`] = `"boolean"`;
+
+exports[`$ExpectType boolean 69`] = `"boolean"`;
+
+exports[`$ExpectType boolean 70`] = `"boolean"`;
+
+exports[`$ExpectType boolean 71`] = `"boolean"`;
+
+exports[`$ExpectType boolean 72`] = `"boolean"`;
+
+exports[`$ExpectType boolean 73`] = `"boolean"`;
+
+exports[`$ExpectType boolean 74`] = `"boolean"`;
+
+exports[`$ExpectType boolean 75`] = `"boolean"`;
+
+exports[`$ExpectType boolean 76`] = `"boolean"`;
+
+exports[`$ExpectType boolean 77`] = `"boolean"`;
+
+exports[`$ExpectType boolean 78`] = `"boolean"`;
+
+exports[`$ExpectType boolean 79`] = `"boolean"`;
+
+exports[`$ExpectType boolean 80`] = `"boolean"`;
+
+exports[`$ExpectType boolean 81`] = `"boolean"`;
+
+exports[`$ExpectType boolean 82`] = `"boolean"`;
+
+exports[`$ExpectType boolean 83`] = `"boolean"`;
+
+exports[`$ExpectType boolean 84`] = `"boolean"`;
+
+exports[`$ExpectType boolean 85`] = `"boolean"`;
+
+exports[`$ExpectType boolean 86`] = `"boolean"`;
+
+exports[`$ExpectType boolean 87`] = `"boolean"`;
+
+exports[`$ExpectType boolean 88`] = `"boolean"`;
+
+exports[`$ExpectType boolean 89`] = `"boolean"`;
+
+exports[`$ExpectType boolean 90`] = `"boolean"`;
+
+exports[`$ExpectType boolean 91`] = `"boolean"`;
+
+exports[`$ExpectType boolean 92`] = `"boolean"`;
+
+exports[`$ExpectType boolean 93`] = `"boolean"`;
+
+exports[`$ExpectType boolean 94`] = `"boolean"`;
+
+exports[`$ExpectType boolean 95`] = `"boolean"`;
+
+exports[`$ExpectType boolean 96`] = `"boolean"`;
+
+exports[`$ExpectType boolean 97`] = `"boolean"`;
+
+exports[`$ExpectType boolean 98`] = `"boolean"`;
+
+exports[`$ExpectType boolean 99`] = `"boolean"`;
+
+exports[`$ExpectType boolean 100`] = `"boolean"`;
+
+exports[`$ExpectType boolean 101`] = `"boolean"`;
+
+exports[`$ExpectType boolean 102`] = `"boolean"`;
+
+exports[`$ExpectType boolean 103`] = `"boolean"`;
+
+exports[`$ExpectType boolean 104`] = `"boolean"`;
+
+exports[`$ExpectType boolean 105`] = `"boolean"`;
+
+exports[`$ExpectType boolean 106`] = `"boolean"`;
+
+exports[`$ExpectType boolean 107`] = `"boolean"`;
+
+exports[`$ExpectType boolean 108`] = `"boolean"`;
+
+exports[`$ExpectType boolean 109`] = `"boolean"`;
+
+exports[`$ExpectType boolean 110`] = `"boolean"`;
+
+exports[`$ExpectType boolean 111`] = `"boolean"`;
+
+exports[`$ExpectType boolean 112`] = `"boolean"`;
+
+exports[`$ExpectType boolean 113`] = `"boolean"`;
+
+exports[`$ExpectType boolean 114`] = `"boolean"`;
+
+exports[`$ExpectType boolean 115`] = `"boolean"`;
+
+exports[`$ExpectType boolean 116`] = `"boolean"`;
+
+exports[`$ExpectType boolean 117`] = `"boolean"`;
+
+exports[`$ExpectType boolean 118`] = `"boolean"`;
+
+exports[`$ExpectType boolean 119`] = `"boolean"`;
+
+exports[`$ExpectType boolean 120`] = `"boolean"`;
+
+exports[`$ExpectType boolean 121`] = `"boolean"`;
+
+exports[`$ExpectType boolean 122`] = `"boolean"`;
+
+exports[`$ExpectType boolean 123`] = `"boolean"`;
+
+exports[`$ExpectType boolean 124`] = `"boolean"`;
+
+exports[`$ExpectType boolean 125`] = `"boolean"`;
+
+exports[`$ExpectType boolean 126`] = `"boolean"`;
+
+exports[`$ExpectType boolean 127`] = `"boolean"`;
+
+exports[`$ExpectType boolean 128`] = `"boolean"`;
+
+exports[`$ExpectType boolean 129`] = `"boolean"`;
+
+exports[`$ExpectType boolean 130`] = `"boolean"`;
+
+exports[`$ExpectType boolean 131`] = `"boolean"`;
+
+exports[`$ExpectType boolean 132`] = `"boolean"`;
+
+exports[`$ExpectType boolean 133`] = `"boolean"`;
+
+exports[`$ExpectType boolean 134`] = `"boolean"`;
+
+exports[`$ExpectType boolean 135`] = `"boolean"`;
+
+exports[`$ExpectType boolean 136`] = `"boolean"`;
+
+exports[`$ExpectType boolean 137`] = `"boolean"`;
+
+exports[`$ExpectType boolean 138`] = `"boolean"`;
+
+exports[`$ExpectType boolean 139`] = `"boolean"`;
+
+exports[`$ExpectType boolean 140`] = `"boolean"`;
+
+exports[`$ExpectType boolean 141`] = `"boolean"`;
+
+exports[`$ExpectType boolean 142`] = `"boolean"`;
+
+exports[`$ExpectType boolean 143`] = `"boolean"`;
+
+exports[`$ExpectType boolean 144`] = `"boolean"`;
+
+exports[`$ExpectType boolean 145`] = `"boolean"`;
+
+exports[`$ExpectType boolean 146`] = `"boolean"`;
+
+exports[`$ExpectType boolean 147`] = `"boolean"`;
+
+exports[`$ExpectType boolean 148`] = `"boolean"`;
+
+exports[`$ExpectType circle 1`] = `"any"`;
+
+exports[`$ExpectType circle 2`] = `"any"`;
+
+exports[`$ExpectType null 1`] = `"boolean"`;
+
+exports[`$ExpectType null 2`] = `"{ b: number; }"`;
+
+exports[`$ExpectType number 1`] = `"number"`;
+
+exports[`$ExpectType number 2`] = `"number"`;
+
+exports[`$ExpectType number 3`] = `"number"`;
+
+exports[`$ExpectType number 4`] = `"number"`;
+
+exports[`$ExpectType number 5`] = `"number"`;
+
+exports[`$ExpectType number 6`] = `"number"`;
+
+exports[`$ExpectType number 7`] = `"number"`;
+
+exports[`$ExpectType number 8`] = `"number"`;
+
+exports[`$ExpectType number 9`] = `"number"`;
+
+exports[`$ExpectType number 10`] = `"number"`;
+
+exports[`$ExpectType number 11`] = `"number"`;
+
+exports[`$ExpectType number 12`] = `"number"`;
+
+exports[`$ExpectType number 13`] = `"number"`;
+
+exports[`$ExpectType number 14`] = `"number"`;
+
+exports[`$ExpectType number 15`] = `"number"`;
+
+exports[`$ExpectType number 16`] = `"number"`;
+
+exports[`$ExpectType number 17`] = `"number"`;
+
+exports[`$ExpectType number 18`] = `"number"`;
+
+exports[`$ExpectType number 19`] = `"number"`;
+
+exports[`$ExpectType number 20`] = `"number"`;
+
+exports[`$ExpectType number 21`] = `"number"`;
+
+exports[`$ExpectType number 22`] = `"number"`;
+
+exports[`$ExpectType number 23`] = `"number"`;
+
+exports[`$ExpectType number 24`] = `"number"`;
+
+exports[`$ExpectType number 25`] = `"number"`;
+
+exports[`$ExpectType number 26`] = `"number"`;
+
+exports[`$ExpectType number 27`] = `"number"`;
+
+exports[`$ExpectType number 28`] = `"number"`;
+
+exports[`$ExpectType number 29`] = `"1 | -1 | 10"`;
+
+exports[`$ExpectType number 30`] = `"number"`;
+
+exports[`$ExpectType number 31`] = `"number"`;
+
+exports[`$ExpectType number 32`] = `"number"`;
+
+exports[`$ExpectType number 33`] = `"number"`;
+
+exports[`$ExpectType number 34`] = `"number"`;
+
+exports[`$ExpectType number 35`] = `"number"`;
+
+exports[`$ExpectType number 36`] = `"number"`;
+
+exports[`$ExpectType number 37`] = `"string | number | undefined"`;
+
+exports[`$ExpectType number 38`] = `"number"`;
+
+exports[`$ExpectType number 39`] = `"number"`;
+
+exports[`$ExpectType number 40`] = `"number"`;
+
+exports[`$ExpectType number 41`] = `"number"`;
+
+exports[`$ExpectType number 42`] = `"{}"`;
+
+exports[`$ExpectType number 43`] = `"number"`;
+
+exports[`$ExpectType number 44`] = `"number"`;
+
+exports[`$ExpectType number 45`] = `"number"`;
+
+exports[`$ExpectType number 46`] = `"number"`;
+
+exports[`$ExpectType number 47`] = `"number"`;
+
+exports[`$ExpectType number 48`] = `"number"`;
+
+exports[`$ExpectType number 49`] = `"{}"`;
+
+exports[`$ExpectType number 50`] = `"{}"`;
+
+exports[`$ExpectType number 51`] = `"any"`;
+
+exports[`$ExpectType number 52`] = `"any"`;
+
+exports[`$ExpectType number 53`] = `"any"`;
+
+exports[`$ExpectType number 54`] = `"any"`;
+
+exports[`$ExpectType number 55`] = `"number"`;
+
+exports[`$ExpectType number 56`] = `"number"`;
+
+exports[`$ExpectType number 57`] = `"number"`;
+
+exports[`$ExpectType number 58`] = `"number"`;
+
+exports[`$ExpectType number 59`] = `"number"`;
+
+exports[`$ExpectType number 60`] = `"number"`;
+
+exports[`$ExpectType number 61`] = `"number"`;
+
+exports[`$ExpectType number 62`] = `"number"`;
+
+exports[`$ExpectType number 63`] = `"number"`;
+
+exports[`$ExpectType number 64`] = `"number"`;
+
+exports[`$ExpectType number 65`] = `"number"`;
+
+exports[`$ExpectType number 66`] = `"number"`;
+
+exports[`$ExpectType number 67`] = `"number"`;
+
+exports[`$ExpectType number 68`] = `"number"`;
+
+exports[`$ExpectType number 69`] = `"number"`;
+
+exports[`$ExpectType number 70`] = `"number"`;
+
+exports[`$ExpectType number 71`] = `"number"`;
+
+exports[`$ExpectType number 72`] = `"{} | undefined"`;
+
+exports[`$ExpectType number 73`] = `"number"`;
+
+exports[`$ExpectType number 74`] = `"number"`;
+
+exports[`$ExpectType number 75`] = `"number"`;
+
+exports[`$ExpectType number 76`] = `"number"`;
+
+exports[`$ExpectType number 77`] = `"number"`;
+
+exports[`$ExpectType number 78`] = `"number"`;
+
+exports[`$ExpectType number 79`] = `"number"`;
+
+exports[`$ExpectType number 80`] = `"number"`;
+
+exports[`$ExpectType number 81`] = `"number"`;
+
+exports[`$ExpectType number 82`] = `"number"`;
+
+exports[`$ExpectType number 83`] = `"number"`;
+
+exports[`$ExpectType number 84`] = `"number"`;
+
+exports[`$ExpectType number 85`] = `"number"`;
+
+exports[`$ExpectType number 86`] = `"number"`;
+
+exports[`$ExpectType number 87`] = `"number"`;
+
+exports[`$ExpectType number 88`] = `"3 | 7"`;
+
+exports[`$ExpectType number 89`] = `"number"`;
+
+exports[`$ExpectType number 90`] = `"number"`;
+
+exports[`$ExpectType number 91`] = `"number"`;
+
+exports[`$ExpectType number 92`] = `"number"`;
+
+exports[`$ExpectType number 93`] = `"3 | 9"`;
+
+exports[`$ExpectType number 94`] = `"number"`;
+
+exports[`$ExpectType number 95`] = `"number"`;
+
+exports[`$ExpectType number 96`] = `"number"`;
+
+exports[`$ExpectType number 97`] = `"number"`;
+
+exports[`$ExpectType number 98`] = `"number"`;
+
+exports[`$ExpectType number 99`] = `"number"`;
+
+exports[`$ExpectType number 100`] = `"number"`;
+
+exports[`$ExpectType number 101`] = `"number"`;
+
+exports[`$ExpectType number 102`] = `"number"`;
+
+exports[`$ExpectType number 103`] = `"number"`;
+
+exports[`$ExpectType number 104`] = `"number"`;
+
+exports[`$ExpectType number 105`] = `"number"`;
+
+exports[`$ExpectType number 106`] = `"number"`;
+
+exports[`$ExpectType number 107`] = `"number"`;
+
+exports[`$ExpectType number 108`] = `"number"`;
+
+exports[`$ExpectType number 109`] = `"boolean"`;
+
+exports[`$ExpectType number 110`] = `"boolean"`;
+
+exports[`$ExpectType number 111`] = `"number | null"`;
+
+exports[`$ExpectType number 112`] = `"number | undefined"`;
+
+exports[`$ExpectType number 113`] = `"number"`;
+
+exports[`$ExpectType number 114`] = `"{}"`;
+
+exports[`$ExpectType number 115`] = `"number"`;
+
+exports[`$ExpectType number 116`] = `"number"`;
+
+exports[`$ExpectType number 117`] = `"number"`;
+
+exports[`$ExpectType number 118`] = `"number"`;
+
+exports[`$ExpectType number[] 1`] = `"any[]"`;
+
+exports[`$ExpectType number[] 2`] = `"any[]"`;
+
+exports[`$ExpectType number[] 3`] = `"number[]"`;
+
+exports[`$ExpectType number[] 4`] = `"number[]"`;
+
+exports[`$ExpectType number[] 5`] = `"number[]"`;
+
+exports[`$ExpectType number[] 6`] = `"number[]"`;
+
+exports[`$ExpectType number[] 7`] = `"number[]"`;
+
+exports[`$ExpectType number[] 8`] = `"number[]"`;
+
+exports[`$ExpectType number[] 9`] = `"number[]"`;
+
+exports[`$ExpectType number[] 10`] = `"number[]"`;
+
+exports[`$ExpectType number[] 11`] = `"boolean[]"`;
+
+exports[`$ExpectType number[] 12`] = `"number[]"`;
+
+exports[`$ExpectType number[] 13`] = `"number[]"`;
+
+exports[`$ExpectType number[] 14`] = `"number[]"`;
+
+exports[`$ExpectType number[] 15`] = `
+"Argument of type '(n: number) => false | number[]' is not assignable to parameter of type '(seed: number) => false | [{}, number]'.
+  Type 'false | number[]' is not assignable to type 'false | [{}, number]'.
+    Type 'number[]' is not assignable to type 'false | [{}, number]'.
+      Type 'number[]' is not assignable to type '[{}, number]'.
+        Property '0' is missing in type 'number[]'."
+`;
+
+exports[`$ExpectType number[] 16`] = `"TResult[]"`;
+
+exports[`$ExpectType number[] 17`] = `"number[]"`;
+
+exports[`$ExpectType number[] 18`] = `"number[]"`;
+
+exports[`$ExpectType number[] 19`] = `"number[]"`;
+
+exports[`$ExpectType number[] 20`] = `"number[]"`;
+
+exports[`$ExpectType number[] 21`] = `"Argument of type '{ <T, U>(el: U, list: List<T>): (T & U)[]; <U>(el: U): <T>(list: List<T>) => (T & U)[]; }' is not assignable to parameter of type '(v: any) => (list: Chain<any>) => Chain<any>'."`;
+
+exports[`$ExpectType number[] 22`] = `"Argument of type '{ <T, U>(el: U, list: List<T>): (T & U)[]; <U>(el: U): <T>(list: List<T>) => (T & U)[]; }' is not assignable to parameter of type '(v: any) => (list: Chain<any>) => Chain<any>'."`;
+
+exports[`$ExpectType number[] 23`] = `"number[]"`;
+
+exports[`$ExpectType number[] 24`] = `"number[]"`;
+
+exports[`$ExpectType number[] 25`] = `"number[]"`;
+
+exports[`$ExpectType number[] 26`] = `"R.List<any>"`;
+
+exports[`$ExpectType number[] 27`] = `"number[]"`;
+
+exports[`$ExpectType number[] 28`] = `"number[]"`;
+
+exports[`$ExpectType number[] 29`] = `"number[]"`;
+
+exports[`$ExpectType number[] 30`] = `"number[]"`;
+
+exports[`$ExpectType number[] 31`] = `"number[]"`;
+
+exports[`$ExpectType number[] 32`] = `"boolean[]"`;
+
+exports[`$ExpectType number[] 33`] = `"boolean[]"`;
+
+exports[`$ExpectType number[] 34`] = `"number"`;
+
+exports[`$ExpectType number[] 35`] = `"number[]"`;
+
+exports[`$ExpectType number[] 36`] = `"number[]"`;
+
+exports[`$ExpectType number[] 37`] = `"any[]"`;
+
+exports[`$ExpectType number[] 38`] = `"number[]"`;
+
+exports[`$ExpectType number[] 39`] = `"number[]"`;
+
+exports[`$ExpectType number[] 40`] = `"number[]"`;
+
+exports[`$ExpectType number[] 41`] = `"number[]"`;
+
+exports[`$ExpectType number[] 42`] = `"number[]"`;
+
+exports[`$ExpectType number[] 43`] = `"number[]"`;
+
+exports[`$ExpectType number[] 44`] = `"number[]"`;
+
+exports[`$ExpectType number[] 45`] = `"number[]"`;
+
+exports[`$ExpectType number[] 46`] = `"number[]"`;
+
+exports[`$ExpectType number[] 47`] = `"number[]"`;
+
+exports[`$ExpectType number[] 48`] = `"number[]"`;
+
+exports[`$ExpectType number[] 49`] = `"number[]"`;
+
+exports[`$ExpectType number[] 50`] = `"number[]"`;
+
+exports[`$ExpectType number[] 51`] = `"number[]"`;
+
+exports[`$ExpectType number[] 52`] = `"number[]"`;
+
+exports[`$ExpectType number[] 53`] = `"number[]"`;
+
+exports[`$ExpectType number[] 54`] = `"number[]"`;
+
+exports[`$ExpectType number[] 55`] = `"number[]"`;
+
+exports[`$ExpectType number[] 56`] = `"R.Functor<number>"`;
+
+exports[`$ExpectType number[] 57`] = `"any[]"`;
+
+exports[`$ExpectType number[] 58`] = `"any[]"`;
+
+exports[`$ExpectType number[] 59`] = `"number[]"`;
+
+exports[`$ExpectType number[] 60`] = `"{}[]"`;
+
+exports[`$ExpectType number[] 61`] = `"{}[]"`;
+
+exports[`$ExpectType number[] 62`] = `"{}[]"`;
+
+exports[`$ExpectType number[] 63`] = `"number[]"`;
+
+exports[`$ExpectType number[] 64`] = `"number[]"`;
+
+exports[`$ExpectType number[] 65`] = `"number[]"`;
+
+exports[`$ExpectType number[] 66`] = `"number[]"`;
+
+exports[`$ExpectType number[] 67`] = `"boolean[]"`;
+
+exports[`$ExpectType number[] 68`] = `"boolean[]"`;
+
+exports[`$ExpectType number[] 69`] = `"number[]"`;
+
+exports[`$ExpectType number[] 70`] = `"number[]"`;
+
+exports[`$ExpectType number[] 71`] = `"number[]"`;
+
+exports[`$ExpectType number[] 72`] = `"number[]"`;
+
+exports[`$ExpectType number[] 73`] = `"number[]"`;
+
+exports[`$ExpectType number[] 74`] = `"number[]"`;
+
+exports[`$ExpectType number[] 75`] = `"never[]"`;
+
+exports[`$ExpectType number[] 76`] = `"number[]"`;
+
+exports[`$ExpectType number[] 77`] = `"number[]"`;
+
+exports[`$ExpectType number[] 78`] = `"number[]"`;
+
+exports[`$ExpectType number[] 79`] = `"number[]"`;
+
+exports[`$ExpectType number[] 80`] = `"number[]"`;
+
+exports[`$ExpectType number[] 81`] = `"number[]"`;
+
+exports[`$ExpectType number[] 82`] = `"number[]"`;
+
+exports[`$ExpectType number[] 83`] = `"number[]"`;
+
+exports[`$ExpectType number[] 84`] = `"number[]"`;
+
+exports[`$ExpectType number[] 85`] = `"number[]"`;
+
+exports[`$ExpectType number[] 86`] = `"number[]"`;
+
+exports[`$ExpectType number[] 87`] = `"number[]"`;
+
+exports[`$ExpectType number[] 88`] = `"number[]"`;
+
+exports[`$ExpectType number[] 89`] = `"number[]"`;
+
+exports[`$ExpectType number[] 90`] = `"number[]"`;
+
+exports[`$ExpectType number[] 91`] = `"number[]"`;
+
+exports[`$ExpectType number[] 92`] = `"number | undefined"`;
+
+exports[`$ExpectType number[] 93`] = `"number | undefined"`;
+
+exports[`$ExpectType number[] 94`] = `"number | undefined"`;
+
+exports[`$ExpectType number[] 95`] = `"number | undefined"`;
+
+exports[`$ExpectType number[] 96`] = `"number[]"`;
+
+exports[`$ExpectType number[] 97`] = `"any[]"`;
+
+exports[`$ExpectType number[] 98`] = `"any[]"`;
+
+exports[`$ExpectType number[] 99`] = `"any[]"`;
+
+exports[`$ExpectType number[] 100`] = `"number[]"`;
+
+exports[`$ExpectType number[] 101`] = `"number[]"`;
+
+exports[`$ExpectType number[] 102`] = `"number[]"`;
+
+exports[`$ExpectType number[] 103`] = `"number[]"`;
+
+exports[`$ExpectType number[] 104`] = `"number[]"`;
+
+exports[`$ExpectType number[] 105`] = `"number[]"`;
+
+exports[`$ExpectType number[] 106`] = `"number[]"`;
+
+exports[`$ExpectType number[] 107`] = `"number[]"`;
+
+exports[`$ExpectType number[] 108`] = `"number[]"`;
+
+exports[`$ExpectType number[] 109`] = `"number[]"`;
+
+exports[`$ExpectType number[] 110`] = `"number[]"`;
+
+exports[`$ExpectType number[] 111`] = `"number[]"`;
+
+exports[`$ExpectType number[] 112`] = `"number[]"`;
+
+exports[`$ExpectType number[] 113`] = `"number[]"`;
+
+exports[`$ExpectType number[] 114`] = `"number[]"`;
+
+exports[`$ExpectType number[] 115`] = `"{}[]"`;
+
+exports[`$ExpectType number[] 116`] = `"(number | (number | (number | (number | number[])[])[])[])[]"`;
+
+exports[`$ExpectType number[][] 1`] = `"number[][]"`;
+
+exports[`$ExpectType number[][] 2`] = `"number[][]"`;
+
+exports[`$ExpectType number[][] 3`] = `"number[][]"`;
+
+exports[`$ExpectType number[][] 4`] = `"number[][]"`;
+
+exports[`$ExpectType number[][] 5`] = `"number[][]"`;
+
+exports[`$ExpectType number[][] 6`] = `"number[][]"`;
+
+exports[`$ExpectType number[][] 7`] = `"number[][]"`;
+
+exports[`$ExpectType number[][] 8`] = `"number[][]"`;
+
+exports[`$ExpectType number[][] 9`] = `"number[][]"`;
+
+exports[`$ExpectType number[][] 10`] = `"number[][]"`;
+
+exports[`$ExpectType number[][] 11`] = `"number[][]"`;
+
+exports[`$ExpectType number[][] 12`] = `"number[][]"`;
+
+exports[`$ExpectType number|any[] 1`] = `"0 | never[]"`;
+
+exports[`$ExpectType number|any[] 2`] = `"number | never[]"`;
+
+exports[`$ExpectType string 1`] = `"string"`;
+
+exports[`$ExpectType string 2`] = `"string"`;
+
+exports[`$ExpectType string 3`] = `"string"`;
+
+exports[`$ExpectType string 4`] = `"string"`;
+
+exports[`$ExpectType string 5`] = `"string"`;
+
+exports[`$ExpectType string 6`] = `"string"`;
+
+exports[`$ExpectType string 7`] = `"string"`;
+
+exports[`$ExpectType string 8`] = `"\\"a\\" | \\"b\\" | \\"c\\""`;
+
+exports[`$ExpectType string 9`] = `"\\"a\\" | \\"b\\" | \\"c\\""`;
+
+exports[`$ExpectType string 10`] = `"string"`;
+
+exports[`$ExpectType string 11`] = `"string"`;
+
+exports[`$ExpectType string 12`] = `"string"`;
+
+exports[`$ExpectType string 13`] = `"string"`;
+
+exports[`$ExpectType string 14`] = `"any"`;
+
+exports[`$ExpectType string 15`] = `"{}"`;
+
+exports[`$ExpectType string 16`] = `"{}"`;
+
+exports[`$ExpectType string 17`] = `"string"`;
+
+exports[`$ExpectType string 18`] = `"string"`;
+
+exports[`$ExpectType string 19`] = `"\\"unicorns\\""`;
+
+exports[`$ExpectType string 20`] = `"\\"a\\" | \\"d\\" | \\"e\\""`;
+
+exports[`$ExpectType string 21`] = `"string"`;
+
+exports[`$ExpectType string 22`] = `"\\"ramda\\""`;
+
+exports[`$ExpectType string 23`] = `"R.List<any>"`;
+
+exports[`$ExpectType string 24`] = `"\\"ramda\\""`;
+
+exports[`$ExpectType string 25`] = `"R.List<any>"`;
+
+exports[`$ExpectType string 26`] = `"string | undefined"`;
+
+exports[`$ExpectType string 27`] = `"string | number | undefined"`;
+
+exports[`$ExpectType string 28`] = `"string"`;
+
+exports[`$ExpectType string 29`] = `"string"`;
+
+exports[`$ExpectType string 30`] = `"{} | undefined"`;
+
+exports[`$ExpectType string 31`] = `"{}"`;
+
+exports[`$ExpectType string 32`] = `"string | undefined"`;
+
+exports[`$ExpectType string 33`] = `"string | undefined"`;
+
+exports[`$ExpectType string 34`] = `"string"`;
+
+exports[`$ExpectType string 35`] = `"string"`;
+
+exports[`$ExpectType string 36`] = `"string"`;
+
+exports[`$ExpectType string 37`] = `"string"`;
+
+exports[`$ExpectType string 38`] = `"string"`;
+
+exports[`$ExpectType string 39`] = `"string"`;
+
+exports[`$ExpectType string 40`] = `"\\"Example\\""`;
+
+exports[`$ExpectType string 41`] = `"\\"Example\\""`;
+
+exports[`$ExpectType string 42`] = `"\\"ramda\\""`;
+
+exports[`$ExpectType string 43`] = `"\\"ramda\\""`;
+
+exports[`$ExpectType string 44`] = `"string"`;
+
+exports[`$ExpectType string 45`] = `"string"`;
+
+exports[`$ExpectType string 46`] = `"string"`;
+
+exports[`$ExpectType string 47`] = `"string"`;
+
+exports[`$ExpectType string 48`] = `"string"`;
+
+exports[`$ExpectType string 49`] = `"string"`;
+
+exports[`$ExpectType string 50`] = `"{}"`;
+
+exports[`$ExpectType string 51`] = `"any"`;
+
+exports[`$ExpectType string 52`] = `"any"`;
+
+exports[`$ExpectType string 53`] = `"{}"`;
+
+exports[`$ExpectType string 54`] = `"{}"`;
+
+exports[`$ExpectType string 55`] = `"string"`;
+
+exports[`$ExpectType string 56`] = `"Cannot invoke an expression whose type lacks a call signature. Type 'Struct<any>' has no compatible call signatures."`;
+
+exports[`$ExpectType string 57`] = `"string"`;
+
+exports[`$ExpectType string 58`] = `"string"`;
+
+exports[`$ExpectType string 59`] = `"\\"a\\" | \\"z\\""`;
+
+exports[`$ExpectType string 60`] = `"\\"a\\" | \\"z\\""`;
+
+exports[`$ExpectType string 61`] = `"string"`;
+
+exports[`$ExpectType string 62`] = `"string"`;
+
+exports[`$ExpectType string 63`] = `"string"`;
+
+exports[`$ExpectType string 64`] = `"string"`;
+
+exports[`$ExpectType string 65`] = `"string"`;
+
+exports[`$ExpectType string 66`] = `"string"`;
+
+exports[`$ExpectType string 67`] = `"string"`;
+
+exports[`$ExpectType string 68`] = `"number | \\"Ramda\\""`;
+
+exports[`$ExpectType string 69`] = `"\\"\\" | null"`;
+
+exports[`$ExpectType string[] 1`] = `"({} | undefined)[]"`;
+
+exports[`$ExpectType string[] 2`] = `"string[]"`;
+
+exports[`$ExpectType string[] 3`] = `"string[]"`;
+
+exports[`$ExpectType string[] 4`] = `"string[]"`;
+
+exports[`$ExpectType string[] 5`] = `"string[]"`;
+
+exports[`$ExpectType string[] 6`] = `"never[]"`;
+
+exports[`$ExpectType string[] 7`] = `"string[]"`;
+
+exports[`$ExpectType string[] 8`] = `"R.List<any>"`;
+
+exports[`$ExpectType string[] 9`] = `"string[]"`;
+
+exports[`$ExpectType string[] 10`] = `"string[]"`;
+
+exports[`$ExpectType string[] 11`] = `"any"`;
+
+exports[`$ExpectType string[] 12`] = `"any"`;
+
+exports[`$ExpectType string[] 13`] = `"string[]"`;
+
+exports[`$ExpectType string[] 14`] = `"string[]"`;
+
+exports[`$ExpectType string[] 15`] = `"string[]"`;
+
+exports[`$ExpectType string[] 16`] = `"string[]"`;
+
+exports[`$ExpectType string[] 17`] = `"string[]"`;
+
+exports[`$ExpectType string[] 18`] = `"string[]"`;
+
+exports[`$ExpectType string[] 19`] = `"string[]"`;
+
+exports[`$ExpectType string[] 20`] = `"any[]"`;
+
+exports[`$ExpectType string[] 21`] = `"string[]"`;
+
+exports[`$ExpectType string[] 22`] = `"string[]"`;
+
+exports[`$ExpectType string[] 23`] = `"any"`;
+
+exports[`$ExpectType string[] 24`] = `"any"`;
+
+exports[`$ExpectType string[] 25`] = `"string[]"`;
+
+exports[`$ExpectType string[] 26`] = `"string[]"`;
+
+exports[`$ExpectType string[] 27`] = `"any"`;
+
+exports[`$ExpectType string[] 28`] = `"any[]"`;
+
+exports[`$ExpectType string[] 29`] = `"(v2: R.List<string>) => string"`;
+
+exports[`$ExpectType string[] 30`] = `"string[]"`;
+
+exports[`$ExpectType string[] 31`] = `"any"`;
+
+exports[`$ExpectType string[] 32`] = `"string[]"`;
+
+exports[`$ExpectType string[] 33`] = `"[string, string]"`;
+
+exports[`$ExpectType string[] 34`] = `"[string, string]"`;
+
+exports[`$ExpectType string[] 35`] = `"string[]"`;
+
+exports[`$ExpectType string[] 36`] = `"(string & {})[]"`;
+
+exports[`$ExpectType string[][] 1`] = `"string[][]"`;
+
+exports[`$ExpectType typeof people 1`] = `"any"`;
+
+exports[`$ExpectType typeof people 2`] = `"any"`;
+
+exports[`$ExpectType typeof people 3`] = `"R.Struct<any>[]"`;
+
+exports[`$ExpectType typeof people 4`] = `"R.Struct<any>[]"`;
+
+exports[`$ExpectType typeof tomato 1`] = `"any"`;
+
+exports[`$ExpectType typeof tomato 2`] = `
+"Type '{}' is not assignable to type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }'.
+  Property 'firstName' is missing in type '{}'."
+`;
+
+exports[`$ExpectType undefined 1`] = `"{}"`;
+
+exports[`$ExpectType undefined 2`] = `"{}"`;
+
+exports[`$ExpectType undefined 3`] = `"string | undefined"`;
+
+exports[`$ExpectType undefined 4`] = `"string | undefined"`;
+
+exports[`$ExpectType undefined 5`] = `"{}"`;
