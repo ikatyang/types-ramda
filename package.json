@@ -37,7 +37,7 @@
     "@types/gulp-util": "3.0.31",
     "@types/jest": "20.0.2",
     "@types/node": "8.0.13",
-    "@types/ramda": "ikatyang/types-ramda#33f8e0e31d9afeb683e226dd647e10f4d3b69f30",
+    "@types/ramda": "ikatyang/types-ramda#v0.24.1-dist",
     "@types/run-sequence": "0.0.29",
     "@types/through2": "2.0.33",
     "@types/yargs": "8.0.1",
