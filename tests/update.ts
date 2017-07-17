@@ -7,9 +7,9 @@ declare const number: number;
 
 // @dts-jest:pass
 R_update(number, boolean);
-// @dts-jest:fail
+// @dts-jest:pass
 R_update(number)(boolean)(string_array);
-// @dts-jest:fail
+// @dts-jest:pass
 R_update(number, boolean, string_array);
 // @dts-jest:pass
 R_update(number)(string)(string_array);
