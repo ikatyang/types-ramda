@@ -2631,13 +2631,13 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group splitAt
 (() => {
-  // @dts-jest:pass -> number[][]
+  // @dts-jest:pass -> [number, number]
   R.splitAt(1, [1, 2, 3]); //=> [[1], [2, 3]]
-  // @dts-jest:pass -> number[][]
+  // @dts-jest:pass -> [number, number]
   R.splitAt(1)([1, 2, 3]); //=> [[1], [2, 3]]
-  // @dts-jest:pass -> string[]
+  // @dts-jest:pass -> [string, string]
   R.splitAt(5, 'hello world'); //=> ['hello', ' world']
-  // @dts-jest:pass -> string[]
+  // @dts-jest:pass -> [string, string]
   R.splitAt(-1, 'foobar'); //=> ['fooba', 'r']
 })();
 
@@ -2651,9 +2651,9 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group splitWhen
 (() => {
-  // @dts-jest:pass -> number[][]
+  // @dts-jest:pass -> [number, number]
   R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]); //=> [[1], [2, 3, 1, 2, 3]]
-  // @dts-jest:pass -> number[][]
+  // @dts-jest:pass -> [number, number]
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]); //=> [[1], [2, 3, 1, 2, 3]]
 })();
 
