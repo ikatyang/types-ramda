@@ -6,9 +6,9 @@ declare const number: number;
 
 // @dts-jest:pass
 R_insertAll(number, string_array);
-// @dts-jest:fail
+// @dts-jest:pass
 R_insertAll(number, string_array, object_array);
-// @dts-jest:fail
+// @dts-jest:pass
 R_insertAll(number)(string_array)(object_array);
 // @dts-jest:pass
 R_insertAll(number, string_array, string_array);
