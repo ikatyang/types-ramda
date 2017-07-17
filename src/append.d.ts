@@ -23,14 +23,14 @@ import { Placeholder as PH } from "./$placeholder";
 declare const append: append_00;
 type append_00 = {
     <T>(value: T): append_10<T>;
-    <T>(_value: PH, list: List<T>): append_01<T>;
-    <T>(value: T, list: List<T>): append_11<T>;
+    <U>(_value: PH, list: List<U>): append_01<U>;
+    <T, U>(value: T, list: List<U>): append_11<T, U>;
 };
 type append_10<T> = {
-    (list: List<T>): append_11<T>;
+    <U>(list: List<U>): append_11<T, U>;
 };
-type append_01<T> = {
-    (value: T): append_11<T>;
+type append_01<U> = {
+    <T>(value: T): append_11<T, U>;
 };
-type append_11<T> = T[];
+type append_11<T, U> = (T | U)[];
 export = append;
