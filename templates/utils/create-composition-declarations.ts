@@ -6,9 +6,11 @@ export const create_composition_declarations = (
     max_function_count: number,
     max_parameter_count: number,
     // istanbul ignore next
-    generate_parameter_type: (generic: string) => string = x => x,
+    generate_function_parameter_type: (generic: string) => string = x => x,
     // istanbul ignore next
-    generate_return_type: (generic: string) => string = x => x,
+    generate_function_return_type: (generic: string) => string = x => x,
+    // istanbul ignore next
+    generate_composed_return_type: (generic: string) => string = generate_function_return_type,
     ) => {
   const function_names = [...new Array(max_function_count)].map((_, index) => `fn${index + 1}`);
   const return_generics = [...new Array(max_function_count)].map((_, index) => `R${index + 1}`);
@@ -33,7 +35,7 @@ export const create_composition_declarations = (
       const current_parameter_generics = parameter_generics.slice(0, parameter_count);
 
       const entry_parameters = current_parameter_names.map((parameter_name, param_index) => `
-        ${parameter_name}: ${generate_parameter_type(current_parameter_generics[param_index])}
+        ${parameter_name}: ${generate_function_parameter_type(current_parameter_generics[param_index])}
       `).join(',');
 
       declarations.push(`
@@ -42,12 +44,12 @@ export const create_composition_declarations = (
             const function_name = current_sorted_function_names[index];
             const return_generic = current_sorted_return_generics[index];
             return (index === entry_index)
-              ? `${function_name}: (${entry_parameters}) => ${generate_return_type(return_generic)}`
+              ? `${function_name}: (${entry_parameters}) => ${generate_function_return_type(return_generic)}`
               : `${function_name}: (v: ${
-                generate_parameter_type(current_sorted_return_generics[index + (kind === 'compose' ? 1 : -1)])
-              }) => ${generate_return_type(return_generic)}`;
+                generate_function_parameter_type(current_sorted_return_generics[index + (kind === 'compose' ? 1 : -1)])
+              }) => ${generate_function_return_type(return_generic)}`;
           }).join(',')}
-        ): (${entry_parameters}) => ${generate_return_type(current_return_generics[current_return_generics.length - 1])};
+        ): (${entry_parameters}) => ${generate_composed_return_type(current_return_generics[current_return_generics.length - 1])};
       `);
     }
   }
