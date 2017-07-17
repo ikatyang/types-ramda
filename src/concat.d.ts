@@ -30,20 +30,20 @@ type concat_00 = {
     (a: string): concat_string_10;
     <T>(a: T[]): concat__10<T>;
     (a: string, b: string): concat_string_11;
-    <T>(a: T[], b: T[]): concat__11<T>;
+    <T, U>(a: T[], b: U[]): concat__11<T, U>;
 };
 type concat_string_10 = {
     (b: string): concat_string_11;
 };
 type concat__10<T> = {
-    (b: T[]): concat__11<T>;
+    <U>(b: U[]): concat__11<T, U>;
 };
 type concat_string_01 = {
     (a: string): concat_string_11;
 };
-type concat__01<T> = {
-    (a: T[]): concat__11<T>;
+type concat__01<U> = {
+    <T>(a: T[]): concat__11<T, U>;
 };
 type concat_string_11 = string;
-type concat__11<T> = T[];
+type concat__11<T, U> = (T | U)[];
 export = concat;
