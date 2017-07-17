@@ -8,5 +8,6 @@ export default create_composition_declarations(
   max_curry_level,
   6,
   x => x,
+  x => `PromiseLike<${x}> | ${x}`,
   x => `PromiseLike<${x}>`,
 );

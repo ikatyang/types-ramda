@@ -2194,6 +2194,12 @@ import * as R from '../ramda/dist/index';
     (m: number) => Promise.resolve(R.multiply(2, m)),
     (m: number) => Promise.resolve(m / 2),
   )(10);
+  // @dts-jest:pass
+  R.pipeP(
+    (m: number) => Promise.resolve(R.multiply(2, m)),
+    (m: number) => Promise.resolve(m / 2),
+    R.multiply(5),
+  )(10);
 })();
 
 // @dts-jest:group pluck

@@ -1028,6 +1028,12 @@ exports[`pipe squareThenDoubleThenTriple(5) 1`] = `"number"`;
 exports[`pipeP R.pipeP(
         (m: number) => Promise.resolve(R.multiply(2, m)),
         (m: number) => Promise.resolve(m / 2),
+        R.multiply(5),
+      )(10) 1`] = `"PromiseLike<number>"`;
+
+exports[`pipeP R.pipeP(
+        (m: number) => Promise.resolve(R.multiply(2, m)),
+        (m: number) => Promise.resolve(m / 2),
       )(10) 1`] = `"PromiseLike<number>"`;
 
 exports[`pluck R.pluck('a')([{a: 1}, {a: 2}]) 1`] = `"number[]"`;
