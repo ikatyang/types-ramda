@@ -4,11 +4,11 @@ declare const object_array: object[];
 declare const string_array: string[];
 declare const number: number;
 
-// @dts-jest:pass -> (list: string[] | ArrayLike<string>) => string[]
+// @dts-jest:pass -> <U>(list: U[] | ArrayLike<U>) => (string | U)[]
 R_insertAll(number, string_array);
-// @dts-jest:fail -> Argument of type 'object[]' is not assignable to parameter of type 'List<string>'.
+// @dts-jest:pass -> (string | object)[]
 R_insertAll(number, string_array, object_array);
-// @dts-jest:fail -> Argument of type 'object[]' is not assignable to parameter of type 'List<string>'.
+// @dts-jest:pass -> (string | object)[]
 R_insertAll(number)(string_array)(object_array);
 // @dts-jest:pass -> string[]
 R_insertAll(number, string_array, string_array);

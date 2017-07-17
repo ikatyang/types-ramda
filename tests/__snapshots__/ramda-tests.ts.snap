@@ -80,19 +80,11 @@ exports[`append R.append('tests')(['write', 'more']) 1`] = `"string[]"`;
 
 exports[`append R.append('tests', ['write', 'more']) 1`] = `"string[]"`;
 
-exports[`append R.append('tests', []) 1`] = `"\\"tests\\"[]"`;
+exports[`append R.append('tests', []) 1`] = `"string[]"`;
 
-exports[`append R.append(['tests'])(['write', 'more']) 1`] = `
-"Argument of type 'string[]' is not assignable to parameter of type 'List<string[]>'.
-  Type 'string[]' is not assignable to type 'ArrayLike<string[]>'."
-`;
+exports[`append R.append(['tests'])(['write', 'more']) 1`] = `"(string | string[])[]"`;
 
-exports[`append R.append(['tests'], ['write', 'more']) 1`] = `
-"Argument of type 'string[]' is not assignable to parameter of type 'List<string[]>'.
-  Type 'string[]' is not assignable to type 'ArrayLike<string[]>'.
-    Index signatures are incompatible.
-      Type 'string' is not assignable to type 'string[]'."
-`;
+exports[`append R.append(['tests'], ['write', 'more']) 1`] = `"(string | string[])[]"`;
 
 exports[`apply R.apply(Math.max)(nums) 1`] = `"number"`;
 

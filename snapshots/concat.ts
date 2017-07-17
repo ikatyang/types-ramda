@@ -10,7 +10,7 @@ declare const number_list: List<number>;
 R_concat(string, string);
 // @dts-jest:pass -> number[]
 R_concat(number_array, number_array);
-// @dts-jest:fail -> Argument of type 'number[]' is not assignable to parameter of type 'object[]'.
+// @dts-jest:pass -> (number | object)[]
 R_concat(object_array, number_array);
 // @dts-jest:fail -> Argument of type 'List<number>' is not assignable to parameter of type 'number[]'.
 R_concat(number_list, number_list);

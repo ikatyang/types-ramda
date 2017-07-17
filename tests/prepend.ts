@@ -4,9 +4,9 @@ declare const string: string;
 declare const number: number;
 declare const number_array: number[];
 
-// @dts-jest:fail
+// @dts-jest:pass
 R_prepend(string)(number_array);
-// @dts-jest:fail
+// @dts-jest:pass
 R_prepend(string, number_array);
 // @dts-jest:pass
 R_prepend(number)(number_array);

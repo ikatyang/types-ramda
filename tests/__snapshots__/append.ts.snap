@@ -4,14 +4,6 @@ exports[`R_append(number)(number_array) 1`] = `"number[]"`;
 
 exports[`R_append(number, number_array) 1`] = `"number[]"`;
 
-exports[`R_append(string)(number_array) 1`] = `
-"Argument of type 'number[]' is not assignable to parameter of type 'List<string>'.
-  Type 'number[]' is not assignable to type 'ArrayLike<string>'.
-    Index signatures are incompatible.
-      Type 'number' is not assignable to type 'string'."
-`;
+exports[`R_append(string)(number_array) 1`] = `"(string | number)[]"`;
 
-exports[`R_append(string, number_array) 1`] = `
-"Argument of type 'number[]' is not assignable to parameter of type 'List<string>'.
-  Type 'number[]' is not assignable to type 'ArrayLike<string>'."
-`;
+exports[`R_append(string, number_array) 1`] = `"(string | number)[]"`;

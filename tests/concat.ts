@@ -10,7 +10,7 @@ declare const number_list: List<number>;
 R_concat(string, string);
 // @dts-jest:pass
 R_concat(number_array, number_array);
-// @dts-jest:fail
+// @dts-jest:pass
 R_concat(object_array, number_array);
 // @dts-jest:fail
 R_concat(number_list, number_list);
