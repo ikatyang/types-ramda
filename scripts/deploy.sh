@@ -4,11 +4,8 @@ yarn run build -- --kind
 yarn run build -- --kind selectable
 yarn run build -- --kind placeholder
 
-COMMITTER_NAME="$(git log -1 $TRAVIS_COMMIT --pretty="%aN")"
-COMMITTER_EMAIL="$(git log -1 $TRAVIS_COMMIT --pretty="%cE")"
-
-git config --global user.name "$COMMITTER_NAME"
-git config --global user.email "$COMMITTER_EMAIL"
+git config --global user.name ikatyang-bot
+git config --global user.email ikatyang+bot@gmail.com
 git config --global push.default simple
 
 function deploy_branch() {
