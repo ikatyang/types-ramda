@@ -1,3 +1,3 @@
 import {List} from './$types';
 
-export function $<T>(value: T, list: List<T>): T[];
+export function $<T, U>(value: U, list: List<T>): (T | U)[];
