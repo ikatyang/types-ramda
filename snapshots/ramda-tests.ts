@@ -857,9 +857,9 @@ import * as R from '../ramda/dist/index';
   R.filter(isEven, [1, 2, 3, 4]); //=> [2, 4]
   // @dts-jest:pass -> number[]
   R.filter(isEven)([1, 2, 3, 4]);
-  // @dts-jest:pass -> Dictionary<number>
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
   R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, d: 4}
-  // @dts-jest:pass -> Dictionary<number>
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
   R.filter(isEven)({a: 1, b: 2, c: 3, d: 4});
 })();
 

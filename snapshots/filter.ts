@@ -11,9 +11,9 @@ R_filter(string_predicate, string_array);
 // @dts-jest:pass -> string[]
 R_filter(string_predicate)(string_array);
 
-// @dts-jest:pass -> Dictionary<string>
+// @dts-jest:pass -> Partial<Dictionary<string>>
 R_filter(string_predicate, string_dictionary);
-// @dts-jest:pass -> Dictionary<string>
+// @dts-jest:pass -> Partial<Dictionary<string>>
 R_filter(string_predicate)(string_dictionary);
 
 // @dts-jest:pass -> Filterable<string>

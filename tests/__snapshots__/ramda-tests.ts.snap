@@ -366,11 +366,11 @@ exports[`evolve R.evolve(transformations, tomato) 1`] = `"{ firstName: string; d
 
 exports[`filter R.filter(isEven)([1, 2, 3, 4]) 1`] = `"number[]"`;
 
-exports[`filter R.filter(isEven)({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Dictionary<number>"`;
+exports[`filter R.filter(isEven)({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
 exports[`filter R.filter(isEven, [1, 2, 3, 4]) 1`] = `"number[]"`;
 
-exports[`filter R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Dictionary<number>"`;
+exports[`filter R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
 exports[`find R.find((task: Task) => task.id === 1)(tasks) 1`] = `"Task | undefined"`;
 
