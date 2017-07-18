@@ -2141,11 +2141,11 @@ import * as R from '../ramda/dist/index';
   const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
 
   // @dts-jest:pass
-  R.pickBy<Record<string, number>>(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); //=> {a: 1, b: 2, e: 5}
+  R.pickBy(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); //=> {a: 1, b: 2, e: 5}
   // @dts-jest:pass
-  R.pickBy<Record<string, Color>>(containsBackground, colors); //=> {2: {color: 'black', bgcolor: 'yellow'}}
+  R.pickBy(containsBackground, colors); //=> {2: {color: 'black', bgcolor: 'yellow'}}
   // @dts-jest:pass
-  R.pickBy<Record<string, number>>(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); //=> {A: 3, B: 4}
+  R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); //=> {A: 3, B: 4}
 })();
 
 // @dts-jest:group pipe

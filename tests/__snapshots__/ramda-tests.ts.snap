@@ -1009,11 +1009,11 @@ exports[`pickAll R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Pa
 
 exports[`pickAll R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`pickBy R.pickBy<Record<string, Color>>(containsBackground, colors) 1`] = `"Record<string, Color>"`;
+exports[`pickBy R.pickBy(containsBackground, colors) 1`] = `"Partial<{ 1: { color: string; }; 2: { color: string; bgcolor: string; }; }>"`;
 
-exports[`pickBy R.pickBy<Record<string, number>>(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}) 1`] = `"Record<string, number>"`;
+exports[`pickBy R.pickBy(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; e: number; }>"`;
 
-exports[`pickBy R.pickBy<Record<string, number>>(isUpperCase, {a: 1, b: 2, A: 3, B: 4}) 1`] = `"Record<string, number>"`;
+exports[`pickBy R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}) 1`] = `"Partial<{ a: number; b: number; A: number; B: number; }>"`;
 
 exports[`pipe R.pipe(
         R.split(''),

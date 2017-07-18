@@ -2140,12 +2140,12 @@ import * as R from '../ramda/dist/index';
   const containsBackground = (val: any) => val.bgcolor;
   const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
 
-  // @dts-jest:pass -> Record<string, number>
-  R.pickBy<Record<string, number>>(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); //=> {a: 1, b: 2, e: 5}
-  // @dts-jest:pass -> Record<string, Color>
-  R.pickBy<Record<string, Color>>(containsBackground, colors); //=> {2: {color: 'black', bgcolor: 'yellow'}}
-  // @dts-jest:pass -> Record<string, number>
-  R.pickBy<Record<string, number>>(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); //=> {A: 3, B: 4}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; e: number; }>
+  R.pickBy(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); //=> {a: 1, b: 2, e: 5}
+  // @dts-jest:pass -> Partial<{ 1: { color: string; }; 2: { color: string; bgcolor: string; }; }>
+  R.pickBy(containsBackground, colors); //=> {2: {color: 'black', bgcolor: 'yellow'}}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; A: number; B: number; }>
+  R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); //=> {A: 3, B: 4}
 })();
 
 // @dts-jest:group pipe
