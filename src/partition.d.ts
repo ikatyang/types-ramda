@@ -28,37 +28,27 @@ declare const partition: partition_00;
 type partition_00 = {
     <T>(fn: Predicate<T>): partition_10<T>;
     <T>(_fn: PH, list: List<T>): partition_list_01<T>;
-    <T, KT extends string, KF extends string>(_fn: PH, object: Record<KT | KF, T>): partition_object_01<T, KT, KF>;
-    <T>(_fn: PH, dictionary: Dictionary<T>): partition_dictionary_01<T>;
+    <T, U extends Dictionary<T>>(_fn: PH, dictionary: U): partition_object_01<T, U>;
     <T>(fn: Predicate<T>, list: List<T>): partition_list_11<T>;
-    <T, KT extends string, KF extends string>(fn: Predicate<T>, object: Record<KT | KF, T>): partition_object_11<T, KT, KF>;
     <$SEL extends "1">(): <T>(fn: Predicate<T>) => partition_10<T>;
     <$SEL extends "01", $KIND extends "list">(): <T>(_fn: PH, list: List<T>) => partition_list_01<T>;
-    <$SEL extends "01", $KIND extends "object">(): <T, KT extends string, KF extends string>(_fn: PH, object: Record<KT | KF, T>) => partition_object_01<T, KT, KF>;
-    <$SEL extends "01", $KIND extends "dictionary">(): <T>(_fn: PH, dictionary: Dictionary<T>) => partition_dictionary_01<T>;
+    <$SEL extends "01", $KIND extends "object">(): <T, U extends Dictionary<T>>(_fn: PH, dictionary: U) => partition_object_01<T, U>;
     <$SEL extends "11", $KIND extends "list">(): <T>(fn: Predicate<T>, list: List<T>) => partition_list_11<T>;
-    <$SEL extends "11", $KIND extends "object">(): <T, KT extends string, KF extends string>(fn: Predicate<T>, object: Record<KT | KF, T>) => partition_object_11<T, KT, KF>;
-    <$SEL extends "11", $KIND extends "dictionary">(): <T>(fn: Predicate<T>, dictionary: Dictionary<T>) => partition_dictionary_11<T>;
-    <T>(fn: Predicate<T>, dictionary: Dictionary<T>): partition_dictionary_11<T>;
+    <$SEL extends "11", $KIND extends "object">(): <T, U extends Dictionary<T>>(fn: Predicate<T>, dictionary: U) => partition_object_11<T, U>;
+    <T, U extends Dictionary<T>>(fn: Predicate<T>, dictionary: U): partition_object_11<T, U>;
 };
 type partition_10<T> = {
     (list: List<T>): partition_list_11<T>;
-    <KT extends string, KF extends string>(object: Record<KT | KF, T>): partition_object_11<T, KT, KF>;
     <$SEL extends "1", $KIND extends "list">(): (list: List<T>) => partition_list_11<T>;
-    <$SEL extends "1", $KIND extends "object">(): <KT extends string, KF extends string>(object: Record<KT | KF, T>) => partition_object_11<T, KT, KF>;
-    <$SEL extends "1", $KIND extends "dictionary">(): (dictionary: Dictionary<T>) => partition_dictionary_11<T>;
-    (dictionary: Dictionary<T>): partition_dictionary_11<T>;
+    <$SEL extends "1", $KIND extends "object">(): <U extends Dictionary<T>>(dictionary: U) => partition_object_11<T, U>;
+    <U extends Dictionary<T>>(dictionary: U): partition_object_11<T, U>;
 };
 type partition_list_01<T> = {
     (fn: Predicate<T>): partition_list_11<T>;
 };
-type partition_object_01<T, KT extends string, KF extends string> = {
-    (fn: Predicate<T>): partition_object_11<T, KT, KF>;
-};
-type partition_dictionary_01<T> = {
-    (fn: Predicate<T>): partition_dictionary_11<T>;
+type partition_object_01<T, U extends Dictionary<T>> = {
+    (fn: Predicate<T>): partition_object_11<T, U>;
 };
 type partition_list_11<T> = [T[], T[]];
-type partition_object_11<T, KT extends string, KF extends string> = [Record<KT, T>, Record<KF, T>];
-type partition_dictionary_11<T> = [Dictionary<T>, Dictionary<T>];
+type partition_object_11<T, U extends Dictionary<T>> = [Partial<U>, Partial<U>];
 export = partition;

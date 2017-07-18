@@ -1,4 +1,4 @@
-import { KeyedObjectMorphism } from "./$types";
+import { Dictionary, KeyedObjectMorphism } from "./$types";
 import { Placeholder as PH } from "./$placeholder";
 /**
  * Returns a partial copy of an object containing only the keys that satisfy
@@ -22,29 +22,18 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const pickBy: pickBy_00;
 type pickBy_00 = {
-    (fn: KeyedObjectMorphism<any, boolean, string>): pickBy_10;
-    <T>(_fn: PH, object: T): pickBy_remain_01<T>;
-    (_fn: PH, object: any): pickBy_manual_01;
-    <T>(fn: KeyedObjectMorphism<any, boolean, string>, object: T): pickBy_remain_11<T>;
-    <$SEL extends "1">(): (fn: KeyedObjectMorphism<any, boolean, string>) => pickBy_10;
-    <$SEL extends "01", $KIND extends "remain">(): <T>(_fn: PH, object: T) => pickBy_remain_01<T>;
-    <$SEL extends "01", $KIND extends "manual">(): (_fn: PH, object: any) => pickBy_manual_01;
-    <$SEL extends "11", $KIND extends "remain">(): <T>(fn: KeyedObjectMorphism<any, boolean, string>, object: T) => pickBy_remain_11<T>;
-    <$SEL extends "11", $KIND extends "manual">(): <V>(fn: KeyedObjectMorphism<any, boolean, string>, object: any) => pickBy_manual_11<V>;
-    <V>(fn: KeyedObjectMorphism<any, boolean, string>, object: any): pickBy_manual_11<V>;
+    <T, U extends Dictionary<T>>(fn: KeyedObjectMorphism<T, boolean, keyof U>): pickBy_10<T, U>;
+    <T, U extends Dictionary<T>>(_fn: PH, object: U): pickBy_01<T, U>;
+    <$SEL extends "1">(): <T, U extends Dictionary<T>>(fn: KeyedObjectMorphism<T, boolean, keyof U>) => pickBy_10<T, U>;
+    <$SEL extends "01">(): <T, U extends Dictionary<T>>(_fn: PH, object: U) => pickBy_01<T, U>;
+    <$SEL extends "11">(): <T, U extends Dictionary<T>>(fn: KeyedObjectMorphism<T, boolean, keyof U>, object: U) => pickBy_11<T, U>;
+    <T, U extends Dictionary<T>>(fn: KeyedObjectMorphism<T, boolean, keyof U>, object: U): pickBy_11<T, U>;
 };
-type pickBy_10 = {
-    <T>(object: T): pickBy_remain_11<T>;
-    <$SEL extends "1", $KIND extends "remain">(): <T>(object: T) => pickBy_remain_11<T>;
-    <$SEL extends "1", $KIND extends "manual">(): <V>(object: any) => pickBy_manual_11<V>;
-    <V>(object: any): pickBy_manual_11<V>;
+type pickBy_10<T, U extends Dictionary<T>> = {
+    (object: U): pickBy_11<T, U>;
 };
-type pickBy_remain_01<T> = {
-    (fn: KeyedObjectMorphism<any, boolean, string>): pickBy_remain_11<T>;
+type pickBy_01<T, U extends Dictionary<T>> = {
+    (fn: KeyedObjectMorphism<T, boolean, keyof U>): pickBy_11<T, U>;
 };
-type pickBy_manual_01 = {
-    <V>(fn: KeyedObjectMorphism<any, boolean, string>): pickBy_manual_11<V>;
-};
-type pickBy_remain_11<T> = T;
-type pickBy_manual_11<V> = V;
+type pickBy_11<T, U extends Dictionary<T>> = Partial<U>;
 export = pickBy;

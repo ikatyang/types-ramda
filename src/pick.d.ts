@@ -20,29 +20,29 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const pick: pick_00;
 type pick_00 = {
-    (keys: List<Property>): pick_10;
-    <T>(_keys: PH, object: T): pick_remain_01<T>;
-    (_keys: PH, object: any): pick_manual_01;
-    <T>(keys: List<Property>, object: T): pick_remain_11<T>;
-    <$SEL extends "1">(): (keys: List<Property>) => pick_10;
-    <$SEL extends "01", $KIND extends "remain">(): <T>(_keys: PH, object: T) => pick_remain_01<T>;
-    <$SEL extends "01", $KIND extends "manual">(): (_keys: PH, object: any) => pick_manual_01;
-    <$SEL extends "11", $KIND extends "remain">(): <T>(keys: List<Property>, object: T) => pick_remain_11<T>;
-    <$SEL extends "11", $KIND extends "manual">(): <V>(keys: List<Property>, object: any) => pick_manual_11<V>;
-    <V>(keys: List<Property>, object: any): pick_manual_11<V>;
+    <T, K extends keyof T>(keys: List<K>): pick_pick_10<T, K>;
+    (keys: List<Property>): pick_partial_10;
+    <T>(_keys: PH, object: T): pick_01<T>;
+    <T, K extends keyof T>(keys: List<K>, object: T): pick_pick_11<T, K>;
+    <$SEL extends "1", $KIND extends "pick">(): <T, K extends keyof T>(keys: List<K>) => pick_pick_10<T, K>;
+    <$SEL extends "1", $KIND extends "partial">(): (keys: List<Property>) => pick_partial_10;
+    <$SEL extends "01">(): <T>(_keys: PH, object: T) => pick_01<T>;
+    <$SEL extends "11", $KIND extends "pick">(): <T, K extends keyof T>(keys: List<K>, object: T) => pick_pick_11<T, K>;
+    <$SEL extends "11", $KIND extends "partial">(): <T>(keys: List<Property>, object: T) => pick_partial_11<T>;
+    <T>(keys: List<Property>, object: T): pick_partial_11<T>;
 };
-type pick_10 = {
-    <T>(object: T): pick_remain_11<T>;
-    <$SEL extends "1", $KIND extends "remain">(): <T>(object: T) => pick_remain_11<T>;
-    <$SEL extends "1", $KIND extends "manual">(): <V>(object: any) => pick_manual_11<V>;
-    <V>(object: any): pick_manual_11<V>;
+type pick_01<T> = {
+    <K extends keyof T>(keys: List<K>): pick_pick_11<T, K>;
+    <$SEL extends "1", $KIND extends "pick">(): <K extends keyof T>(keys: List<K>) => pick_pick_11<T, K>;
+    <$SEL extends "1", $KIND extends "partial">(): (keys: List<Property>) => pick_partial_11<T>;
+    (keys: List<Property>): pick_partial_11<T>;
 };
-type pick_remain_01<T> = {
-    (keys: List<Property>): pick_remain_11<T>;
+type pick_pick_10<T, K extends keyof T> = {
+    (object: T): pick_pick_11<T, K>;
 };
-type pick_manual_01 = {
-    <V>(keys: List<Property>): pick_manual_11<V>;
+type pick_partial_10 = {
+    <T>(object: T): pick_partial_11<T>;
 };
-type pick_remain_11<T> = T;
-type pick_manual_11<V> = V;
+type pick_pick_11<T, K extends keyof T> = Pick<T, K>;
+type pick_partial_11<T> = Partial<T>;
 export = pick;
