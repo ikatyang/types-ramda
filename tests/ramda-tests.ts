@@ -2109,9 +2109,9 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.pick(['a', 'e', 'f'], [1, 2, 3, 4]); //=> {}
   // @dts-jest:pass
-  R.pick(['a', 'c', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
+  R.pick(['a', 'c', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, c: 3, d: 4}
   // @dts-jest:pass
-  R.pick(['0', '2', '3'], [1, 2, 3, 4]); //=> {}
+  R.pick(['0', '2', '3'], [1, 2, 3, 4]); //=> {0: 1, 2: 3, 3: 4}
 })();
 
 // @dts-jest:group pickAll
