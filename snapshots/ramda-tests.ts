@@ -2102,12 +2102,16 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group pick
 (() => {
-  // @dts-jest:pass -> { a: number; }
-  R.pick<{a: number}>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
-  // @dts-jest:pass -> { a: number; }
-  R.pick(['a', 'e', 'f'])<{a: number}>({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
-  // @dts-jest:pass -> {}
-  R.pick<{}>(['a', 'e', 'f'], [1, 2, 3, 4]); //=> {}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.pick(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
+  // @dts-jest:pass -> Partial<number[]>
+  R.pick(['a', 'e', 'f'], [1, 2, 3, 4]); //=> {}
+  // @dts-jest:pass -> Pick<{ a: number; b: number; c: number; d: number; }, "a" | "c" | "d">
+  R.pick(['a', 'c', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
+  // @dts-jest:pass -> Partial<number[]>
+  R.pick(['0', '2', '3'], [1, 2, 3, 4]); //=> {}
 })();
 
 // @dts-jest:group pickAll
