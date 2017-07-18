@@ -9,6 +9,6 @@ R_omit([string])(object);
 R_omit([string], object);
 
 // @dts-jest:pass
-R_omit([string])<Record<string, string>>(object);
+R_omit([string])(object);
 // @dts-jest:pass
-R_omit<Record<string, string>>([string], object);
+R_omit([string], object);

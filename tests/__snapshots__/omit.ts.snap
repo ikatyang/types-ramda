@@ -2,8 +2,8 @@
 
 exports[`R_omit([string])(object) 1`] = `"object"`;
 
-exports[`R_omit([string])<Record<string, string>>(object) 1`] = `"Record<string, string>"`;
+exports[`R_omit([string])(object) 2`] = `"object"`;
 
 exports[`R_omit([string], object) 1`] = `"object"`;
 
-exports[`R_omit<Record<string, string>>([string], object) 1`] = `"Record<string, string>"`;
+exports[`R_omit([string], object) 2`] = `"object"`;

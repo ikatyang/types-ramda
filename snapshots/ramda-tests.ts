@@ -1965,10 +1965,10 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group omit
 (() => {
-  // @dts-jest:pass -> { b: number; c: number; }
-  R.omit<{b: number, c: number}>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
-  // @dts-jest:pass -> { b: number; c: number; }
-  R.omit(['a', 'd'])<{b: number, c: number}>({a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
 })();
 
 // @dts-jest:group once

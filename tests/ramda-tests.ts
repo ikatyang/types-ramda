@@ -1966,9 +1966,9 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group omit
 (() => {
   // @dts-jest:pass
-  R.omit<{b: number, c: number}>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
+  R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
   // @dts-jest:pass
-  R.omit(['a', 'd'])<{b: number, c: number}>({a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
+  R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
 })();
 
 // @dts-jest:group once
