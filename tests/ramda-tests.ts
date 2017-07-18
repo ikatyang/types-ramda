@@ -2128,10 +2128,6 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group pickBy
 (() => {
-  interface Color {
-    color: string;
-    bgcolor: string;
-  }
   const colors = {
     1: {color: 'read'},
     2: {color: 'black', bgcolor: 'yellow'},
