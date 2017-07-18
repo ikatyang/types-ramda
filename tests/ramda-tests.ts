@@ -2117,13 +2117,13 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group pickAll
 (() => {
   // @dts-jest:pass
-  R.pickAll<Record<string, number>>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
+  R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
   // @dts-jest:pass
-  R.pickAll(['a', 'd'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
+  R.pickAll(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
   // @dts-jest:pass
-  R.pickAll<Record<string, number>>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
+  R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
   // @dts-jest:pass
-  R.pickAll(['a', 'e', 'f'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
+  R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
 })();
 
 // @dts-jest:group pickBy

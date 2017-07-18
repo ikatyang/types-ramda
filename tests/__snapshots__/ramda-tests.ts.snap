@@ -1001,13 +1001,13 @@ exports[`pick R.pick(['a', 'e', 'f'], [1, 2, 3, 4]) 1`] = `"Partial<number[]>"`;
 
 exports[`pick R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`pickAll R.pickAll(['a', 'd'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Record<string, number>"`;
+exports[`pickAll R.pickAll(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`pickAll R.pickAll(['a', 'e', 'f'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Record<string, number>"`;
+exports[`pickAll R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Pick<{ a: number; b: number; c: number; d: number; }, \\"a\\" | \\"d\\">"`;
 
-exports[`pickAll R.pickAll<Record<string, number>>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Record<string, number>"`;
+exports[`pickAll R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`pickAll R.pickAll<Record<string, number>>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Record<string, number>"`;
+exports[`pickAll R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
 exports[`pickBy R.pickBy<Record<string, Color>>(containsBackground, colors) 1`] = `"Record<string, Color>"`;
 

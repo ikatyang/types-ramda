@@ -2116,14 +2116,14 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group pickAll
 (() => {
-  // @dts-jest:pass -> Record<string, number>
-  R.pickAll<Record<string, number>>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
-  // @dts-jest:pass -> Record<string, number>
-  R.pickAll(['a', 'd'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
-  // @dts-jest:pass -> Record<string, number>
-  R.pickAll<Record<string, number>>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
-  // @dts-jest:pass -> Record<string, number>
-  R.pickAll(['a', 'e', 'f'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
+  // @dts-jest:pass -> Pick<{ a: number; b: number; c: number; d: number; }, "a" | "d">
+  R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.pickAll(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
 })();
 
 // @dts-jest:group pickBy
