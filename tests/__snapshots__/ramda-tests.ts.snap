@@ -965,7 +965,7 @@ exports[`partition R.partition(R.contains('s'))(['sss', 'ttt', 'foo', 'bars']) 1
 
 exports[`partition R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']) 1`] = `"[(string[] | ArrayLike<string>)[], (string[] | ArrayLike<string>)[]]"`;
 
-exports[`partition R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}) 1`] = `"[Record<string, string[] | ArrayLike<string>>, Record<string, string[] | ArrayLike<string>>]"`;
+exports[`partition R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}) 1`] = `"[Partial<{ a: string; b: string; foo: string; }>, Partial<{ a: string; b: string; foo: string; }>]"`;
 
 exports[`path R.path(['a', 'b'])<number>({a: {b: 2}}) 1`] = `"number"`;
 

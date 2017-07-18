@@ -2047,7 +2047,7 @@ import * as R from '../ramda/dist/index';
   R.partition((x: number) => x > 2, [1, 2, 3, 4]);
   // @dts-jest:pass -> [number[], number[]]
   R.partition((x: number) => x > 2)([1, 2, 3, 4]);
-  // @dts-jest:pass -> [Record<string, string[] | ArrayLike<string>>, Record<string, string[] | ArrayLike<string>>]
+  // @dts-jest:pass -> [Partial<{ a: string; b: string; foo: string; }>, Partial<{ a: string; b: string; foo: string; }>]
   R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}); //=> [ { a: 'sss', foo: 'bars' }, { b: 'ttt' } ]
 })();
 
@@ -2128,10 +2128,6 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group pickBy
 (() => {
-  interface Color {
-    color: string;
-    bgcolor: string;
-  }
   const colors = {
     1: {color: 'read'},
     2: {color: 'black', bgcolor: 'yellow'},

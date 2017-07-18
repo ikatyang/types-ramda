@@ -1,13 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_partition(number_to_boolean)(a_1_b_2_c_3) 1`] = `"[Record<string, number>, Record<string, number>]"`;
+exports[`R_partition(number_to_boolean)(a_1_b_2_c_3) 1`] = `"[Partial<{ a: 1; b: 2; c: 3; }>, Partial<{ a: 1; b: 2; c: 3; }>]"`;
 
 exports[`R_partition(number_to_boolean)(number_array) 1`] = `"[number[], number[]]"`;
 
-exports[`R_partition(number_to_boolean)<'a', 'b' | 'c'>(a_1_b_2_c_3) 1`] = `"[Record<\\"a\\", number>, Record<\\"b\\" | \\"c\\", number>]"`;
-
-exports[`R_partition(number_to_boolean, a_1_b_2_c_3) 1`] = `"[Record<string, number>, Record<string, number>]"`;
+exports[`R_partition(number_to_boolean, a_1_b_2_c_3) 1`] = `"[Partial<{ a: 1; b: 2; c: 3; }>, Partial<{ a: 1; b: 2; c: 3; }>]"`;
 
 exports[`R_partition(number_to_boolean, number_array) 1`] = `"[number[], number[]]"`;
-
-exports[`R_partition<number, 'a', 'b' | 'c'>(number_to_boolean, a_1_b_2_c_3) 1`] = `"[Record<\\"a\\", number>, Record<\\"b\\" | \\"c\\", number>]"`;
