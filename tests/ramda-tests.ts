@@ -1966,9 +1966,9 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group omit
 (() => {
   // @dts-jest:pass
-  R.omit<{b: number, c: number}>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
+  R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
   // @dts-jest:pass
-  R.omit(['a', 'd'])<{b: number, c: number}>({a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
+  R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
 })();
 
 // @dts-jest:group once
@@ -2103,31 +2103,31 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group pick
 (() => {
   // @dts-jest:pass
-  R.pick<{a: number}>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
+  R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
   // @dts-jest:pass
-  R.pick(['a', 'e', 'f'])<{a: number}>({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
+  R.pick(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
   // @dts-jest:pass
-  R.pick<{}>(['a', 'e', 'f'], [1, 2, 3, 4]); //=> {}
+  R.pick(['a', 'e', 'f'], [1, 2, 3, 4]); //=> {}
+  // @dts-jest:pass
+  R.pick(['a', 'c', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, c: 3, d: 4}
+  // @dts-jest:pass
+  R.pick(['0', '2', '3'], [1, 2, 3, 4]); //=> {0: 1, 2: 3, 3: 4}
 })();
 
 // @dts-jest:group pickAll
 (() => {
   // @dts-jest:pass
-  R.pickAll<Record<string, number>>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
+  R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
   // @dts-jest:pass
-  R.pickAll(['a', 'd'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
+  R.pickAll(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
   // @dts-jest:pass
-  R.pickAll<Record<string, number>>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
+  R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
   // @dts-jest:pass
-  R.pickAll(['a', 'e', 'f'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
+  R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
 })();
 
 // @dts-jest:group pickBy
 (() => {
-  interface Color {
-    color: string;
-    bgcolor: string;
-  }
   const colors = {
     1: {color: 'read'},
     2: {color: 'black', bgcolor: 'yellow'},
@@ -2137,11 +2137,11 @@ import * as R from '../ramda/dist/index';
   const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
 
   // @dts-jest:pass
-  R.pickBy<Record<string, number>>(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); //=> {a: 1, b: 2, e: 5}
+  R.pickBy(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); //=> {a: 1, b: 2, e: 5}
   // @dts-jest:pass
-  R.pickBy<Record<string, Color>>(containsBackground, colors); //=> {2: {color: 'black', bgcolor: 'yellow'}}
+  R.pickBy(containsBackground, colors); //=> {2: {color: 'black', bgcolor: 'yellow'}}
   // @dts-jest:pass
-  R.pickBy<Record<string, number>>(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); //=> {A: 3, B: 4}
+  R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); //=> {A: 3, B: 4}
 })();
 
 // @dts-jest:group pipe

@@ -857,9 +857,9 @@ import * as R from '../ramda/dist/index';
   R.filter(isEven, [1, 2, 3, 4]); //=> [2, 4]
   // @dts-jest:pass -> number[]
   R.filter(isEven)([1, 2, 3, 4]);
-  // @dts-jest:pass -> Dictionary<number>
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
   R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, d: 4}
-  // @dts-jest:pass -> Dictionary<number>
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
   R.filter(isEven)({a: 1, b: 2, c: 3, d: 4});
 })();
 
@@ -1965,10 +1965,10 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group omit
 (() => {
-  // @dts-jest:pass -> { b: number; c: number; }
-  R.omit<{b: number, c: number}>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
-  // @dts-jest:pass -> { b: number; c: number; }
-  R.omit(['a', 'd'])<{b: number, c: number}>({a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
 })();
 
 // @dts-jest:group once
@@ -2047,7 +2047,7 @@ import * as R from '../ramda/dist/index';
   R.partition((x: number) => x > 2, [1, 2, 3, 4]);
   // @dts-jest:pass -> [number[], number[]]
   R.partition((x: number) => x > 2)([1, 2, 3, 4]);
-  // @dts-jest:pass -> [Record<string, string[] | ArrayLike<string>>, Record<string, string[] | ArrayLike<string>>]
+  // @dts-jest:pass -> [Partial<{ a: string; b: string; foo: string; }>, Partial<{ a: string; b: string; foo: string; }>]
   R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}); //=> [ { a: 'sss', foo: 'bars' }, { b: 'ttt' } ]
 })();
 
@@ -2102,32 +2102,32 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group pick
 (() => {
-  // @dts-jest:pass -> { a: number; }
-  R.pick<{a: number}>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
-  // @dts-jest:pass -> { a: number; }
-  R.pick(['a', 'e', 'f'])<{a: number}>({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
-  // @dts-jest:pass -> {}
-  R.pick<{}>(['a', 'e', 'f'], [1, 2, 3, 4]); //=> {}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.pick(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
+  // @dts-jest:pass -> Partial<number[]>
+  R.pick(['a', 'e', 'f'], [1, 2, 3, 4]); //=> {}
+  // @dts-jest:pass -> Pick<{ a: number; b: number; c: number; d: number; }, "a" | "c" | "d">
+  R.pick(['a', 'c', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, c: 3, d: 4}
+  // @dts-jest:pass -> Partial<number[]>
+  R.pick(['0', '2', '3'], [1, 2, 3, 4]); //=> {0: 1, 2: 3, 3: 4}
 })();
 
 // @dts-jest:group pickAll
 (() => {
-  // @dts-jest:pass -> Record<string, number>
-  R.pickAll<Record<string, number>>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
-  // @dts-jest:pass -> Record<string, number>
-  R.pickAll(['a', 'd'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
-  // @dts-jest:pass -> Record<string, number>
-  R.pickAll<Record<string, number>>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
-  // @dts-jest:pass -> Record<string, number>
-  R.pickAll(['a', 'e', 'f'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
+  // @dts-jest:pass -> Pick<{ a: number; b: number; c: number; d: number; }, "a" | "d">
+  R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.pickAll(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; }>
+  R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
 })();
 
 // @dts-jest:group pickBy
 (() => {
-  interface Color {
-    color: string;
-    bgcolor: string;
-  }
   const colors = {
     1: {color: 'read'},
     2: {color: 'black', bgcolor: 'yellow'},
@@ -2136,12 +2136,12 @@ import * as R from '../ramda/dist/index';
   const containsBackground = (val: any) => val.bgcolor;
   const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
 
-  // @dts-jest:pass -> Record<string, number>
-  R.pickBy<Record<string, number>>(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); //=> {a: 1, b: 2, e: 5}
-  // @dts-jest:pass -> Record<string, Color>
-  R.pickBy<Record<string, Color>>(containsBackground, colors); //=> {2: {color: 'black', bgcolor: 'yellow'}}
-  // @dts-jest:pass -> Record<string, number>
-  R.pickBy<Record<string, number>>(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); //=> {A: 3, B: 4}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; c: number; d: number; e: number; }>
+  R.pickBy(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); //=> {a: 1, b: 2, e: 5}
+  // @dts-jest:pass -> Partial<{ 1: { color: string; }; 2: { color: string; bgcolor: string; }; }>
+  R.pickBy(containsBackground, colors); //=> {2: {color: 'black', bgcolor: 'yellow'}}
+  // @dts-jest:pass -> Partial<{ a: number; b: number; A: number; B: number; }>
+  R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); //=> {A: 3, B: 4}
 })();
 
 // @dts-jest:group pipe

@@ -17,8 +17,3 @@ R_partition(number_to_boolean, number_array);
 R_partition(number_to_boolean)(a_1_b_2_c_3);
 // @dts-jest:pass
 R_partition(number_to_boolean, a_1_b_2_c_3);
-
-// @dts-jest:pass
-R_partition(number_to_boolean)<'a', 'b' | 'c'>(a_1_b_2_c_3);
-// @dts-jest:pass
-R_partition<number, 'a', 'b' | 'c'>(number_to_boolean, a_1_b_2_c_3);

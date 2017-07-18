@@ -2,13 +2,18 @@ import * as R_pick from '../ramda/dist/src/pick';
 
 declare const object: object;
 declare const string: string;
+declare const a_1_b_2_c_3: {
+  a: 1,
+  b: 2,
+  c: 3,
+};
 
 // @dts-jest:pass -> object
 R_pick([string])(object);
 // @dts-jest:pass -> object
 R_pick([string], object);
 
-// @dts-jest:pass -> Record<string, string>
-R_pick([string])<Record<string, string>>(object);
-// @dts-jest:pass -> Record<string, string>
-R_pick<Record<string, string>>([string], object);
+// @dts-jest:pass -> Partial<{ a: 1; b: 2; c: 3; }>
+R_pick(['a', 'c'])(a_1_b_2_c_3);
+// @dts-jest:pass -> Pick<{ a: 1; b: 2; c: 3; }, "a" | "c">
+R_pick(['a', 'c'], a_1_b_2_c_3);

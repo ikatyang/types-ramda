@@ -366,11 +366,11 @@ exports[`evolve R.evolve(transformations, tomato) 1`] = `"{ firstName: string; d
 
 exports[`filter R.filter(isEven)([1, 2, 3, 4]) 1`] = `"number[]"`;
 
-exports[`filter R.filter(isEven)({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Dictionary<number>"`;
+exports[`filter R.filter(isEven)({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
 exports[`filter R.filter(isEven, [1, 2, 3, 4]) 1`] = `"number[]"`;
 
-exports[`filter R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Dictionary<number>"`;
+exports[`filter R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
 exports[`find R.find((task: Task) => task.id === 1)(tasks) 1`] = `"Task | undefined"`;
 
@@ -927,9 +927,9 @@ exports[`of R.of([1]) 1`] = `"number[][]"`;
 
 exports[`of R.of(1) 1`] = `"number[]"`;
 
-exports[`omit R.omit(['a', 'd'])<{b: number, c: number}>({a: 1, b: 2, c: 3, d: 4}) 1`] = `"{ b: number; c: number; }"`;
+exports[`omit R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`omit R.omit<{b: number, c: number}>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"{ b: number; c: number; }"`;
+exports[`omit R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
 exports[`once addOneOnce(10) 1`] = `"number"`;
 
@@ -965,7 +965,7 @@ exports[`partition R.partition(R.contains('s'))(['sss', 'ttt', 'foo', 'bars']) 1
 
 exports[`partition R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']) 1`] = `"[(string[] | ArrayLike<string>)[], (string[] | ArrayLike<string>)[]]"`;
 
-exports[`partition R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}) 1`] = `"[Record<string, string[] | ArrayLike<string>>, Record<string, string[] | ArrayLike<string>>]"`;
+exports[`partition R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}) 1`] = `"[Partial<{ a: string; b: string; foo: string; }>, Partial<{ a: string; b: string; foo: string; }>]"`;
 
 exports[`path R.path(['a', 'b'])<number>({a: {b: 2}}) 1`] = `"number"`;
 
@@ -991,25 +991,29 @@ exports[`pathSatisfies R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'])({a:
 
 exports[`pathSatisfies R.pathSatisfies((a: any) => a === 1, ['a', 'b', 'c'], {a: {b: {c: 1}}}) 1`] = `"boolean"`;
 
-exports[`pick R.pick(['a', 'e', 'f'])<{a: number}>({a: 1, b: 2, c: 3, d: 4}) 1`] = `"{ a: number; }"`;
+exports[`pick R.pick(['0', '2', '3'], [1, 2, 3, 4]) 1`] = `"Partial<number[]>"`;
 
-exports[`pick R.pick<{}>(['a', 'e', 'f'], [1, 2, 3, 4]) 1`] = `"{}"`;
+exports[`pick R.pick(['a', 'c', 'd'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Pick<{ a: number; b: number; c: number; d: number; }, \\"a\\" | \\"c\\" | \\"d\\">"`;
 
-exports[`pick R.pick<{a: number}>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"{ a: number; }"`;
+exports[`pick R.pick(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`pickAll R.pickAll(['a', 'd'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Record<string, number>"`;
+exports[`pick R.pick(['a', 'e', 'f'], [1, 2, 3, 4]) 1`] = `"Partial<number[]>"`;
 
-exports[`pickAll R.pickAll(['a', 'e', 'f'])<Record<string, number>>({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Record<string, number>"`;
+exports[`pick R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`pickAll R.pickAll<Record<string, number>>(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Record<string, number>"`;
+exports[`pickAll R.pickAll(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`pickAll R.pickAll<Record<string, number>>(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Record<string, number>"`;
+exports[`pickAll R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Pick<{ a: number; b: number; c: number; d: number; }, \\"a\\" | \\"d\\">"`;
 
-exports[`pickBy R.pickBy<Record<string, Color>>(containsBackground, colors) 1`] = `"Record<string, Color>"`;
+exports[`pickAll R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`pickBy R.pickBy<Record<string, number>>(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}) 1`] = `"Record<string, number>"`;
+exports[`pickAll R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`pickBy R.pickBy<Record<string, number>>(isUpperCase, {a: 1, b: 2, A: 3, B: 4}) 1`] = `"Record<string, number>"`;
+exports[`pickBy R.pickBy(containsBackground, colors) 1`] = `"Partial<{ 1: { color: string; }; 2: { color: string; bgcolor: string; }; }>"`;
+
+exports[`pickBy R.pickBy(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}) 1`] = `"Partial<{ a: number; b: number; c: number; d: number; e: number; }>"`;
+
+exports[`pickBy R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}) 1`] = `"Partial<{ a: number; b: number; A: number; B: number; }>"`;
 
 exports[`pipe R.pipe(
         R.split(''),

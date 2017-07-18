@@ -13,12 +13,7 @@ R_partition(number_to_boolean)(number_array);
 // @dts-jest:pass -> [number[], number[]]
 R_partition(number_to_boolean, number_array);
 
-// @dts-jest:pass -> [Record<string, number>, Record<string, number>]
+// @dts-jest:pass -> [Partial<{ a: 1; b: 2; c: 3; }>, Partial<{ a: 1; b: 2; c: 3; }>]
 R_partition(number_to_boolean)(a_1_b_2_c_3);
-// @dts-jest:pass -> [Record<string, number>, Record<string, number>]
+// @dts-jest:pass -> [Partial<{ a: 1; b: 2; c: 3; }>, Partial<{ a: 1; b: 2; c: 3; }>]
 R_partition(number_to_boolean, a_1_b_2_c_3);
-
-// @dts-jest:pass -> [Record<"a", number>, Record<"b" | "c", number>]
-R_partition(number_to_boolean)<'a', 'b' | 'c'>(a_1_b_2_c_3);
-// @dts-jest:pass -> [Record<"a", number>, Record<"b" | "c", number>]
-R_partition<number, 'a', 'b' | 'c'>(number_to_boolean, a_1_b_2_c_3);
