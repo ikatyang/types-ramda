@@ -34,16 +34,16 @@ type filter_00 = {
     <$SEL extends "1">(): <T>(fn: Predicate<T>) => filter_10<T>;
     <$SEL extends "11", $KIND extends "list">(): <T>(fn: Predicate<T>, list: List<T>) => filter_list_11<T>;
     <$SEL extends "11", $KIND extends "filterable">(): <T, U extends Filterable<T>>(fn: Predicate<T>, filterable: U) => filter_filterable_11<T, U>;
-    <$SEL extends "11", $KIND extends "dictionary">(): <T>(fn: Predicate<T>, object: Dictionary<T>) => filter_dictionary_11<T>;
-    <T>(fn: Predicate<T>, object: Dictionary<T>): filter_dictionary_11<T>;
+    <$SEL extends "11", $KIND extends "object">(): <T, U extends Dictionary<T>>(fn: Predicate<T>, object: U) => filter_object_11<T, U>;
+    <T, U extends Dictionary<T>>(fn: Predicate<T>, object: U): filter_object_11<T, U>;
 };
 type filter_10<T> = {
     (list: List<T>): filter_list_11<T>;
     <U extends Filterable<T>>(filterable: U): filter_filterable_11<T, U>;
     <$SEL extends "1", $KIND extends "list">(): (list: List<T>) => filter_list_11<T>;
     <$SEL extends "1", $KIND extends "filterable">(): <U extends Filterable<T>>(filterable: U) => filter_filterable_11<T, U>;
-    <$SEL extends "1", $KIND extends "dictionary">(): (object: Dictionary<T>) => filter_dictionary_11<T>;
-    (object: Dictionary<T>): filter_dictionary_11<T>;
+    <$SEL extends "1", $KIND extends "object">(): <U extends Dictionary<T>>(object: U) => filter_object_11<T, U>;
+    <U extends Dictionary<T>>(object: U): filter_object_11<T, U>;
 };
 type filter_list_01<T> = {
     (fn: Predicate<T>): filter_list_11<T>;
@@ -51,10 +51,10 @@ type filter_list_01<T> = {
 type filter_filterable_01<T, U extends Filterable<T>> = {
     (fn: Predicate<T>): filter_filterable_11<T, U>;
 };
-type filter_dictionary_01<T> = {
-    (fn: Predicate<T>): filter_dictionary_11<T>;
+type filter_object_01<T, U extends Dictionary<T>> = {
+    (fn: Predicate<T>): filter_object_11<T, U>;
 };
 type filter_list_11<T> = T[];
 type filter_filterable_11<T, U extends Filterable<T>> = U;
-type filter_dictionary_11<T> = Dictionary<T>;
+type filter_object_11<T, U extends Dictionary<T>> = Partial<U>;
 export = filter;
