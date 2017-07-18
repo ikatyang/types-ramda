@@ -19,20 +19,21 @@ import { List, Property } from "./$types";
  */
 declare const pick: pick_00;
 type pick_00 = {
-    (keys: List<Property>): pick_10;
-    <T>(keys: List<Property>, object: T): pick_remain_11<T>;
-    <V>(keys: List<Property>, object: any): pick_manual_11<V>;
+    <T, K extends keyof T>(keys: List<K>): pick_pick_10<T, K>;
+    (keys: List<Property>): pick_partial_10;
+    <T, K extends keyof T>(keys: List<K>, object: T): pick_pick_11<T, K>;
+    <T>(keys: List<Property>, object: T): pick_partial_11<T>;
 };
-type pick_10 = {
-    <T>(object: T): pick_remain_11<T>;
-    <V>(object: any): pick_manual_11<V>;
+type pick_01<T> = {
+    <K extends keyof T>(keys: List<K>): pick_pick_11<T, K>;
+    (keys: List<Property>): pick_partial_11<T>;
 };
-type pick_remain_01<T> = {
-    (keys: List<Property>): pick_remain_11<T>;
+type pick_pick_10<T, K extends keyof T> = {
+    (object: T): pick_pick_11<T, K>;
 };
-type pick_manual_01 = {
-    <V>(keys: List<Property>): pick_manual_11<V>;
+type pick_partial_10 = {
+    <T>(object: T): pick_partial_11<T>;
 };
-type pick_remain_11<T> = T;
-type pick_manual_11<V> = V;
+type pick_pick_11<T, K extends keyof T> = Pick<T, K>;
+type pick_partial_11<T> = Partial<T>;
 export = pick;
