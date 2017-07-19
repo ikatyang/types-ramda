@@ -2,6 +2,6 @@
 
 exports[`R_pathSatisfies(string_to_boolean)(path)(object) 1`] = `"boolean"`;
 
-exports[`R_pathSatisfies(string_to_boolean, path) 1`] = `"(object: any) => boolean"`;
+exports[`R_pathSatisfies(string_to_boolean, path) 1`] = `"(object: object) => boolean"`;
 
 exports[`R_pathSatisfies(string_to_boolean, path, object) 1`] = `"boolean"`;

@@ -2076,9 +2076,9 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group pathOr
 (() => {
   // @dts-jest:pass
-  R.pathOr('N/A', ['a', 'b'])<number>({a: {b: 2}}); //=> 2
+  R.pathOr('N/A', ['a', 'b'])({a: {b: 2}}); //=> 2
   // @dts-jest:pass
-  R.pathOr('N/A')<number>(['a', 'b'], {a: {b: 2}}); //=> 2
+  R.pathOr('N/A')(['a', 'b'], {a: {b: 2}}); //=> 2
 })();
 
 // @dts-jest:group pathSatisfies

@@ -1,1 +1,1 @@
-export function $(left: object, right: object): any;
+export function $(left: object, right: object): object;

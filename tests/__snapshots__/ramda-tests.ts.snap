@@ -812,42 +812,42 @@ exports[`memoizeWith factorial(5) 3`] = `"number"`;
 
 exports[`merge R.merge({name: 'fred', age: 10}, {age: 40}) 1`] = `"{ name: string; age: number; } & { age: number; }"`;
 
-exports[`mergeAll R.mergeAll([{foo: 1}, {bar: 2}, {baz: 3}]) 1`] = `"any"`;
+exports[`mergeAll R.mergeAll([{foo: 1}, {bar: 2}, {baz: 3}]) 1`] = `"object"`;
 
-exports[`mergeAll R.mergeAll([{foo: 1}, {foo: 2}, {bar: 2}]) 1`] = `"any"`;
+exports[`mergeAll R.mergeAll([{foo: 1}, {foo: 2}, {bar: 2}]) 1`] = `"object"`;
 
 exports[`mergeDeepLeft R.mergeDeepLeft(
         {name: 'fred', age: 10, contact: {email: 'moo@example.com'}},
         {age: 40, contact: {email: 'baa@example.com'}},
-      ) 1`] = `"any"`;
+      ) 1`] = `"object"`;
 
 exports[`mergeDeepRight R.mergeDeepRight(
         {name: 'fred', age: 10, contact: {email: 'moo@example.com'}},
         {age: 40, contact: {email: 'baa@example.com'}},
-      ) 1`] = `"any"`;
+      ) 1`] = `"object"`;
 
 exports[`mergeDeepWith R.mergeDeepWith(
         R.concat,
         {a: true, c: {values: [10, 20]}},
         {b: true, c: {values: [15, 35]}},
-      ) 1`] = `"any"`;
+      ) 1`] = `"object"`;
 
 exports[`mergeDeepWithKey R.mergeDeepWithKey(
         concatValues,
         {a: true, c: {thing: 'foo', values: [10, 20]}},
         {b: true, c: {thing: 'bar', values: [15, 35]}},
-      ) 1`] = `"any"`;
+      ) 1`] = `"object"`;
 
 exports[`mergeWith R.mergeWith(
         R.concat,
         {a: true, values: [10, 20]},
         {b: true, values: [15, 35]},
-      ) 1`] = `"any"`;
+      ) 1`] = `"object"`;
 
 exports[`mergeWithKey merge(
         {a: true, thing: 'foo', values: [10, 20]},
         {b: true, thing: 'bar', values: [15, 35]},
-      ) 1`] = `"any"`;
+      ) 1`] = `"object"`;
 
 exports[`min R.min('a', 'z') 1`] = `"\\"a\\" | \\"z\\""`;
 
@@ -973,9 +973,9 @@ exports[`path R.path(['a', 'b'], {a: {b: 2}}) 1`] = `"any"`;
 
 exports[`pathEq R.filter<User>(isFamous, users) 1`] = `"User[]"`;
 
-exports[`pathOr R.pathOr('N/A')<number>(['a', 'b'], {a: {b: 2}}) 1`] = `"string | number"`;
+exports[`pathOr R.pathOr('N/A')(['a', 'b'], {a: {b: 2}}) 1`] = `"any"`;
 
-exports[`pathOr R.pathOr('N/A', ['a', 'b'])<number>({a: {b: 2}}) 1`] = `"string | number"`;
+exports[`pathOr R.pathOr('N/A', ['a', 'b'])({a: {b: 2}}) 1`] = `"any"`;
 
 exports[`pathSatisfies R.pathSatisfies((a: any) => a !== 1, ['a', 'b', 'c'], {a: {b: {c: 2}}}) 1`] = `"boolean"`;
 
