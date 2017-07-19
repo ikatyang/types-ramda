@@ -26,14 +26,14 @@ type mergeDeepLeft_00 = {
     (_left: PH, right: object): mergeDeepLeft_01;
     <$SEL extends "1">(): (left: object) => mergeDeepLeft_10;
     <$SEL extends "01">(): (_left: PH, right: object) => mergeDeepLeft_01;
-    <$SEL extends "11">(): <T>(left: object, right: object) => mergeDeepLeft_11<T>;
-    <T>(left: object, right: object): mergeDeepLeft_11<T>;
+    <$SEL extends "11">(): (left: object, right: object) => mergeDeepLeft_11;
+    (left: object, right: object): mergeDeepLeft_11;
 };
 type mergeDeepLeft_10 = {
-    <T>(right: object): mergeDeepLeft_11<T>;
+    (right: object): mergeDeepLeft_11;
 };
 type mergeDeepLeft_01 = {
-    <T>(left: object): mergeDeepLeft_11<T>;
+    (left: object): mergeDeepLeft_11;
 };
-type mergeDeepLeft_11<T> = T;
+type mergeDeepLeft_11 = object;
 export = mergeDeepLeft;

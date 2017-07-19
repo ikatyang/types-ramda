@@ -42,44 +42,62 @@ declare const into: into_000;
 type into_000 = {
     <T, U>(initial: Transformer<T, U, U>): into_transformer_100<T, U>;
     <V extends string | object>(initial: V): into_base_100<V>;
+    <T, U>(initial: Transformer<T, U, U> | U): into_mixed_100<T, U>;
     <T, U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_transformer_010<T, U>;
     <T, V extends string | object>(_initial: PH, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>)): into_base_010<T, V>;
+    <T, U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_mixed_010<T, U>;
     <T, U>(initial: Transformer<T, U, U>, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_transformer_110<T, U>;
     <T, V extends string | object>(initial: V, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>)): into_base_110<T, V>;
+    <T, U>(initial: Transformer<T, U, U> | U, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_mixed_110<T, U>;
     <T>(_initial: PH, _transducer: PH, values: T[]): into_001<T>;
     <T, U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>), values: T[]): into_transformer_011<T, U>;
     <T, V extends string | object>(_initial: PH, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>), values: T[]): into_base_011<T, V>;
+    <T, U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>), values: T[]): into_mixed_011<T, U>;
     <T, U>(initial: Transformer<T, U, U>, _transducer: PH, values: T[]): into_transformer_101<T, U>;
     <T, V extends string | object>(initial: V, _transducer: PH, values: T[]): into_base_101<T, V>;
+    <T, U>(initial: Transformer<T, U, U> | U, _transducer: PH, values: T[]): into_mixed_101<T, U>;
     <T, U>(initial: Transformer<T, U, U>, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>), values: T[]): into_transformer_111<U>;
+    <T, V extends string | object>(initial: V, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>), values: T[]): into_base_111<V>;
     <$SEL extends "1", $KIND extends "transformer">(): <T, U>(initial: Transformer<T, U, U>) => into_transformer_100<T, U>;
     <$SEL extends "1", $KIND extends "base">(): <V extends string | object>(initial: V) => into_base_100<V>;
+    <$SEL extends "1", $KIND extends "mixed">(): <T, U>(initial: Transformer<T, U, U> | U) => into_mixed_100<T, U>;
     <$SEL extends "01", $KIND extends "transformer">(): <T, U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)) => into_transformer_010<T, U>;
     <$SEL extends "01", $KIND extends "base">(): <T, V extends string | object>(_initial: PH, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>)) => into_base_010<T, V>;
+    <$SEL extends "01", $KIND extends "mixed">(): <T, U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)) => into_mixed_010<T, U>;
     <$SEL extends "11", $KIND extends "transformer">(): <T, U>(initial: Transformer<T, U, U>, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)) => into_transformer_110<T, U>;
     <$SEL extends "11", $KIND extends "base">(): <T, V extends string | object>(initial: V, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>)) => into_base_110<T, V>;
+    <$SEL extends "11", $KIND extends "mixed">(): <T, U>(initial: Transformer<T, U, U> | U, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)) => into_mixed_110<T, U>;
     <$SEL extends "001">(): <T>(_initial: PH, _transducer: PH, values: T[]) => into_001<T>;
     <$SEL extends "011", $KIND extends "transformer">(): <T, U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>), values: T[]) => into_transformer_011<T, U>;
     <$SEL extends "011", $KIND extends "base">(): <T, V extends string | object>(_initial: PH, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>), values: T[]) => into_base_011<T, V>;
+    <$SEL extends "011", $KIND extends "mixed">(): <T, U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>), values: T[]) => into_mixed_011<T, U>;
     <$SEL extends "101", $KIND extends "transformer">(): <T, U>(initial: Transformer<T, U, U>, _transducer: PH, values: T[]) => into_transformer_101<T, U>;
     <$SEL extends "101", $KIND extends "base">(): <T, V extends string | object>(initial: V, _transducer: PH, values: T[]) => into_base_101<T, V>;
+    <$SEL extends "101", $KIND extends "mixed">(): <T, U>(initial: Transformer<T, U, U> | U, _transducer: PH, values: T[]) => into_mixed_101<T, U>;
     <$SEL extends "111", $KIND extends "transformer">(): <T, U>(initial: Transformer<T, U, U>, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>), values: T[]) => into_transformer_111<U>;
     <$SEL extends "111", $KIND extends "base">(): <T, V extends string | object>(initial: V, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>), values: T[]) => into_base_111<V>;
-    <T, V extends string | object>(initial: V, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>), values: T[]): into_base_111<V>;
+    <$SEL extends "111", $KIND extends "mixed">(): <T, U>(initial: Transformer<T, U, U> | U, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>), values: T[]) => into_mixed_111<U>;
+    <T, U>(initial: Transformer<T, U, U> | U, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>), values: T[]): into_mixed_111<U>;
 };
 type into_001<T> = {
     <U>(initial: Transformer<T, U, U>): into_transformer_101<T, U>;
     <V extends string | object>(initial: V): into_base_101<T, V>;
+    <U>(initial: Transformer<T, U, U> | U): into_mixed_101<T, U>;
     <U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_transformer_011<T, U>;
     <V extends string | object>(_initial: PH, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>)): into_base_011<T, V>;
+    <U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_mixed_011<T, U>;
     <U>(initial: Transformer<T, U, U>, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_transformer_111<U>;
+    <V extends string | object>(initial: V, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>)): into_base_111<V>;
     <$SEL extends "1", $KIND extends "transformer">(): <U>(initial: Transformer<T, U, U>) => into_transformer_101<T, U>;
     <$SEL extends "1", $KIND extends "base">(): <V extends string | object>(initial: V) => into_base_101<T, V>;
+    <$SEL extends "1", $KIND extends "mixed">(): <U>(initial: Transformer<T, U, U> | U) => into_mixed_101<T, U>;
     <$SEL extends "01", $KIND extends "transformer">(): <U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)) => into_transformer_011<T, U>;
     <$SEL extends "01", $KIND extends "base">(): <V extends string | object>(_initial: PH, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>)) => into_base_011<T, V>;
+    <$SEL extends "01", $KIND extends "mixed">(): <U>(_initial: PH, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)) => into_mixed_011<T, U>;
     <$SEL extends "11", $KIND extends "transformer">(): <U>(initial: Transformer<T, U, U>, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)) => into_transformer_111<U>;
     <$SEL extends "11", $KIND extends "base">(): <V extends string | object>(initial: V, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>)) => into_base_111<V>;
-    <V extends string | object>(initial: V, transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>)): into_base_111<V>;
+    <$SEL extends "11", $KIND extends "mixed">(): <U>(initial: Transformer<T, U, U> | U, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)) => into_mixed_111<U>;
+    <U>(initial: Transformer<T, U, U> | U, transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_mixed_111<U>;
 };
 type into_transformer_100<T, U> = {
     (transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_transformer_110<T, U>;
@@ -97,6 +115,14 @@ type into_base_100<V extends string | object> = {
     <$SEL extends "11">(): <T>(transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>), values: T[]) => into_base_111<V>;
     <T>(transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>), values: T[]): into_base_111<V>;
 };
+type into_mixed_100<T, U> = {
+    (transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_mixed_110<T, U>;
+    (_transducer: PH, values: T[]): into_mixed_101<T, U>;
+    <$SEL extends "1">(): (transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)) => into_mixed_110<T, U>;
+    <$SEL extends "01">(): (_transducer: PH, values: T[]) => into_mixed_101<T, U>;
+    <$SEL extends "11">(): (transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>), values: T[]) => into_mixed_111<U>;
+    (transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>), values: T[]): into_mixed_111<U>;
+};
 type into_transformer_010<T, U> = {
     (initial: Transformer<T, U, U>): into_transformer_110<T, U>;
     (_initial: PH, values: T[]): into_transformer_011<T, U>;
@@ -113,11 +139,22 @@ type into_base_010<T, V extends string | object> = {
     <$SEL extends "11">(): (initial: V, values: T[]) => into_base_111<V>;
     (initial: V, values: T[]): into_base_111<V>;
 };
+type into_mixed_010<T, U> = {
+    (initial: Transformer<T, U, U> | U): into_mixed_110<T, U>;
+    (_initial: PH, values: T[]): into_mixed_011<T, U>;
+    <$SEL extends "1">(): (initial: Transformer<T, U, U> | U) => into_mixed_110<T, U>;
+    <$SEL extends "01">(): (_initial: PH, values: T[]) => into_mixed_011<T, U>;
+    <$SEL extends "11">(): (initial: Transformer<T, U, U> | U, values: T[]) => into_mixed_111<U>;
+    (initial: Transformer<T, U, U> | U, values: T[]): into_mixed_111<U>;
+};
 type into_transformer_110<T, U> = {
     (values: T[]): into_transformer_111<U>;
 };
 type into_base_110<T, V extends string | object> = {
     (values: T[]): into_base_111<V>;
+};
+type into_mixed_110<T, U> = {
+    (values: T[]): into_mixed_111<U>;
 };
 type into_transformer_101<T, U> = {
     (transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_transformer_111<U>;
@@ -125,12 +162,19 @@ type into_transformer_101<T, U> = {
 type into_base_101<T, V extends string | object> = {
     (transducer: Morphism<T[], V> | ((transformer: Transformer<T, V, V>) => (accumulator: V, value: T) => V | Reduced<V>)): into_base_111<V>;
 };
+type into_mixed_101<T, U> = {
+    (transducer: Morphism<T[], U> | ((transformer: Transformer<T, U, U>) => (accumulator: U, value: T) => U | Reduced<U>)): into_mixed_111<U>;
+};
 type into_transformer_011<T, U> = {
     (initial: Transformer<T, U, U>): into_transformer_111<U>;
 };
 type into_base_011<T, V extends string | object> = {
     (initial: V): into_base_111<V>;
 };
+type into_mixed_011<T, U> = {
+    (initial: Transformer<T, U, U> | U): into_mixed_111<U>;
+};
 type into_transformer_111<U> = U;
 type into_base_111<V extends string | object> = V;
+type into_mixed_111<U> = U;
 export = into;
