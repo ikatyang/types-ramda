@@ -1,4 +1,4 @@
-import { Morphism, NestedDictionary } from "./$types";
+import { Evolver } from "./$operation";
 /**
  * Creates a new object by recursively evolving a shallow copy of `object`,
  * according to the `transformation` functions. All non-primitive properties
@@ -28,25 +28,16 @@ import { Morphism, NestedDictionary } from "./$types";
  */
 declare const evolve: evolve_00;
 type evolve_00 = {
-    (transformations: NestedDictionary<Morphism<any, any>>): evolve_10;
-    <T>(transformations: NestedDictionary<Morphism<any, any>>, object: T): evolve_remain_11<T>;
-    <$SEL extends "1">(): (transformations: NestedDictionary<Morphism<any, any>>) => evolve_10;
-    <$SEL extends "11", $KIND extends "remain">(): <T>(transformations: NestedDictionary<Morphism<any, any>>, object: T) => evolve_remain_11<T>;
-    <$SEL extends "11", $KIND extends "manual">(): <T>(transformations: NestedDictionary<Morphism<any, any>>, object: object) => evolve_manual_11<T>;
-    <T>(transformations: NestedDictionary<Morphism<any, any>>, object: object): evolve_manual_11<T>;
+    <T>(transformations: Evolver<T>): evolve_10<T>;
+    <$SEL extends "1">(): <T>(transformations: Evolver<T>) => evolve_10<T>;
+    <$SEL extends "11">(): <T, U extends T>(transformations: Evolver<T>, object: U) => evolve_11<T, U>;
+    <T, U extends T>(transformations: Evolver<T>, object: U): evolve_11<T, U>;
 };
-type evolve_10 = {
-    <T>(object: T): evolve_remain_11<T>;
-    <$SEL extends "1", $KIND extends "remain">(): <T>(object: T) => evolve_remain_11<T>;
-    <$SEL extends "1", $KIND extends "manual">(): <T>(object: object) => evolve_manual_11<T>;
-    <T>(object: object): evolve_manual_11<T>;
+type evolve_10<T> = {
+    <U extends T>(object: U): evolve_11<T, U>;
 };
-type evolve_remain_01<T> = {
-    (transformations: NestedDictionary<Morphism<any, any>>): evolve_remain_11<T>;
+type evolve_01<T, U extends T> = {
+    (transformations: Evolver<T>): evolve_11<T, U>;
 };
-type evolve_manual_01 = {
-    <T>(transformations: NestedDictionary<Morphism<any, any>>): evolve_manual_11<T>;
-};
-type evolve_remain_11<T> = T;
-type evolve_manual_11<T> = T;
+type evolve_11<T, U extends T> = U;
 export = evolve;

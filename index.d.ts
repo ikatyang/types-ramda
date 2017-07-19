@@ -1,5 +1,6 @@
 export as namespace R;
 export * from "./src/$curried-functions";
+export * from "./src/$operation";
 export * from "./src/$placeholder";
 export * from "./src/$types";
 import __ = require("./src/__");

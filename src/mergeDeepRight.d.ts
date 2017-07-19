@@ -23,14 +23,14 @@ declare const mergeDeepRight: mergeDeepRight_00;
 type mergeDeepRight_00 = {
     (left: object): mergeDeepRight_10;
     <$SEL extends "1">(): (left: object) => mergeDeepRight_10;
-    <$SEL extends "11">(): <T>(left: object, right: object) => mergeDeepRight_11<T>;
-    <T>(left: object, right: object): mergeDeepRight_11<T>;
+    <$SEL extends "11">(): (left: object, right: object) => mergeDeepRight_11;
+    (left: object, right: object): mergeDeepRight_11;
 };
 type mergeDeepRight_10 = {
-    <T>(right: object): mergeDeepRight_11<T>;
+    (right: object): mergeDeepRight_11;
 };
 type mergeDeepRight_01 = {
-    <T>(left: object): mergeDeepRight_11<T>;
+    (left: object): mergeDeepRight_11;
 };
-type mergeDeepRight_11<T> = T;
+type mergeDeepRight_11 = object;
 export = mergeDeepRight;

@@ -1,3 +1,4 @@
+import { DeepPartial } from "./$operation";
 import { Path } from "./$types";
 /**
  * Makes a shallow clone of an object, omitting the property at the given path.
@@ -21,24 +22,15 @@ import { Path } from "./$types";
 declare const dissocPath: dissocPath_00;
 type dissocPath_00 = {
     (path: Path): dissocPath_10;
-    <T>(path: Path, object: T): dissocPath_remain_11<T>;
     <$SEL extends "1">(): (path: Path) => dissocPath_10;
-    <$SEL extends "11", $KIND extends "remain">(): <T>(path: Path, object: T) => dissocPath_remain_11<T>;
-    <$SEL extends "11", $KIND extends "manual">(): <T>(path: Path, object: object) => dissocPath_manual_11<T>;
-    <T>(path: Path, object: object): dissocPath_manual_11<T>;
+    <$SEL extends "11">(): <T>(path: Path, object: T) => dissocPath_11<T>;
+    <T>(path: Path, object: T): dissocPath_11<T>;
 };
 type dissocPath_10 = {
-    <T>(object: T): dissocPath_remain_11<T>;
-    <$SEL extends "1", $KIND extends "remain">(): <T>(object: T) => dissocPath_remain_11<T>;
-    <$SEL extends "1", $KIND extends "manual">(): <T>(object: object) => dissocPath_manual_11<T>;
-    <T>(object: object): dissocPath_manual_11<T>;
+    <T>(object: T): dissocPath_11<T>;
 };
-type dissocPath_remain_01<T> = {
-    (path: Path): dissocPath_remain_11<T>;
+type dissocPath_01<T> = {
+    (path: Path): dissocPath_11<T>;
 };
-type dissocPath_manual_01 = {
-    <T>(path: Path): dissocPath_manual_11<T>;
-};
-type dissocPath_remain_11<T> = T;
-type dissocPath_manual_11<T> = T;
+type dissocPath_11<T> = DeepPartial<T>;
 export = dissocPath;
