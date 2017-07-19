@@ -5,7 +5,7 @@ declare const path: Path;
 declare const number: number;
 declare const object: object;
 
-// @dts-jest:pass -> (object: object) => any
+// @dts-jest:pass -> (object: {}) => any
 R_pathOr(number, path);
 
 // @dts-jest:pass -> any

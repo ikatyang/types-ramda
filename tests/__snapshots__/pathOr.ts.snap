@@ -2,6 +2,6 @@
 
 exports[`R_pathOr(number)(path)(object) 1`] = `"any"`;
 
-exports[`R_pathOr(number, path) 1`] = `"(object: object) => any"`;
+exports[`R_pathOr(number, path) 1`] = `"(object: {}) => any"`;
 
 exports[`R_pathOr(number, path, object) 1`] = `"any"`;

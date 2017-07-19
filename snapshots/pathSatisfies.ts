@@ -5,7 +5,7 @@ declare const string_to_boolean: (x: string) => boolean;
 declare const path: Path;
 declare const object: object;
 
-// @dts-jest:pass -> (object: object) => boolean
+// @dts-jest:pass -> (object: {}) => boolean
 R_pathSatisfies(string_to_boolean, path);
 // @dts-jest:pass -> boolean
 R_pathSatisfies(string_to_boolean)(path)(object);

@@ -2,6 +2,6 @@
 
 exports[`R_propEq(string)(string)(object) 1`] = `"boolean"`;
 
-exports[`R_propEq(string, string) 1`] = `"(object: object) => boolean"`;
+exports[`R_propEq(string, string) 1`] = `"(object: {}) => boolean"`;
 
 exports[`R_propEq(string, string, object) 1`] = `"boolean"`;
