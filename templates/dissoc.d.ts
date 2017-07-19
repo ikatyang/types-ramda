@@ -1,4 +1,6 @@
+import {Omit} from './$operation';
 import {Property} from './$types';
 
-export function $remain<T>(property: Property, object: T): T;
-export function $manual<T>(property: Property, object: object): T;
+export function $keyof<T, K extends keyof T>(property: K, object: T): Omit<T, K>;
+export function $record<T extends Record<K, any>, K extends string>(property: K, object: T): Omit<T, K>;
+export function $general<T>(property: Property, object: T): T;

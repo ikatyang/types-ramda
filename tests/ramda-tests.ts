@@ -679,17 +679,17 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group dissoc
 (() => {
   // @dts-jest:pass
-  R.dissoc<{a: number, c: number}>('b', {a: 1, b: 2, c: 3}); //=> {a: 1, c: 3}
+  R.dissoc('b', {a: 1, b: 2, c: 3}); //=> {a: 1, c: 3}
   // @dts-jest:pass
-  R.dissoc('b')<{a: number, c: number}>({a: 1, b: 2, c: 3}); //=> {a: 1, c: 3}
+  R.dissoc('b')({a: 1, b: 2, c: 3}); //=> {a: 1, c: 3}
 })();
 
 // @dts-jest:group dissocPath
 (() => {
   // @dts-jest:pass
-  R.dissocPath<{a: {b: {}}}>(['a', 'b', 'c'], {a: {b: {c: 42}}}); //=> {a: {b: {}}}
+  R.dissocPath(['a', 'b', 'c'], {a: {b: {c: 42}}}); //=> {a: {b: {}}}
   // @dts-jest:pass
-  R.dissocPath(['a', 'b', 'c'])<{a: {b: {}}}>({a: {b: {c: 42}}}); //=> {a: {b: {}}}
+  R.dissocPath(['a', 'b', 'c'])({a: {b: {c: 42}}}); //=> {a: {b: {}}}
 })();
 
 // @dts-jest:group divide
@@ -834,7 +834,6 @@ import * as R from '../ramda/dist/index';
   const tomato = {firstName: 'Tomato ', data: {elapsed: 100, remaining: 1400}, id: 123};
   const transformations = {
     firstName: R.trim,
-    lastName: R.trim, // Will not get invoked.
     data: {elapsed: R.add(1), remaining: R.add(-1)},
   };
   // @dts-jest:pass
@@ -2104,8 +2103,8 @@ import * as R from '../ramda/dist/index';
 (() => {
   // @dts-jest:pass
   R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
-  // @dts-jest:pass
-  R.pick(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
+  // @dts-jest:fail
+  R.pick(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // runtime correct but type error => {a: 1}
   // @dts-jest:pass
   R.pick(['a', 'e', 'f'], [1, 2, 3, 4]); //=> {}
   // @dts-jest:pass
@@ -2242,7 +2241,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.prop('x', {x: 100}); //=> 100
   // @dts-jest:pass
-  R.prop<undefined>('x', {}); //=> undefined
+  R.prop('x', {}); //=> undefined
 })();
 
 // @dts-jest:group propEq
@@ -2339,7 +2338,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.props(['x', 'y'], {x: 1, y: 2}); //=> [1, 2]
   // @dts-jest:pass
-  R.props<number | undefined>(['c', 'a', 'b'], {b: 2, a: 1}); //=> [undefined, 1, 2]
+  R.props(['c', 'a', 'b'], {b: 2, a: 1}); //=> [undefined, 1, 2]
 
   const fullName = R.compose(R.join(' '), R.props(['first', 'last']));
   // @dts-jest:pass

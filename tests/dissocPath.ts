@@ -3,6 +3,7 @@ import * as R_dissocPath from '../ramda/dist/src/dissocPath';
 
 declare const path: Path;
 declare const object: object;
+declare const a_b_c_d_e: {a: {b: {c: {d: {e: number}}}}};
 
 // @dts-jest:pass
 R_dissocPath(path, object);
@@ -10,6 +11,6 @@ R_dissocPath(path, object);
 R_dissocPath(path)(object);
 
 // @dts-jest:pass
-R_dissocPath<string>(path, object);
+R_dissocPath(path, a_b_c_d_e);
 // @dts-jest:pass
-R_dissocPath(path)<string>(object);
+R_dissocPath(path)(a_b_c_d_e);
