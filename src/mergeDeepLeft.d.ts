@@ -22,13 +22,13 @@
 declare const mergeDeepLeft: mergeDeepLeft_00;
 type mergeDeepLeft_00 = {
     (left: object): mergeDeepLeft_10;
-    <T>(left: object, right: object): mergeDeepLeft_11<T>;
+    (left: object, right: object): mergeDeepLeft_11;
 };
 type mergeDeepLeft_10 = {
-    <T>(right: object): mergeDeepLeft_11<T>;
+    (right: object): mergeDeepLeft_11;
 };
 type mergeDeepLeft_01 = {
-    <T>(left: object): mergeDeepLeft_11<T>;
+    (left: object): mergeDeepLeft_11;
 };
-type mergeDeepLeft_11<T> = T;
+type mergeDeepLeft_11 = object;
 export = mergeDeepLeft;

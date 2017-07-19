@@ -18,7 +18,7 @@ import { List } from "./$types";
  */
 declare const mergeAll: mergeAll_0;
 type mergeAll_0 = {
-    <T>(list: List<any>): mergeAll_1<T>;
+    (list: List<object>): mergeAll_1;
 };
-type mergeAll_1<T> = T;
+type mergeAll_1 = object;
 export = mergeAll;

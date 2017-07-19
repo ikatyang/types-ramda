@@ -1,3 +1,4 @@
+import { Omit } from "./$operation";
 import { Property } from "./$types";
 /**
  * Returns a new object that does not contain a `prop` property.
@@ -17,20 +18,28 @@ import { Property } from "./$types";
  */
 declare const dissoc: dissoc_00;
 type dissoc_00 = {
-    (property: Property): dissoc_10;
-    <T>(property: Property, object: T): dissoc_remain_11<T>;
-    <T>(property: Property, object: object): dissoc_manual_11<T>;
+    <T, K extends keyof T>(property: K): dissoc_keyof_10<T, K>;
+    <K extends string>(property: K): dissoc_record_10<K>;
+    (property: Property): dissoc_general_10;
+    <T, K extends keyof T>(property: K, object: T): dissoc_keyof_11<T, K>;
+    <T extends Record<K, any>, K extends string>(property: K, object: T): dissoc_record_11<T, K>;
+    <T>(property: Property, object: T): dissoc_general_11<T>;
 };
-type dissoc_10 = {
-    <T>(object: T): dissoc_remain_11<T>;
-    <T>(object: object): dissoc_manual_11<T>;
+type dissoc_01<T> = {
+    <K extends keyof T>(property: K): dissoc_keyof_11<T, K>;
+    (property: K): dissoc_record_11<T, K>;
+    (property: Property): dissoc_general_11<T>;
 };
-type dissoc_remain_01<T> = {
-    (property: Property): dissoc_remain_11<T>;
+type dissoc_keyof_10<T, K extends keyof T> = {
+    (object: T): dissoc_keyof_11<T, K>;
 };
-type dissoc_manual_01 = {
-    <T>(property: Property): dissoc_manual_11<T>;
+type dissoc_record_10<K extends string> = {
+    <T extends Record<K, any>>(object: T): dissoc_record_11<T, K>;
 };
-type dissoc_remain_11<T> = T;
-type dissoc_manual_11<T> = T;
+type dissoc_general_10 = {
+    <T>(object: T): dissoc_general_11<T>;
+};
+type dissoc_keyof_11<T, K extends keyof T> = Omit<T, K>;
+type dissoc_record_11<T extends Record<K, any>, K extends string> = Omit<T, K>;
+type dissoc_general_11<T> = T;
 export = dissoc;

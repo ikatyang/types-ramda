@@ -28,7 +28,11 @@ import { List } from "./$types";
  */
 declare const tail: tail_0;
 type tail_0 = {
-    <T extends List<any>>(list: T): tail_1<T>;
+    (str: string): tail_string_1;
+    <T>(list: List<T>): tail_list_1<T>;
+    <T>(list: string | List<T>): tail_mixed_1<T>;
 };
-type tail_1<T extends List<any>> = T;
+type tail_string_1 = string;
+type tail_list_1<T> = T[];
+type tail_mixed_1<T> = string | T[];
 export = tail;

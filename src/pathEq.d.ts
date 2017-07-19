@@ -27,18 +27,18 @@ declare const pathEq: pathEq_000;
 type pathEq_000 = {
     (path: Path): pathEq_100;
     (path: Path, value: any): pathEq_110;
-    (path: Path, value: any, object: any): pathEq_111;
+    (path: Path, value: any, object: {}): pathEq_111;
 };
 type pathEq_100 = {
     (value: any): pathEq_110;
-    (value: any, object: any): pathEq_111;
+    (value: any, object: {}): pathEq_111;
 };
 type pathEq_010 = {
     (path: Path): pathEq_110;
-    (path: Path, object: any): pathEq_111;
+    (path: Path, object: {}): pathEq_111;
 };
 type pathEq_110 = {
-    (object: any): pathEq_111;
+    (object: {}): pathEq_111;
 };
 type pathEq_001 = {
     (path: Path): pathEq_101;

@@ -20,13 +20,13 @@ import { Path } from "./$types";
 declare const path: path_00;
 type path_00 = {
     (path: Path): path_10;
-    <R>(path: Path, object: any): path_11<R>;
+    (path: Path, object: {}): path_11;
 };
 type path_10 = {
-    <R>(object: any): path_11<R>;
+    (object: {}): path_11;
 };
 type path_01 = {
-    <R>(path: Path): path_11<R>;
+    (path: Path): path_11;
 };
-type path_11<R> = R;
+type path_11 = any;
 export = path;

@@ -21,55 +21,55 @@ import { Constructor, Property } from "./$types";
  */
 declare const propIs: propIs_000;
 type propIs_000 = {
-    <T>(constructor: Constructor<T>): propIs_record_100<T>;
+    <T>(constructor: Constructor<T>): propIs_guard_100<T>;
     (constructor: Constructor<any>): propIs_general_100;
-    <T, K extends string>(constructor: Constructor<T>, key: K): propIs_record_110<T, K>;
+    <T, K extends string>(constructor: Constructor<T>, key: K): propIs_guard_110<T, K>;
     (constructor: Constructor<any>, key: Property): propIs_general_110;
     <T, U, K extends string>(constructor: Constructor<T>, key: K, object: U): object is U & Record<K, T>;
-    (constructor: Constructor<any>, key: Property, object: any): propIs_general_111;
+    (constructor: Constructor<any>, key: Property, object: {}): propIs_general_111;
 };
-type propIs_record_100<T> = {
-    <K extends string>(key: K): propIs_record_110<T, K>;
+type propIs_guard_100<T> = {
+    <K extends string>(key: K): propIs_guard_110<T, K>;
     <U, K extends string>(key: K, object: U): object is U & Record<K, T>;
 };
 type propIs_general_100 = {
     (key: Property): propIs_general_110;
-    (key: Property, object: any): propIs_general_111;
+    (key: Property, object: {}): propIs_general_111;
 };
-type propIs_record_010<K extends string> = {
-    <T>(constructor: Constructor<T>): propIs_record_110<T, K>;
+type propIs_guard_010<K extends string> = {
+    <T>(constructor: Constructor<T>): propIs_guard_110<T, K>;
     <T, U>(constructor: Constructor<T>, object: U): object is U & Record<K, T>;
 };
 type propIs_general_010 = {
     (constructor: Constructor<any>): propIs_general_110;
-    (constructor: Constructor<any>, object: any): propIs_general_111;
+    (constructor: Constructor<any>, object: {}): propIs_general_111;
 };
-type propIs_record_110<T, K extends string> = {
+type propIs_guard_110<T, K extends string> = {
     <U>(object: U): object is U & Record<K, T>;
 };
 type propIs_general_110 = {
-    (object: any): propIs_general_111;
+    (object: {}): propIs_general_111;
 };
-type propIs_record_001<U> = {
-    <T>(constructor: Constructor<T>): propIs_record_101<T, U>;
-    <T, K extends string>(constructor: Constructor<T>, key: K): propIs_record_111<T, U, K>;
+type propIs_guard_001<U> = {
+    <T>(constructor: Constructor<T>): propIs_guard_101<T, U>;
+    <T, K extends string>(constructor: Constructor<T>, key: K): propIs_guard_111<T, U, K>;
 };
 type propIs_general_001 = {
     (constructor: Constructor<any>): propIs_general_101;
     (constructor: Constructor<any>, key: Property): propIs_general_111;
 };
-type propIs_record_101<T, U> = {
-    <K extends string>(key: K): propIs_record_111<T, U, K>;
+type propIs_guard_101<T, U> = {
+    <K extends string>(key: K): propIs_guard_111<T, U, K>;
 };
 type propIs_general_101 = {
     (key: Property): propIs_general_111;
 };
-type propIs_record_011<U, K extends string> = {
-    <T>(constructor: Constructor<T>): propIs_record_111<T, U, K>;
+type propIs_guard_011<U, K extends string> = {
+    <T>(constructor: Constructor<T>): propIs_guard_111<T, U, K>;
 };
 type propIs_general_011 = {
     (constructor: Constructor<any>): propIs_general_111;
 };
-type propIs_record_111<T, U, K extends string> = boolean;
+type propIs_guard_111<T, U, K extends string> = boolean;
 type propIs_general_111 = boolean;
 export = propIs;

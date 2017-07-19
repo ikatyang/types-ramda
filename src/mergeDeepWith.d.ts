@@ -29,28 +29,28 @@ declare const mergeDeepWith: mergeDeepWith_000;
 type mergeDeepWith_000 = {
     <V>(fn: (a: V, b: V) => any): mergeDeepWith_100<V>;
     <V>(fn: (a: V, b: V) => any, left: object): mergeDeepWith_110<V>;
-    <V, T>(fn: (a: V, b: V) => any, left: object, right: object): mergeDeepWith_111<T>;
+    <V>(fn: (a: V, b: V) => any, left: object, right: object): mergeDeepWith_111;
 };
 type mergeDeepWith_100<V> = {
     (left: object): mergeDeepWith_110<V>;
-    <T>(left: object, right: object): mergeDeepWith_111<T>;
+    (left: object, right: object): mergeDeepWith_111;
 };
 type mergeDeepWith_010 = {
     <V>(fn: (a: V, b: V) => any): mergeDeepWith_110<V>;
-    <V, T>(fn: (a: V, b: V) => any, right: object): mergeDeepWith_111<T>;
+    <V>(fn: (a: V, b: V) => any, right: object): mergeDeepWith_111;
 };
 type mergeDeepWith_110<V> = {
-    <T>(right: object): mergeDeepWith_111<T>;
+    (right: object): mergeDeepWith_111;
 };
 type mergeDeepWith_001 = {
     <V>(fn: (a: V, b: V) => any): mergeDeepWith_101<V>;
-    <V, T>(fn: (a: V, b: V) => any, left: object): mergeDeepWith_111<T>;
+    <V>(fn: (a: V, b: V) => any, left: object): mergeDeepWith_111;
 };
 type mergeDeepWith_101<V> = {
-    <T>(left: object): mergeDeepWith_111<T>;
+    (left: object): mergeDeepWith_111;
 };
 type mergeDeepWith_011 = {
-    <V, T>(fn: (a: V, b: V) => any): mergeDeepWith_111<T>;
+    <V>(fn: (a: V, b: V) => any): mergeDeepWith_111;
 };
-type mergeDeepWith_111<T> = T;
+type mergeDeepWith_111 = object;
 export = mergeDeepWith;
