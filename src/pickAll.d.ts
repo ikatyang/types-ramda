@@ -21,21 +21,21 @@ import { Placeholder as PH } from "./$placeholder";
 declare const pickAll: pickAll_00;
 type pickAll_00 = {
     <T, K extends keyof T>(keys: List<K>): pickAll_pick_10<T, K>;
-    (keys: List<Property>): pickAll_partial_10;
+    (keys: List<Property>): pickAll_general_10;
     <T>(_keys: PH, object: T): pickAll_01<T>;
     <T, K extends keyof T>(keys: List<K>, object: T): pickAll_pick_11<T, K>;
-    <T>(keys: List<Property>, object: T): pickAll_partial_11<T>;
+    <T>(keys: List<Property>, object: T): pickAll_general_11<T>;
 };
 type pickAll_01<T> = {
     <K extends keyof T>(keys: List<K>): pickAll_pick_11<T, K>;
-    (keys: List<Property>): pickAll_partial_11<T>;
+    (keys: List<Property>): pickAll_general_11<T>;
 };
 type pickAll_pick_10<T, K extends keyof T> = {
     (object: T): pickAll_pick_11<T, K>;
 };
-type pickAll_partial_10 = {
-    <T>(object: T): pickAll_partial_11<T>;
+type pickAll_general_10 = {
+    <T>(object: T): pickAll_general_11<T>;
 };
 type pickAll_pick_11<T, K extends keyof T> = Pick<T, K>;
-type pickAll_partial_11<T> = Partial<T>;
+type pickAll_general_11<T> = Partial<T>;
 export = pickAll;

@@ -21,37 +21,37 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const pathOr: pathOr_000;
 type pathOr_000 = {
-    <T>(defaults: T): pathOr_100<T>;
+    (defaults: any): pathOr_100;
     (_defaults: PH, path: Path): pathOr_010;
-    <T>(defaults: T, path: Path): pathOr_110<T>;
-    (_defaults: PH, _path: PH, object: any): pathOr_001;
-    (_defaults: PH, path: Path, object: any): pathOr_011;
-    <T>(defaults: T, _path: PH, object: any): pathOr_101<T>;
-    <T, U>(defaults: T, path: Path, object: any): pathOr_111<T, U>;
+    (defaults: any, path: Path): pathOr_110;
+    (_defaults: PH, _path: PH, object: {}): pathOr_001;
+    (_defaults: PH, path: Path, object: {}): pathOr_011;
+    (defaults: any, _path: PH, object: {}): pathOr_101;
+    (defaults: any, path: Path, object: {}): pathOr_111;
 };
-type pathOr_100<T> = {
-    (path: Path): pathOr_110<T>;
-    (_path: PH, object: any): pathOr_101<T>;
-    <U>(path: Path, object: any): pathOr_111<T, U>;
+type pathOr_100 = {
+    (path: Path): pathOr_110;
+    (_path: PH, object: {}): pathOr_101;
+    (path: Path, object: {}): pathOr_111;
 };
 type pathOr_010 = {
-    <T>(defaults: T): pathOr_110<T>;
-    (_defaults: PH, object: any): pathOr_011;
-    <T, U>(defaults: T, object: any): pathOr_111<T, U>;
+    (defaults: any): pathOr_110;
+    (_defaults: PH, object: {}): pathOr_011;
+    (defaults: any, object: {}): pathOr_111;
 };
-type pathOr_110<T> = {
-    <U>(object: any): pathOr_111<T, U>;
+type pathOr_110 = {
+    (object: {}): pathOr_111;
 };
 type pathOr_001 = {
-    <T>(defaults: T): pathOr_101<T>;
+    (defaults: any): pathOr_101;
     (_defaults: PH, path: Path): pathOr_011;
-    <T, U>(defaults: T, path: Path): pathOr_111<T, U>;
+    (defaults: any, path: Path): pathOr_111;
 };
-type pathOr_101<T> = {
-    <U>(path: Path): pathOr_111<T, U>;
+type pathOr_101 = {
+    (path: Path): pathOr_111;
 };
 type pathOr_011 = {
-    <T, U>(defaults: T): pathOr_111<T, U>;
+    (defaults: any): pathOr_111;
 };
-type pathOr_111<T, U> = T | U;
+type pathOr_111 = any;
 export = pathOr;

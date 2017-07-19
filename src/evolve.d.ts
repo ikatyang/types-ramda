@@ -1,4 +1,4 @@
-import { Morphism, NestedDictionary } from "./$types";
+import { Evolver } from "./$operation";
 import { Placeholder as PH } from "./$placeholder";
 /**
  * Creates a new object by recursively evolving a shallow copy of `object`,
@@ -29,22 +29,15 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const evolve: evolve_00;
 type evolve_00 = {
-    (transformations: NestedDictionary<Morphism<any, any>>): evolve_10;
-    <T>(_transformations: PH, object: T): evolve_remain_01<T>;
-    (_transformations: PH, object: object): evolve_manual_01;
-    <T>(transformations: NestedDictionary<Morphism<any, any>>, object: T): evolve_remain_11<T>;
-    <T>(transformations: NestedDictionary<Morphism<any, any>>, object: object): evolve_manual_11<T>;
+    <T>(transformations: Evolver<T>): evolve_10<T>;
+    <T, U extends T>(_transformations: PH, object: U): evolve_01<T, U>;
+    <T, U extends T>(transformations: Evolver<T>, object: U): evolve_11<T, U>;
 };
-type evolve_10 = {
-    <T>(object: T): evolve_remain_11<T>;
-    <T>(object: object): evolve_manual_11<T>;
+type evolve_10<T> = {
+    <U extends T>(object: U): evolve_11<T, U>;
 };
-type evolve_remain_01<T> = {
-    (transformations: NestedDictionary<Morphism<any, any>>): evolve_remain_11<T>;
+type evolve_01<T, U extends T> = {
+    (transformations: Evolver<T>): evolve_11<T, U>;
 };
-type evolve_manual_01 = {
-    <T>(transformations: NestedDictionary<Morphism<any, any>>): evolve_manual_11<T>;
-};
-type evolve_remain_11<T> = T;
-type evolve_manual_11<T> = T;
+type evolve_11<T, U extends T> = U;
 export = evolve;

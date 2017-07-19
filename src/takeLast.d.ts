@@ -27,12 +27,15 @@ type takeLast_00 = {
     (n: number): takeLast_10;
     (_n: PH, str: string): takeLast_string_01;
     <T>(_n: PH, list: List<T>): takeLast_list_01<T>;
+    <T>(_n: PH, list: string | List<T>): takeLast_mixed_01<T>;
     (n: number, str: string): takeLast_string_11;
     <T>(n: number, list: List<T>): takeLast_list_11<T>;
+    <T>(n: number, list: string | List<T>): takeLast_mixed_11<T>;
 };
 type takeLast_10 = {
     (str: string): takeLast_string_11;
     <T>(list: List<T>): takeLast_list_11<T>;
+    <T>(list: string | List<T>): takeLast_mixed_11<T>;
 };
 type takeLast_string_01 = {
     (n: number): takeLast_string_11;
@@ -40,6 +43,10 @@ type takeLast_string_01 = {
 type takeLast_list_01<T> = {
     (n: number): takeLast_list_11<T>;
 };
+type takeLast_mixed_01<T> = {
+    (n: number): takeLast_mixed_11<T>;
+};
 type takeLast_string_11 = string;
 type takeLast_list_11<T> = T[];
+type takeLast_mixed_11<T> = string | T[];
 export = takeLast;
