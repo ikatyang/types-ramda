@@ -3,16 +3,21 @@ import * as R_path from '../ramda/dist/src/path';
 
 declare const path: Path;
 declare const object: object;
+declare const a_1_b_2_c_3: {
+  a: 1,
+  b: 2,
+  c: 3,
+};
 
-// @dts-jest:pass -> <R>(object: any) => R
+// @dts-jest:pass -> (object: any) => any
 R_path(path);
 
-// @dts-jest:pass -> {}
+// @dts-jest:pass -> any
 R_path(path)(object);
-// @dts-jest:pass -> {}
+// @dts-jest:pass -> any
 R_path(path, object);
 
-// @dts-jest:pass -> number
-R_path(path)<number>(object);
-// @dts-jest:pass -> number
-R_path<number>(path, object);
+// @dts-jest:pass -> any
+R_path(['a', 'b', 'c'])(a_1_b_2_c_3);
+// @dts-jest:pass -> any
+R_path(['a', 'b', 'c'], a_1_b_2_c_3);

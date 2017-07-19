@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_path(path) 1`] = `"<R>(object: any) => R"`;
+exports[`R_path(['a', 'b', 'c'])(a_1_b_2_c_3) 1`] = `"any"`;
 
-exports[`R_path(path)(object) 1`] = `"{}"`;
+exports[`R_path(['a', 'b', 'c'], a_1_b_2_c_3) 1`] = `"any"`;
 
-exports[`R_path(path)<number>(object) 1`] = `"number"`;
+exports[`R_path(path) 1`] = `"(object: any) => any"`;
 
-exports[`R_path(path, object) 1`] = `"{}"`;
+exports[`R_path(path)(object) 1`] = `"any"`;
 
-exports[`R_path<number>(path, object) 1`] = `"number"`;
+exports[`R_path(path, object) 1`] = `"any"`;

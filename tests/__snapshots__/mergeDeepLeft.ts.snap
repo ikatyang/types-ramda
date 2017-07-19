@@ -1,11 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_mergeDeepLeft(a_1) 1`] = `"<T>(right: object) => T"`;
+exports[`R_mergeDeepLeft(a_1) 1`] = `"(right: object) => any"`;
 
-exports[`R_mergeDeepLeft(a_1)(b_2) 1`] = `"{}"`;
+exports[`R_mergeDeepLeft(a_1)(b_2) 1`] = `"any"`;
 
-exports[`R_mergeDeepLeft(a_1)<{a: 1, b: 2}>(b_2) 1`] = `"{ a: 1; b: 2; }"`;
-
-exports[`R_mergeDeepLeft(a_1, b_2) 1`] = `"{}"`;
-
-exports[`R_mergeDeepLeft<{a: 1, b: 2}>(a_1, b_2) 1`] = `"{ a: 1; b: 2; }"`;
+exports[`R_mergeDeepLeft(a_1, b_2) 1`] = `"any"`;

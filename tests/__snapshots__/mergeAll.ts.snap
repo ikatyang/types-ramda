@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_mergeAll([a_1, b_2]) 1`] = `"{}"`;
-
-exports[`R_mergeAll<{a: 1, b: 2}>([a_1, b_2]) 1`] = `"{ a: 1; b: 2; }"`;
+exports[`R_mergeAll([a_1, b_2]) 1`] = `"any"`;

@@ -11,8 +11,3 @@ R_mergeDeepWithKey(string_string_string_to_number, a_1);
 R_mergeDeepWithKey(string_string_string_to_number, a_1)(b_2);
 // @dts-jest:pass
 R_mergeDeepWithKey(string_string_string_to_number, a_1, b_2);
-
-// @dts-jest:pass
-R_mergeDeepWithKey(string_string_string_to_number, a_1)<{a: 1, b: 2}>(b_2);
-// @dts-jest:pass
-R_mergeDeepWithKey<any, {a: 1, b: 2}>(string_string_string_to_number, a_1, b_2);
