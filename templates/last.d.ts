@@ -1,4 +1,4 @@
 import {List} from './$types';
 
 export function $string(str: string): string;
-export function $list<T>(list: List<T>): T | undefined;
+export function $general<T extends List<any>>(list: T): T[number] | undefined;

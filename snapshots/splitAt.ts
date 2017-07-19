@@ -10,7 +10,7 @@ R_splitAt(number)(string);
 // @dts-jest:pass -> [string, string]
 R_splitAt(number, string);
 
-// @dts-jest:pass -> [object, object]
+// @dts-jest:pass -> [object[], object[]]
 R_splitAt(number)(object_list);
-// @dts-jest:pass -> [object, object]
+// @dts-jest:pass -> [object[], object[]]
 R_splitAt(number, object_list);

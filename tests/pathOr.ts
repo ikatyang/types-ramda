@@ -12,8 +12,3 @@ R_pathOr(number, path);
 R_pathOr(number)(path)(object);
 // @dts-jest:pass
 R_pathOr(number, path, object);
-
-// @dts-jest:pass
-R_pathOr(number)(path)<string>(object);
-// @dts-jest:pass
-R_pathOr<number, string>(number, path, object);

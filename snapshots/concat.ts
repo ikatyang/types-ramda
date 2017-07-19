@@ -12,5 +12,5 @@ R_concat(string, string);
 R_concat(number_array, number_array);
 // @dts-jest:pass -> (number | object)[]
 R_concat(object_array, number_array);
-// @dts-jest:fail -> Argument of type 'List<number>' is not assignable to parameter of type 'number[]'.
+// @dts-jest:fail -> Argument of type 'List<number>' is not assignable to parameter of type 'string | number[]'.
 R_concat(number_list, number_list);

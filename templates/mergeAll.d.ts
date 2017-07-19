@@ -1,3 +1,3 @@
 import {List} from './$types';
 
-export function $<T>(list: List<any>): T;
+export function $(list: List<object>): object;

@@ -1,11 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_mergeWithKey(string_string_string_to_number, a_1) 1`] = `"<T>(right: object) => T"`;
+exports[`R_mergeWithKey(string_string_string_to_number, a_1) 1`] = `"(right: object) => object"`;
 
-exports[`R_mergeWithKey(string_string_string_to_number, a_1)(b_2) 1`] = `"{}"`;
+exports[`R_mergeWithKey(string_string_string_to_number, a_1)(b_2) 1`] = `"object"`;
 
-exports[`R_mergeWithKey(string_string_string_to_number, a_1)<{a: 1, b: 2}>(b_2) 1`] = `"{ a: 1; b: 2; }"`;
-
-exports[`R_mergeWithKey(string_string_string_to_number, a_1, b_2) 1`] = `"{}"`;
-
-exports[`R_mergeWithKey<any, {a: 1, b: 2}>(string_string_string_to_number, a_1, b_2) 1`] = `"{ a: 1; b: 2; }"`;
+exports[`R_mergeWithKey(string_string_string_to_number, a_1, b_2) 1`] = `"object"`;

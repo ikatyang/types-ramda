@@ -177,6 +177,7 @@ function generate_remap_content(filename: string) {
 function get_top_level_members(filename: string): dts.ITopLevelMember[] {
   const members: dts.ITopLevelMember[] = [];
   const basename = path.basename(filename);
+  const function_name = basename.match(/^\$?(.+?)\./)![1];
 
   if (basename === '$curried-functions.ts') {
     push_curried_functions_members();
@@ -255,6 +256,29 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
 
     if (!functions.every(fn => fn.name!.startsWith('$'))) {
       throw new Error(`Exported functions in ${filename} should be prefixed with $`);
+    }
+
+    const function_names_no_need_to_check_last_overload_name = ['cond'];
+    if (function_names_no_need_to_check_last_overload_name.indexOf(function_name) === -1) {
+      const valid_last_overload_names = ['$mixed', '$general', '$variadic'];
+      if (functions.length > 1 && valid_last_overload_names.indexOf(functions[functions.length - 1].name!) === -1) {
+        throw new Error(
+          `Exported multi-overload functions in ${filename} should end with ${valid_last_overload_names.join(' / ')}}`,
+        );
+      }
+    }
+
+    const overload_names_should_exist_simultaneously = ['$record', '$keyof'];
+    if (functions.some(func => overload_names_should_exist_simultaneously.indexOf(func.name!) !== -1)) {
+      const is_exist_simultaneously = overload_names_should_exist_simultaneously
+        .every(overload_name => functions.some(func => func.name === overload_name));
+      if (!is_exist_simultaneously) {
+        throw new Error(
+          `Exported multi-overload functions in ${filename} should have ${
+            overload_names_should_exist_simultaneously.join(' / ')
+          } simultaneously`,
+        );
+      }
     }
 
     const placeholder_imports = (!placeholder || functions[0].type!.parameters!.length <= 1)

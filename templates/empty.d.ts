@@ -1,3 +1,4 @@
-export function $array<T>(container: T[]): T[];
+export function $list<T>(container: T[]): T[];
 export function $string(container: string): string;
-export function $manual<R, U = any>(container: U): R;
+export function $object(container: object): {};
+export function $general(container: any): any;

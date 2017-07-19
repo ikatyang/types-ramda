@@ -10,8 +10,3 @@ R_mergeDeepRight(a_1);
 R_mergeDeepRight(a_1)(b_2);
 // @dts-jest:pass
 R_mergeDeepRight(a_1, b_2);
-
-// @dts-jest:pass
-R_mergeDeepRight(a_1)<{a: 1, b: 2}>(b_2);
-// @dts-jest:pass
-R_mergeDeepRight<{a: 1, b: 2}>(a_1, b_2);

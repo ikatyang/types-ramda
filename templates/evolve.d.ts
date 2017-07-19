@@ -1,4 +1,3 @@
-import {Morphism, NestedDictionary} from './$types';
+import {Evolver} from './$operation';
 
-export function $remain<T>(transformations: NestedDictionary<Morphism<any, any>>, object: T): T;
-export function $manual<T>(transformations: NestedDictionary<Morphism<any, any>>, object: object): T;
+export function $<T, U extends T>(transformations: Evolver<T>, object: U): U;

@@ -1,15 +1,10 @@
-import {Dictionary, Morphism, NestedDictionary} from '../ramda/dist/src/$types';
+import {Morphism} from '../ramda/dist/src/$types';
 import * as R_evolve from '../ramda/dist/src/evolve';
 
-declare const nested_string_to_number: NestedDictionary<Morphism<string, number>>;
-declare const nested_string_dictionary: Dictionary<string>;
+declare const a_1_b_2_c_3: {a: 1, b: 2, c: 3};
+declare const a_b_number_to_number: {a: Morphism<number, number>, b: Morphism<number, number>};
 
-// @dts-jest:pass -> Dictionary<string>
-R_evolve(nested_string_to_number)(nested_string_dictionary);
-// @dts-jest:pass -> Dictionary<string>
-R_evolve(nested_string_to_number, nested_string_dictionary);
-
-// @dts-jest:pass -> Dictionary<number>
-R_evolve(nested_string_to_number)<Dictionary<number>>(nested_string_dictionary);
-// @dts-jest:pass -> Dictionary<number>
-R_evolve<Dictionary<number>>(nested_string_to_number, nested_string_dictionary);
+// @dts-jest:pass -> { a: 1; b: 2; c: 3; }
+R_evolve(a_b_number_to_number)(a_1_b_2_c_3);
+// @dts-jest:pass -> { a: 1; b: 2; c: 3; }
+R_evolve(a_b_number_to_number, a_1_b_2_c_3);
