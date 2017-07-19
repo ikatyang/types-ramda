@@ -812,42 +812,42 @@ exports[`memoizeWith factorial(5) 3`] = `"number"`;
 
 exports[`merge R.merge({name: 'fred', age: 10}, {age: 40}) 1`] = `"{ name: string; age: number; } & { age: number; }"`;
 
-exports[`mergeAll R.mergeAll<Record<string, number>>([{foo: 1}, {bar: 2}, {baz: 3}]) 1`] = `"Record<string, number>"`;
+exports[`mergeAll R.mergeAll([{foo: 1}, {bar: 2}, {baz: 3}]) 1`] = `"any"`;
 
-exports[`mergeAll R.mergeAll<Record<string, number>>([{foo: 1}, {foo: 2}, {bar: 2}]) 1`] = `"Record<string, number>"`;
+exports[`mergeAll R.mergeAll([{foo: 1}, {foo: 2}, {bar: 2}]) 1`] = `"any"`;
 
-exports[`mergeDeepLeft R.mergeDeepLeft<Record<string, any>>(
+exports[`mergeDeepLeft R.mergeDeepLeft(
         {name: 'fred', age: 10, contact: {email: 'moo@example.com'}},
         {age: 40, contact: {email: 'baa@example.com'}},
-      ) 1`] = `"Record<string, any>"`;
+      ) 1`] = `"any"`;
 
-exports[`mergeDeepRight R.mergeDeepRight<Record<string, any>>(
+exports[`mergeDeepRight R.mergeDeepRight(
         {name: 'fred', age: 10, contact: {email: 'moo@example.com'}},
         {age: 40, contact: {email: 'baa@example.com'}},
-      ) 1`] = `"Record<string, any>"`;
+      ) 1`] = `"any"`;
 
-exports[`mergeDeepWith R.mergeDeepWith<any, Record<string, any>>(
+exports[`mergeDeepWith R.mergeDeepWith(
         R.concat,
         {a: true, c: {values: [10, 20]}},
         {b: true, c: {values: [15, 35]}},
-      ) 1`] = `"Record<string, any>"`;
+      ) 1`] = `"any"`;
 
-exports[`mergeDeepWithKey R.mergeDeepWithKey<any, Record<string, any>>(
+exports[`mergeDeepWithKey R.mergeDeepWithKey(
         concatValues,
         {a: true, c: {thing: 'foo', values: [10, 20]}},
         {b: true, c: {thing: 'bar', values: [15, 35]}},
-      ) 1`] = `"Record<string, any>"`;
+      ) 1`] = `"any"`;
 
-exports[`mergeWith R.mergeWith<any, {a: boolean, b: boolean, values: number[]}>(
+exports[`mergeWith R.mergeWith(
         R.concat,
         {a: true, values: [10, 20]},
         {b: true, values: [15, 35]},
-      ) 1`] = `"{ a: boolean; b: boolean; values: number[]; }"`;
+      ) 1`] = `"any"`;
 
-exports[`mergeWithKey merge<{a: boolean, b: boolean, values: number[], thing: string}>(
+exports[`mergeWithKey merge(
         {a: true, thing: 'foo', values: [10, 20]},
         {b: true, thing: 'bar', values: [15, 35]},
-      ) 1`] = `"{ a: boolean; b: boolean; values: number[]; thing: string; }"`;
+      ) 1`] = `"any"`;
 
 exports[`min R.min('a', 'z') 1`] = `"\\"a\\" | \\"z\\""`;
 
@@ -967,9 +967,9 @@ exports[`partition R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']) 1
 
 exports[`partition R.partition(R.contains('s'), {a: 'sss', b: 'ttt', foo: 'bars'}) 1`] = `"[Partial<{ a: string; b: string; foo: string; }>, Partial<{ a: string; b: string; foo: string; }>]"`;
 
-exports[`path R.path(['a', 'b'])<number>({a: {b: 2}}) 1`] = `"number"`;
+exports[`path R.path(['a', 'b'])({a: {b: 2}}) 1`] = `"any"`;
 
-exports[`path R.path<number>(['a', 'b'], {a: {b: 2}}) 1`] = `"number"`;
+exports[`path R.path(['a', 'b'], {a: {b: 2}}) 1`] = `"any"`;
 
 exports[`pathEq R.filter<User>(isFamous, users) 1`] = `"User[]"`;
 

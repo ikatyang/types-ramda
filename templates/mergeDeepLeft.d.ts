@@ -1,1 +1,1 @@
-export function $<T>(left: object, right: object): T;
+export function $(left: object, right: object): any;

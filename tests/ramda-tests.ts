@@ -1740,15 +1740,15 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group mergeAll
 (() => {
   // @dts-jest:pass
-  R.mergeAll<Record<string, number>>([{foo: 1}, {bar: 2}, {baz: 3}]); //=> {foo: 1,bar: 2,baz: 3}
+  R.mergeAll([{foo: 1}, {bar: 2}, {baz: 3}]); //=> {foo: 1,bar: 2,baz: 3}
   // @dts-jest:pass
-  R.mergeAll<Record<string, number>>([{foo: 1}, {foo: 2}, {bar: 2}]); //=> {foo: 2,bar: 2}
+  R.mergeAll([{foo: 1}, {foo: 2}, {bar: 2}]); //=> {foo: 2,bar: 2}
 })();
 
 // @dts-jest:group mergeDeepLeft
 (() => {
   // @dts-jest:pass
-  R.mergeDeepLeft<Record<string, any>>(
+  R.mergeDeepLeft(
     {name: 'fred', age: 10, contact: {email: 'moo@example.com'}},
     {age: 40, contact: {email: 'baa@example.com'}},
   ); //=> { name: 'fred', age: 10, contact: { email: 'moo@example.com' }}
@@ -1757,7 +1757,7 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group mergeDeepRight
 (() => {
   // @dts-jest:pass
-  R.mergeDeepRight<Record<string, any>>(
+  R.mergeDeepRight(
     {name: 'fred', age: 10, contact: {email: 'moo@example.com'}},
     {age: 40, contact: {email: 'baa@example.com'}},
   ); //=> { name: 'fred', age: 40, contact: { email: 'baa@example.com' }}
@@ -1766,7 +1766,7 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group mergeDeepWith
 (() => {
   // @dts-jest:pass
-  R.mergeDeepWith<any, Record<string, any>>(
+  R.mergeDeepWith(
     R.concat,
     {a: true, c: {values: [10, 20]}},
     {b: true, c: {values: [15, 35]}},
@@ -1777,7 +1777,7 @@ import * as R from '../ramda/dist/index';
 (() => {
   const concatValues = (k: string, l: number[], r: number[]) => k === 'values' ? R.concat(l, r) : r;
   // @dts-jest:pass
-  R.mergeDeepWithKey<any, Record<string, any>>(
+  R.mergeDeepWithKey(
     concatValues,
     {a: true, c: {thing: 'foo', values: [10, 20]}},
     {b: true, c: {thing: 'bar', values: [15, 35]}},
@@ -1787,7 +1787,7 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group mergeWith
 (() => {
   // @dts-jest:pass
-  R.mergeWith<any, {a: boolean, b: boolean, values: number[]}>(
+  R.mergeWith(
     R.concat,
     {a: true, values: [10, 20]},
     {b: true, values: [15, 35]},
@@ -1804,7 +1804,7 @@ import * as R from '../ramda/dist/index';
   );
   const merge = R.mergeWithKey(concatValues);
   // @dts-jest:pass
-  merge<{a: boolean, b: boolean, values: number[], thing: string}>(
+  merge(
     {a: true, thing: 'foo', values: [10, 20]},
     {b: true, thing: 'bar', values: [15, 35]},
   ); //=> { a: true, b: true, values: [10, 20, 15, 35], thing: 'bar' }
@@ -2053,9 +2053,9 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group path
 (() => {
   // @dts-jest:pass
-  R.path<number>(['a', 'b'], {a: {b: 2}}); //=> 2
+  R.path(['a', 'b'], {a: {b: 2}}); //=> 2
   // @dts-jest:pass
-  R.path(['a', 'b'])<number>({a: {b: 2}}); //=> 2
+  R.path(['a', 'b'])({a: {b: 2}}); //=> 2
 })();
 
 // @dts-jest:group pathEq
