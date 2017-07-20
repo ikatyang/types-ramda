@@ -20,29 +20,29 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const pick: pick_00;
 type pick_00 = {
-    <T, K extends keyof T>(keys: List<K>): pick_keyof_10<T, K>;
+    <T extends {}, K extends keyof T>(keys: List<K>): pick_keyof_10<T, K>;
     <K extends string>(keys: List<K>): pick_record_10<K>;
     (keys: List<Property>): pick_general_10;
-    <T>(_keys: PH, object: T): pick_01<T>;
-    <T, K extends keyof T>(keys: List<K>, object: T): pick_keyof_11<T, K>;
+    <T extends {}>(_keys: PH, object: T): pick_01<T>;
+    <T extends {}, K extends keyof T>(keys: List<K>, object: T): pick_keyof_11<T, K>;
     <T extends Record<K, any>, K extends string>(keys: List<K>, object: T): pick_record_11<T, K>;
-    <T>(keys: List<Property>, object: T): pick_general_11<T>;
+    <T extends {}>(keys: List<Property>, object: T): pick_general_11<T>;
 };
-type pick_01<T> = {
+type pick_01<T extends {}> = {
     <K extends keyof T>(keys: List<K>): pick_keyof_11<T, K>;
     (keys: List<K>): pick_record_11<T, K>;
     (keys: List<Property>): pick_general_11<T>;
 };
-type pick_keyof_10<T, K extends keyof T> = {
+type pick_keyof_10<T extends {}, K extends keyof T> = {
     (object: T): pick_keyof_11<T, K>;
 };
 type pick_record_10<K extends string> = {
     <T extends Record<K, any>>(object: T): pick_record_11<T, K>;
 };
 type pick_general_10 = {
-    <T>(object: T): pick_general_11<T>;
+    <T extends {}>(object: T): pick_general_11<T>;
 };
-type pick_keyof_11<T, K extends keyof T> = Pick<T, K>;
+type pick_keyof_11<T extends {}, K extends keyof T> = Pick<T, K>;
 type pick_record_11<T extends Record<K, any>, K extends string> = Pick<T, K>;
-type pick_general_11<T> = Partial<T>;
+type pick_general_11<T extends {}> = Partial<T>;
 export = pick;
