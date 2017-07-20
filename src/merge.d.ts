@@ -1,3 +1,4 @@
+import { Merge } from "./$operation";
 import { Placeholder as PH } from "./$placeholder";
 /**
  * Create a new object with the own properties of the first object merged with
@@ -34,5 +35,5 @@ type merge_10<T> = {
 type merge_01<U> = {
     <T>(a: T): merge_11<T, U>;
 };
-type merge_11<T, U> = T & U;
+type merge_11<T, U> = Merge<T, U>;
 export = merge;

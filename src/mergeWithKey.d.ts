@@ -1,3 +1,4 @@
+import { Omit, Same } from "./$operation";
 import { Placeholder as PH } from "./$placeholder";
 /**
  * Creates a new object with the own properties of the two provided objects. If
@@ -26,37 +27,37 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const mergeWithKey: mergeWithKey_000;
 type mergeWithKey_000 = {
-    <V>(fn: (key: string, a: V, b: V) => any): mergeWithKey_100<V>;
-    (_fn: PH, left: object): mergeWithKey_010;
-    <V>(fn: (key: string, a: V, b: V) => any, left: object): mergeWithKey_110<V>;
-    (_fn: PH, _left: PH, right: object): mergeWithKey_001;
-    (_fn: PH, left: object, right: object): mergeWithKey_011;
-    <V>(fn: (key: string, a: V, b: V) => any, _left: PH, right: object): mergeWithKey_101<V>;
-    <V>(fn: (key: string, a: V, b: V) => any, left: object, right: object): mergeWithKey_111;
+    <V, W>(fn: (key: string, a: V, b: V) => W): mergeWithKey_100<V, W>;
+    <T>(_fn: PH, left: T): mergeWithKey_010<T>;
+    <T, V, W>(fn: (key: string, a: V, b: V) => W, left: T): mergeWithKey_110<T, V, W>;
+    <U>(_fn: PH, _left: PH, right: U): mergeWithKey_001<U>;
+    <T, U>(_fn: PH, left: T, right: U): mergeWithKey_011<T, U>;
+    <U, V, W>(fn: (key: string, a: V, b: V) => W, _left: PH, right: U): mergeWithKey_101<U, V, W>;
+    <T, U, V, W>(fn: (key: string, a: V, b: V) => W, left: T, right: U): mergeWithKey_111<T, U, W>;
 };
-type mergeWithKey_100<V> = {
-    (left: object): mergeWithKey_110<V>;
-    (_left: PH, right: object): mergeWithKey_101<V>;
-    (left: object, right: object): mergeWithKey_111;
+type mergeWithKey_100<V, W> = {
+    <T>(left: T): mergeWithKey_110<T, V, W>;
+    <U>(_left: PH, right: U): mergeWithKey_101<U, V, W>;
+    <T, U>(left: T, right: U): mergeWithKey_111<T, U, W>;
 };
-type mergeWithKey_010 = {
-    <V>(fn: (key: string, a: V, b: V) => any): mergeWithKey_110<V>;
-    (_fn: PH, right: object): mergeWithKey_011;
-    <V>(fn: (key: string, a: V, b: V) => any, right: object): mergeWithKey_111;
+type mergeWithKey_010<T> = {
+    <V, W>(fn: (key: string, a: V, b: V) => W): mergeWithKey_110<T, V, W>;
+    <U>(_fn: PH, right: U): mergeWithKey_011<T, U>;
+    <U, V, W>(fn: (key: string, a: V, b: V) => W, right: U): mergeWithKey_111<T, U, W>;
 };
-type mergeWithKey_110<V> = {
-    (right: object): mergeWithKey_111;
+type mergeWithKey_110<T, V, W> = {
+    <U>(right: U): mergeWithKey_111<T, U, W>;
 };
-type mergeWithKey_001 = {
-    <V>(fn: (key: string, a: V, b: V) => any): mergeWithKey_101<V>;
-    (_fn: PH, left: object): mergeWithKey_011;
-    <V>(fn: (key: string, a: V, b: V) => any, left: object): mergeWithKey_111;
+type mergeWithKey_001<U> = {
+    <V, W>(fn: (key: string, a: V, b: V) => W): mergeWithKey_101<U, V, W>;
+    <T>(_fn: PH, left: T): mergeWithKey_011<T, U>;
+    <T, V, W>(fn: (key: string, a: V, b: V) => W, left: T): mergeWithKey_111<T, U, W>;
 };
-type mergeWithKey_101<V> = {
-    (left: object): mergeWithKey_111;
+type mergeWithKey_101<U, V, W> = {
+    <T>(left: T): mergeWithKey_111<T, U, W>;
 };
-type mergeWithKey_011 = {
-    <V>(fn: (key: string, a: V, b: V) => any): mergeWithKey_111;
+type mergeWithKey_011<T, U> = {
+    <V, W>(fn: (key: string, a: V, b: V) => W): mergeWithKey_111<T, U, W>;
 };
-type mergeWithKey_111 = object;
+type mergeWithKey_111<T, U, W> = Omit<T, keyof U> & Omit<U, keyof T> & Record<Same<keyof T, keyof U>, W>;
 export = mergeWithKey;
