@@ -25,10 +25,10 @@ type assoc_000 = {
     (property: Property): assoc_general_100;
     <K extends string, V>(property: K, value: V): assoc_extend_110<K, V>;
     (property: Property, value: any): assoc_general_110;
-    <K extends string, V, T>(property: K, value: V, object: T): assoc_extend_111<K, V, T>;
-    <T>(property: Property, value: any, object: T): assoc_general_111<T>;
+    <K extends string, V, T extends {}>(property: K, value: V, object: T): assoc_extend_111<K, V, T>;
+    <T extends {}>(property: Property, value: any, object: T): assoc_general_111<T>;
 };
-type assoc_001<T> = {
+type assoc_001<T extends {}> = {
     <K extends string>(property: K): assoc_extend_101<K, T>;
     (property: Property): assoc_general_101<T>;
     <K extends string, V>(property: K, value: V): assoc_extend_111<K, V, T>;
@@ -36,38 +36,38 @@ type assoc_001<T> = {
 };
 type assoc_extend_100<K extends string> = {
     <V>(value: V): assoc_extend_110<K, V>;
-    <V, T>(value: V, object: T): assoc_extend_111<K, V, T>;
+    <V, T extends {}>(value: V, object: T): assoc_extend_111<K, V, T>;
 };
 type assoc_general_100 = {
     (value: any): assoc_general_110;
-    <T>(value: any, object: T): assoc_general_111<T>;
+    <T extends {}>(value: any, object: T): assoc_general_111<T>;
 };
 type assoc_extend_010<V> = {
     <K extends string>(property: K): assoc_extend_110<K, V>;
-    <K extends string, T>(property: K, object: T): assoc_extend_111<K, V, T>;
+    <K extends string, T extends {}>(property: K, object: T): assoc_extend_111<K, V, T>;
 };
 type assoc_general_010 = {
     (property: Property): assoc_general_110;
-    <T>(property: Property, object: T): assoc_general_111<T>;
+    <T extends {}>(property: Property, object: T): assoc_general_111<T>;
 };
 type assoc_extend_110<K extends string, V> = {
-    <T>(object: T): assoc_extend_111<K, V, T>;
+    <T extends {}>(object: T): assoc_extend_111<K, V, T>;
 };
 type assoc_general_110 = {
-    <T>(object: T): assoc_general_111<T>;
+    <T extends {}>(object: T): assoc_general_111<T>;
 };
-type assoc_extend_101<K extends string, T> = {
+type assoc_extend_101<K extends string, T extends {}> = {
     <V>(value: V): assoc_extend_111<K, V, T>;
 };
-type assoc_general_101<T> = {
+type assoc_general_101<T extends {}> = {
     (value: any): assoc_general_111<T>;
 };
-type assoc_extend_011<V, T> = {
+type assoc_extend_011<V, T extends {}> = {
     <K extends string>(property: K): assoc_extend_111<K, V, T>;
 };
-type assoc_general_011<T> = {
+type assoc_general_011<T extends {}> = {
     (property: Property): assoc_general_111<T>;
 };
-type assoc_extend_111<K extends string, V, T> = T & Record<K, V>;
-type assoc_general_111<T> = T;
+type assoc_extend_111<K extends string, V, T extends {}> = T & Record<K, V>;
+type assoc_general_111<T extends {}> = T;
 export = assoc;

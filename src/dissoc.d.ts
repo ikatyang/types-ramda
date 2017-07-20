@@ -18,28 +18,28 @@ import { Property } from "./$types";
  */
 declare const dissoc: dissoc_00;
 type dissoc_00 = {
-    <T, K extends keyof T>(property: K): dissoc_keyof_10<T, K>;
+    <T extends {}, K extends keyof T>(property: K): dissoc_keyof_10<T, K>;
     <K extends string>(property: K): dissoc_record_10<K>;
     (property: Property): dissoc_general_10;
-    <T, K extends keyof T>(property: K, object: T): dissoc_keyof_11<T, K>;
+    <T extends {}, K extends keyof T>(property: K, object: T): dissoc_keyof_11<T, K>;
     <T extends Record<K, any>, K extends string>(property: K, object: T): dissoc_record_11<T, K>;
-    <T>(property: Property, object: T): dissoc_general_11<T>;
+    <T extends {}>(property: Property, object: T): dissoc_general_11<T>;
 };
-type dissoc_01<T> = {
+type dissoc_01<T extends {}> = {
     <K extends keyof T>(property: K): dissoc_keyof_11<T, K>;
     (property: K): dissoc_record_11<T, K>;
     (property: Property): dissoc_general_11<T>;
 };
-type dissoc_keyof_10<T, K extends keyof T> = {
+type dissoc_keyof_10<T extends {}, K extends keyof T> = {
     (object: T): dissoc_keyof_11<T, K>;
 };
 type dissoc_record_10<K extends string> = {
     <T extends Record<K, any>>(object: T): dissoc_record_11<T, K>;
 };
 type dissoc_general_10 = {
-    <T>(object: T): dissoc_general_11<T>;
+    <T extends {}>(object: T): dissoc_general_11<T>;
 };
-type dissoc_keyof_11<T, K extends keyof T> = Omit<T, K>;
+type dissoc_keyof_11<T extends {}, K extends keyof T> = Omit<T, K>;
 type dissoc_record_11<T extends Record<K, any>, K extends string> = Omit<T, K>;
-type dissoc_general_11<T> = T;
+type dissoc_general_11<T extends {}> = T;
 export = dissoc;
