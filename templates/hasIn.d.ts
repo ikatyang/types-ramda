@@ -1,3 +1,3 @@
 import {Property} from './$types';
 
-export function $<T>(property: Property, object: T): boolean;
+export function $(property: Property, object: {}): boolean;
