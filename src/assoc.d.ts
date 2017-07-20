@@ -28,28 +28,28 @@ type assoc_000 = {
     (_property: PH, value: any): assoc_general_010;
     <K extends string, V>(property: K, value: V): assoc_extend_110<K, V>;
     (property: Property, value: any): assoc_general_110;
-    <T>(_property: PH, _value: PH, object: T): assoc_001<T>;
-    <V, T>(_property: PH, value: V, object: T): assoc_extend_011<V, T>;
-    <T>(_property: PH, value: any, object: T): assoc_general_011<T>;
-    <K extends string, T>(property: K, _value: PH, object: T): assoc_extend_101<K, T>;
-    <T>(property: Property, _value: PH, object: T): assoc_general_101<T>;
-    <K extends string, V, T>(property: K, value: V, object: T): assoc_extend_111<K, V, T>;
+    <T extends {}>(_property: PH, _value: PH, object: T): assoc_001<T>;
+    <V, T extends {}>(_property: PH, value: V, object: T): assoc_extend_011<V, T>;
+    <T extends {}>(_property: PH, value: any, object: T): assoc_general_011<T>;
+    <K extends string, T extends {}>(property: K, _value: PH, object: T): assoc_extend_101<K, T>;
+    <T extends {}>(property: Property, _value: PH, object: T): assoc_general_101<T>;
+    <K extends string, V, T extends {}>(property: K, value: V, object: T): assoc_extend_111<K, V, T>;
     <$SEL extends "1", $KIND extends "extend">(): <K extends string>(property: K) => assoc_extend_100<K>;
     <$SEL extends "1", $KIND extends "general">(): (property: Property) => assoc_general_100;
     <$SEL extends "01", $KIND extends "extend">(): <V>(_property: PH, value: V) => assoc_extend_010<V>;
     <$SEL extends "01", $KIND extends "general">(): (_property: PH, value: any) => assoc_general_010;
     <$SEL extends "11", $KIND extends "extend">(): <K extends string, V>(property: K, value: V) => assoc_extend_110<K, V>;
     <$SEL extends "11", $KIND extends "general">(): (property: Property, value: any) => assoc_general_110;
-    <$SEL extends "001">(): <T>(_property: PH, _value: PH, object: T) => assoc_001<T>;
-    <$SEL extends "011", $KIND extends "extend">(): <V, T>(_property: PH, value: V, object: T) => assoc_extend_011<V, T>;
-    <$SEL extends "011", $KIND extends "general">(): <T>(_property: PH, value: any, object: T) => assoc_general_011<T>;
-    <$SEL extends "101", $KIND extends "extend">(): <K extends string, T>(property: K, _value: PH, object: T) => assoc_extend_101<K, T>;
-    <$SEL extends "101", $KIND extends "general">(): <T>(property: Property, _value: PH, object: T) => assoc_general_101<T>;
-    <$SEL extends "111", $KIND extends "extend">(): <K extends string, V, T>(property: K, value: V, object: T) => assoc_extend_111<K, V, T>;
-    <$SEL extends "111", $KIND extends "general">(): <T>(property: Property, value: any, object: T) => assoc_general_111<T>;
-    <T>(property: Property, value: any, object: T): assoc_general_111<T>;
+    <$SEL extends "001">(): <T extends {}>(_property: PH, _value: PH, object: T) => assoc_001<T>;
+    <$SEL extends "011", $KIND extends "extend">(): <V, T extends {}>(_property: PH, value: V, object: T) => assoc_extend_011<V, T>;
+    <$SEL extends "011", $KIND extends "general">(): <T extends {}>(_property: PH, value: any, object: T) => assoc_general_011<T>;
+    <$SEL extends "101", $KIND extends "extend">(): <K extends string, T extends {}>(property: K, _value: PH, object: T) => assoc_extend_101<K, T>;
+    <$SEL extends "101", $KIND extends "general">(): <T extends {}>(property: Property, _value: PH, object: T) => assoc_general_101<T>;
+    <$SEL extends "111", $KIND extends "extend">(): <K extends string, V, T extends {}>(property: K, value: V, object: T) => assoc_extend_111<K, V, T>;
+    <$SEL extends "111", $KIND extends "general">(): <T extends {}>(property: Property, value: any, object: T) => assoc_general_111<T>;
+    <T extends {}>(property: Property, value: any, object: T): assoc_general_111<T>;
 };
-type assoc_001<T> = {
+type assoc_001<T extends {}> = {
     <K extends string>(property: K): assoc_extend_101<K, T>;
     (property: Property): assoc_general_101<T>;
     <V>(_property: PH, value: V): assoc_extend_011<V, T>;
@@ -65,54 +65,54 @@ type assoc_001<T> = {
 };
 type assoc_extend_100<K extends string> = {
     <V>(value: V): assoc_extend_110<K, V>;
-    <T>(_value: PH, object: T): assoc_extend_101<K, T>;
+    <T extends {}>(_value: PH, object: T): assoc_extend_101<K, T>;
     <$SEL extends "1">(): <V>(value: V) => assoc_extend_110<K, V>;
-    <$SEL extends "01">(): <T>(_value: PH, object: T) => assoc_extend_101<K, T>;
-    <$SEL extends "11">(): <V, T>(value: V, object: T) => assoc_extend_111<K, V, T>;
-    <V, T>(value: V, object: T): assoc_extend_111<K, V, T>;
+    <$SEL extends "01">(): <T extends {}>(_value: PH, object: T) => assoc_extend_101<K, T>;
+    <$SEL extends "11">(): <V, T extends {}>(value: V, object: T) => assoc_extend_111<K, V, T>;
+    <V, T extends {}>(value: V, object: T): assoc_extend_111<K, V, T>;
 };
 type assoc_general_100 = {
     (value: any): assoc_general_110;
-    <T>(_value: PH, object: T): assoc_general_101<T>;
+    <T extends {}>(_value: PH, object: T): assoc_general_101<T>;
     <$SEL extends "1">(): (value: any) => assoc_general_110;
-    <$SEL extends "01">(): <T>(_value: PH, object: T) => assoc_general_101<T>;
-    <$SEL extends "11">(): <T>(value: any, object: T) => assoc_general_111<T>;
-    <T>(value: any, object: T): assoc_general_111<T>;
+    <$SEL extends "01">(): <T extends {}>(_value: PH, object: T) => assoc_general_101<T>;
+    <$SEL extends "11">(): <T extends {}>(value: any, object: T) => assoc_general_111<T>;
+    <T extends {}>(value: any, object: T): assoc_general_111<T>;
 };
 type assoc_extend_010<V> = {
     <K extends string>(property: K): assoc_extend_110<K, V>;
-    <T>(_property: PH, object: T): assoc_extend_011<V, T>;
+    <T extends {}>(_property: PH, object: T): assoc_extend_011<V, T>;
     <$SEL extends "1">(): <K extends string>(property: K) => assoc_extend_110<K, V>;
-    <$SEL extends "01">(): <T>(_property: PH, object: T) => assoc_extend_011<V, T>;
-    <$SEL extends "11">(): <K extends string, T>(property: K, object: T) => assoc_extend_111<K, V, T>;
-    <K extends string, T>(property: K, object: T): assoc_extend_111<K, V, T>;
+    <$SEL extends "01">(): <T extends {}>(_property: PH, object: T) => assoc_extend_011<V, T>;
+    <$SEL extends "11">(): <K extends string, T extends {}>(property: K, object: T) => assoc_extend_111<K, V, T>;
+    <K extends string, T extends {}>(property: K, object: T): assoc_extend_111<K, V, T>;
 };
 type assoc_general_010 = {
     (property: Property): assoc_general_110;
-    <T>(_property: PH, object: T): assoc_general_011<T>;
+    <T extends {}>(_property: PH, object: T): assoc_general_011<T>;
     <$SEL extends "1">(): (property: Property) => assoc_general_110;
-    <$SEL extends "01">(): <T>(_property: PH, object: T) => assoc_general_011<T>;
-    <$SEL extends "11">(): <T>(property: Property, object: T) => assoc_general_111<T>;
-    <T>(property: Property, object: T): assoc_general_111<T>;
+    <$SEL extends "01">(): <T extends {}>(_property: PH, object: T) => assoc_general_011<T>;
+    <$SEL extends "11">(): <T extends {}>(property: Property, object: T) => assoc_general_111<T>;
+    <T extends {}>(property: Property, object: T): assoc_general_111<T>;
 };
 type assoc_extend_110<K extends string, V> = {
-    <T>(object: T): assoc_extend_111<K, V, T>;
+    <T extends {}>(object: T): assoc_extend_111<K, V, T>;
 };
 type assoc_general_110 = {
-    <T>(object: T): assoc_general_111<T>;
+    <T extends {}>(object: T): assoc_general_111<T>;
 };
-type assoc_extend_101<K extends string, T> = {
+type assoc_extend_101<K extends string, T extends {}> = {
     <V>(value: V): assoc_extend_111<K, V, T>;
 };
-type assoc_general_101<T> = {
+type assoc_general_101<T extends {}> = {
     (value: any): assoc_general_111<T>;
 };
-type assoc_extend_011<V, T> = {
+type assoc_extend_011<V, T extends {}> = {
     <K extends string>(property: K): assoc_extend_111<K, V, T>;
 };
-type assoc_general_011<T> = {
+type assoc_general_011<T extends {}> = {
     (property: Property): assoc_general_111<T>;
 };
-type assoc_extend_111<K extends string, V, T> = T & Record<K, V>;
-type assoc_general_111<T> = T;
+type assoc_extend_111<K extends string, V, T extends {}> = T & Record<K, V>;
+type assoc_general_111<T extends {}> = T;
 export = assoc;

@@ -17,7 +17,7 @@
  */
 declare const values: values_0;
 type values_0 = {
-    <T>(value: T): values_1<T>;
+    <T extends {}>(value: T): values_1<T>;
 };
-type values_1<T> = T[keyof T][];
+type values_1<T extends {}> = T[keyof T][];
 export = values;
