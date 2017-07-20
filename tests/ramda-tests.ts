@@ -1796,15 +1796,15 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group mergeWithKey
 (() => {
-  const concatValues = (k: string, l: string, r: string) => k === 'values' ? R.concat(l, r) : r;
+  const concatValues = (k: string, l: string | number[], r: string | number[]) => k === 'values' ? R.concat(l, r) : r;
+  // @dts-jest:pass
   R.mergeWithKey(
     concatValues,
     {a: true, thing: 'foo', values: [10, 20]},
     {b: true, thing: 'bar', values: [15, 35]},
-  );
-  const merge = R.mergeWithKey(concatValues);
+  ); //=> { a: true, b: true, values: [10, 20, 15, 35], thing: 'bar' }
   // @dts-jest:pass
-  merge(
+  R.mergeWithKey(concatValues)(
     {a: true, thing: 'foo', values: [10, 20]},
     {b: true, thing: 'bar', values: [15, 35]},
   ); //=> { a: true, b: true, values: [10, 20, 15, 35], thing: 'bar' }

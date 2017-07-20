@@ -1729,7 +1729,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group merge
 (() => {
-  // @dts-jest:pass -> { name: string; age: number; } & { age: number; }
+  // @dts-jest:pass -> Pick<{ name: string; age: number; }, "name"> & { age: number; }
   R.merge({name: 'fred', age: 10}, {age: 40}); //=> { 'name': 'fred', 'age': 40 }
 
   const resetToDefault = R.flip(R.merge)({x: 0});
@@ -1786,7 +1786,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group mergeWith
 (() => {
-  // @dts-jest:pass -> object
+  // @dts-jest:pass -> Pick<{ a: boolean; values: number[]; }, "a"> & Pick<{ b: boolean; values: number[]; }, "b"> & Record<"values", string | any[]>
   R.mergeWith(
     R.concat,
     {a: true, values: [10, 20]},
@@ -1796,15 +1796,15 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group mergeWithKey
 (() => {
-  const concatValues = (k: string, l: string, r: string) => k === 'values' ? R.concat(l, r) : r;
+  const concatValues = (k: string, l: string | number[], r: string | number[]) => k === 'values' ? R.concat(l, r) : r;
+  // @dts-jest:pass -> Pick<{ a: boolean; thing: string; values: number[]; }, "a"> & Pick<{ b: boolean; thing: string; values: number[]; }, "b"> & Record<"values" | "thing", string | number[]>
   R.mergeWithKey(
     concatValues,
     {a: true, thing: 'foo', values: [10, 20]},
     {b: true, thing: 'bar', values: [15, 35]},
-  );
-  const merge = R.mergeWithKey(concatValues);
-  // @dts-jest:pass -> object
-  merge(
+  ); //=> { a: true, b: true, values: [10, 20, 15, 35], thing: 'bar' }
+  // @dts-jest:pass -> Pick<{ a: boolean; thing: string; values: number[]; }, "a"> & Pick<{ b: boolean; thing: string; values: number[]; }, "b"> & Record<"values" | "thing", string | number[]>
+  R.mergeWithKey(concatValues)(
     {a: true, thing: 'foo', values: [10, 20]},
     {b: true, thing: 'bar', values: [15, 35]},
   ); //=> { a: true, b: true, values: [10, 20, 15, 35], thing: 'bar' }

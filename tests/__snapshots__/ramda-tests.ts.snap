@@ -810,7 +810,7 @@ exports[`memoizeWith factorial(5) 2`] = `"number"`;
 
 exports[`memoizeWith factorial(5) 3`] = `"number"`;
 
-exports[`merge R.merge({name: 'fred', age: 10}, {age: 40}) 1`] = `"{ name: string; age: number; } & { age: number; }"`;
+exports[`merge R.merge({name: 'fred', age: 10}, {age: 40}) 1`] = `"Pick<{ name: string; age: number; }, \\"name\\"> & { age: number; }"`;
 
 exports[`mergeAll R.mergeAll([{foo: 1}, {bar: 2}, {baz: 3}]) 1`] = `"object"`;
 
@@ -842,12 +842,18 @@ exports[`mergeWith R.mergeWith(
         R.concat,
         {a: true, values: [10, 20]},
         {b: true, values: [15, 35]},
-      ) 1`] = `"object"`;
+      ) 1`] = `"Pick<{ a: boolean; values: number[]; }, \\"a\\"> & Pick<{ b: boolean; values: number[]; }, \\"b\\"> & Record<\\"values\\", string | any[]>"`;
 
-exports[`mergeWithKey merge(
+exports[`mergeWithKey R.mergeWithKey(
+        concatValues,
         {a: true, thing: 'foo', values: [10, 20]},
         {b: true, thing: 'bar', values: [15, 35]},
-      ) 1`] = `"object"`;
+      ) 1`] = `"Pick<{ a: boolean; thing: string; values: number[]; }, \\"a\\"> & Pick<{ b: boolean; thing: string; values: number[]; }, \\"b\\"> & Record<\\"values\\" | \\"thing\\", string | number[]>"`;
+
+exports[`mergeWithKey R.mergeWithKey(concatValues)(
+        {a: true, thing: 'foo', values: [10, 20]},
+        {b: true, thing: 'bar', values: [15, 35]},
+      ) 1`] = `"Pick<{ a: boolean; thing: string; values: number[]; }, \\"a\\"> & Pick<{ b: boolean; thing: string; values: number[]; }, \\"b\\"> & Record<\\"values\\" | \\"thing\\", string | number[]>"`;
 
 exports[`min R.min('a', 'z') 1`] = `"\\"a\\" | \\"z\\""`;
 
