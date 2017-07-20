@@ -1,1 +1,3 @@
-export function $<V>(fn: (a: V, b: V) => any, left: object, right: object): object;
+import {Omit, Same} from './$operation';
+
+export function $<T, U, V, W>(fn: (a: V, b: V) => W, left: T, right: U): Omit<T, keyof U> & Omit<U, keyof T> & Record<Same<keyof T, keyof U>, W>;
