@@ -14,7 +14,7 @@ exports[`$ExpectError Argument of type '{ x: string; }' is not assignable to par
 
 exports[`$ExpectError Argument of type 'null' is not assignable to parameter of type 'string'. 1`] = `"Argument of type 'null' is not assignable to parameter of type 'string'."`;
 
-exports[`$ExpectError Argument of type 'x' is not assignable to parameter of type 'never'. 1`] = `"{}"`;
+exports[`$ExpectError Argument of type 'x' is not assignable to parameter of type 'never'. 1`] = `"any"`;
 
 exports[`$ExpectError Argument of type 'x' is not assignable to parameter of type 'never'.\`, because 'x' is not in \`{}\`. 1`] = `"boolean"`;
 
@@ -22,7 +22,10 @@ exports[`$ExpectError Supplied parameters do not match any signature of call tar
 
 exports[`$ExpectError not keys 1`] = `"any"`;
 
-exports[`$ExpectError not keys 2`] = `"any"`;
+exports[`$ExpectError not keys 2`] = `
+"Argument of type '{ a: number; b: number; c: number; d: number; }' is not assignable to parameter of type 'Record<\\"a\\" | \\"e\\" | \\"f\\", any>'.
+  Object literal may only specify known properties, and 'b' does not exist in type 'Record<\\"a\\" | \\"e\\" | \\"f\\", any>'."
+`;
 
 exports[`$ExpectError not keys 3`] = `"any"`;
 
@@ -136,11 +139,11 @@ exports[`$ExpectType { [s: string]: { [s: string]: number } } 1`] = `"{}"`;
 
 exports[`$ExpectType { [s: string]: { [s: string]: number } } 2`] = `"{}"`;
 
-exports[`$ExpectType { 2: R.Dictionary<string> } 1`] = `"{ 1: { color: string; }; 2: { color: string; bgcolor: string; }; }"`;
+exports[`$ExpectType { 2: R.Dictionary<string> } 1`] = `"Partial<{ 1: { color: string; }; 2: { color: string; bgcolor: string; }; }>"`;
 
-exports[`$ExpectType { a: boolean, b: boolean, values: number[] } 1`] = `"{}"`;
+exports[`$ExpectType { a: boolean, b: boolean, values: number[] } 1`] = `"Pick<{ a: boolean; values: number[]; }, \\"a\\"> & Pick<{ b: boolean; values: number[]; }, \\"b\\"> & Record<\\"values\\", string | any[]>"`;
 
-exports[`$ExpectType { a: boolean, b: boolean, values: number[], thing: string } 1`] = `"{}"`;
+exports[`$ExpectType { a: boolean, b: boolean, values: number[], thing: string } 1`] = `"Pick<{ a: boolean; thing: string; values: number[]; }, \\"a\\"> & Pick<{ b: boolean; thing: string; values: number[]; }, \\"b\\"> & Record<\\"values\\" | \\"thing\\", string>"`;
 
 exports[`$ExpectType { a: number }[] 1`] = `"{}[]"`;
 
@@ -226,11 +229,17 @@ exports[`$ExpectType {<U>(obj2: U): boolean} 1`] = `"(b: { a: number; b: number;
 
 exports[`$ExpectType {} 1`] = `"{}"`;
 
-exports[`$ExpectType {a: {b: {}}} 1`] = `"{ a: { b: { c: number; }; }; }"`;
+exports[`$ExpectType {a: {b: {}}} 1`] = `"{ a?: DeepPartial | undefined; }"`;
 
-exports[`$ExpectType {a: {b: {}}} 2`] = `"{ a: { b: number; }; }"`;
+exports[`$ExpectType {a: {b: {}}} 2`] = `
+"Argument of type '{ a: { b: { c: number; }; }; }' is not assignable to parameter of type '{ a: { b: number; }; }'.
+  Types of property 'a' are incompatible.
+    Type '{ b: { c: number; }; }' is not assignable to type '{ b: number; }'.
+      Types of property 'b' are incompatible.
+        Type '{ c: number; }' is not assignable to type 'number'."
+`;
 
-exports[`$ExpectType {a: {b: {}}} 3`] = `"{ a: { b: { c: number; }; }; }"`;
+exports[`$ExpectType {a: {b: {}}} 3`] = `"{ a?: DeepPartial | undefined; }"`;
 
 exports[`$ExpectType {a: {b: {c: number}}} 1`] = `"{ a: { b: { c: number; }; }; }"`;
 
@@ -261,26 +270,15 @@ exports[`$ExpectType Array<number|string> 1`] = `
 
 exports[`$ExpectType Array<number|string> 2`] = `"Property 'set' does not exist on type 'Lens<{}, List<{}>>'."`;
 
-exports[`$ExpectType Array<number|undefined> 1`] = `"{}[]"`;
+exports[`$ExpectType Array<number|undefined> 1`] = `"any[]"`;
 
-exports[`$ExpectType Array<string[]|string> 1`] = `"Expected 1 type arguments, but got 2."`;
+exports[`$ExpectType Array<string[]|string> 1`] = `"Argument of type 'string[]' is not assignable to parameter of type 'string'."`;
 
-exports[`$ExpectType Array<string[]|string> 2`] = `
-"Argument of type 'string[]' is not assignable to parameter of type 'List<string[]>'.
-  Type 'string[]' is not assignable to type 'ArrayLike<string[]>'.
-    Index signatures are incompatible.
-      Type 'string' is not assignable to type 'string[]'."
-`;
+exports[`$ExpectType Array<string[]|string> 2`] = `"(string | string[])[]"`;
 
-exports[`$ExpectType Array<string[]|string> 3`] = `
-"Argument of type 'string[]' is not assignable to parameter of type 'List<string[]>'.
-  Type 'string[]' is not assignable to type 'ArrayLike<string[]>'."
-`;
+exports[`$ExpectType Array<string[]|string> 3`] = `"(string | string[])[]"`;
 
-exports[`$ExpectType Array<string[]|string> 4`] = `
-"Argument of type 'string[]' is not assignable to parameter of type 'List<string[]>'.
-  Type 'string[]' is not assignable to type 'ArrayLike<string[]>'."
-`;
+exports[`$ExpectType Array<string[]|string> 4`] = `"(string | string[])[]"`;
 
 exports[`$ExpectType Array<string[]|string> 5`] = `"[string, string[]]"`;
 
@@ -322,15 +320,20 @@ exports[`$ExpectType Dictionary<Object> 3`] = `"Dictionary<{ id: string; }>"`;
 
 exports[`$ExpectType Dictionary<Object[]> 1`] = `"Dictionary<{ score: number; name: string; }[]>"`;
 
-exports[`$ExpectType Dictionary<any> 1`] = `"{ 'name': string; 'age': number; } & { 'age': number; }"`;
+exports[`$ExpectType Dictionary<any> 1`] = `"Pick<{ 'name': string; 'age': number; }, \\"name\\"> & { 'age': number; }"`;
 
-exports[`$ExpectType Dictionary<number> 1`] = `"Dictionary<number>"`;
+exports[`$ExpectType Dictionary<number> 1`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`$ExpectType Dictionary<number> 2`] = `"{ [key: string]: number; }"`;
+exports[`$ExpectType Dictionary<number> 2`] = `
+"Argument of type 'Partial<{ a: number; b: number; c: number; d: number; }>' is not assignable to parameter of type '{ [key: string]: number; }'.
+  Property 'a' is incompatible with index signature.
+    Type 'number | undefined' is not assignable to type 'number'.
+      Type 'undefined' is not assignable to type 'number'."
+`;
 
-exports[`$ExpectType Dictionary<number> 3`] = `"any"`;
+exports[`$ExpectType Dictionary<number> 3`] = `"{} | undefined"`;
 
-exports[`$ExpectType Dictionary<number> 4`] = `"any"`;
+exports[`$ExpectType Dictionary<number> 4`] = `"{} | undefined"`;
 
 exports[`$ExpectType Dictionary<number> 5`] = `"Record<\\"a\\" | \\"b\\" | \\"c\\", number>"`;
 
@@ -352,11 +355,17 @@ exports[`$ExpectType Dictionary<number> 13`] = `"{ a: number; b: number; } & Rec
 
 exports[`$ExpectType Dictionary<number> 14`] = `"{ a: number; b: number; } & Record<\\"c\\", number>"`;
 
-exports[`$ExpectType Dictionary<number> 15`] = `"{ a: number; c: number; }"`;
+exports[`$ExpectType Dictionary<number> 15`] = `
+"Argument of type '{ a: number; b: number; c: number; }' is not assignable to parameter of type '{ a: number; c: number; }'.
+  Object literal may only specify known properties, and 'b' does not exist in type '{ a: number; c: number; }'."
+`;
 
-exports[`$ExpectType Dictionary<number> 16`] = `"{ a: number; b: number; c: number; }"`;
+exports[`$ExpectType Dictionary<number> 16`] = `"Pick<{ a: number; b: number; c: number; }, \\"a\\" | \\"c\\">"`;
 
-exports[`$ExpectType Dictionary<number> 17`] = `"{ a: number; c: number; }"`;
+exports[`$ExpectType Dictionary<number> 17`] = `
+"Type '{ a: number; c: number; }' does not satisfy the constraint 'Record<\\"b\\", any>'.
+  Property 'b' is missing in type '{ a: number; c: number; }'."
+`;
 
 exports[`$ExpectType Dictionary<number> 18`] = `"{}"`;
 
@@ -364,31 +373,31 @@ exports[`$ExpectType Dictionary<number> 19`] = `"{}"`;
 
 exports[`$ExpectType Dictionary<number> 20`] = `"any"`;
 
-exports[`$ExpectType Dictionary<number> 21`] = `"{}"`;
+exports[`$ExpectType Dictionary<number> 21`] = `"object"`;
 
-exports[`$ExpectType Dictionary<number> 22`] = `"{}"`;
+exports[`$ExpectType Dictionary<number> 22`] = `"object"`;
 
-exports[`$ExpectType Dictionary<number> 23`] = `"{ a: number; b: number; c: number; d: number; e: number; }"`;
+exports[`$ExpectType Dictionary<number> 23`] = `"Partial<{ a: number; b: number; c: number; d: number; e: number; }>"`;
 
-exports[`$ExpectType Dictionary<number> 24`] = `"{ a: number; b: number; A: number; B: number; }"`;
+exports[`$ExpectType Dictionary<number> 24`] = `"Partial<{ a: number; b: number; A: number; B: number; }>"`;
 
-exports[`$ExpectType Dictionary<number> 25`] = `"{ a: number; b: number; c: number; d: number; }"`;
+exports[`$ExpectType Dictionary<number> 25`] = `"Pick<{ a: number; b: number; c: number; d: number; }, \\"a\\" | \\"d\\">"`;
 
-exports[`$ExpectType Dictionary<number> 26`] = `"{ a: number; b: number; c: number; d: number; }"`;
+exports[`$ExpectType Dictionary<number> 26`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`$ExpectType Dictionary<number> 27`] = `"{ a: number; b: number; c: number; d: number; }"`;
+exports[`$ExpectType Dictionary<number> 27`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
 exports[`$ExpectType Dictionary<number> 28`] = `"Dictionary<number>"`;
 
-exports[`$ExpectType Dictionary<number> 29`] = `"{ a: number; b: number; c: number; d: number; }"`;
+exports[`$ExpectType Dictionary<number> 29`] = `"Pick<{ a: number; b: number; c: number; d: number; }, \\"a\\" | \\"d\\">"`;
 
-exports[`$ExpectType Dictionary<number> 30`] = `"{ a: number; b: number; c: number; d: number; }"`;
+exports[`$ExpectType Dictionary<number> 30`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`$ExpectType Dictionary<number> 31`] = `"{ a: number; b: number; c: number; d: number; }"`;
+exports[`$ExpectType Dictionary<number> 31`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`$ExpectType Dictionary<number> 32`] = `"{ a: number; b: number; c: number; d: number; }"`;
+exports[`$ExpectType Dictionary<number> 32`] = `"Partial<{ a: number; b: number; c: number; d: number; }>"`;
 
-exports[`$ExpectType Dictionary<number> 33`] = `"{ a: number; b: number; A: number; B: number; }"`;
+exports[`$ExpectType Dictionary<number> 33`] = `"Partial<{ a: number; b: number; A: number; B: number; }>"`;
 
 exports[`$ExpectType Dictionary<number> 34`] = `"Dictionary<number>"`;
 
@@ -412,15 +421,15 @@ exports[`$ExpectType Object 1`] = `"{}"`;
 
 exports[`$ExpectType Object[] 1`] = `"{}[]"`;
 
-exports[`$ExpectType Object[] 2`] = `"any[]"`;
+exports[`$ExpectType Object[] 2`] = `"{}[]"`;
 
-exports[`$ExpectType Object[] 3`] = `"[Record<string, string[] | ArrayLike<string>>, Record<string, string[] | ArrayLike<string>>]"`;
+exports[`$ExpectType Object[] 3`] = `"[Partial<{ a: string; b: string; foo: string; }>, Partial<{ a: string; b: string; foo: string; }>]"`;
 
 exports[`$ExpectType Object[] 4`] = `"{}[]"`;
 
 exports[`$ExpectType Object[] 5`] = `"any[]"`;
 
-exports[`$ExpectType Promise<number> 1`] = `"PromiseLike<R3>"`;
+exports[`$ExpectType Promise<number> 1`] = `"PromiseLike<number>"`;
 
 exports[`$ExpectType T 1`] = `"{ sum: number; nested: { mul: number; }; }"`;
 
@@ -776,7 +785,7 @@ exports[`$ExpectType circle 2`] = `"R"`;
 
 exports[`$ExpectType null 1`] = `"\\"\\" | null"`;
 
-exports[`$ExpectType null 2`] = `"{}"`;
+exports[`$ExpectType null 2`] = `"any"`;
 
 exports[`$ExpectType number 1`] = `"number"`;
 
@@ -881,13 +890,13 @@ exports[`$ExpectType number 49`] = `"{}"`;
 
 exports[`$ExpectType number 50`] = `"{}"`;
 
-exports[`$ExpectType number 51`] = `"{} | \\"N/A\\""`;
+exports[`$ExpectType number 51`] = `"any"`;
 
-exports[`$ExpectType number 52`] = `"string | {}"`;
+exports[`$ExpectType number 52`] = `"any"`;
 
-exports[`$ExpectType number 53`] = `"{} | \\"N/A\\""`;
+exports[`$ExpectType number 53`] = `"any"`;
 
-exports[`$ExpectType number 54`] = `"{} | { c: number; }"`;
+exports[`$ExpectType number 54`] = `"any"`;
 
 exports[`$ExpectType number 55`] = `"number"`;
 
@@ -921,9 +930,9 @@ exports[`$ExpectType number 69`] = `"number"`;
 
 exports[`$ExpectType number 70`] = `"number"`;
 
-exports[`$ExpectType number 71`] = `"{}"`;
+exports[`$ExpectType number 71`] = `"any"`;
 
-exports[`$ExpectType number 72`] = `"{}"`;
+exports[`$ExpectType number 72`] = `"any"`;
 
 exports[`$ExpectType number 73`] = `"number"`;
 
@@ -1013,9 +1022,9 @@ exports[`$ExpectType number 115`] = `"number"`;
 
 exports[`$ExpectType number 116`] = `"number"`;
 
-exports[`$ExpectType number 117`] = `"{}"`;
+exports[`$ExpectType number 117`] = `"any"`;
 
-exports[`$ExpectType number 118`] = `"{}"`;
+exports[`$ExpectType number 118`] = `"any"`;
 
 exports[`$ExpectType number[] 1`] = `
 "Argument of type 'number[]' is not assignable to parameter of type 'Morphism<{}, boolean>'.
@@ -1040,7 +1049,7 @@ exports[`$ExpectType number[] 9`] = `"number[]"`;
 
 exports[`$ExpectType number[] 10`] = `"number[]"`;
 
-exports[`$ExpectType number[] 11`] = `"Dictionary<any>"`;
+exports[`$ExpectType number[] 11`] = `"any"`;
 
 exports[`$ExpectType number[] 12`] = `"number[]"`;
 
@@ -1088,9 +1097,9 @@ exports[`$ExpectType number[] 30`] = `"number[]"`;
 
 exports[`$ExpectType number[] 31`] = `"number[]"`;
 
-exports[`$ExpectType number[] 32`] = `"Dictionary<any>"`;
+exports[`$ExpectType number[] 32`] = `"any"`;
 
-exports[`$ExpectType number[] 33`] = `"Dictionary<any>"`;
+exports[`$ExpectType number[] 33`] = `"any"`;
 
 exports[`$ExpectType number[] 34`] = `"number"`;
 
@@ -1124,29 +1133,29 @@ exports[`$ExpectType number[] 48`] = `"number[]"`;
 
 exports[`$ExpectType number[] 49`] = `"number[]"`;
 
-exports[`$ExpectType number[] 50`] = `"Record<any, number>"`;
+exports[`$ExpectType number[] 50`] = `"number[] | Functor<number> | Record<any, number>"`;
 
 exports[`$ExpectType number[] 51`] = `
-"Argument of type '(v1: List<any>) => Record<any, number>' is not assignable to parameter of type 'Morphism<any[], never[]> | ((transformer: Transformer<any, never[], never[]>) => (accumulator: ne...'.
-  Type '(v1: List<any>) => Record<any, number>' is not assignable to type '(transformer: Transformer<any, never[], never[]>) => (accumulator: never[], value: any) => never[...'.
+"Argument of type '(v1: string | any[] | ArrayLike<any>) => map_mixed_11<number, any>' is not assignable to parameter of type 'Morphism<any[], never[]> | ((transformer: Transformer<any, never[], never[]>) => (accumulator: ne...'.
+  Type '(v1: string | any[] | ArrayLike<any>) => map_mixed_11<number, any>' is not assignable to type '(transformer: Transformer<any, never[], never[]>) => (accumulator: never[], value: any) => never[...'.
     Types of parameters 'v1' and 'transformer' are incompatible.
-      Type 'Transformer<any, never[], never[]>' is not assignable to type 'List<any>'.
+      Type 'Transformer<any, never[], never[]>' is not assignable to type 'string | any[] | ArrayLike<any>'.
         Type 'Transformer<any, never[], never[]>' is not assignable to type 'ArrayLike<any>'.
           Property 'length' is missing in type 'Transformer<any, never[], never[]>'."
 `;
 
-exports[`$ExpectType number[] 52`] = `"Record<any, number>"`;
+exports[`$ExpectType number[] 52`] = `"number[] | Functor<number> | Record<any, number>"`;
 
 exports[`$ExpectType number[] 53`] = `
-"Argument of type '(v1: List<any>) => Record<any, number>' is not assignable to parameter of type 'Morphism<any[], never[]> | ((transformer: Transformer<any, never[], never[]>) => (accumulator: ne...'.
-  Type '(v1: List<any>) => Record<any, number>' is not assignable to type '(transformer: Transformer<any, never[], never[]>) => (accumulator: never[], value: any) => never[...'."
+"Argument of type '(v1: string | any[] | ArrayLike<any>) => map_mixed_11<number, any>' is not assignable to parameter of type 'Morphism<any[], never[]> | ((transformer: Transformer<any, never[], never[]>) => (accumulator: ne...'.
+  Type '(v1: string | any[] | ArrayLike<any>) => map_mixed_11<number, any>' is not assignable to type '(transformer: Transformer<any, never[], never[]>) => (accumulator: never[], value: any) => never[...'."
 `;
 
 exports[`$ExpectType number[] 54`] = `
-"Argument of type '(v1: List<any>) => Record<any, number>' is not assignable to parameter of type 'Morphism<any[], never[]> | ((transformer: Transformer<any, never[], never[]>) => (accumulator: ne...'.
-  Type '(v1: List<any>) => Record<any, number>' is not assignable to type '(transformer: Transformer<any, never[], never[]>) => (accumulator: never[], value: any) => never[...'.
+"Argument of type '(v1: string | any[] | ArrayLike<any>) => map_mixed_11<number, any>' is not assignable to parameter of type 'Morphism<any[], never[]> | ((transformer: Transformer<any, never[], never[]>) => (accumulator: ne...'.
+  Type '(v1: string | any[] | ArrayLike<any>) => map_mixed_11<number, any>' is not assignable to type '(transformer: Transformer<any, never[], never[]>) => (accumulator: never[], value: any) => never[...'.
     Types of parameters 'v1' and 'transformer' are incompatible.
-      Type 'Transformer<any, never[], never[]>' is not assignable to type 'List<any>'.
+      Type 'Transformer<any, never[], never[]>' is not assignable to type 'string | any[] | ArrayLike<any>'.
         Type 'Transformer<any, never[], never[]>' is not assignable to type 'ArrayLike<any>'."
 `;
 
@@ -1154,9 +1163,9 @@ exports[`$ExpectType number[] 55`] = `"number[]"`;
 
 exports[`$ExpectType number[] 56`] = `"number[]"`;
 
-exports[`$ExpectType number[] 57`] = `"Record<any, any>"`;
+exports[`$ExpectType number[] 57`] = `"any[] | Functor<any> | Record<any, any>"`;
 
-exports[`$ExpectType number[] 58`] = `"Record<any, any>"`;
+exports[`$ExpectType number[] 58`] = `"any[] | Functor<any> | Record<any, any>"`;
 
 exports[`$ExpectType number[] 59`] = `"number[]"`;
 
@@ -1224,13 +1233,13 @@ exports[`$ExpectType number[] 90`] = `"number[]"`;
 
 exports[`$ExpectType number[] 91`] = `"number[]"`;
 
-exports[`$ExpectType number[] 92`] = `"Record<any, number>"`;
+exports[`$ExpectType number[] 92`] = `"number[] | Functor<number> | Record<any, number>"`;
 
-exports[`$ExpectType number[] 93`] = `"Record<any, number>"`;
+exports[`$ExpectType number[] 93`] = `"number[] | Functor<number> | Record<any, number>"`;
 
-exports[`$ExpectType number[] 94`] = `"Record<any, number>"`;
+exports[`$ExpectType number[] 94`] = `"number[] | Functor<number> | Record<any, number>"`;
 
-exports[`$ExpectType number[] 95`] = `"Record<any, number>"`;
+exports[`$ExpectType number[] 95`] = `"number[] | Functor<number> | Record<any, number>"`;
 
 exports[`$ExpectType number[] 96`] = `"number[]"`;
 
@@ -1290,13 +1299,13 @@ exports[`$ExpectType number[][] 7`] = `"number[][]"`;
 
 exports[`$ExpectType number[][] 8`] = `"number[][]"`;
 
-exports[`$ExpectType number[][] 9`] = `"number[][]"`;
+exports[`$ExpectType number[][] 9`] = `"[number[], number[]]"`;
 
-exports[`$ExpectType number[][] 10`] = `"number[][]"`;
+exports[`$ExpectType number[][] 10`] = `"[number[], number[]]"`;
 
-exports[`$ExpectType number[][] 11`] = `"number[][]"`;
+exports[`$ExpectType number[][] 11`] = `"[number, number]"`;
 
-exports[`$ExpectType number[][] 12`] = `"number[][]"`;
+exports[`$ExpectType number[][] 12`] = `"[number, number]"`;
 
 exports[`$ExpectType number|any[] 1`] = `"never[] | 0"`;
 
@@ -1462,7 +1471,7 @@ exports[`$ExpectType string[] 4`] = `"string[]"`;
 
 exports[`$ExpectType string[] 5`] = `"string[]"`;
 
-exports[`$ExpectType string[] 6`] = `"\\"tests\\"[]"`;
+exports[`$ExpectType string[] 6`] = `"string[]"`;
 
 exports[`$ExpectType string[] 7`] = `"string[]"`;
 
@@ -1516,15 +1525,15 @@ exports[`$ExpectType string[] 31`] = `"Expected 0-2 arguments, but got 3."`;
 
 exports[`$ExpectType string[] 32`] = `"string[]"`;
 
-exports[`$ExpectType string[] 33`] = `"string[]"`;
+exports[`$ExpectType string[] 33`] = `"[string, string]"`;
 
-exports[`$ExpectType string[] 34`] = `"string[]"`;
+exports[`$ExpectType string[] 34`] = `"[string, string]"`;
 
 exports[`$ExpectType string[] 35`] = `"string[]"`;
 
-exports[`$ExpectType string[] 36`] = `"string[]"`;
+exports[`$ExpectType string[] 36`] = `"{}[]"`;
 
-exports[`$ExpectType string[][] 1`] = `"Record<any, string[]>"`;
+exports[`$ExpectType string[][] 1`] = `"string[][] | Functor<string[]> | Record<any, string[]>"`;
 
 exports[`$ExpectType typeof people 1`] = `"any"`;
 
@@ -1534,13 +1543,19 @@ exports[`$ExpectType typeof people 3`] = `"{}[]"`;
 
 exports[`$ExpectType typeof people 4`] = `"{}[]"`;
 
-exports[`$ExpectType typeof tomato 1`] = `"any"`;
+exports[`$ExpectType typeof tomato 1`] = `
+"Argument of type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }' is not assignable to parameter of type '{ firstName: string; lastName: string; data: { elapsed: number; remaining: number; }; }'.
+  Property 'lastName' is missing in type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }'."
+`;
 
-exports[`$ExpectType typeof tomato 2`] = `"any"`;
+exports[`$ExpectType typeof tomato 2`] = `
+"Argument of type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }' is not assignable to parameter of type '{ firstName: string; lastName: string; data: { elapsed: number; remaining: number; }; }'.
+  Property 'lastName' is missing in type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }'."
+`;
 
-exports[`$ExpectType undefined 1`] = `"any"`;
+exports[`$ExpectType undefined 1`] = `"{} | undefined"`;
 
-exports[`$ExpectType undefined 2`] = `"any"`;
+exports[`$ExpectType undefined 2`] = `"{} | undefined"`;
 
 exports[`$ExpectType undefined 3`] = `"string | undefined"`;
 

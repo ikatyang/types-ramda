@@ -278,7 +278,7 @@ class F2 {
 
 /* pipeP */
 () => {
-    // @dts-jest $ExpectType Promise<number> -> PromiseLike<R3>
+    // @dts-jest $ExpectType Promise<number> -> PromiseLike<number>
     R.pipeP(
         (m: number) => Promise.resolve(R.multiply(2, m)),
         (m: number) => Promise.resolve(m / 2),
@@ -511,7 +511,7 @@ class F2 {
     let lastTwo = function(val: number, idx: number, list: number[]) {
       return list.length - idx <= 2;
     };
-    // @dts-jest $ExpectType number[] -> Dictionary<any>
+    // @dts-jest $ExpectType number[] -> any
     filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [0, 9]
 
     let isOdd = function(n: number) {
@@ -620,15 +620,15 @@ class F2 {
     R.append('tests', ['write', 'more']); // => ['write', 'more', 'tests']
     // @dts-jest $ExpectType string[] -> string[]
     R.append('tests')(['write', 'more']); // => ['write', 'more', 'tests']
-    // @dts-jest $ExpectType string[] -> "tests"[]
+    // @dts-jest $ExpectType string[] -> string[]
     R.append('tests', []); // => ['tests']
-    // @dts-jest $ExpectType Array<string[]|string> -> Expected 1 type arguments, but got 2.
+    // @dts-jest $ExpectType Array<string[]|string> -> Argument of type 'string[]' is not assignable to parameter of type 'string'.
     R.append<string, string[]>(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
-    // @dts-jest $ExpectType Array<string[]|string> -> Argument of type 'string[]' is not assignable to parameter of type 'List<string[]>'.
+    // @dts-jest $ExpectType Array<string[]|string> -> (string | string[])[]
     R.append(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
-    // @dts-jest $ExpectType Array<string[]|string> -> Argument of type 'string[]' is not assignable to parameter of type 'List<string[]>'.
+    // @dts-jest $ExpectType Array<string[]|string> -> (string | string[])[]
     R.append<string[]>(['tests'])(['write', 'more']); // => ['write', 'more', ['tests']]
-    // @dts-jest $ExpectType Array<string[]|string> -> Argument of type 'string[]' is not assignable to parameter of type 'List<string[]>'.
+    // @dts-jest $ExpectType Array<string[]|string> -> (string | string[])[]
     R.append(['tests'])(['write', 'more']); // => ['write', 'more', ['tests']]
 };
 
@@ -758,14 +758,14 @@ class F2 {
     let isEvenFn = R.filter(isEven);
     isEvenFn([1, 2, 3, 4]);
     // ... but also objects
-    // @dts-jest $ExpectType Dictionary<number> -> Dictionary<number>
+    // @dts-jest $ExpectType Dictionary<number> -> Partial<{ a: number; b: number; c: number; d: number; }>
     R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, d: 4}
     let isEvenFnObj = R.filter(isEven);
     // see that we did not break anything
     // and we kept type information
     // @dts-jest $ExpectType number[] -> number[]
     onlyNumberList(R.filter(isEven,[1,2,3,4]));
-    // @dts-jest $ExpectType Dictionary<number> -> { [key: string]: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Argument of type 'Partial<{ a: number; b: number; c: number; d: number; }>' is not assignable to parameter of type '{ [key: string]: number; }'.
     onlyNumberObj(R.filter(isEven, {a: 1, b: 2, c: 3, d: 4})); // strictNullChecks: Partial fails, consider Pick
 };
 
@@ -776,19 +776,19 @@ class F2 {
     };
     let filterIndexed = R.addIndex(R.filter);
 
-    // @dts-jest $ExpectType number[] -> Dictionary<any>
+    // @dts-jest $ExpectType number[] -> any
     filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [0, 9]
     let lastTwoFn = filterIndexed(lastTwo);
-    // @dts-jest $ExpectType number[] -> Dictionary<any>
+    // @dts-jest $ExpectType number[] -> any
     lastTwoFn([8, 6, 7, 5, 3, 0, 9]);
 };
 
 // find, propEq
 () => {
     let xs = [{a: 1}, {a: 2}, {a: 3}];
-    // @dts-jest $ExpectType Dictionary<number> -> any
+    // @dts-jest $ExpectType Dictionary<number> -> {} | undefined
     R.find(R.propEq('a', 2))(xs); // => {a: 2}
-    // @dts-jest $ExpectType undefined -> any
+    // @dts-jest $ExpectType undefined -> {} | undefined
     R.find(R.propEq('a', 4))(xs); // => undefined
 };
 
@@ -819,9 +819,9 @@ class F2 {
 // findLast
 () => {
     let xs = [{a: 1, b: 0}, {a: 1, b: 1}];
-    // @dts-jest $ExpectType Dictionary<number> -> any
+    // @dts-jest $ExpectType Dictionary<number> -> {} | undefined
     R.findLast(R.propEq('a', 1))(xs); // => {a: 1, b: 1}
-    // @dts-jest $ExpectType undefined -> any
+    // @dts-jest $ExpectType undefined -> {} | undefined
     R.findLast(R.propEq('a', 4))(xs); // => undefined
 };
 
@@ -843,7 +843,7 @@ class F2 {
     let user3 = { name: 'Bob' };
     let users = [ user1, user2, user3 ];
     let isFamous = R.pathEq(['address', 'zipCode'], 90210);
-    // @dts-jest $ExpectType Object[] -> any[]
+    // @dts-jest $ExpectType Object[] -> {}[]
     R.filter(isFamous, users); // => [ user1 ]
 };
 
@@ -1056,17 +1056,17 @@ interface Obj { a: number; b: number; };
     let transducer = R.compose(R.map(R.add(1)), R.take(2));
 
 
-    // @dts-jest $ExpectType number[] -> Record<any, number>
+    // @dts-jest $ExpectType number[] -> number[] | Functor<number> | Record<any, number>
     R.into([], transducer, numbers); // => [2, 3]
-    // @dts-jest $ExpectType number[] -> Argument of type '(v1: List<any>) => Record<any, number>' is not assignable to parameter of type 'Morphism<any[], never[]> | ((transformer: Transformer<any, never[], never[]>) => (accumulator: ne...'.
+    // @dts-jest $ExpectType number[] -> Argument of type '(v1: string | any[] | ArrayLike<any>) => map_mixed_11<number, any>' is not assignable to parameter of type 'Morphism<any[], never[]> | ((transformer: Transformer<any, never[], never[]>) => (accumulator: ne...'.
     R.into([])(transducer, numbers); // => [2, 3]
-    // @dts-jest $ExpectType number[] -> Record<any, number>
+    // @dts-jest $ExpectType number[] -> number[] | Functor<number> | Record<any, number>
     R.into([], transducer)(numbers); // => [2, 3]
 
     let intoArray = R.into([]);
-    // @dts-jest $ExpectType number[] -> Argument of type '(v1: List<any>) => Record<any, number>' is not assignable to parameter of type 'Morphism<any[], never[]> | ((transformer: Transformer<any, never[], never[]>) => (accumulator: ne...'.
+    // @dts-jest $ExpectType number[] -> Argument of type '(v1: string | any[] | ArrayLike<any>) => map_mixed_11<number, any>' is not assignable to parameter of type 'Morphism<any[], never[]> | ((transformer: Transformer<any, never[], never[]>) => (accumulator: ne...'.
     intoArray(transducer, numbers); // => [2, 3]
-    // @dts-jest $ExpectType number[] -> Argument of type '(v1: List<any>) => Record<any, number>' is not assignable to parameter of type 'Morphism<any[], never[]> | ((transformer: Transformer<any, never[], never[]>) => (accumulator: ne...'.
+    // @dts-jest $ExpectType number[] -> Argument of type '(v1: string | any[] | ArrayLike<any>) => map_mixed_11<number, any>' is not assignable to parameter of type 'Morphism<any[], never[]> | ((transformer: Transformer<any, never[], never[]>) => (accumulator: ne...'.
     intoArray(transducer)(numbers); // => [2, 3]
 };
 
@@ -1190,9 +1190,9 @@ interface Obj { a: number; b: number; };
         }
         return elt;
     };
-    // @dts-jest $ExpectType number[] -> Record<any, any>
+    // @dts-jest $ExpectType number[] -> any[] | Functor<any> | Record<any, any>
     R.addIndex(R.map)(squareEnds, [8, 5, 3, 0, 9]); // => [64, 5, 3, 0, 81]
-    // @dts-jest $ExpectType number[] -> Record<any, any>
+    // @dts-jest $ExpectType number[] -> any[] | Functor<any> | Record<any, any>
     R.addIndex(R.map)(squareEnds)([8, 5, 3, 0, 9]); // => [64, 5, 3, 0, 81]
 };
 
@@ -1229,7 +1229,7 @@ interface Obj { a: number; b: number; };
     R.partition((x: number) => x > 2, [1, 2, 3, 4]);
     // @dts-jest $ExpectType [number[], number[]] -> [number[], number[]]
     R.partition((x: number) => x > 2)([1, 2, 3, 4]);
-    // @dts-jest $ExpectType Object[] -> [Record<string, string[] | ArrayLike<string>>, Record<string, string[] | ArrayLike<string>>]
+    // @dts-jest $ExpectType Object[] -> [Partial<{ a: string; b: string; foo: string; }>, Partial<{ a: string; b: string; foo: string; }>]
     R.partition(R.contains('s'),{ a: 'sss', b: 'ttt', foo: 'bars' }); // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' }  ]
 };
 
@@ -1558,13 +1558,13 @@ type Pair = KeyValuePair<string, number>;
     let numbers = [1, 2, 3, 4];
     let transducer = R.compose(R.map(R.add(1)), R.take(2));
     let fn = R.flip<number, number[], number[]>(R.append);
-    // @dts-jest $ExpectType number[] -> Record<any, number>
+    // @dts-jest $ExpectType number[] -> number[] | Functor<number> | Record<any, number>
     R.transduce(transducer, fn, [] as number[], numbers); // => [2, 3]   // strictNullChecks: must annotate empty array type
-    // @dts-jest $ExpectType number[] -> Record<any, number>
+    // @dts-jest $ExpectType number[] -> number[] | Functor<number> | Record<any, number>
     R.transduce(transducer, fn, [] as number[])(numbers); // => [2, 3]
-    // @dts-jest $ExpectType number[] -> Record<any, number>
+    // @dts-jest $ExpectType number[] -> number[] | Functor<number> | Record<any, number>
     R.transduce(transducer, fn)([] as number[], numbers); // => [2, 3]
-    // @dts-jest $ExpectType number[] -> Record<any, number>
+    // @dts-jest $ExpectType number[] -> number[] | Functor<number> | Record<any, number>
     R.transduce(transducer)(fn, [] as number[], numbers); // => [2, 3]
 };
 
@@ -1682,11 +1682,11 @@ type Pair = KeyValuePair<string, number>;
 
 // dissoc
 () => {
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; c: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Argument of type '{ a: number; b: number; c: number; }' is not assignable to parameter of type '{ a: number; c: number; }'.
     R.dissoc<{a: number, c: number}>('b', {a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; b: number; c: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Pick<{ a: number; b: number; c: number; }, "a" | "c">
     R.dissoc('b', {a: 1, b: 2, c: 3});                         // => {a: 1, c: 3}
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; c: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Type '{ a: number; c: number; }' does not satisfy the constraint 'Record<"b", any>'.
     R.dissoc('b')<{a: number, c: number}>({a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
 };
 
@@ -1702,12 +1702,12 @@ type Pair = KeyValuePair<string, number>;
 
 // dissocPath
 () => {
-    // @dts-jest $ExpectType {a: {b: {}}} -> { a: { b: { c: number; }; }; }
+    // @dts-jest $ExpectType {a: {b: {}}} -> { a?: DeepPartial | undefined; }
     R.dissocPath(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
     // optionally specify return type
-    // @dts-jest $ExpectType {a: {b: {}}} -> { a: { b: number; }; }
+    // @dts-jest $ExpectType {a: {b: {}}} -> Argument of type '{ a: { b: { c: number; }; }; }' is not assignable to parameter of type '{ a: { b: number; }; }'.
     R.dissocPath<{a : { b: number}}>(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
-    // @dts-jest $ExpectType {a: {b: {}}} -> { a: { b: { c: number; }; }; }
+    // @dts-jest $ExpectType {a: {b: {}}} -> { a?: DeepPartial | undefined; }
     R.dissocPath(['a', 'b', 'c'])({a: {b: {c: 42}}}); // => {a: {b: {}}}
 };
 
@@ -1751,9 +1751,9 @@ type Pair = KeyValuePair<string, number>;
         lastName: R.trim, // Will not get invoked.
         data: {elapsed: R.add(1), remaining: R.add(-1)}
     };
-    // @dts-jest $ExpectType typeof tomato -> any
+    // @dts-jest $ExpectType typeof tomato -> Argument of type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }' is not assignable to parameter of type '{ firstName: string; lastName: string; data: { elapsed: number; remaining: number; }; }'.
     const a: typeof tomato = R.evolve(transformations, tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
-    // @dts-jest $ExpectType typeof tomato -> any
+    // @dts-jest $ExpectType typeof tomato -> Argument of type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }' is not assignable to parameter of type '{ firstName: string; lastName: string; data: { elapsed: number; remaining: number; }; }'.
     const b: typeof tomato = R.evolve(transformations)(tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
 };
 
@@ -1954,7 +1954,7 @@ class Rectangle {
 
 // merge
 () => {
-    // @dts-jest $ExpectType Dictionary<any> -> { 'name': string; 'age': number; } & { 'age': number; }
+    // @dts-jest $ExpectType Dictionary<any> -> Pick<{ 'name': string; 'age': number; }, "name"> & { 'age': number; }
     R.merge({ 'name': 'fred', 'age': 10 }, { 'age': 40 });
     // => { 'name': 'fred', 'age': 40 }
     let resetToDefault = R.flip(R.merge)({x: 0});
@@ -1964,15 +1964,15 @@ class Rectangle {
 
 // megeAll
 () => {
-    // @dts-jest $ExpectType Dictionary<number> -> {}
+    // @dts-jest $ExpectType Dictionary<number> -> object
     R.mergeAll([{foo: 1},{bar: 2},{baz: 3}]); // => {foo: 1,bar: 2,baz: 3}
-    // @dts-jest $ExpectType Dictionary<number> -> {}
+    // @dts-jest $ExpectType Dictionary<number> -> object
     R.mergeAll([{foo: 1},{foo: 2},{bar: 2}]); // => {foo: 2,bar: 2}
 };
 
 // mergeWith
 () => {
-    // @dts-jest $ExpectType { a: boolean, b: boolean, values: number[] } -> {}
+    // @dts-jest $ExpectType { a: boolean, b: boolean, values: number[] } -> Pick<{ a: boolean; values: number[]; }, "a"> & Pick<{ b: boolean; values: number[]; }, "b"> & Record<"values", string | any[]>
     R.mergeWith(R.concat,
         { a: true, values: [10, 20] },
         { b: true, values: [15, 35] });
@@ -1986,19 +1986,19 @@ class Rectangle {
         { a: true, thing: 'foo', values: [10, 20] },
         { b: true, thing: 'bar', values: [15, 35] });
     const merge = R.mergeWithKey(concatValues);
-    // @dts-jest $ExpectType { a: boolean, b: boolean, values: number[], thing: string } -> {}
+    // @dts-jest $ExpectType { a: boolean, b: boolean, values: number[], thing: string } -> Pick<{ a: boolean; thing: string; values: number[]; }, "a"> & Pick<{ b: boolean; thing: string; values: number[]; }, "b"> & Record<"values" | "thing", string>
     merge({ a: true, thing: 'foo', values: [10, 20] }, { b: true, thing: 'bar', values: [15, 35] });
 };
 
 // pathOr
 () => {
-    // @dts-jest $ExpectType number -> {} | "N/A"
+    // @dts-jest $ExpectType number -> any
     R.pathOr('N/A', ['a', 'b'], {a: {b: 2}}); // => 2
-    // @dts-jest $ExpectType number -> string | {}
+    // @dts-jest $ExpectType number -> any
     R.pathOr('N/A', ['a', 'b'])({a: {b: 2}}); // => 2
-    // @dts-jest $ExpectType number -> {} | "N/A"
+    // @dts-jest $ExpectType number -> any
     R.pathOr('N/A', ['a', 'b'], {c: {b: 2}}); // => 'N/A'
-    // @dts-jest $ExpectType number -> {} | { c: number; }
+    // @dts-jest $ExpectType number -> any
     R.pathOr({c: 2})(['a', 'b'], {c: {b: 2}}); // => 'N/A'
 };
 
@@ -2025,29 +2025,29 @@ class Rectangle {
     let isPositive = function(n: number) {
         return n > 0;
     };
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; b: number; c: number; d: number; e: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Partial<{ a: number; b: number; c: number; d: number; e: number; }>
     R.pickBy(isPositive, {a: 1, b: 2, c: -1, d: 0, e: 5}); // => {a: 1, b: 2, e: 5}
     let containsBackground = function(val: any) {
         return val.bgcolor;
     };
     let colors = {1: {color: 'read'}, 2: {color: 'black', bgcolor: 'yellow'}};
-    // @dts-jest $ExpectType { 2: R.Dictionary<string> } -> { 1: { color: string; }; 2: { color: string; bgcolor: string; }; }
+    // @dts-jest $ExpectType { 2: R.Dictionary<string> } -> Partial<{ 1: { color: string; }; 2: { color: string; bgcolor: string; }; }>
     R.pickBy(containsBackground, colors); // => {2: {color: 'black', bgcolor: 'yellow'}}
 
     let isUpperCase = function(val: number, key: string) { return key.toUpperCase() === key; };
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; b: number; A: number; B: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Partial<{ a: number; b: number; A: number; B: number; }>
     R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
 };
 
 
 // pick
 () => {
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; b: number; c: number; d: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Pick<{ a: number; b: number; c: number; d: number; }, "a" | "d">
     R.pick(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
     // the following should errror: e/f are not keys in these objects
     // @dts-jest $ExpectError not keys -> any
     let no1 = R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
-    // @dts-jest $ExpectError not keys -> any
+    // @dts-jest $ExpectError not keys -> Argument of type '{ a: number; b: number; c: number; d: number; }' is not assignable to parameter of type 'Record<"a" | "e" | "f", any>'.
     let no2 = R.pick(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1}
     // @dts-jest $ExpectError not keys -> any
     let no3 = R.pick(['a', 'e', 'f'], [1, 2, 3, 4]);             // => {a: 1}
@@ -2065,9 +2065,9 @@ class Rectangle {
 
 // omit
 () => {
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; b: number; c: number; d: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Partial<{ a: number; b: number; c: number; d: number; }>
     R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; b: number; c: number; d: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Partial<{ a: number; b: number; c: number; d: number; }>
     R.omit(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {b: 2, c: 3}
 };
 
@@ -2096,20 +2096,20 @@ class Rectangle {
 
 // pickAll
 () => {
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; b: number; c: number; d: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Pick<{ a: number; b: number; c: number; d: number; }, "a" | "d">
     R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; b: number; c: number; d: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Partial<{ a: number; b: number; c: number; d: number; }>
     R.pickAll(['a', 'd'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, d: 4}
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; b: number; c: number; d: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Partial<{ a: number; b: number; c: number; d: number; }>
     R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; b: number; c: number; d: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Partial<{ a: number; b: number; c: number; d: number; }>
     R.pickAll(['a', 'e', 'f'])({a: 1, b: 2, c: 3, d: 4}); // => {a: 1, e: undefined, f: undefined}    // why does this pass while the above fails?
 };
 
 // pickBy
 () => {
     let isUpperCase = function(val: number, key: string) { return key.toUpperCase() === key; };
-    // @dts-jest $ExpectType Dictionary<number> -> { a: number; b: number; A: number; B: number; }
+    // @dts-jest $ExpectType Dictionary<number> -> Partial<{ a: number; b: number; A: number; B: number; }>
     R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); // => {A: 3, B: 4}
 };
 
@@ -2126,7 +2126,7 @@ class Rectangle {
 () => {
     // @dts-jest $ExpectType number -> number
     R.prop('x', {x: 100}); // => 100
-    // @dts-jest $ExpectError Argument of type 'x' is not assignable to parameter of type 'never'. -> {}
+    // @dts-jest $ExpectError Argument of type 'x' is not assignable to parameter of type 'never'. -> any
     R.prop('x', {}); // => undefined
 };
 
@@ -2159,7 +2159,7 @@ class Rectangle {
 () => {
     // @dts-jest $ExpectType number[] -> number[]
     R.props(['x', 'y'], {x: 1, y: 2}); // => [1, 2]
-    // @dts-jest $ExpectType Array<number|undefined> -> {}[]
+    // @dts-jest $ExpectType Array<number|undefined> -> any[]
     R.props(['c', 'a', 'b'], {b: 2, a: 1}); // => [undefined, 1, 2]
 
     let fullName = R.compose(R.join(' '), R.props(['first', 'last']));
@@ -2495,9 +2495,9 @@ class Rectangle {
 
 // path
 () => {
-    // @dts-jest $ExpectType number -> {}
+    // @dts-jest $ExpectType number -> any
     R.path(['a', 'b'], {a: {b: 2}}); // => 2
-    // @dts-jest $ExpectType number -> {}
+    // @dts-jest $ExpectType number -> any
     R.path(['a', 'b'])({a: {b: 2}}); // => 2
 };
 
@@ -2558,21 +2558,21 @@ class Rectangle {
 
 // splitAt
 () => {
-    // @dts-jest $ExpectType number[][] -> number[][]
+    // @dts-jest $ExpectType number[][] -> [number[], number[]]
     R.splitAt(1, [1, 2, 3]);        // => [[1], [2, 3]]
-    // @dts-jest $ExpectType number[][] -> number[][]
+    // @dts-jest $ExpectType number[][] -> [number[], number[]]
     R.splitAt(1)([1, 2, 3]);        // => [[1], [2, 3]]
-    // @dts-jest $ExpectType string[] -> string[]
+    // @dts-jest $ExpectType string[] -> [string, string]
     R.splitAt(5, 'hello world');    // => ['hello', ' world']
-    // @dts-jest $ExpectType string[] -> string[]
+    // @dts-jest $ExpectType string[] -> [string, string]
     R.splitAt(-1, 'foobar');        // => ['fooba', 'r']
 };
 
 // splitWhen
 () => {
-  // @dts-jest $ExpectType number[][] -> number[][]
+  // @dts-jest $ExpectType number[][] -> [number, number]
   R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]);   // => [[1], [2, 3, 1, 2, 3]]
-  // @dts-jest $ExpectType number[][] -> number[][]
+  // @dts-jest $ExpectType number[][] -> [number, number]
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]);   // => [[1], [2, 3, 1, 2, 3]]
 };
 
@@ -3145,9 +3145,9 @@ class Why {
 
 () => {
     // #29
-    // @dts-jest $ExpectType string[] -> string[]
+    // @dts-jest $ExpectType string[] -> {}[]
     R.pipe(R.append('a'), R.uniq)(['a', 'b', 'c']);
-    // @dts-jest $ExpectType string[][] -> Record<any, string[]>
+    // @dts-jest $ExpectType string[][] -> string[][] | Functor<string[]> | Record<any, string[]>
     R.pipe(
         R.split(''),
         R.map((letter: string) => ([ letter ]))
@@ -3310,12 +3310,12 @@ class Why {
 
 () => {
   // #119: path
-  // @dts-jest $ExpectType number -> {}
+  // @dts-jest $ExpectType number -> any
   R.path(['a', 'b', 'c'], {a: {b: {c: 2}}});
-  // @dts-jest $ExpectType null -> {}
+  // @dts-jest $ExpectType null -> any
   R.path(['a', 'b', 'c'], {a: {b: 2}});   // still fails
   // let n = R.path(['a', '0', 'c'], {a: [{c: 2}] })
-  // @dts-jest $ExpectType number -> {}
+  // @dts-jest $ExpectType number -> any
   R.path(['a', 0, 'c'], {a: [{c: 2}] });
 };
 
