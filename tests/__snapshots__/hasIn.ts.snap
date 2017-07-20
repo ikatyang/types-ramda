@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`R_hasIn(property) 1`] = `"<T>(object: T) => boolean"`;
+exports[`R_hasIn(property) 1`] = `"(object: {}) => boolean"`;
 
 exports[`R_hasIn(property)(object) 1`] = `"boolean"`;
 
