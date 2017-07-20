@@ -10,6 +10,18 @@ All changes to this project will be documented in this file.
 > - 🏠 [Internal]
 > - 💅 [Polish]
 
+<a name="v0.24.2"></a>
+## [v0.24.2](https://github.com/ikatyang/types-ramda/compare/v0.24.1...v0.24.2) (2017-07-20)
+
+#### 🚀 New Feature
+
+- **template:** constrain non-null-parameter with `{}` (#54) ([34f6488](https://github.com/ikatyang/types-ramda/commit/34f6488))
+- **template:** R.append-like - allow different type (#37) ([65738c5](https://github.com/ikatyang/types-ramda/commit/65738c5))
+- **template:** R.filter-like - return Partial for objects (#45) ([9eaa862](https://github.com/ikatyang/types-ramda/commit/9eaa862))
+- **template:** R.merge-like - improve using type-level operation (#55) ([df7af44](https://github.com/ikatyang/types-ramda/commit/df7af44))
+- **template:** R.pipeP-like - allow non-PromiseLike as fn return type (#44) ([9bd79dd](https://github.com/ikatyang/types-ramda/commit/9bd79dd))
+- **template:** R.splitAt-like - should return tuple (#43) ([1b8a157](https://github.com/ikatyang/types-ramda/commit/1b8a157))
+
 <a name="v0.24.1"></a>
 ## [v0.24.1](https://github.com/ikatyang/types-ramda/compare/v0.24.0...v0.24.1) (2017-07-10)
 
