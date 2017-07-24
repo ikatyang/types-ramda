@@ -62,7 +62,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/gulp-util@3.0.31":
+"@types/gulp-util@3.0.31", "@types/gulp-util@^3.0.31":
   version "3.0.31"
   resolved "https://registry.yarnpkg.com/@types/gulp-util/-/gulp-util-3.0.31.tgz#272e298220365717e1f7f979b50ebadb44297cbf"
   dependencies:
@@ -97,6 +97,12 @@
   dependencies:
     "@types/q" "^0"
 
+"@types/prettier@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.5.0.tgz#35ed47a24bd92bcab439c3670742219499a6b717"
+  dependencies:
+    "@types/babel-types" "*"
+
 "@types/q@^0":
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-0.0.34.tgz#e5d3a54e7a56309d904cdf1dc34f61ac595fae2e"
@@ -112,7 +118,7 @@
     "@types/gulp" "*"
     "@types/node" "*"
 
-"@types/through2@*", "@types/through2@2.0.33":
+"@types/through2@*", "@types/through2@2.0.33", "@types/through2@^2.0.33":
   version "2.0.33"
   resolved "https://registry.yarnpkg.com/@types/through2/-/through2-2.0.33.tgz#1ff2e88a100dfb5b140e7bb98791f1194400d131"
   dependencies:
@@ -1228,6 +1234,15 @@ gulp-diff@1.0.0:
     event-stream "^3.1.5"
     gulp-util "^3.0.6"
     through2 "^2.0.0"
+
+gulp-plugin-prettier@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-plugin-prettier/-/gulp-plugin-prettier-1.0.0.tgz#89f820419b3185389cb551a2fef30ac7f179e52a"
+  dependencies:
+    "@types/gulp-util" "^3.0.31"
+    "@types/through2" "^2.0.33"
+    gulp-util "^3.0.8"
+    through2 "^2.0.3"
 
 gulp-rename@1.2.2:
   version "1.2.2"
@@ -2532,6 +2547,10 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
+prettier@1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.5.3.tgz#59dadc683345ec6b88f88b94ed4ae7e1da394bfe"
+
 pretty-format@^20.0.3:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-20.0.3.tgz#020e350a560a1fe1a98dc3beb6ccffb386de8b14"
@@ -2991,7 +3010,7 @@ throat@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-3.0.0.tgz#e7c64c867cbb3845f10877642f7b60055b8ec0d6"
 
-through2@2.0.3, through2@^2.0.0:
+through2@2.0.3, through2@^2.0.0, through2@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
   dependencies:

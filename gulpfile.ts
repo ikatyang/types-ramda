@@ -5,15 +5,35 @@ import * as fs from 'fs';
 import * as glob from 'glob';
 import * as gulp from 'gulp';
 import * as diff from 'gulp-diff';
+import * as prettier from 'gulp-plugin-prettier';
 import * as gulp_rename from 'gulp-rename';
 import * as gulp_util from 'gulp-util';
 import * as path from 'path';
 import * as gulp_run from 'run-sequence';
 import * as through from 'through2';
+import * as prettier_options from 'tslint-config-ikatyang/prettier';
 import * as yargs from 'yargs';
 import {bind_jsdoc} from './templates/utils/bind-jsdoc';
 import {placeholder_name, placeholder_name_abbr} from './templates/utils/constants';
 import {create_curried_declarations} from './templates/utils/create-curried-declarations';
+
+// tslint:disable-next-line:no-var-requires
+const sources = require('./tsconfig.json').include;
+
+gulp.task('format', () =>
+  gulp
+    .src(sources)
+    .pipe(prettier.format(prettier_options, { filter: true }))
+    .pipe(gulp.dest(file => file.base)),
+);
+
+gulp.task('format-check', () =>
+  gulp
+    .src(sources)
+    .pipe(
+      prettier.format(prettier_options, { reporter: prettier.Reporter.Error }),
+    ),
+);
 
 // tslint:disable max-file-line-count
 
