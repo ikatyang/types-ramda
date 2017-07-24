@@ -4,6 +4,7 @@ import {remap_snapshot} from 'dts-jest';
 import * as fs from 'fs';
 import * as glob from 'glob';
 import * as gulp from 'gulp';
+import * as diff from 'gulp-diff';
 import * as gulp_rename from 'gulp-rename';
 import * as gulp_util from 'gulp-util';
 import * as path from 'path';
@@ -13,9 +14,6 @@ import * as yargs from 'yargs';
 import {bind_jsdoc} from './templates/utils/bind-jsdoc';
 import {placeholder_name, placeholder_name_abbr} from './templates/utils/constants';
 import {create_curried_declarations} from './templates/utils/create-curried-declarations';
-
-// tslint:disable-next-line:no-require-imports no-var-requires
-const diff = require('gulp-diff');
 
 // tslint:disable max-file-line-count
 
