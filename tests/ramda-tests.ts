@@ -2,7 +2,7 @@ import * as R from '../ramda/dist/index';
 
 // https://github.com/types/npm-ramda/blob/master/tests/test.ts
 
-// tslint:disable max-file-line-count comment-format
+// tslint:disable max-file-line-count comment-format naming-convention
 
 // @dts-jest:group __
 (() => {
@@ -22,7 +22,7 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group addIndex
 (() => {
   (() => {
-    const lastTwo = (val: number, idx: number, list: number[]) =>
+    const lastTwo = (_val: number, idx: number, list: number[]) =>
       list.length - idx <= 2;
     const filterIndexed = R.addIndex<number, boolean, number[], number[]>(
       R.filter,
@@ -79,7 +79,7 @@ import * as R from '../ramda/dist/index';
       accObject: Record<string, number>,
       elem: string,
       idx: number,
-      list: string[],
+      _list: string[],
     ) => {
       accObject[elem] = idx;
       return accObject;
@@ -972,7 +972,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group forEach
 (() => {
-  const printXPlusFive = (x: number) => {
+  const printXPlusFive = (_x: number) => {
     /* console.log(x + 5); */
   };
   // @dts-jest:pass
@@ -983,7 +983,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group forEachObjIndexed
 (() => {
-  const printKeyConcatValue = (value: number, key: string) => {
+  const printKeyConcatValue = (_value: number, _key: string) => {
     /* console.log(`${key}:${value}`); */
   };
   // @dts-jest:pass
@@ -1652,7 +1652,7 @@ import * as R from '../ramda/dist/index';
 // @dts-jest:group mapObjIndexed
 (() => {
   const values = { x: 1, y: 2, z: 3 };
-  const prependKeyAndDouble = (num: number, key: string, obj: any) =>
+  const prependKeyAndDouble = (num: number, key: string, _obj: any) =>
     key + (num * 2).toString();
   // @dts-jest:pass
   R.mapObjIndexed(prependKeyAndDouble, values); //=> { x: 'x2', y: 'y4', z: 'z6' }
@@ -1740,6 +1740,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group memoize
 (() => {
+  // tslint:disable-next-line:no-unused
   let numberOfCalls = 0;
   const trackedAdd = (a: number, b: number) => {
     numberOfCalls += 1;
@@ -1769,6 +1770,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group memoizeWith
 (() => {
+  // tslint:disable-next-line:no-unused
   let count = 0;
   const factorial = R.memoizeWith(R.identity, (n: number) => {
     count += 1;
@@ -2210,7 +2212,7 @@ import * as R from '../ramda/dist/index';
   };
   const isPositive = (n: number) => n > 0;
   const containsBackground = (val: any) => val.bgcolor;
-  const isUpperCase = (val: number, key: string) => key.toUpperCase() === key;
+  const isUpperCase = (_val: number, key: string) => key.toUpperCase() === key;
 
   // @dts-jest:pass
   R.pickBy(isPositive, { a: 1, b: 2, c: -1, d: 0, e: 5 }); //=> {a: 1, b: 2, e: 5}
@@ -2501,7 +2503,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group reduceWhile
 (() => {
-  const isOdd = (acc: number, x: number) => x % 2 === 1;
+  const isOdd = (_acc: number, x: number) => x % 2 === 1;
   const xs = [1, 3, 5, 60, 777, 800];
   // @dts-jest:pass
   R.reduceWhile(isOdd, R.add, 0, xs); //=> 9
@@ -2519,7 +2521,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.reject(isOdd)([1, 2, 3, 4]); //=> [2, 4]
 
-  const lastTwo = (val: number, idx: number, list: number[]) =>
+  const lastTwo = (_val: number, idx: number, list: number[]) =>
     list.length - idx <= 2;
   const rejectIndexed = R.addIndex<boolean, number[], number[]>(
     R.reject<'11', 'list'>(),
@@ -2879,7 +2881,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group tap
 (() => {
-  const sayX = (x: number) => {
+  const sayX = (_x: number) => {
     /* console.log(`x is ${x}` */
   };
   // @dts-jest:pass
@@ -3271,7 +3273,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group zipWith
 (() => {
-  const f = (x: number, y: string) => {
+  const f = (_x: number, _y: string) => {
     /* ... */
   };
   // @dts-jest:pass

@@ -475,16 +475,15 @@ function generate_index_content() {
 }
 
 function gulp_generate(fn: (filename: string) => string) {
-  return through.obj((file: gulp_util.File, encoding, callback) => {
-    if (file.isBuffer()) {
-      try {
-        file.contents = new Buffer(fn(file.path));
-        callback(null, file);
-      } catch (e) {
-        callback(e);
-      }
-    } else {
+  return through.obj((file: gulp_util.File, _encoding, callback) => {
+    if (!file.isBuffer()) {
       callback(new Error('Support buffer only.'));
+    }
+    try {
+      file.contents = new Buffer(fn(file.path));
+      callback(null, file);
+    } catch (e) {
+      callback(e);
     }
   });
 }

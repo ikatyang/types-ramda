@@ -33,7 +33,7 @@ export const create_curried_types = (
     }),
   );
 
-  const generics_dependencies = generics.map((generic, index) => [
+  const generics_dependencies = generics.map(generic => [
     generic,
     ...generics.filter(current_generic =>
       has(generic, {

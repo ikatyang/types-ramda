@@ -28,7 +28,7 @@ export const create_curried_declarations = (
     }),
   });
   bind_jsdoc(filename, variable_declaration);
-  const declarations = [
+  return [
     variable_declaration,
     ...members.map(member => {
       const member_type = member.type!;
@@ -43,5 +43,4 @@ export const create_curried_declarations = (
       return member;
     }),
   ];
-  return declarations;
 };

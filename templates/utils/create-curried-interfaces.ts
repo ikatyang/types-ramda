@@ -87,15 +87,17 @@ export const create_curried_interfaces = (
       object_type.members as dts.IObjectMember[],
     );
 
-    if (selectable && object_type.members.length > 1) {
-      object_type.members.splice(
-        -1,
-        0,
-        ...create_selectable_signatures(
-          object_type.members as dts.IObjectMember[],
-        ),
-      );
+    if (!selectable || object_type.members.length <= 1) {
+      return;
     }
+
+    object_type.members.splice(
+      -1,
+      0,
+      ...create_selectable_signatures(
+        object_type.members as dts.IObjectMember[],
+      ),
+    );
   });
 
   return interfaces;

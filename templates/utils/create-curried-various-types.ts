@@ -101,15 +101,13 @@ export const create_various_curried_types = (
         ),
       );
       conflict_declarations_selectables.push(
-        curried_types_declarations.map(
-          (curried_type_declarations, type_index) => {
-            const members = (curried_type_declarations[index]
-              .type as dts.IObjectType).members;
-            return members !== undefined && members.every(is_object_member)
-              ? create_selectable_signatures(members as dts.IObjectMember[])
-              : [];
-          },
-        ),
+        curried_types_declarations.map(curried_type_declarations => {
+          const members = (curried_type_declarations[index]
+            .type as dts.IObjectType).members;
+          return members !== undefined && members.every(is_object_member)
+            ? create_selectable_signatures(members as dts.IObjectMember[])
+            : [];
+        }),
       );
     }
   });
@@ -118,7 +116,8 @@ export const create_various_curried_types = (
     ...non_conflict_declarations_selectables,
     ...conflict_declarations_selectables.reduce((a, b) => [...a, ...b], []),
   ];
-  const mixed_type_declarations = [
+
+  return [
     ...non_conflict_declarations,
     ...conflict_declarations.reduce((a, b) => [...a, ...b], []),
   ].map((type_declaration, index) => {
@@ -176,6 +175,4 @@ export const create_various_curried_types = (
     object_type.members = members;
     return type_declaration;
   });
-
-  return mixed_type_declarations;
 };
