@@ -1,4 +1,4 @@
-import {NestedList} from '../ramda/dist/src/$types';
+import { NestedList } from '../ramda/dist/src/$types';
 import * as R_flatten from '../ramda/dist/src/flatten';
 
 declare const string_array: string[];

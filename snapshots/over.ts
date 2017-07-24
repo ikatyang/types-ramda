@@ -1,4 +1,4 @@
-import {Lens} from '../ramda/dist/src/$types';
+import { Lens } from '../ramda/dist/src/$types';
 import * as R_over from '../ramda/dist/src/over';
 
 declare const number_object_lens: Lens<number, object>;

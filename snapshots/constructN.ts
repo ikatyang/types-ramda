@@ -1,7 +1,10 @@
 import * as R_constructN from '../ramda/dist/src/constructN';
 
 declare const new_string_to_object: new (x: string) => object;
-declare const new_number_boolean_to_string: new (x: number, y: boolean) => string;
+declare const new_number_boolean_to_string: new (
+  x: number,
+  y: boolean,
+) => string;
 declare const new_number_args_to_boolean: new (...args: number[]) => boolean;
 declare const new_7_string_to_number: new (
   v1: string,

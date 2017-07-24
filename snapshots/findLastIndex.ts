@@ -1,4 +1,4 @@
-import {Predicate} from '../ramda/dist/src/$types';
+import { Predicate } from '../ramda/dist/src/$types';
 import * as R_findLastIndex from '../ramda/dist/src/findLastIndex';
 
 declare const string_predicate: Predicate<string>;

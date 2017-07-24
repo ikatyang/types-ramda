@@ -1,4 +1,4 @@
-import {Morphism} from '../ramda/dist/src/$types';
+import { Morphism } from '../ramda/dist/src/$types';
 import * as R_cond from '../ramda/dist/src/cond';
 
 declare const string_number_to_boolean: (a: string, b: number) => boolean;
