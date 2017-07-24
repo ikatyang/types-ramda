@@ -1,4 +1,4 @@
-import {Path} from '../ramda/dist/src/$types';
+import { Path } from '../ramda/dist/src/$types';
 import * as R_pathOr from '../ramda/dist/src/pathOr';
 
 declare const path: Path;

@@ -1,4 +1,4 @@
-import {Placeholder} from '../ramda/dist/src/$placeholder';
+import { Placeholder } from '../ramda/dist/src/$placeholder';
 import * as R_project from '../ramda/dist/src/project';
 
 declare const placeholder: Placeholder;

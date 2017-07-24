@@ -1,4 +1,4 @@
-import {List} from '../ramda/dist/src/$types';
+import { List } from '../ramda/dist/src/$types';
 import * as R_reverse from '../ramda/dist/src/reverse';
 
 declare const string: string;

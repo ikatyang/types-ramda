@@ -1,4 +1,4 @@
-import {Path} from '../ramda/dist/src/$types';
+import { Path } from '../ramda/dist/src/$types';
 import * as R_pathEq from '../ramda/dist/src/pathEq';
 
 declare const path: Path;

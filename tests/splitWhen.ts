@@ -1,4 +1,4 @@
-import {List} from '../ramda/dist/src/$types';
+import { List } from '../ramda/dist/src/$types';
 import * as R_splitWhen from '../ramda/dist/src/splitWhen';
 
 declare const string: string;

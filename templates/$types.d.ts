@@ -9,12 +9,28 @@ export type Constructor<T> = new (...args: any[]) => T;
 
 export type Morphism<T, U> = (value: T) => U;
 export type NestedMorphism<T, U, V> = (value: T) => (value: U) => V;
-export type IndexedListMorphism<T, U> = (value: T, index: number, list: List<T>) => U;
-export type IndexedObjectMorphism<T, U, K extends string> = (value: T, index: number, object: Record<K, T>) => U;
-export type KeyedObjectMorphism<T, U, K extends string> = (value: T, key: K, object: Record<K, T>) => U;
+export type IndexedListMorphism<T, U> = (
+  value: T,
+  index: number,
+  list: List<T>,
+) => U;
+export type IndexedObjectMorphism<T, U, K extends string> = (
+  value: T,
+  index: number,
+  object: Record<K, T>,
+) => U;
+export type KeyedObjectMorphism<T, U, K extends string> = (
+  value: T,
+  key: K,
+  object: Record<K, T>,
+) => U;
 
 export type Tap<T> = (value: T) => void;
-export type KeyedObjectTap<T, U extends Dictionary<T>> = (value: T, key: string, object: U) => void;
+export type KeyedObjectTap<T, U extends Dictionary<T>> = (
+  value: T,
+  key: string,
+  object: U,
+) => void;
 
 export type Predicate<T> = Morphism<T, boolean>;
 export type Comparator<T, U extends number | boolean> = (a: T, b: T) => U;
@@ -23,7 +39,10 @@ export type Variadic<R> = (...args: any[]) => R;
 export type TypedVariadic<T, R> = (...args: T[]) => R;
 
 export type ListMapper<T, U> = (fn: Morphism<T, U>, list: List<T>) => U[];
-export type ObjectMapper<T, U, K extends string> = (fn: Morphism<T, U>, object: Record<K, T>) => Record<K, U>;
+export type ObjectMapper<T, U, K extends string> = (
+  fn: Morphism<T, U>,
+  object: Record<K, T>,
+) => Record<K, U>;
 
 export interface KeyValuePair<K, V> extends ArrayLike<K | V> {
   0: K;
@@ -91,5 +110,8 @@ export interface Foldable<T> {
 }
 
 export interface Traversable<T> extends Functor<T>, Foldable<T> {
-  traverse<U, V>(fn: Morphism<T, Applicative<U>>, of: Morphism<V, Applicative<V>>): Applicative<Traversable<U>>;
+  traverse<U, V>(
+    fn: Morphism<T, Applicative<U>>,
+    of: Morphism<V, Applicative<V>>,
+  ): Applicative<Traversable<U>>;
 }

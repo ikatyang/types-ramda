@@ -1,4 +1,4 @@
-import {List} from './$types';
+import { List } from './$types';
 
 export function $string(str: string): string;
 export function $tuple<T extends [any]>(list: T): T[0];

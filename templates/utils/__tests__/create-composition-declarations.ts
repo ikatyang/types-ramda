@@ -1,5 +1,5 @@
 import * as dts from 'dts-element';
-import {create_composition_declarations} from '../create-composition-declarations';
+import { create_composition_declarations } from '../create-composition-declarations';
 
 const emit_composition_declarations = (kind: 'pipe' | 'compose') => {
   const curried_interfaces = create_composition_declarations(
@@ -10,7 +10,9 @@ const emit_composition_declarations = (kind: 'pipe' | 'compose') => {
     x => `G<${x}>`,
     x => `R<${x}>`,
   );
-  const top_level_element = dts.create_top_level_element({members: curried_interfaces});
+  const top_level_element = dts.create_top_level_element({
+    members: curried_interfaces,
+  });
   return dts.emit(top_level_element);
 };
 

@@ -1,4 +1,4 @@
-import {Dictionary, Filterable, Predicate} from '../ramda/dist/src/$types';
+import { Dictionary, Filterable, Predicate } from '../ramda/dist/src/$types';
 import * as R_reject from '../ramda/dist/src/reject';
 
 declare const string_predicate: Predicate<string>;

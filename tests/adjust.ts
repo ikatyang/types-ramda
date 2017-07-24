@@ -1,4 +1,4 @@
-import {Morphism} from '../ramda/dist/src/$types';
+import { Morphism } from '../ramda/dist/src/$types';
 import * as R_adjust from '../ramda/dist/src/adjust';
 
 declare const string_to_string: Morphism<string, string>;

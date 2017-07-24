@@ -1,4 +1,4 @@
-import {List} from '../ramda/dist/src/$types';
+import { List } from '../ramda/dist/src/$types';
 import * as R_concat from '../ramda/dist/src/concat';
 
 declare const string: string;

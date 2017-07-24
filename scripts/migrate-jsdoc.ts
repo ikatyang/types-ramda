@@ -5,7 +5,9 @@ import * as path from 'path';
 const args = process.argv.slice(2);
 
 if (args.length < 2) {
-  throw new Error(`Usage: ts-node path/to/migrate-jsdoc.ts <ramda-tag> <output-dir>`);
+  throw new Error(
+    `Usage: ts-node path/to/migrate-jsdoc.ts <ramda-tag> <output-dir>`,
+  );
 }
 
 const ramda_tag = args[0];
@@ -18,19 +20,24 @@ if (!fs.existsSync(output_dir)) {
 }
 
 const temp_dir = `${__dirname}/temp`;
-child_process.execSync(`git clone https://github.com/ramda/ramda.git ${temp_dir} --branch ${ramda_tag} --depth=1`);
+child_process.execSync(
+  `git clone https://github.com/ramda/ramda.git ${temp_dir} --branch ${ramda_tag} --depth=1`,
+);
 
 const src_dir = `${temp_dir}/src`;
-const src_filenames = fs.readdirSync(src_dir)
+const src_filenames = fs
+  .readdirSync(src_dir)
   .filter(filename => filename.endsWith('.js'));
 
 src_filenames.forEach(filename => {
   const content = fs.readFileSync(`${src_dir}/${filename}`, 'utf8');
-  const jsdoc = content.match(/\/\*\*([\s\S]+?)\*\//)![1].replace(/^ \* ?/mg, '').trim();
+  const jsdoc = content.match(/\/\*\*([\s\S]+?)\*\//)![1]
+    .replace(/^ \* ?/gm, '')
+    .trim();
 
   const basename = path.basename(filename, '.js');
   const output_filename = `${output_dir}/${basename}.md`;
-  fs.writeFileSync(output_filename, `${jsdoc}\n`, {encoding: 'utf8'});
+  fs.writeFileSync(output_filename, `${jsdoc}\n`, { encoding: 'utf8' });
 });
 
 child_process.execSync(`rm -rf ${temp_dir}`);

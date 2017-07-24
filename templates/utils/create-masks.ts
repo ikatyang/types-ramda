@@ -1,4 +1,4 @@
-import {left_pad} from './left-pad';
+import { left_pad } from './left-pad';
 
 /**
  * - `masks[0]` -> `"000"`
@@ -6,6 +6,7 @@ import {left_pad} from './left-pad';
  * - `masks[2]` -> `"010"`
  * - ...
  */
-export const create_masks = (length: number) => [...new Array(2 ** length)].map((_, index) =>
-  left_pad(index.toString(2), '0', length).split('').reverse().join(''),
-);
+export const create_masks = (length: number) =>
+  [...new Array(2 ** length)].map((_, index) =>
+    left_pad(index.toString(2), '0', length).split('').reverse().join(''),
+  );

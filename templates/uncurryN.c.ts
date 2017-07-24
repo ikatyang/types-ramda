@@ -1,18 +1,22 @@
 import * as dts from 'dts-element';
-import {max_curry_level} from './$curried-functions';
-import {create_n_ary_declarations} from './utils/create-n-ary-declarations';
+import { max_curry_level } from './$curried-functions';
+import { create_n_ary_declarations } from './utils/create-n-ary-declarations';
 
 export default create_n_ary_declarations(
   0,
   max_curry_level,
   args => `
-    function $${args.curry_level}arity<${[args.return_type, ...args.types].map(x => `${x} = any`).join(',')}>(
+    function $${args.curry_level}arity<${[args.return_type, ...args.types]
+    .map(x => `${x} = any`)
+    .join(',')}>(
       n: ${args.curry_level},
       fn: Variadic<any>
     ): CurriedFunction${args.curry_level}<${args.generics.join(',')}>;
   `,
   args => `
-    import {${args.curry_levels.map(i => `CurriedFunction${i}`).join(',')}} from './$curried-functions';
+    import {${args.curry_levels
+      .map(i => `CurriedFunction${i}`)
+      .join(',')}} from './$curried-functions';
     import {Variadic} from './$types';
     function $variadic<${args.return_type} = any>(
       n: number,

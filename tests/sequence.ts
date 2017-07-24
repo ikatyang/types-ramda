@@ -1,4 +1,4 @@
-import {Applicative, Traversable} from '../ramda/dist/src/$types';
+import { Applicative, Traversable } from '../ramda/dist/src/$types';
 import * as R_sequence from '../ramda/dist/src/sequence';
 
 declare const any_applicative: Applicative<any>;

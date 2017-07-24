@@ -1,3 +1,3 @@
-import {Path} from './$types';
+import { Path } from './$types';
 
 export function $(path: Path, object: {}): any;
