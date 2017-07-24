@@ -1,6 +1,11 @@
 import * as dts from 'dts-element';
 import * as R from 'ramda';
-import {ensure, is_function_declaration, is_function_type, is_placeholder} from './is-element';
+import {
+  ensure,
+  is_function_declaration,
+  is_function_type,
+  is_placeholder,
+} from './is-element';
 
 export const sort_signatures = (signatures: dts.IObjectMember[]) => {
   interface SignatureData {
@@ -9,26 +14,26 @@ export const sort_signatures = (signatures: dts.IObjectMember[]) => {
   }
 
   const [selectables, normals] = R.partition(
-    (x: SignatureData) => (get_parameters(x.signature).length === 0),
-    signatures.map((signature, index) => ({signature, index})));
+    (x: SignatureData) => get_parameters(x.signature).length === 0,
+    signatures.map((signature, index) => ({ signature, index })),
+  );
 
-  const sorted_normals = R.sort(
-    (data1: SignatureData, data2: SignatureData) =>
-      R.when(
-        R.equals(0),
-        R.always(data1.index - data2.index),
-      )(get_signatures_order(data1.signature, data2.signature)),
+  const sorted_normals = R.sort((data1: SignatureData, data2: SignatureData) =>
+    R.when(R.equals(0), R.always(data1.index - data2.index))(
+      get_signatures_order(data1.signature, data2.signature),
+    ),
   )(normals);
 
   const sorted_selectables = R.sort(
     (data1: SignatureData, data2: SignatureData) =>
-      R.when(
-        R.equals(0),
-        R.always(data1.index - data2.index),
-      )(get_parameters_order(
-        ensure(get_type(data1.signature).return, is_function_type).parameters!,
-        ensure(get_type(data2.signature).return, is_function_type).parameters!,
-      )),
+      R.when(R.equals(0), R.always(data1.index - data2.index))(
+        get_parameters_order(
+          ensure(get_type(data1.signature).return, is_function_type)
+            .parameters!,
+          ensure(get_type(data2.signature).return, is_function_type)
+            .parameters!,
+        ),
+      ),
   )(selectables);
 
   return [
@@ -38,13 +43,21 @@ export const sort_signatures = (signatures: dts.IObjectMember[]) => {
   ].map(x => x.signature);
 };
 
-function get_signatures_order(signature1: dts.IObjectMember, signature2: dts.IObjectMember) {
-  const [parameters1, parameters2] = [signature1, signature2].map(get_parameters);
+function get_signatures_order(
+  signature1: dts.IObjectMember,
+  signature2: dts.IObjectMember,
+) {
+  const [parameters1, parameters2] = [signature1, signature2].map(
+    get_parameters,
+  );
   return get_parameters_order(parameters1, parameters2);
 }
 
-function get_parameters_order(parameters1: dts.IParameterDeclaration[], parameters2: dts.IParameterDeclaration[]) {
-  return (parameters1.length !== parameters2.length)
+function get_parameters_order(
+  parameters1: dts.IParameterDeclaration[],
+  parameters2: dts.IParameterDeclaration[],
+) {
+  return parameters1.length !== parameters2.length
     ? get_length_point(parameters2) - get_length_point(parameters1)
     : get_placeholder_point(parameters2) - get_placeholder_point(parameters1);
 }
@@ -74,7 +87,7 @@ function get_placeholder_point(parameters: dts.IParameterDeclaration[]) {
     (current_point, parameter, index) =>
       is_placeholder(parameter.type)
         ? current_point
-        : current_point + 1 << get_inverse_index(index), // tslint:disable-line:no-bitwise
+        : (current_point + 1) << get_inverse_index(index), // tslint:disable-line:no-bitwise
     0,
   );
   return R.negate(point);

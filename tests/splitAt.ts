@@ -1,4 +1,4 @@
-import {List} from '../ramda/dist/src/$types';
+import { List } from '../ramda/dist/src/$types';
 import * as R_splitAt from '../ramda/dist/src/splitAt';
 
 declare const number: number;

@@ -1,4 +1,4 @@
-import {Applicative, Traversable} from '../ramda/dist/src/$types';
+import { Applicative, Traversable } from '../ramda/dist/src/$types';
 import * as R_traverse from '../ramda/dist/src/traverse';
 
 declare const number_array: number[];
@@ -11,6 +11,12 @@ R_traverse(number_applicative.of, number_to_string_applicative, number_array);
 // @dts-jest:pass
 R_traverse(number_applicative.of)(number_to_string_applicative)(number_array);
 // @dts-jest:pass
-R_traverse(number_applicative.of, number_to_string_applicative, number_traverable);
+R_traverse(
+  number_applicative.of,
+  number_to_string_applicative,
+  number_traverable,
+);
 // @dts-jest:pass
-R_traverse(number_applicative.of)(number_to_string_applicative)(number_traverable);
+R_traverse(number_applicative.of)(number_to_string_applicative)(
+  number_traverable,
+);

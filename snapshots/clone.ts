@@ -1,4 +1,4 @@
-import {List} from '../ramda/dist/src/$types';
+import { List } from '../ramda/dist/src/$types';
 import * as R_clone from '../ramda/dist/src/clone';
 
 declare const number: number;

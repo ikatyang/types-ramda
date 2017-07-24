@@ -1,6 +1,6 @@
 import * as dts from 'dts-element';
-import {max_curry_level} from './$curried-functions';
-import {create_n_ary_declarations} from './utils/create-n-ary-declarations';
+import { max_curry_level } from './$curried-functions';
+import { create_n_ary_declarations } from './utils/create-n-ary-declarations';
 
 export default create_n_ary_declarations(
   0,
@@ -8,7 +8,9 @@ export default create_n_ary_declarations(
   args => `
     function $${args.curry_level}arity<${args.generics.join(',')}>(
       n: ${args.curry_level},
-      fn: (${[...args.parameters, '...args: any[]'].join(',')}) => ${args.return_type}
+      fn: (${[...args.parameters, '...args: any[]'].join(
+        ',',
+      )}) => ${args.return_type}
     ): (${args.parameters.join(',')}) => ${args.return_type};
   `,
   args => `

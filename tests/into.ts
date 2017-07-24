@@ -1,4 +1,4 @@
-import {Transformer} from '../ramda/dist/src/$types';
+import { Transformer } from '../ramda/dist/src/$types';
 import * as R_into from '../ramda/dist/src/into';
 
 declare const object: object;

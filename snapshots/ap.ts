@@ -1,4 +1,4 @@
-import {Morphism} from '../ramda/dist/src/$types';
+import { Morphism } from '../ramda/dist/src/$types';
 import * as R_ap from '../ramda/dist/src/ap';
 
 declare const string_to_number: Morphism<string, number>;

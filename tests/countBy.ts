@@ -1,4 +1,4 @@
-import {Morphism} from '../ramda/dist/src/$types';
+import { Morphism } from '../ramda/dist/src/$types';
 import * as R_countBy from '../ramda/dist/src/countBy';
 
 declare const object_to_string: Morphism<object, string>;

@@ -1,4 +1,4 @@
-import {Property} from '../ramda/dist/src/$types';
+import { Property } from '../ramda/dist/src/$types';
 import * as R_hasIn from '../ramda/dist/src/hasIn';
 
 declare const property: Property;

@@ -15,35 +15,49 @@ export const create_n_ary_declarations = (
   max_curry_level: number,
   generate_function: (args: Args) => string,
   generate_additional?: (args: Args) => string,
-  ) => {
+) => {
   const return_type = 'R';
-  const types = [...new Array(max_curry_level)].map((_, index) => `T${index + 1}`);
-  const variables = [...new Array(max_curry_level)].map((_, index) => `v${index + 1}`);
-  const parameters = variables.map((variable, index) => `${variable}: ${types[index]}`);
+  const types = [...new Array(max_curry_level)].map(
+    (_, index) => `T${index + 1}`,
+  );
+  const variables = [...new Array(max_curry_level)].map(
+    (_, index) => `v${index + 1}`,
+  );
+  const parameters = variables.map(
+    (variable, index) => `${variable}: ${types[index]}`,
+  );
   const curry_levels = [];
   const declarations = [];
-  for (let curry_level = min_curry_level; curry_level <= max_curry_level; curry_level++) {
+  for (
+    let curry_level = min_curry_level;
+    curry_level <= max_curry_level;
+    curry_level++
+  ) {
     curry_levels.push(curry_level);
-    declarations.push(generate_function({
-      curry_level,
-      curry_levels,
-      return_type,
-      types: types.slice(0, curry_level),
-      variables: variables.slice(0, curry_level),
-      parameters: parameters.slice(0, curry_level),
-      generics: [...types.slice(0, curry_level), return_type],
-    }));
+    declarations.push(
+      generate_function({
+        curry_level,
+        curry_levels,
+        return_type,
+        types: types.slice(0, curry_level),
+        variables: variables.slice(0, curry_level),
+        parameters: parameters.slice(0, curry_level),
+        generics: [...types.slice(0, curry_level), return_type],
+      }),
+    );
   }
   if (generate_additional !== undefined) {
-    declarations.push(generate_additional({
-      curry_level: -1,
-      curry_levels,
-      return_type,
-      types,
-      variables,
-      parameters,
-      generics: [...types, return_type],
-    }));
+    declarations.push(
+      generate_additional({
+        curry_level: -1,
+        curry_levels,
+        return_type,
+        types,
+        variables,
+        parameters,
+        generics: [...types, return_type],
+      }),
+    );
   }
   return dts.parse(declarations.join('\n')).members;
 };

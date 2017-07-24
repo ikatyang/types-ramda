@@ -1,4 +1,4 @@
-import {Morphism, Ordered} from '../ramda/dist/src/$types';
+import { Morphism, Ordered } from '../ramda/dist/src/$types';
 import * as R_ascend from '../ramda/dist/src/ascend';
 
 declare const get_order_from_object: Morphism<object, Ordered>;

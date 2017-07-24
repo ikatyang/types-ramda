@@ -1,4 +1,4 @@
-import {List} from '../ramda/dist/src/$types';
+import { List } from '../ramda/dist/src/$types';
 import * as R_sortBy from '../ramda/dist/src/sortBy';
 
 declare const string: string;

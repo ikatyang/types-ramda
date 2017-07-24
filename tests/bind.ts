@@ -1,8 +1,12 @@
-import {Variadic} from '../ramda/dist/src/$types';
+import { Variadic } from '../ramda/dist/src/$types';
 import * as R_bind from '../ramda/dist/src/bind';
 
 declare const object: object;
-declare const string_number_symbol_to_boolean: (a: string, b: number, c: symbol) => boolean;
+declare const string_number_symbol_to_boolean: (
+  a: string,
+  b: number,
+  c: symbol,
+) => boolean;
 declare const object_variadic: Variadic<object>;
 
 // @dts-jest:pass

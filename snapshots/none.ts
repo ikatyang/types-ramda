@@ -1,4 +1,4 @@
-import {Predicate} from '../ramda/dist/src/$types';
+import { Predicate } from '../ramda/dist/src/$types';
 import * as R_none from '../ramda/dist/src/none';
 
 declare const string_predicate: Predicate<string>;

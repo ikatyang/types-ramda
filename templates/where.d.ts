@@ -1,3 +1,6 @@
-import {Dictionary, Predicate} from './$types';
+import { Dictionary, Predicate } from './$types';
 
-export function $<T>(spec: Dictionary<Predicate<T>>, object: Dictionary<T>): boolean;
+export function $<T>(
+  spec: Dictionary<Predicate<T>>,
+  object: Dictionary<T>,
+): boolean;

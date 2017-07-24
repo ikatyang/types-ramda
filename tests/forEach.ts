@@ -1,4 +1,4 @@
-import {List, Tap} from '../ramda/dist/src/$types';
+import { List, Tap } from '../ramda/dist/src/$types';
 import * as R_forEach from '../ramda/dist/src/forEach';
 
 declare const number_list: List<number>;

@@ -7,12 +7,9 @@ import * as R from 'ramda';
  */
 export const match = R.curry((target: any, object: any): boolean => {
   const keys = R.keys(target);
-  return (keys.length === 0)
+  return keys.length === 0
     ? R.equals(target, object)
     : R.all(R.__, keys)(
-      R.tryCatch(
-        (key: string) => match(target[key], object[key]),
-        R.F,
-      ),
-    );
+        R.tryCatch((key: string) => match(target[key], object[key]), R.F),
+      );
 });

@@ -1,4 +1,4 @@
-import {Functor, Morphism} from '../ramda/dist/src/$types';
+import { Functor, Morphism } from '../ramda/dist/src/$types';
 import * as R_map from '../ramda/dist/src/map';
 
 declare const string_to_number: Morphism<string, number>;

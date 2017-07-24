@@ -62,7 +62,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/gulp-util@3.0.31":
+"@types/gulp-util@3.0.31", "@types/gulp-util@^3.0.31":
   version "3.0.31"
   resolved "https://registry.yarnpkg.com/@types/gulp-util/-/gulp-util-3.0.31.tgz#272e298220365717e1f7f979b50ebadb44297cbf"
   dependencies:
@@ -87,11 +87,7 @@
   version "2.0.29"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-2.0.29.tgz#5002e14f75e2d71e564281df0431c8c1b4a2a36a"
 
-"@types/node@*":
-  version "8.0.14"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.14.tgz#4a19dc6bb61d16c01cbadc7b30ac23518fff176b"
-
-"@types/node@8.0.15":
+"@types/node@*", "@types/node@8.0.15":
   version "8.0.15"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.15.tgz#8f23f8a4642ced357704d048010876fc0c7f179a"
 
@@ -100,6 +96,12 @@
   resolved "https://registry.yarnpkg.com/@types/orchestrator/-/orchestrator-0.0.31.tgz#a4ff44b9cc894f1d9725ed8121b704aa43b5d00d"
   dependencies:
     "@types/q" "^0"
+
+"@types/prettier@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.5.0.tgz#35ed47a24bd92bcab439c3670742219499a6b717"
+  dependencies:
+    "@types/babel-types" "*"
 
 "@types/q@^0":
   version "0.0.34"
@@ -116,7 +118,7 @@
     "@types/gulp" "*"
     "@types/node" "*"
 
-"@types/through2@*", "@types/through2@2.0.33":
+"@types/through2@*", "@types/through2@2.0.33", "@types/through2@^2.0.33":
   version "2.0.33"
   resolved "https://registry.yarnpkg.com/@types/through2/-/through2-2.0.33.tgz#1ff2e88a100dfb5b140e7bb98791f1194400d131"
   dependencies:
@@ -1232,6 +1234,15 @@ gulp-diff@1.0.0:
     event-stream "^3.1.5"
     gulp-util "^3.0.6"
     through2 "^2.0.0"
+
+gulp-plugin-prettier@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-plugin-prettier/-/gulp-plugin-prettier-1.0.0.tgz#89f820419b3185389cb551a2fef30ac7f179e52a"
+  dependencies:
+    "@types/gulp-util" "^3.0.31"
+    "@types/through2" "^2.0.33"
+    gulp-util "^3.0.8"
+    through2 "^2.0.3"
 
 gulp-rename@1.2.2:
   version "1.2.2"
@@ -2536,6 +2547,10 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
+prettier@1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.5.3.tgz#59dadc683345ec6b88f88b94ed4ae7e1da394bfe"
+
 pretty-format@^20.0.3:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-20.0.3.tgz#020e350a560a1fe1a98dc3beb6ccffb386de8b14"
@@ -2995,7 +3010,7 @@ throat@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-3.0.0.tgz#e7c64c867cbb3845f10877642f7b60055b8ec0d6"
 
-through2@2.0.3, through2@^2.0.0:
+through2@2.0.3, through2@^2.0.0, through2@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
   dependencies:
@@ -3104,11 +3119,19 @@ tslib@^1.0.0, tslib@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.7.1.tgz#bc8004164691923a79fe8378bbeb3da2017538ec"
 
-tslint-config-ikatyang@0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/tslint-config-ikatyang/-/tslint-config-ikatyang-0.10.0.tgz#e3243c7068cda8c11c2da83822ff6c4de0bf792c"
+tslint-config-ikatyang@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/tslint-config-ikatyang/-/tslint-config-ikatyang-1.0.1.tgz#609d434d74f5bc7df56d90dae63381a434df9c2f"
   dependencies:
+    tslint-consistent-codestyle "^1.5.1"
     tslint-eslint-rules "^4.1.0"
+
+tslint-consistent-codestyle@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/tslint-consistent-codestyle/-/tslint-consistent-codestyle-1.5.1.tgz#11b6ae6af5a53cb6bd0351d9b6637eabc76d9b7d"
+  dependencies:
+    tslib "^1.7.1"
+    tsutils "^2.5.0"
 
 tslint-eslint-rules@^4.1.0:
   version "4.1.0"
@@ -3137,7 +3160,7 @@ tsutils@^1.4.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-1.8.0.tgz#bf8118ed8e80cd5c9fc7d75728c7963d44ed2f52"
 
-tsutils@^2.5.1:
+tsutils@^2.5.0, tsutils@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.5.1.tgz#c2001390c79eec1a5ccfa7ac12d599639683e0cf"
   dependencies:

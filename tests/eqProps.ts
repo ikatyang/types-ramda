@@ -1,4 +1,4 @@
-import {Property} from '../ramda/dist/src/$types';
+import { Property } from '../ramda/dist/src/$types';
 import * as R_eqProps from '../ramda/dist/src/eqProps';
 
 declare const property: Property;

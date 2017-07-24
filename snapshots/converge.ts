@@ -1,7 +1,11 @@
 import * as R_converge from '../ramda/dist/src/converge';
 
 declare const any_args_to_object: (...args: any[]) => object;
-declare const string_number_boolean_to_object: (x: string, y: number, z: boolean) => object;
+declare const string_number_boolean_to_object: (
+  x: string,
+  y: number,
+  z: boolean,
+) => object;
 declare const string_to_boolean: (x: string) => boolean;
 declare const string_to_number: (x: string) => number;
 declare const string_to_string: (x: string) => string;

@@ -1,19 +1,42 @@
 import * as del from 'del';
 import * as dts from 'dts-element';
-import {remap_snapshot} from 'dts-jest';
+import { remap_snapshot } from 'dts-jest';
 import * as fs from 'fs';
 import * as glob from 'glob';
 import * as gulp from 'gulp';
 import * as diff from 'gulp-diff';
+import * as prettier from 'gulp-plugin-prettier';
 import * as gulp_rename from 'gulp-rename';
 import * as gulp_util from 'gulp-util';
 import * as path from 'path';
 import * as gulp_run from 'run-sequence';
 import * as through from 'through2';
+import * as prettier_options from 'tslint-config-ikatyang/prettier';
 import * as yargs from 'yargs';
-import {bind_jsdoc} from './templates/utils/bind-jsdoc';
-import {placeholder_name, placeholder_name_abbr} from './templates/utils/constants';
-import {create_curried_declarations} from './templates/utils/create-curried-declarations';
+import { bind_jsdoc } from './templates/utils/bind-jsdoc';
+import {
+  placeholder_name,
+  placeholder_name_abbr,
+} from './templates/utils/constants';
+import { create_curried_declarations } from './templates/utils/create-curried-declarations';
+
+// tslint:disable-next-line:no-var-requires
+const sources = require('./tsconfig.json').include;
+
+gulp.task('format', () =>
+  gulp
+    .src(sources)
+    .pipe(prettier.format(prettier_options, { filter: true }))
+    .pipe(gulp.dest(file => file.base)),
+);
+
+gulp.task('format-check', () =>
+  gulp
+    .src(sources)
+    .pipe(
+      prettier.format(prettier_options, { reporter: prettier.Reporter.Error }),
+    ),
+);
 
 // tslint:disable max-file-line-count
 
@@ -23,7 +46,7 @@ const input_relative_dirname = 'templates';
 const glob_index = `${input_relative_dirname}/README.md`;
 const glob_templates = `${input_relative_dirname}/*.ts`;
 
-const {selectable, placeholder, output_dirname_postfix} = get_options();
+const { selectable, placeholder, output_dirname_postfix } = get_options();
 
 const output_sub_dirname = 'src';
 const output_relative_dirname = `./ramda/dist${output_dirname_postfix}`;
@@ -35,12 +58,17 @@ gulp.task('build-index', generate_index);
 gulp.task('build-files', () => generate_files(glob_templates));
 
 gulp.task('build', ['clean'], (callback: (error?: any) => void) =>
-  gulp_run(['build-index', 'build-files'], callback));
+  gulp_run(['build-index', 'build-files'], callback),
+);
 
 gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
   gulp.watch(glob_templates, event => {
     const input_relative_filename = path.relative(process.cwd(), event.path);
-    gulp_util.log(`Detected '${gulp_util.colors.cyan(input_relative_filename)}' ${event.type}`);
+    gulp_util.log(
+      `Detected '${gulp_util.colors.cyan(
+        input_relative_filename,
+      )}' ${event.type}`,
+    );
 
     const output_relative_filename = input_relative_filename
       .replace(input_relative_dirname, output_relative_sub_dirname)
@@ -68,9 +96,17 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
     }
     function on_end() {
       if (error !== undefined) {
-        gulp_util.log(`Building '${gulp_util.colors.cyan(output_relative_filename)}' failed\n\n${error.stack}`);
+        gulp_util.log(
+          `Building '${gulp_util.colors.cyan(
+            output_relative_filename,
+          )}' failed\n\n${error.stack}`,
+        );
       } else {
-        gulp_util.log(`Building '${gulp_util.colors.cyan(output_relative_filename)}' complete`);
+        gulp_util.log(
+          `Building '${gulp_util.colors.cyan(
+            output_relative_filename,
+          )}' complete`,
+        );
       }
       gulp_util.log('Watching for file changes.');
     }
@@ -79,27 +115,33 @@ gulp.task('build-watch', ['build'], (_callback: (error?: any) => void) => {
 
 gulp.task('clean-remap', async () => del('./snapshots/'));
 gulp.task('remap', ['clean-remap'], () =>
-  gulp.src('./tests/__snapshots__/*.ts.snap')
+  gulp
+    .src('./tests/__snapshots__/*.ts.snap')
     .pipe(gulp_generate(generate_remap_content))
-    .pipe(gulp_rename({extname: ''}))
+    .pipe(gulp_rename({ extname: '' }))
     .pipe(gulp.dest('./snapshots')),
 );
 gulp.task('remap-check', () => {
   function on_error() {
     throw new Error('Detected outdated remapped-snapshots');
   }
-  return gulp.src('./tests/__snapshots__/*.ts.snap')
+  return gulp
+    .src('./tests/__snapshots__/*.ts.snap')
     .pipe(gulp_generate(generate_remap_content))
-    .pipe(gulp_rename({extname: ''}))
+    .pipe(gulp_rename({ extname: '' }))
     .pipe(diff('./snapshots'))
     .on('error', on_error)
-    .pipe(diff.reporter({fail: true}))
+    .pipe(diff.reporter({ fail: true }))
     .on('error', on_error);
 });
 gulp.task('remap-watch', ['remap'], (_callback: (error?: any) => void) => {
   gulp.watch('./tests/__snapshots__/*.ts.snap', event => {
     const input_relative_filename = path.relative(process.cwd(), event.path);
-    gulp_util.log(`Detected '${gulp_util.colors.cyan(input_relative_filename)}' ${event.type}`);
+    gulp_util.log(
+      `Detected '${gulp_util.colors.cyan(
+        input_relative_filename,
+      )}' ${event.type}`,
+    );
 
     const output_relative_filename = input_relative_filename
       .replace('tests/__snapshots__/', 'snapshots/')
@@ -109,24 +151,49 @@ gulp.task('remap-watch', ['remap'], (_callback: (error?: any) => void) => {
       case 'added':
       case 'changed':
       case 'renamed':
-        const remapped_snapshot = generate_remap_content(input_relative_filename);
-        fs.writeFile(output_relative_filename, remapped_snapshot, 'utf8', (error: any) => {
-          if (!error) {
-            gulp_util.log(`Remapping '${gulp_util.colors.cyan(output_relative_filename)}' complete`);
-          } else {
-            gulp_util.log(`Remapping '${gulp_util.colors.cyan(output_relative_filename)}' failed: ${error}`);
-          }
-          gulp_util.log('Watching for file changes.');
-        });
+        const remapped_snapshot = generate_remap_content(
+          input_relative_filename,
+        );
+        fs.writeFile(
+          output_relative_filename,
+          remapped_snapshot,
+          'utf8',
+          (error: any) => {
+            if (!error) {
+              gulp_util.log(
+                `Remapping '${gulp_util.colors.cyan(
+                  output_relative_filename,
+                )}' complete`,
+              );
+            } else {
+              gulp_util.log(
+                `Remapping '${gulp_util.colors.cyan(
+                  output_relative_filename,
+                )}' failed: ${error}`,
+              );
+            }
+            gulp_util.log('Watching for file changes.');
+          },
+        );
         break;
       case 'deleted':
-        del(input_relative_filename).then(() => {
-          gulp_util.log(`Deleting '${gulp_util.colors.cyan(output_relative_filename)}' complete`);
-          gulp_util.log('Watching for file changes.');
-        }).catch(error => {
-          gulp_util.log(`Deleting '${gulp_util.colors.cyan(output_relative_filename)}' failed: ${error}`);
-          gulp_util.log('Watching for file changes.');
-        });
+        del(input_relative_filename)
+          .then(() => {
+            gulp_util.log(
+              `Deleting '${gulp_util.colors.cyan(
+                output_relative_filename,
+              )}' complete`,
+            );
+            gulp_util.log('Watching for file changes.');
+          })
+          .catch(error => {
+            gulp_util.log(
+              `Deleting '${gulp_util.colors.cyan(
+                output_relative_filename,
+              )}' failed: ${error}`,
+            );
+            gulp_util.log('Watching for file changes.');
+          });
         break;
       default:
         throw new Error(`Unexpected event type '${event.type}'`);
@@ -135,29 +202,41 @@ gulp.task('remap-watch', ['remap'], (_callback: (error?: any) => void) => {
 });
 
 function generate_files(
-    glob_files: string,
-    on_error: (error: Error) => void = error => { throw error; },
-    on_end: () => void = () => { /* do nothing */ }) {
-  return gulp.src(glob_files)
+  glob_files: string,
+  on_error: (error: Error) => void = error => {
+    throw error;
+  },
+  on_end: () => void = () => {
+    /* do nothing */
+  },
+) {
+  return gulp
+    .src(glob_files)
     .pipe(gulp_generate(generate_file_content))
     .on('error', on_error)
     .on('end', on_end)
-    .pipe(gulp_rename(the_path => {
-      the_path.basename = the_path.basename!.replace(/\.[a-z]$/, '');
-      the_path.extname = output_extname;
-    }))
+    .pipe(
+      gulp_rename(the_path => {
+        the_path.basename = the_path.basename!.replace(/\.[a-z]$/, '');
+        the_path.extname = output_extname;
+      }),
+    )
     .pipe(gulp.dest(output_relative_sub_dirname));
 }
 
 function generate_index() {
-  return gulp.src(glob_index)
+  return gulp
+    .src(glob_index)
     .pipe(gulp_generate(generate_index_content))
-    .pipe(gulp_rename({basename: 'index', extname: output_extname}))
+    .pipe(gulp_rename({ basename: 'index', extname: output_extname }))
     .pipe(gulp.dest(output_relative_dirname));
 }
 
 function generate_remap_content(filename: string) {
-  const cache_filename = path.resolve(process.cwd(), filename.replace(/\.ts\.snap$/, '.js'));
+  const cache_filename = path.resolve(
+    process.cwd(),
+    filename.replace(/\.ts\.snap$/, '.js'),
+  );
   delete require.cache[cache_filename];
   return remap_snapshot(
     fs.readFileSync(filename, 'utf8'),
@@ -215,7 +294,7 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
       throw new Error(`Cannot find element to bind jsdoc in ${filename}`);
     }
     bind_jsdoc(filename, target_member);
-    members.push(dts.create_export_equal({value: target_member.name!}));
+    members.push(dts.create_export_equal({ value: target_member.name! }));
   }
 
   function push_r_ts_members() {
@@ -246,65 +325,83 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
 
   function push_curry_members(the_members: dts.ITopLevelMember[]) {
     const imports = the_members.filter(
-      (member): member is dts.IImportNamed => (member.kind === dts.ElementKind.ImportNamed),
+      (member): member is dts.IImportNamed =>
+        member.kind === dts.ElementKind.ImportNamed,
     );
     const functions = the_members.filter<dts.IFunctionDeclaration>(
-      (member): member is dts.IFunctionDeclaration => (member.kind === dts.ElementKind.FunctionDeclaration),
+      (member): member is dts.IFunctionDeclaration =>
+        member.kind === dts.ElementKind.FunctionDeclaration,
     );
 
     if (!functions.every(fn => fn.name!.startsWith('$'))) {
-      throw new Error(`Exported functions in ${filename} should be prefixed with $`);
+      throw new Error(
+        `Exported functions in ${filename} should be prefixed with $`,
+      );
     }
 
     const function_names_no_need_to_check_last_overload_name = ['cond'];
-    if (function_names_no_need_to_check_last_overload_name.indexOf(function_name) === -1) {
+    if (
+      function_names_no_need_to_check_last_overload_name.indexOf(
+        function_name,
+      ) === -1
+    ) {
       const valid_last_overload_names = ['$mixed', '$general', '$variadic'];
-      if (functions.length > 1 && valid_last_overload_names.indexOf(functions[functions.length - 1].name!) === -1) {
+      if (
+        functions.length > 1 &&
+        valid_last_overload_names.indexOf(
+          functions[functions.length - 1].name!,
+        ) === -1
+      ) {
         throw new Error(
-          `Exported multi-overload functions in ${filename} should end with ${valid_last_overload_names.join(' / ')}}`,
+          `Exported multi-overload functions in ${filename} should end with ${valid_last_overload_names.join(
+            ' / ',
+          )}}`,
         );
       }
     }
 
     const overload_names_should_exist_simultaneously = ['$record', '$keyof'];
-    if (functions.some(func => overload_names_should_exist_simultaneously.indexOf(func.name!) !== -1)) {
-      const is_exist_simultaneously = overload_names_should_exist_simultaneously
-        .every(overload_name => functions.some(func => func.name === overload_name));
+    if (
+      functions.some(
+        func =>
+          overload_names_should_exist_simultaneously.indexOf(func.name!) !== -1,
+      )
+    ) {
+      const is_exist_simultaneously = overload_names_should_exist_simultaneously.every(
+        overload_name => functions.some(func => func.name === overload_name),
+      );
       if (!is_exist_simultaneously) {
         throw new Error(
-          `Exported multi-overload functions in ${filename} should have ${
-            overload_names_should_exist_simultaneously.join(' / ')
-          } simultaneously`,
+          `Exported multi-overload functions in ${filename} should have ${overload_names_should_exist_simultaneously.join(
+            ' / ',
+          )} simultaneously`,
         );
       }
     }
 
-    const placeholder_imports = (!placeholder || functions[0].type!.parameters!.length <= 1)
-      ? []
-      : dts.parse(`
+    const placeholder_imports =
+      !placeholder || functions[0].type!.parameters!.length <= 1
+        ? []
+        : dts.parse(`
         import {${placeholder_name} as ${placeholder_name_abbr}} from './$placeholder';
       `).members;
 
     const curried_declarations = create_curried_declarations(
       filename,
-      (functions.length === 1)
+      functions.length === 1
         ? functions[0].type!
-        : functions.reduce<{[kind: string]: dts.IFunctionType}>(
-          (current_functions, fn) => ({
-            ...current_functions,
-            [fn.name!.slice(1)]: fn.type!,
-          }),
-          {},
-        ),
+        : functions.reduce<{ [kind: string]: dts.IFunctionType }>(
+            (current_functions, fn) => ({
+              ...current_functions,
+              [fn.name!.slice(1)]: fn.type!,
+            }),
+            {},
+          ),
       selectable,
       placeholder,
     );
 
-    members.push(
-      ...imports,
-      ...placeholder_imports,
-      ...curried_declarations,
-    );
+    members.push(...imports, ...placeholder_imports, ...curried_declarations);
   }
 
   function get_ts_default(special_case = false) {
@@ -314,19 +411,23 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
     const declarations = required.default;
 
     if (!special_case && !is_valid_export_default(declarations)) {
-      throw new Error(`Template.ts should default-export an array of declarations: ${filename}`);
+      throw new Error(
+        `Template.ts should default-export an array of declarations: ${filename}`,
+      );
     }
 
     return declarations;
   }
 
-  function is_valid_export_default(export_default: any): export_default is dts.ITopLevelMember[] {
-    return (export_default instanceof Array);
+  function is_valid_export_default(
+    export_default: any,
+  ): export_default is dts.ITopLevelMember[] {
+    return export_default instanceof Array;
   }
 }
 
 function emit_declarations(members: dts.ITopLevelMember[]) {
-  return dts.emit(dts.create_top_level_element({members}));
+  return dts.emit(dts.create_top_level_element({ members }));
 }
 
 function generate_file_content(filename: string) {
@@ -334,9 +435,14 @@ function generate_file_content(filename: string) {
 }
 
 function generate_index_content() {
-  const filenames = glob.sync(glob_templates).map(filename =>
-    `./${output_sub_dirname}/${path.relative(input_relative_dirname, filename).replace(/(\.[a-z])?\.ts$/, '')}`,
-  );
+  const filenames = glob
+    .sync(glob_templates)
+    .map(
+      filename =>
+        `./${output_sub_dirname}/${path
+          .relative(input_relative_dirname, filename)
+          .replace(/(\.[a-z])?\.ts$/, '')}`,
+    );
 
   const jsdoc_binded_filenames: string[] = [];
   const non_jsdoc_binded_filenames: string[] = [];
@@ -350,35 +456,34 @@ function generate_index_content() {
   });
 
   return emit_declarations([
-    dts.create_export_namespace({name: namespace_ramda}),
-    ...non_jsdoc_binded_filenames.map(
-      filename => dts.create_export_named({from: filename}),
+    dts.create_export_namespace({ name: namespace_ramda }),
+    ...non_jsdoc_binded_filenames.map(filename =>
+      dts.create_export_named({ from: filename }),
     ),
-    ...jsdoc_binded_filenames.map(
-      filename => dts.create_import_equal({
+    ...jsdoc_binded_filenames.map(filename =>
+      dts.create_import_equal({
         name: path.basename(filename),
         from: filename,
       }),
     ),
     dts.create_export_named({
-      members: jsdoc_binded_filenames.map(
-        filename => dts.create_export_member({name: path.basename(filename)}),
+      members: jsdoc_binded_filenames.map(filename =>
+        dts.create_export_member({ name: path.basename(filename) }),
       ),
     }),
   ]);
 }
 
 function gulp_generate(fn: (filename: string) => string) {
-  return through.obj((file: gulp_util.File, encoding, callback) => {
-    if (file.isBuffer()) {
-      try {
-        file.contents = new Buffer(fn(file.path));
-        callback(null, file);
-      } catch (e) {
-        callback(e);
-      }
-    } else {
+  return through.obj((file: gulp_util.File, _encoding, callback) => {
+    if (!file.isBuffer()) {
       callback(new Error('Support buffer only.'));
+    }
+    try {
+      file.contents = new Buffer(fn(file.path));
+      callback(null, file);
+    } catch (e) {
+      callback(e);
     }
   });
 }
@@ -404,19 +509,17 @@ function get_options() {
   });
 
   if (process.argv.some(x => x.startsWith('build'))) {
-    gulp_util.log(`Features ${
-      (kinds.length === 0
-        ? [no_kind]
-        : kinds
-      ).map(kind => `'${gulp_util.colors.cyan(kind)}'`).join(', ')
-    }`);
+    gulp_util.log(
+      `Features ${(kinds.length === 0 ? [no_kind] : kinds)
+        .map(kind => `'${gulp_util.colors.cyan(kind)}'`)
+        .join(', ')}`,
+    );
   }
 
-  const dirname_postfixes = (kinds.length === 0)
-    ? [no_kind]
-    : (kinds.length === all_kinds.length)
-      ? []
-      : kinds;
+  const dirname_postfixes =
+    kinds.length === 0
+      ? [no_kind]
+      : kinds.length === all_kinds.length ? [] : kinds;
 
   return {
     ...options,

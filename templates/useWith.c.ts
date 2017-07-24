@@ -1,10 +1,16 @@
 import * as dts from 'dts-element';
-import {max_curry_level} from './$curried-functions';
+import { max_curry_level } from './$curried-functions';
 
 const return_generic = 'R';
-const variable_names = [...new Array(max_curry_level)].map((_, index) => `v${index + 1}`);
-const input_generics = [...new Array(max_curry_level)].map((_, index) => `T${index + 1}`);
-const middle_generics = [...new Array(max_curry_level)].map((_, index) => `U${index + 1}`);
+const variable_names = [...new Array(max_curry_level)].map(
+  (_, index) => `v${index + 1}`,
+);
+const input_generics = [...new Array(max_curry_level)].map(
+  (_, index) => `T${index + 1}`,
+);
+const middle_generics = [...new Array(max_curry_level)].map(
+  (_, index) => `U${index + 1}`,
+);
 
 const declarations = [];
 const curried_function_names = [];
@@ -16,18 +22,31 @@ for (let i = 0; i <= max_curry_level; i++) {
   const curried_function_name = `CurriedFunction${i}`;
   curried_function_names.push(curried_function_name);
   declarations.push(`
-    function $${i}arity<${[...current_input_generics, ...current_middle_generics, return_generic].join(',')}>(
-      after: (${current_variable_names.map((variable_name, index) => `
+    function $${i}arity<${[
+    ...current_input_generics,
+    ...current_middle_generics,
+    return_generic,
+  ].join(',')}>(
+      after: (${current_variable_names
+        .map(
+          (variable_name, index) => `
         ${variable_name}: ${current_middle_generics[index]}
-      `).join(',')}) => ${return_generic},
-      fns: ${
-        (current_input_generics.length === 0)
-          ? `never[]`
-          : `[${current_input_generics.map((input_generic, index) => `
+      `,
+        )
+        .join(',')}) => ${return_generic},
+      fns: ${current_input_generics.length === 0
+        ? `never[]`
+        : `[${current_input_generics
+            .map(
+              (input_generic, index) => `
             Morphism<${input_generic}, ${middle_generics[index]}>
-          `).join(',')}]`
-      }
-    ): ${curried_function_name}<${[...current_input_generics, return_generic].join(',')}>;
+          `,
+            )
+            .join(',')}]`}
+    ): ${curried_function_name}<${[
+    ...current_input_generics,
+    return_generic,
+  ].join(',')}>;
   `);
 }
 

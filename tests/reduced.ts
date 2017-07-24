@@ -1,4 +1,4 @@
-import {Reduced} from '../ramda/dist/src/$types';
+import { Reduced } from '../ramda/dist/src/$types';
 import * as R_reduced from '../ramda/dist/src/reduced';
 
 declare const object: object;

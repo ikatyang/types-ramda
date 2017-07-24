@@ -5,9 +5,7 @@ interface Name {
   lastname: string;
 }
 
-declare const name_spec: {
-  [K in keyof Name]: (fullname: string) => Name[K];
-};
+declare const name_spec: { [K in keyof Name]: (fullname: string) => Name[K] };
 
 declare const fullname: string;
 

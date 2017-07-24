@@ -4,6 +4,7 @@
     "deprecation": false,
     "no-default-export": false,
     "no-inferred-empty-object-type": false,
-    "no-unnecessary-type-assertion": false
+    "no-unnecessary-type-assertion": false,
+    "ter-func-call-spacing": false
   }
 }

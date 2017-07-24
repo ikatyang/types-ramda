@@ -1,4 +1,4 @@
-import {Path} from '../ramda/dist/src/$types';
+import { Path } from '../ramda/dist/src/$types';
 import * as R_assocPath from '../ramda/dist/src/assocPath';
 
 declare const path: Path;
