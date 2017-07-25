@@ -58,7 +58,7 @@
     "jest": "20.0.4",
     "prettier": "1.5.3",
     "ramda": "0.24.1",
-    "run-sequence": "2.0.0",
+    "run-sequence": "2.1.0",
     "through2": "2.0.3",
     "ts-jest": "20.0.7",
     "ts-node": "3.3.0",
