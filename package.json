@@ -41,7 +41,7 @@
     "@types/ramda": "ikatyang/types-ramda#v0.24.1-dist",
     "@types/run-sequence": "0.0.29",
     "@types/through2": "2.0.33",
-    "@types/yargs": "8.0.1",
+    "@types/yargs": "8.0.2",
     "del": "3.0.0",
     "dts-element": "2.1.0",
     "dts-jest": "20.5.1",
