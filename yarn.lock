@@ -84,21 +84,13 @@
     "@types/through2" "*"
     "@types/vinyl" "*"
 
-"@types/gulp@*":
+"@types/gulp@*", "@types/gulp@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@types/gulp/-/gulp-4.0.4.tgz#753ffe5b0ddaf0c9a60101b346141bb80e602f25"
   dependencies:
     "@types/chokidar" "*"
     "@types/undertaker" "*"
     "@types/vinyl-fs" "*"
-
-"@types/gulp@3.8.33":
-  version "3.8.33"
-  resolved "https://registry.yarnpkg.com/@types/gulp/-/gulp-3.8.33.tgz#b1b076820738c9c4eb7808cd926bff1683e1c2ab"
-  dependencies:
-    "@types/node" "*"
-    "@types/orchestrator" "*"
-    "@types/vinyl" "*"
 
 "@types/jest@20.0.6":
   version "20.0.6"
@@ -111,17 +103,6 @@
 "@types/node@*", "@types/node@8.0.19":
   version "8.0.19"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.19.tgz#e46e2b0243de7d03f15b26b45c59ebb84f657a4e"
-
-"@types/orchestrator@*":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@types/orchestrator/-/orchestrator-0.3.0.tgz#bf84a1699c9330d4fe89cd81263e8fc09fb32978"
-  dependencies:
-    "@types/node" "*"
-    "@types/q" "^0"
-
-"@types/q@^0":
-  version "0.0.36"
-  resolved "https://registry.yarnpkg.com/@types/q/-/q-0.0.36.tgz#97d786389641bcbd0e22bfc729a534175976371d"
 
 "@types/ramda@ikatyang/types-ramda#v0.24.1-dist":
   version "0.24.1"
