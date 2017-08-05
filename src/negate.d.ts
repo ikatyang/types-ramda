@@ -1,3 +1,17 @@
+/**
+ * Negates its argument.
+ *
+ * @func
+ * @memberOf R
+ * @since v0.9.0
+ * @category Math
+ * @sig Number -> Number
+ * @param {Number} n
+ * @return {Number}
+ * @example
+ *
+ *      R.negate(42); //=> -42
+ */
 declare const negate: negate_0;
 type negate_0 = {
     (n: number): negate_1;
