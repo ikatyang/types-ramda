@@ -43,7 +43,7 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
   return members;
 
   function bind_member_jsdoc_and_add_export_equal() {
-    const target_member = members.find(member => {
+    const target_member_index = members.findIndex(member => {
       switch (member.kind) {
         case dts.ElementKind.FunctionDeclaration:
         case dts.ElementKind.VariableDeclaration:
@@ -51,11 +51,14 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
         default:
           return false;
       }
-    }) as undefined | dts.IFunctionDeclaration | dts.IVariableDeclaration;
-    if (target_member === undefined) {
+    });
+    if (target_member_index === -1) {
       throw new Error(`Cannot find element to bind jsdoc in ${filename}`);
     }
-    bind_jsdoc(filename, target_member);
+    const target_member = members[target_member_index] as
+      | dts.IVariableDeclaration
+      | dts.IFunctionDeclaration;
+    members[target_member_index] = bind_jsdoc(filename, target_member);
     members.push(dts.create_export_equal({ value: target_member.name! }));
   }
 
