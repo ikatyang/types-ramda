@@ -1,4 +1,5 @@
 import * as dts from 'dts-element';
+import * as R from 'ramda';
 
 interface Args {
   curry_level: number;
@@ -17,10 +18,8 @@ export const create_n_ary_declarations = (
   generate_additional?: (args: Args) => string,
 ) => {
   const return_type = 'R';
-  const types = [...new Array(max_curry_level)].map(
-    (_, index) => `T${index + 1}`,
-  );
-  const variables = [...new Array(max_curry_level)].map(
+  const types = R.repeat(0, max_curry_level).map((_, index) => `T${index + 1}`);
+  const variables = R.repeat(0, max_curry_level).map(
     (_, index) => `v${index + 1}`,
   );
   const parameters = variables.map(

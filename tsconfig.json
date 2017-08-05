@@ -4,5 +4,11 @@
     "strict": true,
     "module": "commonjs"
   },
-  "include": ["gulpfile.ts", "scripts/**/*.ts", "templates/**/*.ts", "tests/**/*.ts"]
+  "include": [
+    "gulpfile.ts",
+    "scripts/**/*.ts",
+    "templates/**/*.ts",
+    "tests/**/*.ts",
+    "tasks/**/*.ts"
+  ]
 }

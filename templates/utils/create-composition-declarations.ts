@@ -1,4 +1,5 @@
 import * as dts from 'dts-element';
+import * as R from 'ramda';
 
 export const create_composition_declarations = (
   name: string,
@@ -14,17 +15,17 @@ export const create_composition_declarations = (
     generic: string,
   ) => string = generate_function_return_type,
 ) => {
-  const function_names = [...new Array(max_function_count)].map(
+  const function_names = R.repeat(0, max_function_count).map(
     (_, index) => `fn${index + 1}`,
   );
-  const return_generics = [...new Array(max_function_count)].map(
+  const return_generics = R.repeat(0, max_function_count).map(
     (_, index) => `R${index + 1}`,
   );
 
-  const parameter_names = [...new Array(max_parameter_count)].map(
+  const parameter_names = R.repeat(0, max_parameter_count).map(
     (_, index) => `v${index + 1}`,
   );
-  const parameter_generics = [...new Array(max_parameter_count)].map(
+  const parameter_generics = R.repeat(0, max_parameter_count).map(
     (_, index) => `V${index + 1}`,
   );
 
@@ -61,7 +62,7 @@ export const create_composition_declarations = (
       const entry_parameters = current_parameter_names
         .map(
           (parameter_name, param_index) => `
-        ${parameter_name}: ${generate_function_parameter_type(
+          ${parameter_name}: ${generate_function_parameter_type(
             current_parameter_generics[param_index],
           )}
       `,
