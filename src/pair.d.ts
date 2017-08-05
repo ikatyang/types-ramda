@@ -1,4 +1,20 @@
 import { KeyValuePair, Property } from "./$types";
+/**
+ * Takes two arguments, `fst` and `snd`, and returns `[fst, snd]`.
+ *
+ * @func
+ * @memberOf R
+ * @since v0.18.0
+ * @category List
+ * @sig a -> b -> (a,b)
+ * @param {*} fst
+ * @param {*} snd
+ * @return {Array}
+ * @see R.objOf, R.of
+ * @example
+ *
+ *      R.pair('foo', 'bar'); //=> ['foo', 'bar']
+ */
 declare const pair: pair_00;
 type pair_00 = {
     <K extends Property>(key: K): pair_10<K>;
