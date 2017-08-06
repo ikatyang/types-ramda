@@ -7,6 +7,7 @@ import {
   placeholder_name_abbr,
 } from '../../templates/utils/constants';
 import { bind_jsdoc } from './bind-jsdoc';
+import { bind_mixin } from './bind-mixin';
 import { placeholder, selectable } from './constants';
 
 export function generate_file_content(filename: string) {
@@ -38,6 +39,21 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
 
   if (!basename.startsWith('$')) {
     bind_member_jsdoc_and_add_export_equal();
+  }
+
+  if (function_name === 'path') {
+    bind_mixin(
+      members,
+      dts
+        .parse(
+          fs.readFileSync(
+            path.resolve(__dirname, '../mixins/path.d.ts'),
+            'utf8',
+          ),
+        )
+        .members.filter(dts.is_function_declaration)
+        .map(function_declaration => function_declaration.type!),
+    );
   }
 
   return members;

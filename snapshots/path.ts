@@ -19,5 +19,5 @@ R_path(path, object);
 
 // @dts-jest:pass -> any
 R_path(['a', 'b', 'c'])(a_1_b_2_c_3);
-// @dts-jest:pass -> any
+// @dts-jest:pass -> 1 | 2 | 3
 R_path(['a', 'b', 'c'], a_1_b_2_c_3);

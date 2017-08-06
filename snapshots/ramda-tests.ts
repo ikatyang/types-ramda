@@ -2127,7 +2127,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group path
 (() => {
-  // @dts-jest:pass -> any
+  // @dts-jest:pass -> number
   R.path(['a', 'b'], { a: { b: 2 } }); //=> 2
   // @dts-jest:pass -> any
   R.path(['a', 'b'])({ a: { b: 2 } }); //=> 2
