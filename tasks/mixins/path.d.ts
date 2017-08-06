@@ -22,8 +22,6 @@ declare function path<K1 extends string, K2 extends string, K3 extends string, K
 
 // for each path length list all combinations of objects and homogeneous arrays... tuples not supported yet.
 
-declare function path<T1 extends string, TResult>(path: [T1], obj: {[K1 in T1]: TResult}): TResult;
-declare function path<T1 extends number, TResult>(path: [T1], obj: TResult[]): TResult;
 declare function path<T1 extends string, T2 extends string, TResult>(path: [T1, T2], obj: {[K1 in T1]: {[K2 in T2]: TResult}}): TResult;
 declare function path<T1 extends string, T2 extends number, TResult>(path: [T1, T2], obj: {[K1 in T1]: TResult[]}): TResult;
 declare function path<T1 extends number, T2 extends string, TResult>(path: [T1, T2], obj: {[K2 in T2]: TResult}[]): TResult;

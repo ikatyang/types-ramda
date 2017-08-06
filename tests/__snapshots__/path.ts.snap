@@ -2,7 +2,7 @@
 
 exports[`R_path(['a', 'b', 'c'])(a_1_b_2_c_3) 1`] = `"any"`;
 
-exports[`R_path(['a', 'b', 'c'], a_1_b_2_c_3) 1`] = `"1 | 2 | 3"`;
+exports[`R_path(['a', 'b', 'c'], a_1_b_2_c_3) 1`] = `"any"`;
 
 exports[`R_path(path) 1`] = `"(object: {}) => any"`;
 
