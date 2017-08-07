@@ -20,30 +20,30 @@ import { Path } from "./$types";
  */
 declare const pathOr: pathOr_000;
 type pathOr_000 = {
-    (defaults: any): pathOr_100;
-    (defaults: any, path: Path): pathOr_110;
-    (defaults: any, path: Path, object: {}): pathOr_111;
+    <T>(defaults: T): pathOr_100<T>;
+    <T>(defaults: T, path: Path): pathOr_110<T>;
+    <T, U>(defaults: T, path: Path, object: {}): pathOr_111<T, U>;
 };
-type pathOr_100 = {
-    (path: Path): pathOr_110;
-    (path: Path, object: {}): pathOr_111;
+type pathOr_100<T> = {
+    (path: Path): pathOr_110<T>;
+    <U>(path: Path, object: {}): pathOr_111<T, U>;
 };
 type pathOr_010 = {
-    (defaults: any): pathOr_110;
-    (defaults: any, object: {}): pathOr_111;
+    <T>(defaults: T): pathOr_110<T>;
+    <T, U>(defaults: T, object: {}): pathOr_111<T, U>;
 };
-type pathOr_110 = {
-    (object: {}): pathOr_111;
+type pathOr_110<T> = {
+    <U>(object: {}): pathOr_111<T, U>;
 };
 type pathOr_001 = {
-    (defaults: any): pathOr_101;
-    (defaults: any, path: Path): pathOr_111;
+    <T>(defaults: T): pathOr_101<T>;
+    <T, U>(defaults: T, path: Path): pathOr_111<T, U>;
 };
-type pathOr_101 = {
-    (path: Path): pathOr_111;
+type pathOr_101<T> = {
+    <U>(path: Path): pathOr_111<T, U>;
 };
 type pathOr_011 = {
-    (defaults: any): pathOr_111;
+    <T, U>(defaults: T): pathOr_111<T, U>;
 };
-type pathOr_111 = any;
+type pathOr_111<T, U> = T | U;
 export = pathOr;
