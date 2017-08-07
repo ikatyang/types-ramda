@@ -1,3 +1,3 @@
 import { Path } from './$types';
 
-export function $(defaults: any, path: Path, object: {}): any;
+export function $<T, U>(defaults: T, path: Path, object: {}): T | U;

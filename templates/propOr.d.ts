@@ -10,4 +10,4 @@ export function $record<D, K extends string, T extends Record<K, any>>(
   key: K,
   object: T,
 ): T[K] | D;
-export function $general(defaults: any, key: Property, object: {}): any;
+export function $general<T, U>(defaults: T, key: Property, object: {}): T | U;
