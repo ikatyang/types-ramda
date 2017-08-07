@@ -9,15 +9,15 @@ declare const a_1_b_2_c_3: {
   c: 3;
 };
 
-// @dts-jest:pass -> (object: {}) => any
+// @dts-jest:pass -> <T>(object: {}) => T | undefined
 R_path(path);
 
-// @dts-jest:pass -> any
+// @dts-jest:pass -> {} | undefined
 R_path(path)(object);
-// @dts-jest:pass -> any
+// @dts-jest:pass -> {} | undefined
 R_path(path, object);
 
-// @dts-jest:pass -> any
+// @dts-jest:pass -> {} | undefined
 R_path(['a', 'b', 'c'])(a_1_b_2_c_3);
-// @dts-jest:pass -> any
+// @dts-jest:pass -> {} | undefined
 R_path(['a', 'b', 'c'], a_1_b_2_c_3);

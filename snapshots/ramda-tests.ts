@@ -2129,7 +2129,7 @@ import * as R from '../ramda/dist/index';
 (() => {
   // @dts-jest:pass -> number
   R.path(['a', 'b'], { a: { b: 2 } }); //=> 2
-  // @dts-jest:pass -> any
+  // @dts-jest:pass -> {} | undefined
   R.path(['a', 'b'])({ a: { b: 2 } }); //=> 2
 })();
 
@@ -2150,9 +2150,9 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group pathOr
 (() => {
-  // @dts-jest:pass -> any
+  // @dts-jest:pass -> string | {}
   R.pathOr('N/A', ['a', 'b'])({ a: { b: 2 } }); //=> 2
-  // @dts-jest:pass -> any
+  // @dts-jest:pass -> string | {}
   R.pathOr('N/A')(['a', 'b'], { a: { b: 2 } }); //=> 2
 })();
 
@@ -2312,7 +2312,7 @@ import * as R from '../ramda/dist/index';
 (() => {
   // @dts-jest:pass -> number
   R.prop('x', { x: 100 }); //=> 100
-  // @dts-jest:pass -> any
+  // @dts-jest:pass -> {} | undefined
   R.prop('x', {}); //=> undefined
 })();
 

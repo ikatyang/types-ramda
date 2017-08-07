@@ -993,15 +993,15 @@ exports[`partition R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']) 1
 
 exports[`partition R.partition(R.contains('s'), { a: 'sss', b: 'ttt', foo: 'bars' }) 1`] = `"[Partial<{ a: string; b: string; foo: string; }>, Partial<{ a: string; b: string; foo: string; }>]"`;
 
-exports[`path R.path(['a', 'b'])({ a: { b: 2 } }) 1`] = `"any"`;
+exports[`path R.path(['a', 'b'])({ a: { b: 2 } }) 1`] = `"{} | undefined"`;
 
 exports[`path R.path(['a', 'b'], { a: { b: 2 } }) 1`] = `"number"`;
 
 exports[`pathEq R.filter<User>(isFamous, users) 1`] = `"User[]"`;
 
-exports[`pathOr R.pathOr('N/A')(['a', 'b'], { a: { b: 2 } }) 1`] = `"any"`;
+exports[`pathOr R.pathOr('N/A')(['a', 'b'], { a: { b: 2 } }) 1`] = `"string | {}"`;
 
-exports[`pathOr R.pathOr('N/A', ['a', 'b'])({ a: { b: 2 } }) 1`] = `"any"`;
+exports[`pathOr R.pathOr('N/A', ['a', 'b'])({ a: { b: 2 } }) 1`] = `"string | {}"`;
 
 exports[`pathSatisfies R.pathSatisfies((a: any) => a !== 1, ['a', 'b', 'c'], { a: { b: { c: 2 } } }) 1`] = `"boolean"`;
 
@@ -1087,7 +1087,7 @@ exports[`project R.project(['name', 'grade'], kids) 1`] = `"Pick<{ name: string;
 
 exports[`prop R.prop('x', { x: 100 }) 1`] = `"number"`;
 
-exports[`prop R.prop('x', {}) 1`] = `"any"`;
+exports[`prop R.prop('x', {}) 1`] = `"{} | undefined"`;
 
 exports[`propEq R.propEq('a', '1', xs) 1`] = `"boolean"`;
 
