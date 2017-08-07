@@ -1256,9 +1256,9 @@ exports[`splitEvery R.splitEvery(3, 'foobarbaz') 1`] = `"string[]"`;
 
 exports[`splitEvery R.splitEvery(3, [1, 2, 3, 4, 5, 6, 7]) 1`] = `"number[][]"`;
 
-exports[`splitWhen R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]) 1`] = `"[number, number]"`;
+exports[`splitWhen R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]) 1`] = `"[number[], number[]]"`;
 
-exports[`splitWhen R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]) 1`] = `"[number, number]"`;
+exports[`splitWhen R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]) 1`] = `"[number[], number[]]"`;
 
 exports[`startsWith R.startsWith('a', 'abc') 1`] = `"boolean"`;
 

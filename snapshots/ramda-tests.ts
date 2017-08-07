@@ -2735,9 +2735,9 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group splitWhen
 (() => {
-  // @dts-jest:pass -> [number, number]
+  // @dts-jest:pass -> [number[], number[]]
   R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]); //=> [[1], [2, 3, 1, 2, 3]]
-  // @dts-jest:pass -> [number, number]
+  // @dts-jest:pass -> [number[], number[]]
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]); //=> [[1], [2, 3, 1, 2, 3]]
 })();
 
