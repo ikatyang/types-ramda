@@ -172,14 +172,14 @@ type path_00 = {
     (_path: PH, object: {}): path_01;
     <$SEL extends "1">(): (path: Path) => path_10;
     <$SEL extends "01">(): (_path: PH, object: {}) => path_01;
-    <$SEL extends "11">(): (path: Path, object: {}) => path_11;
-    (path: Path, object: {}): path_11;
+    <$SEL extends "11">(): <T>(path: Path, object: {}) => path_11<T>;
+    <T>(path: Path, object: {}): path_11<T>;
 };
 type path_10 = {
-    (object: {}): path_11;
+    <T>(object: {}): path_11<T>;
 };
 type path_01 = {
-    (path: Path): path_11;
+    <T>(path: Path): path_11<T>;
 };
-type path_11 = any;
+type path_11<T> = T | undefined;
 export = path;

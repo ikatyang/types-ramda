@@ -36,8 +36,8 @@ type prop_00 = {
     <$SEL extends "01", $KIND extends "general">(): (_key: PH, object: {}) => prop_general_01;
     <$SEL extends "11", $KIND extends "keyof">(): <T extends {}, K extends keyof T>(key: K, object: T) => prop_keyof_11<T, K>;
     <$SEL extends "11", $KIND extends "record">(): <K extends string, T extends Record<K, any>>(key: K, object: T) => prop_record_11<K, T>;
-    <$SEL extends "11", $KIND extends "general">(): (key: Property, object: {}) => prop_general_11;
-    (key: Property, object: {}): prop_general_11;
+    <$SEL extends "11", $KIND extends "general">(): <T>(key: Property, object: {}) => prop_general_11<T>;
+    <T>(key: Property, object: {}): prop_general_11<T>;
 };
 type prop_keyof_10<T extends {}, K extends keyof T> = {
     (object: T): prop_keyof_11<T, K>;
@@ -46,7 +46,7 @@ type prop_record_10<K extends string> = {
     <T extends Record<K, any>>(object: T): prop_record_11<K, T>;
 };
 type prop_general_10 = {
-    (object: {}): prop_general_11;
+    <T>(object: {}): prop_general_11<T>;
 };
 type prop_keyof_01<T extends {}> = {
     <K extends keyof T>(key: K): prop_keyof_11<T, K>;
@@ -55,9 +55,9 @@ type prop_record_01<K extends string, T extends Record<K, any>> = {
     (key: K): prop_record_11<K, T>;
 };
 type prop_general_01 = {
-    (key: Property): prop_general_11;
+    <T>(key: Property): prop_general_11<T>;
 };
 type prop_keyof_11<T extends {}, K extends keyof T> = T[K];
 type prop_record_11<K extends string, T extends Record<K, any>> = T[K];
-type prop_general_11 = any;
+type prop_general_11<T> = T | undefined;
 export = prop;
