@@ -170,13 +170,13 @@ type path_00 = {
         }[][]): TResult;
     <T1 extends number, T2 extends number, T3 extends number, TResult>(path: [T1, T2, T3], obj: TResult[][][]): TResult;
     (_path: PH, object: {}): path_01;
-    (path: Path, object: {}): path_11;
+    <T>(path: Path, object: {}): path_11<T>;
 };
 type path_10 = {
-    (object: {}): path_11;
+    <T>(object: {}): path_11<T>;
 };
 type path_01 = {
-    (path: Path): path_11;
+    <T>(path: Path): path_11<T>;
 };
-type path_11 = any;
+type path_11<T> = T | undefined;
 export = path;
