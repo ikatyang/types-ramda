@@ -995,7 +995,7 @@ exports[`partition R.partition(R.contains('s'), { a: 'sss', b: 'ttt', foo: 'bars
 
 exports[`path R.path(['a', 'b'])({ a: { b: 2 } }) 1`] = `"any"`;
 
-exports[`path R.path(['a', 'b'], { a: { b: 2 } }) 1`] = `"any"`;
+exports[`path R.path(['a', 'b'], { a: { b: 2 } }) 1`] = `"number"`;
 
 exports[`pathEq R.filter<User>(isFamous, users) 1`] = `"User[]"`;
 
