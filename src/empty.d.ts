@@ -28,11 +28,11 @@ type empty_0 = {
     <$SEL extends "1", $KIND extends "list">(): <T>(container: T[]) => empty_list_1<T>;
     <$SEL extends "1", $KIND extends "string">(): (container: string) => empty_string_1;
     <$SEL extends "1", $KIND extends "object">(): (container: object) => empty_object_1;
-    <$SEL extends "1", $KIND extends "general">(): (container: any) => empty_general_1;
-    (container: any): empty_general_1;
+    <$SEL extends "1", $KIND extends "general">(): <T>(container: any) => empty_general_1<T>;
+    <T>(container: any): empty_general_1<T>;
 };
 type empty_list_1<T> = T[];
 type empty_string_1 = string;
 type empty_object_1 = {};
-type empty_general_1 = any;
+type empty_general_1<T> = T;
 export = empty;
