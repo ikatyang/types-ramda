@@ -14,7 +14,7 @@ exports[`$ExpectError Argument of type '{ x: string; }' is not assignable to par
 
 exports[`$ExpectError Argument of type 'null' is not assignable to parameter of type 'string'. 1`] = `"Argument of type 'null' is not assignable to parameter of type 'string'."`;
 
-exports[`$ExpectError Argument of type 'x' is not assignable to parameter of type 'never'. 1`] = `"any"`;
+exports[`$ExpectError Argument of type 'x' is not assignable to parameter of type 'never'. 1`] = `"{} | undefined"`;
 
 exports[`$ExpectError Argument of type 'x' is not assignable to parameter of type 'never'.\`, because 'x' is not in \`{}\`. 1`] = `"boolean"`;
 
@@ -785,7 +785,7 @@ exports[`$ExpectType circle 2`] = `"R"`;
 
 exports[`$ExpectType null 1`] = `"\\"\\" | null"`;
 
-exports[`$ExpectType null 2`] = `"any"`;
+exports[`$ExpectType null 2`] = `"{} | undefined"`;
 
 exports[`$ExpectType number 1`] = `"number"`;
 
@@ -890,13 +890,13 @@ exports[`$ExpectType number 49`] = `"{}"`;
 
 exports[`$ExpectType number 50`] = `"{}"`;
 
-exports[`$ExpectType number 51`] = `"any"`;
+exports[`$ExpectType number 51`] = `"{} | \\"N/A\\""`;
 
-exports[`$ExpectType number 52`] = `"any"`;
+exports[`$ExpectType number 52`] = `"string | {}"`;
 
-exports[`$ExpectType number 53`] = `"any"`;
+exports[`$ExpectType number 53`] = `"{} | \\"N/A\\""`;
 
-exports[`$ExpectType number 54`] = `"any"`;
+exports[`$ExpectType number 54`] = `"{} | { c: number; }"`;
 
 exports[`$ExpectType number 55`] = `"number"`;
 
@@ -930,9 +930,9 @@ exports[`$ExpectType number 69`] = `"number"`;
 
 exports[`$ExpectType number 70`] = `"number"`;
 
-exports[`$ExpectType number 71`] = `"any"`;
+exports[`$ExpectType number 71`] = `"number"`;
 
-exports[`$ExpectType number 72`] = `"any"`;
+exports[`$ExpectType number 72`] = `"{} | undefined"`;
 
 exports[`$ExpectType number 73`] = `"number"`;
 
@@ -1022,9 +1022,9 @@ exports[`$ExpectType number 115`] = `"number"`;
 
 exports[`$ExpectType number 116`] = `"number"`;
 
-exports[`$ExpectType number 117`] = `"any"`;
+exports[`$ExpectType number 117`] = `"number"`;
 
-exports[`$ExpectType number 118`] = `"any"`;
+exports[`$ExpectType number 118`] = `"number"`;
 
 exports[`$ExpectType number[] 1`] = `
 "Argument of type 'number[]' is not assignable to parameter of type 'Morphism<{}, boolean>'.

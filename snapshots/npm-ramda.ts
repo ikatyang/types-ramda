@@ -1992,13 +1992,13 @@ class Rectangle {
 
 // pathOr
 () => {
-    // @dts-jest $ExpectType number -> any
+    // @dts-jest $ExpectType number -> {} | "N/A"
     R.pathOr('N/A', ['a', 'b'], {a: {b: 2}}); // => 2
-    // @dts-jest $ExpectType number -> any
+    // @dts-jest $ExpectType number -> string | {}
     R.pathOr('N/A', ['a', 'b'])({a: {b: 2}}); // => 2
-    // @dts-jest $ExpectType number -> any
+    // @dts-jest $ExpectType number -> {} | "N/A"
     R.pathOr('N/A', ['a', 'b'], {c: {b: 2}}); // => 'N/A'
-    // @dts-jest $ExpectType number -> any
+    // @dts-jest $ExpectType number -> {} | { c: number; }
     R.pathOr({c: 2})(['a', 'b'], {c: {b: 2}}); // => 'N/A'
 };
 
@@ -2126,7 +2126,7 @@ class Rectangle {
 () => {
     // @dts-jest $ExpectType number -> number
     R.prop('x', {x: 100}); // => 100
-    // @dts-jest $ExpectError Argument of type 'x' is not assignable to parameter of type 'never'. -> any
+    // @dts-jest $ExpectError Argument of type 'x' is not assignable to parameter of type 'never'. -> {} | undefined
     R.prop('x', {}); // => undefined
 };
 
@@ -2495,9 +2495,9 @@ class Rectangle {
 
 // path
 () => {
-    // @dts-jest $ExpectType number -> any
+    // @dts-jest $ExpectType number -> number
     R.path(['a', 'b'], {a: {b: 2}}); // => 2
-    // @dts-jest $ExpectType number -> any
+    // @dts-jest $ExpectType number -> {} | undefined
     R.path(['a', 'b'])({a: {b: 2}}); // => 2
 };
 
@@ -3310,12 +3310,12 @@ class Why {
 
 () => {
   // #119: path
-  // @dts-jest $ExpectType number -> any
+  // @dts-jest $ExpectType number -> number
   R.path(['a', 'b', 'c'], {a: {b: {c: 2}}});
-  // @dts-jest $ExpectType null -> any
+  // @dts-jest $ExpectType null -> {} | undefined
   R.path(['a', 'b', 'c'], {a: {b: 2}});   // still fails
   // let n = R.path(['a', '0', 'c'], {a: [{c: 2}] })
-  // @dts-jest $ExpectType number -> any
+  // @dts-jest $ExpectType number -> number
   R.path(['a', 0, 'c'], {a: [{c: 2}] });
 };
 
