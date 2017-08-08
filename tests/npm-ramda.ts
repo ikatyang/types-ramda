@@ -226,6 +226,8 @@ class F2 {
 
 // propSatisfies
 () => {
+    // require late-inference to get accurate type
+
     const truncate = R.when(
         R.propSatisfies(R.flip(R.gt)(10), 'length'),
         R.pipe(R.take(10), R.append('…'), R.join(''))
@@ -298,10 +300,12 @@ class F2 {
 
 // invoker
 () => {
+    // require 6606 to get accurate type
+
     // @dts-jest $ExpectType string
-    R.invoker(0, 'toUpperCase', 'foo');
+    R.invoker(0, 'toUpperCase')('foo');
     // @dts-jest $ExpectType string
-    R.invoker(1, 'charAt', 'foo', 1);
+    R.invoker(1, 'charAt')(1, 'foo');
 };
 
 // juxt

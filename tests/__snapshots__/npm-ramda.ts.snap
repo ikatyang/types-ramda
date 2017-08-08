@@ -1330,9 +1330,9 @@ exports[`$ExpectType string 13`] = `"string"`;
 
 exports[`$ExpectType string 14`] = `"any"`;
 
-exports[`$ExpectType string 15`] = `"Expected 0-2 arguments, but got 3."`;
+exports[`$ExpectType string 15`] = `"{}"`;
 
-exports[`$ExpectType string 16`] = `"Expected 0-2 arguments, but got 4."`;
+exports[`$ExpectType string 16`] = `"{}"`;
 
 exports[`$ExpectType string 17`] = `"string"`;
 
