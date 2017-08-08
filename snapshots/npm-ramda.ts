@@ -2570,9 +2570,9 @@ class Rectangle {
 
 // splitWhen
 () => {
-  // @dts-jest $ExpectType number[][] -> [number, number]
+  // @dts-jest $ExpectType number[][] -> [number[], number[]]
   R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]);   // => [[1], [2, 3, 1, 2, 3]]
-  // @dts-jest $ExpectType number[][] -> [number, number]
+  // @dts-jest $ExpectType number[][] -> [number[], number[]]
   R.splitWhen(R.equals(2))([1, 2, 3, 1, 2, 3]);   // => [[1], [2, 3, 1, 2, 3]]
 };
 
