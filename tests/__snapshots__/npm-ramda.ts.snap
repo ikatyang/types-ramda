@@ -464,11 +464,11 @@ exports[`$ExpectType any[][] 2`] = `
               Type 'string' is not assignable to type 'number'."
 `;
 
-exports[`$ExpectType boolean 1`] = `"Property 'isArrayLike' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 1`] = `"boolean"`;
 
-exports[`$ExpectType boolean 2`] = `"Property 'isArrayLike' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 2`] = `"boolean"`;
 
-exports[`$ExpectType boolean 3`] = `"Property 'isArrayLike' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 3`] = `"boolean"`;
 
 exports[`$ExpectType boolean 4`] = `"boolean"`;
 
@@ -516,27 +516,27 @@ exports[`$ExpectType boolean 25`] = `"boolean"`;
 
 exports[`$ExpectType boolean 26`] = `"boolean"`;
 
-exports[`$ExpectType boolean 27`] = `"boolean"`;
+exports[`$ExpectType boolean 27`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
 
-exports[`$ExpectType boolean 28`] = `"boolean"`;
+exports[`$ExpectType boolean 28`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
 
-exports[`$ExpectType boolean 29`] = `"boolean"`;
+exports[`$ExpectType boolean 29`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
 
-exports[`$ExpectType boolean 30`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 30`] = `"boolean"`;
 
-exports[`$ExpectType boolean 31`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 31`] = `"boolean"`;
 
-exports[`$ExpectType boolean 32`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 32`] = `"boolean"`;
 
-exports[`$ExpectType boolean 33`] = `"boolean"`;
+exports[`$ExpectType boolean 33`] = `"Type 'boolean' does not satisfy the constraint 'Function'."`;
 
-exports[`$ExpectType boolean 34`] = `"boolean"`;
+exports[`$ExpectType boolean 34`] = `"Type 'boolean' does not satisfy the constraint 'Function'."`;
 
 exports[`$ExpectType boolean 35`] = `"boolean"`;
 
-exports[`$ExpectType boolean 36`] = `"Type 'boolean' does not satisfy the constraint 'Function'."`;
+exports[`$ExpectType boolean 36`] = `"boolean"`;
 
-exports[`$ExpectType boolean 37`] = `"Type 'boolean' does not satisfy the constraint 'Function'."`;
+exports[`$ExpectType boolean 37`] = `"boolean"`;
 
 exports[`$ExpectType boolean 38`] = `"boolean"`;
 
@@ -574,46 +574,46 @@ exports[`$ExpectType boolean 54`] = `"boolean"`;
 
 exports[`$ExpectType boolean 55`] = `"boolean"`;
 
-exports[`$ExpectType boolean 56`] = `"boolean"`;
-
-exports[`$ExpectType boolean 57`] = `"boolean"`;
-
-exports[`$ExpectType boolean 58`] = `"boolean"`;
-
-exports[`$ExpectType boolean 59`] = `
+exports[`$ExpectType boolean 56`] = `
 "Argument of type '{ x: number; y: number; }' is not assignable to parameter of type 'Record<\\"x\\", any>'.
   Object literal may only specify known properties, and 'y' does not exist in type 'Record<\\"x\\", any>'."
 `;
 
-exports[`$ExpectType boolean 60`] = `"Argument of type '\\"x\\"' is not assignable to parameter of type 'never'."`;
+exports[`$ExpectType boolean 57`] = `"Argument of type '\\"x\\"' is not assignable to parameter of type 'never'."`;
 
-exports[`$ExpectType boolean 61`] = `
+exports[`$ExpectType boolean 58`] = `
 "Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<number, boolean>>'.
   Property 'x' is incompatible with index signature.
     Type 'number' is not assignable to type 'Morphism<number, boolean>'."
 `;
 
-exports[`$ExpectType boolean 62`] = `
+exports[`$ExpectType boolean 59`] = `
 "Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<string | number | boolean, boolean>>'.
   Property 'x' is incompatible with index signature.
     Type 'number' is not assignable to type 'Morphism<string | number | boolean, boolean>'."
 `;
 
-exports[`$ExpectType boolean 63`] = `
+exports[`$ExpectType boolean 60`] = `
 "Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<{}, boolean>>'.
   Property 'x' is incompatible with index signature.
     Type 'number' is not assignable to type 'Morphism<{}, boolean>'."
 `;
 
-exports[`$ExpectType boolean 64`] = `"Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<{}, boolean>>'."`;
+exports[`$ExpectType boolean 61`] = `"Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<{}, boolean>>'."`;
 
-exports[`$ExpectType boolean 65`] = `
+exports[`$ExpectType boolean 62`] = `
 "Argument of type '{ x: (val: number, obj: any) => boolean; }' is not assignable to parameter of type 'Dictionary<Morphism<number, boolean>>'.
   Property 'x' is incompatible with index signature.
     Type '(val: number, obj: any) => boolean' is not assignable to type 'Morphism<number, boolean>'."
 `;
 
-exports[`$ExpectType boolean 66`] = `"Argument of type '{ x: (val: number, obj: any) => boolean; }' is not assignable to parameter of type 'Dictionary<Morphism<number, boolean>>'."`;
+exports[`$ExpectType boolean 63`] = `"Argument of type '{ x: (val: number, obj: any) => boolean; }' is not assignable to parameter of type 'Dictionary<Morphism<number, boolean>>'."`;
+
+exports[`$ExpectType boolean 64`] = `"boolean"`;
+
+exports[`$ExpectType boolean 65`] = `"boolean"`;
+
+exports[`$ExpectType boolean 66`] = `"boolean"`;
 
 exports[`$ExpectType boolean 67`] = `"boolean"`;
 
@@ -661,17 +661,17 @@ exports[`$ExpectType boolean 88`] = `"boolean"`;
 
 exports[`$ExpectType boolean 89`] = `"boolean"`;
 
-exports[`$ExpectType boolean 90`] = `"boolean"`;
+exports[`$ExpectType boolean 90`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
 
-exports[`$ExpectType boolean 91`] = `"boolean"`;
+exports[`$ExpectType boolean 91`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
 
-exports[`$ExpectType boolean 92`] = `"boolean"`;
+exports[`$ExpectType boolean 92`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
 
-exports[`$ExpectType boolean 93`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 93`] = `"boolean"`;
 
-exports[`$ExpectType boolean 94`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 94`] = `"boolean"`;
 
-exports[`$ExpectType boolean 95`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 95`] = `"boolean"`;
 
 exports[`$ExpectType boolean 96`] = `"boolean"`;
 
@@ -725,13 +725,13 @@ exports[`$ExpectType boolean 120`] = `"boolean"`;
 
 exports[`$ExpectType boolean 121`] = `"boolean"`;
 
-exports[`$ExpectType boolean 122`] = `"boolean"`;
+exports[`$ExpectType boolean 122`] = `"any"`;
 
 exports[`$ExpectType boolean 123`] = `"boolean"`;
 
 exports[`$ExpectType boolean 124`] = `"boolean"`;
 
-exports[`$ExpectType boolean 125`] = `"any"`;
+exports[`$ExpectType boolean 125`] = `"boolean"`;
 
 exports[`$ExpectType boolean 126`] = `"boolean"`;
 
@@ -772,12 +772,6 @@ exports[`$ExpectType boolean 143`] = `"boolean"`;
 exports[`$ExpectType boolean 144`] = `"boolean"`;
 
 exports[`$ExpectType boolean 145`] = `"boolean"`;
-
-exports[`$ExpectType boolean 146`] = `"boolean"`;
-
-exports[`$ExpectType boolean 147`] = `"boolean"`;
-
-exports[`$ExpectType boolean 148`] = `"boolean"`;
 
 exports[`$ExpectType circle 1`] = `"R"`;
 

@@ -36,12 +36,14 @@ class F2 {
 
 // isArrayLike
 () => {
-    // @dts-jest $ExpectType boolean -> Property 'isArrayLike' does not exist on type 'typeof "/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index"'.
-    R.isArrayLike('a');
-    // @dts-jest $ExpectType boolean -> Property 'isArrayLike' does not exist on type 'typeof "/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index"'.
-    R.isArrayLike([1,2,3]);
-    // @dts-jest $ExpectType boolean -> Property 'isArrayLike' does not exist on type 'typeof "/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index"'.
-    R.isArrayLike([]);
+    // R.isArrayLike was removed
+
+    // // @dts-jest $ExpectType boolean
+    // R.isArrayLike('a');
+    // // @dts-jest $ExpectType boolean
+    // R.isArrayLike([1,2,3]);
+    // // @dts-jest $ExpectType boolean
+    // R.isArrayLike([]);
 };
 
 // propIs

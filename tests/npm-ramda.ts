@@ -36,12 +36,14 @@ class F2 {
 
 // isArrayLike
 () => {
-    // @dts-jest $ExpectType boolean
-    R.isArrayLike('a');
-    // @dts-jest $ExpectType boolean
-    R.isArrayLike([1,2,3]);
-    // @dts-jest $ExpectType boolean
-    R.isArrayLike([]);
+    // R.isArrayLike was removed
+
+    // // @dts-jest $ExpectType boolean
+    // R.isArrayLike('a');
+    // // @dts-jest $ExpectType boolean
+    // R.isArrayLike([1,2,3]);
+    // // @dts-jest $ExpectType boolean
+    // R.isArrayLike([]);
 };
 
 // propIs
