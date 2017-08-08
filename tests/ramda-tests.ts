@@ -3127,6 +3127,16 @@ import * as R from '../ramda/dist/index';
 (() => {
   // @dts-jest:pass
   R.unless(R.gt(R.__, 100), R.multiply(2))(1); //=> 2
+
+  function isArrayLike(x: any): x is R.List<any> {
+    return x && typeof x.length === 'number';
+  }
+
+  const coerceArray = R.unless(isArrayLike, R.of);
+  // @dts-jest:pass
+  coerceArray([1, 2, 3]); //=> [1, 2, 3]
+  // @dts-jest:pass
+  coerceArray(1); //=> [1]
 })();
 
 // @dts-jest:group unnest
