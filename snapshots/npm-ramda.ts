@@ -188,11 +188,17 @@ class F2 {
 
 // unless
 () => {
-    // @dts-jest $ExpectType <a>(v: a|[a]) => [a] -> Property 'isArrayLike' does not exist on type 'typeof "/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index"'.
-    const coerceArray = R.unless(R.isArrayLike, R.of);
-    // @dts-jest $ExpectType number[] -> Argument of type 'number[]' is not assignable to parameter of type 'Morphism<{}, boolean>'.
+    function isArrayLike(x: any): x is R.List<any> {
+      return x && typeof x.length === 'number';
+    }
+
+    const coerceArray = R.unless(isArrayLike, R.of);
+
+    // @dts-jest $ExpectType <a>(v: a|[a]) => [a] -> (value: any) => any[] | ArrayLike<any>
+    coerceArray;
+    // @dts-jest $ExpectType number[] -> any[] | ArrayLike<any>
     coerceArray([1, 2, 3]); // => [1, 2, 3]
-    // @dts-jest $ExpectType number[] -> Argument of type '1' is not assignable to parameter of type 'Morphism<{}, boolean>'.
+    // @dts-jest $ExpectType number[] -> any[] | ArrayLike<any>
     coerceArray(1);         // => [1]
 };
 

@@ -89,7 +89,7 @@ exports[`$ExpectType <Z>(v3: Z) => ({ x: number; y: number; z: Z; }) 1`] = `"Cur
 
 exports[`$ExpectType <Z>(v3: Z) => ({ x: number; y: number; z: Z; }) 2`] = `"CurriedFunction1<{}, { x: {}; y: {}; z: {}; }>"`;
 
-exports[`$ExpectType <a>(v: a|[a]) => [a] 1`] = `"Property 'isArrayLike' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType <a>(v: a|[a]) => [a] 1`] = `"(value: any) => any[] | ArrayLike<any>"`;
 
 exports[`$ExpectType [1, 2] 1`] = `"any"`;
 
@@ -1020,12 +1020,9 @@ exports[`$ExpectType number 117`] = `"number"`;
 
 exports[`$ExpectType number 118`] = `"number"`;
 
-exports[`$ExpectType number[] 1`] = `
-"Argument of type 'number[]' is not assignable to parameter of type 'Morphism<{}, boolean>'.
-  Type 'number[]' provides no match for the signature '(value: {}): boolean'."
-`;
+exports[`$ExpectType number[] 1`] = `"any[] | ArrayLike<any>"`;
 
-exports[`$ExpectType number[] 2`] = `"Argument of type '1' is not assignable to parameter of type 'Morphism<{}, boolean>'."`;
+exports[`$ExpectType number[] 2`] = `"any[] | ArrayLike<any>"`;
 
 exports[`$ExpectType number[] 3`] = `"number[]"`;
 

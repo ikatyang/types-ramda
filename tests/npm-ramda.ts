@@ -188,8 +188,14 @@ class F2 {
 
 // unless
 () => {
+    function isArrayLike(x: any): x is R.List<any> {
+      return x && typeof x.length === 'number';
+    }
+
+    const coerceArray = R.unless(isArrayLike, R.of);
+
     // @dts-jest $ExpectType <a>(v: a|[a]) => [a]
-    const coerceArray = R.unless(R.isArrayLike, R.of);
+    coerceArray;
     // @dts-jest $ExpectType number[]
     coerceArray([1, 2, 3]); // => [1, 2, 3]
     // @dts-jest $ExpectType number[]
