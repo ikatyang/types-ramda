@@ -1767,13 +1767,15 @@ type Pair = KeyValuePair<string, number>;
     let tomato = {firstName: 'Tomato ', data: {elapsed: 100, remaining: 1400}, id: 123};
     let transformations = {
         firstName: R.trim,
-        lastName: R.trim, // Will not get invoked.
+        // lastName: R.trim, // Will not get invoked.
         data: {elapsed: R.add(1), remaining: R.add(-1)}
     };
-    // @dts-jest $ExpectType typeof tomato -> Argument of type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }' is not assignable to parameter of type '{ firstName: string; lastName: string; data: { elapsed: number; remaining: number; }; }'.
-    const a: typeof tomato = R.evolve(transformations, tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
-    // @dts-jest $ExpectType typeof tomato -> Argument of type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }' is not assignable to parameter of type '{ firstName: string; lastName: string; data: { elapsed: number; remaining: number; }; }'.
-    const b: typeof tomato = R.evolve(transformations)(tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
+    // @dts-jest $ExpectType typeof tomato -> { firstName: string; data: { elapsed: number; remaining: number; }; id: number; }
+    tomato;
+    // @dts-jest $ExpectType typeof tomato -> { firstName: string; data: { elapsed: number; remaining: number; }; id: number; }
+    R.evolve(transformations, tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
+    // @dts-jest $ExpectType typeof tomato -> { firstName: string; data: { elapsed: number; remaining: number; }; id: number; }
+    R.evolve(transformations)(tomato); // => {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id: 123}
 };
 
 // has
@@ -1866,19 +1868,22 @@ class Rectangle {
     }
     // let xLens = R.lens(R.prop('x'), R.assoc('x'));
     // let xLens = R.lens<number, xy>(R.prop('x'), R.assoc('x'));
-    let xLens = R.lens<number>(R.prop('x'))(R.assoc('x'));
+    let xLens = R.lens(R.prop('x'))(R.assoc('x'));
     // ^ works with only 1 generic, for curried version managed to split the inferred generic from the manual generic
-    // @dts-jest $ExpectType number -> <T>(lens: Lens<T, { x: number; y: number; }>) => T
+
+    // require late-inference to get accurate type
+
+    // @dts-jest $ExpectType number -> any
     R.view(xLens, {x: 1, y: 2});            // => 1
-    // @dts-jest $ExpectType { x: number, y: number } -> (lens: Lens<number, { x: number; y: number; }>) => { x: number; y: number; }
+    // @dts-jest $ExpectType { x: number, y: number } -> {}
     R.set(xLens, 4, {x: 1, y: 2});          // => {x: 4, y: 2}
     // @dts-jest $ExpectType { x: number, y: number } -> {}
     R.set(xLens)(4, {x: 1, y: 2});          // => {x: 4, y: 2}
-    // @dts-jest $ExpectType { x: number, y: number } -> Argument of type '{ x: number; y: number; }' is not assignable to parameter of type 'Lens<number, {}>'.
+    // @dts-jest $ExpectType { x: number, y: number } -> {}
     R.set(xLens, 4)({x: 1, y: 2});          // => {x: 4, y: 2}
-    // @dts-jest $ExpectType { x: number, y: number } -> (lens: Lens<number, { x: number; y: number; }>) => { x: number; y: number; }
+    // @dts-jest $ExpectType { x: number, y: number } -> {}
     R.over(xLens, R.negate, {x: 1, y: 2});  // => {x: -1, y: 2}
-    // @dts-jest $ExpectType { x: number, y: number } -> Argument of type '{ x: number; y: number; }' is not assignable to parameter of type 'Lens<number, {}>'.
+    // @dts-jest $ExpectType { x: number, y: number } -> {}
     R.over(xLens, R.negate)({x: 1, y: 2});  // => {x: -1, y: 2}
     // @dts-jest $ExpectType { x: number, y: number } -> {}
     R.over(xLens)(R.negate, {x: 1, y: 2});  // => {x: -1, y: 2}
@@ -1936,7 +1941,8 @@ class Rectangle {
       function get(arr: number[]) { return arr[0]; },
       function set(val: number, arr: number[]) { return [val].concat(arr.slice(1)); }
     );
-    headLens([10, 20, 30, 40]); // => 10
+    // outdated usage
+    // headLens([10, 20, 30, 40]); // => 10
     // // @dts-jest $ExpectError Argument of type 'mu' is not assignable to parameter of type 'number'.
     // headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
 
@@ -1950,12 +1956,15 @@ class Rectangle {
     );
     let obj1 = { phrase: 'Absolute filth . . . and I LOVED it!'};
     let obj2 = { phrase: "What's all this, then?"};
-    // @dts-jest $ExpectType string -> Argument of type '{ phrase: string; }' is not assignable to parameter of type '(value: any) => Functor<any>'.
-    phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
-    // @dts-jest $ExpectType string -> Argument of type '{ phrase: string; }' is not assignable to parameter of type '(value: any) => Functor<any>'.
-    phraseLens(obj2); // => "What's all this, then?"
-    // @dts-jest $ExpectType Dictionary<string> -> Property 'set' does not exist on type 'Lens<any, any>'.
-    phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
+
+    // outdated usage
+
+    // // @dts-jest $ExpectType string
+    // phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
+    // // @dts-jest $ExpectType string
+    // phraseLens(obj2); // => "What's all this, then?"
+    // // @dts-jest $ExpectType Dictionary<string>
+    // phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
 };
 
 // lensProp
@@ -1963,12 +1972,15 @@ class Rectangle {
     let phraseLens = R.lensProp('phrase');
     let obj1 = { phrase: 'Absolute filth . . . and I LOVED it!'};
     let obj2 = { phrase: "What's all this, then?"};
-    // @dts-jest $ExpectType string -> Argument of type '{ phrase: string; }' is not assignable to parameter of type '(value: {}) => Functor<{}>'.
-    phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
-    // @dts-jest $ExpectType string -> Argument of type '{ phrase: string; }' is not assignable to parameter of type '(value: {}) => Functor<{}>'.
-    phraseLens(obj2); // => 'What's all this, then?'
-    // @dts-jest $ExpectType Dictionary<string> -> Property 'set' does not exist on type 'Lens<{}, {}>'.
-    phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
+
+    // outdated usage
+
+    // // @dts-jest $ExpectType string
+    // phraseLens(obj1); // => 'Absolute filth . . . and I LOVED it!'
+    // // @dts-jest $ExpectType string
+    // phraseLens(obj2); // => 'What's all this, then?'
+    // // @dts-jest $ExpectType Dictionary<string>
+    // phraseLens.set('Ooh Betty', obj1); // => { phrase: 'Ooh Betty'}
 };
 
 // merge

@@ -181,21 +181,15 @@ exports[`$ExpectType { x: number } 2`] = `"{ x: number; }"`;
 
 exports[`$ExpectType { x: number } 3`] = `"{ x: number; }"`;
 
-exports[`$ExpectType { x: number, y: number } 1`] = `"(lens: Lens<number, { x: number; y: number; }>) => { x: number; y: number; }"`;
+exports[`$ExpectType { x: number, y: number } 1`] = `"{}"`;
 
 exports[`$ExpectType { x: number, y: number } 2`] = `"{}"`;
 
-exports[`$ExpectType { x: number, y: number } 3`] = `
-"Argument of type '{ x: number; y: number; }' is not assignable to parameter of type 'Lens<number, {}>'.
-  Object literal may only specify known properties, and 'x' does not exist in type 'Lens<number, {}>'."
-`;
+exports[`$ExpectType { x: number, y: number } 3`] = `"{}"`;
 
-exports[`$ExpectType { x: number, y: number } 4`] = `"(lens: Lens<number, { x: number; y: number; }>) => { x: number; y: number; }"`;
+exports[`$ExpectType { x: number, y: number } 4`] = `"{}"`;
 
-exports[`$ExpectType { x: number, y: number } 5`] = `
-"Argument of type '{ x: number; y: number; }' is not assignable to parameter of type 'Lens<number, {}>'.
-  Object literal may only specify known properties, and 'x' does not exist in type 'Lens<number, {}>'."
-`;
+exports[`$ExpectType { x: number, y: number } 5`] = `"{}"`;
 
 exports[`$ExpectType { x: number, y: number } 6`] = `"{}"`;
 
@@ -391,10 +385,6 @@ exports[`$ExpectType Dictionary<string> 1`] = `"Record<string, string>"`;
 exports[`$ExpectType Dictionary<string> 2`] = `"Dictionary<string>"`;
 
 exports[`$ExpectType Dictionary<string> 3`] = `"Dictionary<string>"`;
-
-exports[`$ExpectType Dictionary<string> 4`] = `"Property 'set' does not exist on type 'Lens<any, any>'."`;
-
-exports[`$ExpectType Dictionary<string> 5`] = `"Property 'set' does not exist on type 'Lens<{}, {}>'."`;
 
 exports[`$ExpectType Dictionary<string[]> 1`] = `"Partial<Record<\\"F\\" | \\"D\\" | \\"C\\" | \\"B\\" | \\"A\\", string[]>>"`;
 
@@ -854,7 +844,7 @@ exports[`$ExpectType number 46`] = `"number"`;
 
 exports[`$ExpectType number 47`] = `"number"`;
 
-exports[`$ExpectType number 48`] = `"<T>(lens: Lens<T, { x: number; y: number; }>) => T"`;
+exports[`$ExpectType number 48`] = `"any"`;
 
 exports[`$ExpectType number 49`] = `"{}"`;
 
@@ -1372,37 +1362,25 @@ exports[`$ExpectType string 49`] = `"string"`;
 
 exports[`$ExpectType string 50`] = `"{}"`;
 
-exports[`$ExpectType string 51`] = `
-"Argument of type '{ phrase: string; }' is not assignable to parameter of type '(value: any) => Functor<any>'.
-  Type '{ phrase: string; }' provides no match for the signature '(value: any): Functor<any>'."
-`;
+exports[`$ExpectType string 51`] = `"\\"foo\\""`;
 
-exports[`$ExpectType string 52`] = `
-"Argument of type '{ phrase: string; }' is not assignable to parameter of type '(value: any) => Functor<any>'.
-  Type '{ phrase: string; }' provides no match for the signature '(value: any): Functor<any>'."
-`;
+exports[`$ExpectType string 52`] = `"Argument of type '{ name: string; age: number; }' is not assignable to parameter of type 'Record<\\"favoriteLibrary\\", any>'."`;
 
-exports[`$ExpectType string 53`] = `
-"Argument of type '{ phrase: string; }' is not assignable to parameter of type '(value: {}) => Functor<{}>'.
-  Type '{ phrase: string; }' provides no match for the signature '(value: {}): Functor<{}>'."
-`;
+exports[`$ExpectType string 53`] = `"string"`;
 
-exports[`$ExpectType string 54`] = `
-"Argument of type '{ phrase: string; }' is not assignable to parameter of type '(value: {}) => Functor<{}>'.
-  Type '{ phrase: string; }' provides no match for the signature '(value: {}): Functor<{}>'."
-`;
+exports[`$ExpectType string 54`] = `"string"`;
 
-exports[`$ExpectType string 55`] = `"\\"foo\\""`;
+exports[`$ExpectType string 55`] = `"\\"a\\" | \\"z\\""`;
 
-exports[`$ExpectType string 56`] = `"Argument of type '{ name: string; age: number; }' is not assignable to parameter of type 'Record<\\"favoriteLibrary\\", any>'."`;
+exports[`$ExpectType string 56`] = `"\\"a\\" | \\"z\\""`;
 
 exports[`$ExpectType string 57`] = `"string"`;
 
 exports[`$ExpectType string 58`] = `"string"`;
 
-exports[`$ExpectType string 59`] = `"\\"a\\" | \\"z\\""`;
+exports[`$ExpectType string 59`] = `"string"`;
 
-exports[`$ExpectType string 60`] = `"\\"a\\" | \\"z\\""`;
+exports[`$ExpectType string 60`] = `"string"`;
 
 exports[`$ExpectType string 61`] = `"string"`;
 
@@ -1410,17 +1388,9 @@ exports[`$ExpectType string 62`] = `"string"`;
 
 exports[`$ExpectType string 63`] = `"string"`;
 
-exports[`$ExpectType string 64`] = `"string"`;
+exports[`$ExpectType string 64`] = `"number | \\"Ramda\\""`;
 
-exports[`$ExpectType string 65`] = `"string"`;
-
-exports[`$ExpectType string 66`] = `"string"`;
-
-exports[`$ExpectType string 67`] = `"string"`;
-
-exports[`$ExpectType string 68`] = `"number | \\"Ramda\\""`;
-
-exports[`$ExpectType string 69`] = `"\\"\\" | null"`;
+exports[`$ExpectType string 65`] = `"\\"\\" | null"`;
 
 exports[`$ExpectType string[] 1`] = `"any[]"`;
 
@@ -1504,15 +1474,11 @@ exports[`$ExpectType typeof people 3`] = `"{}[]"`;
 
 exports[`$ExpectType typeof people 4`] = `"{}[]"`;
 
-exports[`$ExpectType typeof tomato 1`] = `
-"Argument of type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }' is not assignable to parameter of type '{ firstName: string; lastName: string; data: { elapsed: number; remaining: number; }; }'.
-  Property 'lastName' is missing in type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }'."
-`;
+exports[`$ExpectType typeof tomato 1`] = `"{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }"`;
 
-exports[`$ExpectType typeof tomato 2`] = `
-"Argument of type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }' is not assignable to parameter of type '{ firstName: string; lastName: string; data: { elapsed: number; remaining: number; }; }'.
-  Property 'lastName' is missing in type '{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }'."
-`;
+exports[`$ExpectType typeof tomato 2`] = `"{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }"`;
+
+exports[`$ExpectType typeof tomato 3`] = `"{ firstName: string; data: { elapsed: number; remaining: number; }; id: number; }"`;
 
 exports[`$ExpectType undefined 1`] = `"{} | undefined"`;
 
