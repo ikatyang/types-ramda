@@ -91,9 +91,9 @@ exports[`$ExpectType <Z>(v3: Z) => ({ x: number; y: number; z: Z; }) 2`] = `"Cur
 
 exports[`$ExpectType <a>(v: a|[a]) => [a] 1`] = `"(value: any) => any[] | ArrayLike<any>"`;
 
-exports[`$ExpectType [1, 2] 1`] = `"any"`;
+exports[`$ExpectType [1, 2] 1`] = `"number[]"`;
 
-exports[`$ExpectType [1, 2] 2`] = `"any"`;
+exports[`$ExpectType [1, 2] 2`] = `"{}"`;
 
 exports[`$ExpectType [number, string][] 1`] = `"[number, string][]"`;
 
@@ -231,13 +231,7 @@ exports[`$ExpectType {} 1`] = `"{}"`;
 
 exports[`$ExpectType {a: {b: {}}} 1`] = `"{ a?: DeepPartial | undefined; }"`;
 
-exports[`$ExpectType {a: {b: {}}} 2`] = `
-"Argument of type '{ a: { b: { c: number; }; }; }' is not assignable to parameter of type '{ a: { b: number; }; }'.
-  Types of property 'a' are incompatible.
-    Type '{ b: { c: number; }; }' is not assignable to type '{ b: number; }'.
-      Types of property 'b' are incompatible.
-        Type '{ c: number; }' is not assignable to type 'number'."
-`;
+exports[`$ExpectType {a: {b: {}}} 2`] = `"{ a?: DeepPartial | undefined; }"`;
 
 exports[`$ExpectType {a: {b: {}}} 3`] = `"{ a?: DeepPartial | undefined; }"`;
 
@@ -255,9 +249,9 @@ exports[`$ExpectType {a: number}[] 3`] = `"any[]"`;
 
 exports[`$ExpectType {a: number}[] 4`] = `"any[]"`;
 
-exports[`$ExpectType {x: 1, y: 2} 1`] = `"any"`;
+exports[`$ExpectType {x: 1, y: 2} 1`] = `"{ x: number; y: number; }"`;
 
-exports[`$ExpectType {x: 1, y: 2} 2`] = `"any"`;
+exports[`$ExpectType {x: 1, y: 2} 2`] = `"{}"`;
 
 exports[`$ExpectType 10 1`] = `"10"`;
 
@@ -334,11 +328,11 @@ exports[`$ExpectType Dictionary<number> 5`] = `"Record<\\"a\\" | \\"b\\" | \\"c\
 
 exports[`$ExpectType Dictionary<number> 6`] = `"Record<\\"a\\" | \\"b\\" | \\"c\\", number>"`;
 
-exports[`$ExpectType Dictionary<number> 7`] = `"Expected 0-2 arguments, but got 3."`;
+exports[`$ExpectType Dictionary<number> 7`] = `"any"`;
 
-exports[`$ExpectType Dictionary<number> 8`] = `"Argument of type '(accObject: { [elem: string]: number; }, elem: string, idx: number, list: string[]) => { [elem: s...' is not assignable to parameter of type '(v1: any, index: number, target: any) => any'."`;
+exports[`$ExpectType Dictionary<number> 8`] = `"any"`;
 
-exports[`$ExpectType Dictionary<number> 9`] = `"Argument of type '(accObject: { [elem: string]: number; }, elem: string, idx: number, list: string[]) => { [elem: s...' is not assignable to parameter of type '(v1: any, index: number, target: any) => any'."`;
+exports[`$ExpectType Dictionary<number> 9`] = `"any"`;
 
 exports[`$ExpectType Dictionary<number> 10`] = `"Record<\\"a\\" | \\"b\\" | \\"c\\", number>"`;
 
@@ -350,17 +344,11 @@ exports[`$ExpectType Dictionary<number> 13`] = `"{ a: number; b: number; } & Rec
 
 exports[`$ExpectType Dictionary<number> 14`] = `"{ a: number; b: number; } & Record<\\"c\\", number>"`;
 
-exports[`$ExpectType Dictionary<number> 15`] = `
-"Argument of type '{ a: number; b: number; c: number; }' is not assignable to parameter of type '{ a: number; c: number; }'.
-  Object literal may only specify known properties, and 'b' does not exist in type '{ a: number; c: number; }'."
-`;
+exports[`$ExpectType Dictionary<number> 15`] = `"Pick<{ a: number; b: number; c: number; }, \\"a\\" | \\"c\\">"`;
 
 exports[`$ExpectType Dictionary<number> 16`] = `"Pick<{ a: number; b: number; c: number; }, \\"a\\" | \\"c\\">"`;
 
-exports[`$ExpectType Dictionary<number> 17`] = `
-"Type '{ a: number; c: number; }' does not satisfy the constraint 'Record<\\"b\\", any>'.
-  Property 'b' is missing in type '{ a: number; c: number; }'."
-`;
+exports[`$ExpectType Dictionary<number> 17`] = `"Pick<{ a: number; b: number; c: number; }, \\"a\\" | \\"c\\">"`;
 
 exports[`$ExpectType Dictionary<number> 18`] = `"{}"`;
 
@@ -448,16 +436,7 @@ exports[`$ExpectType any[] 7`] = `"any[]"`;
 
 exports[`$ExpectType any[][] 1`] = `"(string | number)[][]"`;
 
-exports[`$ExpectType any[][] 2`] = `
-"Argument of type '(number[] | string[])[]' is not assignable to parameter of type 'List<List<number>>'.
-  Type '(number[] | string[])[]' is not assignable to type 'ArrayLike<List<number>>'.
-    Index signatures are incompatible.
-      Type 'number[] | string[]' is not assignable to type 'List<number>'.
-        Type 'string[]' is not assignable to type 'List<number>'.
-          Type 'string[]' is not assignable to type 'ArrayLike<number>'.
-            Index signatures are incompatible.
-              Type 'string' is not assignable to type 'number'."
-`;
+exports[`$ExpectType any[][] 2`] = `"(string | number)[][]"`;
 
 exports[`$ExpectType boolean 1`] = `"boolean"`;
 
@@ -511,11 +490,11 @@ exports[`$ExpectType boolean 25`] = `"boolean"`;
 
 exports[`$ExpectType boolean 26`] = `"boolean"`;
 
-exports[`$ExpectType boolean 27`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 27`] = `"boolean"`;
 
-exports[`$ExpectType boolean 28`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 28`] = `"boolean"`;
 
-exports[`$ExpectType boolean 29`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 29`] = `"boolean"`;
 
 exports[`$ExpectType boolean 30`] = `"boolean"`;
 
@@ -523,11 +502,11 @@ exports[`$ExpectType boolean 31`] = `"boolean"`;
 
 exports[`$ExpectType boolean 32`] = `"boolean"`;
 
-exports[`$ExpectType boolean 33`] = `"Type 'boolean' does not satisfy the constraint 'Function'."`;
+exports[`$ExpectType boolean 33`] = `"boolean"`;
 
-exports[`$ExpectType boolean 34`] = `"Type 'boolean' does not satisfy the constraint 'Function'."`;
+exports[`$ExpectType boolean 34`] = `"Argument of type 'null' is not assignable to parameter of type 'Record<\\"x\\", any>'."`;
 
-exports[`$ExpectType boolean 35`] = `"boolean"`;
+exports[`$ExpectType boolean 35`] = `"any"`;
 
 exports[`$ExpectType boolean 36`] = `"boolean"`;
 
@@ -569,42 +548,42 @@ exports[`$ExpectType boolean 54`] = `"boolean"`;
 
 exports[`$ExpectType boolean 55`] = `"boolean"`;
 
-exports[`$ExpectType boolean 56`] = `
+exports[`$ExpectType boolean 56`] = `"boolean"`;
+
+exports[`$ExpectType boolean 57`] = `
 "Argument of type '{ x: number; y: number; }' is not assignable to parameter of type 'Record<\\"x\\", any>'.
   Object literal may only specify known properties, and 'y' does not exist in type 'Record<\\"x\\", any>'."
 `;
 
-exports[`$ExpectType boolean 57`] = `"Argument of type '\\"x\\"' is not assignable to parameter of type 'never'."`;
+exports[`$ExpectType boolean 58`] = `"Argument of type '\\"x\\"' is not assignable to parameter of type 'never'."`;
 
-exports[`$ExpectType boolean 58`] = `
+exports[`$ExpectType boolean 59`] = `
 "Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<number, boolean>>'.
   Property 'x' is incompatible with index signature.
     Type 'number' is not assignable to type 'Morphism<number, boolean>'."
 `;
 
-exports[`$ExpectType boolean 59`] = `
+exports[`$ExpectType boolean 60`] = `
 "Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<string | number | boolean, boolean>>'.
   Property 'x' is incompatible with index signature.
     Type 'number' is not assignable to type 'Morphism<string | number | boolean, boolean>'."
 `;
 
-exports[`$ExpectType boolean 60`] = `
+exports[`$ExpectType boolean 61`] = `
 "Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<{}, boolean>>'.
   Property 'x' is incompatible with index signature.
     Type 'number' is not assignable to type 'Morphism<{}, boolean>'."
 `;
 
-exports[`$ExpectType boolean 61`] = `"Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<{}, boolean>>'."`;
+exports[`$ExpectType boolean 62`] = `"Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<{}, boolean>>'."`;
 
-exports[`$ExpectType boolean 62`] = `
+exports[`$ExpectType boolean 63`] = `
 "Argument of type '{ x: (val: number, obj: any) => boolean; }' is not assignable to parameter of type 'Dictionary<Morphism<number, boolean>>'.
   Property 'x' is incompatible with index signature.
     Type '(val: number, obj: any) => boolean' is not assignable to type 'Morphism<number, boolean>'."
 `;
 
-exports[`$ExpectType boolean 63`] = `"Argument of type '{ x: (val: number, obj: any) => boolean; }' is not assignable to parameter of type 'Dictionary<Morphism<number, boolean>>'."`;
-
-exports[`$ExpectType boolean 64`] = `"boolean"`;
+exports[`$ExpectType boolean 64`] = `"Argument of type '{ x: (val: number, obj: any) => boolean; }' is not assignable to parameter of type 'Dictionary<Morphism<number, boolean>>'."`;
 
 exports[`$ExpectType boolean 65`] = `"boolean"`;
 
@@ -656,13 +635,13 @@ exports[`$ExpectType boolean 88`] = `"boolean"`;
 
 exports[`$ExpectType boolean 89`] = `"boolean"`;
 
-exports[`$ExpectType boolean 90`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
+exports[`$ExpectType boolean 90`] = `"boolean"`;
 
 exports[`$ExpectType boolean 91`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
 
 exports[`$ExpectType boolean 92`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
 
-exports[`$ExpectType boolean 93`] = `"boolean"`;
+exports[`$ExpectType boolean 93`] = `"Property 'isNaN' does not exist on type 'typeof \\"/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index\\"'."`;
 
 exports[`$ExpectType boolean 94`] = `"boolean"`;
 
@@ -720,9 +699,9 @@ exports[`$ExpectType boolean 120`] = `"boolean"`;
 
 exports[`$ExpectType boolean 121`] = `"boolean"`;
 
-exports[`$ExpectType boolean 122`] = `"any"`;
+exports[`$ExpectType boolean 122`] = `"boolean"`;
 
-exports[`$ExpectType boolean 123`] = `"boolean"`;
+exports[`$ExpectType boolean 123`] = `"any"`;
 
 exports[`$ExpectType boolean 124`] = `"boolean"`;
 
@@ -767,6 +746,8 @@ exports[`$ExpectType boolean 143`] = `"boolean"`;
 exports[`$ExpectType boolean 144`] = `"boolean"`;
 
 exports[`$ExpectType boolean 145`] = `"boolean"`;
+
+exports[`$ExpectType boolean 146`] = `"boolean"`;
 
 exports[`$ExpectType circle 1`] = `"R"`;
 
@@ -1055,9 +1036,9 @@ exports[`$ExpectType number[] 19`] = `"number[]"`;
 
 exports[`$ExpectType number[] 20`] = `"number[]"`;
 
-exports[`$ExpectType number[] 21`] = `"Cannot invoke an expression whose type lacks a call signature. Type 'any[]' has no compatible call signatures."`;
+exports[`$ExpectType number[] 21`] = `"any[]"`;
 
-exports[`$ExpectType number[] 22`] = `"Cannot invoke an expression whose type lacks a call signature. Type 'any[]' has no compatible call signatures."`;
+exports[`$ExpectType number[] 22`] = `"any[]"`;
 
 exports[`$ExpectType number[] 23`] = `"number[]"`;
 

@@ -656,10 +656,11 @@ class F2 {
     R.chain(duplicate, [1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
     // @dts-jest $ExpectType number[]
     R.chain(duplicate)([1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
+
     // @dts-jest $ExpectType number[]
-    R.chain(R.append, R.head)([1, 2, 3]); // => [1, 2, 3, 1]
+    R.chain(R.append<'1'>(), R.head)([1, 2, 3]); // => [1, 2, 3, 1]
     // @dts-jest $ExpectType number[]
-    R.chain(R.append)(R.head)([1, 2, 3]); // => [1, 2, 3, 1]
+    R.chain(R.append<'1'>())(R.head)([1, 2, 3]); // => [1, 2, 3, 1]
 };
 
 // clamp
@@ -914,7 +915,8 @@ interface Obj { a: number; b: number; };
 
 // forEach
 () => {
-    let printKeyConcatValue = (value: any, key: string, obj: any) => console.log(key + ':' + value);
+    let printKeyConcatValue = (value: any, key: string) => console.log(key + ':' + value);
+
     // @dts-jest $ExpectType {x: 1, y: 2}
     R.forEachObjIndexed(printKeyConcatValue, {x: 1, y: 2});
     // @dts-jest $ExpectType {x: 1, y: 2}
@@ -1214,11 +1216,11 @@ interface Obj { a: number; b: number; };
 // none
 () => {
     // @dts-jest $ExpectType boolean
-    R.none(R.isNaN, [1, 2, 3]); // => true
+    R.none(Number.isNaN, [1, 2, 3]); // => true
     // @dts-jest $ExpectType boolean
-    R.none(R.isNaN, [1, 2, 3, NaN]); // => false
+    R.none(Number.isNaN, [1, 2, 3, NaN]); // => false
     // @dts-jest $ExpectType boolean
-    R.none(R.isNaN)([1, 2, 3, NaN]); // => false
+    R.none(Number.isNaN)([1, 2, 3, NaN]); // => false
 };
 
 // nth
@@ -1319,7 +1321,7 @@ interface Student {
 
 // addIndex
 () => {
-    let reduceIndexed = R.addIndex(R.reduce);
+    let reduceIndexed = R.addIndex<'1', 'v4x1'>()(R.reduce);
     let letters = ['a', 'b', 'c'];
     let objectify = function(accObject: {[elem: string]: number}, elem: string, idx: number, list: string[]) {
         accObject[elem] = idx;
@@ -1597,7 +1599,7 @@ type Pair = KeyValuePair<string, number>;
     // @dts-jest $ExpectType any[][]
     R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]); // => [[1, 2, 3], ['a', 'b', 'c']]
     // @dts-jest $ExpectType any[][]
-    R.transpose([[1, 2, 3], ['a', 'b', 'c']]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
+    R.transpose<string | number>([[1, 2, 3], ['a', 'b', 'c']]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
     // @dts-jest $ExpectType number[][]
     R.transpose([[10, 11], [20], [], [30, 31, 32]]); // => [[10, 20, 30], [11, 31], [32]]
 };
@@ -1606,9 +1608,11 @@ type Pair = KeyValuePair<string, number>;
 () => {
     const x = R.prop('x');
     // @dts-jest $ExpectType boolean
-    R.tryCatch<boolean>(R.prop('x'), R.F)({x: true}); // => true
+    R.tryCatch(R.prop('x'), R.F)({x: true}); // => true
     // @dts-jest $ExpectType boolean
-    R.tryCatch<boolean>(R.prop('x'), R.F)(null);      // => false
+    R.tryCatch(R.prop('x'), R.F)(null);      // => false
+    // @dts-jest $ExpectType boolean
+    R.tryCatch<any>(R.prop('x'), R.F)(null);      // => false
 };
 
 // uniq
@@ -1698,11 +1702,11 @@ type Pair = KeyValuePair<string, number>;
 // dissoc
 () => {
     // @dts-jest $ExpectType Dictionary<number>
-    R.dissoc<{a: number, c: number}>('b', {a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
+    R.dissoc('b', {a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
     // @dts-jest $ExpectType Dictionary<number>
     R.dissoc('b', {a: 1, b: 2, c: 3});                         // => {a: 1, c: 3}
     // @dts-jest $ExpectType Dictionary<number>
-    R.dissoc('b')<{a: number, c: number}>({a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
+    R.dissoc('b')({a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
 };
 
 // assocPath
@@ -1721,7 +1725,7 @@ type Pair = KeyValuePair<string, number>;
     R.dissocPath(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
     // optionally specify return type
     // @dts-jest $ExpectType {a: {b: {}}}
-    R.dissocPath<{a : { b: number}}>(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
+    R.dissocPath(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
     // @dts-jest $ExpectType {a: {b: {}}}
     R.dissocPath(['a', 'b', 'c'])({a: {b: {c: 42}}}); // => {a: {b: {}}}
 };

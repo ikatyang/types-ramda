@@ -656,10 +656,11 @@ class F2 {
     R.chain(duplicate, [1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
     // @dts-jest $ExpectType number[] -> number[]
     R.chain(duplicate)([1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
-    // @dts-jest $ExpectType number[] -> Cannot invoke an expression whose type lacks a call signature. Type 'any[]' has no compatible call signatures.
-    R.chain(R.append, R.head)([1, 2, 3]); // => [1, 2, 3, 1]
-    // @dts-jest $ExpectType number[] -> Cannot invoke an expression whose type lacks a call signature. Type 'any[]' has no compatible call signatures.
-    R.chain(R.append)(R.head)([1, 2, 3]); // => [1, 2, 3, 1]
+
+    // @dts-jest $ExpectType number[] -> any[]
+    R.chain(R.append<'1'>(), R.head)([1, 2, 3]); // => [1, 2, 3, 1]
+    // @dts-jest $ExpectType number[] -> any[]
+    R.chain(R.append<'1'>())(R.head)([1, 2, 3]); // => [1, 2, 3, 1]
 };
 
 // clamp
@@ -914,14 +915,15 @@ interface Obj { a: number; b: number; };
 
 // forEach
 () => {
-    let printKeyConcatValue = (value: any, key: string, obj: any) => console.log(key + ':' + value);
-    // @dts-jest $ExpectType {x: 1, y: 2} -> any
+    let printKeyConcatValue = (value: any, key: string) => console.log(key + ':' + value);
+
+    // @dts-jest $ExpectType {x: 1, y: 2} -> { x: number; y: number; }
     R.forEachObjIndexed(printKeyConcatValue, {x: 1, y: 2});
-    // @dts-jest $ExpectType {x: 1, y: 2} -> any
+    // @dts-jest $ExpectType {x: 1, y: 2} -> {}
     R.forEachObjIndexed(printKeyConcatValue)({x: 1, y: 2});
-    // @dts-jest $ExpectType [1, 2] -> any
+    // @dts-jest $ExpectType [1, 2] -> number[]
     R.forEachObjIndexed(printKeyConcatValue, [1, 2]);
-    // @dts-jest $ExpectType [1, 2] -> any
+    // @dts-jest $ExpectType [1, 2] -> {}
     R.forEachObjIndexed(printKeyConcatValue)([1, 2]);
 };
 
@@ -1213,12 +1215,12 @@ interface Obj { a: number; b: number; };
 
 // none
 () => {
-    // @dts-jest $ExpectType boolean -> Property 'isNaN' does not exist on type 'typeof "/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index"'.
-    R.none(R.isNaN, [1, 2, 3]); // => true
-    // @dts-jest $ExpectType boolean -> Property 'isNaN' does not exist on type 'typeof "/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index"'.
-    R.none(R.isNaN, [1, 2, 3, NaN]); // => false
-    // @dts-jest $ExpectType boolean -> Property 'isNaN' does not exist on type 'typeof "/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index"'.
-    R.none(R.isNaN)([1, 2, 3, NaN]); // => false
+    // @dts-jest $ExpectType boolean -> boolean
+    R.none(Number.isNaN, [1, 2, 3]); // => true
+    // @dts-jest $ExpectType boolean -> boolean
+    R.none(Number.isNaN, [1, 2, 3, NaN]); // => false
+    // @dts-jest $ExpectType boolean -> boolean
+    R.none(Number.isNaN)([1, 2, 3, NaN]); // => false
 };
 
 // nth
@@ -1319,17 +1321,17 @@ interface Student {
 
 // addIndex
 () => {
-    let reduceIndexed = R.addIndex(R.reduce);
+    let reduceIndexed = R.addIndex<'1', 'v4x1'>()(R.reduce);
     let letters = ['a', 'b', 'c'];
     let objectify = function(accObject: {[elem: string]: number}, elem: string, idx: number, list: string[]) {
         accObject[elem] = idx;
         return accObject;
     };
-    // @dts-jest $ExpectType Dictionary<number> -> Expected 0-2 arguments, but got 3.
+    // @dts-jest $ExpectType Dictionary<number> -> any
     reduceIndexed(objectify, {}, letters); // => { 'a': 0, 'b': 1, 'c': 2 }
-    // @dts-jest $ExpectType Dictionary<number> -> Argument of type '(accObject: { [elem: string]: number; }, elem: string, idx: number, list: string[]) => { [elem: s...' is not assignable to parameter of type '(v1: any, index: number, target: any) => any'.
+    // @dts-jest $ExpectType Dictionary<number> -> any
     reduceIndexed(objectify)({}, letters); // => { 'a': 0, 'b': 1, 'c': 2 }
-    // @dts-jest $ExpectType Dictionary<number> -> Argument of type '(accObject: { [elem: string]: number; }, elem: string, idx: number, list: string[]) => { [elem: s...' is not assignable to parameter of type '(v1: any, index: number, target: any) => any'.
+    // @dts-jest $ExpectType Dictionary<number> -> any
     reduceIndexed(objectify, {})(letters); // => { 'a': 0, 'b': 1, 'c': 2 }
 };
 
@@ -1596,8 +1598,8 @@ type Pair = KeyValuePair<string, number>;
 () => {
     // @dts-jest $ExpectType any[][] -> (string | number)[][]
     R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]); // => [[1, 2, 3], ['a', 'b', 'c']]
-    // @dts-jest $ExpectType any[][] -> Argument of type '(number[] | string[])[]' is not assignable to parameter of type 'List<List<number>>'.
-    R.transpose([[1, 2, 3], ['a', 'b', 'c']]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
+    // @dts-jest $ExpectType any[][] -> (string | number)[][]
+    R.transpose<string | number>([[1, 2, 3], ['a', 'b', 'c']]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
     // @dts-jest $ExpectType number[][] -> number[][]
     R.transpose([[10, 11], [20], [], [30, 31, 32]]); // => [[10, 20, 30], [11, 31], [32]]
 };
@@ -1605,10 +1607,12 @@ type Pair = KeyValuePair<string, number>;
 // tryCatch
 () => {
     const x = R.prop('x');
-    // @dts-jest $ExpectType boolean -> Type 'boolean' does not satisfy the constraint 'Function'.
-    R.tryCatch<boolean>(R.prop('x'), R.F)({x: true}); // => true
-    // @dts-jest $ExpectType boolean -> Type 'boolean' does not satisfy the constraint 'Function'.
-    R.tryCatch<boolean>(R.prop('x'), R.F)(null);      // => false
+    // @dts-jest $ExpectType boolean -> boolean
+    R.tryCatch(R.prop('x'), R.F)({x: true}); // => true
+    // @dts-jest $ExpectType boolean -> Argument of type 'null' is not assignable to parameter of type 'Record<"x", any>'.
+    R.tryCatch(R.prop('x'), R.F)(null);      // => false
+    // @dts-jest $ExpectType boolean -> any
+    R.tryCatch<any>(R.prop('x'), R.F)(null);      // => false
 };
 
 // uniq
@@ -1697,12 +1701,12 @@ type Pair = KeyValuePair<string, number>;
 
 // dissoc
 () => {
-    // @dts-jest $ExpectType Dictionary<number> -> Argument of type '{ a: number; b: number; c: number; }' is not assignable to parameter of type '{ a: number; c: number; }'.
-    R.dissoc<{a: number, c: number}>('b', {a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
+    // @dts-jest $ExpectType Dictionary<number> -> Pick<{ a: number; b: number; c: number; }, "a" | "c">
+    R.dissoc('b', {a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
     // @dts-jest $ExpectType Dictionary<number> -> Pick<{ a: number; b: number; c: number; }, "a" | "c">
     R.dissoc('b', {a: 1, b: 2, c: 3});                         // => {a: 1, c: 3}
-    // @dts-jest $ExpectType Dictionary<number> -> Type '{ a: number; c: number; }' does not satisfy the constraint 'Record<"b", any>'.
-    R.dissoc('b')<{a: number, c: number}>({a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
+    // @dts-jest $ExpectType Dictionary<number> -> Pick<{ a: number; b: number; c: number; }, "a" | "c">
+    R.dissoc('b')({a: 1, b: 2, c: 3}); // => {a: 1, c: 3}
 };
 
 // assocPath
@@ -1720,8 +1724,8 @@ type Pair = KeyValuePair<string, number>;
     // @dts-jest $ExpectType {a: {b: {}}} -> { a?: DeepPartial | undefined; }
     R.dissocPath(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
     // optionally specify return type
-    // @dts-jest $ExpectType {a: {b: {}}} -> Argument of type '{ a: { b: { c: number; }; }; }' is not assignable to parameter of type '{ a: { b: number; }; }'.
-    R.dissocPath<{a : { b: number}}>(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
+    // @dts-jest $ExpectType {a: {b: {}}} -> { a?: DeepPartial | undefined; }
+    R.dissocPath(['a', 'b', 'c'], {a: {b: {c: 42}}}); // => {a: {b: {}}}
     // @dts-jest $ExpectType {a: {b: {}}} -> { a?: DeepPartial | undefined; }
     R.dissocPath(['a', 'b', 'c'])({a: {b: {c: 42}}}); // => {a: {b: {}}}
 };
