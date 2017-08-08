@@ -314,6 +314,8 @@ class F2 {
     // @dts-jest $ExpectType number[]
     range(3, 4, 9, -3); // => [-3, 9]
 
+    // T is inferred as `{}` in `R.head`and `R.last`, thus return `any[]`
+
     const chopped = R.juxt([R.head, R.last]);
     // @dts-jest $ExpectType string[]
     chopped('longstring'); // => ['l', 'g']
@@ -452,10 +454,9 @@ class F2 {
 
 // reduceRight
 (() => {
-    let pairs = [ ['a', 1], ['b', 2], ['c', 3] ];
-    let flattenPairs = function(acc: [string, number], pair: [string, number]) {
-      return acc.concat(pair);
-    };
+    type Pair = [string, number];
+    const pairs: Pair[] = [['a', 1], ['b', 2], ['c', 3]];
+    const flattenPairs = (pair: Pair, acc: Pair[]): Pair[] => acc.concat(pair);
     // @dts-jest $ExpectType Array<number|string>
     R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 })();
@@ -523,6 +524,8 @@ class F2 {
     let lastTwo = function(val: number, idx: number, list: number[]) {
       return list.length - idx <= 2;
     };
+
+    // caused by R.addIndex
     // @dts-jest $ExpectType number[]
     filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [0, 9]
 
@@ -546,7 +549,7 @@ class F2 {
 
 // unfold
 (() => {
-    let f = function(n: number) { return n > 50 ? false : [-n, n + 10]; };
+    let f = function(n: number) { return n > 50 ? false : [-n, n + 10] as [number, number]; };
     // @dts-jest $ExpectType number[]
     R.unfold(f, 10); // => [-10, -20, -30, -40, -50]
     let b = R.unfold(f); // => [-10, -20, -30, -40, -50]
@@ -635,7 +638,7 @@ class F2 {
     // @dts-jest $ExpectType string[]
     R.append('tests', []); // => ['tests']
     // @dts-jest $ExpectType Array<string[]|string>
-    R.append<string, string[]>(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
+    R.append(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
     // @dts-jest $ExpectType Array<string[]|string>
     R.append(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
     // @dts-jest $ExpectType Array<string[]|string>

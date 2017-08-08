@@ -261,18 +261,13 @@ exports[`$ExpectType {x: 1, y: 2} 2`] = `"any"`;
 
 exports[`$ExpectType 10 1`] = `"10"`;
 
-exports[`$ExpectType Array<number|string> 1`] = `
-"Argument of type '(acc: [string, number], pair: [string, number]) => (string | number)[]' is not assignable to parameter of type '(value: (string | number)[], accumulator: [string, number]) => [string, number] | Reduced<[string...'.
-  Type '(string | number)[]' is not assignable to type '[string, number] | Reduced<[string, number]>'.
-    Type '(string | number)[]' is not assignable to type 'Reduced<[string, number]>'.
-      Property '\\"@@transducer/value\\"' is missing in type '(string | number)[]'."
-`;
+exports[`$ExpectType Array<number|string> 1`] = `"[string, number][]"`;
 
 exports[`$ExpectType Array<number|string> 2`] = `"Property 'set' does not exist on type 'Lens<{}, List<{}>>'."`;
 
 exports[`$ExpectType Array<number|undefined> 1`] = `"any[]"`;
 
-exports[`$ExpectType Array<string[]|string> 1`] = `"Argument of type 'string[]' is not assignable to parameter of type 'string'."`;
+exports[`$ExpectType Array<string[]|string> 1`] = `"(string | string[])[]"`;
 
 exports[`$ExpectType Array<string[]|string> 2`] = `"(string | string[])[]"`;
 
@@ -1048,15 +1043,9 @@ exports[`$ExpectType number[] 13`] = `"number[]"`;
 
 exports[`$ExpectType number[] 14`] = `"number[]"`;
 
-exports[`$ExpectType number[] 15`] = `
-"Argument of type '(n: number) => false | number[]' is not assignable to parameter of type '(seed: number) => false | [{}, number]'.
-  Type 'false | number[]' is not assignable to type 'false | [{}, number]'.
-    Type 'number[]' is not assignable to type 'false | [{}, number]'.
-      Type 'number[]' is not assignable to type '[{}, number]'.
-        Property '0' is missing in type 'number[]'."
-`;
+exports[`$ExpectType number[] 15`] = `"number[]"`;
 
-exports[`$ExpectType number[] 16`] = `"R[]"`;
+exports[`$ExpectType number[] 16`] = `"number[]"`;
 
 exports[`$ExpectType number[] 17`] = `"number[]"`;
 

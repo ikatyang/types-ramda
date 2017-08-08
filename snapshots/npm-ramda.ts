@@ -314,6 +314,8 @@ class F2 {
     // @dts-jest $ExpectType number[] -> number[]
     range(3, 4, 9, -3); // => [-3, 9]
 
+    // T is inferred as `{}` in `R.head`and `R.last`, thus return `any[]`
+
     const chopped = R.juxt([R.head, R.last]);
     // @dts-jest $ExpectType string[] -> any[]
     chopped('longstring'); // => ['l', 'g']
@@ -452,11 +454,10 @@ class F2 {
 
 // reduceRight
 (() => {
-    let pairs = [ ['a', 1], ['b', 2], ['c', 3] ];
-    let flattenPairs = function(acc: [string, number], pair: [string, number]) {
-      return acc.concat(pair);
-    };
-    // @dts-jest $ExpectType Array<number|string> -> Argument of type '(acc: [string, number], pair: [string, number]) => (string | number)[]' is not assignable to parameter of type '(value: (string | number)[], accumulator: [string, number]) => [string, number] | Reduced<[string...'.
+    type Pair = [string, number];
+    const pairs: Pair[] = [['a', 1], ['b', 2], ['c', 3]];
+    const flattenPairs = (pair: Pair, acc: Pair[]): Pair[] => acc.concat(pair);
+    // @dts-jest $ExpectType Array<number|string> -> [string, number][]
     R.reduceRight(flattenPairs, [], pairs); // => [ 'c', 3, 'b', 2, 'a', 1 ]
 })();
 
@@ -523,6 +524,8 @@ class F2 {
     let lastTwo = function(val: number, idx: number, list: number[]) {
       return list.length - idx <= 2;
     };
+
+    // caused by R.addIndex
     // @dts-jest $ExpectType number[] -> any
     filterIndexed(lastTwo, [8, 6, 7, 5, 3, 0, 9]); // => [0, 9]
 
@@ -546,11 +549,11 @@ class F2 {
 
 // unfold
 (() => {
-    let f = function(n: number) { return n > 50 ? false : [-n, n + 10]; };
-    // @dts-jest $ExpectType number[] -> Argument of type '(n: number) => false | number[]' is not assignable to parameter of type '(seed: number) => false | [{}, number]'.
+    let f = function(n: number) { return n > 50 ? false : [-n, n + 10] as [number, number]; };
+    // @dts-jest $ExpectType number[] -> number[]
     R.unfold(f, 10); // => [-10, -20, -30, -40, -50]
     let b = R.unfold(f); // => [-10, -20, -30, -40, -50]
-    // @dts-jest $ExpectType number[] -> R[]
+    // @dts-jest $ExpectType number[] -> number[]
     b(10);
 });
 
@@ -634,8 +637,8 @@ class F2 {
     R.append('tests')(['write', 'more']); // => ['write', 'more', 'tests']
     // @dts-jest $ExpectType string[] -> string[]
     R.append('tests', []); // => ['tests']
-    // @dts-jest $ExpectType Array<string[]|string> -> Argument of type 'string[]' is not assignable to parameter of type 'string'.
-    R.append<string, string[]>(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
+    // @dts-jest $ExpectType Array<string[]|string> -> (string | string[])[]
+    R.append(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
     // @dts-jest $ExpectType Array<string[]|string> -> (string | string[])[]
     R.append(['tests'], ['write', 'more']); // => ['write', 'more', ['tests']]
     // @dts-jest $ExpectType Array<string[]|string> -> (string | string[])[]
