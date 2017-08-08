@@ -1428,6 +1428,10 @@ exports[`uniqWith R.uniqWith<string | number>(strEq, [1, '1', 2, 1]) 1`] = `"(st
 
 exports[`unless R.unless(R.gt(R.__, 100), R.multiply(2))(1) 1`] = `"number"`;
 
+exports[`unless coerceArray([1, 2, 3]) 1`] = `"any[] | ArrayLike<any>"`;
+
+exports[`unless coerceArray(1) 1`] = `"any[] | ArrayLike<any>"`;
+
 exports[`unnest R.equals(R.unnest([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6]) 1`] = `"boolean"`;
 
 exports[`unnest R.equals(R.unnest([1, [2], [[3]]]), [1, 2, [3]]) 1`] = `"boolean"`;
