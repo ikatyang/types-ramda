@@ -2,9 +2,9 @@ import { Predicate } from '../ramda/dist/src/$types';
 import * as R_anyPass from '../ramda/dist/src/anyPass';
 
 declare const string_predicate: Predicate<string>;
-declare const number_preficate: Predicate<number>;
+declare const string_number_preficate: (x: string, y: number) => boolean;
 
 // @dts-jest:pass
 R_anyPass([string_predicate, string_predicate]);
 // @dts-jest:pass
-R_anyPass<string | number>([string_predicate, number_preficate]);
+R_anyPass([string_predicate, string_number_preficate]);
