@@ -1,3 +1,3 @@
-import { Predicate } from './$types';
+import { Variadic } from './$types';
 
-export function $<T>(fn1: Predicate<T>, fn2: Predicate<T>): Predicate<T>;
+export function $<F extends Variadic<boolean>>(fn1: F, fn2: F): F;
