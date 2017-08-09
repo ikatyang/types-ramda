@@ -12,9 +12,9 @@
   dependencies:
     "@types/node" "*"
 
-"@types/del@2.2.32":
-  version "2.2.32"
-  resolved "https://registry.yarnpkg.com/@types/del/-/del-2.2.32.tgz#4d54df0ed3017435e6b1995df0292957787fc6b2"
+"@types/del@2.2.33":
+  version "2.2.33"
+  resolved "https://registry.yarnpkg.com/@types/del/-/del-2.2.33.tgz#3fbe8a1c3d00e85e9674e490a347eb419b1003a1"
   dependencies:
     "@types/glob" "*"
 
@@ -120,8 +120,8 @@
     "@types/undertaker-registry" "*"
 
 "@types/vinyl-fs@*":
-  version "2.4.5"
-  resolved "https://registry.yarnpkg.com/@types/vinyl-fs/-/vinyl-fs-2.4.5.tgz#73b212bb1838f5fff14341e3e37e956f0560001b"
+  version "2.4.6"
+  resolved "https://registry.yarnpkg.com/@types/vinyl-fs/-/vinyl-fs-2.4.6.tgz#b33597fe4b915fca6878199e9e54bc0eb0ef2f91"
   dependencies:
     "@types/glob-stream" "*"
     "@types/node" "*"
