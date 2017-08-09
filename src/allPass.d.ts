@@ -1,4 +1,4 @@
-import { Predicate } from "./$types";
+import { Variadic } from "./$types";
 /**
  * Takes a list of predicates and returns a predicate that returns true for a
  * given list of arguments if every one of the provided predicates is satisfied
@@ -26,7 +26,7 @@ import { Predicate } from "./$types";
  */
 declare const allPass: allPass_0;
 type allPass_0 = {
-    <T>(fns: Predicate<T>[]): allPass_1<T>;
+    <F extends Variadic<boolean>>(fns: F[]): allPass_1<F>;
 };
-type allPass_1<T> = Predicate<T>;
+type allPass_1<F extends Variadic<boolean>> = F;
 export = allPass;
