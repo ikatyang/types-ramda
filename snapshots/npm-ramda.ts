@@ -2180,10 +2180,13 @@ class Rectangle {
 () => {
     // @dts-jest $ExpectType boolean -> boolean
     R.propSatisfies((x: number) => x > 0, 'x', {x: 1, y: 2}); // => true
+
+    // require late-inference
     // @dts-jest $ExpectType boolean -> Argument of type '{ x: number; y: number; }' is not assignable to parameter of type 'Record<"x", any>'.
-    R.propSatisfies((x: number) => x > 0, 'x')({x: 1, y: 2}); // => true
-    // @dts-jest $ExpectType boolean -> Argument of type '"x"' is not assignable to parameter of type 'never'.
-    R.propSatisfies((x: number) => x > 0)('x')({x: 1, y: 2}); // => true
+    R.propSatisfies<'11', 'record'>()((x: number) => x > 0, 'x')({x: 1, y: 2}); // => true
+
+    // @dts-jest $ExpectType boolean -> boolean
+    R.propSatisfies<'1', 'record'>()((x: number) => x > 0)('x')({x: 1, y: 2}); // => true
 };
 
 // props
@@ -2228,31 +2231,31 @@ class Rectangle {
 
 // where
 () => {
-    let spec = {x: 2};
-    // @dts-jest $ExpectType boolean -> Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<number, boolean>>'.
+    let spec = {x: R.equals(2)};
+    // @dts-jest $ExpectType boolean -> boolean
     R.where(spec, {w: 10, x: 2, y: 300}); // => true
-    // @dts-jest $ExpectType boolean -> Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<string | number | boolean, boolean>>'.
+    // @dts-jest $ExpectType boolean -> boolean
     R.where(spec, {x: 1, y: 'moo', z: true}); // => false
-    // @dts-jest $ExpectType boolean -> Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<{}, boolean>>'.
+    // @dts-jest $ExpectType boolean -> boolean
     R.where(spec)({w: 10, x: 2, y: 300}); // => true
-    // @dts-jest $ExpectType boolean -> Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<{}, boolean>>'.
+    // @dts-jest $ExpectType boolean -> Argument of type '{ x: number; y: string; z: boolean; }' is not assignable to parameter of type 'Dictionary<number>'.
     R.where(spec)({x: 1, y: 'moo', z: true}); // => false
 
     // There's no way to represent the below functionality in typescript
     // per http: //stackoverflow.com/a/29803848/632495
     // will need a work around.
 
-    let spec2 = {x: function(val: number, obj: any) { return  val + obj.y > 10; }};
-    // @dts-jest $ExpectType boolean -> Argument of type '{ x: (val: number, obj: any) => boolean; }' is not assignable to parameter of type 'Dictionary<Morphism<number, boolean>>'.
+    let spec2 = {x: function(val: number) { return  val > 10; }};
+    // @dts-jest $ExpectType boolean -> boolean
     R.where(spec2, {x: 2, y: 7}); // => false
-    // @dts-jest $ExpectType boolean -> Argument of type '{ x: (val: number, obj: any) => boolean; }' is not assignable to parameter of type 'Dictionary<Morphism<number, boolean>>'.
+    // @dts-jest $ExpectType boolean -> boolean
     R.where(spec2, {x: 3, y: 8}); // => true
 
     let xs = [{x: 2, y: 1}, {x: 10, y: 2}, {x: 8, y: 3}, {x: 10, y: 4}];
-    // @dts-jest $ExpectType { x: number, y: number }[] -> Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<{}, boolean>>'.
-    R.filter(R.where({x: 10}), xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
-    // @dts-jest $ExpectType { x: number, y: number }[] -> Argument of type '{ x: number; }' is not assignable to parameter of type 'Dictionary<Morphism<{}, boolean>>'.
-    R.filter(R.where({x: 10}))(xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
+    // @dts-jest $ExpectType { x: number, y: number }[] -> Dictionary<number>[]
+    R.filter(R.where({x: R.equals(10)}), xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
+    // @dts-jest $ExpectType { x: number, y: number }[] -> Dictionary<number>[]
+    R.filter(R.where({x: R.equals(10)}))(xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
 };
 
 // whereEq
@@ -2279,21 +2282,24 @@ class Rectangle {
 
 // mapIndexed, addIndex
 () => {
-    let mapIndexed = R.addIndex<string,string>(R.map);
-    // @dts-jest $ExpectType string[] -> any
+    let mapIndexed = R.addIndex(R.map<'11', 'list'>());
+
+    // require late-inference to get accurate type
+
+    // @dts-jest $ExpectType string[] -> {}[]
     mapIndexed(function(val: string, idx: number) {return idx + '-' + val;})(['f', 'o', 'o', 'b', 'a', 'r']);
-    // @dts-jest $ExpectType string[] -> Property 'mapIndexed' does not exist on type 'typeof "/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index"'.
-    R.mapIndexed(function(val: string, idx: number) {return idx + '-' + val;})(['f', 'o', 'o', 'b', 'a', 'r']);
+    // @dts-jest $ExpectType string[] -> {}[]
+    mapIndexed(function(val: string, idx: number) {return idx + '-' + val;})(['f', 'o', 'o', 'b', 'a', 'r']);
     // => ['0-f', '1-o', '2-o', '3-b', '4-a', '5-r']
-    // @dts-jest $ExpectType number[] -> Property 'mapIndexed' does not exist on type 'typeof "/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index"'.
-    R.mapIndexed((rectangle: Rectangle, idx: number): number => rectangle.area()*idx, [new Rectangle(1,2), new Rectangle(4,7)]);
+    // @dts-jest $ExpectType number[] -> {}[]
+    mapIndexed((rectangle: Rectangle, idx: number): number => rectangle.area()*idx, [new Rectangle(1,2), new Rectangle(4,7)]);
     // => [2, 56]
 };
 
 // addIndex
 () => {
-    let reduceIndexed = R.addIndex(R.reduce);
-    // @dts-jest $ExpectType string[] -> Expected 0-2 arguments, but got 3.
+    let reduceIndexed = R.addIndex<'1', 'v2x1'>()(R.reduce);
+    // @dts-jest $ExpectType string[] -> any
     reduceIndexed(
       (acc: string, val: string, idx: number) => acc + ',' + idx + '-' + val
       ,''
@@ -2431,17 +2437,18 @@ class Rectangle {
 
 // construct, constructN
 (() => {
-    type circle = { r: number, colors: string[] };
-    let Circle = function(r: number) {
-        this.r = r;
-        this.colors = Array.prototype.slice.call(arguments, 1);
-    };
-    Circle.prototype.area = function() {return Math.PI * Math.pow(this.r, 2);};
+    class Circle {
+      constructor(r: number, ...colors: string[]) {}
+    }
+
     let circleN = R.constructN(2, Circle);
-    // @dts-jest $ExpectType circle -> R
+    // @dts-jest $ExpectType circle -> Circle
     circleN(1, 'red');
+
+    // invalid usage, Fn.length = 1
+
     let circle = R.construct(Circle);
-    // @dts-jest $ExpectType circle -> R
+    // @dts-jest $ExpectType circle -> Expected 1 arguments, but got 2.
     circle(1, 'red');
 })();
 
@@ -2665,12 +2672,14 @@ class Rectangle {
 
 // isNaN
 () => {
-    // @dts-jest $ExpectType boolean -> Property 'isNaN' does not exist on type 'typeof "/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index"'.
-    R.isNaN(NaN);        // => true
-    // @dts-jest $ExpectType boolean -> Property 'isNaN' does not exist on type 'typeof "/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index"'.
-    R.isNaN(undefined);  // => false
-    // @dts-jest $ExpectType boolean -> Property 'isNaN' does not exist on type 'typeof "/Users/ikatyang/Documents/GitHub/types-ramda/ramda/dist/index"'.
-    R.isNaN({});         // => false
+    // R.isNaN was removed
+
+    // // @dts-jest $ExpectType boolean
+    // R.isNaN(NaN);        // => true
+    // // @dts-jest $ExpectType boolean
+    // R.isNaN(undefined);  // => false
+    // // @dts-jest $ExpectType boolean
+    // R.isNaN({});         // => false
 };
 
 // lt
