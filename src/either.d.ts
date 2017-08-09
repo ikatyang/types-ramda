@@ -1,4 +1,4 @@
-import { Predicate } from "./$types";
+import { Variadic } from "./$types";
 import { Placeholder as PH } from "./$placeholder";
 /**
  * A function wrapping calls to the two functions in an `||` operation,
@@ -29,18 +29,18 @@ import { Placeholder as PH } from "./$placeholder";
  */
 declare const either: either_00;
 type either_00 = {
-    <T>(fn1: Predicate<T>): either_10<T>;
-    <T>(_fn1: PH, fn2: Predicate<T>): either_01<T>;
-    <$SEL extends "1">(): <T>(fn1: Predicate<T>) => either_10<T>;
-    <$SEL extends "01">(): <T>(_fn1: PH, fn2: Predicate<T>) => either_01<T>;
-    <$SEL extends "11">(): <T>(fn1: Predicate<T>, fn2: Predicate<T>) => either_11<T>;
-    <T>(fn1: Predicate<T>, fn2: Predicate<T>): either_11<T>;
+    <F extends Variadic<boolean>>(fn1: F): either_10<F>;
+    <F extends Variadic<boolean>>(_fn1: PH, fn2: F): either_01<F>;
+    <$SEL extends "1">(): <F extends Variadic<boolean>>(fn1: F) => either_10<F>;
+    <$SEL extends "01">(): <F extends Variadic<boolean>>(_fn1: PH, fn2: F) => either_01<F>;
+    <$SEL extends "11">(): <F extends Variadic<boolean>>(fn1: F, fn2: F) => either_11<F>;
+    <F extends Variadic<boolean>>(fn1: F, fn2: F): either_11<F>;
 };
-type either_10<T> = {
-    (fn2: Predicate<T>): either_11<T>;
+type either_10<F extends Variadic<boolean>> = {
+    (fn2: F): either_11<F>;
 };
-type either_01<T> = {
-    (fn1: Predicate<T>): either_11<T>;
+type either_01<F extends Variadic<boolean>> = {
+    (fn1: F): either_11<F>;
 };
-type either_11<T> = Predicate<T>;
+type either_11<F extends Variadic<boolean>> = F;
 export = either;
