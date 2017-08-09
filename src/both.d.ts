@@ -1,4 +1,4 @@
-import { Predicate } from "./$types";
+import { Variadic } from "./$types";
 /**
  * A function which calls the two provided functions and returns the `&&`
  * of the results.
@@ -29,14 +29,14 @@ import { Predicate } from "./$types";
  */
 declare const both: both_00;
 type both_00 = {
-    <T>(fn1: Predicate<T>): both_10<T>;
-    <T>(fn1: Predicate<T>, fn2: Predicate<T>): both_11<T>;
+    <F extends Variadic<boolean>>(fn1: F): both_10<F>;
+    <F extends Variadic<boolean>>(fn1: F, fn2: F): both_11<F>;
 };
-type both_10<T> = {
-    (fn2: Predicate<T>): both_11<T>;
+type both_10<F extends Variadic<boolean>> = {
+    (fn2: F): both_11<F>;
 };
-type both_01<T> = {
-    (fn1: Predicate<T>): both_11<T>;
+type both_01<F extends Variadic<boolean>> = {
+    (fn1: F): both_11<F>;
 };
-type both_11<T> = Predicate<T>;
+type both_11<F extends Variadic<boolean>> = F;
 export = both;
