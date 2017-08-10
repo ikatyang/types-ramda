@@ -35,16 +35,16 @@ import { Dictionary, Predicate } from "./$types";
  */
 declare const where: where_00;
 type where_00 = {
-    <T>(spec: Dictionary<Predicate<T>>): where_10<T>;
-    <$SEL extends "1">(): <T>(spec: Dictionary<Predicate<T>>) => where_10<T>;
-    <$SEL extends "11">(): <T>(spec: Dictionary<Predicate<T>>, object: Dictionary<T>) => where_11;
-    <T>(spec: Dictionary<Predicate<T>>, object: Dictionary<T>): where_11;
+    (spec: Dictionary<Predicate<any>>): where_10;
+    <$SEL extends "1">(): (spec: Dictionary<Predicate<any>>) => where_10;
+    <$SEL extends "11">(): (spec: Dictionary<Predicate<any>>, object: Dictionary<any>) => where_11;
+    (spec: Dictionary<Predicate<any>>, object: Dictionary<any>): where_11;
 };
-type where_10<T> = {
-    (object: Dictionary<T>): where_11;
+type where_10 = {
+    (object: Dictionary<any>): where_11;
 };
-type where_01<T> = {
-    (spec: Dictionary<Predicate<T>>): where_11;
+type where_01 = {
+    (spec: Dictionary<Predicate<any>>): where_11;
 };
 type where_11 = boolean;
 export = where;
