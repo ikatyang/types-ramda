@@ -1,3 +1,3 @@
-import { Lens, List } from './$types';
+import { List, PseudoLens } from './$types';
 
-export function $<T, U extends List<T>>(index: number): Lens<T, U>;
+export function $<N extends number>(index: N): PseudoLens<N>;

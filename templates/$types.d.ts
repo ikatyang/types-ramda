@@ -65,8 +65,13 @@ export interface Ordered {
 
 // ramda
 
-export interface Lens<T, U> {
-  (toFunctorFn: (value: T) => Functor<T>): (target: U) => U; // tslint:disable-line:callable-types
+export interface ManualLens<T, U> {
+  _fake_lens_getter: T;
+  _fake_lens_setter: U;
+}
+
+export interface PseudoLens<K extends string | number> {
+  _fake_lens_prop: K;
 }
 
 export interface Transformer<T, U, R> {

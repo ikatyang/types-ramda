@@ -1500,17 +1500,17 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group lensIndex
 (() => {
-  const headLens = R.lensIndex<any, any[]>(0);
+  const headLens = R.lensIndex(0);
   // @dts-jest:pass
-  R.view<string, string[]>(headLens, ['a', 'b', 'c']); //=> 'a'
+  R.view(headLens, ['a', 'b', 'c']); //=> 'a'
 
   // @dts-jest:pass
-  R.set<string, string[]>(headLens, 'x', ['a', 'b', 'c']); //=> ['x', 'b', 'c']
+  R.set(headLens, 'x', ['a', 'b', 'c']); //=> ['x', 'b', 'c']
   // @dts-jest:pass
   R.set(R.__, 'x', ['a', 'b', 'c'])(headLens); //=> ['x', 'b', 'c']
 
   // @dts-jest:pass
-  R.over<string, string[]>(headLens, R.toUpper, ['a', 'b', 'c']); //=> ['A', 'b', 'c']
+  R.over(headLens, R.toUpper, ['a', 'b', 'c']); //=> ['A', 'b', 'c']
   // @dts-jest:pass
   R.over(R.__, R.toUpper, ['a', 'b', 'c'])(headLens); //=> ['A', 'b', 'c']
 })();
@@ -2060,7 +2060,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group over
 (() => {
-  const headLens = R.lensIndex<string, string[]>(0);
+  const headLens = R.lensIndex(0);
   // @dts-jest:pass
   R.over(headLens, R.toUpper, ['a', 'b', 'c']); //=> ['A', 'b', 'c']
 })();
@@ -2604,7 +2604,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group set
 (() => {
-  const headLens = R.lensIndex<string, string[]>(0);
+  const headLens = R.lensIndex(0);
   // @dts-jest:pass
   R.set(headLens, 'x', ['a', 'b', 'c']); //=> ['x', 'b', 'c']
 })();
@@ -3192,7 +3192,7 @@ import * as R from '../ramda/dist/index';
 
 // @dts-jest:group view
 (() => {
-  const headLens = R.lensIndex<string, string[]>(0);
+  const headLens = R.lensIndex(0);
   // @dts-jest:pass
   R.view(headLens, ['a', 'b', 'c']); //=> 'a'
 })();
