@@ -29,8 +29,12 @@ export interface NestedDictionary<T> {
 export interface Ordered {
     valueOf(): string | number | boolean;
 }
-export interface Lens<T, U> {
-    (toFunctorFn: (value: T) => Functor<T>): (target: U) => U;
+export interface ManualLens<T, U> {
+    _fake_lens_getter: T;
+    _fake_lens_setter: U;
+}
+export interface PseudoLens<K extends string | number> {
+    _fake_lens_prop: K;
 }
 export interface Transformer<T, U, R> {
     "@@transducer/init": () => U;

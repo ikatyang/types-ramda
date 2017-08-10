@@ -1,4 +1,4 @@
-import { Lens, Property } from "./$types";
+import { ManualLens, Property, PseudoLens } from "./$types";
 /**
  * Returns a lens whose focus is the specified property.
  *
@@ -21,7 +21,11 @@ import { Lens, Property } from "./$types";
  */
 declare const lensProp: lensProp_0;
 type lensProp_0 = {
-    <T, U>(property: Property): lensProp_1<T, U>;
+    <K extends string | number>(property: K): lensProp_key_1<K>;
+    <$SEL extends "1", $KIND extends "key">(): <K extends string | number>(property: K) => lensProp_key_1<K>;
+    <$SEL extends "1", $KIND extends "general">(): <T, U>(property: Property) => lensProp_general_1<T, U>;
+    <T, U>(property: Property): lensProp_general_1<T, U>;
 };
-type lensProp_1<T, U> = Lens<T, U>;
+type lensProp_key_1<K extends string | number> = PseudoLens<K>;
+type lensProp_general_1<T, U> = ManualLens<T, U>;
 export = lensProp;
