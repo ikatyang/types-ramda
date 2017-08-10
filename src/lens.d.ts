@@ -1,4 +1,4 @@
-import { Lens } from "./$types";
+import { ManualLens } from "./$types";
 /**
  * Returns a lens for the given getter and setter functions. The getter "gets"
  * the value of the focus; the setter "sets" the value of the focus. The setter
@@ -33,5 +33,5 @@ type lens_10<T, U> = {
 type lens_01<T, U> = {
     (getter: (target: U) => T): lens_11<T, U>;
 };
-type lens_11<T, U> = Lens<T, U>;
+type lens_11<T, U> = ManualLens<T, U>;
 export = lens;

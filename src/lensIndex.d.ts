@@ -1,4 +1,4 @@
-import { Lens, List } from "./$types";
+import { List, PseudoLens } from "./$types";
 /**
  * Returns a lens whose focus is the specified index.
  *
@@ -21,7 +21,7 @@ import { Lens, List } from "./$types";
  */
 declare const lensIndex: lensIndex_0;
 type lensIndex_0 = {
-    <T, U extends List<T>>(index: number): lensIndex_1<T, U>;
+    <N extends number>(index: N): lensIndex_1<N>;
 };
-type lensIndex_1<T, U extends List<T>> = Lens<T, U>;
+type lensIndex_1<N extends number> = PseudoLens<N>;
 export = lensIndex;
