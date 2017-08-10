@@ -30,7 +30,7 @@
     "release-tags": "bash ./scripts/release-tags.sh"
   },
   "devDependencies": {
-    "@types/del": "2.2.33",
+    "@types/del": "3.0.0",
     "@types/glob": "5.0.30",
     "@types/gulp": "3.8.33",
     "@types/gulp-diff": "1.0.0",
