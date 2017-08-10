@@ -16,7 +16,7 @@ declare const a_1_b_2_c_3: {
   c: 3;
 };
 
-// @dts-jest:pass -> (object: Dictionary<number>) => boolean
+// @dts-jest:pass -> (object: Dictionary<any>) => boolean
 R_where(a_b_c_number_to_boolean);
 
 // @dts-jest:pass -> boolean
@@ -29,7 +29,7 @@ R_where(a_b_c_number_to_boolean)(number_dictionary);
 // @dts-jest:pass -> boolean
 R_where(a_b_c_number_to_boolean, number_dictionary);
 
-// @dts-jest:pass -> (object: Dictionary<number>) => boolean
+// @dts-jest:pass -> (object: Dictionary<any>) => boolean
 R_where(dictionary_of_number_to_boolean);
 
 // @dts-jest:pass -> boolean

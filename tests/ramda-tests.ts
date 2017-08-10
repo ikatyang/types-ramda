@@ -3219,7 +3219,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass
   R.where(spec)({ w: 10, x: 2, y: 300 }); //=> true
   // @dts-jest:pass
-  R.where<any>(spec)({ x: 1, y: 'moo', z: true }); //=> false
+  R.where(spec)({ x: 1, y: 'moo', z: true }); //=> false
 
   const spec2 = { x: (val: number) => val > 10 };
   // @dts-jest:pass

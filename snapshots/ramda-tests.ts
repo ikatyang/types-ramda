@@ -3219,7 +3219,7 @@ import * as R from '../ramda/dist/index';
   // @dts-jest:pass -> boolean
   R.where(spec)({ w: 10, x: 2, y: 300 }); //=> true
   // @dts-jest:pass -> boolean
-  R.where<any>(spec)({ x: 1, y: 'moo', z: true }); //=> false
+  R.where(spec)({ x: 1, y: 'moo', z: true }); //=> false
 
   const spec2 = { x: (val: number) => val > 10 };
   // @dts-jest:pass -> boolean
@@ -3228,9 +3228,9 @@ import * as R from '../ramda/dist/index';
   R.where(spec2, { x: 3, y: 8 }); //=> true
 
   const xs = [{ x: 2, y: 1 }, { x: 10, y: 2 }, { x: 8, y: 3 }, { x: 10, y: 4 }];
-  // @dts-jest:pass -> Dictionary<number>[]
+  // @dts-jest:pass -> Dictionary<any>[]
   R.filter(R.where({ x: R.equals(10) }), xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
-  // @dts-jest:pass -> Dictionary<number>[]
+  // @dts-jest:pass -> Dictionary<any>[]
   R.filter(R.where({ x: R.equals(10) }))(xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
 })();
 
