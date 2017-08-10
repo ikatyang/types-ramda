@@ -1120,15 +1120,19 @@ interface Obj { a: number; b: number; };
 // lensIndex, set, view, over
 () => {
     let headLens = R.lensIndex(0);
-    // @dts-jest $ExpectType number -> Argument of type 'number[]' is not assignable to parameter of type '(value: {}) => Functor<{}>'.
-    headLens([10, 20, 30, 40]); // => 10
-    // @dts-jest $ExpectType Array<number|string> -> Property 'set' does not exist on type 'Lens<{}, List<{}>>'.
-    headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
-    // @dts-jest $ExpectType string -> {}
+
+    // outdated types
+    // // @dts-jest $ExpectType number
+    // headLens([10, 20, 30, 40]); // => 10
+    // // @dts-jest $ExpectType Array<number|string>
+    // headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
+
+    // `any` was caused by https://github.com/gcanti/typelevel-ts/pull/7 (workaround for https://github.com/Microsoft/TypeScript/issues/15768)
+    // @dts-jest $ExpectType string -> any
     R.view(headLens, ['a', 'b', 'c']);            // => 'a'
-    // @dts-jest $ExpectType string[] -> {}[] | ArrayLike<{}>
+    // @dts-jest $ExpectType string[] -> string[]
     R.set(headLens, 'x', ['a', 'b', 'c']);        // => ['x', 'b', 'c']
-    // @dts-jest $ExpectType string[] -> {}[] | ArrayLike<{}>
+    // @dts-jest $ExpectType string[] -> string[]
     R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
 };
 
@@ -1892,22 +1896,22 @@ class Rectangle {
 // lensIndex
 () => {
     let headLens = R.lensIndex(0);
-    // @dts-jest $ExpectType string -> {}
+    // @dts-jest $ExpectType string -> any
     R.view(headLens, ['a', 'b', 'c']);            // => 'a'
-    // @dts-jest $ExpectType string[] -> {}[] | ArrayLike<{}>
+    // @dts-jest $ExpectType string[] -> string[]
     R.set(headLens, 'x', ['a', 'b', 'c']);        // => ['x', 'b', 'c']
-    // @dts-jest $ExpectType string[] -> {}[] | ArrayLike<{}>
+    // @dts-jest $ExpectType string[] -> string[]
     R.over(headLens, R.toUpper, ['a', 'b', 'c']); // => ['A', 'b', 'c']
 };
 
 // lensProp
 () => {
     let xLens = R.lensProp('x');
-    // @dts-jest $ExpectType number -> {}
+    // @dts-jest $ExpectType number -> number
     R.view(xLens, {x: 1, y: 2});            // => 1
-    // @dts-jest $ExpectType Dictionary<number> -> {}
+    // @dts-jest $ExpectType Dictionary<number> -> { x: number; y: number; }
     R.set(xLens, 4, {x: 1, y: 2});          // => {x: 4, y: 2}
-    // @dts-jest $ExpectType Dictionary<number> -> {}
+    // @dts-jest $ExpectType Dictionary<number> -> { x: number; y: number; }
     R.over(xLens, R.negate, {x: 1, y: 2});  // => {x: -1, y: 2}
 };
 
@@ -2121,7 +2125,7 @@ class Rectangle {
 // over, lensIndex
 () => {
     let headLens = R.lensIndex(0);
-    // @dts-jest $ExpectType string[] -> {}[] | ArrayLike<{}>
+    // @dts-jest $ExpectType string[] -> string[]
     R.over(headLens, R.toUpper, ['foo', 'bar', 'baz']); // => ['FOO', 'bar', 'baz']
 };
 
@@ -2238,7 +2242,7 @@ class Rectangle {
     R.where(spec, {x: 1, y: 'moo', z: true}); // => false
     // @dts-jest $ExpectType boolean -> boolean
     R.where(spec)({w: 10, x: 2, y: 300}); // => true
-    // @dts-jest $ExpectType boolean -> Argument of type '{ x: number; y: string; z: boolean; }' is not assignable to parameter of type 'Dictionary<number>'.
+    // @dts-jest $ExpectType boolean -> boolean
     R.where(spec)({x: 1, y: 'moo', z: true}); // => false
 
     // There's no way to represent the below functionality in typescript
@@ -2252,9 +2256,9 @@ class Rectangle {
     R.where(spec2, {x: 3, y: 8}); // => true
 
     let xs = [{x: 2, y: 1}, {x: 10, y: 2}, {x: 8, y: 3}, {x: 10, y: 4}];
-    // @dts-jest $ExpectType { x: number, y: number }[] -> Dictionary<number>[]
+    // @dts-jest $ExpectType { x: number, y: number }[] -> Dictionary<any>[]
     R.filter(R.where({x: R.equals(10)}), xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
-    // @dts-jest $ExpectType { x: number, y: number }[] -> Dictionary<number>[]
+    // @dts-jest $ExpectType { x: number, y: number }[] -> Dictionary<any>[]
     R.filter(R.where({x: R.equals(10)}))(xs); // ==> [{x: 10, y: 2}, {x: 10, y: 4}]
 };
 

@@ -193,9 +193,9 @@ exports[`$ExpectType { x: number, y: number } 5`] = `"{}"`;
 
 exports[`$ExpectType { x: number, y: number } 6`] = `"{}"`;
 
-exports[`$ExpectType { x: number, y: number }[] 1`] = `"Dictionary<number>[]"`;
+exports[`$ExpectType { x: number, y: number }[] 1`] = `"Dictionary<any>[]"`;
 
-exports[`$ExpectType { x: number, y: number }[] 2`] = `"Dictionary<number>[]"`;
+exports[`$ExpectType { x: number, y: number }[] 2`] = `"Dictionary<any>[]"`;
 
 exports[`$ExpectType { x: number; } 1`] = `"{ x: number; }"`;
 
@@ -242,8 +242,6 @@ exports[`$ExpectType {x: 1, y: 2} 2`] = `"{}"`;
 exports[`$ExpectType 10 1`] = `"10"`;
 
 exports[`$ExpectType Array<number|string> 1`] = `"[string, number][]"`;
-
-exports[`$ExpectType Array<number|string> 2`] = `"Property 'set' does not exist on type 'Lens<{}, List<{}>>'."`;
 
 exports[`$ExpectType Array<number|undefined> 1`] = `"any[]"`;
 
@@ -336,9 +334,9 @@ exports[`$ExpectType Dictionary<number> 16`] = `"Pick<{ a: number; b: number; c:
 
 exports[`$ExpectType Dictionary<number> 17`] = `"Pick<{ a: number; b: number; c: number; }, \\"a\\" | \\"c\\">"`;
 
-exports[`$ExpectType Dictionary<number> 18`] = `"{}"`;
+exports[`$ExpectType Dictionary<number> 18`] = `"{ x: number; y: number; }"`;
 
-exports[`$ExpectType Dictionary<number> 19`] = `"{}"`;
+exports[`$ExpectType Dictionary<number> 19`] = `"{ x: number; y: number; }"`;
 
 exports[`$ExpectType Dictionary<number> 20`] = `"any"`;
 
@@ -545,11 +543,7 @@ exports[`$ExpectType boolean 60`] = `"boolean"`;
 
 exports[`$ExpectType boolean 61`] = `"boolean"`;
 
-exports[`$ExpectType boolean 62`] = `
-"Argument of type '{ x: number; y: string; z: boolean; }' is not assignable to parameter of type 'Dictionary<number>'.
-  Property 'y' is incompatible with index signature.
-    Type 'string' is not assignable to type 'number'."
-`;
+exports[`$ExpectType boolean 62`] = `"boolean"`;
 
 exports[`$ExpectType boolean 63`] = `"boolean"`;
 
@@ -803,10 +797,7 @@ exports[`$ExpectType number 40`] = `"number"`;
 
 exports[`$ExpectType number 41`] = `"number"`;
 
-exports[`$ExpectType number 42`] = `
-"Argument of type 'number[]' is not assignable to parameter of type '(value: {}) => Functor<{}>'.
-  Type 'number[]' provides no match for the signature '(value: {}): Functor<{}>'."
-`;
+exports[`$ExpectType number 42`] = `"number"`;
 
 exports[`$ExpectType number 43`] = `"number"`;
 
@@ -816,21 +807,21 @@ exports[`$ExpectType number 45`] = `"number"`;
 
 exports[`$ExpectType number 46`] = `"number"`;
 
-exports[`$ExpectType number 47`] = `"number"`;
+exports[`$ExpectType number 47`] = `"any"`;
 
-exports[`$ExpectType number 48`] = `"any"`;
+exports[`$ExpectType number 48`] = `"number"`;
 
 exports[`$ExpectType number 49`] = `"{}"`;
 
-exports[`$ExpectType number 50`] = `"{}"`;
+exports[`$ExpectType number 50`] = `"{} | \\"N/A\\""`;
 
-exports[`$ExpectType number 51`] = `"{} | \\"N/A\\""`;
+exports[`$ExpectType number 51`] = `"string | {}"`;
 
-exports[`$ExpectType number 52`] = `"string | {}"`;
+exports[`$ExpectType number 52`] = `"{} | \\"N/A\\""`;
 
-exports[`$ExpectType number 53`] = `"{} | \\"N/A\\""`;
+exports[`$ExpectType number 53`] = `"{} | { c: number; }"`;
 
-exports[`$ExpectType number 54`] = `"{} | { c: number; }"`;
+exports[`$ExpectType number 54`] = `"number"`;
 
 exports[`$ExpectType number 55`] = `"number"`;
 
@@ -864,9 +855,9 @@ exports[`$ExpectType number 69`] = `"number"`;
 
 exports[`$ExpectType number 70`] = `"number"`;
 
-exports[`$ExpectType number 71`] = `"number"`;
+exports[`$ExpectType number 71`] = `"{} | undefined"`;
 
-exports[`$ExpectType number 72`] = `"{} | undefined"`;
+exports[`$ExpectType number 72`] = `"number"`;
 
 exports[`$ExpectType number 73`] = `"number"`;
 
@@ -896,9 +887,9 @@ exports[`$ExpectType number 85`] = `"number"`;
 
 exports[`$ExpectType number 86`] = `"number"`;
 
-exports[`$ExpectType number 87`] = `"number"`;
+exports[`$ExpectType number 87`] = `"3 | 7"`;
 
-exports[`$ExpectType number 88`] = `"3 | 7"`;
+exports[`$ExpectType number 88`] = `"number"`;
 
 exports[`$ExpectType number 89`] = `"number"`;
 
@@ -906,9 +897,9 @@ exports[`$ExpectType number 90`] = `"number"`;
 
 exports[`$ExpectType number 91`] = `"number"`;
 
-exports[`$ExpectType number 92`] = `"number"`;
+exports[`$ExpectType number 92`] = `"3 | 9"`;
 
-exports[`$ExpectType number 93`] = `"3 | 9"`;
+exports[`$ExpectType number 93`] = `"number"`;
 
 exports[`$ExpectType number 94`] = `"number"`;
 
@@ -938,27 +929,25 @@ exports[`$ExpectType number 106`] = `"number"`;
 
 exports[`$ExpectType number 107`] = `"number"`;
 
-exports[`$ExpectType number 108`] = `"number"`;
+exports[`$ExpectType number 108`] = `"never[] | 0"`;
 
-exports[`$ExpectType number 109`] = `"never[] | 0"`;
+exports[`$ExpectType number 109`] = `"number | never[]"`;
 
-exports[`$ExpectType number 110`] = `"number | never[]"`;
+exports[`$ExpectType number 110`] = `"number"`;
 
 exports[`$ExpectType number 111`] = `"number"`;
 
 exports[`$ExpectType number 112`] = `"number"`;
 
-exports[`$ExpectType number 113`] = `"number"`;
+exports[`$ExpectType number 113`] = `"{}"`;
 
-exports[`$ExpectType number 114`] = `"{}"`;
+exports[`$ExpectType number 114`] = `"number"`;
 
 exports[`$ExpectType number 115`] = `"number"`;
 
 exports[`$ExpectType number 116`] = `"number"`;
 
 exports[`$ExpectType number 117`] = `"number"`;
-
-exports[`$ExpectType number 118`] = `"number"`;
 
 exports[`$ExpectType number[] 1`] = `"any[] | ArrayLike<any>"`;
 
@@ -1296,7 +1285,7 @@ exports[`$ExpectType string 29`] = `"string"`;
 
 exports[`$ExpectType string 30`] = `"string | undefined"`;
 
-exports[`$ExpectType string 31`] = `"{}"`;
+exports[`$ExpectType string 31`] = `"any"`;
 
 exports[`$ExpectType string 32`] = `"string | undefined"`;
 
@@ -1334,7 +1323,7 @@ exports[`$ExpectType string 48`] = `"string"`;
 
 exports[`$ExpectType string 49`] = `"string"`;
 
-exports[`$ExpectType string 50`] = `"{}"`;
+exports[`$ExpectType string 50`] = `"any"`;
 
 exports[`$ExpectType string 51`] = `"\\"foo\\""`;
 
@@ -1386,9 +1375,9 @@ exports[`$ExpectType string[] 9`] = `"string[]"`;
 
 exports[`$ExpectType string[] 10`] = `"string[]"`;
 
-exports[`$ExpectType string[] 11`] = `"{}[] | ArrayLike<{}>"`;
+exports[`$ExpectType string[] 11`] = `"string[]"`;
 
-exports[`$ExpectType string[] 12`] = `"{}[] | ArrayLike<{}>"`;
+exports[`$ExpectType string[] 12`] = `"string[]"`;
 
 exports[`$ExpectType string[] 13`] = `"string[]"`;
 
@@ -1410,15 +1399,15 @@ exports[`$ExpectType string[] 21`] = `"(\\"a\\" | \\"b\\" | \\"c\\")[]"`;
 
 exports[`$ExpectType string[] 22`] = `"(\\"x\\" | \\"y\\")[]"`;
 
-exports[`$ExpectType string[] 23`] = `"{}[] | ArrayLike<{}>"`;
+exports[`$ExpectType string[] 23`] = `"string[]"`;
 
-exports[`$ExpectType string[] 24`] = `"{}[] | ArrayLike<{}>"`;
+exports[`$ExpectType string[] 24`] = `"string[]"`;
 
 exports[`$ExpectType string[] 25`] = `"(\\"a\\" | \\"b\\" | \\"c\\")[]"`;
 
 exports[`$ExpectType string[] 26`] = `"(\\"x\\" | \\"y\\")[]"`;
 
-exports[`$ExpectType string[] 27`] = `"{}[] | ArrayLike<{}>"`;
+exports[`$ExpectType string[] 27`] = `"string[]"`;
 
 exports[`$ExpectType string[] 28`] = `"string[]"`;
 

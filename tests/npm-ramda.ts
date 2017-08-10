@@ -1120,10 +1120,14 @@ interface Obj { a: number; b: number; };
 // lensIndex, set, view, over
 () => {
     let headLens = R.lensIndex(0);
-    // @dts-jest $ExpectType number
-    headLens([10, 20, 30, 40]); // => 10
-    // @dts-jest $ExpectType Array<number|string>
-    headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
+
+    // outdated types
+    // // @dts-jest $ExpectType number
+    // headLens([10, 20, 30, 40]); // => 10
+    // // @dts-jest $ExpectType Array<number|string>
+    // headLens.set('mu', [10, 20, 30, 40]); // => ['mu', 20, 30, 40]
+
+    // `any` was caused by https://github.com/gcanti/typelevel-ts/pull/7 (workaround for https://github.com/Microsoft/TypeScript/issues/15768)
     // @dts-jest $ExpectType string
     R.view(headLens, ['a', 'b', 'c']);            // => 'a'
     // @dts-jest $ExpectType string[]
