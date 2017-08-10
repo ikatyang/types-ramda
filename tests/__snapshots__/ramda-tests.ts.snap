@@ -1460,11 +1460,13 @@ exports[`when truncate('0123456789ABC') 1`] = `"string"`;
 
 exports[`when truncate('12345') 1`] = `"string"`;
 
-exports[`where R.filter(R.where({ x: R.equals(10) }))(xs) 1`] = `"Dictionary<number>[]"`;
+exports[`where R.filter(R.where({ x: R.equals(10) }))(xs) 1`] = `"Dictionary<any>[]"`;
 
-exports[`where R.filter(R.where({ x: R.equals(10) }), xs) 1`] = `"Dictionary<number>[]"`;
+exports[`where R.filter(R.where({ x: R.equals(10) }), xs) 1`] = `"Dictionary<any>[]"`;
 
 exports[`where R.where(spec)({ w: 10, x: 2, y: 300 }) 1`] = `"boolean"`;
+
+exports[`where R.where(spec)({ x: 1, y: 'moo', z: true }) 1`] = `"boolean"`;
 
 exports[`where R.where(spec, { w: 10, x: 2, y: 300 }) 1`] = `"boolean"`;
 
@@ -1473,8 +1475,6 @@ exports[`where R.where(spec, { x: 1, y: 'moo', z: true }) 1`] = `"boolean"`;
 exports[`where R.where(spec2, { x: 2, y: 7 }) 1`] = `"boolean"`;
 
 exports[`where R.where(spec2, { x: 3, y: 8 }) 1`] = `"boolean"`;
-
-exports[`where R.where<any>(spec)({ x: 1, y: 'moo', z: true }) 1`] = `"boolean"`;
 
 exports[`whereEq R.whereEq({ a: 'one' }, { a: 'one' }) 1`] = `"boolean"`;
 
