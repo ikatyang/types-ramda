@@ -30,13 +30,13 @@ type set_000 = {
     <U>(lens: PseudoLens<any> | ManualLens<any, U>): set_general_100<U>;
     <N extends number, U extends {
             [index: number]: any;
-        }>(lens: PseudoLens<N>, value: U[NumberToString[N]][N]): set_number_110<N, U>;
+        }>(lens: PseudoLens<N>, value: U[NumberToString[N]]): set_number_110<N, U>;
     <K extends string, U extends Record<K, any>>(lens: PseudoLens<K>, value: U[K]): set_string_110<K, U>;
     <T, U>(lens: ManualLens<T, U>, value: T): set_manual_110<T, U>;
     <U>(lens: PseudoLens<any> | ManualLens<any, U>, fn: any): set_general_110<U>;
     <N extends number, U extends {
             [index: number]: any;
-        }>(lens: PseudoLens<N>, value: U[NumberToString[N]][N], target: U): set_number_111<U>;
+        }>(lens: PseudoLens<N>, value: U[NumberToString[N]], target: U): set_number_111<U>;
     <K extends string, U extends Record<K, any>>(lens: PseudoLens<K>, value: U[K], target: U): set_string_111<K, U>;
     <T, U>(lens: ManualLens<T, U>, value: T, target: U): set_manual_111<U>;
     <$SEL extends "1", $KIND extends "number">(): <N extends number>(lens: PseudoLens<N>) => set_number_100<N>;
@@ -45,13 +45,13 @@ type set_000 = {
     <$SEL extends "1", $KIND extends "general">(): <U>(lens: PseudoLens<any> | ManualLens<any, U>) => set_general_100<U>;
     <$SEL extends "11", $KIND extends "number">(): <N extends number, U extends {
             [index: number]: any;
-        }>(lens: PseudoLens<N>, value: U[NumberToString[N]][N]) => set_number_110<N, U>;
+        }>(lens: PseudoLens<N>, value: U[NumberToString[N]]) => set_number_110<N, U>;
     <$SEL extends "11", $KIND extends "string">(): <K extends string, U extends Record<K, any>>(lens: PseudoLens<K>, value: U[K]) => set_string_110<K, U>;
     <$SEL extends "11", $KIND extends "manual">(): <T, U>(lens: ManualLens<T, U>, value: T) => set_manual_110<T, U>;
     <$SEL extends "11", $KIND extends "general">(): <U>(lens: PseudoLens<any> | ManualLens<any, U>, fn: any) => set_general_110<U>;
     <$SEL extends "111", $KIND extends "number">(): <N extends number, U extends {
             [index: number]: any;
-        }>(lens: PseudoLens<N>, value: U[NumberToString[N]][N], target: U) => set_number_111<U>;
+        }>(lens: PseudoLens<N>, value: U[NumberToString[N]], target: U) => set_number_111<U>;
     <$SEL extends "111", $KIND extends "string">(): <K extends string, U extends Record<K, any>>(lens: PseudoLens<K>, value: U[K], target: U) => set_string_111<K, U>;
     <$SEL extends "111", $KIND extends "manual">(): <T, U>(lens: ManualLens<T, U>, value: T, target: U) => set_manual_111<U>;
     <$SEL extends "111", $KIND extends "general">(): <U>(lens: PseudoLens<any> | ManualLens<any, U>, fn: any, target: U) => set_general_111<U>;
@@ -64,14 +64,14 @@ type set_001<U extends {
     (lens: PseudoLens<K>): set_string_101<K, U>;
     <T>(lens: ManualLens<T, U>): set_manual_101<T, U>;
     (lens: PseudoLens<any> | ManualLens<any, U>): set_general_101<U>;
-    <N extends number>(lens: PseudoLens<N>, value: U[NumberToString[N]][N]): set_number_111<U>;
+    <N extends number>(lens: PseudoLens<N>, value: U[NumberToString[N]]): set_number_111<U>;
     (lens: PseudoLens<K>, value: U[K]): set_string_111<K, U>;
     <T>(lens: ManualLens<T, U>, value: T): set_manual_111<U>;
     <$SEL extends "1", $KIND extends "number">(): <N extends number>(lens: PseudoLens<N>) => set_number_101<N, U>;
     <$SEL extends "1", $KIND extends "string">(): (lens: PseudoLens<K>) => set_string_101<K, U>;
     <$SEL extends "1", $KIND extends "manual">(): <T>(lens: ManualLens<T, U>) => set_manual_101<T, U>;
     <$SEL extends "1", $KIND extends "general">(): (lens: PseudoLens<any> | ManualLens<any, U>) => set_general_101<U>;
-    <$SEL extends "11", $KIND extends "number">(): <N extends number>(lens: PseudoLens<N>, value: U[NumberToString[N]][N]) => set_number_111<U>;
+    <$SEL extends "11", $KIND extends "number">(): <N extends number>(lens: PseudoLens<N>, value: U[NumberToString[N]]) => set_number_111<U>;
     <$SEL extends "11", $KIND extends "string">(): (lens: PseudoLens<K>, value: U[K]) => set_string_111<K, U>;
     <$SEL extends "11", $KIND extends "manual">(): <T>(lens: ManualLens<T, U>, value: T) => set_manual_111<U>;
     <$SEL extends "11", $KIND extends "general">(): (lens: PseudoLens<any> | ManualLens<any, U>, fn: any) => set_general_111<U>;
@@ -80,16 +80,16 @@ type set_001<U extends {
 type set_number_100<N extends number> = {
     <U extends {
             [index: number]: any;
-        }>(value: U[NumberToString[N]][N]): set_number_110<N, U>;
+        }>(value: U[NumberToString[N]]): set_number_110<N, U>;
     <$SEL extends "1">(): <U extends {
             [index: number]: any;
-        }>(value: U[NumberToString[N]][N]) => set_number_110<N, U>;
+        }>(value: U[NumberToString[N]]) => set_number_110<N, U>;
     <$SEL extends "11">(): <U extends {
             [index: number]: any;
-        }>(value: U[NumberToString[N]][N], target: U) => set_number_111<U>;
+        }>(value: U[NumberToString[N]], target: U) => set_number_111<U>;
     <U extends {
             [index: number]: any;
-        }>(value: U[NumberToString[N]][N], target: U): set_number_111<U>;
+        }>(value: U[NumberToString[N]], target: U): set_number_111<U>;
 };
 type set_string_100<K extends string> = {
     <U extends Record<K, any>>(value: U[K]): set_string_110<K, U>;
@@ -152,7 +152,7 @@ type set_general_110<U> = {
 type set_number_101<N extends number, U extends {
         [index: number]: any;
     }> = {
-    (value: U[NumberToString[N]][N]): set_number_111<U>;
+    (value: U[NumberToString[N]]): set_number_111<U>;
 };
 type set_string_101<K extends string, U extends Record<K, any>> = {
     (value: U[K]): set_string_111<K, U>;
