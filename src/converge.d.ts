@@ -1,4 +1,4 @@
-import { CurriedFunction1, CurriedFunction2, CurriedFunction3 } from "./$curried-functions";
+import { CurriedFunction1, CurriedFunction2, CurriedFunction3 } from "./$curriedFunctions";
 import { List, Variadic } from "./$types";
 import { Placeholder as PH } from "./$placeholder";
 /**
