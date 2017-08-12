@@ -27,7 +27,8 @@
     "remap-watch": "gulp remap-watch",
     "remap-check": "gulp remap-check",
     "jsdoc": "ts-node ./scripts/migrate-jsdoc.ts v0.24.1 ./templates",
-    "release-tags": "bash ./scripts/release-tags.sh"
+    "release-tags": "bash ./scripts/release-tags.sh",
+    "build-check": "tsc -p ./fixtures/build-check/tsconfig.json"
   },
   "devDependencies": {
     "@types/del": "3.0.0",
