@@ -1,5 +1,5 @@
 import { NumberToString } from './$operation';
-import { Dictionary, ManualLens, Morphism, PseudoLens } from './$types';
+import { ManualLens, PseudoLens } from './$types';
 
 export function $number<N extends number, U extends { [index: number]: any }>(
   lens: PseudoLens<N>,
@@ -10,7 +10,7 @@ export function $string<K extends string, U extends Record<K, any>>(
   target: U,
 ): U[K];
 export function $manual<T, U>(lens: ManualLens<T, U>, target: U): T;
-export function $general<T, U>(
-  lens: PseudoLens<any> | ManualLens<T, U>,
-  target: U,
-): T | U[any];
+export function $general<X, V>(
+  lens: PseudoLens<any> | ManualLens<X, V>,
+  target: V,
+): X | V[any];
