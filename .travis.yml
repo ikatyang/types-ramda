@@ -8,6 +8,7 @@ before_install:
 
 script:
 - yarn run lint
+- yarn run build-check
 - yarn run remap-check
 - yarn run test-utils -- --verbose --coverage
 - yarn run test -- --verbose
