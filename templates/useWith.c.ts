@@ -1,5 +1,5 @@
 import * as dts from 'dts-element';
-import { max_curry_level } from './$curried-functions';
+import { max_curry_level } from './$curriedFunctions';
 
 const return_generic = 'R';
 const variable_names = [...new Array(max_curry_level)].map(
@@ -51,7 +51,7 @@ for (let i = 0; i <= max_curry_level; i++) {
 }
 
 export default dts.parse(`
-  import {${curried_function_names.join(',')}} from './$curried-functions';
+  import {${curried_function_names.join(',')}} from './$curriedFunctions';
   import {Morphism, Variadic} from './$types';
   ${declarations.join('\n')}
   function $variadic<${return_generic}>(

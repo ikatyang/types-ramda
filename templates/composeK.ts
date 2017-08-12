@@ -1,5 +1,5 @@
 import * as dts from 'dts-element';
-import { max_curry_level } from './$curried-functions';
+import { max_curry_level } from './$curriedFunctions';
 import { create_composition_declarations } from './utils/create-composition-declarations';
 
 export default [

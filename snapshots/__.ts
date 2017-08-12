@@ -1,4 +1,4 @@
-import { CurriedFunction3 } from '../ramda/dist/src/$curried-functions';
+import { CurriedFunction3 } from '../ramda/dist/src/$curriedFunctions';
 import * as R___ from '../ramda/dist/src/__';
 
 declare const boolean: boolean;

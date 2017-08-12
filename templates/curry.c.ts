@@ -1,5 +1,4 @@
-import * as dts from 'dts-element';
-import { max_curry_level } from './$curried-functions';
+import { max_curry_level } from './$curriedFunctions';
 import { create_n_ary_declarations } from './utils/create-n-ary-declarations';
 
 export default create_n_ary_declarations(
@@ -13,7 +12,7 @@ export default create_n_ary_declarations(
   args => `
     import {${args.curry_levels
       .map(i => `CurriedFunction${i}`)
-      .join(',')}} from './$curried-functions';
+      .join(',')}} from './$curriedFunctions';
     import {Variadic} from './$types';
     function $variadic<${args.return_type}>(
       fn: Variadic<${args.return_type}>

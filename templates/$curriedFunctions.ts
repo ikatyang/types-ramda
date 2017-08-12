@@ -22,7 +22,7 @@ export default (selectable: boolean, placeholder: boolean) => [
 
 // reference placeholder
 
-// tslint:disable:no-empty-interface no-unused-variable
+// tslint:disable:no-empty-interface no-unused-variable no-unused
 export interface CurriedFunction0<R> {}
 export interface CurriedFunction1<T1, R> {}
 export interface CurriedFunction2<T1, T2, R> {}
@@ -30,4 +30,4 @@ export interface CurriedFunction3<T1, T2, T3, R> {}
 export interface CurriedFunction4<T1, T2, T3, T4, R> {}
 export interface CurriedFunction5<T1, T2, T3, T4, T5, R> {}
 export interface CurriedFunction6<T1, T2, T3, T4, T5, T6, R> {}
-// tslint:enable:no-empty-interface no-unused-variable
+// tslint:enable:no-empty-interface no-unused-variable no-unused
