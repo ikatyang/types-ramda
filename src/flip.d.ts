@@ -1,4 +1,4 @@
-import { CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curried-functions";
+import { CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curriedFunctions";
 /**
  * Returns a new function much like the supplied one, except that the first two
  * arguments' order is reversed.

@@ -1,4 +1,4 @@
-import { CurriedFunction0, CurriedFunction1, CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curried-functions";
+import { CurriedFunction0, CurriedFunction1, CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curriedFunctions";
 import { List, Variadic } from "./$types";
 /**
  * "lifts" a function to be the specified arity, so that it may "map over" that
