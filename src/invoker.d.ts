@@ -1,4 +1,4 @@
-import { CurriedFunction1, CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curried-functions";
+import { CurriedFunction1, CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curriedFunctions";
 import { Property, Variadic } from "./$types";
 /**
  * Turns a named method with a specified arity into a function that can be

@@ -1,4 +1,4 @@
-import { CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curried-functions";
+import { CurriedFunction2, CurriedFunction3, CurriedFunction4, CurriedFunction5, CurriedFunction6 } from "./$curriedFunctions";
 import { Variadic } from "./$types";
 /**
  * Creates a new list iteration function from an existing one by adding two new
