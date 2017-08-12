@@ -60,7 +60,7 @@ type view_general_10<T, U> = {
 };
 type view_number_11<N extends number, U extends {
         [index: number]: any;
-    }> = U[NumberToString[N]][N];
+    }> = U[NumberToString[N]];
 type view_string_11<K extends string, U extends Record<K, any>> = U[K];
 type view_manual_11<T> = T;
 type view_general_11<T, U> = T | U[any];
