@@ -6,11 +6,6 @@
     "prettier-config-ikatyang/tslint"
   ],
   "rules": {
-    "deprecation": false,
-    "no-default-export": false,
-    "no-inferred-empty-object-type": false,
-    "no-unnecessary-type-assertion": false,
-    "ter-func-call-spacing": false,
-    "filename-convention": false
+    "no-unnecessary-type-assertion": false
   }
 }

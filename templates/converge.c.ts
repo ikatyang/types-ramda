@@ -1,5 +1,5 @@
 import * as dts from 'dts-element';
-import { max_curry_level } from './$curried-functions';
+import { max_curry_level } from './$curriedFunctions';
 
 const min_input_count = 1;
 const max_input_count = 3;
@@ -67,7 +67,7 @@ for (
 }
 
 export default dts.parse(`
-  import {${import_curried_functions.join(',')}} from './$curried-functions';
+  import {${import_curried_functions.join(',')}} from './$curriedFunctions';
   import {List, Variadic} from './$types';
   ${declarations.join('\n')}
   function $variadic<${generic_return}>(after: Variadic<${generic_return}>, fns: List<Variadic<any>>): Variadic<${generic_return}>;

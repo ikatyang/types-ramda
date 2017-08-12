@@ -19,7 +19,7 @@ function get_top_level_members(filename: string): dts.ITopLevelMember[] {
   const basename = path.basename(filename);
   const function_name = basename.match(/^\$?(.+?)\./)![1];
 
-  if (basename === '$curried-functions.ts') {
+  if (basename === '$curriedFunctions.ts') {
     push_curried_functions_members();
   } else if (basename.endsWith('.d.ts')) {
     if (basename.startsWith('$')) {
