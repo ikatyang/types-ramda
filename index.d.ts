@@ -1,5 +1,5 @@
 export as namespace R;
-export * from "./src/$curried-functions";
+export * from "./src/$curriedFunctions";
 export * from "./src/$operation";
 export * from "./src/$placeholder";
 export * from "./src/$types";
