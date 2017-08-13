@@ -10,6 +10,23 @@ All changes to this project will be documented in this file.
 > - 🏠 [Internal]
 > - 💅 [Polish]
 
+<a name="0.24.3"></a>
+## [0.24.3](https://github.com/ikatyang/types-ramda/compare/v0.24.2...v0.24.3) (2017-08-13)
+
+### Bug Fixes
+
+* **generated:** fix `Cannot find name 'K'` for `R.dissoc` and `R.pick` ([560e6e3](https://github.com/ikatyang/types-ramda/commit/560e6e3))
+* **templates:** `R.splitWhen` - should return array of array (#86) ([c21564a](https://github.com/ikatyang/types-ramda/commit/c21564a))
+
+### Features
+
+* **templates:** replace returned `any` with `T` (#85) ([24f531a](https://github.com/ikatyang/types-ramda/commit/24f531a))
+* **templates:** `R.both`-like -  allow variadic predicate (#91) ([96bece0](https://github.com/ikatyang/types-ramda/commit/96bece0))
+* **templates:** `R.lens`-like - support PseudoLens (lensIndex, lensProp) (#99) ([cec493c](https://github.com/ikatyang/types-ramda/commit/cec493c))
+* **tempaltes:** `R.path` - no regression from npm-ramda (#84) ([92656be](https://github.com/ikatyang/types-ramda/commit/92656be))
+* **templates:** `R.unless` - support predicate (#87) ([4f613d7](https://github.com/ikatyang/types-ramda/commit/4f613d7))
+* **temlpates:** `R.where` - make it less strict (#98) ([0460185](https://github.com/ikatyang/types-ramda/commit/0460185))
+
 <a name="v0.24.2"></a>
 ## [v0.24.2](https://github.com/ikatyang/types-ramda/compare/v0.24.1...v0.24.2) (2017-07-20)
 
