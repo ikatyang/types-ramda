@@ -758,9 +758,9 @@ doctrine@^0.7.2:
     esutils "^1.1.6"
     isarray "0.0.1"
 
-dts-element-fp@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/dts-element-fp/-/dts-element-fp-1.0.1.tgz#c1470e5c6b95ea10b964c787a9ba6afe909aaa5c"
+dts-element-fp@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/dts-element-fp/-/dts-element-fp-1.0.2.tgz#0ec25671032557ecfe90bd56e5dd3e063c876436"
   dependencies:
     ramda "^0.24.1"
 
