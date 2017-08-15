@@ -1,3 +1,5 @@
+[DEPRECATED] This project has been merged into [types/npm-ramda](https://github.com/types/npm-ramda).
+
 # types-ramda
 
 [![release](https://img.shields.io/github/release/ikatyang/types-ramda.svg)](https://github.com/ikatyang/types-ramda/releases)
